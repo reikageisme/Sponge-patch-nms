@@ -42,7 +42,7 @@ def worker(profile: str, run_dir: Path, cfg: dict):
     readback = hw.pin(cpus)                      # ghim TRƯỚC khi torch tạo thread pool
     import torch
     torch.set_num_interop_threads(cfg['interop_threads'])
-    verify = hw.verify_pin(cpus)                 # dùng 2×|cpus| thread để thử vượt tập được phép
+    verify = hw.verify_pin(cpus, min_effective=0.5 if profile == 'P1_cpu2' else None)  # cận dưới thêm sau E5
     torch.set_num_threads(len(cpus))
     from ultralytics import YOLO
     from sponge_sim import provenance as pv, timing
@@ -110,9 +110,12 @@ def main():
     ap.add_argument('--run-dir', required=True)
     ap.add_argument('--smoke', action='store_true')
     ap.add_argument('--worker')
+    ap.add_argument('--profiles', help='ghi đè danh sách profile, vd. P1_cpu2 (thêm sau E5, DEVIATIONS 2026-10-21)')
     a = ap.parse_args()
     run_dir = Path(a.run_dir)
     cfg = {**CONFIG, **(SMOKE if a.smoke else {}), 'smoke': a.smoke}
+    if a.profiles:
+        cfg['profiles'] = a.profiles.split(',')
     if a.worker:
         worker(a.worker, run_dir, cfg)
         return
@@ -124,6 +127,8 @@ def main():
     for prof in order:
         t0 = time.time()
         cmd = [sys.executable, '-X', 'utf8', __file__, '--run-dir', str(run_dir), '--worker', prof]
+        if a.profiles:
+            cmd += ['--profiles', a.profiles]
         if a.smoke:
             cmd.append('--smoke')
         subprocess.run(cmd, check=True)

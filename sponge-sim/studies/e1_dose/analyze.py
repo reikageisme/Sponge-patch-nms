@@ -18,7 +18,7 @@ sys.path.insert(0, str(SIM / 'src'))
 from sponge_sim import stats  # noqa: E402
 
 SEED = 20261021
-MDE_P1_NMS_TORCH_PURE = 0.0107  # results/e5/20261021T151412/summary.json:profiles.P1.stages.nms_torch_pure.mde_ratio_pct
+PRIMARY_PROFILE = 'P1_cpu2'
 ULTRA_TIME_LIMIT_NS = 2.05e9
 
 
@@ -44,6 +44,10 @@ def wilson(k, n, z=1.96):
 
 def main():
     run_dir = Path(sys.argv[1])
+    aa_summary = Path(sys.argv[2])  # summary.json của run A/A P1_cpu2 (PREREG_E1)
+    aa = json.loads(aa_summary.read_text(encoding='utf-8'))
+    mde = aa['profiles'][PRIMARY_PROFILE]['stages']['nms_torch_pure']['mde_ratio_pct'] / 100
+    aa_pin_ok = aa['profiles'][PRIMARY_PROFILE]['pin']['passed']
     micro, pipe, pins, refs = defaultdict(list), defaultdict(list), {}, defaultdict(list)
     for f in sorted(run_dir.glob('raw_*.jsonl')):
         for line in f.read_text(encoding='utf-8').splitlines():
@@ -65,14 +69,15 @@ def main():
                                         max_abs=max(abs(x['rel']) for x in v)) for k, v in refs.items()})
 
     # Chính 1
-    a = nms.get(('P1', 2100, 'torch_pure', 'disjoint', 80, None, 2100))
-    b = nms.get(('P1', 2100, 'torch_pure', 'disjoint', 80, None, 10))
+    out['aa_source'] = dict(path=str(aa_summary), mde_nms_torch_pure=mde, pin_passed=aa_pin_ok)
+    a = nms.get((PRIMARY_PROFILE, 2100, 'torch_pure', 'disjoint', 80, None, 2100))
+    b = nms.get((PRIMARY_PROFILE, 2100, 'torch_pure', 'disjoint', 80, None, 10))
     if a is not None and b is not None:
         R, ci = ratio_ci(a, b)
-        out['primary_1'] = dict(R=R, ci95=ci, threshold=1 + MDE_P1_NMS_TORCH_PURE, met=ci[0] > 1 + MDE_P1_NMS_TORCH_PURE,
+        out['primary_1'] = dict(R=R, ci95=ci, threshold=1 + mde, met=ci[0] > 1 + mde,
                                 median_ms_N2100=float(np.median(a)), median_ms_N10=float(np.median(b)))
     # Chính 2
-    t = pipe.get(('P1', 'torch_pure', 2100))
+    t = pipe.get((PRIMARY_PROFILE, 'torch_pure', 2100))
     if t is not None:
         miss = int((np.asarray(t) / 1e6 > 100.0).sum())
         out['primary_2'] = dict(n=len(t), misses=miss, frac=miss / len(t), wilson95=wilson(miss, len(t)),

@@ -22,7 +22,7 @@ sys.path.insert(0, str(SIM / 'src'))
 
 BACKEND_NAMES = ['torch_pure', 'tv_nms', 'tv_batched', 'ultra_native']
 CONFIG = dict(
-    experiment='E1', profiles=['P1', 'E1'], min_effective={'P1': 0.5, 'E1': 0.5, 'E4': 2.8}, profile_order_seed=1021, group_order_seed=1022, latin_seed=1023,
+    experiment='E1', profiles=['P1_cpu2', 'E1'], min_effective={'P1': 0.5, 'P1_cpu2': 0.5, 'E1': 0.5, 'E4': 2.8}, profile_order_seed=1021, group_order_seed=1022, latin_seed=1023,
     inject_seed_base=1100,
     grid=[  # (anchors, N levels, nc levels)
         dict(anchors=2100, label='head 320 (pipeline)', n=[0, 10, 30, 100, 300, 600, 1000, 1500, 2100], nc=[80, 1]),

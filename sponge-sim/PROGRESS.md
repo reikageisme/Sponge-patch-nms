@@ -44,8 +44,19 @@ Môi trường: Python 3.14 hệ thống (không .venv), torch 2.13.0+cpu, torch
   lúc smoke); E1 pass (0,705); toàn trình torch_pure N=2100 ~987 ms (2 lần). Ước lượng full: ~1,5–2,5 giờ (chủ yếu torch_pure N lớn, A=8400).
 - `sponge-sim/README.md` (commit d9d50cb). README gốc KHÔNG đụng (working copy là starter-kit chưa commit; HEAD là README dự án cũ).
 
+- Quyết định nhóm 21/10: P1 → P1_cpu2 (logical 2); giữ 30 lặp mọi N (ước lượng E1 mới ≈ 30–60 phút, hiệu chỉnh một lần gọi);
+  100 ms là ngưỡng đặt trước của nhóm; E4 không dùng để kết luận số core. README gốc viết lại theo A+C (commit 6f9cd8e),
+  nội dung starter-kit chuyển sang `docs/CLAUDE_CODE_SETUP.md`.
+- **Chế độ điện: Windows Balanced, GUID 381b4222-f694-41f0-9685-ff5bb260df2e** (người dùng đọc 21/10/2026, sau E5;
+  không có bản ghi plan trong lúc E5 chạy). Từ nay mọi lần đo giữ nguyên chế độ này.
+
 ## Đang dở
-- Chờ duyệt PREREG_E1 rồi tag `prereg-e1-20261021` → chạy đầy đủ.
+- Chờ bạn báo "máy sẵn sàng". Khi đó, theo thứ tự:
+  1. A/A P1_cpu2 (~5 phút) → điền MDE vào PREREG_E1 → commit + tag `prereg-e1-20261021`;
+  2. E1 đầy đủ (~30–60 phút, nền) → analyze → PROGRESS.
+- Việc điều tra (chưa làm): vì sao E4 (4 thread trên logical 4–7) cho effective_cores 0,96 trong phiên E5 trong khi kiểm riêng
+  cho 2,7–3,78. Giả thuyết cần kiểm: (i) Windows dồn tác vụ nền lên E-core; (ii) torch intra-op pool + interop=1 trong subprocess;
+  (iii) power management E-core ở Balanced. Cách kiểm: lặp verify_pin E4 mỗi khối, ghi cpu_percent toàn máy + tần số.
 
 ## Lệnh chạy tiếp
 ```
@@ -54,14 +65,16 @@ PYTHONPATH=src python -X utf8 -m sponge_sim.hw      # in topology + checklist
 # E5 đầy đủ (~25 phút, chạy nền, KHÔNG dùng máy khi đo):
 python -X utf8 studies/e5_protocol/run.py --run-dir results/e5/<YYYYMMDDTHHMMSS> > results/e5/<id>.log 2>&1
 python -X utf8 studies/e5_protocol/analyze.py results/e5/<id>
+# A/A P1_cpu2 rồi E1 (sau khi tag prereg-e1):
+python -X utf8 studies/e5_protocol/run.py --profiles P1_cpu2 --run-dir results/e5/<id_aa> > results/e5/<id_aa>.log 2>&1
+python -X utf8 studies/e5_protocol/analyze.py results/e5/<id_aa>
+python -X utf8 studies/e1_dose/run.py --run-dir results/e1/<id> > results/e1/<id>.log 2>&1
+python -X utf8 studies/e1_dose/analyze.py results/e1/<id> results/e5/<id_aa>/summary.json
 ```
 
 ## Quyết định đang chờ tôi
-- Profile cho E1: P1 = logical 0 fail cận dưới ở smoke. Chọn: (a) giữ CPU 0, đo khi máy rảnh hẳn; (b) chuyển P1 sang logical 2
-  (P-core 1, tránh CPU 0) + chạy lại A/A ngắn để có MDE; E1 (logical 4) làm phụ thay E4.
-- Có rút lưới A=8400 cho torch_pure (tốn thời gian nhất) không.
-- README gốc: thay bằng README dự án mới (cần bạn đồng ý vì sẽ thay nội dung starter-kit chưa commit).
+- Báo "máy sẵn sàng" để chạy A/A P1_cpu2 + E1.
 - Ngưỡng cờ trôi: giữ 3% (gần như mọi khối bị cờ) hay hiệu chỉnh tham chiếu (khai trong PREREG_E1).
-- Ghi kết quả `powercfg /getactivescheme` (tin nhắn trước còn placeholder).
+
 - Remote: bạn chọn reikageisme và TỰ push nhánh harness/step1 (mình không đụng remote).
 - Bạn tự chạy `powercfg /getactivescheme` và ghi kết quả vào đây (harness không chạy lệnh này). psutil báo cpu_freq max 1300 MHz (giá trị Windows báo, chưa phải xung thực).

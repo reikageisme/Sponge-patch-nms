@@ -58,6 +58,10 @@ def profiles(cores: list[dict]) -> dict[str, list[int]]:
     out = {}
     if p:
         out['P1'] = p[:1]
+    pcores = [c for c in cores if c['kind'] == 'P']
+    if len(pcores) >= 2:
+        # P-core thứ hai, logical đầu: tránh CPU 0 (ngắt/tác vụ hệ thống). Thêm sau E5 (DEVIATIONS 2026-10-21).
+        out['P1_cpu2'] = pcores[1]['logical_cpus'][:1]
     if e:
         out['E1'] = e[:1]
     if len(e) >= 4:

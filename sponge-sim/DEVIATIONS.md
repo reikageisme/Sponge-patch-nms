@@ -22,3 +22,10 @@ Mỗi mục: ngày, PREREG nào, thay đổi gì, lý do, đã thấy dữ liệ
    Thiết kế ABBA/BAAB trong ảnh làm trôi chậm triệt tiêu trong tỷ số A/A, nên endpoint chính vẫn tính được; nhưng
    ngưỡng 3% với benchmark tham chiếu hiện tại không phân biệt được khối tốt/xấu trên laptop này.
 3. Trong phiên P1 (chạy đầu tiên), một lệnh Python ngắn (<1 s, sửa file script E1) đã chạy song song. Không loại dữ liệu.
+
+## 2026-10-21 — Đổi profile chính P1 → P1_cpu2 (quyết định của nhóm, sau E5 và smoke E1)
+- Lý do: smoke E1 cho verify CPU 0 effective_cores 0,394 (< cận dưới 0,5); CPU 0 thường gánh ngắt/tác vụ hệ thống.
+- Thay đổi: `hw.profiles` thêm `P1_cpu2` = logical đầu của P-core thứ hai (logical 2). Tên `P1` giữ nghĩa CPU 0 cho lịch sử E5.
+- `studies/e5_protocol/run.py` (đã tag prereg-e5) được sửa SAU tag: thêm `--profiles` và cận dưới verify 0,5 cho P1_cpu2.
+  Giao thức đo (ảnh, số lần, ABBA, công đoạn, tham chiếu) KHÔNG đổi. Run A/A P1_cpu2 dùng để lấy MDE cho PREREG_E1.
+- Đã thấy dữ liệu: có (E5 đầy đủ + smoke E1). Run A/A P1_cpu2 chưa chạy (máy đang bận lúc quyết định: CPU 2 ở 75%).
