@@ -39,8 +39,13 @@ Môi trường: Python 3.14 hệ thống (không .venv), torch 2.13.0+cpu, torch
   - Tỷ phần NMS torch_pure / total (ảnh sạch, mô tả): trung vị P1 0,0207, E1 0,0302, E4 0,0399; max 0,19–0,32.
   - Sai lệch: xem DEVIATIONS.md (E4 song song không xác minh; cờ trôi 3% kích hoạt gần như mọi khối).
 
+- PREREG_E1 NHÁP + run/analyze (commit 6f6413f, CHƯA tag). hw.verify_pin thêm tham số tuỳ chọn min_effective (cận dưới).
+  Smoke E1 (scratchpad, không báo cáo): script chạy; 99 nhóm/profile; P1 verify FAIL cận dưới (effective_cores 0,394; máy có tải nền
+  lúc smoke); E1 pass (0,705); toàn trình torch_pure N=2100 ~987 ms (2 lần). Ước lượng full: ~1,5–2,5 giờ (chủ yếu torch_pure N lớn, A=8400).
+- `sponge-sim/README.md` (commit d9d50cb). README gốc KHÔNG đụng (working copy là starter-kit chưa commit; HEAD là README dự án cũ).
+
 ## Đang dở
-- PREREG_E1 (nháp, CHƯA tag) — chờ bạn duyệt + quyết định profile.
+- Chờ duyệt PREREG_E1 rồi tag `prereg-e1-20261021` → chạy đầy đủ.
 
 ## Lệnh chạy tiếp
 ```
@@ -52,7 +57,10 @@ python -X utf8 studies/e5_protocol/analyze.py results/e5/<id>
 ```
 
 ## Quyết định đang chờ tôi
-- Profile cho E1: đề xuất P1 (chính) + E1 (một E-core, phụ) thay E4; hoặc đo lại E4 với cận dưới effective_cores.
+- Profile cho E1: P1 = logical 0 fail cận dưới ở smoke. Chọn: (a) giữ CPU 0, đo khi máy rảnh hẳn; (b) chuyển P1 sang logical 2
+  (P-core 1, tránh CPU 0) + chạy lại A/A ngắn để có MDE; E1 (logical 4) làm phụ thay E4.
+- Có rút lưới A=8400 cho torch_pure (tốn thời gian nhất) không.
+- README gốc: thay bằng README dự án mới (cần bạn đồng ý vì sẽ thay nội dung starter-kit chưa commit).
 - Ngưỡng cờ trôi: giữ 3% (gần như mọi khối bị cờ) hay hiệu chỉnh tham chiếu (khai trong PREREG_E1).
 - Ghi kết quả `powercfg /getactivescheme` (tin nhắn trước còn placeholder).
 - Remote: bạn chọn reikageisme và TỰ push nhánh harness/step1 (mình không đụng remote).
