@@ -72,7 +72,8 @@ def pin(cpus: list[int]) -> list[int]:
     return sorted(proc.cpu_affinity())
 
 
-def verify_pin(cpus: list[int], seconds: float = 2.0, threads: int | None = None) -> dict:
+def verify_pin(cpus: list[int], seconds: float = 2.0, threads: int | None = None,
+               min_effective: float | None = None) -> dict:
     """Xác minh ghim bằng tải thật (torch matmul, nhả GIL) với `threads` intra-op threads.
 
     Hai tiêu chí (cả hai phải đạt):
@@ -97,9 +98,12 @@ def verify_pin(cpus: list[int], seconds: float = 2.0, threads: int | None = None
     torch.set_num_threads(old)
     eff = cpu / wall
     inside = sum(per[i] for i in cpus) / len(cpus)
+    upper_ok = eff <= len(cpus) + 0.15 and inside >= 70.0
+    lower_ok = None if min_effective is None else eff >= min_effective  # thêm sau E5 (DEVIATIONS 2026-10-21)
     return dict(allowed=sorted(cpus), threads=n, wall_s=wall, cpu_s=cpu,
-                effective_cores=eff, mean_percent_allowed=inside, percpu=per,
-                passed=eff <= len(cpus) + 0.15 and inside >= 70.0)
+                effective_cores=eff, mean_percent_allowed=inside, percpu=per, upper_ok=upper_ok,
+                min_effective=min_effective, lower_ok=lower_ok,
+                passed=upper_ok and (lower_ok is not False))
 
 
 def power_snapshot() -> dict:
