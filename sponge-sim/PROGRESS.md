@@ -50,6 +50,11 @@ Môi trường: Python 3.14 hệ thống (không .venv), torch 2.13.0+cpu, torch
 - **Chế độ điện: Windows Balanced, GUID 381b4222-f694-41f0-9685-ff5bb260df2e** (người dùng đọc 21/10/2026, sau E5;
   không có bản ghi plan trong lúc E5 chạy). Từ nay mọi lần đo giữ nguyên chế độ này.
 
+- PREREG_E2b NHÁP + e2b_run/e2b_analyze (commit 4b04c72, CHƯA tag). Smoke: N tái sinh khớp record 6/6, verify P1_cpu2 pass
+  (0,718); ước lượng đầy đủ ~20–35 phút.
+- GPU (5060 Ti, 3 giờ thuê, tuỳ chọn): KHÔNG cần cho endpoint hiện tại. Nếu dùng: thêm trục "thiết bị" cho bản đồ C (E1 trên
+  CUDA: tv_nms/batched/ultra, đồng bộ cuda trước khi đọc đồng hồ). Cần hw.py chạy được trên Linux (bỏ qua topology) — chưa làm.
+
 ## Đang dở
 - Chờ bạn báo "máy sẵn sàng". Khi đó, theo thứ tự:
   1. A/A P1_cpu2 (~5 phút) → điền MDE vào PREREG_E1 → commit + tag `prereg-e1-20261021`;
