@@ -28,8 +28,19 @@ Môi trường: Python 3.14 hệ thống (không .venv), torch 2.13.0+cpu, torch
   - Diễn giải được phép: N xếp hạng tốt độ trễ NMS GIỮA ảnh (backend custom); trong ảnh, ΔN do patch nhỏ và chìm trong nhiễu
     đo lịch sử → dữ liệu lịch sử không tách được độ trễ do tấn công khỏi nhiễu. KHÔNG nói "N không dự đoán độ trễ".
 
+- E5 đầy đủ: `results/e5/20261021T151412/` (manifest git 822594b; tag prereg-e5 nằm ở 8afd3d5, các commit sau chỉ thêm E2a/DEVIATIONS,
+  không đổi script E5). Thời gian: P1 256 s, E1 787 s, E4 1213 s. Người dùng: cắm sạc, đóng app nền; powercfg CHƯA ghi (placeholder).
+  `summary.json:profiles.<P>.stages.<stage>` — A/A ratio [CI95], MDE%:
+  - P1: forward 1,0002 [0,9963; 1,0042] MDE 0,58%; total 0,9960 [0,9920; 1,0000] (CI KHÔNG chứa 1, cận trên 0,99998) MDE 0,59%;
+    nms_torch_pure 1,0006 [0,9935; 1,0080] MDE 1,07%; nms_tv_nms 0,9948 [0,9867; 1,0029] MDE 1,18%.
+  - E1: forward 1,0081 [0,9953; 1,0220] MDE 1,94%; total 1,0005 [0,9919; 1,0092] MDE 1,27%; nms_torch_pure MDE 2,97%.
+  - E4: forward MDE 7,45%; total MDE 6,13%; nms_torch_pure 0,9758 [0,9531; 0,9984] (CI không chứa 1) MDE 3,47%; CV trong ảnh ~0,5.
+  - 2/21 CI không chứa 1 (P1 total, E4 nms_torch_pure); ~1 kỳ vọng do ngẫu nhiên ở mức 95%, không hiệu chỉnh đa so sánh.
+  - Tỷ phần NMS torch_pure / total (ảnh sạch, mô tả): trung vị P1 0,0207, E1 0,0302, E4 0,0399; max 0,19–0,32.
+  - Sai lệch: xem DEVIATIONS.md (E4 song song không xác minh; cờ trôi 3% kích hoạt gần như mọi khối).
+
 ## Đang dở
-- E5 full run: CHỜ DUYỆT + bạn làm checklist điện (xem `python -X utf8 -m sponge_sim.hw` hoặc PREREG_E5).
+- PREREG_E1 (nháp, CHƯA tag) — chờ bạn duyệt + quyết định profile.
 
 ## Lệnh chạy tiếp
 ```
@@ -41,5 +52,8 @@ python -X utf8 studies/e5_protocol/analyze.py results/e5/<id>
 ```
 
 ## Quyết định đang chờ tôi
-- Remote: `origin` = sudo-baoz/Physical-Visual-DoS-EdgeAI; chưa push. Chờ bạn chọn remote (reikageisme hay sudo-baoz).
+- Profile cho E1: đề xuất P1 (chính) + E1 (một E-core, phụ) thay E4; hoặc đo lại E4 với cận dưới effective_cores.
+- Ngưỡng cờ trôi: giữ 3% (gần như mọi khối bị cờ) hay hiệu chỉnh tham chiếu (khai trong PREREG_E1).
+- Ghi kết quả `powercfg /getactivescheme` (tin nhắn trước còn placeholder).
+- Remote: bạn chọn reikageisme và TỰ push nhánh harness/step1 (mình không đụng remote).
 - Bạn tự chạy `powercfg /getactivescheme` và ghi kết quả vào đây (harness không chạy lệnh này). psutil báo cpu_freq max 1300 MHz (giá trị Windows báo, chưa phải xung thực).
