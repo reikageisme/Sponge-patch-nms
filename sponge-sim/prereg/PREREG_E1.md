@@ -1,7 +1,8 @@
 # PREREG E1 — Đối chứng dương và dose-response tại ranh giới decoded → NMS
 
-Trạng thái: **NHÁP, chờ duyệt** (chưa tag). Tag dự kiến sau khi duyệt: `prereg-e1-20261021`.
-Script: `sponge-sim/studies/e1_dose/run.py` (đo), `analyze.py` (phân tích). Cấu hình: `CONFIG` trong `run.py`.
+Trạng thái: **NHÁP, chờ duyệt** (chưa tag). Tag dự kiến sau khi duyệt: `prereg-e1-<ngày>`.
+Script: `sponge-sim/studies/e1_dose/run.py` (đo; `--phone` cho điện thoại), `analyze.py` (phân tích). Cấu hình: `CONFIG`/`PHONE` trong `run.py`.
+Yêu cầu thầy (`docs/REVIEW_THAY_NAM.md`): "tiêm N hộp tổng hợp từ 10² đến 10⁴ vào cùng pipeline, đo trên laptop và ít nhất một thiết bị ARM".
 
 ## Mục đích
 Chứng minh testbed nhạy với tải NMS (đối chứng dương) và lập đường độ trễ theo N_tau cho từng backend × hình học × cap,
@@ -10,8 +11,9 @@ cùng N_tau, độ trễ khác nhau theo backend/hình học thì N_tau một m�
 Không có patch, không quang học; ứng viên được tiêm tổng hợp (`src/sponge_sim/inject.py`).
 
 ## Phạm vi
-CPU laptop ghim core (i5-1335U), tensor chuẩn bị sẵn, YOLOv8n đầu vào 320×320 (head 2100 anchor). Lưới A = 8400 (đầu vào 640)
-chỉ là tham chiếu ngoài pipeline, gắn nhãn riêng, không trộn với A = 2100 trong một bảng.
+Laptop: CPU ghim core (i5-1335U), tensor chuẩn bị sẵn, YOLOv8n đầu vào 320×320 (head 2100 anchor). Lưới A = 8400 (đầu vào 640) và lưới A = 10000
+("đầu giả", vượt mọi head thật của YOLOv8n ở 320 và 640 px) chỉ là tham chiếu ngoài pipeline thật để phủ N đến 10⁴; gắn nhãn riêng, không trộn với A = 2100 trong một bảng.
+Điện thoại ARM (Galaxy A36, Snapdragon 6 Gen 3) trong proot Ubuntu: xem mục "E1 trên điện thoại". Không có patch, không có camera.
 
 ## Đầu vào từ E5 (`results/e5/20261021T151412/summary.json`) và A/A bổ sung
 - Profile chính: **P1_cpu2** = logical {2} (logical đầu của P-core thứ hai; tránh CPU 0 vì smoke E1 cho effective_cores 0,394 ở CPU 0).
@@ -32,6 +34,7 @@ chỉ là tham chiếu ngoài pipeline, gắn nhãn riêng, không trộn với 
 
 ## Thiết kế
 - Lưới A = 2100: N ∈ {0, 10, 30, 100, 300, 600, 1000, 1500, 2100}, nc ∈ {80, 1}. Lưới A = 8400: N ∈ {0, 100, 300, 1000, 3000, 8400}, nc = 80.
+  Lưới A = 10000 (đầu giả): N ∈ {100, 300, 1000, 3000, 10000}, nc = 80 (phủ 10²–10⁴ theo yêu cầu thầy).
   Điểm 600/1500 đặt trước để dày quanh vùng knee dự kiến (không chọn bằng pilot).
 - Hình học: disjoint (IoU = 0, NMS giữ hết), dense_cluster (8 cụm, IoU cao), mixed (nửa/nửa). N = 0 chỉ một ô.
 - Cap ∈ {None, 300} (top-k theo score trước NMS); ô cap = 300 chỉ khi N > 300.
@@ -40,7 +43,8 @@ chỉ là tham chiếu ngoài pipeline, gắn nhãn riêng, không trộn với 
 - Seed tiêm: `inject_seed_base + crc32("A|N|nc|geometry") mod 100000`; SHA256 tensor ghi theo từng phép đo.
 - Lặp: 3 warm-up + 30 lần/ô, ở MỌI N (không giảm lặp ở N cao). Ước lượng từ hiệu chỉnh một lần gọi (21/10/2026,
   không ghim, không báo cáo): torch_pure disjoint ≈ 0,36 s ở N = 2100 và ≈ 2,1 s ở N = 8400 → ~6–15 phút cho P1_cpu2,
-  ~20–40 phút cho E1; tổng ≈ 30–60 phút (+ 5 phút A/A). Trong mỗi nhóm (A, N, nc, geometry, cap) đo xen kẽ 4 backend vòng tròn, thứ tự theo hình vuông
+  ~20–40 phút cho E1; tổng ≈ 30–60 phút (+ 5 phút A/A). Sau khi thêm lưới A = 10000 (torch_pure disjoint ≈ 3 s/lần ở N = 10⁴):
+  ước lượng lại **P1_cpu2 ≈ 50–90 phút**; profile E-core (chậm hơn ~3× theo E5) ≈ 2–3 giờ nên là **tùy chọn, chạy sau cùng nếu còn giờ**. Trong mỗi nhóm (A, N, nc, geometry, cap) đo xen kẽ 4 backend vòng tròn, thứ tự theo hình vuông
   Latin (seed 1023); thứ tự nhóm hoán vị (seed 1022); tham chiếu đầu mỗi 12 nhóm và cuối phiên; thứ tự profile seed 1021.
   Mỗi lần đo ghi riêng `tau_ns` (lọc tau trên đủ A hàng) và `nms_ns` (prepare() ngoài vùng đo).
 - Phần B (toàn trình, thứ cấp): ảnh sạch ID 139, forward thật + ứng viên tiêm (A = 2100, disjoint, nc = 80, cap None)
@@ -59,6 +63,10 @@ chỉ là tham chiếu ngoài pipeline, gắn nhãn riêng, không trộn với 
   phức tạp; (c) tỷ số backend / tv_nms tại cùng N (cùng đầu vào); (d) tỷ số hình học: disjoint / dense_cluster tại cùng N, backend;
   (e) tỷ số cap300 / capNone tại N ≥ 600; (f) tỷ số nc=80 / nc=1 cho backend class-aware; (g) phần B tại mọi N và ultra_native;
   (h) số lần nms_ns > 2,05 s (chạm time limit của Ultralytics).
+- **Chính 3 (phủ 10²–10⁴, theo yêu cầu thầy)**: P1_cpu2, A = 10000, nc = 80, cap None, cho `torch_pure` và `tv_nms`, hình học disjoint:
+  R₁₀₄ = median(nms | N = 10⁴) / median(nms | N = 10²); CI95% bootstrap (cách như Chính 1). Báo cho cả ba hình học và cả 4 backend ở mức mô tả.
+- **Chính 4 (thiết bị ARM)**: điện thoại, profile nhanh đạt verify (mục dưới), `torch_pure` và `tv_nms`, disjoint: R₁₀₄ như trên với CI95%.
+  So với laptop **chỉ theo tỷ số và hình dạng đường cong**, không so độ trễ tuyệt đối (khác máy, khác bản torch).
 - Câu hỏi A định trước (mô tả): tại cùng N_tau, khoảng chênh độ trễ giữa backend và giữa hình học có vượt MDE hay không.
   Nếu có: bằng chứng N_tau một mình không xác định độ trễ NMS. Nếu không: báo nguyên trạng.
 
@@ -70,3 +78,12 @@ Không loại theo giá trị. Profile verify FAIL → giữ raw, gắn nhãn, k
 
 ## Đầu ra
 `sponge-sim/results/e1/<run_id>/`: manifest.json, raw_{P1_cpu2,E1}.jsonl, summary.json, run.log.
+
+## E1 trên điện thoại (ARM) — dùng PREREG_E5_phone
+- Điều kiện vận hành, ghim core, kiểm soát nhiệt, tắt mạng: đúng như `PREREG_E5_phone.md` (đã duyệt); profile chỉ lấy từ các profile ĐẠT `pin_verify.py`.
+  Tên profile cụ thể (vd. `big1`, `little1`, hoặc `cpuK` nếu cụm không xác định) được chốt từ `pin_verify.json` trước khi đo và ghi vào PROGRESS.
+- Lưới gọn (`run.py --phone`): A = 2100, N ∈ {100, 600, 2100}; A = 10000, N ∈ {100, 300, 1000, 3000, 10000}; nc = 80; hình học disjoint/dense_cluster/mixed;
+  cap None; backend `torch_pure`, `tv_nms`; 2 warm-up + 10 lần/ô; không có phần B (toàn trình). Xen kẽ backend vòng tròn, thứ tự nhóm hoán vị, tham chiếu xung nhịp như laptop.
+- Nghỉ giữa các phép đo: orchestrator của E1 chạy theo từng profile; vì nhiệt, **nghỉ ≥ 60 s giữa hai profile** và giữ ghi nhiệt nếu A0 cho phép. Cờ trôi báo ở đầu kết quả.
+- Ước lượng: ≈ 15–30 phút mỗi profile (chưa đo; sẽ thay bằng số smoke). MDE của điện thoại lấy từ A/A E5-phone, không dùng MDE laptop.
+- Diễn giải: ARM ở đây là **điện thoại có SoC Arm**, không phải board nhúng; mọi trích dẫn phải ghi đúng như vậy.

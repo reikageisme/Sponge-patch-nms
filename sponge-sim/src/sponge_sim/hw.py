@@ -135,6 +135,10 @@ CHECKLIST = """Checklist điện/nền (BẠN tự đặt; harness không đổi
 """
 
 
+if sys.platform != 'win32':   # điện thoại (Android/proot): dùng bản Linux, cùng tên hàm (xem hw_linux.py)
+    from .hw_linux import CHECKLIST, cpu_topology, pin, power_snapshot, profiles, verify_pin  # noqa: F401,F811
+
+
 if __name__ == '__main__':
     import json
     cores = cpu_topology()

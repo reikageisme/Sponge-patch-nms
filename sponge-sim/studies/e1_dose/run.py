@@ -27,6 +27,7 @@ CONFIG = dict(
     grid=[  # (anchors, N levels, nc levels)
         dict(anchors=2100, label='head 320 (pipeline)', n=[0, 10, 30, 100, 300, 600, 1000, 1500, 2100], nc=[80, 1]),
         dict(anchors=8400, label='head 640 (tham chiếu, ngoài pipeline)', n=[0, 100, 300, 1000, 3000, 8400], nc=[80]),
+        dict(anchors=10000, label='đầu giả 10^4 (vượt head thật; chỉ để phủ N đến 10^4)', n=[100, 300, 1000, 3000, 10000], nc=[80]),
     ],
     geometries=['disjoint', 'dense_cluster', 'mixed'], caps=[None, 300], tau=.01, iou=.45,
     backends=BACKEND_NAMES, repeats=30, warmup=3, groups_per_block=12,
@@ -34,6 +35,12 @@ CONFIG = dict(
                   backends=['torch_pure', 'ultra_native'], image_id=139, repeats=20, warmup=3, deadline_ms=100.0),
 )
 SMOKE = dict(repeats=2, warmup=1, smoke_groups=6)
+# Điện thoại (PREREG_E1.md, mục "E1 trên điện thoại"): lưới gọn, 2 backend, 10 lần lặp, bỏ phần B (toàn trình), cận dưới ghim 0,5.
+PHONE = dict(
+    grid=[dict(anchors=2100, label='head 320 (pipeline)', n=[100, 600, 2100], nc=[80]),
+          dict(anchors=10000, label='đầu giả 10^4 (vượt head thật)', n=[100, 300, 1000, 3000, 10000], nc=[80])],
+    caps=[None], backends=['torch_pure', 'tv_nms'], repeats=10, warmup=2, groups_per_block=6,
+    pipeline=dict(CONFIG['pipeline'], n=[]), min_effective_default=0.5, device='phone')
 
 
 def inject_seed(cfg, anchors, n, nc, geometry):
@@ -59,7 +66,7 @@ def worker(profile, run_dir, cfg):
     readback = hw.pin(cpus)
     import torch
     torch.set_num_interop_threads(1)
-    verify = hw.verify_pin(cpus, min_effective=cfg['min_effective'].get(profile))
+    verify = hw.verify_pin(cpus, min_effective=cfg['min_effective'].get(profile, cfg.get('min_effective_default')))
     torch.set_num_threads(len(cpus))
     from sponge_sim import inject, provenance as pv, timing
     from sponge_sim.backends import BACKENDS
@@ -132,9 +139,13 @@ def main():
     ap.add_argument('--run-dir', required=True)
     ap.add_argument('--smoke', action='store_true')
     ap.add_argument('--worker')
+    ap.add_argument('--phone', action='store_true', help='lưới/backend gọn cho điện thoại; profile lấy từ SPONGE_PROFILES(_FILE)')
+    ap.add_argument('--profiles', default='', help='ghi đè danh sách profile (phân cách bằng dấu phẩy)')
     a = ap.parse_args()
     run_dir = Path(a.run_dir)
-    cfg = {**CONFIG, **(SMOKE if a.smoke else {}), 'smoke': a.smoke}
+    cfg = {**CONFIG, **(PHONE if a.phone else {}), **(SMOKE if a.smoke else {}), 'smoke': a.smoke}
+    if a.profiles:
+        cfg['profiles'] = a.profiles.split(',')
     if a.worker:
         worker(a.worker, run_dir, cfg)
         return
@@ -148,6 +159,10 @@ def main():
         cmd = [sys.executable, '-X', 'utf8', __file__, '--run-dir', str(run_dir), '--worker', prof]
         if a.smoke:
             cmd.append('--smoke')
+        if a.phone:
+            cmd.append('--phone')
+        if a.profiles:
+            cmd += ['--profiles', a.profiles]
         subprocess.run(cmd, check=True)
         print(f'[E1] profile {prof} xong sau {time.time() - t0:.1f}s', flush=True)
     print('[E1] DONE', flush=True)

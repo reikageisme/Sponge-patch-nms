@@ -43,7 +43,10 @@ def wilson(k, n, z=1.96):
 
 
 def main():
+    global PRIMARY_PROFILE
     run_dir = Path(sys.argv[1])
+    if len(sys.argv) > 3:
+        PRIMARY_PROFILE = sys.argv[3]   # điện thoại: tên profile ĐẠT, vd. big1
     aa_summary = Path(sys.argv[2])  # summary.json của run A/A P1_cpu2 (PREREG_E1)
     aa = json.loads(aa_summary.read_text(encoding='utf-8'))
     mde = aa['profiles'][PRIMARY_PROFILE]['stages']['nms_torch_pure']['mde_ratio_pct'] / 100
@@ -83,6 +86,15 @@ def main():
         out['primary_2'] = dict(n=len(t), misses=miss, frac=miss / len(t), wilson95=wilson(miss, len(t)),
                                 met=miss / len(t) >= .5, median_total_ms=float(np.median(t) / 1e6))
 
+    # Chính 3/4 (phủ N = 10^2 .. 10^4, theo yêu cầu thầy): tỷ số median(N=10^4)/median(N=10^2), lưới A=10000, cap None
+    dose = {}
+    for (prof, A, be, geom, nc, cap, n), x in nms.items():
+        if A == 10000 and cap is None and n == 10000:
+            base = nms.get((prof, A, be, geom, nc, cap, 100))
+            if base is not None:
+                r, ci = ratio_ci(x, base)
+                dose[f'{prof}|{be}|{geom}'] = dict(ratio=r, ci95=ci, median_ms_N1e4=float(np.median(x)), median_ms_N1e2=float(np.median(base)))
+    out['dose_1e2_to_1e4'] = dose
     # Phụ (a) đường cong + (h) time limit
     curves = {}
     for k, x in sorted(nms.items(), key=lambda kv: tuple(str(v) for v in kv[0])):

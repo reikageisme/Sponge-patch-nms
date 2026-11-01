@@ -48,12 +48,22 @@ TRAIN_FILES = [
 ]
 BUDGETS = [10000, 25000, 62500]        # số lần forward ảnh; 62500 = 625 ứng viên x 100 ảnh (tương đương q2500 của 4 ảnh)
 CONDITIONS = {
-    # tên: (canvas, kích thước patch, ngưỡng mục tiêu). Diện tích patch: 64^2/320^2 = 128^2/640^2 = 4,0%; 64^2/640^2 = 1,0%.
-    'C1_320_s64_t01': (320, 64, 0.01),
-    'C2_640_s128_t01': (640, 128, 0.01),    # diện tích bằng C1
-    'C3_320_s64_t25': (320, 64, 0.25),      # tối ưu với ngưỡng 0,25
-    'C4_640_s64_t01': (640, 64, 0.01),      # kích thước tuyệt đối bằng C1 (diện tích 1%)
+    # tên: (canvas, kích thước patch, ngưỡng mục tiêu, phương pháp, kiểu vị trí)
+    # Diện tích patch: 64^2/320^2 = 128^2/640^2 = 4,0%; 64^2/640^2 = 1,0%.
+    # Nhóm chính (SG-GA = thuật toán đã có, đổi cấu hình):
+    'C1_320_s64_t01': (320, 64, 0.01, 'sg_ga', 'saliency'),
+    'C2_640_s128_t01': (640, 128, 0.01, 'sg_ga', 'saliency'),    # diện tích bằng C1
+    'C3_320_s64_t25': (320, 64, 0.25, 'sg_ga', 'saliency'),      # tối ưu với ngưỡng 0,25
+    # Baseline đã có sẵn trong repo, cùng quy mô 100 ảnh (không phải thuật toán mới):
+    'B1_ga_center': (320, 64, 0.01, 'ga_center', 'center'),
+    'B2_ga_random_location': (320, 64, 0.01, 'ga_random_location', 'random'),
+    'B3_random_search': (320, 64, 0.01, 'random_search', 'saliency'),
+    'B4_gradient_tanh': (320, 64, 0.01, 'gradient_tanh', 'saliency'),
+    # Phụ:
+    'C4_640_s64_t01': (640, 64, 0.01, 'sg_ga', 'saliency'),      # kích thước tuyệt đối bằng C1 (diện tích 1%)
 }
+DEFAULT_CONDITIONS = ['C1_320_s64_t01', 'C2_640_s128_t01', 'C3_320_s64_t25', 'B1_ga_center', 'B2_ga_random_location',
+                      'B3_random_search', 'B4_gradient_tanh', 'C4_640_s64_t01']
 
 
 def sha256_file(path):
@@ -91,7 +101,7 @@ def main():
     ap.add_argument('--out', required=True)
     ap.add_argument('--device', default='cuda')
     ap.add_argument('--seeds', default='0-9')
-    ap.add_argument('--conditions', default=','.join(CONDITIONS))
+    ap.add_argument('--conditions', default=','.join(DEFAULT_CONDITIONS))
     ap.add_argument('--images-dir', default='')
     ap.add_argument('--weights', default='')
     ap.add_argument('--threads', type=int, default=0, help='CPU: số luồng torch (0 = mặc định)')
@@ -135,7 +145,7 @@ def main():
         victim_model_sha256=sha256_file(ROOT / 'core' / 'victim_model.py'),
         train_images=[dict(file=f, sha256=sha256_file(images_dir / f)) for f in files],
         data_selection=dict(seed=SEED_DATA, rule='random.Random(seed).sample(sorted(coco128/train2017 file names), 100)'),
-        conditions={n: dict(zip(('canvas', 'size', 'threshold'), CONDITIONS[n])) for n in names},
+        conditions={n: dict(zip(('canvas', 'size', 'threshold', 'method', 'location'), CONDITIONS[n])) for n in names},
         budgets=budgets, seeds=seeds,
         note_rng='Trên GPU, RNG CUDA khác RNG CPU: patch không trùng byte với bản CPU dù cùng thuật toán và seed.',
     )
@@ -146,10 +156,10 @@ def main():
     done_units, total_units = 0, len(seeds) * len(names)
     for seed in seeds:                       # seed-major: dừng giữa chừng vẫn đủ mọi điều kiện cho các seed đã xong
         for name in names:
-            canvas, size, thr = CONDITIONS[name]
+            canvas, size, thr, method, location = CONDITIONS[name]
             if canvas not in cache:
                 cache[canvas] = [ap_.load_image_canvas(images_dir / f, canvas) for f in files]
-            spec = dict(name=name, method='sg_ga', location='saliency', size=size, eot='full', draws=1,
+            spec = dict(name=name, method=method, location=location, size=size, eot='full', draws=1,
                         budgets=budgets, canvas=canvas, threshold=thr, device=a.device, n_train=len(files))
             run_dir = out / name / f'seed{seed}'
             t0 = time.perf_counter()
