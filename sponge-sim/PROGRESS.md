@@ -211,3 +211,12 @@ chỉ ĐỌC/VIẾT file + phân tích; KHÔNG đo (cần Windows). Không commi
 [21/10 tối (6)] 6/9 hình -> EN (5 từ extended_figures + r3). 3 hình chưa: fullscale(project_yolov13-cấm), published_vs_measured & baseline_vs_sponge (source=None, không có generator).
 [21/10 tối (7)] fig12 published_vs_measured + fig14 baseline_vs_sponge: vẽ lại EN từ paper_assets/COMPARISON/{foundation_sources,comparison_sources}.json (số + SD chuẩn, có thanh sai số). r3 restyle house-style EN. => 8/9 hình EN. Còn fullscale_mAP_growth(09): dữ liệu chỉ trong project_yolov13 (quy tắc 3) - chờ bạn.
 [22/10 (8)] ĐÍNH CHÍNH: fig09 fullscale_map_growth VỐN ĐÃ tiếng Anh (generate_fullscale_report.py dùng nhãn EN sẵn) — không cần đụng project_yolov13. => 9/9 hình đã tiếng Anh. Đã gửi 9 PNG lẻ cho user tải.
+
+## Phiên 01/11 (điện thoại Galaxy A36)
+- Điện thoại: SSH ổn (192.168.1.139:8022). Đã cài Ubuntu proot + venv trong `~/sponge-sim/venv`: Python 3.14.4, torch 2.15.0+cu132, torchvision 0.29.2+cu132, ultralytics 8.4.197, scipy 1.18.1 (khác laptop: torch 2.13.0+cpu, ultralytics 8.4.90).
+  `sponge-sim/` đã đẩy sang (SHA256 gói khớp). Thăm dò tiến trình: thấy 8 CPU, affinity 0–7, torch mặc định 8 luồng; log cài đặt từng in "1 luồng" → không tin số torch báo, kiểm bằng tải.
+- `CLAUDE.md`: thêm thiết bị điện thoại, ngoại lệ mạng CHỈ lúc cài, quy ước tắt mạng di động/Wi-Fi tối thiểu khi đo, "Quy ước báo cáo".
+- Commit `61ae8cc` (scoped): PROGRESS, bản thảo v2, `paper_Q1_submission/` (kèm 9 ảnh, ép qua quy tắc `*.png`), references.bib, CLAUDE.md, `legacy/test_physical_dos.py` (khôi phục nguyên bản từ HEAD).
+- 15 file gốc đã bị phiên Cowork xóa khỏi thư mục gốc: 7 sang `paper/history/`, 6 sang `legacy/`, `test_headless_pi.py` (còn bản ở `_provenance/local_before_overlay/`), `test_physical_dos.py` (đã khôi phục bản HEAD; phần sửa chưa commit trước đó đã mất).
+- `PREREG_E5_phone.md` (NHÁP, chưa tag): ghim core qua proot kiểm bằng tải thật + phân cụm tốc độ; đo đợt ngắn, nghỉ giữa đợt, xen kẽ profile; khai lệch phiên bản torch.
+- CHƯA có: `docs/REVIEW_THAY_NAM.md` (nội dung review của thầy Nam không có trong repo, cần bạn dán).
