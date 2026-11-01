@@ -317,3 +317,10 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - Dose 1e2->1e4 (summary.json:dose_1e2_to_1e4): vi du ultra_native|mixed ratio 276.8 [269.2; 286.6]; torch_pure|mixed 144.3 [127.0; 148.4]; tv_batched|mixed 89.0 [81.9; 95.0].
 - CHUA doc: Chinh 3/4 (quy tac MDE) -> phai doc tu contrasts/curves truoc khi viet.
 - Tiep: E6 day du (2-3 gio, laptop ranh) khi nguoi dung bao may san sang; dien thoai can xac nhan rieng.
+
+## Dien thoai: pin_verify (01/11/2026 ~23:38 +07) — KET QUA: KHONG CO PROFILE DAT (am, giu nguyen)
+- Chay: proot-distro login ubuntu --bind $HOME/sponge-sim:/root/sponge-sim; SPONGE_ALLOW_SYSFS=1 venv/bin/python studies/e5_phone/pin_verify.py --out results/phone_a36/pin_20261101. Ma da dong bo len dien thoai (tar sim_update.tgz SHA256 8c0cd790...0411, chi ghi trong ~/sponge-sim). Trang thai mang theo loi nguoi dung ("may san sang"): di dong TAT (khong tu kiem chung duoc), Wi-Fi BAT de giu SSH.
+- Co che ghim: sched_setaffinity doc lai dung o ca 8 CPU. Phan cum: 4 CPU nhanh {4,5,6,7} / 4 CPU cham {0,1,2,3}, gap 7.09x, spread 8.5% / 8.0% (clusters.status ok).
+- Verify bang tai that (results/phone_a36/pin_20261101/pin_verify.json:verify): big1 eff 0.906, ti le mau trong CPU cho phep 0.40; big4 eff 3.40, 0.874; little1 eff 1.76 (>1: ghim 1 CPU ma dung >1 core), 0.30; little4 eff 3.13, 0.619. Tieu chi share_ok KHONG dat -> profiles_passed rong, ket luan KHONG_CO_PROFILE_DAT.
+- Theo PREREG_E5_phone: ghim khong co hieu luc -> khong tao profile, khong chay A/A phone, khong E1-phone. KHONG doi tieu chi sau khi thay ket qua. Ghi nhan: luong phu (threads=2) co the chay ngoai CPU ghim va keo tut ti le mau; day la gia thuyet chua kiem, khong dung de bo qua ket qua.
+- Da lay ve results/phone_a36/. Sshd tren dien thoai se tat sau khi lay ket qua.

@@ -1,0 +1,1 @@
+{"clusters": {"status": "ok", "gap": 7.09199219392722, "fast_cpus": [5, 4, 7, 6], "slow_cpus": [1, 2, 3, 0], "spread_fast": 0.08500513906539053, "spread_slow": 0.0801054460337578}, "profiles_passed": {}, "verify": {"big1": [0.91, 0.4, false], "big4": [3.4, 0.874, false], "little1": [1.76, 0.3, false], "little4": [3.13, 0.619, false]}}

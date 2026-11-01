@@ -1,0 +1,369 @@
+{
+ "created_utc": "2026-11-01T16:38:47Z",
+ "torch": "2.15.0+cu132",
+ "torch_default_threads": 8,
+ "cpus_seen": [
+  0,
+  1,
+  2,
+  3,
+  4,
+  5,
+  6,
+  7
+ ],
+ "allow_sysfs": true,
+ "topology": [
+  {
+   "core_index": 0,
+   "logical_cpus": [
+    0
+   ],
+   "efficiency_class": null,
+   "smt": false,
+   "kind": "unknown",
+   "cpu_capacity": 405
+  },
+  {
+   "core_index": 1,
+   "logical_cpus": [
+    1
+   ],
+   "efficiency_class": null,
+   "smt": false,
+   "kind": "unknown",
+   "cpu_capacity": 405
+  },
+  {
+   "core_index": 2,
+   "logical_cpus": [
+    2
+   ],
+   "efficiency_class": null,
+   "smt": false,
+   "kind": "unknown",
+   "cpu_capacity": 405
+  },
+  {
+   "core_index": 3,
+   "logical_cpus": [
+    3
+   ],
+   "efficiency_class": null,
+   "smt": false,
+   "kind": "unknown",
+   "cpu_capacity": 405
+  },
+  {
+   "core_index": 4,
+   "logical_cpus": [
+    4
+   ],
+   "efficiency_class": null,
+   "smt": false,
+   "kind": "unknown",
+   "cpu_capacity": 1024
+  },
+  {
+   "core_index": 5,
+   "logical_cpus": [
+    5
+   ],
+   "efficiency_class": null,
+   "smt": false,
+   "kind": "unknown",
+   "cpu_capacity": 1024
+  },
+  {
+   "core_index": 6,
+   "logical_cpus": [
+    6
+   ],
+   "efficiency_class": null,
+   "smt": false,
+   "kind": "unknown",
+   "cpu_capacity": 1024
+  },
+  {
+   "core_index": 7,
+   "logical_cpus": [
+    7
+   ],
+   "efficiency_class": null,
+   "smt": false,
+   "kind": "unknown",
+   "cpu_capacity": 1024
+  }
+ ],
+ "pin_mechanism": {
+  "0": {
+   "ok": true,
+   "readback": [
+    0
+   ]
+  },
+  "1": {
+   "ok": true,
+   "readback": [
+    1
+   ]
+  },
+  "2": {
+   "ok": true,
+   "readback": [
+    2
+   ]
+  },
+  "3": {
+   "ok": true,
+   "readback": [
+    3
+   ]
+  },
+  "4": {
+   "ok": true,
+   "readback": [
+    4
+   ]
+  },
+  "5": {
+   "ok": true,
+   "readback": [
+    5
+   ]
+  },
+  "6": {
+   "ok": true,
+   "readback": [
+    6
+   ]
+  },
+  "7": {
+   "ok": true,
+   "readback": [
+    7
+   ]
+  }
+ },
+ "speed_benchmark": [
+  {
+   "cpu": 0,
+   "median_ms": 290.040885,
+   "cv": 0.014596128586694576,
+   "samples_ms": [
+    286.880469,
+    287.270782,
+    290.040885,
+    290.401458,
+    297.440052
+   ]
+  },
+  {
+   "cpu": 1,
+   "median_ms": 268.530157,
+   "cv": 0.0056165013636217875,
+   "samples_ms": [
+    267.676979,
+    268.242396,
+    268.530157,
+    269.523125,
+    271.523437
+   ]
+  },
+  {
+   "cpu": 2,
+   "median_ms": 269.505417,
+   "cv": 0.0444336039636108,
+   "samples_ms": [
+    265.430729,
+    267.51974,
+    269.505417,
+    269.624167,
+    294.912605
+   ]
+  },
+  {
+   "cpu": 3,
+   "median_ms": 283.545052,
+   "cv": 0.04632838413051632,
+   "samples_ms": [
+    268.25974,
+    274.405781,
+    283.545052,
+    290.068749,
+    301.733177
+   ]
+  },
+  {
+   "cpu": 4,
+   "median_ms": 35.656874,
+   "cv": 0.012331304870314459,
+   "samples_ms": [
+    35.16849,
+    35.364011,
+    35.656874,
+    36.065677,
+    36.194271
+   ]
+  },
+  {
+   "cpu": 5,
+   "median_ms": 34.897396,
+   "cv": 0.007602648541548859,
+   "samples_ms": [
+    34.806354,
+    34.873177,
+    34.897396,
+    35.140834,
+    35.453542
+   ]
+  },
+  {
+   "cpu": 6,
+   "median_ms": 37.863854,
+   "cv": 0.019089047878625216,
+   "samples_ms": [
+    36.746927,
+    37.230521,
+    37.863854,
+    38.117552,
+    38.56151
+   ]
+  },
+  {
+   "cpu": 7,
+   "median_ms": 37.5675,
+   "cv": 0.017358776961389624,
+   "samples_ms": [
+    36.309583,
+    36.861615,
+    37.5675,
+    37.721094,
+    37.811198
+   ]
+  }
+ ],
+ "clusters": {
+  "status": "ok",
+  "gap": 7.09199219392722,
+  "fast_cpus": [
+   5,
+   4,
+   7,
+   6
+  ],
+  "slow_cpus": [
+   1,
+   2,
+   3,
+   0
+  ],
+  "spread_fast": 0.08500513906539053,
+  "spread_slow": 0.0801054460337578
+ },
+ "verify": {
+  "big1": {
+   "allowed": [
+    5
+   ],
+   "threads": 2,
+   "wall_s": 3.0012739580124617,
+   "cpu_s": 2.7200000000000024,
+   "effective_cores": 0.9062818116748237,
+   "samples": 420,
+   "share_samples_inside": 0.4,
+   "observed_cpus": [
+    1,
+    2,
+    5,
+    6,
+    7
+   ],
+   "upper_ok": true,
+   "lower_ok": true,
+   "min_effective": 0.5,
+   "share_ok": false,
+   "passed": false
+  },
+  "big4": {
+   "allowed": [
+    4,
+    5,
+    6,
+    7
+   ],
+   "threads": 8,
+   "wall_s": 3.0005553630180657,
+   "cpu_s": 10.21,
+   "effective_cores": 3.40270342145276,
+   "samples": 572,
+   "share_samples_inside": 0.8741258741258742,
+   "observed_cpus": [
+    1,
+    2,
+    4,
+    5,
+    6,
+    7
+   ],
+   "upper_ok": true,
+   "lower_ok": true,
+   "min_effective": 2.8,
+   "share_ok": false,
+   "passed": false
+  },
+  "little1": {
+   "allowed": [
+    1
+   ],
+   "threads": 2,
+   "wall_s": 3.0089190609869547,
+   "cpu_s": 5.289999999999999,
+   "effective_cores": 1.7581064471255095,
+   "samples": 370,
+   "share_samples_inside": 0.3,
+   "observed_cpus": [
+    1,
+    2,
+    5,
+    6,
+    7
+   ],
+   "upper_ok": false,
+   "lower_ok": true,
+   "min_effective": 0.5,
+   "share_ok": false,
+   "passed": false
+  },
+  "little4": {
+   "allowed": [
+    0,
+    1,
+    2,
+    3
+   ],
+   "threads": 8,
+   "wall_s": 3.0003082280163653,
+   "cpu_s": 9.39,
+   "effective_cores": 3.129678448473322,
+   "samples": 315,
+   "share_samples_inside": 0.6190476190476191,
+   "observed_cpus": [
+    0,
+    1,
+    2,
+    3,
+    5,
+    6,
+    7
+   ],
+   "upper_ok": true,
+   "lower_ok": true,
+   "min_effective": 2.8,
+   "share_ok": false,
+   "passed": false
+  }
+ },
+ "profiles_passed": {},
+ "conclusion": "KHONG_CO_PROFILE_DAT"
+}
