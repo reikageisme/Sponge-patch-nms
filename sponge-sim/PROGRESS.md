@@ -267,3 +267,21 @@ C. Chỉnh bản thảo/PREREG trước -> gõ: "Sửa [mục]: [nội dung]"
 - Thứ tự: E7 (GPU thuê) trước tiên, tách riêng, không đo laptop/điện thoại cùng lúc; E6 sau E7 và dùng patch mới; A/A P1_cpu2 + E1 laptop độc lập với E7; điện thoại độc lập.
 - Tag: duyệt lô nhưng CÓ BƯỚC XEM LẠI endpoint chính của từng PREREG trước khi tag thật (đã trích ở báo cáo). Chưa tag.
 - Review chi tiết của thầy: chưa có thì cứ làm tiếp, bổ sung vào `docs/REVIEW_THAY_NAM.md` sau. Trích dẫn "from memory": kiểm DOI cuối cùng.
+
+## 01/11 — ĐÃ TAG lô PREREG; gói E7 sẵn sàng cho GPU thuê
+- Tag trên commit `9130774`: `prereg-e1-20261101`, `prereg-e5phone-20261101`, `prereg-e6-20261101`, `prereg-e7-20261101`.
+  E1 Chính 3/4 đã có quy tắc đọc kết quả (cận dưới CI > 1 + MDE -> "phát hiện ở độ nhạy này"; ngược lại "không phát hiện, MDE = x%"). Số MDE P1_cpu2 sẽ ghi vào PROGRESS sau run A/A hợp lệ và trước E1 (quy tắc được đăng ký, không phải con số).
+- Gói GPU: `sponge-sim/bundles/e7_gpu_bundle.zip` (11,46 MB, 105 file, SHA256 `1815b0c7c24053980113316f9d10952dd5e6822ed2e6b01d260fe7c187704d7e`), KHÔNG commit (untracked). `BUNDLE_SOURCE.txt` trong gói ghi commit 9130774 + 4 tag + SHA256 PREREG_E7.
+- Quy tắc vận hành E7: GPU chạy riêng; trong lúc đó không đo laptop/điện thoại. Chạy theo seed (0..9 x 8 điều kiện); xong seed 4 là đủ cho E6.
+
+### Lệnh trên máy GPU thuê (copy-dán)
+```
+unzip e7_gpu_bundle.zip -d e7 && cd e7
+sha256sum -c BUNDLE_SHA256.txt | grep -v ": OK" ; echo "kiem tra xong (khong dong nao hien = tot)"
+python -c "import torch;print(torch.__version__, torch.cuda.is_available())"
+pip install kornia ultralytics opencv-python-headless pillow numpy      # chi neu thieu
+python sponge-sim/studies/e7_sggar/run.py --out runs/smoke --device cuda --smoke    # ~1-2 phut, kiem loi
+nohup python sponge-sim/studies/e7_sggar/run.py --out runs/e7 --device cuda > e7.log 2>&1 &
+tail -n 3 e7.log        # moi don vi in ETA; xong seed 4 la du cho buoc do
+tar czf e7_runs.tar.gz runs/e7      # khi xong hoac het gio; tai e7_runs.tar.gz ve laptop
+```
