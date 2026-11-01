@@ -32,3 +32,8 @@ Mỗi mục: ngày, PREREG nào, thay đổi gì, lý do, đã thấy dữ liệ
 
 ## 01/11/2026 — A/A P1_cpu2 (AA_P1cpu2_20261101)
 - Toi (Claude) chay analyze.py tren file raw dang duoc ghi trong luc phep do dang chay (tuong tien trinh nen da ket thuc vi thong bao cua cong cu). Tao tai CPU ngan ngay khi do khoi 1. Co drift gan o khoi 1 va 3 (khoi 3 khong ro nguyen nhan). Giu moi du lieu; bao cao ca ket qua day du va ket qua loai 2 khoi co drift (xem PROGRESS). summary.json cuoi duoc tao lai sau khi do xong.
+
+## 02/11/2026 — E6 lan 1 dung giua chung (ultra_native, N = 6); sua backend va chay lai tu dau
+- Lan 1 (results/e6/E6_P1cpu2_20261101, 152015 dong raw) dung voi ValueError o backends.py (Ultra.run) khi mot don vi co dung N=6 ung vien: ultralytics coi tensor shape[-1]==6 la dau ra end-to-end va tra ve khong kem chi so. Du lieu lan 1 KHONG dung de bao cao (khong hoan tat, giu nguyen thu muc, khong xoa).
+- Sua: Ultra.prepare them 1 cot diem 0 khi n==6 (bi loai boi nguong conf > 0.0 nen khong doi tap giu lai; kich thuoc tensor 6->7 cot, anh huong thoi gian khong dang ke nhung chua dinh luong). Test moi: tests/test_backends.py::test_small_n_including_six_keeps_same_set (N=0,1,5,6,7); 57 test nhanh pass.
+- E6 chay lai tu dau vao results/e6/E6_P1cpu2_20261102 (cung PREREG_E6, cung patch SHA256). Loi nay chi xuat hien khi N=6 tren backend ultra_native; E1 (N danh theo luoi) khong gap loi.
