@@ -1,12 +1,12 @@
 # Đề tài NCKH: Sponge Patch (nhắm Q1)
 
-Tiêu đề: "Tấn công đối kháng Sponge Patch: Khai thác lỗ hổng cạn kiệt tài nguyên bằng thuật toán tối ưu không gian".
+Tiêu đề (chốt 01/11/2026): "Does the Number of Pre-NMS Candidates Predict Detector Latency? A Pinned-Core Measurement Study with a Patch-Optimization Case Study". Tiêu đề tiếng Việt cũ ("Tấn công đối kháng Sponge Patch: Khai thác lỗ hổng cạn kiệt tài nguyên…") không còn dùng.
 Nhóm: Phạm Tuấn Anh, Mai Quốc Bảo; GVHD và tác giả liên hệ: Đinh Phương Nam (HUTECH). Ngôn ngữ làm việc: tiếng Việt; thuật ngữ kỹ thuật giữ tiếng Anh.
 
 ## Luận điểm đang theo đuổi (hướng A + C)
 - A: số ứng viên trước NMS (N_tau) là proxy KHÔNG dự đoán được độ trễ/suy giảm dịch vụ; chỉ ra vùng proxy đúng và vùng sai.
 - C: bản đồ điều kiện (backend × class-aware/agnostic × cap top-k × tau × số core CPU × chu kỳ phát) cho biết khi nào tấn công NMS thành lỗ hổng sẵn sàng.
-- Không còn dùng cụm "máy chủ biên / Edge Server". Gọi đúng: "mô phỏng hạn chế tài nguyên trên CPU laptop ghim core". Chưa có thiết bị ARM/edge thật.
+- Không còn dùng cụm "máy chủ biên / Edge Server". Gọi đúng: "mô phỏng hạn chế tài nguyên trên CPU laptop ghim core" và "điện thoại Arm (Galaxy A36)". Có một thiết bị Arm (điện thoại, xem mục dưới), KHÔNG phải board nhúng/edge triển khai thực địa.
 
 ## Quy tắc cứng (không thương lượng)
 1. KHÔNG xóa, di chuyển, ghi đè dữ liệu thô hay kết quả đã chạy (`outputs/**`). Muốn dọn: đề xuất danh sách, chờ duyệt.
@@ -25,7 +25,7 @@ Nhóm: Phạm Tuấn Anh, Mai Quốc Bảo; GVHD và tác giả liên hệ: Đin
   - X2 = `outputs/x2_architecture_20261020` (8 detector; Faster R-CNN/RetinaNet/SSDlite đếm `post_module_detections`, tức đã qua NMS nội bộ, KHÔNG dùng để kết luận tải NMS).
   - X5 v2 chỉ là mô hình hàng đợi nhiều server từ thời gian forward, không phải đo core, không có NMS: không dùng làm bằng chứng.
 - Code tái sử dụng được (đã audit): `core/victim_model.py`, `experiments/extended_evaluation.py`, `experiments/extended_validation.py:113` (optimize), `experiments/local_q1_validation.py` (load_image).
-- Bản thảo: `BaoCaoKhoaHocAdversarialAttacks_Q1_VI_v2.tex` (nhánh `paper/q1-fixes`; nhánh B đang tắt bằng cờ).
+- Bản thảo CHÍNH THỨC (từ 01/11/2026): `paper_en/main.tex` (tiếng Anh). Bản tiếng Việt `BaoCaoKhoaHocAdversarialAttacks_Q1_VI_v2.tex` và các bản cũ (`paper/history/`) chỉ để tham khảo, không đồng bộ song song.
 - Báo cáo review đã có: `REVIEW/01_inventory.md` … `REVIEW/06_*.md`. Đọc 03 và 04 trước khi đụng bản thảo.
 
 ## Kết quả đã xác minh (để không phải tính lại)

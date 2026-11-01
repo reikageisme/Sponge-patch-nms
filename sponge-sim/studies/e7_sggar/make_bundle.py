@@ -54,7 +54,7 @@ def main():
               '  python sponge-sim/studies/e7_sggar/run.py --out runs/e7 --device cuda\n'
               'Kiểm gói trước: sha256sum -c BUNDLE_SHA256.txt\n'
               'Dừng (Ctrl+C) và chạy lại cùng lệnh sẽ tiếp tục từ checkpoint. Kết quả: runs/e7/ (mang cả thư mục về laptop).\n'
-              'Nếu thiếu giờ, chỉ chạy nhóm chính: --conditions C1_320_s64_t01,C2_640_s128_t01,C3_320_s64_t25 (thêm B4_gradient_tanh nếu còn giờ).\n')
+              'Nếu thiếu giờ: dừng sau khi log báo xong seed 4 (đủ cho bước đo; seed 5-9 là bổ sung). Cắt điều kiện theo thứ tự C4, B3, B2, B1, B4 bằng --conditions.\n')
     with zipfile.ZipFile(out, 'w', zipfile.ZIP_DEFLATED) as z:
         for name, p in sorted(files.items()):
             z.write(p, name)

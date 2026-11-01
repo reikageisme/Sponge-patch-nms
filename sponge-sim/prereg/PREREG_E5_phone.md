@@ -37,7 +37,7 @@ Không có patch, không có tấn công trong thí nghiệm này.
 ## A. Xác minh ghim core qua proot (làm TRƯỚC mọi phép đo)
 Không giả định `psutil.cpu_affinity` hay `os.sched_setaffinity` hoạt động như trên Linux gốc: proot dịch lệnh hệ thống, Android có thể chặn.
 
-**A0. Thăm dò chỉ-đọc (cần bạn đồng ý riêng vì đọc ngoài `~/sponge-sim`).** Chỉ đọc, không ghi, liệt kê trước các file: `/proc/cpuinfo`,
+**A0. Thăm dò chỉ-đọc (ĐÃ ĐƯỢC ĐỒNG Ý 01/11/2026; vẫn chỉ đọc, đặt `SPONGE_ALLOW_SYSFS=1`).** Chỉ đọc, không ghi, liệt kê trước các file: `/proc/cpuinfo`,
 `/sys/devices/system/cpu/online`, `cpu*/cpu_capacity`, `cpu*/cpufreq/{cpuinfo_max_freq,scaling_cur_freq,scaling_governor}`,
 `/sys/class/thermal/thermal_zone*/{type,temp}`, `/proc/self/task/*/stat`. File nào không đọc được (SELinux của Android) thì ghi "không đọc được", không tìm đường vòng.
 
@@ -61,7 +61,7 @@ Kết quả A1/A2 ghi `results/phone_a36/<run>/pin_verify.json`. Verify FAIL →
 - **Tham chiếu xung nhịp**: benchmark cố định (như E5) đầu phiên, đầu và cuối mỗi đợt, cuối phiên; cờ nếu lệch > 3% so với đầu phiên.
   **Báo cáo đầu tiên của kết quả phải nêu số đợt bị cờ / tổng số đợt và độ lệch lớn nhất**, không để ở phụ lục.
 - **Nhật ký nhiệt** (nếu A0 đọc được): đọc mọi vùng nhiệt đọc được, mỗi 5 giây, ghi `thermal.jsonl` cùng mốc thời gian đo. Nếu không đọc được thì chỉ có tham chiếu xung nhịp (nói rõ).
-- **Điều kiện dừng an toàn cho điện thoại hàng ngày của bạn** (đề xuất, chờ bạn chốt ngưỡng): vùng nhiệt đọc được nào ≥ 70 °C, hoặc nhiệt pin ≥ 40 °C → dừng đo, nghỉ tới khi < 55 °C / < 38 °C;
+- **Điều kiện dừng an toàn cho điện thoại hàng ngày của bạn** (ĐÃ CHỐT 01/11/2026: giữ đúng các ngưỡng này): vùng nhiệt đọc được nào ≥ 70 °C, hoặc nhiệt pin ≥ 40 °C → dừng đo, nghỉ tới khi < 55 °C / < 38 °C;
   3 lần dừng liên tiếp → kết thúc phiên, báo lại. Pin phải 30–80% và đang sạc ổn định (sạc nóng pin: nếu pin nóng là lý do dừng, ghi rõ).
 - **Phân tích độ trôi**: độ dốc của thời gian tham chiếu theo thứ tự đợt (hồi quy tuyến tính, CI bootstrap); endpoint chính vẫn tính trên tất cả đợt, thêm độ nhạy "bỏ đợt bị cờ" (nếu còn ≥ 30 ảnh).
 

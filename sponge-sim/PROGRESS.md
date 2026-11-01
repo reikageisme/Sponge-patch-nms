@@ -260,3 +260,10 @@ C. Chỉnh bản thảo/PREREG trước -> gõ: "Sửa [mục]: [nội dung]"
 - Đồng ý bước A0 (đọc sysfs/thermal chỉ-đọc trên điện thoại) và chốt ngưỡng nhiệt.
 - Tiêu đề bài mới (đề xuất trong `paper_en/main.tex`): bạn/thầy chốt trước khi thay bản chính thức.
 - Review chi tiết "kèm vị trí từng lỗi" của thầy (chưa có trong repo).
+
+### Quyết định của người dùng (01/11/2026, sau phiên 3)
+- A0 (đọc sysfs/thermal chỉ-đọc trên điện thoại): ĐỒNG Ý. Ngưỡng nhiệt giữ đề xuất: 70 °C chip / 40 °C pin.
+- Tiêu đề mới CHỐT; `paper_en/main.tex` là bản chính thức; bản tiếng Việt chỉ tham khảo (không đồng bộ).
+- Thứ tự: E7 (GPU thuê) trước tiên, tách riêng, không đo laptop/điện thoại cùng lúc; E6 sau E7 và dùng patch mới; A/A P1_cpu2 + E1 laptop độc lập với E7; điện thoại độc lập.
+- Tag: duyệt lô nhưng CÓ BƯỚC XEM LẠI endpoint chính của từng PREREG trước khi tag thật (đã trích ở báo cáo). Chưa tag.
+- Review chi tiết của thầy: chưa có thì cứ làm tiếp, bổ sung vào `docs/REVIEW_THAY_NAM.md` sau. Trích dẫn "from memory": kiểm DOI cuối cùng.

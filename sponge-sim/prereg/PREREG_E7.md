@@ -48,7 +48,7 @@ Sau khi mang về: laptop kiểm lại SHA256 từng tensor và so với `patche
 ## Ước lượng giờ GPU (CHƯA đo; script tự in ETA sau đơn vị đầu tiên)
 Tổng: 8 điều kiện × 10 seed × 62.500 lần forward = 5 triệu lần forward ảnh + nhiễu EOT. Giả định thô: GPU 16 GB cho YOLOv8n float32 hàng trăm đến vài nghìn ảnh/giây;
 EOT kornia trên GPU chi phối ở 640 px. Ước lượng **1–2,5 giờ cho cả 8 điều kiện**; nhóm chính C1–C3 (30 đơn vị) khoảng 35–60% thời gian đó; C4 và B4 là phần tốn nhất ở 640/gradient.
-Quy tắc ưu tiên nếu thiếu giờ (định trước): C1, C2, C3, rồi B4, B1, B2, B3, rồi C4. Không đổi thứ tự sau khi bắt đầu.
+Thứ tự chạy là seed-major (seed 0 cho mọi điều kiện, rồi seed 1, ...). **Sau khi seed 4 hoàn tất, mọi patch mà E6 cần (seed 0-4 của các nhánh) đã có**; seed 5-9 là phần bổ sung. Nếu thiếu giờ: dừng sau seed 4. Nếu phải cắt điều kiện, cắt theo thứ tự định trước C4, B3, B2, B1, B4 (giữ C1, C2, C3). Không đổi thứ tự sau khi bắt đầu.
 
 ## Rủi ro đã thấy trước
 - Hết bộ nhớ GPU với 100 ảnh 640 px một lô: nếu lỗi OOM thì dừng, báo lại (không tự chia nhỏ lô vì sẽ đổi thứ tự RNG so với thiết kế; nếu phải chia thì ghi DEVIATIONS và chạy lại từ đầu điều kiện đó).
