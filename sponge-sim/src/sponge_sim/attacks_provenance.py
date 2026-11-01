@@ -31,6 +31,15 @@ SOURCES (SHA256 tại thời điểm copy, 21/10/2026):
      experiments/extended_validation.py:238). gradient_tanh lệch patch đã lưu khi dùng 1 hoặc 12 thread
      (kiểm 21/10/2026: chênh tối đa 14/255); sg_ga khớp. Driver phải đặt và ghi số thread vào manifest.
 
+  4. optimize() nhận thêm spec['threshold'] (mặc định .01 = bản gốc) để truyền cho objective() ở nhánh
+     không-gradient; objective() bản gốc đã có tham số threshold, chỉ chưa được truyền (extended_validation.py:92,
+     :171-175). Dùng cho thử nghiệm ngưỡng 0,25. Không đổi công thức fitness.
+  6. spec['device'] (mặc định 'cpu' = bản gốc, từng bit): đặt tensor ảnh train, mô-đun EOT (kornia) và ứng viên lên
+     thiết bị tính toán. Cùng phép tính, khác thiết bị; trên GPU RNG khác RNG CPU nên patch không trùng byte với bản CPU
+     (cùng thuật toán). Cần để tối ưu 100 ảnh ở 640 px trong thời gian chấp nhận được.
+  5. load_image_canvas(path, canvas): cùng phép resize trực tiếp (BILINEAR, không letterbox) của
+     experiments/local_q1_validation.py:64-67 nhưng canvas là tham số (320 = bản gốc, 640 cho thử nghiệm 640 px).
+
 Test hồi quy: tests/test_attacks_provenance.py (budget 400, seed 0, canvas 320) so với
 outputs/x1_500img_20261018/optimization/{sg_ga,tanh_whitebox_patch}_seed0/patch_q400.npy.
 """
@@ -46,6 +55,13 @@ import numpy as np
 import torch
 
 MAX_SCORE_DIM = 8400  # anchor count ở 640px (tham chiếu, không dùng để ép logic)
+
+
+# SOURCE: experiments/local_q1_validation.py:64-67 (load_image) sha256=9739eb66... ; GENERALIZE 5: canvas tham số.
+def load_image_canvas(path, canvas=320):
+    from PIL import Image
+    image = Image.open(path).convert('RGB').resize((canvas, canvas), Image.Resampling.BILINEAR)
+    return (torch.from_numpy(np.array(image).copy()).permute(2, 0, 1).float().unsqueeze(0) / 255).contiguous()
 
 
 # SOURCE: core/sponge_fitness.py:21-57 (calculate_sponge_fitness) sha256=b123a984...
@@ -104,7 +120,7 @@ class SpongeGA:
 
 
 # SOURCE: experiments/extended_validation.py:41-57 (make_eot) sha256=5d551d5e...
-def make_eot(mode):
+def make_eot(mode, device='cpu'):
     layers = []
     if mode != 'no_rotation':
         layers.append(K.RandomRotation(degrees=15., p=.8))
@@ -112,7 +128,7 @@ def make_eot(mode):
         layers.append(K.ColorJitter(brightness=.2, contrast=.2, p=.8))
     if mode != 'no_blur':
         layers.append(K.RandomGaussianBlur((3, 3), (.1, 1.), p=.5))
-    pipeline = K.AugmentationSequential(*layers, data_keys=['input'], same_on_batch=False)
+    pipeline = K.AugmentationSequential(*layers, data_keys=['input'], same_on_batch=False).to(device)
 
     def transform(x):
         if mode == 'none':
@@ -183,9 +199,10 @@ def optimize(victim, train_images, spec, seed, run_dir):
     size, draws = spec['size'], spec['draws']
     canvas = spec.get('canvas', 320)
     locations = find_locations(train_images, size, spec['location'], seed, canvas=canvas)
-    train = torch.cat(train_images)
+    train = torch.cat(train_images).to(torch.device(spec.get('device', 'cpu')))
     ga = SpongeGA(patch_size=size, pop_size=20, elite_k=5, generations=1, seed=seed)
-    transform = make_eot(spec['eot'])
+    dev = torch.device(spec.get('device', 'cpu'))
+    transform = make_eot(spec['eot'], dev)
     population = ga.population.cpu()
     patch = population[0].clone()
     best, queries, generation = -float('inf'), 0, 0
@@ -234,7 +251,7 @@ def optimize(victim, train_images, spec, seed, run_dir):
             candidate = population[index].detach().clone()
             if spec['method'] == 'gradient_tanh':
                 candidate = patch.detach().clone().requires_grad_(True)
-                augmented = transform(insert(train, candidate.unsqueeze(0), locations))
+                augmented = transform(insert(train, candidate.to(dev).unsqueeze(0), locations))
                 augmented = augmented.to(device=device, dtype=dtype)  # xem ghi chú 3; không đổi công thức
                 pred = victim.model(augmented)
                 pred = pred[0] if isinstance(pred, (tuple, list)) else pred
@@ -249,9 +266,9 @@ def optimize(victim, train_images, spec, seed, run_dir):
                 with torch.no_grad():
                     values = []
                     for _ in range(draws):
-                        x = transform(insert(train, candidate.unsqueeze(0), locations))
+                        x = transform(insert(train, candidate.to(dev).unsqueeze(0), locations))
                         scores = victim.get_raw_predictions(x).float()
-                        values.append(objective(scores, spec.get('cap')).mean())
+                        values.append(objective(scores, spec.get('cap'), spec.get('threshold', .01)).mean())
                     current = float(torch.stack(values).mean())
                 evaluated = candidate
             queries += cost
