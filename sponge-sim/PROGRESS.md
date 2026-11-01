@@ -300,3 +300,12 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - Kiem: 240/240 checkpoint khop patch_sha256 (bam du lieu tho np.load(...).tobytes(), khong phai bam file .npy); 240/240 muc patches_index.json khop.
 - manifest.json: git_head khong ghi tag (bundle khong co .git; BUNDLE_SOURCE.txt trong goi ghi commit 913077439f98 va 4 tag prereg).
 - Tiep: E6 (do lai patch, dung final/runs/e7), can may ranh. Nhac nguoi dung XOA MAY THUE.
+
+## A/A P1_cpu2 hop le (01/11/2026, 23:06-~23:20 +07) — run results/e5/AA_P1cpu2_20261101
+- verify_pin: passed, effective_cores 0.913 (ghim logical CPU 2, 1 thread). 100 anh, 2000 phep do, 11 diem tham chieu.
+- MDE (80% cong suat, alpha .05; summary.json:profiles.P1_cpu2.stages.<stage>.mde_ratio_pct): total 0.552%, forward 0.691%, nms_torch_pure 0.643%.
+- A/A ratio: total 1.0020 CI95 [0.9982; 1.0058] (chua 1); forward 1.0051 CI95 [1.0004; 1.0099] (KHONG chua 1: lech thu tu A/B nho ~0.5%, nho hon MDE nhung phai khai).
+- Co drift: khoi 1 va 3 bi gan co (max |doi| 25.7% so voi tham chieu dau). Loai 2 khoi: 80 anh, total log-ratio CI [-0.00382; 0.00461], forward [-0.00282; 0.00677] (cung chua 0). Nguyen nhan khoi 1: kha nang cao do toi chay analyze.py tren du lieu do dang ngay khi phep do dang chay (nham tuong tien trinh nen da ket thuc); khoi 3 chua ro. Khai o DEVIATIONS.md.
+- Cac lan A/A truoc (20261021, 20261021b) khong hop le/do dang, khong dung.
+- Quy tac E1: nguong = 1 + MDE cua run nay (total: 1.0055; forward: 1.0069). Con so nay la gia tri theo quy tac da dang ky; PREREG_E1 (da tag) khong sua.
+- Tiep: E1 laptop khi nguoi dung bao "may san sang, chay E1" (~50-90 phut).

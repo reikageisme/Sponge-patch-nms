@@ -29,3 +29,6 @@ Mỗi mục: ngày, PREREG nào, thay đổi gì, lý do, đã thấy dữ liệ
 - `studies/e5_protocol/run.py` (đã tag prereg-e5) được sửa SAU tag: thêm `--profiles` và cận dưới verify 0,5 cho P1_cpu2.
   Giao thức đo (ảnh, số lần, ABBA, công đoạn, tham chiếu) KHÔNG đổi. Run A/A P1_cpu2 dùng để lấy MDE cho PREREG_E1.
 - Đã thấy dữ liệu: có (E5 đầy đủ + smoke E1). Run A/A P1_cpu2 chưa chạy (máy đang bận lúc quyết định: CPU 2 ở 75%).
+
+## 01/11/2026 — A/A P1_cpu2 (AA_P1cpu2_20261101)
+- Toi (Claude) chay analyze.py tren file raw dang duoc ghi trong luc phep do dang chay (tuong tien trinh nen da ket thuc vi thong bao cua cong cu). Tao tai CPU ngan ngay khi do khoi 1. Co drift gan o khoi 1 va 3 (khoi 3 khong ro nguyen nhan). Giu moi du lieu; bao cao ca ket qua day du va ket qua loai 2 khoi co drift (xem PROGRESS). summary.json cuoi duoc tao lai sau khi do xong.
