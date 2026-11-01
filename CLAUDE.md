@@ -35,7 +35,8 @@ Nhóm: Phạm Tuấn Anh, Mai Quốc Bảo; GVHD và tác giả liên hệ: Đin
 - Backend NMS custom vs torchvision khớp trên mẫu hữu hạn (không phải tương đương mọi tie).
 
 ## Việc đang làm
-Bước 1: harness mới `sponge-sim/` + thí nghiệm E1 (đối chứng dương, dose-response), E2 (proxy), E5 (giao thức đo). Chi tiết: `docs/PROMPT_STEP1.md`. Tiến độ ghi ở `sponge-sim/PROGRESS.md`.
+Mục tiêu duy nhất (01/11/2026): hoàn thiện bài theo `docs/REVIEW_THAY_NAM.md` (trục "N có dự đoán độ trễ không", SG-GA là case study; đối chứng dương 10^2-10^4 trên laptop + ARM; patch thật qua giao thức ghim core; tập tối ưu >=100 ảnh, ngưỡng 0,25, 640 px; viết lại tiếng Anh, gom giới hạn vào Threats to Validity).
+Bản thảo tiếng Anh: `paper_en/`. Thí nghiệm: E1 (tiêm), E5 (A/A), E5-phone, E6 (đo lại patch), E7 (sinh patch trên GPU). Tiến độ và lịch: `sponge-sim/PROGRESS.md` (mục cuối). Quy tắc dừng: trước mọi tag PREREG, khi cần máy rảnh, việc không đảo ngược, mâu thuẫn số liệu, bị bộ lọc an toàn chặn.
 
 ## Làm việc tiết kiệm token (quan trọng: lần trước hết token giữa chừng)
 - Cập nhật `sponge-sim/PROGRESS.md` sau mỗi giai đoạn nhỏ (đã xong gì, đang dở gì, lệnh để chạy tiếp, quyết định chờ tôi). Phiên mới đọc file này đầu tiên.

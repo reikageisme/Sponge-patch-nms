@@ -220,3 +220,43 @@ chỉ ĐỌC/VIẾT file + phân tích; KHÔNG đo (cần Windows). Không commi
 - 15 file gốc đã bị phiên Cowork xóa khỏi thư mục gốc: 7 sang `paper/history/`, 6 sang `legacy/`, `test_headless_pi.py` (còn bản ở `_provenance/local_before_overlay/`), `test_physical_dos.py` (đã khôi phục bản HEAD; phần sửa chưa commit trước đó đã mất).
 - `PREREG_E5_phone.md` (NHÁP, chưa tag): ghim core qua proot kiểm bằng tải thật + phân cụm tốc độ; đo đợt ngắn, nghỉ giữa đợt, xen kẽ profile; khai lệch phiên bản torch.
 - CHƯA có: `docs/REVIEW_THAY_NAM.md` (nội dung review của thầy Nam không có trong repo, cần bạn dán).
+
+## Phiên 01/11 (3): chuyển trục bài theo review thầy Nam — dừng ở cổng tag + cần máy rảnh
+Tham chiếu: `docs/REVIEW_THAY_NAM.md` (nguyên văn 5 vấn đề + 4 yêu cầu). Mục tiêu duy nhất: hoàn thiện bài theo đó.
+
+### Đã xong
+- Bản thảo tiếng Anh mới `paper_en/main.tex` (+ `references.bib`, `check_manuscript.py`, `TODO.md`): trục "N có dự đoán độ trễ không", SG-GA chỉ là case study,
+  tiêu đề mới (đề xuất), một mục Threats to Validity duy nhất, không nhãn nội bộ, trích dẫn nền (Sponge Examples, Brown, EOT, Ilyas black-box, so sánh EVADE). Phần kết quả để `
+odata` (chưa có số đo mới). Chưa biên dịch (máy không có TeX); đã kiểm cấu trúc.
+- E7 (GPU, sinh patch): `studies/e7_sggar/run.py` + `make_bundle.py` (gói 11 MB, một lệnh, checkpoint, SHA256), SG-GA 100 ảnh, 320/640 px, ngưỡng 0,25, kèm 4 baseline có sẵn. Smoke CPU xong; hồi quy từng-bit (patch cũ) vẫn pass sau khi tổng quát hóa.
+- E1: thêm lưới N đến 10^4 + chế độ điện thoại. E6: script đo lại patch thật + phân tích "N-only predictor". E5-phone: `pin_verify.py`, đo theo đợt, phân tích. Dry-run trên laptop OK (chưa chạy trên điện thoại).
+- PREREG NHÁP (đều CHƯA tag): E1 (cập nhật), E5_phone, E6, E7. Commit gần nhất: `0ef5b50`.
+
+### Phát hiện cần biết
+- Chưa có A/A P1_cpu2 hợp lệ (lần 1 verify FAIL, lần 2 dở dang): chưa có MDE, PREREG_E1 chưa điền được.
+- GPU thuê: nếu bạn thao tác máy thuê từ chính laptop trong lúc laptop đang đo thì nhiễu phép đo. Khởi động E7 trước, rồi để yên.
+- Chỉ có 2 kết luận dùng được ngay từ bằng chứng hiện có (mô tả, không phải số của bài mới): pilot E5 cho MDE rất nhỏ ở P-core ghim; R3 là dữ liệu lịch sử (không dùng làm kết luận chính).
+- Mọi mục `[from memory]` trong `paper_en/references.bib` cần kiểm DOI trước khi nộp.
+
+### Lịch gợi ý (ước lượng, chưa đo; dựa trên smoke)
+| Bước | Máy | Ước | Điều kiện |
+|---|---|---|---|
+| 0. Duyệt lô tag: E1, E5_phone, E6, E7 | — | 5 phút | bạn nói "tag tất cả" |
+| 1. E7 trên GPU thuê | GPU | 1–2,5 giờ | tag E7 trước; mang `runs/e7/` về |
+| 2. A/A P1_cpu2 -> điền MDE vào PREREG_E1 | laptop | ~15 phút | laptop rảnh thật ("máy sẵn sàng") |
+| 3. E1 laptop | laptop | 50–90 phút | tag E1 sau khi điền MDE |
+| 4. Điện thoại: pin_verify -> A/A E5-phone -> E1-phone | điện thoại | ~2–3 giờ | điện thoại rảnh, mạng tắt, A0 đồng ý |
+| 5. E6 laptop (patch từ E7) | laptop | 2–3 giờ | cần bước 1 và 3 xong |
+| 6. Phân tích + điền bài | — | 3–6 giờ | sau bước 5 |
+
+### Việc tiếp theo — chọn 1
+A. Duyệt lô tag -> gõ: "Tag tất cả: prereg-e1, prereg-e5phone, prereg-e6, prereg-e7 (ngày 01/11/2026). Đồng ý A0 đọc sysfs chỉ-đọc trên điện thoại. Ngưỡng nhiệt: dùng đề xuất."
+B. Chạy A/A P1_cpu2 ngay (không cần tag mới) -> gõ: "Máy sẵn sàng, chạy A/A P1_cpu2"
+C. Chỉnh bản thảo/PREREG trước -> gõ: "Sửa [mục]: [nội dung]"
+
+### Đang chờ gì ở tôi
+- Quyết định tag lô PREREG (E1, E5_phone, E6, E7) — DỪNG theo luật "trước khi gắn bất kỳ tag nào".
+- Báo "máy sẵn sàng" (laptop và điện thoại) trước mọi phép đo.
+- Đồng ý bước A0 (đọc sysfs/thermal chỉ-đọc trên điện thoại) và chốt ngưỡng nhiệt.
+- Tiêu đề bài mới (đề xuất trong `paper_en/main.tex`): bạn/thầy chốt trước khi thay bản chính thức.
+- Review chi tiết "kèm vị trí từng lỗi" của thầy (chưa có trong repo).
