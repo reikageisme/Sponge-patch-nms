@@ -291,3 +291,12 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - Cả 8 điều kiện x 10 seed: ~132 giờ. Cả 8 điều kiện x seed 0-4: ~66 giờ. C1-C3 x 10 seed: ~51 giờ. C1-C3 x seed 0-4 (mức tối thiểu cho E6): ~25,5 giờ.
 - Kết luận: vượt xa ngưỡng 10-12 giờ -> KHÔNG chạy toàn bộ E7 trên CPU. Hai điều kiện 640 px chiếm phần lớn thời gian (C2+C4 ~ 4/5 của C1-C4).
 - Phương án lai (cần ghi sai lệch "thiết bị theo điều kiện" vào DEVIATIONS trước khi chạy): CPU laptop chạy C1+C3 seed 0-4 (~7,9 giờ); GPU chỉ cần chạy C2 (và C4, B nếu còn giờ).
+
+## E7 XONG tren GPU thue (01/11/2026, 14:17-~16:00 UTC)
+- May: Tesla V100-PCIE-16GB, torch 2.13.0+cu126 (cu128 khong chay tren V100: bo sm_70), ultralytics 8.4.197, kornia 0.8.2.
+- Goi: e7_gpu_bundle.zip SHA256 1815b0c7...7d7 (khop truoc va sau giai nen). Chay: 8 dieu kien x seed 0-9 = 80 don vi, 240 checkpoint, khong loi.
+- C2 seed 0 chay thu truoc (102 s), roi chay full, don vi nay duoc bo qua (da co complete.json); manifest thu: manifest_trial_c2.json trong tgz.
+- Ban ve laptop: sponge-sim/results/e7_gpu/snap_final.tgz SHA256 a0004a50de768a38ab0d8041700119e3f4984bf0062a136a0a846c8b03743ab8 (khop hai dau). Da giai nen vao final/ (khong commit: lon). snap_seed4.tgz, snap_seed7_or_1635.tgz la ban chup trung gian.
+- Kiem: 240/240 checkpoint khop patch_sha256 (bam du lieu tho np.load(...).tobytes(), khong phai bam file .npy); 240/240 muc patches_index.json khop.
+- manifest.json: git_head khong ghi tag (bundle khong co .git; BUNDLE_SOURCE.txt trong goi ghi commit 913077439f98 va 4 tag prereg).
+- Tiep: E6 (do lai patch, dung final/runs/e7), can may ranh. Nhac nguoi dung XOA MAY THUE.
