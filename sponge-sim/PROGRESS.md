@@ -309,3 +309,11 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - Cac lan A/A truoc (20261021, 20261021b) khong hop le/do dang, khong dung.
 - Quy tac E1: nguong = 1 + MDE cua run nay (total: 1.0055; forward: 1.0069). Con so nay la gia tri theo quy tac da dang ky; PREREG_E1 (da tag) khong sua.
 - Tiep: E1 laptop khi nguoi dung bao "may san sang, chay E1" (~50-90 phut).
+
+## E1 (tiem hop) xong tren laptop P1_cpu2 (01/11/2026 ~23:17-23:24 +07; 390 s) — run results/e1/E1_P1cpu2_20261101
+- Lenh: python -X utf8 studies/e1_dose/run.py --profiles P1_cpu2 --run-dir results/e1/E1_P1cpu2_20261101; analyze: python -X utf8 studies/e1_dose/analyze.py results/e1/E1_P1cpu2_20261101 results/e5/AA_P1cpu2_20261101/summary.json P1_cpu2
+- Tag: prereg-e1-20261101 (da tao truoc khi do). 14972 dong raw. verify_pin passed (effective_cores 0.921). Drift: 2/12 diem tham chieu bi co, max |doi| 5.6% (summary.json:reference_drift).
+- Chinh 1: R = 281.5 (CI95 [278.4; 285.3]) > nguong 1.00643, met=true (summary.json:primary_1). Chinh 2: 20/20 vuot 100 ms, Wilson95 [0.839; 1.0], met=true, median total 302.9 ms (primary_2). Muc nay la o N=2100 hop tiem 'mixed'/tv_nms? xem summary.json truoc khi viet vao bai.
+- Dose 1e2->1e4 (summary.json:dose_1e2_to_1e4): vi du ultra_native|mixed ratio 276.8 [269.2; 286.6]; torch_pure|mixed 144.3 [127.0; 148.4]; tv_batched|mixed 89.0 [81.9; 95.0].
+- CHUA doc: Chinh 3/4 (quy tac MDE) -> phai doc tu contrasts/curves truoc khi viet.
+- Tiep: E6 day du (2-3 gio, laptop ranh) khi nguoi dung bao may san sang; dien thoai can xac nhan rieng.
