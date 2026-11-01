@@ -1,0 +1,896 @@
+% Giữ mẫu Elsevier CAS hai cột của bản thảo gốc.
+\PassOptionsToPackage{T5}{fontenc}
+\documentclass[a4paper,fleqn]{cas-dc}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[vietnamese]{babel}
+% Tương thích compiler XeTeX tích hợp; pdfLaTeX vẫn dùng khai báo gốc.
+\ifdefined\DeclareUnicodeCharacter
+\DeclareUnicodeCharacter{00D7}{\ensuremath{\times}}
+\fi
+\usepackage[numbers]{natbib}
+\usepackage{amsmath,amssymb}
+\usepackage{booktabs}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{array}
+\usepackage{enumitem}
+\usepackage{microtype}
+\usepackage{hyperref}
+\usepackage{xcolor}
+\usepackage{graphicx}
+% Phụ trợ v2; giữ nguyên CAS/T5/babel và các nhãn Việt hóa.
+\graphicspath{{media/}{./}}
+\usepackage{tikz}
+\usetikzlibrary{arrows.meta,positioning}
+\usepackage{pgfplots}
+\pgfplotsset{compat=1.18}
+\newif\ifbranchB
+\branchBfalse % Giữ nhánh B để tác giả duyệt; bật bằng branchBtrue.
+
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\floatname{algorithm}{Thuật toán}
+\algrenewcommand\algorithmicrequire{Đầu vào:}
+\algrenewcommand\algorithmicensure{Đầu ra:}
+\algrenewcommand\algorithmicfor{Với}
+\algrenewcommand\algorithmicdo{thực hiện}
+\algrenewcommand\algorithmicif{Nếu}
+\algrenewcommand\algorithmicthen{thì}
+
+\renewcommand{\abstractname}{Tóm tắt}
+\renewcommand{\figurename}{Hình}
+\renewcommand{\tablename}{Bảng}
+\renewcommand{\refname}{Tài liệu tham khảo}
+\renewcommand{\encodingdefault}{T5}
+\AtBeginDocument{\fontencoding{T5}\selectfont}
+% Nhánh XeTeX cho compiler tích hợp; pdfLaTeX giữ nguyên cơ chế T5 gốc.
+\ifdefined\XeTeXversion
+\usepackage{fontspec}
+\setmainfont{texgyretermes-regular.otf}[BoldFont=texgyretermes-bold.otf,ItalicFont=texgyretermes-italic.otf,BoldItalicFont=texgyretermes-bolditalic.otf]
+\setsansfont{texgyreheros-regular.otf}[BoldFont=texgyreheros-bold.otf,ItalicFont=texgyreheros-italic.otf,BoldItalicFont=texgyreheros-bolditalic.otf]
+\setmonofont{texgyrecursor-regular.otf}
+\renewcommand{\encodingdefault}{TU}
+\AtBeginDocument{\fontencoding{TU}\selectfont}
+\fi
+
+
+% Chỉ Việt hóa nhãn; giữ kích thước và cấu trúc hộp của CAS 2.4.
+\ExplSyntaxOn
+\RenewDocumentEnvironment{keywords}{O{Từ~khóa}}
+{
+  \tex_global:D \tex_setbox:D \g_stm_key_box = \vtop \bgroup
+  \hsize=.25\textwidth
+  \cs_set:Npn \sep: { \par }
+  \cs_set_eq:NN \sep \sep:
+  \parindent=0pt
+  THÔNG~TIN~BÀI~BÁO \par \skip_vertical:n { -3pt }
+  \rule{.25\textwidth}{.2pt}\par\footnotesize
+  \noindent \textit{#1}: \par
+}{\egroup}
+\ExplSyntaxOff
+
+% [override] Bỏ "Preprint submitted to Elsevier" ở footer trang đầu; chỉ hiện tên tác giả.
+\ExplSyntaxOn
+\cs_set:Npn \__first_footerline:
+{
+  \group_begin:
+  \small \sffamily
+  \ifnum\theblind>0\relax\else \__short_authors: \fi
+  \group_end:
+}
+\ExplSyntaxOff
+
+\begin{document}
+\let\WriteBookmarks\relax
+\def\floatpagepagefraction{1}
+\def\textpagefraction{.001}
+\shorttitle{Sponge Patch và NMS}
+\shortauthors{Phạm Tuấn Anh và Mai Quốc Bảo}
+\title[mode=title]{Tấn công đối kháng Sponge Patch: Khai thác lỗ hổng cạn kiệt tài nguyên bằng thuật toán tối ưu không gian}
+\author[1]{Phạm Tuấn Anh}
+% V2: không gắn dấu liên hệ cho Phạm Tuấn Anh; liên hệ ghi rõ ở cortext.
+\ead{anh25807700004@hutech.edu.vn}
+\author[1]{Mai Quốc Bảo}
+\ead{bao2580770008@hutech.edu.vn}
+\cortext[cor1]{Tác giả liên hệ: Đinh Phương Nam. Email: dp.nam@hutech.edu.vn.}
+\nonumnote{Giảng viên hướng dẫn: Đinh Phương Nam, Trường Đại học Công nghệ Thành phố Hồ Chí Minh (HUTECH). Email: dp.nam@hutech.edu.vn.}
+\affiliation[1]{organization={Trường Đại học Công nghệ Thành phố Hồ Chí Minh (HUTECH)},
+city={Thành phố Hồ Chí Minh},country={Việt Nam}}
+
+\begin{abstract}
+Nghiên cứu khảo sát Sponge Patch, miếng dán cục bộ được tối ưu hộp xám bằng thuật toán di truyền định hướng vị trí Laplacian (SG-GA), trong môi trường mô phỏng hạn chế tài nguyên (CPU laptop). Số ứng viên trước NMS là đại lượng đại diện cần kiểm tra, không phải bằng chứng suy giảm tính sẵn sàng. Cohort OLD128 gồm 128 ảnh con của 500 ID COCO val2017, với 10 seed và ngân sách 2.500 lượt ảnh: tỷ số ứng viên SG-GA là $1{,}0278\pm0{,}0083$, GA tâm $1{,}0329\pm0{,}0093$; chênh lệch $-0{,}0051$, CI 95\% $[-0{,}0112;0{,}0007]$, $p=0{,}1504$. Sau kết quả này, X1-500 mở rộng đánh giá trên 500 ảnh, không phải mẫu độc lập: hai tỷ số lần lượt $1{,}0268\pm0{,}0074$ và $1{,}0561\pm0{,}0123$; chênh lệch $-0{,}0293$, CI $[-0{,}0383;-0{,}0216]$, $p=0{,}001953125$. Trên cohort mở rộng, SG-GA thấp hơn GA tâm ở endpoint ứng viên, điều kiện trên bộ ảnh và cấu hình cố định. AP SG-GA là $29{,}97\%$ ở OLD128 và $26{,}20\%$ ở X1-500. FIFO chu kỳ 300 ms của OLD128 không ghi nhận ảnh thiếu/trễ; điều này không suy rộng sang mọi tải hoặc thiết bị. Chuyển giao latency OLD128 (sáu detector) và khảo sát số lượng X2 (tám detector, boundary khác nhau) được báo riêng. Giao thức đo ghim core với hiệu chỉnh A/A (sạch so sạch, MDE toàn trình $0{,}59\%$) cho thấy số ứng viên theo dõi được chi phí NMS nhưng NMS chỉ chiếm vài phần trăm toàn trình; ở các biến thể tham chiếu, số ứng viên tăng khoảng ba trăm lần chỉ kèm theo toàn trình tăng $2$--$6\%$, nên số ứng viên đơn độc chưa dự đoán được độ trễ toàn trình trong cấu hình này. Artifacts cho phép kiểm lại các tổng hợp đã lưu; chưa tái lập độc lập toàn bộ inference, training và timing. Theo phạm vi, đây là nghiên cứu đặc trưng tải NMS và điều kiện trong môi trường cục bộ/mô phỏng trên CPU laptop; việc chứng minh DoS đầu--cuối trên phần cứng edge/ARM thật nằm ngoài phạm vi và thuộc hướng phát triển.
+\end{abstract}
+
+\begin{keywords}[Từ khóa]
+miếng dán đối kháng \sep tính sẵn sàng \sep NMS \sep tối ưu hộp xám \sep thuật toán di truyền \sep chất lượng dịch vụ\ifbranchB\sep phát hiện người\fi
+\end{keywords}
+\maketitle
+
+\section{Giới thiệu}
+
+\subsection{Bài toán và động cơ}
+
+Một hệ thống thị giác phục vụ giám sát hoặc nhận thức trong ứng dụng có giới hạn tài nguyên phải đồng thời phát hiện đúng và trả kết quả kịp thời. Độ chính xác cao trên ảnh tĩnh không bảo đảm hệ thống đáp ứng thời hạn khi nội dung thay đổi, hậu xử lý tạo thêm công việc hoặc hàng đợi tích lũy. Ngược lại, giảm AP chưa đủ để kết luận dịch vụ bị từ chối. Vì vậy, đánh giá đầu vào đối kháng cần phân biệt tính toàn vẹn của dự đoán với tính sẵn sàng của đường ống xử lý. Bài chỉ đo trên CPU laptop trong môi trường mô phỏng hạn chế tài nguyên; thiết bị edge là bối cảnh động cơ, chưa là phần cứng đã thử.
+
+Các nghiên cứu gần đây cho thấy tính thực dụng của tấn công độ trễ phụ thuộc phần cứng, định dạng mô hình và công đoạn được đo. Underload kết hợp huấn luyện đối kháng với khả năng thiết bị để bảo vệ detector trước tải hậu xử lý \cite{underload2025}. EVADE chỉ ra rằng hiệu ứng của các tấn công NMS có thể nhỏ hơn nhiều khi chuyển sang cấu hình triển khai thực tế \cite{evade2025}. Hai kết quả không mâu thuẫn một cách đơn giản: chúng đặt ra yêu cầu kiểm tra điều kiện mà hiệu ứng xuất hiện, thay vì suy luận DoS từ số hộp hoặc độ phức tạp lý thuyết.
+
+Sponge Patch được xây dựng để khảo sát một kịch bản quyền truy cập hạn chế: thuật toán không đọc gradient hoặc trọng số, nhưng được phản hồi điểm tin cậy trước NMS. Miếng dán chỉ ghi đè một vùng cục bộ trong ảnh. Tính hữu ích tiềm năng của hướng này nằm ở việc giảm yêu cầu truy cập so với tối ưu hộp trắng và đặc tả rõ một giao thức có thể kiểm toán. Tuy nhiên, quyền truy cập thấp hơn không tự chứng minh hiệu quả tấn công cao hơn. Kênh phản hồi trước NMS vẫn là một giả định mạnh và phải được nêu rõ.
+
+\subsection{Câu hỏi nghiên cứu}
+
+RQ1 xem xét số ứng viên sau ngưỡng phản ánh chi phí NMS đến đâu và miếng dán có làm tăng chi phí hoặc suy giảm dịch vụ so với ảnh sạch hay không. RQ2 kiểm tra liệu chọn vị trí bằng phương sai Laplacian có cải thiện SG-GA so với GA tâm, GA vị trí ngẫu nhiên và tìm kiếm ngẫu nhiên dưới cùng ngân sách truy vấn. RQ3 đánh giá mức phụ thuộc vào ảnh, ngưỡng, diện tích và biến đổi phần mềm, đồng thời xem xét khả năng chuyển giao giữa mô hình.
+
+\ifbranchB
+Thực nghiệm detector quy mô lớn bổ sung một mục tiêu triển khai: lựa chọn mô hình theo chất lượng phát hiện người, ngân sách fine-tuning và latency. Mục tiêu này hỗ trợ thiết kế phép thử tính sẵn sàng tiếp theo; nó không thay ba câu hỏi về Sponge Patch và không được coi là thí nghiệm sạch--tấn công trên YOLO11, YOLOv12 hoặc YOLOv13.
+\fi
+
+\subsection{Đóng góp và phạm vi khẳng định}
+
+Nghiên cứu có ba đóng góp ở mức quy trình và bằng chứng. Thứ nhất, mô tả giao diện tối ưu hộp xám với miếng dán cục bộ, ngân sách tính theo lượt ảnh và đánh giá độc lập sau tối ưu. Thứ hai, tách OLD128 với X1-500 mở rộng sau quan sát, báo cả kết quả âm của giả thuyết ưu thế SG-GA và chênh lệch theo cohort. Thứ ba, phân biệt ứng viên, hậu xử lý, AP và QoS bằng giao thức đo ghim core có đọc lại affinity và hiệu chỉnh A/A (sạch so sạch) để báo MDE, cùng bootstrap hai tầng (ảnh $\times$ seed) cho suy luận. Các lát cắt theo điều kiện cho thấy số ứng viên theo dõi chi phí NMS (tùy backend) nhưng tách khỏi độ trễ toàn trình khi NMS chỉ chiếm vài phần trăm toàn trình; đây là những lát cắt, chưa hoàn thành bản đồ điều kiện backend--cap--ngưỡng--tài nguyên--chu kỳ. \ifbranchB Benchmark detector theo thời gian huấn luyện được giữ riêng để tác giả duyệt phạm vi.\fi
+
+Đây không phải đề xuất kiến trúc YOLO mới hoặc tuyên bố một tấn công mạnh hơn các phương pháp đã công bố. Điểm khác biệt của đường nghiên cứu phải được đánh giá bằng cả lợi ích và chi phí: không dùng gradient nhưng cần telemetry trước NMS; diện tích nhỏ nhưng hiệu ứng chưa mạnh; dữ liệu truy vết được nhưng phạm vi phần cứng và vật lý còn hạn chế. Các nhận định về lựa chọn triển khai chỉ áp dụng cho mô hình, dữ liệu và giao thức tương ứng. Về tính mới, đường nghiên cứu khác với dòng tấn công cạn kiệt tài nguyên và miếng dán trước đây ở ba điểm có thể kiểm chứng (Bảng~\ref{tab:prior_attacks}). Thứ nhất, mô hình đe dọa hộp xám---chỉ dùng phản hồi điểm tin cậy trước NMS, không gradient, không trọng số---nằm giữa hộp trắng toàn ảnh của các tấn công NMS-latency gần đây (Phantom Sponges, Overload) và hộp đen hoàn toàn, đồng thời giới hạn can thiệp vào một miếng dán cục bộ thay vì nhiễu toàn ảnh. Thứ hai, thay vì báo một bội số độ trễ trên một cấu hình, bài tách bốn đại lượng (ứng viên, hậu xử lý, AP, QoS) và đo bằng giao thức ghim core có đọc lại affinity, hiệu chỉnh A/A để công bố MDE và bootstrap hai tầng; nhờ đó phát hiện số ứng viên không kéo theo độ trễ toàn trình khi NMS chỉ chiếm vài phần trăm đường ống. Thứ ba, kết quả âm (SG-GA không vượt tìm kiếm ngẫu nhiên trên X1-500) được giữ nguyên làm bằng chứng cho ranh giới điều kiện, thay vì bị loại khỏi báo cáo.
+
+\section{Nghiên cứu liên quan}
+
+\subsection{Dòng tấn công cạn kiệt tài nguyên gần đây và vị trí của Sponge Patch}
+
+Tấn công nhắm tính sẵn sàng xem hiệu quả tính toán là một bề mặt tấn công riêng bên cạnh tính đúng đắn: đầu vào được tối ưu để tăng khối lượng tính toán và kéo dài thời gian xử lý mà không nhất thiết làm sai nhãn. NICGSlowDown minh họa nguyên lý này trên mô hình sinh chú thích ảnh bằng cách kéo dài chuỗi sinh \cite{nicgslowdown2022}.
+
+Với detector, điểm phình tính toán đặc trưng là bước khử trùng lặp NMS, chi phí tăng theo số hộp ứng viên. Phantom Sponges biến quan sát này thành tấn công độ trễ: tối ưu nhiễu toàn ảnh hộp trắng để số hộp sống sót sau ngưỡng tăng vọt, buộc NMS chạy lâu hơn và làm chậm detector thời gian thực \cite{phantom2023}. Overload theo cùng hướng và nhấn mạnh bối cảnh thiết bị biên, nơi một lần suy luận kéo dài đủ phá vỡ thời hạn \cite{overload2024}. SlowTrack chuyển mục tiêu từ một khung hình sang toàn chuỗi tri giác của xe tự lái, cho thấy độ trễ tích lũy mới là đại lượng gây hại ở mức hệ thống \cite{slowtrack2024}.
+
+Song song, dòng miếng dán đối kháng cục bộ chủ yếu nhắm làm sai (ẩn hoặc đánh lừa) thay vì làm chậm: các khảo sát và phòng thủ miếng dán gần đây tập trung vào đánh giá nhất quán, khử nhiễu và huấn luyện đối kháng \cite{apde2025,pbcat2025}, còn hướng tối ưu vị trí và tính hợp lệ vật lý mở rộng khả năng che giấu của miếng dán \cite{iap2025,badpatch2025}. Hai dòng---cạn kiệt tài nguyên (thường nhiễu toàn ảnh hộp trắng) và miếng dán cục bộ (thường nhắm làm sai)---gần như tách biệt về mục tiêu.
+
+Sponge Patch nằm ở giao của hai dòng và chọn một điểm quyền truy cập khác (Bảng~\ref{tab:prior_attacks}): một miếng dán cục bộ, không cần gradient, chỉ dùng phản hồi điểm tin cậy trước NMS làm tín hiệu tối ưu, với mục tiêu khảo sát---chưa khẳng định---khả năng gây tải NMS. Vì khác mô hình đe dọa và bề mặt tấn công, con số của những công trình trên không so trực tiếp được với kết quả của nhóm; chúng là mốc định tính để định vị giả thuyết và lý giải vì sao bài tách riêng bốn đại lượng đo. Phần còn lại của mục điểm các công trình trong khoảng hai năm gần đây, gần với thiết kế thực nghiệm của bài.
+
+\begin{table*}[t]\centering\footnotesize
+\setlength{\tabcolsep}{4pt}
+\caption{Định vị Sponge Patch trong dòng tấn công cạn kiệt tài nguyên và miếng dán đối kháng. Các ô mô tả định tính theo công trình gốc; không lấy số liệu giữa các cột để so hiệu lực xuyên mối đe dọa.}
+\label{tab:prior_attacks}
+\begin{tabularx}{\textwidth}{@{}p{2.45cm}p{2.25cm}XXp{2.9cm}@{}}
+\toprule
+Công trình & Bề mặt / quyền truy cập & Cơ chế khai thác & Mục tiêu đo chính & Khác biệt chính so với Sponge Patch \\
+\midrule
+NICGSlowDown \cite{nicgslowdown2022} (CVPR 2022) & Toàn ảnh; hộp trắng & Kéo dài chuỗi sinh (ức chế token kết thúc) & Hiệu quả tính toán của mô hình chú thích & Khác tác vụ (captioning), không phải detector/NMS \\
+Phantom Sponges \cite{phantom2023} (WACV 2023) & Toàn ảnh; hộp trắng & Tăng số hộp sống sót sau ngưỡng $\to$ NMS lâu hơn & Độ trễ detector thời gian thực & Hộp trắng toàn ảnh; bài này không gradient, miếng dán cục bộ \\
+Overload \cite{overload2024} (CVPR 2024) & Toàn ảnh; hộp trắng & Nhồi ứng viên để NMS quá tải trên thiết bị biên & Độ trễ suy luận biên & Như trên; bài này đo tách độ trễ khỏi số ứng viên \\
+SlowTrack \cite{slowtrack2024} (AAAI 2024) & Toàn ảnh; hộp trắng & Tích lũy độ trễ trên chuỗi tri giác đa khung & Độ trễ mức hệ thống (lái tự động) & Nhắm tracker/chuỗi; bài này một khung, một detector \\
+\textbf{Sponge Patch (bài này)} & Cục bộ; \textbf{hộp xám} (phản hồi điểm tin cậy trước NMS, không gradient) & GA chọn vị trí và nội dung làm tăng ứng viên trước NMS & \textbf{Tách riêng} ứng viên, hậu xử lý, AP, QoS & Quyền truy cập thấp hơn; đo tách bốn đại lượng; giữ nguyên kết quả âm \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+
+\subsection{Tấn công và phòng thủ đối với tính sẵn sàng}
+
+Underload nhấn mạnh mối liên hệ giữa hành vi đối kháng và năng lực phần cứng, đồng thời sử dụng huấn luyện đối kháng có chú ý nền để cân bằng hiệu năng sạch và khả năng xử lý thời gian thực \cite{underload2025}. Hướng này trực tiếp bảo vệ dịch vụ nhưng đòi hỏi truy cập và cập nhật mô hình. EVADE tập trung vào kiểm tra tính thực dụng dưới nhiều thiết bị và định dạng thay vì chỉ tối ưu một đại lượng đại diện \cite{evade2025}. Bài này tiếp nhận yêu cầu đo thực thi của hướng đánh giá đó; chưa chứng minh một cơ chế phòng thủ tương đương Underload.
+
+Tấn công bit-flip làm tăng độ trễ detector có mô hình đe dọa khác: can thiệp tham số qua lỗi bit, thay vì giữ trọng số cố định và chỉ sửa đầu vào \cite{bitflip2025}. TrackFlood khảo sát việc chuyển bề mặt tấn công từ detector không NMS sang tracker \cite{trackflood2026}. Event Burst Trigger xem xét backdoor tính sẵn sàng trên detector dùng mạng nơ-ron xung \cite{ebt2026}. Hai tài liệu sau được trích theo bản arXiv; không dùng trạng thái công bố chưa xác minh để coi chúng là bằng chứng đã được tái lập. Các hướng này cho thấy loại bỏ NMS khỏi detector không đồng nghĩa loại bỏ mọi chi phí phụ thuộc nội dung của hệ thống hoàn chỉnh.
+
+\subsection{Đánh giá và phòng thủ miếng dán}
+
+Benchmark APDE đặt trọng tâm vào đánh giá nhất quán giữa nhiều tấn công, detector và chỉ số; kết quả cho thấy phát hiện được patch không tự đồng nghĩa phục hồi vật thể bị tấn công \cite{apde2025}. PBCAT kết hợp miếng dán cục bộ với nhiễu toàn ảnh trong huấn luyện đối kháng để mở rộng phạm vi phòng thủ đối với các tấn công vật lý \cite{pbcat2025}. ODDR, DiffPAD và một hướng detector patch có khả năng giải thích khảo sát các cơ chế tiền xử lý hoặc nhận diện vùng nhiễu khác nhau \cite{oddr2025,diffpad2025,advpatchxai2025}. Vì thêm công đoạn có thể làm tăng độ trễ hoặc xóa thông tin hữu ích, đánh giá phòng thủ trong bài này giữ cả AP/AR lẫn chi phí hậu xử lý.
+
+AntiStyler và TRACE tiếp tục khảo sát phòng thủ detector trước miếng dán và cách fine-tuning đối kháng nhằm giảm ảnh hưởng của yếu tố gây nhiễu \cite{antistyler2026,trace2026}. Những công trình này là đối chiếu cho nghiên cứu phòng thủ. \ifbranchB
+Benchmark fine-tuning detector thông thường trong nhánh GPU chưa được xem là huấn luyện đối kháng; không chuyển metric person thành robust accuracy dưới Sponge Patch.
+\fi
+
+\subsection{Tối ưu vị trí và tính hợp lệ vật lý}
+
+IAP kết hợp định vị nhận biết khả năng bị nhìn thấy với tối ưu nhiễu để tạo miếng dán khó nhận biết \cite{iap2025}. Một hướng nghiên cứu khác xem xét hình dạng phổ quát của patch đặt từ xa đối với detector CNN \cite{remoteshape2025}. Các cách tối ưu vị trí/hình dạng này là cơ sở đối chiếu cho heuristic Laplacian: heuristic của nhóm có chi phí đơn giản và không cần gradient, nhưng không phải mô hình hóa đầy đủ độ nhạy của detector hoặc khả năng quan sát vật lý.
+
+BadPatch sử dụng mô hình khuếch tán để tạo miếng dán vật lý và cung cấp bối cảnh dữ liệu áo đối kháng \cite{badpatch2025}. GRAC và hướng tạo camouflage đa góc nhìn bằng 3D Gaussian Splatting chú ý tới sự khác nhau giữa góc nhìn, ánh sáng và quy trình dựng hình \cite{grac2025,3dgs2025}. Những yếu tố đó vượt ra ngoài phân phối xoay, màu, mờ và nhiễu ảnh mà Sponge Patch hiện dùng. NORP và quần áo đối kháng nhiệt--thị giác mở rộng sang cảm biến đa phương thức \cite{norp2026,thermalcloth2026}; nghiên cứu hiện tại chỉ dùng ảnh RGB, không suy rộng kết quả sang cảm biến nhiệt.
+
+\subsection{Kiến trúc detector và lựa chọn mô hình}
+
+\ifbranchB
+YOLOv12 tổ chức detector theo hướng chú ý để cân bằng biểu diễn và tốc độ, trong khi YOLOv13 dùng HyperACE và FullPAD để tăng tương tác đặc trưng giữa vị trí và thang đo \cite{yolo12_2025,yolo13_2025}. AFOG khảo sát nhiễu chú ý đối với detector Transformer, cho thấy cơ chế chú ý không tự tạo ra tính an toàn trước đầu vào đối kháng \cite{afog2025}. Vì vậy, giảm FLOPs hoặc tăng AP trên benchmark chuẩn không thay thế việc đo latency và kiểm tra tính sẵn sàng trong đường ống cụ thể.
+
+Các số liệu COCO công bố của YOLOv13 và số đo person một lớp của nhóm được đặt cạnh nhau ở phần thực nghiệm bổ sung. Mục đích là nhìn rõ thay đổi thứ hạng và điều kiện, không đánh giá ưu thế bằng cách lấy hai metric khác giao thức trừ nhau. Bài này sử dụng kiến trúc có sẵn; đóng góp ở nhánh detector là tổ chức và phân tích thực nghiệm theo ngân sách, không phải phát minh HyperACE hay FullPAD.
+\fi
+AFOG khảo sát nhiễu chú ý đối với detector Transformer \cite{afog2025}. Cơ chế chú ý hoặc AP chuẩn không thay thế phép đo latency và availability tại đúng boundary; khảo sát X2 vì vậy khai rõ đầu ra trước hay sau NMS.
+
+\section{Phương pháp Sponge Patch}
+
+\subsection{Mô hình đe dọa và quyền truy cập}
+
+Thuật toán tối ưu có thể gửi ảnh đã chèn miếng dán vào một giao diện nghiên cứu và nhận vector điểm tin cậy trước NMS. Nó không dùng trọng số hoặc gradient để cập nhật miếng dán, không sửa NMS và không can thiệp mô hình. Trong thực nghiệm, mô hình được nạp cục bộ để mô phỏng giao diện phản hồi này; chương trình không thực thi một ranh giới kiểm soát truy cập độc lập giữa bên tối ưu và detector. Giao diện được mô phỏng trên CPU laptop; chưa hiệu chỉnh với phần cứng edge/ARM thật.
+
+Khả năng đọc điểm trước NMS có thể phù hợp một dịch vụ có telemetry hoặc giao diện gỡ lỗi, nhưng chưa được xác nhận trên một sản phẩm camera thương mại. Vì vậy, tên hộp xám phản ánh quyền truy cập đã quy định, không phải khẳng định tấn công có thể triển khai trên mọi API hộp đen. Can thiệp của bài là ghi đè một vùng tensor/ảnh trong testbed; không phải chiếm quyền camera hoặc truyền dữ liệu vào một hệ thống sản xuất.
+
+\subsection{Đại lượng đo và mục tiêu}
+
+Gọi $x$ là ảnh sạch, $p$ là miếng dán và $l$ là vị trí. Toán tử $A(x,p,l)$ ghi đè vùng RGB tương ứng, giữ phần còn lại của ảnh. Mô hình sinh $K$ vị trí dự đoán; tại mỗi vị trí $i$, $c_i$ là điểm lớp lớn nhất. Sau ngưỡng $\tau$, $N_\tau$ đếm ứng viên hoạt động. Nếu áp top-$k$ trước NMS, số đầu vào thực là $\min(N_\tau,k)$. Số phát hiện cuối $D$ được tính sau NMS và giới hạn đầu ra, không thay thế $N_\tau$.
+
+\begin{equation}
+\begin{aligned}
+N_\tau(x)&=\sum_{i=1}^{K}\mathbf1[c_i(x)>\tau],\\
+N_{\mathrm{nms}}&=\min(N_\tau,k)\quad\text{khi áp giới hạn }k.
+\end{aligned}
+\tag{1}
+\end{equation}
+
+Fitness trong triển khai được tối đa hóa bằng tổng confidence của ứng viên hoạt động cộng phần thưởng số ứng viên. Tham số $\lambda=1{,}5$ và $\tau$ tối ưu bằng $0{,}01$. Công thức tuyến tính này khác mục tiêu độ trễ trực tiếp; điểm cao có thể xuất phát từ nhiều ứng viên nhưng chưa bảo đảm các hộp đó tạo công việc NMS lớn.
+
+\begin{equation}
+F(x) = \sum_{i=1}^{K} c_i(x)\cdot\mathbf{1}[c_i(x) > 0{,}01] + 1{,}5\,N_{0{,}01}(x)
+\tag{2}
+\end{equation}
+
+Trong mô hình so sánh mọi cặp, số cặp tiềm năng là $N(N{-}1)/2$. Từ 50 đến 3.000 hộp, số cặp tăng từ 1.225 đến 4.498.500, khoảng 3.672,24 lần. Đây là tính toán tổ hợp, không phải số thao tác đo trên backend hoặc tỷ số latency. Loại bỏ sớm, vector hóa, lọc lớp và top-$k$ làm đường cong thời gian thực khác mô hình mọi cặp.
+
+\subsection{Chọn vị trí và thuật toán di truyền}
+
+Ảnh được chuyển sang mức xám và quét cửa sổ có kích thước bằng miếng dán. SG-GA chọn cửa sổ có phương sai đáp ứng Laplacian lớn nhất; GA tâm giữ vị trí trung tâm; GA vị trí ngẫu nhiên giữ một vị trí được lấy mẫu theo seed. Heuristic Laplacian đo cấu trúc ảnh, không đo gradient detector và không chứng minh vị trí đó nhạy nhất với mục tiêu hệ thống.
+
+Mỗi cá thể là tensor RGB trong $[0;1]$. Lượt mở rộng giữ quần thể 20, năm cá thể ưu tú, lai ghép ngang, xác suất đột biến 0,1 và nhiễu Gaussian có độ lệch chuẩn 0,2 rồi chặn về $[0;1]$. Một cá thể được đánh giá trên bốn ảnh tối ưu. Khi dùng một mẫu biến đổi cho mỗi ảnh, một đánh giá tiêu tốn bốn lượt ảnh qua mô hình; bốn mẫu tiêu tốn 16 lượt. Cấu hình này khác nhiễu đều của phiên kiểm chứng cũ, nên các lượt không được gộp thành một giao thức. Fitness là trung bình trên bốn ảnh rồi trung bình qua các mẫu EOT; các cá thể ưu tú được đánh giá lại ở mỗi thế hệ và chi phí đó được tính vào ngân sách. Xác suất đột biến áp theo từng cá thể con, không phải từng pixel.
+
+\begin{table*}[t]
+\centering
+\small
+\caption{Quy trình tối ưu và đánh giá miếng dán.}
+\begin{tabularx}{\textwidth}{@{}X X @{}}
+\toprule
+\textbf{Bước} & \textbf{Thao tác} \\
+\midrule
+1 & Khởi tạo 20 tensor RGB; chọn vị trí theo chính sách. \\
+2 & Chèn từng cá thể vào bốn ảnh tối ưu. \\
+3 & Lấy mẫu biến đổi; suy luận và đọc confidence trước NMS. \\
+4 & Tính fitness; ghi số lượt ảnh và cá thể tốt nhất. \\
+5 & Giữ năm cá thể ưu tú; lai ghép ngang và đột biến. \\
+6 & Dừng khi hết ngân sách lượt ảnh; khóa miếng dán. \\
+7 & Đánh giá độc lập ứng viên, AP, latency và QoS. \\
+\bottomrule
+\end{tabularx}
+\label{tab:algorithm}
+\end{table*}
+
+Ngân sách được tính theo lượt suy luận ảnh, không theo số lời gọi batch hoặc số thế hệ. Miếng dán được chọn chỉ bằng fitness trên tập tối ưu; không chọn lại bằng AP, tỷ số ứng viên hay độ trễ của tập kiểm tra. Cực đại fitness đã quan sát dưới biến đổi ngẫu nhiên là một thống kê lựa chọn, không phải ước lượng độc lập của kỳ vọng fitness.
+
+\begin{algorithm*}[t]
+\caption{SG-GA và khóa miếng dán trước đánh giá độc lập.}
+\label{alg:sg_ga}
+\begin{algorithmic}[1]
+\Require Bốn ảnh tối ưu $x_j$, vị trí $l_j$, số mẫu EOT $m$, các mốc $\mathcal Q$ dương, chia hết cho $4m$; $Q=\max\mathcal Q$
+\Ensure Checkpoint patch; không chọn bằng tập kiểm tra
+\State Khởi tạo $P$ gồm 20 tensor RGB trong $[0,1]$; $q\gets0$, $b\gets-\infty$
+\While{$q<Q$}
+ \State Bắt đầu danh sách fitness thế hệ mới
+ \For{mỗi $p$ trong $P$ theo thứ tự, gồm cả cá thể ưu tú nếu có}
+  \If{$q=Q$} \State Dừng vòng duyệt cá thể \EndIf
+  \State Lấy EOT mới theo ảnh và mẫu, tính
+  \Statex $\displaystyle\widehat F(p)=\frac1m\sum_{r=1}^m\frac14\sum_{j=1}^4F(T_{jr}(A(x_j,p,l_j)))$
+  \State $q\gets q+4m$; lưu fitness; cập nhật $(b,p^\star)$ nếu $\widehat F(p)>b$
+  \If{$q\in\mathcal Q$} \State Lưu $(q,p^\star,b)$ \EndIf
+ \EndFor
+ \If{$q<Q$}
+  \State Chọn năm ưu tú từ fitness thế hệ vừa đánh giá
+  \State Tạo 15 con bằng lai ngang hai cha mẹ chọn từ ưu tú
+  \State Đột biến mỗi con với xác suất $0{,}1$: Gaussian $\sigma=0{,}2$, clip về $[0,1]$
+  \State $P\gets$ năm ưu tú $\cup$ 15 cá thể con
+ \EndIf
+\EndWhile
+\State Khóa checkpoint; đánh giá held-out riêng, không cập nhật patch
+\end{algorithmic}
+\medskip\centering
+\begin{tikzpicture}[node distance=4mm,box/.style={draw,rounded corners,align=center,text width=3.25cm,font=\footnotesize,minimum height=10mm},>=Latex]
+\node[box] (opt) {Bốn ảnh tối ưu\\vị trí + GA + EOT};
+\node[box,right=of opt] (lock) {Đủ lượt ảnh\\khóa patch + hash};
+\node[box,right=of lock] (eval) {Đánh giá độc lập\\OLD128 / X1-500};
+\node[box,right=of eval] (out) {Ứng viên, AP\\timing / QoS riêng};
+\draw[->] (opt)--(lock);\draw[->] (lock)--(eval);\draw[->] (eval)--(out);
+\end{tikzpicture}
+\par\smallskip\footnotesize Không có phản hồi từ tập kiểm tra về tối ưu. EOT kiểm tra dùng mẫu mới; timing/QoS khai cohort riêng.
+\end{algorithm*}
+
+\subsection{Biến đổi phần mềm và đánh giá độc lập}
+
+Expectation over Transformation (EOT) được dùng theo nghĩa tối ưu dưới biến đổi phần mềm. Ảnh sau chèn chịu xoay trong biên $\pm15°$ với xác suất 0,8, jitter độ sáng/tương phản 0,2 với xác suất 0,8, mờ Gaussian $3\times3$ với xác suất 0,5 và nhiễu Gaussian độ lệch chuẩn 0,02. Biến đổi tác động lên toàn ảnh, không mô phỏng đầy đủ in ấn, phối cảnh, bề mặt áo hoặc chuỗi camera vật lý.
+
+Đánh giá ảnh gốc giữ miếng dán cố định và tắt EOT. Một phép đo độc lập khác dùng tám ảnh kiểm tra, 16 mẫu EOT mới trên mỗi ảnh; tham số biến đổi và nhiễu được ghép giữa sạch và có miếng dán. Các mẫu mới không được dùng để cập nhật miếng dán. Phân biệt này ngăn việc dùng điểm tối ưu đã được chọn như bằng chứng về độ bền ngoài mẫu.
+
+\section{Thiết kế thực nghiệm và thống kê}
+
+\subsection{Phạm vi testbed và các cohort}
+Sponge/NMS dùng CPU laptop Intel Core i5-1335U, YOLOv8n và ảnh $320\times320$, trong môi trường mô phỏng hạn chế tài nguyên. Số luồng phần mềm chưa phải ghim core hay hiệu chỉnh thiết bị edge/ARM.
+\ifbranchB
+Nhánh A kiểm tra Sponge/NMS trên CPU laptop Intel Core i5-1335U với YOLOv8n và ảnh $320\times320$. Nhánh B lựa chọn detector trên GPU RTX 5060, ảnh 416 px và target person. Hai nhánh dùng dữ liệu, số lớp, mục tiêu và ranh giới thời gian khác nhau; không gộp AP hoặc latency để tạo một hiệu ứng chung. Laptop CPU cũng không được đổi nhãn thành Raspberry Pi hoặc máy chủ biên cũ.
+
+\begin{table*}[t]
+\centering
+\small
+\caption{Phân biệt giao thức Sponge và benchmark detector bổ sung.}
+\begin{tabularx}{\textwidth}{@{}X X X @{}}
+\toprule
+\textbf{Thuộc tính} & \textbf{Nhánh A: Sponge/NMS} & \textbf{Nhánh B: phát hiện người} \\
+\midrule
+Mục tiêu & Ứng viên, AP, chi phí và QoS sạch--patch & Chất lượng, ngân sách học và latency detector \\
+Mô hình & YOLOv8n; chuyển giao sáu detector & YOLO11n, YOLOv12n, YOLOv13n/s \\
+Dữ liệu & Bốn ảnh tối ưu; 128 ảnh COCO val2017 kiểm tra & 11.123 ảnh COCO + AdvT-shirt \\
+Đầu vào & $320\times320$; patch cơ sở $64\times64$ & 416 px; target một lớp person \\
+Lặp & 10 seed miếng dán & 5 seed mỗi model; 20 quỹ đạo \\
+Thiết bị & CPU laptop i5-1335U & RTX 5060, 7,96 GiB VRAM \\
+Ngân sách & 400/1.000/2.500 lượt ảnh & 5/10/20/30/60/120 phút theo CSV \\
+Đánh giá & COCO AP hộp; thresholds/cap công bố riêng & Test 1.668 ảnh; latency batch 1 FP32 \\
+\bottomrule
+\end{tabularx}
+\end{table*}
+\else
+\begin{table*}[t]\centering\small
+\caption{Các phép thử tách theo cohort, đại lượng và boundary.}
+\begin{tabularx}{\textwidth}{@{}l X c X@{}}\toprule
+Cohort & Vai trò / đại lượng & Ảnh; seed & Giao thức \\
+\midrule
+OLD128 & So sánh ứng viên/AP trước mở rộng & 128; 10 & q400/q2500; q1000: 32 ảnh \\
+X1-500 & Mở rộng sau quan sát OLD128 & 500; 10 & q400/q2500; q1000: 32 ảnh \\
+OLD128 chuyển giao & Tỷ số thời gian tensor; sáu detector & 16; 10 & Không phải candidate ratio \\
+X2 & Số lượng tại boundary; tám detector & 64--100; 5 & YOLO trước NMS; torchvision sau NMS nội bộ \\
+\bottomrule\end{tabularx}\label{tab:cohorts}\end{table*}
+\fi
+
+\subsection{Tập ảnh và đối chứng của nhánh A}
+
+Bốn ảnh COCO128 dùng để tối ưu; bộ held-out gồm 500 ID nhỏ nhất của COCO val2017, không giao ID với tập tối ưu. Bản annotations 500 ảnh có 3.541 chú thích và 80 danh mục, giữ crowd/ignore gốc. Chưa xác định lịch sử lựa chọn trọng số pretrained, nên không khẳng định độc lập hoàn toàn với pretraining.
+
+OLD128 (\path{outputs/extended_q1_20261002}) dùng 128 ảnh con của 500 ID ở q400/q2500, q1000 dùng 32 ảnh. Bốn phương pháp chính cùng diện tích 4\%, objective và ngân sách 400/1.000/2.500 lượt ảnh, mỗi cấu hình 10 seed. Lượt OLD128 có 16 cấu hình, 160 lượt tối ưu, 240 checkpoint và 250 ca đánh giá chính gồm đối chứng sạch.
+
+Sau kết quả OLD128 $p=0{,}1504$, X1-500 (\path{outputs/x1_500img_20261018}) mở rộng q400/q2500 lên 500 ảnh nhằm tăng thông tin thống kê và độ chính xác ước lượng; q1000 vẫn có 32 ảnh. Đây là mở rộng sau quan sát trên các cohort lồng nhau, không phải tái lập độc lập. Mục tiêu tăng công suất không đồng nghĩa đạt đủ công suất: số seed vẫn bằng 10 và chưa có bảo đảm công suất tiến cứu. X2 dành riêng cho \path{outputs/x2_architecture_20261020}.
+
+\subsection{AP và ranh giới thời gian}
+
+Nhánh A sử dụng COCOeval bbox, IoU 0,50--0,95, ánh xạ lớp về ID COCO gốc và maxDets 1/10/100. Dự đoán được đưa từ ảnh co vuông về kích thước nguồn, cắt theo biên. Đây là kết quả evaluator COCO trên cohort tương ứng (128 hoặc 500 ảnh; q1000: 32 ảnh), không phải toàn bộ 5.000 ảnh val2017. AP được tính gộp ảnh trong từng seed trước khi lấy trung bình giữa seed.
+
+Hậu xử lý chính có IoU NMS 0,45, NMS không phân biệt lớp và tối đa 300 phát hiện đầu ra. Top-$k$ cắt ứng viên trước NMS khác giới hạn phát hiện sau NMS hoặc giới hạn maxDets của evaluator. Mỗi ảnh có khởi động và ba lượt đo suy luận; lọc/NMS được đo riêng trên dự đoán đã lưu. Không cộng hai trung vị thành độ trễ toàn trình. Phép đo xử lý tensor chung ở backend gồm suy luận, giải mã đầu ra, lọc và NMS; đọc ảnh, chèn patch và camera nằm ngoài ranh giới này.
+
+\subsection{Giả thuyết và đơn vị suy luận}
+So sánh chính là SG-GA trừ GA tâm về tỷ số ứng viên tại 2.500 lượt ảnh, ngưỡng 0,01 và không cap. Tỷ số theo từng ảnh được trung bình trong seed, mẫu số sạch chặn tối thiểu bằng 1. Giả thuyết và ngưỡng cải thiện thực tiễn $+0{,}10$ đã có trong giao thức cục bộ trước đánh giá theo timestamp manifest, chưa đăng ký công khai. X1-500 là mở rộng sau kết quả OLD128, không là xác nhận độc lập tiến cứu.
+
+\begin{equation}
+\begin{aligned}
+R_s&=\frac1n\sum_j\frac{N_\tau(A(x_j,p_s,l_j))}{\max(1,N_\tau(x_j))},\\
+\Delta_s&=R_s^{\mathrm{SG}}-R_s^{\text{tâm}}.
+\end{aligned}
+\tag{3}
+\end{equation}
+Kết quả chính theo cohort:
+\begin{itemize}
+\item OLD128: chênh lệch trung bình $\mathbf{-0{,}0051}$;\newline CI bootstrap ghép cặp 95\% $\mathbf{[-0{,}0112;0{,}0007]}$;\newline $p$ đảo dấu chính xác $\mathbf{0{,}1504}$; $d_z=\mathbf{-0{,}4984}$.
+\item X1-500: chênh lệch trung bình $\mathbf{-0{,}0293}$;\newline CI $\mathbf{[-0{,}0383;-0{,}0216]}$; $p=\mathbf{0{,}001953125}$; $d_z=\mathbf{-2{,}0546}$.
+\item OLD128 chưa hỗ trợ ưu thế SG-GA; X1-500 ghi nhận tỷ số ứng viên SG-GA thấp hơn GA tâm, điều kiện trên bộ ảnh và cấu hình cố định. Hai chênh lệch cùng âm nhưng khác độ lớn và mức bằng chứng; không suy nguyên nhân hoặc tính tương đương.
+\item Các phép đo dịch vụ hiện có chưa cho thấy suy giảm tính sẵn sàng do Sponge Patch; chứng minh DoS đầu--cuối thuộc hướng phát triển.
+\end{itemize}
+Cohen $d_z=\bar\Delta/s_\Delta$, với $s_\Delta$ là SD mẫu (\texttt{ddof=1}) của 10 chênh lệch theo seed. Phân tích dùng 20.000 bootstrap resamples và toàn bộ $2^{10}=1.024$ cấu hình đảo dấu hai phía, dưới giả định đối xứng dấu của chênh lệch dưới giả thuyết không. CI điều kiện trên bộ ảnh/mô hình/phần cứng cố định; thêm ảnh hoặc timing repeats không tăng số seed. Mỗi cohort có family 15 so sánh thứ cấp dùng Holm; không coi đây là correction cho mọi phép thăm dò trong repo. Chênh lệch giữa tanh và GA gợi ý cần kiểm tra objective và optimizer; thiết kế chưa phân biệt nguyên nhân vì tanh khác cả quyền truy cập lẫn bộ tối ưu.
+
+\subsection{Luồng phần mềm và tiêu chí dịch vụ}
+
+Luồng phần mềm dùng một bộ phát ảnh theo lịch và một worker suy luận thực. Có 240 lượt: 10 seed, hai chu kỳ 100/300 ms, bốn điều kiện và ba chính sách FIFO, bỏ khi bận, điều tiết thích nghi. Mỗi lượt phát 32 ảnh theo thứ tự ghép cặp trong seed, thời hạn 300 ms tính từ mốc phát theo lịch. Đây là thực thi đồng thời có timestamp đơn điệu, khác mô hình hàng đợi ngoại tuyến dựng từ service time, nhưng chưa gồm camera.
+
+Chính sách thích nghi chỉ dùng thời gian xử lý đã hoàn tất, cập nhật trung bình trượt mũ với hệ số 0,25 và đặt khoảng nhận không nhỏ hơn chu kỳ phát hoặc 1,2 lần thời gian ước lượng, tối đa 600 ms. Tỷ lệ thiếu/trễ tính trên toàn bộ ảnh đã phát; AP toàn luồng xem ảnh bị bỏ là dự đoán rỗng, AP đúng hạn xem cả ảnh bị bỏ và trễ là rỗng. Nhờ đó, bỏ ảnh không được che dưới một tỷ lệ trễ thấp chỉ tính trên phần còn xử lý.
+
+Tiêu chí suy giảm đánh dấu throughput đúng hạn dưới 80\% tốc độ phát hoặc tỷ lệ thiếu/trễ trên 10\%; tiêu chí phục hồi còn yêu cầu AP đúng hạn không thấp hơn sạch FIFO ghép cặp quá hai điểm phần trăm. Một điều kiện không đạt tiêu chí chưa xác định nguyên nhân do tấn công: cần so với ảnh sạch ở cùng tải. Các kiểm định chính sách là thăm dò, chưa hiệu chỉnh nhóm 48 phép so sánh đã lưu.
+
+\section{Kết quả kiểm chứng Sponge Patch}
+
+\subsection{Tối ưu cùng ngân sách và vai trò của vị trí}
+
+Tại 2.500 lượt ảnh, OLD128 chưa hỗ trợ ưu thế SG-GA so với GA tâm ($p=0{,}1504$). Trên X1-500, tỷ số SG-GA $1{,}0268$ thấp hơn GA tâm $1{,}0561$; chênh lệch $-0{,}029335$, CI 95\% $[-0{,}038328;-0{,}021598]$, $p=0{,}001953125$. Kết quả điều kiện này không hỗ trợ lợi thế heuristic Laplacian. Hai cohort lồng nhau cho chênh lệch cùng âm nhưng khác độ lớn; không coi mở rộng sau quan sát là xác nhận độc lập.
+
+\begin{table*}[t]\centering\small
+\caption{Hai cohort lồng nhau tại q2500, ngưỡng 0,01, không cap; trung bình $\pm$ SD theo 10 seed. AP là phần trăm.}
+\begin{tabularx}{\textwidth}{@{}l X c c@{}}\toprule Cohort & Điều kiện & Tỷ số ứng viên & AP hộp (\%) \\ \midrule
+OLD128 & Sạch & $1{,}0000$ & $34{,}08$ \\
+OLD128 & SG-GA & $1{,}0278\pm0{,}0083$ & $29{,}97\pm0{,}47$ \\
+OLD128 & GA tâm & $1{,}0329\pm0{,}0093$ & $25{,}88\pm0{,}46$ \\
+OLD128 & GA vị trí ngẫu nhiên & $1{,}0519\pm0{,}0092$ & $30{,}27\pm0{,}64$ \\
+OLD128 & Tìm kiếm ngẫu nhiên & $1{,}0268\pm0{,}0072$ & $29{,}93\pm0{,}26$ \\
+\midrule
+X1-500 & Sạch & $1{,}0000$ & $30{,}27$ \\
+X1-500 & SG-GA & $1{,}0268\pm0{,}0074$ & $26{,}20\pm0{,}20$ \\
+X1-500 & GA tâm & $1{,}0561\pm0{,}0123$ & $24{,}61\pm0{,}12$ \\
+X1-500 & GA vị trí ngẫu nhiên & $1{,}0707\pm0{,}0143$ & $27{,}33\pm0{,}41$ \\
+X1-500 & Tìm kiếm ngẫu nhiên & $1{,}0250\pm0{,}0040$ & $26{,}28\pm0{,}10$ \\
+\bottomrule\end{tabularx}\label{tab:sponge_primary}\end{table*}
+
+Ở OLD128, AP sạch $34{,}08\%$, SG-GA $29{,}97\%$, GA tâm $25{,}88\%$; ở X1-500 tương ứng $30{,}27\%$, $26{,}20\%$, $24{,}61\%$. AP giảm trên từng cohort không tự xác nhận DoS. Trong OLD128, trung bình tỷ số theo ảnh tăng nhẹ, dù số ứng viên trung bình giảm $133{,}29\to131{,}05$; hai phép gộp có trọng số khác nhau và không được diễn giải như cùng đại lượng.
+
+\begin{figure*}[t]\centering
+\begin{tikzpicture}
+\begin{axis}[width=.47\textwidth,height=5.2cm,xmin=.98,xmax=1.09,ytick={0,1,2,3},yticklabels={SG-GA,Center GA,Random-location GA,Random search},yticklabel style={font=\scriptsize},xlabel={Candidate ratio},title={OLD128},grid=major]
+\addplot+[only marks,mark=*,error bars/.cd,x dir=both,x explicit] coordinates {(1.027801812208,0) +=(0.004804928939,0) -=(0.004915891962,0)};
+\addplot+[only marks,mark=*,error bars/.cd,x dir=both,x explicit] coordinates {(1.032934168234,1) +=(0.005241876083,0) -=(0.005528929870,0)};
+\addplot+[only marks,mark=*,error bars/.cd,x dir=both,x explicit] coordinates {(1.051862066228,2) +=(0.005147133826,0) -=(0.005679726790,0)};
+\addplot+[only marks,mark=*,error bars/.cd,x dir=both,x explicit] coordinates {(1.026812727875,3) +=(0.004667359387,0) -=(0.003823626147,0)};
+\addplot[black,dashed] coordinates {(1,-.4) (1,3.4)};
+\end{axis}\end{tikzpicture}
+\begin{tikzpicture}
+\begin{axis}[width=.47\textwidth,height=5.2cm,xmin=.98,xmax=1.09,ytick={0,1,2,3},yticklabels={SG-GA,Center GA,Random-location GA,Random search},yticklabel style={font=\scriptsize},xlabel={Candidate ratio},title={X1-500},grid=major]
+\addplot+[only marks,mark=*,error bars/.cd,x dir=both,x explicit] coordinates {(1.026786651347,0) +=(0.004315496427,0) -=(0.004291370664,0)};
+\addplot+[only marks,mark=*,error bars/.cd,x dir=both,x explicit] coordinates {(1.056121749466,1) +=(0.007909821344,0) -=(0.006394492242,0)};
+\addplot+[only marks,mark=*,error bars/.cd,x dir=both,x explicit] coordinates {(1.070651390518,2) +=(0.008112437571,0) -=(0.008562521403,0)};
+\addplot+[only marks,mark=*,error bars/.cd,x dir=both,x explicit] coordinates {(1.025044887820,3) +=(0.002561345181,0) -=(0.002199250544,0)};
+\addplot[black,dashed] coordinates {(1,-.4) (1,3.4)};
+\end{axis}\end{tikzpicture}
+\caption{Tỷ số ứng viên q2500 trên OLD128 và X1-500, cùng diện tích 4\%, 10 seed và ngưỡng 0,01. Thanh sai số là bootstrap 95\% theo seed; đường 1 là ảnh sạch. X1-500 mở rộng OLD128, không phải mẫu độc lập. Đây không phải tỷ số latency.}
+\label{fig:candidates}\end{figure*}
+
+Trong family 15 so sánh thứ cấp X1-500, SG-GA trừ GA vị trí ngẫu nhiên có chênh lệch $-0{,}0439$, CI $[-0{,}0545;-0{,}0338]$, $p$ Holm $=0{,}0293$; so tìm kiếm ngẫu nhiên là $0{,}0017$, CI $[-0{,}0027;0{,}0064]$, $p$ Holm $=1$. Ở OLD128, hai chênh lệch lần lượt $-0{,}0241$ ($p$ Holm $=0{,}0293$) và $0{,}0010$ ($p$ Holm $=1$). Không suy tương đương từ các kiểm định chưa hỗ trợ khác biệt.
+
+\subsection{Ngân sách và độ khái quát}
+
+Trên cùng 32 ID ảnh chung của OLD128 và X1-500, tỷ số SG-GA ở 400/1.000/2.500 lần lượt là $1{,}0004$, $1{,}0057$ và $0{,}9954$. Tăng ngân sách tìm kiếm không tạo hiệu ứng tăng đơn điệu trên tập kiểm tra. Hình~\ref{fig:budget} dùng đúng cohort chung để tránh so mức 1.000 trên 32 ảnh với các mức còn lại trên 128 hoặc 500. Các đường nối mô tả mốc đã đo, không nội suy kết quả ở ngân sách khác.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{query_budget.png}
+\caption{Tỷ số ứng viên theo ngân sách trên đúng 32 ID kiểm tra chung của OLD128 và X1-500, 10 seed mỗi phương pháp. Vùng mờ là bootstrap 95\% theo seed. Không dùng đồ thị này để so AP giữa các tập 32, 128 và 500 ảnh hoặc suy ra thời gian hội tụ.}
+\label{fig:budget}
+\end{figure*}
+
+\subsection{Diện tích và EOT}
+
+Trên X1-500 tại q400, patch $32/45/64/90/128$ trên ảnh $320\times320$ có diện tích $1{,}00/1{,}98/4{,}00/7{,}91/16{,}00\%$. Trung bình tỷ số cao nhất trong các mốc đo ở $45\times45$, không phải 4\%. Tuy vậy, so SG-GA 4\% với 1\% hoặc 1,98\% chưa cho khác biệt sau Holm. Diện tích thay cả vùng che và số chiều tìm kiếm, không chỉ một yếu tố riêng lẻ.
+
+\begin{table*}[t]
+\centering
+\small
+\caption{X1-500: diện tích trên 500 ảnh, 10 seed, q400; trung bình $\pm$ SD.}
+\begin{tabularx}{\textwidth}{@{}X c c c@{}}
+\toprule
+\textbf{Patch (px)} & \textbf{Diện tích (\%)} & \textbf{Tỷ số ứng viên} & \textbf{AP hộp (\%)} \\
+\midrule
+$32\times32$ & $1{,}00$ & $1{,}0308\pm0{,}0047$ & $29{,}07\pm0{,}13$ \\
+$45\times45$ & $1{,}98$ & $1{,}0312\pm0{,}0049$ & $27{,}91\pm0{,}08$ \\
+$64\times64$ & $4{,}00$ & $1{,}0265\pm0{,}0031$ & $26{,}28\pm0{,}22$ \\
+$90\times90$ & $7{,}91$ & $1{,}0225\pm0{,}0104$ & $23{,}31\pm0{,}20$ \\
+$128\times128$ & $16{,}00$ & $0{,}9965\pm0{,}0171$ & $18{,}19\pm0{,}10$ \\
+\bottomrule
+\end{tabularx}
+\label{tab:area}
+\end{table*}
+
+X1-500 có đủ ablation EOT q400 (Bảng~\ref{tab:eot_x1}); so sánh thứ cấp chưa hỗ trợ EOT đầy đủ vượt các ablation sau Holm. Với bốn mẫu biến đổi mỗi ảnh, số cá thể được đánh giá bằng một phần tư cấu hình một mẫu: đây còn là đánh đổi phân bổ ngân sách. Kiểm tra EOT độc lập vẫn dùng tám ảnh và 16 mẫu mới mỗi ảnh, không phải 500 ảnh; fitness patch trừ sạch của cấu hình đầy đủ q400 là $-20{,}13\pm1{,}41$. Endpoint này không phải AP dưới biến đổi hoặc độ bền vật lý.
+
+\begin{table*}[t]\centering\small
+\caption{X1-500: EOT q400 trên 500 ảnh, 10 seed; trung bình $\pm$ SD. Endpoint ảnh gốc khác kiểm tra EOT độc lập.}
+\begin{tabularx}{\textwidth}{@{}X c c@{}}\toprule Cấu hình & Tỷ số ứng viên & AP hộp (\%) \\ \midrule
+Đầy đủ & $1{,}0265\pm0{,}0031$ & $26{,}28\pm0{,}22$ \\
+Không EOT & $1{,}0309\pm0{,}0082$ & $26{,}19\pm0{,}19$ \\
+Bỏ xoay & $1{,}0331\pm0{,}0035$ & $26{,}26\pm0{,}12$ \\
+Bỏ màu & $1{,}0249\pm0{,}0071$ & $26{,}24\pm0{,}17$ \\
+Bỏ mờ & $1{,}0247\pm0{,}0059$ & $26{,}21\pm0{,}14$ \\
+Bỏ nhiễu & $1{,}0285\pm0{,}0069$ & $26{,}19\pm0{,}15$ \\
+Bốn mẫu EOT & $1{,}0272\pm0{,}0089$ & $26{,}21\pm0{,}16$ \\
+\bottomrule\end{tabularx}\label{tab:eot_x1}\end{table*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{eot_ablation.png}
+\caption{OLD128: bảy cấu hình EOT dùng cùng 400 lượt ảnh. Bên trái đo ứng viên trên ảnh gốc; bên phải đo chênh lệch fitness dưới 16 mẫu biến đổi mới trên mỗi ảnh của tám ảnh kiểm tra. Bốn mẫu EOT có ít cá thể tìm kiếm hơn; thanh sai số là bootstrap theo seed.} % Giữ cohort của ảnh lịch sử.
+\label{fig:eot}
+\end{figure*}
+
+\subsection{Chi phí xử lý và backend NMS}
+
+Ở OLD128, trên 16 ảnh, năm điều kiện, ba cấu hình 1/2/4 luồng CPU và ba lần đo mỗi ảnh, tổng 7.200 số đo tensor đã chuẩn bị không vượt ngân sách 300 ms. Với một luồng, trung vị block sạch trung bình là 51,09 ms, SG-GA 52,87 ms; mean p95 lần lượt 78,20 và 82,69 ms. Ở hai/bốn luồng, median và tail không tăng nhất quán theo patch. Thay số luồng vẫn là một máy vật lý chưa ghim core, chưa có camera và chưa hiệu chỉnh với thiết bị edge/ARM.
+
+\begin{table*}[t]
+\centering
+\small
+\caption{OLD128: Thời gian đường xử lý tensor đã chuẩn bị và ngân sách 300 ms.}
+\begin{tabularx}{\textwidth}{@{}c X c c c@{}}
+\toprule
+\textbf{Luồng CPU} & \textbf{Điều kiện} & \textbf{Mean median (ms)} & \textbf{Mean p95 (ms)} & \textbf{Trễ (\%)} \\
+\midrule
+1 & Sạch & $51{,}09$ & $78{,}20$ & $0{,}00$ \\
+1 & SG-GA & $52{,}87$ & $82{,}69$ & $0{,}00$ \\
+2 & Sạch & $78{,}66$ & $97{,}21$ & $0{,}00$ \\
+2 & SG-GA & $79{,}32$ & $94{,}11$ & $0{,}00$ \\
+4 & Sạch & $58{,}83$ & $76{,}21$ & $0{,}00$ \\
+4 & SG-GA & $58{,}94$ & $78{,}26$ & $0{,}00$ \\
+\bottomrule
+\end{tabularx}
+\label{tab:processing}
+\end{table*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.92\textwidth]{processing_budget.png}
+\caption{OLD128: Tỷ lệ lượt xử lý vượt ngân sách 300 ms theo số luồng CPU, bằng 0\% ở cả năm điều kiện. Đồng hồ gồm suy luận, giải mã, lọc và NMS trên tensor đã chuẩn bị; 10 block seed, 16 ảnh và ba lượt đo mỗi ảnh. Không gồm thu hình hoặc hàng đợi. Bảng~\ref{tab:processing} cung cấp median và p95 tương ứng.}
+\label{fig:processing}
+\end{figure*}
+
+Trong OLD128, trên tensor dự đoán cố định, ở ngưỡng 0,01 không cap, thời gian NMS sạch là $1{,}520\pm0{,}364$ ms với mã thuần PyTorch và $0{,}060\pm0{,}011$ ms với torchvision; SG-GA lần lượt $1{,}691\pm0{,}129$ và $0{,}062\pm0{,}011$ ms. Output khớp trên mẫu hữu hạn đã kiểm tra, không khẳng định tương đương mọi input hoặc tie. Chênh lệch cho thấy backend là một yếu tố thực nghiệm quan trọng; không chuyển hệ số thời gian từ mã Python/PyTorch sang backend tối ưu. Khớp output trên tensor cố định cũng không bảo đảm luôn khớp tại tie hoặc sát ngưỡng IoU.
+
+\subsection{Giao thức đo ghim core và hiệu chỉnh A/A}
+
+Để tách sai số đo khỏi hiệu ứng tấn công, chúng tôi xây dựng lại hạ tầng đo trong \path{sponge-sim/} và chạy giao thức E5 đã đăng ký trước (PREREG\_E5). CPU i5-1335U là kiến trúc lai: ánh xạ logical CPU về core vật lý/P-core/E-core/SMT đọc từ hệ điều hành, không mặc định CPU0 là P-core. Ba hồ sơ ghim: P1 (một P-core), E1 (một E-core), E4 (bốn E-core); hồ sơ chính cho các phép đo xác nhận về sau là P1\_cpu2 (logical 2, tránh CPU0 vốn gánh ngắt hệ thống). Ghim bằng \texttt{psutil.cpu\_affinity} rồi đọc lại bằng tải thực (nhân ma trận torch), không chỉ đặt \texttt{torch.set\_num\_threads}. Chế độ điện giữ Windows Balanced cho mọi phép đo; đồng hồ \texttt{perf\_counter\_ns}, tắt gc trong vùng đo, bỏ warm-up, thứ tự sạch--sạch ghép cặp ABBA trong ảnh, benchmark tham chiếu đầu/giữa/cuối gắn cờ trôi 3\%.
+
+Phép hiệu chỉnh A/A so sạch với sạch trên 100 ảnh held-out để đo sàn sai số và tính MDE (hiệu ứng nhỏ nhất phát hiện được ở công suất 80\%). Bảng~\ref{tab:aa} trình bày tỷ số A/A, CI 95\% và MDE theo công đoạn. Trên hồ sơ ổn định nhất (P1), MDE toàn trình là $0{,}59\%$ và MDE công đoạn NMS (mã thuần PyTorch) là $1{,}07\%$: một hiệu ứng tấn công nhỏ hơn các mức này sẽ chìm dưới sai số đo của chính testbed. Hai trong 21 khoảng tin cậy không chứa 1 (P1 toàn trình, E4 NMS thuần), xấp xỉ kỳ vọng ngẫu nhiên ở mức 95\% và không hiệu chỉnh đa so sánh. Hồ sơ E4 có MDE lớn ($6{,}1$--$7{,}5\%$) và được ghi là ``ghim đúng tập CPU, song song không xác minh'' (effective\_cores $=0{,}96$ trong phiên đo), nên không dùng để kết luận về số core. Tỷ phần NMS thuần trên toàn trình (ảnh sạch) có trung vị $2{,}1\%$ (P1), $3{,}0\%$ (E1), $4{,}0\%$ (E4); cực đại $19$--$32\%$.
+
+\begin{table*}[t]
+\centering
+\small
+\caption{Hiệu chỉnh A/A (sạch so sạch, 100 ảnh, 30 lặp/ảnh): tỷ số, CI 95\% và MDE theo công đoạn và hồ sơ ghim. Tỷ số gần 1 là không có chênh lệch hệ thống; MDE là ngưỡng dưới của hiệu ứng có thể phát hiện.}
+\begin{tabularx}{\textwidth}{@{}l l c c c@{}}
+\toprule
+\textbf{Hồ sơ} & \textbf{Công đoạn} & \textbf{Tỷ số A/A} & \textbf{CI 95\%} & \textbf{MDE (\%)} \\
+\midrule
+P1 & Toàn trình        & $0{,}9960$ & $[0{,}9920;1{,}0000]$ & $0{,}59$ \\
+P1 & Forward           & $1{,}0002$ & $[0{,}9963;1{,}0042]$ & $0{,}58$ \\
+P1 & NMS thuần PyTorch & $1{,}0006$ & $[0{,}9935;1{,}0080]$ & $1{,}07$ \\
+P1 & NMS torchvision   & $0{,}9948$ & $[0{,}9867;1{,}0029]$ & $1{,}18$ \\
+E1 & Toàn trình        & $1{,}0005$ & $[0{,}9919;1{,}0092]$ & $1{,}27$ \\
+E1 & Forward           & $1{,}0081$ & $[0{,}9953;1{,}0220]$ & $1{,}94$ \\
+E4 & Toàn trình        & $0{,}9875$ & $[0{,}9476;1{,}0279]$ & $6{,}13$ \\
+E4 & NMS thuần PyTorch & $0{,}9758$ & $[0{,}9531;0{,}9984]$ & $3{,}47$ \\
+\bottomrule
+\end{tabularx}
+\label{tab:aa}
+\end{table*}
+
+Áp dụng bootstrap hai tầng (ảnh $\times$ seed) cho so sánh chính làm rõ phần bất định do ảnh mà CI theo seed bỏ sót (phân tích post-hoc). Ở X1-500, chênh lệch SG-GA trừ GA tâm có CI hai tầng $[-0{,}0580;-0{,}0024]$ (rộng gấp $3{,}35$ lần CI theo seed, vẫn không chứa 0; $54{,}2\%$ số ảnh có trung bình chênh âm). Ở OLD128, CI hai tầng là $[-0{,}0466;+0{,}0379]$ (chứa 0, rộng gấp $7{,}03$ lần). So với tìm kiếm ngẫu nhiên, SG-GA có CI hai tầng $[-0{,}0038;+0{,}0074]$ chứa 0: SG-GA không khác tìm kiếm ngẫu nhiên, và thấp hơn cả GA vị trí ngẫu nhiên ($[-0{,}0889;-0{,}0124]$). Kết quả âm được giữ nguyên.
+
+\subsection{Proxy số ứng viên và độ trễ: phụ thuộc điều kiện}
+
+Ba phân tích thăm dò trên dữ liệu đã lưu (chưa ghim core, ghi nhãn rõ) cho thấy quan hệ giữa số ứng viên $N_\tau$ và độ trễ phụ thuộc mạnh vào backend và công đoạn, và chỉ một phần nhỏ toàn trình nằm ở hậu xử lý.
+
+\textbf{Lát cắt theo điều kiện (R2, OLD128).} Ở $\tau=0{,}01$ không cap, tương quan hạng giữa $N$ và thời gian NMS là $\rho=0{,}865$ $[0{,}692;0{,}923]$ với mã thuần, nhưng $\rho=0{,}603$ $[0{,}463;0{,}692]$ với torchvision; trung vị thời gian NMS là $1{,}641$ ms (thuần) so với $0{,}0579$ ms (torchvision), chênh khoảng 28 lần. Hậu xử lý chỉ chiếm trung vị $3{,}4\%$ toàn trình (một luồng), nên tương quan giữa $N$ và toàn trình yếu hơn nhiều: $\rho=0{,}327$ $[0{,}167;0{,}458]$. Không lượt nào trong 2.400 bản ghi mỗi cấu hình luồng vượt 300 ms. $N_\tau$ theo dõi được chi phí NMS (tùy backend) nhưng NMS là phần nhỏ của toàn trình trên CPU này.
+
+\textbf{Biến thể tham chiếu (R3, lịch sử, YOLOv5s 640, UAP toàn ảnh).} Hai biến thể Overload/Phantom thích nghi (mô hình, kích thước, quyền truy cập và ràng buộc khác SG-GA; chỉ so nội bộ, không xếp hạng xuyên mối đe dọa) đẩy $N_\tau$ trung vị từ 42 lên $5.490$/$4.365$, tức tỷ số $N$ trung bình $349{,}0$ $[119{,}7;746{,}3]$ và $308{,}2$ $[94{,}8;675{,}9]$. Hậu xử lý tăng khoảng $3$ lần ($3{,}18$ $[2{,}80;3{,}58]$; $3{,}27$ $[2{,}84;3{,}72]$), nhưng tỷ số toàn trình chỉ là $1{,}022$ $[1{,}002;1{,}039]$ và $1{,}056$ $[1{,}024;1{,}099]$. Tương quan hạng giữa $N$ và toàn trình gần như không có ($\rho=0{,}038$; $0{,}086$) dù giữa $N$ và hậu xử lý thì mạnh ($\rho=0{,}836$; $0{,}816$). Nói cách khác, tăng $N_\tau$ ba trăm lần chỉ kèm theo tăng toàn trình $2$--$6\%$ trong cấu hình CPU này (Hình~\ref{fig:r3decouple}). Vì CI tỷ số toàn trình không chứa 1, không kết luận ``không có tác động'', mà kết luận hẹp: $N_\tau$ đơn độc không dự đoán được độ trễ toàn trình phát hiện.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.8\textwidth]{r3_ratio_decoupling.png}
+\caption{Biến thể tham chiếu (R3, thăm dò, dữ liệu lịch sử, YOLOv5s 640, UAP toàn ảnh; mô hình và mối đe dọa khác SG-GA, không xếp hạng xuyên mối đe dọa). Tỷ số patched/clean theo thang log, trung bình trên 32 ảnh $\times$ 10 seed với CI hai tầng. Số ứng viên $N_\tau$ tăng khoảng 300--350 lần và hậu xử lý tăng khoảng 3 lần, nhưng tỷ số toàn trình chỉ $1{,}02$--$1{,}06$ (sát đường đứt nét ở 1). Vì CI tỷ số toàn trình không chứa 1 nên không kết luận ``không có tác động''; điểm cốt lõi là $N_\tau$ tách khỏi độ trễ toàn trình trong cấu hình CPU này.}
+\label{fig:r3decouple}
+\end{figure*}
+
+
+\textbf{Giữa ảnh so với trong ảnh (E2a, post-hoc).} Trên dữ liệu lịch sử, $N$ dự đoán tốt thời gian NMS \emph{giữa} các ảnh (tương quan hạng $\rho=0{,}938$ $[0{,}922;0{,}950]$ trên ảnh sạch, backend thuần), nhưng \emph{trong} một ảnh, biến thiên $\Delta N$ do miếng dán tạo ra nhỏ và chỉ tương quan yếu với biến thiên thời gian ($\rho\approx0{,}12$ cho cả bốn phương pháp, không đảo dấu Simpson). Phần độ trễ gán cho tấn công (trung bình $0{,}05$--$0{,}13$) chồng lấn với phần đo được khi so sạch với sạch (A/A, trung bình $0{,}044$ $[-0{,}015;0{,}137]$). Do đó dữ liệu lịch sử chưa ghim core không tách được độ trễ do tấn công khỏi nhiễu đo; đây là lý do cần giao thức ghim core (E5) và phép tiêm hộp đồng bộ trong cùng pipeline (đối chứng dương, thuộc hướng tiếp theo). Không kết luận ``$N_\tau$ không dự đoán độ trễ'' một cách tuyệt đối từ các lát cắt này.
+
+\subsection{Dịch vụ dưới luồng đầu vào}
+
+Các phép đo stream dưới đây thuộc OLD128. Ở chu kỳ 100 ms, FIFO sạch đã thiếu/trễ 85,31\% ảnh; SG-GA 2.500 có 85,00\%. So sánh này không cho phép quy quá tải cho patch vì baseline đã vượt năng lực xử lý theo giao thức. Bỏ khi bận giảm chờ nhưng làm mất xấp xỉ một nửa đầu vào, còn điều tiết thích nghi vẫn chưa đạt đồng thời tiêu chí throughput và AP.
+
+Ở chu kỳ 300 ms, FIFO sạch và các patch đều hoàn thành đúng hạn, throughput 3,33 ảnh/s. Tuy vậy AP đúng hạn của patch thấp hơn sạch, cho thấy suy giảm toàn vẹn có thể tồn tại khi thời hạn dịch vụ vẫn được đáp ứng. Nhánh thích nghi bỏ 35,63\% đầu vào ngay trên sạch ở chu kỳ này, dù FIFO đáp ứng; quy tắc khoảng nhận nhạy với dao động mốc đến. Không mô tả nó là một phòng thủ thành công chỉ vì worker ít bận hơn. FIFO300 có 0\% thiếu/trễ trong các điều kiện đã đo, không chứng minh an toàn ở mọi tải hoặc thiết bị; phần bỏ ảnh thích nghi là artifact cần sửa trước đánh giá phòng thủ.
+
+\begin{table*}[t]
+\centering
+\small
+\caption{OLD128: Dịch vụ theo toàn bộ ảnh phát: sạch và SG-GA.}
+\begin{tabularx}{\textwidth}{@{}c X X c c c c@{}}
+\toprule
+\textbf{Chu kỳ} & \textbf{Chính sách} & \textbf{Điều kiện} & \textbf{Bỏ (\%)} & \textbf{Thiếu/trễ (\%)} & \textbf{Đúng hạn (ảnh/s)} & \textbf{AP đúng hạn (\%)} \\
+\midrule
+100 & FIFO & Sạch & $0{,}00$ & $85{,}31$ & $1{,}08$ & $5{,}55$ \\
+100 & FIFO & SG-GA 2.500 & $0{,}00$ & $85{,}00$ & $1{,}13$ & $5{,}57$ \\
+100 & Bỏ khi bận & Sạch & $50{,}94$ & $50{,}94$ & $4{,}89$ & $19{,}49$ \\
+100 & Bỏ khi bận & SG-GA 2.500 & $49{,}38$ & $49{,}38$ & $5{,}00$ & $18{,}98$ \\
+100 & Điều tiết & Sạch & $55{,}31$ & $55{,}31$ & $4{,}45$ & $18{,}60$ \\
+100 & Điều tiết & SG-GA 2.500 & $52{,}50$ & $52{,}50$ & $4{,}73$ & $15{,}49$ \\
+300 & FIFO & Sạch & $0{,}00$ & $0{,}00$ & $3{,}33$ & $38{,}67$ \\
+300 & FIFO & SG-GA 2.500 & $0{,}00$ & $0{,}00$ & $3{,}33$ & $34{,}38$ \\
+300 & Bỏ khi bận & Sạch & $0{,}00$ & $0{,}00$ & $3{,}33$ & $38{,}67$ \\
+300 & Bỏ khi bận & SG-GA 2.500 & $0{,}31$ & $0{,}62$ & $3{,}31$ & $34{,}24$ \\
+300 & Điều tiết & Sạch & $35{,}62$ & $35{,}62$ & $2{,}15$ & $24{,}76$ \\
+300 & Điều tiết & SG-GA 2.500 & $37{,}81$ & $37{,}81$ & $2{,}07$ & $22{,}88$ \\
+\bottomrule
+\end{tabularx}
+\label{tab:stream}
+\end{table*}
+
+\subsection{Đánh đổi phòng thủ và đối chứng mạnh hơn}
+
+Các số đánh đổi dưới đây thuộc OLD128. Giới hạn top-100 giảm công việc hậu xử lý nhưng cũng giảm AP và AR100. Trên sạch, AP từ $34{,}08\%$ xuống $33{,}36\%$, AR100 từ $40{,}79\%$ xuống $38{,}91\%$; thời gian lọc/NMS từ $3{,}40$ xuống $2{,}05$ ms. Tăng ngưỡng lên 0,25 giảm chi phí hơn nhưng AP còn $28{,}54\%$. Các giá trị của SG-GA có xu hướng đánh đổi tương tự; đây là thay cấu hình hậu xử lý, không phải một bảo đảm phòng thủ phổ quát.
+
+\begin{table*}[t]
+\centering
+\small
+\caption{OLD128: Đánh đổi ngưỡng/cap với chất lượng và hậu xử lý.}
+\begin{tabularx}{\textwidth}{@{}X c c c c@{}}
+\toprule
+\textbf{Điều kiện} & \textbf{$\tau$} & \textbf{Top-k} & \textbf{AP (\%)} & \textbf{Lọc+NMS (ms)} \\
+\midrule
+Sạch & $0{,}01$ & Không cap & $34{,}08$ & $3{,}40$ \\
+Sạch & $0{,}01$ & 100 & $33{,}36$ & $2{,}05$ \\
+Sạch & $0{,}25$ & Không cap & $28{,}54$ & $0{,}78$ \\
+SG-GA 2.500 & $0{,}01$ & Không cap & $29{,}97$ & $3{,}25$ \\
+SG-GA 2.500 & $0{,}01$ & 100 & $29{,}23$ & $2{,}04$ \\
+SG-GA 2.500 & $0{,}25$ & Không cap & $24{,}72$ & $0{,}81$ \\
+\bottomrule
+\end{tabularx}
+\label{tab:defense}
+\end{table*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{defense_tradeoff.png}
+\caption{OLD128: Đánh đổi hậu xử lý và độ chính xác trên tập con val2017 có nhãn. AP tính gộp ảnh trước khi trung bình theo seed; đồ thị mô tả trung bình, không có thanh sai số. Nhánh thích nghi chỉ so trực tiếp với SG-GA cùng 400 lượt ảnh.}
+\label{fig:defense}
+\end{figure*}
+
+Tanh q400 có tỷ số $1{,}1552$ ở OLD128 (128 ảnh), so SG-GA q400 $1{,}0303$ trên cùng cohort; AP tương ứng $28{,}62\%$ và $30{,}17\%$. Ở X1-500 (500 ảnh), tanh q400 đạt $1{,}1987$, so SG-GA q400 $1{,}0265$; AP tương ứng $25{,}58\%$ và $26{,}28\%$. Không đặt tanh 500 ảnh cạnh SG-GA 128 ảnh như cùng giao thức. Tanh đọc gradient và dùng bộ tối ưu khác; chênh lệch gợi ý cần kiểm tra objective và optimizer, chưa xác định nguyên nhân. Phantom cục bộ OLD128 q400 có ratio $1{,}0286$, chênh lệch Phantom trừ SG-GA $-0{,}0016$, CI $[-0{,}0054;0{,}0019]$; chưa có căn cứ suy tương đương. Đây là adapted baselines, không phải tái lập toàn bộ thí nghiệm nguyên bản.
+
+\subsection{Chuyển giao: latency OLD128 và số lượng X2}
+\subsubsection{Tỷ số thời gian tensor đã chuẩn bị trong OLD128}
+Phép thử thứ nhất dùng sáu detector, 16 ảnh và 10 miếng dán nguồn. Đại lượng là trung bình tỷ số thời gian tensor đã chuẩn bị sạch--patch bên trong từng detector, không phải tỷ số ứng viên; giữ normalization/hậu xử lý riêng. DETR ResNet50 không có NMS. Bảng~\ref{tab:transfer} và Hình~\ref{fig:transfer} thuộc phép thử OLD128 này.
+
+\begin{table*}[t]
+\centering
+\small
+\caption{OLD128, sáu detector, 16 ảnh, 10 patch nguồn: Chuyển giao: tỷ số latency bên trong từng detector.}
+\begin{tabularx}{\textwidth}{@{}X c c c c@{}}
+\toprule
+\textbf{Detector} & \textbf{Tỷ số latency} & \textbf{CI bootstrap 95\%} & \textbf{AP sạch (\%)} & \textbf{AP patch (\%)} \\
+\midrule
+YOLOv8n (nguồn) & $1{,}0180$ & $[1{,}0011;1{,}0355]$ & $36{,}28$ & $29{,}43$ \\
+YOLOv8s & $1{,}0084$ & $[0{,}9962;1{,}0194]$ & $47{,}43$ & $38{,}20$ \\
+SSDLite MobileNetV3 & $1{,}0066$ & $[0{,}9891;1{,}0243]$ & $26{,}62$ & $24{,}45$ \\
+Faster R-CNN MobileNetV3 & $1{,}0419$ & $[1{,}0274;1{,}0554]$ & $27{,}16$ & $23{,}56$ \\
+RetinaNet ResNet50 & $1{,}0071$ & $[0{,}9990;1{,}0136]$ & $35{,}17$ & $30{,}37$ \\
+DETR ResNet50 & $0{,}9969$ & $[0{,}9886;1{,}0050]$ & $31{,}37$ & $26{,}99$ \\
+\bottomrule
+\end{tabularx}
+\label{tab:transfer}
+\end{table*}
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{transferability.png}
+\caption{OLD128: Chuyển giao trên cùng 16 ảnh và 10 miếng dán nguồn. So sánh tỷ số độ trễ ghép cặp bên trong từng mô hình, có normalization/hậu xử lý riêng; không xếp hạng latency tuyệt đối giữa kiến trúc. DETR không có NMS.}
+\label{fig:transfer}
+\end{figure*}
+
+\subsubsection{Số lượng tại boundary từng adapter trong X2}
+X2 dùng tám detector đã có artifact và năm patch nguồn (seed 0--4). YOLOv8n/v8s/YOLO11n dùng 100 ảnh; các detector còn lại dùng 64 ảnh. Chỉ YOLO trả \texttt{pre\_nms\_head}; Faster R-CNN, RetinaNet và SSDlite trả \texttt{post\_module\_\allowbreak{}detections}, đã qua NMS nội bộ. Không có kết quả RT-DETR trong X2. Các boundary này không đồng nhất về tải đầu vào NMS.
+\begin{table*}[t]\centering\small
+\caption{X2: số lượng tại boundary của từng adapter, năm seed; không gộp với latency OLD128.}
+\begin{tabularx}{\textwidth}{@{}l X c c@{}}\toprule Detector & Boundary & Ảnh & Tỷ số số lượng \\ \midrule
+YOLOv8n & \texttt{pre\_nms\_head} & 100 & $1{,}0343$ \\
+YOLOv8s & \texttt{pre\_nms\_head} & 100 & $1{,}0262$ \\
+YOLO11n & \texttt{pre\_nms\_head} & 100 & $1{,}0259$ \\
+YOLO11s & \texttt{pre\_nms\_head} & 64 & $1{,}0215$ \\
+YOLOv12n & \texttt{pre\_nms\_head} & 64 & $1{,}0360$ \\
+Faster R-CNN & \texttt{post\_module\_\allowbreak{}detections} & 64 & $1{,}1107$ \\
+RetinaNet & \texttt{post\_module\_\allowbreak{}detections} & 64 & $1{,}2356$ \\
+SSDlite & \texttt{post\_module\_\allowbreak{}detections} & 64 & $1{,}0340$ \\
+\bottomrule\end{tabularx}\label{tab:x2_counts}\end{table*}
+\begin{figure*}[t]\centering
+\begin{tikzpicture}\begin{axis}[width=.9\textwidth,height=5.4cm,xmin=-.5,xmax=7.5,ymin=1,ymax=1.27,xtick={0,1,2,3,4,5,6,7},xticklabels={v8n,v8s,11n,11s,v12n,FRCNN,RetinaNet,SSDlite},ylabel={Count ratio},grid=major]
+\addplot[only marks,mark=*,color=blue] coordinates {(0,1.034332240167) (1,1.026195368168) (2,1.025911622265) (3,1.021458847253) (4,1.036032440026)};
+\addplot[only marks,mark=*,color=orange] coordinates {(5,1.110743449429) (6,1.235626262414) (7,1.033973797542)};
+\legend{Before NMS (YOLO),After module (torchvision)}
+\end{axis}\end{tikzpicture}
+\caption{X2: mean ratio theo năm patch nguồn. Màu phân biệt pre\_nms\_head và post\_module\_detections; các điểm không là latency hoặc cùng một NMS input boundary. Số ảnh theo Bảng~\ref{tab:x2_counts}; không vẽ CI chưa được xác minh cho đồ thị này.}
+\label{fig:x2_counts}\end{figure*}
+Khoảng ratio X2 là $1{,}0215$--$1{,}2356$. Các tỷ số số lượng tại boundary từng adapter tăng hạn chế; chưa đủ để so sánh độ nhạy NMS xuyên kiến trúc. Tỷ số của Faster R-CNN/RetinaNet/SSDlite không được dùng kết luận tải NMS vì đã qua NMS nội bộ.
+
+\subsection{Giới hạn quan sát vật lý}
+Chưa có thí nghiệm print-and-camera ghép cặp; EOT chỉ là mô phỏng phần mềm. Ảnh giao diện camera lịch sử không được dùng làm kết quả vì chưa xác minh được patch nguồn và provenance.
+
+\subsection{Benchmark hộp tổng hợp lịch sử và phạm vi suy luận}
+Mã \path{experiments/benchmark_hardware.py} sinh hộp xyxy ngẫu nhiên trong ảnh $320\times320$, cạnh 10--50 pixel và scores ngẫu nhiên; dùng \texttt{torchvision.ops.nms} tại IoU 0,45, khởi động năm lời gọi với $N=100$ trước toàn bộ sweep; ở mỗi $N$ lấy thời gian tổng của 10 lời gọi rồi chia 10. File \path{outputs/benchmark/results.json} lưu $N=10,\allowbreak 50,\allowbreak 100,\allowbreak 200,\allowbreak 500,\allowbreak 1000,\allowbreak 2000,\allowbreak 3000,\allowbreak 4000,\allowbreak 5000,\allowbreak 8400,\allowbreak 10000$; thời gian trung bình ở hai đầu là $0{,}16825$ và $192{,}23083$ ms. Đây là NMS microbenchmark lịch sử, không gồm forward, camera hoặc hàng đợi. Thiếu raw repeats, seed, geometry đã lưu, hardware và hash đủ để tái lập; đường đo này không xác lập độ phức tạp $O(N^2)$ hoặc khả năng gây DoS của patch.
+
+X5v2 là mô hình hàng đợi nhiều server lý tưởng từ thời gian forward đo trước, không phải phép đo 1/2/4 core; service time không gồm NMS. Vì lỗi boundary/candidate và thiếu xác minh resource allocation, bài không dùng X5v2 làm bằng chứng tính sẵn sàng hoặc hiệu chỉnh mô phỏng. Bản đồ điều kiện đầy đủ vẫn là công việc tiếp theo.
+
+\ifbranchB
+\section{Thực nghiệm bổ sung về lựa chọn detector}
+
+\subsection{Mục tiêu và dữ liệu}
+
+Nhánh GPU phục vụ lựa chọn một detector ứng viên cho nghiên cứu hệ thống tiếp theo. Target là người, không phải patch. Dữ liệu hợp nhất gồm 8.000 ảnh COCO có hộp người không crowd, 2.000 ảnh không có chú thích người và 1.123 ảnh từ bản mirror AdvT-shirt. Ảnh crowd-only không được xếp vào hai nhóm COCO. Nhãn patch ở nguồn AdvT-shirt được giữ riêng, không đưa vào target person. Bản mirror ít hơn tám ảnh so với 1.131 ảnh được mô tả ở nguồn dữ liệu \cite{badpatch2025}.
+
+Split seed 2026 tạo 7.786 train, 1.669 validation và 1.668 test. Audit trên máy thực nghiệm ghi không trùng byte ảnh hoặc COCO ID giữa split; điều đó chưa loại được cùng người/video hoặc ảnh gần giống. Có 1.429 ảnh test bắt nguồn COCO train2017, có thể từng được dùng ở pretraining. Vì vậy, holdout được hiểu là độc lập với fine-tuning, không khẳng định độc lập với mọi lịch sử học của checkpoint.
+
+\subsection{Huấn luyện và chọn checkpoint}
+
+Bốn mô hình YOLO11n, YOLOv12n, YOLOv13n và YOLOv13s bắt đầu từ pretrained tương ứng. Mỗi mô hình dùng năm seed 42, 100, 2026, 777 và 999; ảnh 416 px, batch 8, SGD với lr0 0,01, lrf 0,01, momentum 0,937, weight decay 0,0005, AMP, workers 0 và augmentation chung. Không thay thời gian của backend này bằng số công bố trên backend khác.
+
+Mỗi quỹ đạo chạy đến ranh giới epoch vượt cap 120 phút. Lịch sử CSV ghi tổng 40,54 giờ huấn luyện; thời lượng mỗi lượt 120,20--123,28 phút, vượt cap do epoch. Các epoch có timestamp CSV vượt mốc không được chọn vào mốc đó. Với fork YOLOv12 đã kiểm tra, timestamp metric được ghi trước khi save checkpoint của chính epoch hoàn tất; vì chưa có save-end timestamp, định nghĩa ngân sách trong bài là timestamp CSV, không cam kết checkpoint đã lưu xong trước deadline từng mốc.
+
+Tại mỗi ngân sách, checkpoint có validation mAP95 tốt nhất trong các epoch hợp lệ được chọn. Sweet spot là mốc sớm nhất có đủ năm seed và mean validation mAP95 cách peak trong cửa sổ quan sát không quá 0,5 điểm phần trăm. Có một mốc 5 phút của YOLOv13s seed 2026 chưa có epoch hoàn tất, nên mốc đó chỉ có $n=4$ và không được dùng chọn sweet spot đủ năm seed. Test không dùng để chọn checkpoint hoặc ngân sách.
+
+\subsection{Kết quả và đánh đổi}
+
+YOLOv13s đạt test mAP95 trung bình $47{,}97\%$, cao hơn YOLO11n 5,53 điểm phần trăm tại các sweet spot riêng. Tuy nhiên, bản s có quy mô lớn hơn và latency pipeline khoảng 20 lần bản n YOLO11 trong cấu hình đã đo. Không quy mức tăng mAP đó cho ưu thế kiến trúc thuần túy hoặc gọi YOLOv13s tốt nhất mà bỏ qua yêu cầu thời gian. Với các bản n, YOLOv13n thấp hơn YOLO11n 1,65 điểm mAP95 và cao hơn YOLOv12n khoảng 0,31 điểm.
+
+\begin{table*}[t]
+\centering
+\small
+\caption{Benchmark person tại mốc chọn theo validation.}
+\begin{tabularx}{\textwidth}{@{}X c c c c c@{}}
+\toprule
+\textbf{Model} & \textbf{Mốc (phút)} & \textbf{Precision (\%)} & \textbf{Recall (\%)} & \textbf{mAP95 (\%)} & \textbf{Pipeline (ms)} \\
+\midrule
+YOLO11n & 120 & $77{,}10\pm0{,}35$ & $55{,}98\pm0{,}57$ & $42{,}44\pm0{,}22$ & $2{,}58\pm0{,}42$ \\
+YOLOv12n & 120 & $75{,}32\pm1{,}38$ & $54{,}25\pm0{,}36$ & $40{,}49\pm0{,}31$ & $2{,}77\pm0{,}07$ \\
+YOLOv13n & 5 & $76{,}43\pm2{,}37$ & $54{,}35\pm0{,}87$ & $40{,}80\pm0{,}97$ & $4{,}16\pm0{,}21$ \\
+YOLOv13s & 10 & $80{,}46\pm1{,}44$ & $61{,}08\pm1{,}22$ & $47{,}97\pm1{,}13$ & $51{,}79\pm2{,}08$ \\
+\bottomrule
+\end{tabularx}
+\label{tab:yolo_metrics}
+\end{table*}
+
+Latency đo trên RTX 5060, ảnh 416 px, batch 1, FP32, bỏ 32 ảnh warm-up và lấy median trên 500 ảnh cố định. Mỗi dòng là mean và sample SD của năm per-checkpoint medians; không phải median/SD của tất cả frame gộp. Thời gian gồm preprocessing, forward và postprocessing của Ultralytics, loại đọc/giải mã ảnh và I/O ứng dụng.
+
+Trong fork YOLOv12 đã kiểm tra, default confidence của val và predict khác nhau; giao thức đã lưu chưa ghi đầy đủ resolved conf/iou/rect cho mọi model. Vì vậy, bảng accuracy và latency được hiểu là hai chế độ evaluator/predictor, chưa phải một operating point thống nhất. Cần công bố cấu hình này và đo lại operating point dự kiến trước khi đưa ra cam kết deployment.
+
+\subsection{Diễn giải mốc sớm và hội tụ}
+
+Hình~\ref{fig:fullscale} tách best-so-far validation khỏi epoch cuối thực sự hoàn tất. YOLOv13n/s giữ epoch 1 ở sweet spot của cả năm seed. Đường best-so-far phẳng chỉ cho thấy các epoch tiếp theo chưa vượt checkpoint đã có; ở panel epoch cuối, hiệu năng giảm rồi phục hồi. Vì thế, sweet spot 5/10 phút không chứng minh học nhanh ổn định hoặc tiết kiệm huấn luyện trong một quy tắc dừng online.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.92\textwidth]{fullscale_map_growth.png}
+\caption{Validation mAP95 theo ngân sách của bốn mô hình. Bên trái là checkpoint tốt nhất đã có; bên phải là epoch cuối hoàn tất. Thanh sai số là CI t 95\% giữa seed; YOLOv13s tại 5 phút có $n=4$. Đây là validation, không phải test AP hoặc xác nhận bão hòa.}
+\label{fig:fullscale}
+\end{figure*}
+
+YOLO11n và YOLOv12n có peak tại biên 120 phút nên chưa xác định trần ngoài cửa sổ. Cần thêm mốc pretrained 0 phút để phân biệt chất lượng khởi tạo với lợi ích fine-tuning. Kiểm tra learning rate, warm-up và lịch augmentation phải dựa trên validation; không chọn siêu tham số bằng test hoặc dùng việc chọn epoch sớm để che sự giảm hiệu năng trong quỹ đạo.
+
+\subsection{Đối chiếu số công bố và số đo của nhóm}
+
+Hình~\ref{fig:compare_pub} đặt kết quả kiến trúc trong bài YOLOv13 cạnh benchmark của nhóm, với hai panel và giao thức riêng \cite{yolo13_2025}. Panel công bố dùng COCO đa lớp và thiết bị/định dạng của bài gốc; panel nhóm dùng person một lớp, checkpoint fine-tuned và RTX 5060 FP32. Cách trình bày giúp quan sát sự thay đổi thứ hạng theo điều kiện, không tạo một tỷ số ưu thế xuyên dataset hoặc suy ra baseline công bố đã được nhóm tái lập.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.92\textwidth]{published_vs_measured.png}
+\caption{Đối chiếu mô tả số liệu công bố YOLOv13 với thực nghiệm của nhóm. Hai panel khác dữ liệu, số lớp, checkpoint, phần cứng và precision. mAP trong mỗi panel chỉ được so bên trong giao thức tương ứng; không lấy chênh lệch giữa panel để chứng minh ưu thế. Nguồn công bố, table/page và các scalar thực nghiệm được lưu cùng hình.}
+\label{fig:compare_pub}
+\end{figure*}
+
+Việc chọn dữ liệu áo đối kháng và target person có ý nghĩa ở bước lựa chọn detector phục vụ cảnh có người, nhưng chưa đủ để chứng minh đường nghiên cứu tốt hơn nghiên cứu đa lớp COCO. Lợi ích cần kiểm chứng tiếp là khả năng giữ chất lượng phát hiện và deadline khi đưa cùng Sponge Patch vào detector đã chọn. Benchmark hiện tại cung cấp cấu hình và đối chứng để thực hiện bước đó, không thay thế nó.
+\fi
+
+\section{Thảo luận về lợi ích và giới hạn của hướng nghiên cứu}
+
+\subsection{So sánh các con đường và bằng chứng cần có}
+
+Khác dữ liệu hoặc giao thức chỉ giải thích khả năng đối chiếu, không phải bằng chứng về lợi thế. Bảng~\ref{tab:routes} so các hướng theo mục tiêu, quyền truy cập, lợi ích và phần chưa được chứng minh. Đối với nhóm, giảm quyền truy cập từ gradient xuống điểm trước NMS là một khác biệt có nghĩa về mô hình đe dọa; nhưng cần chứng minh kênh điểm tồn tại và hiệu quả đạt được đủ lớn. Dữ liệu hiện tại chưa ủng hộ một tuyên bố mạnh hơn về hiệu lực tấn công.
+
+\begin{table*}[t]
+\centering
+\small
+\caption{Đối chiếu hướng nghiên cứu: lợi ích, giới hạn và căn cứ của nhóm.}
+\begin{tabularx}{\textwidth}{@{}X X X X @{}}
+\toprule
+\textbf{Hướng / nguồn} & \textbf{Ưu điểm có căn cứ} & \textbf{Chi phí / giới hạn} & \textbf{Quan hệ với nghiên cứu này} \\
+\midrule
+Underload~\cite{underload2025} & Phòng thủ có xét năng lực hardware; đo phục hồi thời gian thực. & Cần huấn luyện đối kháng; phụ thuộc mô hình/threat đã thử. & Nhóm đo workload/QoS; chưa có bảo đảm phòng thủ tương đương. \\
+EVADE~\cite{evade2025} & Kiểm tính thực dụng qua hardware/format/quantization và deadline. & Kết quả âm chỉ có phạm vi cấu hình đã đánh giá. & Nhóm bổ sung thử nghiệm hẹp có truy vết; phép thử Sponge hiện chỉ trên một CPU laptop. \\
+APDE~\cite{apde2025} & Đánh giá nhiều patch/model/metric; đối chứng adaptive. & Phát hiện patch/AP không tự bảo đảm availability. & Nhóm tách AP/candidates/QoS; tập nhỏ, chưa so đủ SOTA. \\
+BadPatch/GRAC~\cite{badpatch2025,grac2025} & Thử vật lý, áo/texture, nhiều điều kiện nhìn. & Evasion và gradient/diện tích khác; không phải QoS Sponge. & Nhóm giữ patch 4\%, không gradient; chưa xác nhận quang học. \\
+SG-GA của nhóm & Không đọc gradient/trọng số; cùng diện tích/query; đánh giá độc lập. & Cần confidence trước NMS; OLD128 chưa hỗ trợ ưu thế; X1-500 thấp hơn GA tâm ở endpoint ứng viên. & Giá trị hiện tại là kiểm định ranh giới surrogate; không tuyên bố tấn công mạnh hơn. \\
+\ifbranchB
+Benchmark detector & Cùng split/hardware, 20 quỹ đạo; tradeoff đo trực tiếp. & Khác capacity/mốc; chưa có pretrained mốc 0 hoặc DoS trên detector mới. & 13s tăng mAP, latency cao; dùng chọn cấu hình cho phép thử tiếp. \\
+\fi
+\bottomrule
+\end{tabularx}
+\label{tab:routes}
+\end{table*}
+
+Hình~\ref{fig:compare_foundations} bổ sung các số đo có thể truy nguồn từ bài nền. Underload, Bảng 1 bản v2, báo mAP50 COCO của YOLOv8s gốc là $57{,}7\%$ trên sạch và $20{,}1\%$ dưới Overload; sau huấn luyện đối kháng, hai số là $45{,}7\%$ và $42{,}0\%$~\cite{underload2025}. Lợi ích robust accuracy đi kèm giảm clean accuracy. EVADE, Bảng 3 trang 7, ghi số hộp sau NMS trên YOLOv8n là 6 trên sạch và 247/300/228/151 với bốn tấn công tối ưu cho chính model đó~\cite{evade2025}. Đây là số hộp đầu ra đã làm tròn, khác ứng viên trước NMS của nhóm và không phải latency.
+
+\begin{figure*}[t]
+\centering
+\includegraphics[width=0.95\textwidth]{baseline_vs_sponge.png}
+\caption{Đối chiếu mô tả Underload 2025, EVADE 2025 và Sponge Patch của nhóm. Panel A đo mAP50 với/không huấn luyện đối kháng; B đo số hộp sau NMS; C đo AP50:95 trên OLD128 (128 ảnh) dưới patch hộp xám. Từng panel có trục và giao thức riêng. Thanh sai số C là SD giữa 10 seed patch; bài gốc không cung cấp SD ở các ô đã trích. Không dùng hình để xếp hạng hiệu lực tấn công xuyên giao thức.}
+\label{fig:compare_foundations}
+\end{figure*}
+
+So sánh cùng mô hình/ảnh/diện tích/ngân sách là cần thiết để tách lợi ích của thuật toán khỏi khả năng truy cập và mức can thiệp. Đối chứng gradient tanh mạnh hơn SG-GA về ứng viên trong từng cohort đã ghi nhãn, còn GA vị trí ngẫu nhiên cao hơn SG-GA ở endpoint ứng viên trên cả hai cohort. Những kết quả đó phải được giữ trong lập luận. Hướng cải thiện được đặt ra là tìm một proxy phản ánh công việc hậu xử lý tốt hơn, kiểm tra vị trí trên tập validation hoặc phân bổ mẫu biến đổi tốt hơn; không mặc định một thay đổi sẽ thành công trước khi đo.
+
+\subsection{Tại sao ứng viên không bảo đảm tăng latency}
+
+Chi phí NMS còn phụ thuộc phân bố hộp, mức chồng lấp, thứ tự score, implementation và cap. Nhiều hộp bị loại nhanh có thể ít tốn hơn một tập nhỏ khó loại. Fitness thưởng ứng viên và confidence chưa mô hình hóa trực tiếp những yếu tố này. Kết quả ratio tăng nhẹ, AP giảm nhưng FIFO300 của OLD128 chưa ghi nhận thiếu/trễ cho thấy giới hạn của proxy trong cấu hình đã thử, chưa phải phát biểu $N_\tau$ không có khả năng dự báo trong mọi điều kiện, phù hợp yêu cầu đánh giá hệ thống mà các công trình latency gần đây đặt ra~\cite{underload2025,evade2025}. Các biến thể tham chiếu minh hoạ trực tiếp: số ứng viên tăng khoảng ba trăm lần chỉ kèm theo tăng toàn trình $2$--$6\%$, với tương quan hạng giữa $N$ và toàn trình gần 0 ($\rho=0{,}038$; $0{,}086$) dù giữa $N$ và hậu xử lý rất mạnh ($\rho\approx0{,}82$); hậu xử lý chỉ chiếm vài phần trăm toàn trình trên CPU này.
+
+Một objective latency trực tiếp cũng không tự giải quyết vấn đề: timer chịu tiến trình nền, warm-up và backend. Nếu phát triển objective quan sát latency, cần cùng baseline, randomized paired blocks, số lần đo lặp được tính vào ngân sách và một endpoint kiểm tra độc lập. Chưa thực hiện nhánh đó trong kết quả hiện tại nên bài không báo hiệu lực hoặc cam kết cải thiện.
+
+\subsection{Tính hợp lệ nội tại và thống kê}
+
+OLD128 và X1-500 có 10 seed patch trên bộ ảnh cố định; 128 ảnh nằm trong 500 ID nên hai phân tích không độc lập. Mở rộng sau quan sát có thể tăng độ chính xác ước lượng nhưng chưa có bảo đảm power tiến cứu. Khoảng theo seed không bao phủ bất định của cách chọn ảnh; chúng tôi bổ sung bootstrap hai tầng (ảnh $\times$ seed), làm CI rộng thêm $3{,}35$ lần (X1-500, vẫn không chứa 0) đến $7{,}03$ lần (OLD128, chứa 0), và cho thấy SG-GA không khác tìm kiếm ngẫu nhiên. CI vẫn chưa bao phủ bất định phần cứng; chưa suy nguyên nhân từ chênh lệch descriptive. Lịch sử pretraining/lựa chọn checkpoint có thể liên quan COCO val/train.
+\ifbranchB
+Nhánh A có 10 patch seeds trên một tập ảnh cố định, nhánh B có năm training seeds trên một split. Các khoảng theo seed không bao phủ độ bất định của cách chọn ảnh, split hoặc phần cứng. Việc chọn checkpoint và sweet spot theo validation còn tạo một lớp lựa chọn; CI thông thường ở mốc được chọn chưa hiệu chỉnh toàn bộ quy trình lựa chọn. Các chênh lệch descriptive không được biến thành chứng minh nhân quả hoặc tương đương chỉ vì p không nhỏ.
+
+Pretraining và snapshot selection có thể từng dùng COCO val/train. Trong nhánh person, tách theo ảnh chưa bảo đảm tách người/video; các ảnh gần trùng có thể tồn tại dù SHA-256 khác. Cùng hyperparameter chưa chắc tối ưu cho mọi kiến trúc, còn cùng ngân sách wall-clock có thể cho số epoch và bước optimizer khác nhau. Vì thế, benchmark đo cả architecture, initialization, implementation và lịch fine-tuning như một cấu hình kết hợp.
+\fi
+
+\subsection{Tính hợp lệ triển khai và vật lý}
+
+Chưa có thử nghiệm print-and-camera ghép cặp, thiết bị edge/ARM thật hoặc phép đo năng lượng. EOT chỉ là mô phỏng phần mềm và chưa hiệu chỉnh mô phỏng hạn chế tài nguyên trên CPU laptop với thiết bị thật. Các nghiên cứu vật lý đa góc nhìn hoặc đa cảm biến có điều kiện khác~\cite{grac2025,norp2026,thermalcloth2026}, không được thay bằng ảnh tensor trong bài này.
+
+\ifbranchB
+Latency GPU hiện gồm một phiên trên mỗi seed, thứ tự cố định; raw per-frame không được giữ để tái tính tail. RTX 5060 không đại diện thiết bị edge.
+\fi Một detector không NMS vẫn có thể chuyển chi phí phụ thuộc nội dung sang tracker hoặc công đoạn khác \cite{trackflood2026}; cần đo pipeline ứng dụng cuối thay vì xem kiến trúc là bảo đảm availability.
+
+\subsection{Tái lập và tính toàn vẹn dữ liệu}
+
+Artifacts Sponge lưu manifest, hash weights/ảnh/checkpoints, records từng ảnh và prediction lists. Các tổng hợp được kiểm lại từ dữ liệu lưu, chưa tái sinh độc lập toàn bộ inference, COCOeval hoặc timing. Source hiện tại của \path{core/victim_model.py} và \path{experiments/extended_validation.py} khác hash OLD128; weights YOLOv8n và ảnh đã kiểm khớp hash. Optimizer hiện tại khớp hash X1-500; không suy mọi source đều khác mọi run. Nhiều trường \texttt{weights\_sha256} của X2 là null; manifest X2 chưa bind đầy đủ mọi file đã lưu. Cache chỉ theo file tồn tại chưa đủ bảo đảm identity của cấu hình/nguồn; cần giữ source snapshot và khóa cache trước replay.
+\ifbranchB
+Nhánh A lưu manifest, ảnh/checkpoint hashes, record từng ảnh và prediction lists. Nhánh B lưu 20 lịch sử epoch có hash, record mốc và latency summaries. Đối chiếu đã tái tính selection và tổng hợp từ các tạo tác đó; không có lượt tái huấn luyện hoặc tái sinh AP fullscale độc lập. Các checkpoint, dataset fullscale và snapshot YOLOv13 trên máy thực nghiệm chưa nằm đầy đủ trong gói hiện có.
+
+Cache hoàn tất cần khóa config/nguồn trước khi reuse; setup phải pin implementation đúng bản đã đo; generator cần hỗ trợ archived CSV khi thiếu runs gốc. Checkpoint fine-tuned cần hash và raw predictions/timing để bind kết quả. Các yêu cầu này mô tả công việc tái lập còn lại, không cáo buộc dữ liệu hiện tại sai. Khác checksum source YOLOv12 trên Windows do CRLF đã được đối chiếu với bản chuẩn hóa LF; không che mismatch byte-exact bằng một kết luận toàn nghiên cứu đạt.
+\fi
+
+\subsection{Đạo đức và dữ liệu}
+
+Các phép thử chỉ xử lý dữ liệu và mô hình trong môi trường nghiên cứu được phép, không triển khai gián đoạn dịch vụ sản xuất. Tuân thủ điều khoản nguồn và quyền riêng tư; giấy phép annotations không tự cấp quyền tái phân phối mọi ảnh. Công bố measurement harness, manifests và số đo cần thiết; không cần đóng gói patch tối ưu thành công cụ tấn công để hỗ trợ luận điểm về giới hạn đại lượng đại diện.
+
+\section{Kết luận và hướng phát triển}
+
+Đối với RQ1, giao thức ghim core mới cho phép hiệu chỉnh A/A (sạch so sạch): sàn sai số đo toàn trình có MDE $0{,}59\%$ trên hồ sơ P1, nên chỉ hiệu ứng vượt ngưỡng này mới phân biệt được với nhiễu đo. Trên dữ liệu đã lưu, số ứng viên $N_\tau$ theo dõi tốt chi phí NMS (tùy backend) nhưng NMS chỉ chiếm vài phần trăm toàn trình, nên $N_\tau$ dự đoán yếu độ trễ toàn trình; các biến thể tham chiếu đẩy $N_\tau$ lên khoảng ba trăm lần mà toàn trình chỉ tăng $2$--$6\%$. Trong OLD128, với một luồng phần mềm, mean của block medians thời gian tensor đã chuẩn bị là $51{,}09$ ms sạch và $52{,}87$ ms SG-GA; FIFO chu kỳ 300 ms không ghi nhận ảnh thiếu/trễ trong các điều kiện đã đo. Chưa xác lập chuỗi nhân quả từ số ứng viên đến DoS: còn thiếu đối chứng dương tiêm hộp đồng bộ, chưa có camera và chưa hiệu chỉnh ARM. X5v2 không được dùng như phép đo resource/NMS end-to-end.
+
+Đối với RQ2, OLD128 cho chênh lệch SG-GA trừ GA tâm $-0{,}0051$, CI 95\% $[-0{,}0112;0{,}0007]$, $p=0{,}1504$, $d_z=-0{,}4984$; chưa hỗ trợ ưu thế SG-GA. X1-500 mở rộng cho chênh lệch $-0{,}0293$, CI $[-0{,}0383;-0{,}0216]$, $p=0{,}001953125$, $d_z=-2{,}0546$: tỷ số ứng viên của heuristic Laplacian thấp hơn GA tâm, điều kiện trên bộ ảnh và cấu hình cố định. Hai chênh lệch cùng âm, không phải đổi dấu; không coi mở rộng cohort là xác nhận độc lập. Tanh q400 đạt $1{,}1552$ ở OLD128 (128 ảnh) và $1{,}1987$ ở X1-500 (500 ảnh). Chênh lệch gợi ý cần kiểm tra objective và optimizer; thiết kế hiện tại chưa phân biệt nguyên nhân vì tanh khác cả quyền truy cập lẫn bộ tối ưu.
+
+Đối với RQ3, chuyển giao latency OLD128 gồm sáu detector, 16 ảnh, 10 patch nguồn; X2 gồm tám detector và năm patch nguồn, đo số lượng tại boundary adapter trên 64--100 ảnh. Khoảng ratio X2 $1{,}0215$--$1{,}2356$ không phải latency ratio và không đồng nhất pre-NMS giữa các họ detector. Các tỷ số số lượng tăng hạn chế tại boundary đã đo, chưa đủ so sánh độ nhạy NMS xuyên kiến trúc. EOT phần mềm chưa xác nhận độ bền vật lý.
+
+\ifbranchB
+Thực nghiệm detector bổ sung ghi nhận YOLOv13s có mAP person cao nhất trong nhóm nhưng latency lớn, còn YOLO11n có lợi thế tốc độ trong cấu hình đã đo. Kết quả lựa chọn checkpoint rất sớm ở YOLOv13n/s đặt ra nhu cầu đo pretrained mốc 0 và xem lại lịch fine-tuning. Bài vì vậy cung cấp một quy trình và tập bằng chứng để lựa chọn bước nghiên cứu tiếp, chưa tuyên bố phương pháp tấn công vượt các nghiên cứu khác hoặc đã bảo vệ được một hệ thống edge.
+\fi
+Hiệu chỉnh A/A có đọc lại affinity và các lát cắt điều kiện trên dữ liệu đã lưu đã được thực hiện ở phạm vi laptop ghim core. Phần còn thiếu, thuộc hướng tiếp theo và chưa đo sạch trong khung thời gian hiện tại: đối chứng dương chèn hộp đồng bộ trong cùng pipeline với dose-response theo $N$ và hình học hộp, phép kiểm proxy xác nhận trên miếng dán thật khi máy rảnh, quét chu kỳ quanh knee ($120$--$250$ ms), và hiệu chỉnh trên thiết bị ARM. $N_\tau$ đơn độc chưa đủ suy ra latency/QoS; bài chưa hoàn thành bản đồ điều kiện đầy đủ và không phát biểu tính vô ích của $N_\tau$ trong mọi cấu hình. Cải tiến fitness hoặc thử nghiệm vật lý cần đánh giá mới; giữ nguyên kết quả âm và nguồn dữ liệu đã lưu.
+
+\section*{Lời cảm ơn}
+
+Nhóm cảm ơn giảng viên Đinh Phương Nam, Trường Đại học Công nghệ Thành phố Hồ Chí Minh HUTECH, đã hướng dẫn thực hiện đề tài và phản biện cách diễn giải số liệu, baseline cùng lợi ích của hướng nghiên cứu.
+
+%=====================================================================
+% REFERENCES
+%=====================================================================
+\begin{thebibliography}{99}
+
+\bibitem{underload2025} Tianyi Wang, Zichen Wang, Cong Wang, Yuanchao Shu, Ruilong Deng, Peng Cheng, Jiming Chen. Can't Slow Me Down: Learning Robust and Hardware-Adaptive Object Detectors against Latency Attacks for Edge Devices. \emph{Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR)}, 2025, pp. 19230--19240.
+
+\bibitem{evade2025} Jean-Philippe Monteuuis, Cong Chen, Jonathan Petit. Latency NMS Attacks: Is It Real Life or Is It Just Fantasy? \emph{Proc. NeurIPS 38}, 2025.
+
+\bibitem{bitflip2025} Manojna Sistla, Yu Wen, Aamir Bader Shah, Chenpei Huang, Lening Wang, Xuqing Wu, Jiefu Chen, Miao Pan, Xin Fu. Bit-Flip Induced Latency Attacks in Object Detection. \emph{Proc. IEEE/CVF Winter Conf. Applications of Computer Vision (WACV)}, 2025, pp. 6709--6718.
+
+\bibitem{trackflood2026} Zonghua Gu, Julian Singh-Smith, Junlin Liao, Di Liu, Amin Saremi. TrackFlood: Relocating Latency Attacks from NMS-Free Detectors to Real-Time Trackers. \emph{arXiv preprint arXiv:2609.33948}, 2026.
+
+\bibitem{ebt2026} Jaesun Baek, Chanwook Lee, Eun-Kyu Lee. Event Burst Trigger: An Availability Backdoor Attack on Event-Based SNN Object Detection. \emph{arXiv preprint arXiv:2607.09115}, 2026.
+
+\bibitem{apde2025} Junhao Zheng, Jiahao Sun, Chenhao Lin, Zhengyu Zhao, Chen Ma, Chong Zhang, Cong Wang, Qian Wang, Chao Shen. Revisiting Adversarial Patch Defenses on Object Detectors: Unified Evaluation, Large-Scale Dataset, and New Insights. \emph{Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV)}, 2025, pp. 23476--23486.
+
+\bibitem{pbcat2025} Xiao Li, Yiming Zhu, Yifan Huang, Wei Zhang, Yingzhe He, Jie Shi, Xiaolin Hu. PBCAT: Patch-Based Composite Adversarial Training against Physically Realizable Attacks on Object Detection. \emph{Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV)}, 2025, pp. 24456--24466.
+
+\bibitem{oddr2025} Nandish Chattopadhyay, Amira Guesmi, Muhammad Abdullah Hanif, Bassem Ouni, Muhammad Shafique. ODDR: Outlier Detection \& Dimension Reduction Based Defense Against Adversarial Patches. \emph{Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV)}, 2025, pp. 22999--23008.
+
+\bibitem{diffpad2025} Jia Fu, Xiao Zhang, Sepideh Pashami, Fatemeh Rahimian, Anders Holst. DiffPAD: Denoising Diffusion-Based Adversarial Patch Decontamination. \emph{Proc. IEEE/CVF Winter Conf. Applications of Computer Vision (WACV)}, 2025, pp. 6602--6611.
+
+\bibitem{advpatchxai2025} Vishesh Kumar, Akshay Agarwal. A Unified, Resilient, and Explainable Adversarial Patch Detector. \emph{Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR)}, 2025, pp. 30387--30397.
+
+\bibitem{antistyler2026} Idan Yankelev, Edita Grolman, Yarin Yerushalmi Levi, Amit Giloni, Omer Hofman, Toshiya Shimizu, Yuval Elovici, Asaf Shabtai. AntiStyler: Defending Object Detection Models Against Adversarial Patch Attacks Using Style Removal. \emph{Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR)}, 2026, pp. 27936--27945.
+
+\bibitem{trace2026} Wonho Lee, Jisu Lee, Hyunsik Na, Sohee Park, Daeseon Choi. TRACE: Confounder-free Adversarial Fine-tuning for Robust Object Detection. \emph{Proc. IEEE/CVF Winter Conf. Applications of Computer Vision (WACV)}, 2026, pp. 6705--6714.
+
+\bibitem{iap2025} Subrat Kishore Dutta, Xiao Zhang. IAP: Invisible Adversarial Patch Attack through Perceptibility-Aware Localization and Perturbation Optimization. \emph{Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV)}, 2025, pp. 14766--14775.
+
+\bibitem{grac2025} Jiawei Liang, Siyuan Liang, Tianrui Lou, Ming Zhang, Wenjin Li, Dunqiu Fan, Xiaochun Cao. Gradient-Reweighted Adversarial Camouflage for Physical Object Detection Evasion. \emph{Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV)}, 2025, pp. 13880--13889.
+
+\bibitem{3dgs2025} Tianrui Lou, Xiaojun Jia, Siyuan Liang, Jiawei Liang, Ming Zhang, Yanjun Xiao, Xiaochun Cao. 3D Gaussian Splatting Driven Multi-View Robust Physical Adversarial Camouflage Generation. \emph{Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV)}, 2025, pp. 28752--28762.
+
+\bibitem{badpatch2025} Zhixiang Wang, Xingjun Ma, Yu-Gang Jiang. BadPatch: Diffusion-Based Generation of Physical Adversarial Patches. \emph{Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV) Workshops}, 2025, pp. 6303--6313.
+
+\bibitem{yolo12_2025} Yunjie Tian, Qixiang Ye, David Doermann. YOLOv12: Attention-Centric Real-Time Object Detectors. \emph{arXiv preprint arXiv:2502.12524}, 2025.
+
+\bibitem{yolo13_2025} Mengqi Lei, Siqi Li, Yihong Wu, Han Hu, You Zhou, Xinhu Zheng, Guiguang Ding, Shaoyi Du, Zongze Wu, Yue Gao. YOLOv13: Real-Time Object Detection with Hypergraph-Enhanced Adaptive Visual Perception. \emph{arXiv preprint arXiv:2506.17733}, 2025.
+
+\bibitem{afog2025} Zachary Yahn, Selim Furkan Tekin, Fatih Ilhan, Sihao Hu, Tiansheng Huang, Yichang Xu, Margaret Loper, Ling Liu. Adversarial Attention Perturbations for Large Object Detection Transformers. \emph{Proc. IEEE/CVF Int. Conf. Computer Vision (ICCV)}, 2025, pp. 3184--3193.
+
+\bibitem{norp2026} Xiaopei Zhu, Guanning Zeng, Zhanhao Hu, Jun Zhu, Xiaolin Hu. Physical Adversarial Clothing Evades Visible-Thermal Detectors via Non-Overlapping RGB-T Pattern. \emph{Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR)}, 2026, pp. 13356--13365.
+
+\bibitem{thermalcloth2026} Jiahuan Long, Tingsong Jiang, Hanqing Liu, Chao Ma, Weien Zhou, Yang Yang, Wen Yao. Thermally Activated Dual-Modal Adversarial Clothing against AI Surveillance Systems. \emph{Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR)}, 2026, pp. 34929--34939.
+
+\bibitem{remoteshape2025} Kento Oonishi, Tsunato Nakai. Universal Shape of Strong Remote Adversarial Patches for Object Detection with Convolutional Neural Networks. \emph{Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR) Workshops}, 2025, pp. 4369--4379.
+
+
+\bibitem{nicgslowdown2022} Simin Chen, Zihe Song, Mirazul Haque, Cong Liu, Wei Yang. NICGSlowDown: Evaluating the Efficiency Robustness of Neural Image Caption Generation Models. \emph{Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR)}, 2022. arXiv:2203.15859.
+
+\bibitem{phantom2023} Avishag Shapira, Alon Zolfi, Luca Demetrio, Battista Biggio, Asaf Shabtai. Phantom Sponges: Exploiting Non-Maximum Suppression to Attack Deep Object Detectors. \emph{Proc. IEEE/CVF Winter Conf. Applications of Computer Vision (WACV)}, 2023. arXiv:2205.13618.
+
+\bibitem{overload2024} Erh-Chung Chen, Pin-Yu Chen, I-Hsin Chung, Che-Rung Lee. Overload: Latency Attacks on Object Detection for Edge Devices. \emph{Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR)}, 2024. arXiv:2304.05370.
+
+\bibitem{slowtrack2024} Chen Ma, Ningfei Wang, Qi Alfred Chen, Chao Shen. SlowTrack: Increasing the Latency of Camera-Based Perception in Autonomous Driving Using Adversarial Examples. \emph{Proc. AAAI Conf. Artificial Intelligence}, 2024. arXiv:2312.09520.
+
+\end{thebibliography}
+
+\end{document}
