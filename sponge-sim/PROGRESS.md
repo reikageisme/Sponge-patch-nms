@@ -285,3 +285,9 @@ nohup python sponge-sim/studies/e7_sggar/run.py --out runs/e7 --device cuda > e7
 tail -n 3 e7.log        # moi don vi in ETA; xong seed 4 la du cho buoc do
 tar czf e7_runs.tar.gz runs/e7      # khi xong hoac het gio; tai e7_runs.tar.gz ve laptop
 ```
+
+## 01/11 — Ước lượng E7 trên CPU laptop (đo 1 lần đánh giá ứng viên, 100 ảnh, 8 luồng; chưa chạy E7)
+Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradient) 12,5; C4 19,8. Mỗi (điều kiện, seed) = 625 ứng viên.
+- Cả 8 điều kiện x 10 seed: ~132 giờ. Cả 8 điều kiện x seed 0-4: ~66 giờ. C1-C3 x 10 seed: ~51 giờ. C1-C3 x seed 0-4 (mức tối thiểu cho E6): ~25,5 giờ.
+- Kết luận: vượt xa ngưỡng 10-12 giờ -> KHÔNG chạy toàn bộ E7 trên CPU. Hai điều kiện 640 px chiếm phần lớn thời gian (C2+C4 ~ 4/5 của C1-C4).
+- Phương án lai (cần ghi sai lệch "thiết bị theo điều kiện" vào DEVIATIONS trước khi chạy): CPU laptop chạy C1+C3 seed 0-4 (~7,9 giờ); GPU chỉ cần chạy C2 (và C4, B nếu còn giờ).
