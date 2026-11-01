@@ -147,6 +147,7 @@ def main():
         data_selection=dict(seed=SEED_DATA, rule='random.Random(seed).sample(sorted(coco128/train2017 file names), 100)'),
         conditions={n: dict(zip(('canvas', 'size', 'threshold', 'method', 'location'), CONDITIONS[n])) for n in names},
         budgets=budgets, seeds=seeds,
+        bundle_source=((ROOT / 'BUNDLE_SOURCE.txt').read_text(encoding='utf-8') if (ROOT / 'BUNDLE_SOURCE.txt').exists() else None),
         note_rng='Trên GPU, RNG CUDA khác RNG CPU: patch không trùng byte với bản CPU dù cùng thuật toán và seed.',
     )
     (out / 'manifest.json').write_text(json.dumps(manifest, indent=1, ensure_ascii=False), encoding='utf-8')

@@ -17,6 +17,7 @@ from __future__ import annotations
 import argparse
 import hashlib
 import importlib.util
+import subprocess
 import zipfile
 from pathlib import Path
 
@@ -60,6 +61,11 @@ def main():
             z.write(p, name)
         z.writestr('BUNDLE_SHA256.txt', '\n'.join(lines) + '\n')
         z.writestr('RUN_ON_GPU.txt', readme)
+        git = lambda *a: subprocess.run(['git', *a], cwd=ROOT, capture_output=True, text=True).stdout.strip()
+        source = [f'git_head={git("rev-parse", "HEAD")}',
+                  f'tags_at_head={git("tag", "--points-at", "HEAD")}',
+                  f'prereg_e7_sha256={sha(SIM / "prereg" / "PREREG_E7.md")}']
+        z.writestr('BUNDLE_SOURCE.txt', '\n'.join(source) + '\n')
     print(out, out.stat().st_size, 'bytes;', len(files), 'file')
 
 

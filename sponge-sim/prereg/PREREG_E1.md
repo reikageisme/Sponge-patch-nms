@@ -24,7 +24,8 @@ Laptop: CPU ghim core (i5-1335U), tensor chuẩn bị sẵn, YOLOv8n đầu vào
   (`studies/e5_protocol/run.py --profiles P1_cpu2`, 100 ảnh × 20 lần), selector
   `summary.json:profiles.P1_cpu2.stages.<stage>.mde_ratio_pct`. Quy tắc định trước: ngưỡng Chính 1 = 1 + MDE(nms_torch_pure)/100 của run đó.
   Nếu verify ghim của run A/A FAIL (cận dưới 0,5) → không chạy E1, báo lại.
-  Giá trị cụ thể sẽ được điền vào mục này trước khi tag: `[CHƯA CÓ SỐ: chờ A/A P1_cpu2]`.
+  Phần được đăng ký là QUY TẮC (ngưỡng = 1 + MDE của run A/A hợp lệ chạy ngay trước E1), không phải một con số. Con số MDE sẽ được ghi vào `PROGRESS.md` ngay sau run A/A và trước khi chạy E1; đây không phải sai lệch.
+  `[CHƯA CÓ SỐ: chờ A/A P1_cpu2 hợp lệ]`
 - MDE của E1 (từ E5): `nms_torch_pure` 2,97%, `nms_tv_nms` 2,05%, `tau` 1,67%, `total` 1,27%.
   Chênh lệch tương đối nhỏ hơn MDE của profile/công đoạn tương ứng KHÔNG được diễn giải (kể cả "không có khác biệt").
   Với backend chưa có MDE riêng (tv_batched, ultra_native), dùng MDE lớn nhất của profile đó trong các công đoạn NMS đã đo.
@@ -65,8 +66,10 @@ Laptop: CPU ghim core (i5-1335U), tensor chuẩn bị sẵn, YOLOv8n đầu vào
   (h) số lần nms_ns > 2,05 s (chạm time limit của Ultralytics).
 - **Chính 3 (phủ 10²–10⁴, theo yêu cầu thầy)**: P1_cpu2, A = 10000, nc = 80, cap None, cho `torch_pure` và `tv_nms`, hình học disjoint:
   R₁₀₄ = median(nms | N = 10⁴) / median(nms | N = 10²); CI95% bootstrap (cách như Chính 1). Báo cho cả ba hình học và cả 4 backend ở mức mô tả.
+  **Quy tắc đọc kết quả (không phải pass/fail):** nếu cận dưới CI của R₁₀₄ > 1 + MDE(profile, công đoạn NMS tương ứng) thì ghi "phát hiện sự phụ thuộc vào N ở độ nhạy này"; ngược lại ghi "không phát hiện, MDE = x%". Không dùng "không phụ thuộc" hay "tương đương".
 - **Chính 4 (thiết bị ARM)**: điện thoại, profile nhanh đạt verify (mục dưới), `torch_pure` và `tv_nms`, disjoint: R₁₀₄ như trên với CI95%.
   So với laptop **chỉ theo tỷ số và hình dạng đường cong**, không so độ trễ tuyệt đối (khác máy, khác bản torch).
+  Cùng quy tắc đọc kết quả như Chính 3, với MDE của profile điện thoại lấy từ A/A E5-phone.
 - Câu hỏi A định trước (mô tả): tại cùng N_tau, khoảng chênh độ trễ giữa backend và giữa hình học có vượt MDE hay không.
   Nếu có: bằng chứng N_tau một mình không xác định độ trễ NMS. Nếu không: báo nguyên trạng.
 
