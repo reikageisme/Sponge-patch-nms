@@ -37,3 +37,6 @@ Mỗi mục: ngày, PREREG nào, thay đổi gì, lý do, đã thấy dữ liệ
 - Lan 1 (results/e6/E6_P1cpu2_20261101, 152015 dong raw) dung voi ValueError o backends.py (Ultra.run) khi mot don vi co dung N=6 ung vien: ultralytics coi tensor shape[-1]==6 la dau ra end-to-end va tra ve khong kem chi so. Du lieu lan 1 KHONG dung de bao cao (khong hoan tat, giu nguyen thu muc, khong xoa).
 - Sua: Ultra.prepare them 1 cot diem 0 khi n==6 (bi loai boi nguong conf > 0.0 nen khong doi tap giu lai; kich thuoc tensor 6->7 cot, anh huong thoi gian khong dang ke nhung chua dinh luong). Test moi: tests/test_backends.py::test_small_n_including_six_keeps_same_set (N=0,1,5,6,7); 57 test nhanh pass.
 - E6 chay lai tu dau vao results/e6/E6_P1cpu2_20261102 (cung PREREG_E6, cung patch SHA256). Loi nay chi xuat hien khi N=6 tren backend ultra_native; E1 (N danh theo luoi) khong gap loi.
+
+## 02/11/2026 — E6: thiếu nhánh clean ở 640 px
+PREREG_E6 (tag prereg-e6-20261101) chỉ có nhánh `clean` ở 320 px; C2 và C4 đo ở 640 px nên tỷ số toàn trình 3,5–3,6 là chi phí độ phân giải (results/e6/E6_P1cpu2_20261102/summary.json:arms.C2.total_tv_nms). Phát hiện sau khi đo. Không dùng C2/C4 để kết luận tác động patch ở 640 px. Đề xuất bổ sung: prereg/PREREG_E6_addendum_clean640.md (chưa tag, chờ duyệt).
