@@ -338,3 +338,9 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - Còn trống: nhánh 640 px (thiếu clean_640; cần PREREG bổ sung + tag, chờ duyệt), URL kho mã, Hình 2-3, kiểm trích dẫn "from memory", biên dịch TeX.
 - Lưu ý khi viết: `dose_1e2_to_1e4` trong summary E1 không ghi nc trong khóa (giá trị khớp nc=80 theo curves); A/A có 2/11 điểm drift (khối 1,3; tối đa 26%), E1 2/12 (5,6%), E6 0/11 (1,5%).
 - Việc tiếp: A) PREREG bổ sung clean_640 (chưa tag); B) vẽ Hình 2-3 từ JSON; C) kiểm trích dẫn bằng web.
+
+## 02/11 — Hình, PREREG bổ sung, kiểm trích dẫn
+- Hình 2-3: `sponge-sim/studies/figures/make_figs.py` -> `paper_en/figures/` (đã chèn vào main.tex).
+- `prereg/PREREG_E6_addendum_clean640.md`: NHÁP, CHƯA TAG, chờ duyệt (cần chọn A/A 640 px hay dùng MDE 320 px). DEVIATIONS đã ghi.
+- references.bib: đã kiểm bằng web 7 mục (Sponge, Overload, SlowTrack, EVADE, Thys, Neubeck, Cameron); còn 9 mục "from memory" chưa kiểm: Brown, Athalye, Ilyas, Redmon, DETR, COCO, Ultralytics, PyTorch, Efron, Holm. Cameron là wild cluster bootstrap-t, bài đã sửa câu cho đúng vai trò.
+- Còn: URL kho mã, biên dịch TeX, giảm chữ số nếu cần.
