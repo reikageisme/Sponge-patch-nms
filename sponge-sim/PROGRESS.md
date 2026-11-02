@@ -387,3 +387,10 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - 15 khoang trong G1-G15 (quan trong nhat: G1 chua co ARM; G3 ban Viet ghi sai tac gia; G4 ban Viet con nhan noi bo va nhieu chu so; G5 chua khac biet du ro voi EVADE; G6 tag chua push).
 - Da sua ngay G3: paper_vi/main_vi.tex chi con 2 tac gia (Anh, Bao), Nam la GVHD va tac gia lien he.
 - E6-A1 van dang chay (64.169 dong luc 10:40).
+
+## 02/11 11:20 - Don ban Viet theo quy tac cua thay (paper_vi/main_vi.tex)
+- Bo nhan noi bo: OLD128 -> "nhom 128 anh", X1-500 -> "nhom 500 anh", X2 -> "khao sat da kien truc", profile P1/E1/E4 -> "mot loi hieu nang / mot loi tiet kiem dien / bon loi", bo "X5v2", bo E6; khong con duong dan outputs/ hay sponge-sim/ trong than bai (Phu luc A chi tro toi docs/NGUON_SO_LIEU.md, noi chua bang nguon).
+- Lam tron: so co >=4 chu so thap phan -> 3 chu so (>=10 thi 1 chu so); p-value 0,15 va 0,002; d_z -0,50 va -2,05; so co 2 chu so thap phan phan nguyen >=10 -> 1 chu so (AP, ms).
+- Gom rao don: bo cac cau rao don lap lai trong phan Ket qua; them 1 doan "Quy uoc doc cac ket qua" (viii y) trong muc Moi de doa.
+- Ban sao truoc khi don: scratchpad main_vi_before_clean.tex (khong trong repo; git giu lich su).
+- Con lai: hang 640 px cho E6-A1; dich sang Anh sau khi nguoi dung duyet ban Viet.

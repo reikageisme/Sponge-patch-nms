@@ -1,5 +1,5 @@
 % Bản tiếng Việt ĐỂ RÀ SOÁT của bài báo (bản tiếng Anh chính thức là paper_en/main.tex; bản này viết đầy đủ bằng tiếng Việt để đọc/duyệt, sau đó mới dịch sang tiếng Anh).
-% Mọi con số lấy từ các tệp summary.json trong sponge-sim/results và từ các cohort lịch sử trong outputs/ (xem Phụ lục A "Nguồn số liệu").
+% Mọi con số truy được tới tệp tóm tắt của từng phép đo; nguồn nằm trong kho mã (docs/NGUON_SO_LIEU.md), không ghi đường dẫn trong thân bài.
 % Các chỗ đỏ "CHƯA CÓ SỐ" là chỗ chưa có dữ liệu.
 % Biên dịch: pdflatex main_vi && bibtex main_vi && pdflatex main_vi && pdflatex main_vi (cần gói vietnamese của babel; tham chiếu dùng ../paper_en/references.bib và refs_extra.bib).
 \documentclass[12pt,a4paper]{article}
@@ -36,7 +36,7 @@
 \maketitle
 
 \begin{abstract}
-Các đầu vào đối kháng nhắm vào độ trễ của bộ phát hiện đối tượng thường lấy số hộp ứng viên đi vào bước loại bỏ không cực đại (NMS), ký hiệu $\Ntau$, làm đại lượng cần cực đại hóa, với giả định rằng ứng viên càng nhiều thì pipeline càng chậm. Chúng tôi kiểm tra xem $\Ntau$ có thật sự là một proxy đáng tin cho độ trễ hay không. Chúng tôi xây dựng một giao thức đo gồm: ghim lõi CPU có kiểm chứng dưới tải, đo thời gian theo từng công đoạn, và hiệu chuẩn A/A để cho ra hiệu ứng nhỏ nhất phát hiện được (MDE) của mọi phép so sánh, và áp dụng giao thức trong môi trường mô phỏng hạn chế tài nguyên trên CPU laptop ghim lõi (một điện thoại Arm cũng được chuẩn bị nhưng không ghim được lõi). Một đối chứng dương, trong đó chúng tôi tiêm từ $10^2$ đến $10^4$ ứng viên tổng hợp vào chính pipeline đó, cho thấy độ trễ NMS tăng từ 4 đến 1360 lần tùy cách cài đặt NMS và hình học của các hộp, và giới hạn top-$k$ loại bỏ phần lớn mức tăng. Nghiên cứu tình huống là Sponge Patch, một miếng dán cục bộ được tối ưu hộp xám bằng thuật toán di truyền định hướng vị trí Laplacian (SG-GA). Trên các cohort lịch sử, SG-GA không vượt GA đặt ở tâm: ở 128 ảnh, chênh lệch $-0{,}0051$ (khoảng tin cậy 95\% từ $-0{,}0112$ đến $0{,}0007$; $p=0{,}1504$), và ở 500 ảnh mở rộng sau quan sát, $-0{,}0293$ ($p=0{,}001953$), và SG-GA không khác tìm kiếm ngẫu nhiên. Khi patch tối ưu trên 100 ảnh được đo lại theo giao thức đã ghim lõi, SG-GA không làm tăng $\Ntau$ đo được ở 320 px, còn một baseline gradient làm $\Ntau$ tăng 2,3 lần lại để độ trễ toàn trình không đổi trong phạm vi MDE 0,55\% (tỷ số 1,006; khoảng tin cậy 95\% từ 0,997 đến 1,015). Các biến thể tham chiếu lịch sử cho kết quả cùng chiều: $\Ntau$ tăng khoảng ba trăm lần chỉ kèm theo toàn trình tăng 2--6\%. Bộ dự đoán chỉ dựa trên $\Ntau$ sai khoảng 5\% với một cách cài đặt NMS và sai khoảng 4 lần với một cách cài đặt khác. Điện thoại không ghim được lõi dưới tải nên bài không có kết quả trên Arm, và kết quả đối với patch 640 px đang chờ đường cơ sở sạch ở 640 px.
+Các đầu vào đối kháng nhắm vào độ trễ của bộ phát hiện đối tượng thường lấy số hộp ứng viên đi vào bước loại bỏ không cực đại (NMS), ký hiệu $\Ntau$, làm đại lượng cần cực đại hóa, với giả định rằng ứng viên càng nhiều thì pipeline càng chậm. Chúng tôi kiểm tra xem $\Ntau$ có thật sự là một proxy đáng tin cho độ trễ hay không. Chúng tôi xây dựng một giao thức đo gồm: ghim lõi CPU có kiểm chứng dưới tải, đo thời gian theo từng công đoạn, và hiệu chuẩn A/A để cho ra hiệu ứng nhỏ nhất phát hiện được (MDE) của mọi phép so sánh, và áp dụng giao thức trong môi trường mô phỏng hạn chế tài nguyên trên CPU laptop ghim lõi (một điện thoại Arm cũng được chuẩn bị nhưng không ghim được lõi). Một đối chứng dương, trong đó chúng tôi tiêm từ $10^2$ đến $10^4$ ứng viên tổng hợp vào chính pipeline đó, cho thấy độ trễ NMS tăng từ 4 đến 1360 lần tùy cách cài đặt NMS và hình học của các hộp, và giới hạn top-$k$ loại bỏ phần lớn mức tăng. Nghiên cứu tình huống là Sponge Patch, một miếng dán cục bộ được tối ưu hộp xám bằng thuật toán di truyền định hướng vị trí Laplacian (SG-GA). Trên các cohort lịch sử, SG-GA không vượt GA đặt ở tâm: ở 128 ảnh, chênh lệch $-0{,}005$ (khoảng tin cậy 95\% từ $-0{,}011$ đến $0{,}001$; $p=0{,}15$), và ở 500 ảnh mở rộng sau quan sát, $-0{,}029$ ($p=0{,}002$), và SG-GA không khác tìm kiếm ngẫu nhiên. Khi patch tối ưu trên 100 ảnh được đo lại theo giao thức đã ghim lõi, SG-GA không làm tăng $\Ntau$ đo được ở 320 px, còn một baseline gradient làm $\Ntau$ tăng 2,3 lần lại để độ trễ toàn trình không đổi trong phạm vi MDE 0,55\% (tỷ số 1,006; khoảng tin cậy 95\% từ 0,997 đến 1,015). Các biến thể tham chiếu lịch sử cho kết quả cùng chiều: $\Ntau$ tăng khoảng ba trăm lần chỉ kèm theo toàn trình tăng 2--6\%. Bộ dự đoán chỉ dựa trên $\Ntau$ sai khoảng 5\% với một cách cài đặt NMS và sai khoảng 4 lần với một cách cài đặt khác. Điện thoại không ghim được lõi dưới tải nên bài không có kết quả trên Arm, và kết quả đối với patch 640 px đang chờ đường cơ sở sạch ở 640 px.
 \end{abstract}
 
 \noindent\textbf{Từ khóa:} phát hiện đối tượng; loại bỏ không cực đại (NMS); đo độ trễ; patch đối kháng; tối ưu hộp xám; thuật toán di truyền; tính sẵn sàng
@@ -63,7 +63,7 @@ Bài đặt ra bốn câu hỏi về quan hệ giữa $\Ntau$ và độ trễ, v
 \end{description}
 
 \subsection{Đóng góp và phạm vi khẳng định}
-Chúng tôi đóng góp: (i) một giao thức đo độ trễ pipeline với việc ghim lõi được kiểm chứng dưới tải, đo thời gian theo từng công đoạn, và hiệu chuẩn A/A để báo cáo MDE của mọi phép so sánh; (ii) một đối chứng dương tiêm các ứng viên tổng hợp tại ranh giới đầu ra đã giải mã của một pipeline thật, và vẽ bản đồ độ trễ như hàm của $\Ntau$, cách cài đặt, hình học và giới hạn top-$k$, trên một CPU laptop đã ghim lõi (điện thoại Arm không ghim được dưới tải); (iii) một nghiên cứu tình huống về bộ tối ưu patch kiểu thuật toán di truyền, mô tả giao diện tối ưu hộp xám, ngân sách tính theo lượt ảnh và đánh giá độc lập sau tối ưu, được tách thành các cohort lịch sử (OLD128 và X1-500, mở rộng sau quan sát) và một lần đo lại theo giao thức ghim lõi trên patch tối ưu từ 100 ảnh, kèm các baseline tìm kiếm ngẫu nhiên, đặt vị trí và gradient; (iv) một phép kiểm tra trực tiếp proxy $\Ntau$: sai số dự đoán của một mô hình chỉ dựa trên $\Ntau$ trên các tập ứng viên thật; (v) việc giữ nguyên các kết quả âm và tách bạch ba lớp bằng chứng (ứng viên, hậu xử lý và độ trễ; AP; chất lượng dịch vụ). Giao thức, các giả thuyết và các endpoint của phần đo ghim lõi được cố định trong một kho mã công khai trước khi tiến hành các phép đo tương ứng.
+Chúng tôi đóng góp: (i) một giao thức đo độ trễ pipeline với việc ghim lõi được kiểm chứng dưới tải, đo thời gian theo từng công đoạn, và hiệu chuẩn A/A để báo cáo MDE của mọi phép so sánh; (ii) một đối chứng dương tiêm các ứng viên tổng hợp tại ranh giới đầu ra đã giải mã của một pipeline thật, và vẽ bản đồ độ trễ như hàm của $\Ntau$, cách cài đặt, hình học và giới hạn top-$k$, trên một CPU laptop đã ghim lõi (điện thoại Arm không ghim được dưới tải); (iii) một nghiên cứu tình huống về bộ tối ưu patch kiểu thuật toán di truyền, mô tả giao diện tối ưu hộp xám, ngân sách tính theo lượt ảnh và đánh giá độc lập sau tối ưu, được tách thành các cohort lịch sử (nhóm 128 ảnh và nhóm 500 ảnh, mở rộng sau quan sát) và một lần đo lại theo giao thức ghim lõi trên patch tối ưu từ 100 ảnh, kèm các baseline tìm kiếm ngẫu nhiên, đặt vị trí và gradient; (iv) một phép kiểm tra trực tiếp proxy $\Ntau$: sai số dự đoán của một mô hình chỉ dựa trên $\Ntau$ trên các tập ứng viên thật; (v) việc giữ nguyên các kết quả âm và tách bạch ba lớp bằng chứng (ứng viên, hậu xử lý và độ trễ; AP; chất lượng dịch vụ). Giao thức, các giả thuyết và các endpoint của phần đo ghim lõi được cố định trong một kho mã công khai trước khi tiến hành các phép đo tương ứng.
 
 Đây không phải đề xuất một kiến trúc YOLO mới hoặc tuyên bố một tấn công mạnh hơn các phương pháp đã công bố. Điểm khác biệt của đường nghiên cứu phải được đánh giá bằng cả lợi ích và chi phí: không dùng gradient nhưng cần telemetry trước NMS; diện tích nhỏ nhưng hiệu ứng chưa mạnh; dữ liệu truy vết được nhưng phạm vi phần cứng và vật lý còn hạn chế. Các nhận định về lựa chọn triển khai chỉ áp dụng cho mô hình, dữ liệu và giao thức tương ứng. Về tính mới, đường nghiên cứu khác với dòng tấn công cạn kiệt tài nguyên và miếng dán trước đây ở ba điểm có thể kiểm chứng (Bảng~\ref{tab:related}). Thứ nhất, mô hình đe dọa hộp xám, chỉ dùng phản hồi điểm tin cậy trước NMS, không gradient, không trọng số, nằm giữa hộp trắng toàn ảnh của các tấn công độ trễ NMS gần đây (Phantom Sponges, Overload) và hộp đen hoàn toàn, đồng thời giới hạn can thiệp vào một miếng dán cục bộ thay vì nhiễu toàn ảnh. Thứ hai, thay vì báo một bội số độ trễ trên một cấu hình, bài tách bốn đại lượng (ứng viên, hậu xử lý, AP, QoS) và đo bằng giao thức ghim lõi có đọc lại affinity, hiệu chuẩn A/A để công bố MDE, và bootstrap hai tầng; nhờ đó phát hiện rằng số ứng viên không kéo theo độ trễ toàn trình khi NMS chỉ chiếm vài phần trăm đường ống. Thứ ba, kết quả âm (SG-GA không vượt tìm kiếm ngẫu nhiên trên 500 ảnh) được giữ nguyên làm bằng chứng cho ranh giới điều kiện thay vì bị loại khỏi báo cáo.
 
@@ -176,7 +176,7 @@ Chúng tôi nêu hành vi kỳ vọng của công đoạn NMS trước khi có d
 \section{Thiết kế thực nghiệm và giao thức đo}
 \label{sec:protocol}
 \subsection{Phạm vi bệ thử nghiệm và các cohort}
-Bệ thử nghiệm dùng CPU laptop Intel Core i5-1335U, YOLOv8n và ảnh $320\times320$ (và $640\times640$ cho các điều kiện 640 px), trong môi trường mô phỏng hạn chế tài nguyên. Phần dữ liệu lịch sử (OLD128, X1-500, các phép đo chuyển giao) dùng số luồng phần mềm chứ chưa ghim lõi và chưa hiệu chuẩn thiết bị biên hay Arm; phần đo mới (Mục~\ref{sec:newprotocol}) dùng profile đã ghim lõi và có kiểm chứng. Bảng~\ref{tab:cohort} liệt kê các cohort và phép thử, tách theo đại lượng và ranh giới đo; tên cohort được dùng thống nhất trong toàn bài.
+Bệ thử nghiệm dùng CPU laptop Intel Core i5-1335U, YOLOv8n và ảnh $320\times320$ (và $640\times640$ cho các điều kiện 640 px), trong môi trường mô phỏng hạn chế tài nguyên. Phần dữ liệu lịch sử (nhóm 128 ảnh, nhóm 500 ảnh, các phép đo chuyển giao) dùng số luồng phần mềm chứ chưa ghim lõi và chưa hiệu chuẩn thiết bị biên hay Arm; phần đo mới (Mục~\ref{sec:newprotocol}) dùng profile đã ghim lõi và có kiểm chứng. Bảng~\ref{tab:cohort} liệt kê các cohort và phép thử, tách theo đại lượng và ranh giới đo; tên cohort được dùng thống nhất trong toàn bài.
 
 \begin{table}[t]
 \centering\small
@@ -186,17 +186,17 @@ Bệ thử nghiệm dùng CPU laptop Intel Core i5-1335U, YOLOv8n và ảnh $320
 \toprule
 Cohort / phép thử & Vai trò, đại lượng & Ảnh; seed & Giao thức \\
 \midrule
-OLD128 & So sánh ứng viên/AP trước khi mở rộng & 128; 10 & Mốc 400 và 2500 lượt ảnh; mốc 1000 dùng 32 ảnh \\
-X1-500 & Mở rộng sau khi quan sát OLD128 & 500; 10 & Mốc 400 và 2500; mốc 1000 dùng 32 ảnh \\
-OLD128, chuyển giao & Tỷ số thời gian tensor; sáu bộ phát hiện & 16; 10 & Không phải tỷ số ứng viên \\
-X2 & Số lượng tại ranh giới; tám bộ phát hiện & 64--100; 5 & YOLO: trước NMS; torchvision: sau NMS nội bộ \\
+Nhóm 128 ảnh & So sánh ứng viên/AP trước khi mở rộng & 128; 10 & Mốc 400 và 2500 lượt ảnh; mốc 1000 dùng 32 ảnh \\
+Nhóm 500 ảnh & Mở rộng sau khi quan sát nhóm 128 ảnh & 500; 10 & Mốc 400 và 2500; mốc 1000 dùng 32 ảnh \\
+Nhóm 128 ảnh, chuyển giao & Tỷ số thời gian tensor; sáu bộ phát hiện & 16; 10 & Không phải tỷ số ứng viên \\
+Khảo sát đa kiến trúc & Số lượng tại ranh giới; tám bộ phát hiện & 64--100; 5 & YOLO: trước NMS; torchvision: sau NMS nội bộ \\
 Đo ghim lõi (A/A, tiêm, đo lại, sinh patch) & Độ trễ theo công đoạn có MDE & 100 ảnh giữ ra; 5--10 seed & Profile laptop ghim lõi, kiểm chứng dưới tải \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \subsection{Tập ảnh và đối chứng của các cohort lịch sử}
-Bốn ảnh COCO128 dùng để tối ưu cho các cohort lịch sử; bộ giữ ra gồm 500 ID nhỏ nhất của COCO val2017, không giao ID với tập tối ưu. Bản chú thích của 500 ảnh có 3541 chú thích và 80 danh mục, giữ nguyên các cờ đám đông/bỏ qua của bản gốc. Lịch sử lựa chọn trọng số pretrained chưa xác định, nên không khẳng định độc lập hoàn toàn với pretraining. OLD128 dùng 128 ảnh con của 500 ID ở các mốc 400 và 2500 lượt ảnh, và 32 ảnh ở mốc 1000. Bốn phương pháp chính dùng cùng diện tích 4\%, cùng hàm mục tiêu và ngân sách 400/1000/2500 lượt ảnh, mỗi cấu hình 10 seed; OLD128 có 16 cấu hình, 160 lượt tối ưu, 240 checkpoint và 250 ca đánh giá chính, gồm đối chứng sạch. Sau kết quả OLD128 ($p=0{,}1504$), X1-500 mở rộng các mốc 400/2500 lên 500 ảnh nhằm tăng thông tin thống kê và độ chính xác ước lượng; mốc 1000 vẫn có 32 ảnh. Đây là mở rộng sau quan sát trên các cohort lồng nhau (128 ảnh nằm trong 500 ảnh), không phải tái lập độc lập. Mục tiêu tăng công suất không đồng nghĩa đạt đủ công suất: số seed vẫn bằng 10 và không có bảo đảm công suất tiến cứu. X2 dành riêng cho khảo sát số lượng ở ranh giới của từng adapter.
+Bốn ảnh COCO128 dùng để tối ưu cho các cohort lịch sử; bộ giữ ra gồm 500 ID nhỏ nhất của COCO val2017, không giao ID với tập tối ưu. Bản chú thích của 500 ảnh có 3541 chú thích và 80 danh mục, giữ nguyên các cờ đám đông/bỏ qua của bản gốc. Lịch sử lựa chọn trọng số pretrained chưa xác định, nên không khẳng định độc lập hoàn toàn với pretraining. Nhóm 128 ảnh dùng 128 ảnh con của 500 ID ở các mốc 400 và 2500 lượt ảnh, và 32 ảnh ở mốc 1000. Bốn phương pháp chính dùng cùng diện tích 4\%, cùng hàm mục tiêu và ngân sách 400/1000/2500 lượt ảnh, mỗi cấu hình 10 seed; nhóm 128 ảnh có 16 cấu hình, 160 lượt tối ưu, 240 checkpoint và 250 ca đánh giá chính, gồm đối chứng sạch. Sau kết quả nhóm 128 ảnh ($p=0{,}15$), nhóm 500 ảnh mở rộng các mốc 400/2500 lên 500 ảnh nhằm tăng thông tin thống kê và độ chính xác ước lượng; mốc 1000 vẫn có 32 ảnh. Đây là mở rộng sau quan sát trên các cohort lồng nhau (128 ảnh nằm trong 500 ảnh), không phải tái lập độc lập. Mục tiêu tăng công suất không đồng nghĩa đạt đủ công suất: số seed vẫn bằng 10 và không có bảo đảm công suất tiến cứu. Khảo sát đa kiến trúc dành riêng cho việc đếm số lượng tại ranh giới của từng adapter.
 
 \subsection{AP và ranh giới thời gian}
 Các cohort lịch sử dùng COCOeval bbox với IoU 0,50--0,95, ánh xạ lớp về ID COCO gốc và maxDets 1/10/100. Dự đoán được đưa từ ảnh co vuông về kích thước nguồn, cắt theo biên. Đây là kết quả của bộ đánh giá COCO trên cohort tương ứng (128 hoặc 500 ảnh; 32 ảnh cho mốc 1000), không phải toàn bộ 5000 ảnh val2017; AP được tính gộp ảnh trong từng seed trước khi lấy trung bình giữa các seed. Hậu xử lý chính có IoU NMS 0,45, NMS không phân biệt lớp và tối đa 300 phát hiện đầu ra. Top-$k$ cắt ứng viên trước NMS khác với giới hạn phát hiện sau NMS và với giới hạn maxDets của bộ đánh giá. Mỗi ảnh có khởi động và ba lượt đo suy luận; lọc và NMS được đo riêng trên dự đoán đã lưu. Không cộng hai trung vị thành độ trễ toàn trình. Phép đo xử lý tensor chung ở backend gồm suy luận, giải mã đầu ra, lọc và NMS; đọc ảnh, chèn patch và camera nằm ngoài ranh giới này.
@@ -206,7 +206,7 @@ So sánh chính là SG-GA trừ GA tâm về tỷ số ứng viên tại 2500 l�
 \begin{equation}
 R_s=\frac{1}{n}\sum_{j}\frac{\Ntau(A(x_j,p_s,l_j))}{\max(1,\Ntau(x_j))},\qquad \Delta_s=R^{\mathrm{SG}}_s-R^{\mathrm{tâm}}_s .
 \end{equation}
-Giả thuyết và ngưỡng cải thiện thực tiễn $+0{,}10$ đã có trong giao thức cục bộ trước khi đánh giá theo mốc thời gian của manifest, nhưng chưa được đăng ký công khai; X1-500 là mở rộng sau kết quả OLD128, không phải xác nhận độc lập tiến cứu. Cohen $d_z=\bar\Delta/s_\Delta$ với $s_\Delta$ là độ lệch chuẩn mẫu (ddof=1) của 10 chênh lệch theo seed. Phân tích dùng 20\,000 lần lấy mẫu bootstrap và toàn bộ $2^{10}=1024$ cấu hình đảo dấu hai phía, dưới giả định đối xứng dấu của chênh lệch dưới giả thuyết không. Khoảng tin cậy có điều kiện trên bộ ảnh, mô hình và phần cứng cố định; thêm ảnh hay thêm lần lặp đo không làm tăng số seed. Mỗi cohort có một họ 15 so sánh thứ cấp dùng hiệu chỉnh Holm; đây không phải hiệu chỉnh cho mọi phép thăm dò trong kho mã. Cohort lịch sử cũng được phân tích bằng bootstrap hai tầng (ảnh $\times$ seed) để phủ bất định do chọn ảnh mà khoảng tin cậy theo seed bỏ sót; phân tích này được định nghĩa sau khi thấy dữ liệu và gắn nhãn post hoc.
+Giả thuyết và ngưỡng cải thiện thực tiễn $+0{,}10$ đã có trong giao thức cục bộ trước khi đánh giá theo mốc thời gian của manifest, nhưng chưa được đăng ký công khai; nhóm 500 ảnh là mở rộng sau kết quả nhóm 128 ảnh, không phải xác nhận độc lập tiến cứu. Cohen $d_z=\bar\Delta/s_\Delta$ với $s_\Delta$ là độ lệch chuẩn mẫu (ddof=1) của 10 chênh lệch theo seed. Phân tích dùng 20\,000 lần lấy mẫu bootstrap và toàn bộ $2^{10}=1024$ cấu hình đảo dấu hai phía, dưới giả định đối xứng dấu của chênh lệch dưới giả thuyết không. Khoảng tin cậy có điều kiện trên bộ ảnh, mô hình và phần cứng cố định; thêm ảnh hay thêm lần lặp đo không làm tăng số seed. Mỗi cohort có một họ 15 so sánh thứ cấp dùng hiệu chỉnh Holm; đây không phải hiệu chỉnh cho mọi phép thăm dò trong kho mã. Cohort lịch sử cũng được phân tích bằng bootstrap hai tầng (ảnh $\times$ seed) để phủ bất định do chọn ảnh mà khoảng tin cậy theo seed bỏ sót; phân tích này được định nghĩa sau khi thấy dữ liệu và gắn nhãn post hoc.
 
 \subsection{Luồng phần mềm và tiêu chí dịch vụ}
 Luồng phần mềm dùng một bộ phát ảnh theo lịch và một worker suy luận thực. Có 240 lượt: 10 seed, hai chu kỳ 100 và 300~ms, bốn điều kiện và ba chính sách (FIFO, bỏ khi bận, điều tiết thích nghi). Mỗi lượt phát 32 ảnh theo thứ tự ghép cặp trong seed, thời hạn 300~ms tính từ mốc phát theo lịch. Đây là thực thi đồng thời có mốc thời gian đơn điệu, khác mô hình hàng đợi ngoại tuyến dựng từ thời gian phục vụ, nhưng chưa gồm camera. Chính sách thích nghi chỉ dùng thời gian xử lý đã hoàn tất, cập nhật trung bình trượt mũ với hệ số 0,25 và đặt khoảng nhận không nhỏ hơn chu kỳ phát hoặc 1,2 lần thời gian ước lượng, tối đa 600~ms. Tỷ lệ thiếu/trễ tính trên toàn bộ ảnh đã phát; AP toàn luồng xem ảnh bị bỏ là dự đoán rỗng, AP đúng hạn xem cả ảnh bị bỏ và trễ là rỗng. Nhờ đó, việc bỏ ảnh không bị che dưới một tỷ lệ trễ thấp chỉ tính trên phần còn xử lý. Tiêu chí suy giảm đánh dấu thông lượng đúng hạn dưới 80\% tốc độ phát hoặc tỷ lệ thiếu/trễ trên 10\%; tiêu chí phục hồi còn yêu cầu AP đúng hạn không thấp hơn sạch FIFO ghép cặp quá hai điểm phần trăm. Một điều kiện không đạt tiêu chí chưa xác định nguyên nhân do tấn công: cần so với ảnh sạch ở cùng tải. Các kiểm định chính sách là thăm dò, chưa hiệu chỉnh cho nhóm 48 phép so sánh đã lưu.
@@ -301,7 +301,7 @@ Thiếu đường cơ sở 640 px & Lần đo lại patch không có nhánh sạ
 Kết quả gồm hai phần. Phần A (từ Mục~\ref{sec:newprotocol}) là các phép đo mới theo giao thức ghim lõi, có MDE: hiệu chuẩn A/A, đối chứng dương tiêm ứng viên, kết quả tối ưu và đo lại patch, và bộ dự đoán chỉ dựa trên $\Ntau$. Phần B (từ Mục~\ref{sec:cohorts}) là các cohort lịch sử đã đo trước khi có giao thức ghim lõi; chúng trả lời các câu hỏi về ứng viên, AP và chuyển giao, và các số đo thời gian của chúng được gắn nhãn thăm dò.
 \subsection{Hiệu chuẩn giao thức (A/A)}
 \label{sec:newprotocol}
-Bảng~\ref{tab:aa} báo cáo MDE của từng công đoạn trên profile laptop đã ghim lõi (CPU logic 2, một luồng torch; số lõi hiệu dụng 0,91 dưới tải) ở hai độ phân giải. Ở 320 px, MDE toàn trình là 0,55\%, và MDE của các công đoạn NMS là 0,64\% (PyTorch thuần) và 1,1\% (torchvision). Hai trong 11 điểm tham chiếu của lần chạy này vượt cờ drift 3\% (khối 1 và 3, thay đổi lớn nhất 26\%); loại hai khối bị cờ còn lại 80 ảnh, và chênh lệch A/A toàn trình vẫn nằm trong khoảng $\pm0{,}5\%$ (khoảng tin cậy 95\% của log-tỷ số trung bình từ $-0{,}0038$ đến $0{,}0046$). Ở 640 px, việc ghim lõi cũng qua kiểm chứng (số lõi hiệu dụng 0,76), nhưng sàn nhiễu cao hơn rõ rệt: MDE toàn trình là 1,9\% và 8 trong 11 điểm tham chiếu bị cờ drift (thay đổi lớn nhất 18\%), nên khi loại các khối bị cờ chỉ còn 30 ảnh và khoảng tin cậy của log-tỷ số toàn trình rộng ($-0{,}035$ đến $0{,}023$). Nguyên nhân của drift cao ở lần chạy này chưa được xác định; trong khi đo có các tác vụ soạn thảo nhẹ chạy song song trên cùng máy, và chúng tôi không thể loại trừ ảnh hưởng của chúng. Vì vậy MDE 640 px phải đọc như một cận trên thận trọng của độ nhạy, không phải một sàn nhiễu sạch. Các profile A/A khác dự kiến (lõi tiết kiệm điện của laptop, điện thoại) không có: điện thoại không qua kiểm chứng ghim lõi (Mục~\ref{sec:phone}).
+Bảng~\ref{tab:aa} báo cáo MDE của từng công đoạn trên profile laptop đã ghim lõi (CPU logic 2, một luồng torch; số lõi hiệu dụng 0,91 dưới tải) ở hai độ phân giải. Ở 320 px, MDE toàn trình là 0,55\%, và MDE của các công đoạn NMS là 0,64\% (PyTorch thuần) và 1,1\% (torchvision). Hai trong 11 điểm tham chiếu của lần chạy này vượt cờ drift 3\% (khối 1 và 3, thay đổi lớn nhất 26\%); loại hai khối bị cờ còn lại 80 ảnh, và chênh lệch A/A toàn trình vẫn nằm trong khoảng $\pm0{,}5\%$ (khoảng tin cậy 95\% của log-tỷ số trung bình từ $-0{,}004$ đến $0{,}005$). Ở 640 px, việc ghim lõi cũng qua kiểm chứng (số lõi hiệu dụng 0,76), nhưng sàn nhiễu cao hơn rõ rệt: MDE toàn trình là 1,9\% và 8 trong 11 điểm tham chiếu bị cờ drift (thay đổi lớn nhất 18\%), nên khi loại các khối bị cờ chỉ còn 30 ảnh và khoảng tin cậy của log-tỷ số toàn trình rộng ($-0{,}035$ đến $0{,}023$). Nguyên nhân của drift cao ở lần chạy này chưa được xác định; trong khi đo có các tác vụ soạn thảo nhẹ chạy song song trên cùng máy, và chúng tôi không thể loại trừ ảnh hưởng của chúng. Vì vậy MDE 640 px phải đọc như một cận trên thận trọng của độ nhạy, không phải một sàn nhiễu sạch. Các profile A/A khác dự kiến (lõi tiết kiệm điện của laptop, điện thoại) không có: điện thoại không qua kiểm chứng ghim lõi (Mục~\ref{sec:phone}).
 
 \begin{table}[t]
 \centering\small
@@ -464,7 +464,7 @@ Các patch được sinh trên GPU, đóng băng bằng giá trị băm và đo 
 
 Thứ nhất, các patch của thuật toán di truyền không làm tăng $\Ntau$ một cách đo được: $\Ntau$ trung vị tại $\tau=0{,}01$ giảm từ 86,5 xuống 85,5 (320 px, $\tau_{\mathrm{obj}}=0{,}01$) và xuống 85 (320 px, $\tau_{\mathrm{obj}}=0{,}25$), và khoảng tin cậy của tỷ số trung bình chứa 1. Tìm kiếm ngẫu nhiên, GA đặt ở tâm và GA đặt vị trí ngẫu nhiên cho cùng một bức tranh. Thứ hai, tất cả chúng đều thêm một lượng thời gian toàn trình nhỏ nhưng đo được, từ 1,1 đến 1,5\%, với khoảng tin cậy loại trừ 1 nhưng ở mức khoảng gấp đôi MDE toàn trình; các baseline không dùng gradient cho cùng mức tăng, nên đây không phải đặc trưng của các patch đã tối ưu. Thứ ba, baseline gradient làm $\Ntau$ tăng 2,3 lần (trung vị từ 93 lên 166 tại $\tau=0{,}01$; 6,7 lần tại $\tau=0{,}25$) và làm công đoạn NMS của torchvision tăng 21\% và công đoạn NMS PyTorch thuần tăng 2,3 lần, nhưng tỷ số toàn trình của nó là 1,006 với khoảng tin cậy 95\% từ 0,997 đến 1,015, bao trùm MDE. Dưới giao thức này, vì vậy, việc $\Ntau$ tăng 2,3 lần không nhìn thấy được ở mức toàn trình, bởi trên ảnh sạch NMS chỉ chiếm 0,16\% tổng thời gian (trung vị, profile torchvision) còn bước lan truyền thuận chiếm phần lớn.
 
-Các điều kiện 640 px (patch 128 px chiếm 4\% diện tích, và 64 px chiếm 1\% diện tích) làm tăng $\Ntau$ tại $\tau=0{,}01$ từ 86,5 lên 134 và từ 93 lên 138,5 tương ứng. Tỷ số thời gian của chúng so với ảnh sạch 320 px là khoảng 3,5 đến 3,6, nhưng đó là chi phí của đầu vào lớn hơn; thiết kế nghiên cứu ban đầu không có nhánh sạch 640 px, nên tác động của patch 640 px lên độ trễ là \nodata{chưa đo xong: nhánh sạch 640 px đang được đo trong phụ lục E6-A1, kết quả sẽ được điền sau} và chưa được diễn giải.
+Các điều kiện 640 px (patch 128 px chiếm 4\% diện tích, và 64 px chiếm 1\% diện tích) làm tăng $\Ntau$ tại $\tau=0{,}01$ từ 86,5 lên 134 và từ 93 lên 138,5 tương ứng. Tỷ số thời gian của chúng so với ảnh sạch 320 px là khoảng 3,5 đến 3,6, nhưng đó là chi phí của đầu vào lớn hơn; thiết kế nghiên cứu ban đầu không có nhánh sạch 640 px, nên tác động của patch 640 px lên độ trễ là \nodata{chưa đo xong: nhánh sạch 640 px đang được đo trong một lần đo bổ sung, kết quả sẽ được điền sau} và chưa được diễn giải.
 
 \begin{table*}[t]
 \centering\small
@@ -527,117 +527,117 @@ Chúng tôi dự định lặp lại hiệu chuẩn A/A và đối chứng dươ
 
 \subsection{Cohort lịch sử: SG-GA so với các baseline cùng ngân sách}
 \label{sec:cohorts}
-Các cohort lịch sử (OLD128 và X1-500) được đo trước khi có giao thức ghim lõi, nên chúng chỉ trả lời câu hỏi Q5 và Q6 về ứng viên và AP, không về độ trễ; các phép đo thời gian của chúng được dùng ở Mục~\ref{sec:proxyhist} với nhãn thăm dò. Tại 2500 lượt ảnh, OLD128 chưa hỗ trợ ưu thế của SG-GA so với GA đặt ở tâm: chênh lệch trung bình $-0{,}0051$, khoảng tin cậy bootstrap ghép cặp 95\% từ $-0{,}0112$ đến $0{,}0007$, $p$ đảo dấu chính xác $0{,}1504$, $d_z=-0{,}4984$. Trên X1-500, tỷ số ứng viên của SG-GA là 1,0268 thấp hơn GA tâm 1,0561: chênh lệch $-0{,}0293$ (khoảng tin cậy từ $-0{,}0383$ đến $-0{,}0216$), $p=0{,}001953125$ (giá trị nhỏ nhất có thể với 10 seed, cả 10 seed cùng dấu âm), $d_z=-2{,}0546$. Kết quả có điều kiện này không hỗ trợ lợi thế của heuristic Laplacian. Hai cohort lồng nhau cho chênh lệch cùng âm nhưng khác độ lớn; không coi việc mở rộng sau quan sát là xác nhận độc lập. Ở OLD128, AP của ảnh sạch là 34,08\%, SG-GA 29,97\% và GA tâm 25,88\%; ở X1-500 tương ứng 30,27\%, 26,20\% và 24,61\% (Bảng~\ref{tab:cohortres}). AP giảm trên từng cohort không tự xác nhận từ chối dịch vụ. Trong OLD128, trung bình tỷ số theo ảnh tăng nhẹ dù số ứng viên trung bình giảm từ 133,29 xuống 131,05; hai phép gộp có trọng số khác nhau và không được diễn giải như cùng một đại lượng.
+Các cohort lịch sử (nhóm 128 ảnh và nhóm 500 ảnh) được đo trước khi có giao thức ghim lõi, nên chúng chỉ trả lời câu hỏi Q5 và Q6 về ứng viên và AP, không về độ trễ; các phép đo thời gian của chúng được dùng ở Mục~\ref{sec:proxyhist} với nhãn thăm dò. Tại 2500 lượt ảnh, nhóm 128 ảnh chưa hỗ trợ ưu thế của SG-GA so với GA đặt ở tâm: chênh lệch trung bình $-0{,}005$, khoảng tin cậy bootstrap ghép cặp 95\% từ $-0{,}011$ đến $0{,}001$, $p$ đảo dấu chính xác $0{,}15$, $d_z=-0{,}50$. Trên nhóm 500 ảnh, tỷ số ứng viên của SG-GA là 1,027 thấp hơn GA tâm 1,056: chênh lệch $-0{,}029$ (khoảng tin cậy từ $-0{,}038$ đến $-0{,}022$), $p=0{,}002$ (giá trị nhỏ nhất có thể với 10 seed, cả 10 seed cùng dấu âm), $d_z=-2{,}05$. Kết quả có điều kiện này không hỗ trợ lợi thế của heuristic Laplacian.  Ở nhóm 128 ảnh, AP của ảnh sạch là 34,1\%, SG-GA 30,0\% và GA tâm 25,9\%; ở nhóm 500 ảnh tương ứng 30,3\%, 26,2\% và 24,6\% (Bảng~\ref{tab:cohortres}). AP giảm trên từng cohort không tự xác nhận từ chối dịch vụ. Trong nhóm 128 ảnh, trung bình tỷ số theo ảnh tăng nhẹ dù số ứng viên trung bình giảm từ 133,29 xuống 131,05 (hai phép gộp có trọng số khác nhau).
 
 \begin{table}[t]
 \centering\small
-\caption{Hai cohort lồng nhau tại mốc 2500 lượt ảnh, ngưỡng 0,01, không giới hạn; trung bình $\pm$ độ lệch chuẩn trên 10 seed. AP là phần trăm. X1-500 mở rộng OLD128, không phải mẫu độc lập; đây không phải tỷ số độ trễ.}
+\caption{Hai nhóm lồng nhau tại mốc 2500 lượt ảnh, ngưỡng 0,01, không giới hạn; trung bình $\pm$ độ lệch chuẩn trên 10 seed. AP là phần trăm. Nhóm 500 ảnh chứa nhóm 128 ảnh.}
 \label{tab:cohortres}
 \begin{tabular}{@{}llcc@{}}
 \toprule
-Cohort & Điều kiện & Tỷ số ứng viên & AP hộp (\%) \\
+Nhóm & Điều kiện & Tỷ số ứng viên & AP hộp (\%) \\
 \midrule
-OLD128 & Sạch & 1,0000 & 34,08 \\
-OLD128 & SG-GA & 1,0278 $\pm$ 0,0083 & 29,97 $\pm$ 0,47 \\
-OLD128 & GA tâm & 1,0329 $\pm$ 0,0093 & 25,88 $\pm$ 0,46 \\
-OLD128 & GA vị trí ngẫu nhiên & 1,0519 $\pm$ 0,0092 & 30,27 $\pm$ 0,64 \\
-OLD128 & Tìm kiếm ngẫu nhiên & 1,0268 $\pm$ 0,0072 & 29,93 $\pm$ 0,26 \\
-X1-500 & Sạch & 1,0000 & 30,27 \\
-X1-500 & SG-GA & 1,0268 $\pm$ 0,0074 & 26,20 $\pm$ 0,20 \\
-X1-500 & GA tâm & 1,0561 $\pm$ 0,0123 & 24,61 $\pm$ 0,12 \\
-X1-500 & GA vị trí ngẫu nhiên & 1,0707 $\pm$ 0,0143 & 27,33 $\pm$ 0,41 \\
-X1-500 & Tìm kiếm ngẫu nhiên & 1,0250 $\pm$ 0,0040 & 26,28 $\pm$ 0,10 \\
+Nhóm 128 ảnh & Sạch & 1,000 & 34,1 \\
+Nhóm 128 ảnh & SG-GA & 1,028 $\pm$ 0,008 & 30,0 $\pm$ 0,5 \\
+Nhóm 128 ảnh & GA tâm & 1,033 $\pm$ 0,009 & 25,9 $\pm$ 0,5 \\
+Nhóm 128 ảnh & GA vị trí ngẫu nhiên & 1,052 $\pm$ 0,009 & 30,3 $\pm$ 0,6 \\
+Nhóm 128 ảnh & Tìm kiếm ngẫu nhiên & 1,027 $\pm$ 0,007 & 29,9 $\pm$ 0,3 \\
+Nhóm 500 ảnh & Sạch & 1,000 & 30,3 \\
+Nhóm 500 ảnh & SG-GA & 1,027 $\pm$ 0,007 & 26,2 $\pm$ 0,2 \\
+Nhóm 500 ảnh & GA tâm & 1,056 $\pm$ 0,012 & 24,6 $\pm$ 0,1 \\
+Nhóm 500 ảnh & GA vị trí ngẫu nhiên & 1,071 $\pm$ 0,014 & 27,3 $\pm$ 0,4 \\
+Nhóm 500 ảnh & Tìm kiếm ngẫu nhiên & 1,025 $\pm$ 0,004 & 26,3 $\pm$ 0,1 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-Trong họ 15 so sánh thứ cấp của X1-500, SG-GA trừ GA đặt ngẫu nhiên có chênh lệch $-0{,}0439$ (khoảng tin cậy từ $-0{,}0545$ đến $-0{,}0338$; $p_{\mathrm{Holm}}=0{,}0293$), còn so với tìm kiếm ngẫu nhiên là $0{,}0017$ (từ $-0{,}0027$ đến $0{,}0064$; $p_{\mathrm{Holm}}=1$). Ở OLD128, hai chênh lệch tương ứng là $-0{,}0241$ ($p_{\mathrm{Holm}}=0{,}0293$) và $0{,}0010$ ($p_{\mathrm{Holm}}=1$). Không suy ra tương đương từ các kiểm định chưa hỗ trợ khác biệt. Khi lấy mẫu lại cả ảnh và seed (bootstrap hai tầng, post hoc), khoảng tin cậy của SG-GA trừ GA tâm ở X1-500 là $[-0{,}0580;\,-0{,}0024]$, rộng gấp 3,35 lần khoảng theo seed nhưng vẫn không chứa 0 (54,2\% số ảnh có chênh lệch trung bình âm); ở OLD128 nó là $[-0{,}0466;\,+0{,}0379]$, chứa 0 và rộng gấp 7,03 lần. So với tìm kiếm ngẫu nhiên, SG-GA có khoảng hai tầng $[-0{,}0038;\,+0{,}0074]$ chứa 0, nghĩa là SG-GA không khác tìm kiếm ngẫu nhiên, và thấp hơn cả GA đặt ngẫu nhiên ($[-0{,}0889;\,-0{,}0124]$). Các kết quả âm được giữ nguyên.
+Trong họ 15 so sánh thứ cấp của nhóm 500 ảnh, SG-GA trừ GA đặt ngẫu nhiên có chênh lệch $-0{,}044$ (khoảng tin cậy từ $-0{,}054$ đến $-0{,}034$; $p_{\mathrm{Holm}}=0{,}029$), còn so với tìm kiếm ngẫu nhiên là $0{,}002$ (từ $-0{,}003$ đến $0{,}006$; $p_{\mathrm{Holm}}=1$). Ở nhóm 128 ảnh, hai chênh lệch tương ứng là $-0{,}024$ ($p_{\mathrm{Holm}}=0{,}029$) và $0{,}001$ ($p_{\mathrm{Holm}}=1$). Khi lấy mẫu lại cả ảnh và seed (bootstrap hai tầng, post hoc), khoảng tin cậy của SG-GA trừ GA tâm ở nhóm 500 ảnh là $[-0{,}058;\,-0{,}002]$, rộng gấp 3,35 lần khoảng theo seed nhưng vẫn không chứa 0 (54,2\% số ảnh có chênh lệch trung bình âm); ở nhóm 128 ảnh nó là $[-0{,}047;\,+0{,}038]$, chứa 0 và rộng gấp 7,03 lần. So với tìm kiếm ngẫu nhiên, SG-GA có khoảng hai tầng $[-0{,}004;\,+0{,}007]$ chứa 0, nghĩa là SG-GA không khác tìm kiếm ngẫu nhiên, và thấp hơn cả GA đặt ngẫu nhiên ($[-0{,}089;\,-0{,}012]$). Các kết quả âm được giữ nguyên.
 
 \subsection{Ngân sách tìm kiếm và độ khái quát}
-Trên cùng 32 ID ảnh chung của OLD128 và X1-500, tỷ số ứng viên của SG-GA ở các mốc 400, 1000 và 2500 lượt ảnh lần lượt là 1,0004, 1,0057 và 0,9954. Tăng ngân sách tìm kiếm không tạo hiệu ứng tăng đơn điệu trên tập kiểm tra; việc dùng đúng cohort chung nhằm tránh so mốc 1000 trên 32 ảnh với các mốc còn lại trên 128 hoặc 500 ảnh. Điều này nhất quán với việc fitness huấn luyện của bộ tối ưu bão hòa sớm ở lần sinh patch mới (Bảng~\ref{tab:train}).
+Trên cùng 32 ID ảnh chung của nhóm 128 ảnh và nhóm 500 ảnh, tỷ số ứng viên của SG-GA ở các mốc 400, 1000 và 2500 lượt ảnh lần lượt là 1,000, 1,006 và 0,995. Tăng ngân sách tìm kiếm không tạo hiệu ứng tăng đơn điệu trên tập kiểm tra; việc dùng đúng cohort chung nhằm tránh so mốc 1000 trên 32 ảnh với các mốc còn lại trên 128 hoặc 500 ảnh. Điều này nhất quán với việc fitness huấn luyện của bộ tối ưu bão hòa sớm ở lần sinh patch mới (Bảng~\ref{tab:train}).
 
 \subsection{Diện tích patch và EOT}
-Trên X1-500 tại mốc 400, các patch $32/45/64/90/128$ px trên ảnh $320\times320$ có diện tích $1{,}00/1{,}98/4{,}00/7{,}91/16{,}00\%$ (Bảng~\ref{tab:area}). Trung bình tỷ số cao nhất trong các mốc đã đo ở $45\times45$, không phải 4\%; tuy vậy so SG-GA 4\% với 1\% hoặc 1,98\% chưa cho khác biệt sau Holm. Diện tích thay đổi cả vùng che lẫn số chiều tìm kiếm, nên không phải một yếu tố riêng lẻ. AP giảm đơn điệu khi diện tích tăng (29,07\% đến 18,19\%), trong khi tỷ số ứng viên ở patch 16\% (0,9965) thấp hơn ảnh sạch, tức patch lớn có thể che nội dung gây ra ứng viên.
+Trên nhóm 500 ảnh tại mốc 400, các patch $32/45/64/90/128$ px trên ảnh $320\times320$ có diện tích $1{,}00/1{,}98/4{,}00/7{,}91/16{,}0\%$ (Bảng~\ref{tab:area}). Trung bình tỷ số cao nhất trong các mốc đã đo ở $45\times45$, không phải 4\%; tuy vậy so SG-GA 4\% với 1\% hoặc 1,98\% chưa cho khác biệt sau Holm. AP giảm đơn điệu khi diện tích tăng (29,1\% đến 18,2\%), trong khi tỷ số ứng viên ở patch 16\% (0,997) thấp hơn ảnh sạch, tức patch lớn có thể che nội dung gây ra ứng viên.
 
 \begin{table}[t]
 \centering\small
-\caption{X1-500: diện tích patch trên 500 ảnh, 10 seed, mốc 400 lượt ảnh; trung bình $\pm$ độ lệch chuẩn.}
+\caption{Nhóm 500 ảnh: diện tích patch trên 500 ảnh, 10 seed, mốc 400 lượt ảnh; trung bình $\pm$ độ lệch chuẩn.}
 \label{tab:area}
 \begin{tabular}{@{}ccrc@{}}
 \toprule
 Patch (px) & Diện tích (\%) & Tỷ số ứng viên & AP hộp (\%) \\
 \midrule
-$32\times32$ & 1,00 & 1,0308 $\pm$ 0,0047 & 29,07 $\pm$ 0,13 \\
-$45\times45$ & 1,98 & 1,0312 $\pm$ 0,0049 & 27,91 $\pm$ 0,08 \\
-$64\times64$ & 4,00 & 1,0265 $\pm$ 0,0031 & 26,28 $\pm$ 0,22 \\
-$90\times90$ & 7,91 & 1,0225 $\pm$ 0,0104 & 23,31 $\pm$ 0,20 \\
-$128\times128$ & 16,00 & 0,9965 $\pm$ 0,0171 & 18,19 $\pm$ 0,10 \\
+$32\times32$ & 1,00 & 1,031 $\pm$ 0,005 & 29,1 $\pm$ 0,13 \\
+$45\times45$ & 1,98 & 1,031 $\pm$ 0,005 & 27,9 $\pm$ 0,08 \\
+$64\times64$ & 4,00 & 1,026 $\pm$ 0,003 & 26,3 $\pm$ 0,22 \\
+$90\times90$ & 7,91 & 1,022 $\pm$ 0,010 & 23,3 $\pm$ 0,20 \\
+$128\times128$ & 16,0 & 0,997 $\pm$ 0,017 & 18,2 $\pm$ 0,10 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-X1-500 có đủ các ablation EOT ở mốc 400 (Bảng~\ref{tab:eot}); so sánh thứ cấp chưa hỗ trợ việc EOT đầy đủ vượt các ablation sau Holm. Với bốn mẫu biến đổi mỗi ảnh, số cá thể được đánh giá bằng một phần tư cấu hình một mẫu, nên đây còn là một đánh đổi phân bổ ngân sách. Kiểm tra EOT độc lập vẫn dùng tám ảnh và 16 mẫu mới mỗi ảnh, không phải 500 ảnh; chênh lệch fitness của patch trừ ảnh sạch cho cấu hình đầy đủ ở mốc 400 là $-20{,}13\pm1{,}41$. Endpoint này không phải AP dưới biến đổi hay độ bền vật lý.
+Nhóm 500 ảnh có đủ các ablation EOT ở mốc 400 (Bảng~\ref{tab:eot}); so sánh thứ cấp chưa hỗ trợ việc EOT đầy đủ vượt các ablation sau Holm. Với bốn mẫu biến đổi mỗi ảnh, số cá thể được đánh giá bằng một phần tư cấu hình một mẫu, nên đây còn là một đánh đổi phân bổ ngân sách. Kiểm tra EOT độc lập vẫn dùng tám ảnh và 16 mẫu mới mỗi ảnh, không phải 500 ảnh; chênh lệch fitness của patch trừ ảnh sạch cho cấu hình đầy đủ ở mốc 400 là $-20{,}1\pm1{,}41$. Endpoint này không phải AP dưới biến đổi hay độ bền vật lý.
 
 \begin{table}[t]
 \centering\small
-\caption{X1-500: các cấu hình EOT ở mốc 400 lượt ảnh trên 500 ảnh, 10 seed; trung bình $\pm$ độ lệch chuẩn. Endpoint trên ảnh gốc khác phép kiểm tra EOT độc lập.}
+\caption{Nhóm 500 ảnh: các cấu hình EOT ở mốc 400 lượt ảnh trên 500 ảnh, 10 seed; trung bình $\pm$ độ lệch chuẩn. Endpoint trên ảnh gốc khác phép kiểm tra EOT độc lập.}
 \label{tab:eot}
 \begin{tabular}{@{}lcc@{}}
 \toprule
 Cấu hình & Tỷ số ứng viên & AP hộp (\%) \\
 \midrule
-Đầy đủ & 1,0265 $\pm$ 0,0031 & 26,28 $\pm$ 0,22 \\
-Không EOT & 1,0309 $\pm$ 0,0082 & 26,19 $\pm$ 0,19 \\
-Bỏ xoay & 1,0331 $\pm$ 0,0035 & 26,26 $\pm$ 0,12 \\
-Bỏ màu & 1,0249 $\pm$ 0,0071 & 26,24 $\pm$ 0,17 \\
-Bỏ mờ & 1,0247 $\pm$ 0,0059 & 26,21 $\pm$ 0,14 \\
-Bỏ nhiễu & 1,0285 $\pm$ 0,0069 & 26,19 $\pm$ 0,15 \\
-Bốn mẫu EOT & 1,0272 $\pm$ 0,0089 & 26,21 $\pm$ 0,16 \\
+Đầy đủ & 1,026 $\pm$ 0,003 & 26,3 $\pm$ 0,22 \\
+Không EOT & 1,031 $\pm$ 0,008 & 26,2 $\pm$ 0,19 \\
+Bỏ xoay & 1,033 $\pm$ 0,004 & 26,3 $\pm$ 0,12 \\
+Bỏ màu & 1,025 $\pm$ 0,007 & 26,2 $\pm$ 0,17 \\
+Bỏ mờ & 1,025 $\pm$ 0,006 & 26,2 $\pm$ 0,14 \\
+Bỏ nhiễu & 1,028 $\pm$ 0,007 & 26,2 $\pm$ 0,15 \\
+Bốn mẫu EOT & 1,027 $\pm$ 0,009 & 26,2 $\pm$ 0,16 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \subsection{Chi phí xử lý và backend NMS trên các cohort lịch sử}
 \label{sec:proxyhist}
-Ở OLD128, trên 16 ảnh, năm điều kiện, ba cấu hình 1/2/4 luồng CPU và ba lần đo mỗi ảnh, tổng cộng 7200 số đo tensor đã chuẩn bị không vượt ngân sách 300~ms (Bảng~\ref{tab:hist_time}). Với một luồng, trung bình trung vị theo khối của điều kiện sạch là 51,09~ms và của SG-GA là 52,87~ms; trung bình p95 lần lượt là 78,20 và 82,69~ms. Ở hai và bốn luồng, trung vị và đuôi không tăng nhất quán theo patch. Thay đổi số luồng vẫn là một máy vật lý chưa ghim lõi, chưa có camera và chưa hiệu chuẩn với thiết bị biên hay Arm. Trên tensor dự đoán cố định, ở ngưỡng 0,01 không giới hạn, thời gian NMS của ảnh sạch là $1{,}520\pm0{,}364$~ms với mã PyTorch thuần và $0{,}060\pm0{,}011$~ms với torchvision; với SG-GA lần lượt là $1{,}691\pm0{,}129$ và $0{,}062\pm0{,}011$~ms. Đầu ra khớp trên mẫu hữu hạn đã kiểm tra, không khẳng định tương đương cho mọi đầu vào hoặc trường hợp điểm bằng nhau. Chênh lệch cho thấy backend là một yếu tố thực nghiệm quan trọng; không chuyển hệ số thời gian từ mã Python/PyTorch sang backend tối ưu.
+Ở nhóm 128 ảnh, trên 16 ảnh, năm điều kiện, ba cấu hình 1/2/4 luồng CPU và ba lần đo mỗi ảnh, tổng cộng 7200 số đo tensor đã chuẩn bị không vượt ngân sách 300~ms (Bảng~\ref{tab:hist_time}). Với một luồng, trung bình trung vị theo khối của điều kiện sạch là 51,1~ms và của SG-GA là 52,9~ms; trung bình p95 lần lượt là 78,2 và 82,7~ms. Ở hai và bốn luồng, trung vị và đuôi không tăng nhất quán theo patch. Thay đổi số luồng vẫn là một máy vật lý chưa ghim lõi, chưa có camera và chưa hiệu chuẩn với thiết bị biên hay Arm. Trên tensor dự đoán cố định, ở ngưỡng 0,01 không giới hạn, thời gian NMS của ảnh sạch là $1{,}520\pm0{,}364$~ms với mã PyTorch thuần và $0{,}060\pm0{,}011$~ms với torchvision; với SG-GA lần lượt là $1{,}691\pm0{,}129$ và $0{,}062\pm0{,}011$~ms. Chênh lệch cho thấy backend là một yếu tố thực nghiệm quan trọng; không chuyển hệ số thời gian từ mã Python/PyTorch sang backend tối ưu.
 
 \begin{table}[t]
 \centering\small
-\caption{OLD128: thời gian đường xử lý tensor đã chuẩn bị và ngân sách 300~ms (16 ảnh, ba lần đo mỗi ảnh, 10 khối seed). Đồng hồ gồm suy luận, giải mã, lọc và NMS; không gồm thu hình hay hàng đợi.}
+\caption{Nhóm 128 ảnh: thời gian đường xử lý tensor đã chuẩn bị và ngân sách 300~ms (16 ảnh, ba lần đo mỗi ảnh, 10 khối seed). Đồng hồ gồm suy luận, giải mã, lọc và NMS; không gồm thu hình hay hàng đợi.}
 \label{tab:hist_time}
 \begin{tabular}{@{}clccc@{}}
 \toprule
 Luồng CPU & Điều kiện & Trung bình trung vị (ms) & Trung bình p95 (ms) & Trễ (\%) \\
 \midrule
-1 & Sạch & 51,09 & 78,20 & 0,00 \\
-1 & SG-GA & 52,87 & 82,69 & 0,00 \\
-2 & Sạch & 78,66 & 97,21 & 0,00 \\
-2 & SG-GA & 79,32 & 94,11 & 0,00 \\
-4 & Sạch & 58,83 & 76,21 & 0,00 \\
-4 & SG-GA & 58,94 & 78,26 & 0,00 \\
+1 & Sạch & 51,1 & 78,2 & 0,00 \\
+1 & SG-GA & 52,9 & 82,7 & 0,00 \\
+2 & Sạch & 78,7 & 97,2 & 0,00 \\
+2 & SG-GA & 79,3 & 94,1 & 0,00 \\
+4 & Sạch & 58,8 & 76,2 & 0,00 \\
+4 & SG-GA & 58,9 & 78,3 & 0,00 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \subsection{Hiệu chuẩn A/A đầu tiên và bootstrap hai tầng}
-Để tách sai số đo khỏi hiệu ứng tấn công, chúng tôi đã xây dựng lại hạ tầng đo và chạy lần hiệu chuẩn A/A đầu tiên (so sạch với sạch, 100 ảnh giữ ra, 30 lần lặp mỗi ảnh) trên ba profile: P1 (một lõi hiệu năng), E1 (một lõi tiết kiệm điện) và E4 (bốn lõi tiết kiệm điện). CPU i5-1335U là kiến trúc lai: ánh xạ logical CPU về lõi vật lý, lõi P/E và SMT được đọc từ hệ điều hành, không mặc định CPU0 là lõi P. Việc ghim dùng \texttt{psutil.cpu\_affinity} rồi đọc lại bằng tải thực (nhân ma trận torch), không chỉ đặt \texttt{torch.set\_num\_threads}. Chế độ nguồn Windows Balanced được giữ cho mọi phép đo; đồng hồ \texttt{perf\_counter\_ns}, tắt thu gom rác trong vùng đo, bỏ các lần khởi động, thứ tự sạch--sạch ghép cặp ABBA trong ảnh, và benchmark tham chiếu ở đầu, giữa và cuối được gắn cờ trôi 3\%. Bảng~\ref{tab:aa1} trình bày tỷ số A/A, khoảng tin cậy và MDE theo công đoạn. Trên profile ổn định nhất (P1), MDE toàn trình là 0,59\% và MDE công đoạn NMS thuần PyTorch là 1,07\%: một hiệu ứng tấn công nhỏ hơn các mức này sẽ chìm dưới sai số đo của chính bệ thử nghiệm. Hai trong 21 khoảng tin cậy không chứa 1 (P1 toàn trình, E4 NMS thuần), xấp xỉ kỳ vọng ngẫu nhiên ở mức 95\% và không hiệu chỉnh đa so sánh. Profile E4 có MDE lớn (6,1 đến 7,5\%) và được ghi là ghim đúng tập CPU nhưng song song không xác minh, nên không dùng để kết luận về số lõi. Tuy nhiên, cần nói rõ rằng trên lần chạy này, phép đo tham chiếu bị cờ drift ở mọi điểm của P1 (11 trên 11, thay đổi lớn nhất 24\%), ở 9 trên 11 điểm của E1 (lớn nhất 34\%) và ở mọi điểm của E4 (lớn nhất 88\%); đó là lý do chúng tôi chạy lại A/A cho profile P1\_cpu2 (Mục~\ref{sec:newprotocol}), nơi drift giảm còn 2/11. Tỷ phần của NMS thuần PyTorch trong toàn trình (ảnh sạch) có trung vị 2,1\% (P1), 3,0\% (E1) và 4,0\% (E4); cực đại 19 đến 32\%.
+Để tách sai số đo khỏi hiệu ứng tấn công, chúng tôi đã xây dựng lại hạ tầng đo và chạy lần hiệu chuẩn A/A đầu tiên (so sạch với sạch, 100 ảnh giữ ra, 30 lần lặp mỗi ảnh) trên ba cấu hình ghim: một lõi hiệu năng, một lõi tiết kiệm điện và bốn lõi tiết kiệm điện. CPU i5-1335U là kiến trúc lai: ánh xạ logical CPU về lõi vật lý, lõi P/E và SMT được đọc từ hệ điều hành, không mặc định CPU0 là lõi P. Việc ghim dùng \texttt{psutil.cpu\_affinity} rồi đọc lại bằng tải thực (nhân ma trận torch), không chỉ đặt \texttt{torch.set\_num\_threads}. Chế độ nguồn Windows Balanced được giữ cho mọi phép đo; đồng hồ \texttt{perf\_counter\_ns}, tắt thu gom rác trong vùng đo, bỏ các lần khởi động, thứ tự sạch--sạch ghép cặp ABBA trong ảnh, và benchmark tham chiếu ở đầu, giữa và cuối được gắn cờ trôi 3\%. Bảng~\ref{tab:aa1} trình bày tỷ số A/A, khoảng tin cậy và MDE theo công đoạn. Trên cấu hình ổn định nhất (một lõi hiệu năng), MDE toàn trình là 0,59\% và MDE công đoạn NMS thuần PyTorch là 1,07\%: một hiệu ứng tấn công nhỏ hơn các mức này sẽ chìm dưới sai số đo của chính bệ thử nghiệm. Hai trong 21 khoảng tin cậy không chứa 1 (toàn trình của một lõi hiệu năng, NMS thuần của bốn lõi tiết kiệm điện), xấp xỉ kỳ vọng ngẫu nhiên ở mức 95\% và không hiệu chỉnh đa so sánh. Cấu hình bốn lõi tiết kiệm điện có MDE lớn (6,1 đến 7,5\%) và được ghi là ghim đúng tập CPU nhưng song song không xác minh, nên không dùng để kết luận về số lõi. Tuy nhiên, cần nói rõ rằng trên lần chạy này, phép đo tham chiếu bị cờ drift ở mọi điểm của cấu hình một lõi hiệu năng (11 trên 11, thay đổi lớn nhất 24\%), ở 9 trên 11 điểm của cấu hình một lõi tiết kiệm điện (lớn nhất 34\%) và ở mọi điểm của cấu hình bốn lõi (lớn nhất 88\%); đó là lý do chúng tôi chạy lại A/A trên CPU logic 2 (lõi hiệu năng thứ hai; Mục~\ref{sec:newprotocol}), nơi drift giảm còn 2/11. Tỷ phần của NMS thuần PyTorch trong toàn trình (ảnh sạch) có trung vị 2,1\% (một lõi hiệu năng), 3,0\% (một lõi tiết kiệm điện) và 4,0\% (bốn lõi); cực đại 19 đến 32\%.
 
 \begin{table}[t]
 \centering\small
-\caption{Lần A/A đầu tiên (sạch so sạch, 100 ảnh, 30 lần lặp mỗi ảnh): tỷ số, khoảng tin cậy 95\% và MDE theo công đoạn và profile ghim. Tỷ số gần 1 là không có chênh lệch hệ thống; MDE là ngưỡng dưới của hiệu ứng có thể phát hiện. Phép đo tham chiếu bị cờ drift ở phần lớn điểm (xem văn bản). Chỉ các tỷ số và MDE đã truy được tới tệp tóm tắt được liệt kê.}
+\caption{Lần A/A đầu tiên (sạch so sạch, 100 ảnh, 30 lần lặp mỗi ảnh): tỷ số, khoảng tin cậy 95\% và MDE theo công đoạn và cấu hình ghim. Tỷ số gần 1 là không có chênh lệch hệ thống; MDE là ngưỡng dưới của hiệu ứng có thể phát hiện. Phép đo tham chiếu bị cờ drift ở phần lớn điểm (xem văn bản). Chỉ các tỷ số và MDE đã truy được tới tệp tóm tắt được liệt kê.}
 \label{tab:aa1}
 \begin{tabular}{@{}llcc@{}}
 \toprule
-Profile & Công đoạn & Tỷ số A/A & MDE (\%) \\
+Cấu hình ghim & Công đoạn & Tỷ số A/A & MDE (\%) \\
 \midrule
-P1 & Toàn trình & 0,9960 & 0,59 \\
-P1 & Lan truyền thuận & 1,0002 & 0,58 \\
-P1 & NMS thuần PyTorch & 1,0006 & 1,07 \\
-P1 & NMS torchvision & 0,9948 & 1,18 \\
-E1 & Toàn trình & 1,0005 & 1,27 \\
-E1 & Lan truyền thuận & 1,0081 & 1,94 \\
-E4 & Toàn trình & 0,9875 & 6,13 \\
-E4 & NMS thuần PyTorch & 0,9758 & 3,47 \\
+Một lõi hiệu năng & Toàn trình & 0,996 & 0,59 \\
+Một lõi hiệu năng & Lan truyền thuận & 1,000 & 0,58 \\
+Một lõi hiệu năng & NMS thuần PyTorch & 1,001 & 1,07 \\
+Một lõi hiệu năng & NMS torchvision & 0,995 & 1,18 \\
+Một lõi tiết kiệm điện & Toàn trình & 1,000 & 1,27 \\
+Một lõi tiết kiệm điện & Lan truyền thuận & 1,008 & 1,94 \\
+Bốn lõi tiết kiệm điện & Toàn trình & 0,988 & 6,13 \\
+Bốn lõi tiết kiệm điện & NMS thuần PyTorch & 0,976 & 3,47 \\
 \bottomrule
 \end{tabular}
 \end{table}
@@ -645,8 +645,8 @@ E4 & NMS thuần PyTorch & 0,9758 & 3,47 \\
 \subsection{Số ứng viên và độ trễ trên dữ liệu đã lưu: phụ thuộc điều kiện}
 Ba phân tích thăm dò trên dữ liệu đã lưu (chưa ghim lõi; được gắn nhãn rõ) cho thấy quan hệ giữa $\Ntau$ và độ trễ phụ thuộc mạnh vào backend và công đoạn, và chỉ một phần nhỏ toàn trình nằm ở hậu xử lý.
 
-\paragraph{Lát cắt theo điều kiện (OLD128).}
-Ở $\tau=0{,}01$ không giới hạn, tương quan hạng giữa $\Ntau$ và thời gian NMS là $\rho=0{,}865$ [0,692; 0,923] với mã thuần PyTorch, nhưng chỉ $\rho=0{,}603$ [0,463; 0,692] với torchvision; trung vị thời gian NMS là 1,641~ms (thuần) so với 0,0579~ms (torchvision), chênh khoảng 28 lần. Hậu xử lý chỉ chiếm trung vị 3,4\% toàn trình (một luồng), nên tương quan giữa $\Ntau$ và toàn trình yếu hơn nhiều: $\rho=0{,}327$ [0,167; 0,458]. Không lượt nào trong 2400 bản ghi mỗi cấu hình luồng vượt 300~ms. $\Ntau$ theo dõi được chi phí NMS (tùy backend) nhưng NMS là phần nhỏ của toàn trình trên CPU này.
+\paragraph{Lát cắt theo điều kiện (nhóm 128 ảnh).}
+Ở $\tau=0{,}01$ không giới hạn, tương quan hạng giữa $\Ntau$ và thời gian NMS là $\rho=0{,}865$ [0,692; 0,923] với mã thuần PyTorch, nhưng chỉ $\rho=0{,}603$ [0,463; 0,692] với torchvision; trung vị thời gian NMS là 1,641~ms (thuần) so với 0,058~ms (torchvision), chênh khoảng 28 lần. Hậu xử lý chỉ chiếm trung vị 3,4\% toàn trình (một luồng), nên tương quan giữa $\Ntau$ và toàn trình yếu hơn nhiều: $\rho=0{,}327$ [0,167; 0,458]. Không lượt nào trong 2400 bản ghi mỗi cấu hình luồng vượt 300~ms. $\Ntau$ theo dõi được chi phí NMS (tùy backend) nhưng NMS là phần nhỏ của toàn trình trên CPU này.
 
 \paragraph{Biến thể tham chiếu (lịch sử, YOLOv5s 640, nhiễu loạn toàn ảnh).}
 Hai biến thể thích nghi từ Overload và Phantom Sponges (mô hình, kích thước, quyền truy cập và ràng buộc khác SG-GA; chỉ so nội bộ, không xếp hạng xuyên mối đe dọa) đẩy $\Ntau$ trung vị từ 42 lên 5490 và 4365, tức tỷ số $\Ntau$ trung bình 349,0 [119,7; 746,3] và 308,2 [94,8; 675,9]. Hậu xử lý tăng khoảng 3 lần (3,18 [2,80; 3,58]; 3,27 [2,84; 3,72]), nhưng tỷ số toàn trình chỉ là 1,022 [1,002; 1,039] và 1,056 [1,024; 1,099]. Tương quan hạng giữa $\Ntau$ và toàn trình gần như không có ($\rho=0{,}038$ và $0{,}086$) dù giữa $\Ntau$ và hậu xử lý thì mạnh ($\rho=0{,}836$ và $0{,}816$). Nói cách khác, tăng $\Ntau$ khoảng ba trăm lần chỉ kèm theo tăng toàn trình 2 đến 6\% trong cấu hình CPU này. Vì khoảng tin cậy của tỷ số toàn trình không chứa 1, chúng tôi không kết luận không có tác động, mà kết luận hẹp: $\Ntau$ đơn độc không dự đoán được độ trễ toàn trình đo được. Kết quả này cùng chiều với các phép đo ghim lõi mới ở Mục~\ref{sec:newprotocol}.
@@ -655,101 +655,101 @@ Hai biến thể thích nghi từ Overload và Phantom Sponges (mô hình, kích
 Trên dữ liệu lịch sử, $\Ntau$ dự đoán tốt thời gian NMS giữa các ảnh (tương quan hạng $\rho=0{,}938$ [0,922; 0,950] trên ảnh sạch, backend thuần), nhưng trong một ảnh, biến thiên $\Delta\Ntau$ do miếng dán tạo ra nhỏ và chỉ tương quan yếu với biến thiên thời gian ($\rho\approx0{,}12$ cho cả bốn phương pháp, không đảo dấu kiểu Simpson). Phần độ trễ gán cho tấn công (trung bình 0,05 đến 0,13) chồng lấn với phần đo được khi so sạch với sạch (A/A, trung bình 0,044 [$-0{,}015$; 0,137]). Do đó dữ liệu lịch sử chưa ghim lõi không tách được độ trễ do tấn công khỏi nhiễu đo; đây là lý do cần giao thức ghim lõi và phép tiêm hộp đồng bộ trong cùng pipeline (đối chứng dương) mà phần đo mới đã thực hiện. Không kết luận $\Ntau$ không dự đoán độ trễ một cách tuyệt đối từ các lát cắt này.
 
 \subsection{Dịch vụ dưới luồng đầu vào}
-Các phép đo luồng sau thuộc OLD128 (Bảng~\ref{tab:stream}). Ở chu kỳ 100~ms, FIFO sạch đã thiếu/trễ 85,31\% ảnh; SG-GA 2500 có 85,00\%. So sánh này không cho phép quy quá tải cho patch vì đường cơ sở đã vượt năng lực xử lý theo giao thức. Bỏ khi bận giảm chờ nhưng làm mất xấp xỉ một nửa đầu vào, còn điều tiết thích nghi vẫn chưa đạt đồng thời tiêu chí thông lượng và AP. Ở chu kỳ 300~ms, FIFO sạch và các patch đều hoàn thành đúng hạn, thông lượng 3,33 ảnh/s. Tuy vậy AP đúng hạn của patch thấp hơn sạch, cho thấy suy giảm toàn vẹn có thể tồn tại khi thời hạn dịch vụ vẫn được đáp ứng. Nhánh thích nghi bỏ 35,63\% đầu vào ngay trên ảnh sạch ở chu kỳ này, dù FIFO đáp ứng; quy tắc khoảng nhận nhạy với dao động mốc đến. Chúng tôi không mô tả nó là một phòng thủ thành công chỉ vì worker ít bận hơn. FIFO300 có 0\% thiếu/trễ trong các điều kiện đã đo, không chứng minh an toàn ở mọi tải hoặc thiết bị; phần bỏ ảnh thích nghi là một hiện vật cần sửa trước khi đánh giá phòng thủ.
+Các phép đo luồng sau thuộc nhóm 128 ảnh (Bảng~\ref{tab:stream}). Ở chu kỳ 100~ms, FIFO sạch đã thiếu/trễ 85,3\% ảnh; SG-GA 2500 có 85,0\%. So sánh này không cho phép quy quá tải cho patch vì đường cơ sở đã vượt năng lực xử lý theo giao thức. Bỏ khi bận giảm chờ nhưng làm mất xấp xỉ một nửa đầu vào, còn điều tiết thích nghi vẫn chưa đạt đồng thời tiêu chí thông lượng và AP. Ở chu kỳ 300~ms, FIFO sạch và các patch đều hoàn thành đúng hạn, thông lượng 3,33 ảnh/s. Tuy vậy AP đúng hạn của patch thấp hơn sạch, cho thấy suy giảm toàn vẹn có thể tồn tại khi thời hạn dịch vụ vẫn được đáp ứng. Nhánh thích nghi bỏ 35,6\% đầu vào ngay trên ảnh sạch ở chu kỳ này, dù FIFO đáp ứng; quy tắc khoảng nhận nhạy với dao động mốc đến. FIFO300 có 0\% thiếu/trễ trong các điều kiện đã đo, không chứng minh an toàn ở mọi tải hoặc thiết bị; phần bỏ ảnh thích nghi là một hiện vật cần sửa trước khi đánh giá phòng thủ.
 
 \begin{table}[t]
 \centering\small
-\caption{OLD128: dịch vụ theo toàn bộ ảnh phát, sạch và SG-GA 2500.}
+\caption{Nhóm 128 ảnh: dịch vụ theo toàn bộ ảnh phát, sạch và SG-GA 2500.}
 \label{tab:stream}
 \begin{tabular}{@{}rllrrrr@{}}
 \toprule
 Chu kỳ (ms) & Chính sách & Điều kiện & Bỏ (\%) & Thiếu/trễ (\%) & Đúng hạn (ảnh/s) & AP đúng hạn (\%) \\
 \midrule
-100 & FIFO & Sạch & 0,00 & 85,31 & 1,08 & 5,55 \\
-100 & FIFO & SG-GA & 0,00 & 85,00 & 1,13 & 5,57 \\
-100 & Bỏ khi bận & Sạch & 50,94 & 50,94 & 4,89 & 19,49 \\
-100 & Bỏ khi bận & SG-GA & 49,38 & 49,38 & 5,00 & 18,98 \\
-100 & Điều tiết & Sạch & 55,31 & 55,31 & 4,45 & 18,60 \\
-100 & Điều tiết & SG-GA & 52,50 & 52,50 & 4,73 & 15,49 \\
-300 & FIFO & Sạch & 0,00 & 0,00 & 3,33 & 38,67 \\
-300 & FIFO & SG-GA & 0,00 & 0,00 & 3,33 & 34,38 \\
-300 & Bỏ khi bận & Sạch & 0,00 & 0,00 & 3,33 & 38,67 \\
-300 & Bỏ khi bận & SG-GA & 0,31 & 0,62 & 3,31 & 34,24 \\
-300 & Điều tiết & Sạch & 35,62 & 35,62 & 2,15 & 24,76 \\
-300 & Điều tiết & SG-GA & 37,81 & 37,81 & 2,07 & 22,88 \\
+100 & FIFO & Sạch & 0,00 & 85,3 & 1,08 & 5,55 \\
+100 & FIFO & SG-GA & 0,00 & 85,0 & 1,13 & 5,57 \\
+100 & Bỏ khi bận & Sạch & 50,9 & 50,9 & 4,89 & 19,5 \\
+100 & Bỏ khi bận & SG-GA & 49,4 & 49,4 & 5,00 & 19,0 \\
+100 & Điều tiết & Sạch & 55,3 & 55,3 & 4,45 & 18,6 \\
+100 & Điều tiết & SG-GA & 52,5 & 52,5 & 4,73 & 15,5 \\
+300 & FIFO & Sạch & 0,00 & 0,00 & 3,33 & 38,7 \\
+300 & FIFO & SG-GA & 0,00 & 0,00 & 3,33 & 34,4 \\
+300 & Bỏ khi bận & Sạch & 0,00 & 0,00 & 3,33 & 38,7 \\
+300 & Bỏ khi bận & SG-GA & 0,31 & 0,62 & 3,31 & 34,2 \\
+300 & Điều tiết & Sạch & 35,6 & 35,6 & 2,15 & 24,8 \\
+300 & Điều tiết & SG-GA & 37,8 & 37,8 & 2,07 & 22,9 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \subsection{Đánh đổi của phòng thủ và đối chứng mạnh hơn}
-Các số đánh đổi sau thuộc OLD128 (Bảng~\ref{tab:defense}). Giới hạn top-100 giảm công việc hậu xử lý nhưng cũng giảm AP và AR100. Trên ảnh sạch, AP từ 34,08\% xuống 33,36\% và AR100 từ 40,79\% xuống 38,91\%; thời gian lọc cộng NMS từ 3,40 xuống 2,05~ms. Tăng ngưỡng lên 0,25 giảm chi phí hơn nhưng AP chỉ còn 28,54\%. Các giá trị của SG-GA có xu hướng đánh đổi tương tự; đây là thay đổi cấu hình hậu xử lý, không phải một bảo đảm phòng thủ phổ quát. Baseline gradient tanh ở mốc 400 có tỷ số 1,1552 ở OLD128 (128 ảnh), so với SG-GA ở cùng mốc và cohort 1,0303; AP tương ứng 28,62\% và 30,17\%. Ở X1-500 (500 ảnh), tanh đạt 1,1987 so với SG-GA 1,0265; AP tương ứng 25,58\% và 26,28\%. Chúng tôi không đặt tanh 500 ảnh cạnh SG-GA 128 ảnh như cùng một giao thức. Tanh đọc gradient và dùng bộ tối ưu khác; chênh lệch gợi ý cần kiểm tra hàm mục tiêu và bộ tối ưu, nhưng thiết kế chưa phân biệt nguyên nhân vì tanh khác cả quyền truy cập lẫn bộ tối ưu. Kết quả này cùng chiều với lần đo lại mới, nơi baseline gradient làm $\Ntau$ tăng 2,3 lần. Phantom thích nghi cục bộ ở OLD128 mốc 400 có tỷ số 1,0286, chênh lệch Phantom trừ SG-GA $-0{,}0016$ (khoảng tin cậy từ $-0{,}0054$ đến $0{,}0019$); chưa có căn cứ suy tương đương. Đây là các baseline đã điều chỉnh, không phải tái lập toàn bộ thí nghiệm nguyên bản.
+Các số đánh đổi sau thuộc nhóm 128 ảnh (Bảng~\ref{tab:defense}). Giới hạn top-100 giảm công việc hậu xử lý nhưng cũng giảm AP và AR100. Trên ảnh sạch, AP từ 34,1\% xuống 33,4\% và AR100 từ 40,8\% xuống 38,9\%; thời gian lọc cộng NMS từ 3,40 xuống 2,05~ms. Tăng ngưỡng lên 0,25 giảm chi phí hơn nhưng AP chỉ còn 28,5\%. Các giá trị của SG-GA có xu hướng đánh đổi tương tự. Baseline gradient tanh ở mốc 400 có tỷ số 1,155 ở nhóm 128 ảnh (128 ảnh), so với SG-GA ở cùng mốc và cohort 1,030; AP tương ứng 28,6\% và 30,2\%. Ở nhóm 500 ảnh (500 ảnh), tanh đạt 1,199 so với SG-GA 1,026; AP tương ứng 25,6\% và 26,3\%. Tanh đọc gradient và dùng bộ tối ưu khác. Kết quả này cùng chiều với lần đo lại mới, nơi baseline gradient làm $\Ntau$ tăng 2,3 lần. Phantom thích nghi cục bộ ở nhóm 128 ảnh mốc 400 có tỷ số 1,029, chênh lệch Phantom trừ SG-GA $-0{,}002$ (khoảng tin cậy từ $-0{,}005$ đến $0{,}002$); chưa có căn cứ suy tương đương. Đây là các baseline đã điều chỉnh, không phải tái lập toàn bộ thí nghiệm nguyên bản.
 
 \begin{table}[t]
 \centering\small
-\caption{OLD128: đánh đổi ngưỡng/giới hạn với chất lượng và chi phí hậu xử lý.}
+\caption{Nhóm 128 ảnh: đánh đổi ngưỡng/giới hạn với chất lượng và chi phí hậu xử lý.}
 \label{tab:defense}
 \begin{tabular}{@{}lccrc@{}}
 \toprule
 Điều kiện & $\tau$ & Top-$k$ & AP (\%) & Lọc + NMS (ms) \\
 \midrule
-Sạch & 0,01 & Không & 34,08 & 3,40 \\
-Sạch & 0,01 & 100 & 33,36 & 2,05 \\
-Sạch & 0,25 & Không & 28,54 & 0,78 \\
-SG-GA 2500 & 0,01 & Không & 29,97 & 3,25 \\
-SG-GA 2500 & 0,01 & 100 & 29,23 & 2,04 \\
-SG-GA 2500 & 0,25 & Không & 24,72 & 0,81 \\
+Sạch & 0,01 & Không & 34,1 & 3,40 \\
+Sạch & 0,01 & 100 & 33,4 & 2,05 \\
+Sạch & 0,25 & Không & 28,5 & 0,78 \\
+SG-GA 2500 & 0,01 & Không & 30,0 & 3,25 \\
+SG-GA 2500 & 0,01 & 100 & 29,2 & 2,04 \\
+SG-GA 2500 & 0,25 & Không & 24,7 & 0,81 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\subsection{Chuyển giao giữa các mô hình: độ trễ OLD128 và số lượng X2}
+\subsection{Chuyển giao giữa các mô hình: độ trễ nhóm 128 ảnh và số lượng khảo sát đa kiến trúc}
 \label{sec:x2}
-\paragraph{Tỷ số thời gian tensor đã chuẩn bị trong OLD128.}
+\paragraph{Tỷ số thời gian tensor đã chuẩn bị trong nhóm 128 ảnh.}
 Phép thử thứ nhất dùng sáu bộ phát hiện, 16 ảnh và 10 patch nguồn (Bảng~\ref{tab:transfer}). Đại lượng là trung bình tỷ số thời gian tensor đã chuẩn bị giữa sạch và có patch bên trong từng bộ phát hiện, không phải tỷ số ứng viên; chuẩn hóa và hậu xử lý riêng của từng mô hình được giữ nguyên. DETR ResNet50 không có NMS.
 
 \begin{table}[t]
 \centering\small
-\caption{OLD128, sáu bộ phát hiện, 16 ảnh, 10 patch nguồn: chuyển giao, tỷ số độ trễ bên trong từng bộ phát hiện.}
+\caption{Nhóm 128 ảnh, sáu bộ phát hiện, 16 ảnh, 10 patch nguồn: chuyển giao, tỷ số độ trễ bên trong từng bộ phát hiện.}
 \label{tab:transfer}
 \begin{tabular}{@{}lcccc@{}}
 \toprule
 Bộ phát hiện & Tỷ số độ trễ & Khoảng tin cậy bootstrap 95\% & AP sạch (\%) & AP patch (\%) \\
 \midrule
-YOLOv8n (nguồn) & 1,0180 & [1,0011; 1,0355] & 36,28 & 29,43 \\
-YOLOv8s & 1,0084 & [0,9962; 1,0194] & 47,43 & 38,20 \\
-SSDLite MobileNetV3 & 1,0066 & [0,9891; 1,0243] & 26,62 & 24,45 \\
-Faster R-CNN MobileNetV3 & 1,0419 & [1,0274; 1,0554] & 27,16 & 23,56 \\
-RetinaNet ResNet50 & 1,0071 & [0,9990; 1,0136] & 35,17 & 30,37 \\
-DETR ResNet50 & 0,9969 & [0,9886; 1,0050] & 31,37 & 26,99 \\
+YOLOv8n (nguồn) & 1,018 & [1,001; 1,036] & 36,3 & 29,4 \\
+YOLOv8s & 1,008 & [0,996; 1,019] & 47,4 & 38,2 \\
+SSDLite MobileNetV3 & 1,007 & [0,989; 1,024] & 26,6 & 24,4 \\
+Faster R-CNN MobileNetV3 & 1,042 & [1,027; 1,055] & 27,2 & 23,6 \\
+RetinaNet ResNet50 & 1,007 & [0,999; 1,014] & 35,2 & 30,4 \\
+DETR ResNet50 & 0,997 & [0,989; 1,005] & 31,4 & 27,0 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\paragraph{Số lượng tại ranh giới của từng adapter trong X2.}
-X2 dùng tám bộ phát hiện đã có artifact và năm patch nguồn (seed 0 đến 4). YOLOv8n, YOLOv8s và YOLO11n dùng 100 ảnh; các bộ phát hiện còn lại dùng 64 ảnh. Chỉ họ YOLO trả về \texttt{pre\_nms\_head}; Faster R-CNN, RetinaNet và SSDlite trả về \texttt{post\_module\_detections}, đã qua NMS nội bộ. Không có kết quả RT-DETR trong X2. Các ranh giới này không đồng nhất về tải đầu vào NMS. Khoảng tỷ số của X2 là 1,0215 đến 1,2356 (Bảng~\ref{tab:x2}). Các tỷ số số lượng tại ranh giới của từng adapter tăng hạn chế; chúng chưa đủ để so sánh độ nhạy NMS xuyên kiến trúc, và tỷ số của Faster R-CNN, RetinaNet và SSDlite không được dùng để kết luận về tải NMS vì đã qua NMS nội bộ.
+\paragraph{Số lượng tại ranh giới của từng adapter trong khảo sát đa kiến trúc.}
+Khảo sát đa kiến trúc dùng tám bộ phát hiện đã có artifact và năm patch nguồn (seed 0 đến 4). YOLOv8n, YOLOv8s và YOLO11n dùng 100 ảnh; các bộ phát hiện còn lại dùng 64 ảnh. Chỉ họ YOLO trả về \texttt{pre\_nms\_head}; Faster R-CNN, RetinaNet và SSDlite trả về \texttt{post\_module\_detections}, đã qua NMS nội bộ. Không có kết quả RT-DETR trong khảo sát đa kiến trúc. Các ranh giới này không đồng nhất về tải đầu vào NMS. Khoảng tỷ số của khảo sát đa kiến trúc là 1,022 đến 1,236 (Bảng~\ref{tab:x2}). Các tỷ số số lượng tại ranh giới của từng adapter tăng hạn chế; chúng chưa đủ để so sánh độ nhạy NMS xuyên kiến trúc, và tỷ số của Faster R-CNN, RetinaNet và SSDlite không được dùng để kết luận về tải NMS vì đã qua NMS nội bộ.
 
 \begin{table}[t]
 \centering\small
-\caption{X2: số lượng tại ranh giới của từng adapter, năm seed; không gộp với độ trễ OLD128.}
+\caption{Khảo sát đa kiến trúc: số lượng tại ranh giới của từng adapter, năm seed; không gộp với độ trễ nhóm 128 ảnh.}
 \label{tab:x2}
 \begin{tabular}{@{}llcc@{}}
 \toprule
 Bộ phát hiện & Ranh giới & Ảnh & Tỷ số số lượng \\
 \midrule
-YOLOv8n & \texttt{pre\_nms\_head} & 100 & 1,0343 \\
-YOLOv8s & \texttt{pre\_nms\_head} & 100 & 1,0262 \\
-YOLO11n & \texttt{pre\_nms\_head} & 100 & 1,0259 \\
-YOLO11s & \texttt{pre\_nms\_head} & 64 & 1,0215 \\
-YOLOv12n & \texttt{pre\_nms\_head} & 64 & 1,0360 \\
-Faster R-CNN & \texttt{post\_module\_detections} & 64 & 1,1107 \\
-RetinaNet & \texttt{post\_module\_detections} & 64 & 1,2356 \\
-SSDlite & \texttt{post\_module\_detections} & 64 & 1,0340 \\
+YOLOv8n & \texttt{pre\_nms\_head} & 100 & 1,034 \\
+YOLOv8s & \texttt{pre\_nms\_head} & 100 & 1,026 \\
+YOLO11n & \texttt{pre\_nms\_head} & 100 & 1,026 \\
+YOLO11s & \texttt{pre\_nms\_head} & 64 & 1,022 \\
+YOLOv12n & \texttt{pre\_nms\_head} & 64 & 1,036 \\
+Faster R-CNN & \texttt{post\_module\_detections} & 64 & 1,111 \\
+RetinaNet & \texttt{post\_module\_detections} & 64 & 1,236 \\
+SSDlite & \texttt{post\_module\_detections} & 64 & 1,034 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
 \subsection{Giới hạn quan sát vật lý và benchmark hộp lịch sử}
-Chưa có thí nghiệm in-và-chụp ghép cặp; EOT chỉ là mô phỏng phần mềm. Ảnh từ giao diện camera lịch sử không được dùng làm kết quả vì chưa xác minh được patch nguồn và nguồn gốc dữ liệu. Về benchmark hộp tổng hợp lịch sử, một mã cũ sinh hộp xyxy ngẫu nhiên trong ảnh $320\times320$, cạnh 10 đến 50 pixel và điểm ngẫu nhiên; nó dùng \texttt{torchvision.ops.nms} tại IoU 0,45, khởi động năm lời gọi với $N=100$ trước toàn bộ lần quét, và ở mỗi $N$ lấy tổng thời gian của 10 lời gọi chia 10. Tệp kết quả lưu $N=10, 50, 100, 200, 500, 1000, 2000, 3000, 4000, 5000, 8400, 10000$ và thời gian trung bình ở hai đầu là 0,16825 và 192,23083~ms. Đây là một vi benchmark NMS lịch sử không gồm lan truyền thuận, camera hay hàng đợi; nó thiếu các lần lặp thô, seed, hình học đã lưu, phần cứng và giá trị băm đủ để tái lập, nên không xác lập độ phức tạp $O(N^2)$ hay khả năng gây từ chối dịch vụ của patch. Đối chứng dương mới ở Mục~\ref{sec:newprotocol} thay thế vi benchmark này bằng một thiết kế có seed, hình học đã băm, 30 lần lặp và MDE. Mô hình hàng đợi nhiều server lý tưởng dựng từ thời gian lan truyền thuận đã đo trước (X5v2) không phải phép đo 1/2/4 lõi và thời gian phục vụ của nó không gồm NMS, nên bài không dùng nó làm bằng chứng về tính sẵn sàng hay để hiệu chuẩn mô phỏng.
+Chưa có thí nghiệm in-và-chụp ghép cặp; EOT chỉ là mô phỏng phần mềm. Ảnh từ giao diện camera lịch sử không được dùng làm kết quả vì chưa xác minh được patch nguồn và nguồn gốc dữ liệu. Về benchmark hộp tổng hợp lịch sử, một mã cũ sinh hộp xyxy ngẫu nhiên trong ảnh $320\times320$, cạnh 10 đến 50 pixel và điểm ngẫu nhiên; nó dùng \texttt{torchvision.ops.nms} tại IoU 0,45, khởi động năm lời gọi với $N=100$ trước toàn bộ lần quét, và ở mỗi $N$ lấy tổng thời gian của 10 lời gọi chia 10. Tệp kết quả lưu $N=10, 50, 100, 200, 500, 1000, 2000, 3000, 4000, 5000, 8400, 10000$ và thời gian trung bình ở hai đầu là 0,168 và 192,2~ms. Đây là một vi benchmark NMS lịch sử không gồm lan truyền thuận, camera hay hàng đợi; nó thiếu các lần lặp thô, seed, hình học đã lưu, phần cứng và giá trị băm đủ để tái lập, nên không xác lập độ phức tạp $O(N^2)$ hay khả năng gây từ chối dịch vụ của patch. Đối chứng dương mới ở Mục~\ref{sec:newprotocol} thay thế vi benchmark này bằng một thiết kế có seed, hình học đã băm, 30 lần lặp và MDE. Mô hình hàng đợi nhiều server lý tưởng dựng từ thời gian lan truyền thuận đã đo trước không phải phép đo 1/2/4 lõi và thời gian phục vụ của nó không gồm NMS, nên bài không dùng nó làm bằng chứng về tính sẵn sàng hay để hiệu chuẩn mô phỏng.
 
 
 \section{Thảo luận}
@@ -775,13 +775,13 @@ Underload \cite{underload2025} & Phòng thủ có xét năng lực phần cứng
 EVADE \cite{evade2025} & Kiểm tính thực dụng qua phần cứng, định dạng, lượng tử hóa và thời hạn & Kết quả âm chỉ có phạm vi cấu hình đã đánh giá & Nhóm bổ sung thử nghiệm hẹp có truy vết, nhưng chỉ trên một CPU laptop \\
 APDE \cite{apde2025} & Đánh giá nhiều patch, mô hình và chỉ số; đối chứng thích nghi & Phát hiện patch hay AP không tự bảo đảm tính sẵn sàng & Nhóm tách AP, ứng viên, QoS; tập nhỏ, chưa so đủ các phương pháp mạnh nhất \\
 BadPatch, GRAC \cite{badpatch2025,grac2025} & Thử vật lý, áo/texture, nhiều điều kiện nhìn & Né tránh và gradient/diện tích khác; không phải QoS kiểu sponge & Nhóm giữ patch 4\%, không gradient; chưa xác nhận quang học \\
-SG-GA của nhóm & Không đọc gradient hay trọng số; cùng diện tích và truy vấn; đánh giá độc lập & Cần điểm tin cậy trước NMS; OLD128 chưa hỗ trợ ưu thế; X1-500 thấp hơn GA tâm & Giá trị hiện tại là kiểm định ranh giới của đại lượng thay thế; không tuyên bố tấn công mạnh hơn \\
+SG-GA của nhóm & Không đọc gradient hay trọng số; cùng diện tích và truy vấn; đánh giá độc lập & Cần điểm tin cậy trước NMS; nhóm 128 ảnh chưa hỗ trợ ưu thế; nhóm 500 ảnh thấp hơn GA tâm & Giá trị hiện tại là kiểm định ranh giới của đại lượng thay thế; không tuyên bố tấn công mạnh hơn \\
 \bottomrule
 \end{tabularx}
 \end{table}
 
 \subsection{Vì sao ứng viên không bảo đảm tăng độ trễ}
-Chi phí NMS còn phụ thuộc phân bố hộp, mức chồng lấp, thứ tự điểm, cách cài đặt và giới hạn. Nhiều hộp bị loại nhanh có thể ít tốn hơn một tập nhỏ khó loại. Fitness thưởng ứng viên và điểm tin cậy nhưng chưa mô hình hóa trực tiếp những yếu tố này. Kết quả tỷ số tăng nhẹ, AP giảm nhưng FIFO 300~ms của OLD128 chưa ghi nhận thiếu/trễ cho thấy giới hạn của proxy trong cấu hình đã thử; đó chưa phải phát biểu $\Ntau$ không có khả năng dự báo trong mọi điều kiện, phù hợp yêu cầu đánh giá hệ thống mà các công trình về độ trễ gần đây đặt ra \cite{underload2025,evade2025}. Các biến thể tham chiếu minh họa trực tiếp: số ứng viên tăng khoảng ba trăm lần chỉ kèm theo tăng toàn trình 2 đến 6\%, với tương quan hạng giữa $\Ntau$ và toàn trình gần 0 ($\rho=0{,}038$ và $0{,}086$) dù giữa $\Ntau$ và hậu xử lý rất mạnh ($\rho\approx0{,}82$); hậu xử lý chỉ chiếm vài phần trăm toàn trình trên CPU này. Một hàm mục tiêu độ trễ trực tiếp cũng không tự giải quyết vấn đề: bộ đếm thời gian chịu tiến trình nền, khởi động và backend. Nếu phát triển hàm mục tiêu quan sát độ trễ, cần cùng đường cơ sở, các khối ghép cặp ngẫu nhiên hóa, số lần đo lặp được tính vào ngân sách và một endpoint kiểm tra độc lập. Chưa thực hiện nhánh đó trong kết quả hiện tại, nên bài không báo hiệu lực hay cam kết cải thiện.
+Chi phí NMS còn phụ thuộc phân bố hộp, mức chồng lấp, thứ tự điểm, cách cài đặt và giới hạn. Nhiều hộp bị loại nhanh có thể ít tốn hơn một tập nhỏ khó loại. Fitness thưởng ứng viên và điểm tin cậy nhưng chưa mô hình hóa trực tiếp những yếu tố này. Kết quả tỷ số tăng nhẹ, AP giảm nhưng FIFO 300~ms của nhóm 128 ảnh chưa ghi nhận thiếu/trễ cho thấy giới hạn của proxy trong cấu hình đã thử; đó chưa phải phát biểu $\Ntau$ không có khả năng dự báo trong mọi điều kiện, phù hợp yêu cầu đánh giá hệ thống mà các công trình về độ trễ gần đây đặt ra \cite{underload2025,evade2025}. Các biến thể tham chiếu minh họa trực tiếp: số ứng viên tăng khoảng ba trăm lần chỉ kèm theo tăng toàn trình 2 đến 6\%, với tương quan hạng giữa $\Ntau$ và toàn trình gần 0 ($\rho=0{,}038$ và $0{,}086$) dù giữa $\Ntau$ và hậu xử lý rất mạnh ($\rho\approx0{,}82$); hậu xử lý chỉ chiếm vài phần trăm toàn trình trên CPU này. Một hàm mục tiêu độ trễ trực tiếp cũng không tự giải quyết vấn đề: bộ đếm thời gian chịu tiến trình nền, khởi động và backend. Nếu phát triển hàm mục tiêu quan sát độ trễ, cần cùng đường cơ sở, các khối ghép cặp ngẫu nhiên hóa, số lần đo lặp được tính vào ngân sách và một endpoint kiểm tra độc lập. Chưa thực hiện nhánh đó trong kết quả hiện tại, nên bài không báo hiệu lực hay cam kết cải thiện.
 
 \subsection{Cơ chế}
 Các phép đo phù hợp với mô hình chi phí ở Mục~\ref{sec:formal} ở bốn khía cạnh. Thứ nhất, độ trễ NMS có tăng theo $\Ntau$ (H1), với hệ số phụ thuộc cách cài đặt. Thứ hai, hình học quyết định mức tăng bao nhiêu (H2): cài đặt dùng vòng lặp dành gần như toàn bộ thời gian cho các hộp được giữ lại, nên các hộp rời nhau tốn hơn hai bậc độ lớn so với một cụm dày đặc cùng kích thước. Thứ ba, giới hạn chặn chi phí (H3): tại $\Ntau=10^4$, giới hạn 300 làm giảm thời gian PyTorch thuần trên hộp rời nhau 72 lần và thời gian torchvision 650 lần. Thứ tư, phần chiếm của NMS trong pipeline quyết định việc thay đổi ở công đoạn NMS có nhìn thấy ở mức toàn trình hay không (H4). Điều mà mô hình chi phí không cung cấp là cách đổi $\Ntau$ thành mili giây: dự đoán chỉ dựa trên $\Ntau$ sai gấp bốn lần với cài đặt dùng vòng lặp, dù chỉ sai khoảng 5\% với cài đặt Ultralytics.
@@ -799,7 +799,7 @@ Với người đánh giá: báo cáo $\Ntau$ cùng cách cài đặt và giới
 Một bộ phát hiện lớn hơn trong đó NMS chiếm phần lớn hơn của pipeline, một độ phân giải khác (head thật ở 640 px có số anchor gấp bốn lần), một cách cài đặt có hằng số khác, hoặc một patch được tối ưu với thành phần độ trễ thay vì $\Ntau$ có thể tạo ra một tác động toàn trình mà nghiên cứu này không phát hiện được. Tác động của patch 640 px được để ngỏ cho đến khi đường cơ sở sạch 640 px được phân tích; khi được báo cáo, nó sẽ được báo cáo cùng sàn nhiễu riêng của nó (MDE toàn trình ở 640 px là 1,9\% với drift cao, Bảng~\ref{tab:aa}).
 
 \subsection{Tái lập và toàn vẹn dữ liệu}
-Các artifact lưu manifest, giá trị băm của trọng số, ảnh và checkpoint, bản ghi từng ảnh và danh sách dự đoán. Các tổng hợp được kiểm lại từ dữ liệu lưu, nhưng chưa tái sinh độc lập toàn bộ suy luận, COCOeval hay phép đo thời gian. Mã nguồn hiện tại của mô-đun mô hình nạn nhân và của mã kiểm chứng mở rộng khác giá trị băm của lần chạy OLD128; trọng số YOLOv8n và ảnh đã kiểm khớp giá trị băm; bộ tối ưu hiện tại khớp giá trị băm của X1-500. Chúng tôi không suy ra mọi nguồn đều khác mọi lần chạy. Nhiều trường \texttt{weights\_sha256} của X2 là null, nên manifest của X2 chưa ràng buộc đầy đủ mọi tệp đã lưu. Bộ nhớ đệm chỉ theo sự tồn tại của tệp chưa đủ bảo đảm danh tính của cấu hình và nguồn; cần giữ ảnh chụp mã nguồn và khóa bộ nhớ đệm trước khi chạy lại.
+Các artifact lưu manifest, giá trị băm của trọng số, ảnh và checkpoint, bản ghi từng ảnh và danh sách dự đoán. Các tổng hợp được kiểm lại từ dữ liệu lưu, nhưng chưa tái sinh độc lập toàn bộ suy luận, COCOeval hay phép đo thời gian. Mã nguồn hiện tại của mô-đun mô hình nạn nhân và của mã kiểm chứng mở rộng khác giá trị băm của lần chạy nhóm 128 ảnh; trọng số YOLOv8n và ảnh đã kiểm khớp giá trị băm; bộ tối ưu hiện tại khớp giá trị băm của nhóm 500 ảnh. Chúng tôi không suy ra mọi nguồn đều khác mọi lần chạy. Nhiều trường \texttt{weights\_sha256} của khảo sát đa kiến trúc là null, nên manifest của khảo sát đa kiến trúc chưa ràng buộc đầy đủ mọi tệp đã lưu. Bộ nhớ đệm chỉ theo sự tồn tại của tệp chưa đủ bảo đảm danh tính của cấu hình và nguồn; cần giữ ảnh chụp mã nguồn và khóa bộ nhớ đệm trước khi chạy lại.
 
 \subsection{Đạo đức và dữ liệu}
 Các phép thử chỉ xử lý dữ liệu và mô hình trong môi trường nghiên cứu được phép, không triển khai gây gián đoạn dịch vụ sản xuất. Chúng tôi tuân thủ điều khoản nguồn và quyền riêng tư; giấy phép của chú thích không tự cấp quyền tái phân phối mọi ảnh. Bộ công cụ đo, các manifest và các số đo cần thiết được công bố; chúng tôi không đóng gói patch tối ưu thành công cụ tấn công, vì không cần chúng để hỗ trợ luận điểm về giới hạn của đại lượng thay thế.
@@ -809,16 +809,19 @@ Các phép thử chỉ xử lý dữ liệu và mô hình trong môi trường n
 Mục này tập hợp các hạn chế của nghiên cứu; các kết quả ở trên cần được đọc trong phạm vi các hạn chế này.
 
 \paragraph{Tính hợp lệ nội tại.}
-Mọi phép đo trên laptop đến từ một máy và một chế độ nguồn Windows; điện thoại duy nhất được chuẩn bị cho nghiên cứu không qua kiểm chứng ghim lõi. Nhiễu thời gian được định lượng bằng thiết kế A/A, nhưng phép đo tham chiếu bị lệch quá cờ 3\% ở 2/11 khối trong lần A/A 320 px (lớn nhất 26\%), 2/12 khối trong đối chứng dương (lớn nhất 5,6\%), 0/11 khối trong lần đo lại patch (lớn nhất 1,5\%), và 8/11 khối trong lần A/A 640 px (lớn nhất 18\%); các khối bị cờ được giữ trong phân tích chính và lần A/A có phân tích độ nhạy loại chúng. Lần A/A đầu tiên (Bảng~\ref{tab:aa1}) có drift ở hầu hết các điểm. Điện thoại không ghim được, nên không có phép đo thời gian nào trên điện thoại. Các điều kiện patch ở 640 px chưa có nhánh sạch 640 px đã phân tích nên chưa đọc được như tác động độ trễ. Việc ghim lõi được kiểm chứng dưới tải, nhưng hệ điều hành vẫn có thể lập lịch công việc khác trên CPU đã ghim. Tập đo là 100 ảnh giữ ra ngoài, và tác động patch dùng năm trong mười seed tối ưu. Tập tối ưu và tập đo tách rời, và các patch được đóng băng bằng giá trị băm trước khi đo. OLD128 và X1-500 có 10 seed patch trên bộ ảnh cố định và 128 ảnh nằm trong 500 ID nên hai phân tích không độc lập; mở rộng sau quan sát có thể tăng độ chính xác ước lượng nhưng không có bảo đảm công suất tiến cứu. Khoảng theo seed không bao phủ bất định của cách chọn ảnh; bootstrap hai tầng bổ sung nó. Lịch sử pretraining và lựa chọn checkpoint có thể liên quan COCO val/train. Các phân tích định nghĩa sau khi xem dữ liệu được gắn nhãn post hoc.
+Mọi phép đo trên laptop đến từ một máy và một chế độ nguồn Windows; điện thoại duy nhất được chuẩn bị cho nghiên cứu không qua kiểm chứng ghim lõi. Nhiễu thời gian được định lượng bằng thiết kế A/A, nhưng phép đo tham chiếu bị lệch quá cờ 3\% ở 2/11 khối trong lần A/A 320 px (lớn nhất 26\%), 2/12 khối trong đối chứng dương (lớn nhất 5,6\%), 0/11 khối trong lần đo lại patch (lớn nhất 1,5\%), và 8/11 khối trong lần A/A 640 px (lớn nhất 18\%); các khối bị cờ được giữ trong phân tích chính và lần A/A có phân tích độ nhạy loại chúng. Lần A/A đầu tiên (Bảng~\ref{tab:aa1}) có drift ở hầu hết các điểm. Điện thoại không ghim được, nên không có phép đo thời gian nào trên điện thoại. Các điều kiện patch ở 640 px chưa có nhánh sạch 640 px đã phân tích nên chưa đọc được như tác động độ trễ. Việc ghim lõi được kiểm chứng dưới tải, nhưng hệ điều hành vẫn có thể lập lịch công việc khác trên CPU đã ghim. Tập đo là 100 ảnh giữ ra ngoài, và tác động patch dùng năm trong mười seed tối ưu. Tập tối ưu và tập đo tách rời, và các patch được đóng băng bằng giá trị băm trước khi đo. Nhóm 128 ảnh và nhóm 500 ảnh có 10 seed patch trên bộ ảnh cố định và 128 ảnh nằm trong 500 ID nên hai phân tích không độc lập; mở rộng sau quan sát có thể tăng độ chính xác ước lượng nhưng không có bảo đảm công suất tiến cứu. Khoảng theo seed không bao phủ bất định của cách chọn ảnh; bootstrap hai tầng bổ sung nó. Lịch sử pretraining và lựa chọn checkpoint có thể liên quan COCO val/train. Các phân tích định nghĩa sau khi xem dữ liệu được gắn nhãn post hoc.
 
 \paragraph{Tính hợp lệ cấu trúc.}
 $\Ntau$ là số anchor vượt ngưỡng trước NMS. Độ trễ được đo trên các tensor đã chuẩn bị trong bộ nhớ, nên không gồm giải mã ảnh, thu hình camera và truyền tải. Mốc tham chiếu 100~ms là giá trị do các tác giả chọn cho đối chứng dương, không phải yêu cầu của một ứng dụng. Các ứng viên tổng hợp có hình học và điểm số được kiểm soát mà các phát hiện thật có thể không có, và đó là lý do bộ dự đoán được kiểm tra trên các tập ứng viên thật. Vòng lặp NMS PyTorch thuần chậm hơn các nhân thư viện và khuếch đại sự phụ thuộc vào $\Ntau$; kết quả được báo cáo theo từng cách cài đặt chứ không gộp.
 
 \paragraph{Tính hợp lệ bên ngoài.}
-Nghiên cứu chủ yếu gồm một kiến trúc bộ phát hiện (YOLOv8n, float32) và một họ dữ liệu (COCO); các cohort chuyển giao và X2 bổ sung một số kiến trúc khác nhưng chỉ ở mức số lượng hoặc tỷ số thời gian, không có đo ghim lõi. Các bộ phát hiện hai giai đoạn, các bộ phát hiện không NMS như DETR \cite{carion2020detr}, các cỡ mô hình khác, mô hình lượng tử hóa và bộ tăng tốc không được bao phủ đầy đủ. Điện thoại là một SoC Arm chạy Ubuntu trong môi trường proot trên Android; nó không phải bo mạch nhúng, proot có thể thêm chi phí lời gọi hệ thống, và các bản dựng framework khác với laptop (PyTorch và Ultralytics mới hơn). Nếu thiết bị ghim được, chúng tôi sẽ so sánh tỷ số và hình dạng đường cong giữa các thiết bị và không bao giờ so độ trễ tuyệt đối. Các patch được chèn ở dạng số bằng các phép biến đổi phần mềm; không có đánh giá in-và-chụp hay qua camera nào được thực hiện. Một bộ phát hiện không NMS vẫn có thể chuyển chi phí phụ thuộc nội dung sang bộ theo dõi hoặc công đoạn khác \cite{trackflood2026}; cần đo pipeline ứng dụng cuối thay vì xem kiến trúc là bảo đảm tính sẵn sàng.
+Nghiên cứu chủ yếu gồm một kiến trúc bộ phát hiện (YOLOv8n, float32) và một họ dữ liệu (COCO); các cohort chuyển giao và khảo sát đa kiến trúc bổ sung một số kiến trúc khác nhưng chỉ ở mức số lượng hoặc tỷ số thời gian, không có đo ghim lõi. Các bộ phát hiện hai giai đoạn, các bộ phát hiện không NMS như DETR \cite{carion2020detr}, các cỡ mô hình khác, mô hình lượng tử hóa và bộ tăng tốc không được bao phủ đầy đủ. Điện thoại là một SoC Arm chạy Ubuntu trong môi trường proot trên Android; nó không phải bo mạch nhúng, proot có thể thêm chi phí lời gọi hệ thống, và các bản dựng framework khác với laptop (PyTorch và Ultralytics mới hơn). Nếu thiết bị ghim được, chúng tôi sẽ so sánh tỷ số và hình dạng đường cong giữa các thiết bị và không bao giờ so độ trễ tuyệt đối. Các patch được chèn ở dạng số bằng các phép biến đổi phần mềm; không có đánh giá in-và-chụp hay qua camera nào được thực hiện. Một bộ phát hiện không NMS vẫn có thể chuyển chi phí phụ thuộc nội dung sang bộ theo dõi hoặc công đoạn khác \cite{trackflood2026}; cần đo pipeline ứng dụng cuối thay vì xem kiến trúc là bảo đảm tính sẵn sàng.
 
 \paragraph{Tính hợp lệ của kết luận.}
 Các hiệu ứng được đọc so với MDE của A/A. Khoảng tin cậy chứa một, hoặc hiệu ứng dưới MDE, được báo cáo là không phát hiện ở độ nhạy đó và không được diễn giải là tương đương. Các phân tích patch có điều kiện trên các ảnh và seed đã lấy mẫu; bootstrap hai tầng tính đến cả hai nguồn biến thiên nhưng không tính đến các bộ phát hiện hay thiết bị khác. Các khoảng tin cậy không được hiệu chỉnh đa phép thử vì các phân tích là ước lượng chứ không phải một họ kiểm định (trừ họ 15 so sánh thứ cấp của các cohort lịch sử, có hiệu chỉnh Holm).
+
+\paragraph{Quy ước đọc các kết quả.}
+Các lưu ý sau áp dụng cho toàn bộ phần Kết quả và được nêu một lần ở đây. (i) Nhóm 500 ảnh được mở rộng sau khi quan sát nhóm 128 ảnh và chứa nó, nên hai nhóm không phải xác nhận độc lập của nhau; chênh lệch cùng âm nhưng khác độ lớn. (ii) Giá trị $p>0{,}05$ hay khoảng tin cậy chứa 0 không được đọc là tương đương; không suy ra tương đương từ các kiểm định chưa hỗ trợ khác biệt. (iii) Đầu ra của hai cài đặt NMS khớp nhau trên mẫu hữu hạn đã kiểm tra, không có nghĩa là khớp với mọi đầu vào hoặc mọi trường hợp điểm bằng nhau. (iv) Diện tích patch thay đổi đồng thời vùng che và số chiều tìm kiếm, nên ảnh hưởng của nó không tách được thành một yếu tố riêng. (v) Trung bình tỷ số theo ảnh và tỷ số của trung bình số ứng viên là hai đại lượng khác nhau. (vi) Tỷ số số lượng ở các kiến trúc không đồng nhất ranh giới (trước hay sau NMS nội bộ) không dùng để so sánh độ nhạy NMS xuyên kiến trúc. (vii) Baseline gradient đọc gradient và dùng bộ tối ưu khác, nên chênh lệch với GA không tách được hàm mục tiêu khỏi quyền truy cập và bộ tối ưu; các baseline thích nghi từ công trình trước không phải bản tái hiện nguyên bản. (viii) Các phép đo thời gian của nhóm cohort lịch sử chưa ghim lõi nên chỉ mang tính thăm dò; FIFO 300~ms không có ảnh thiếu/trễ trong các điều kiện đã đo, không chứng minh an toàn ở mọi tải hay thiết bị; chính sách thích nghi có hiện tượng bỏ ảnh ngay cả trên ảnh sạch.
 
 \paragraph{Phạm vi của bộ tối ưu.}
 Bộ tối ưu của nghiên cứu tình huống là hộp xám: nó đọc các điểm lớp trước NMS, thứ mà một dịch vụ triển khai thường không phơi bày, và nó không tối thiểu hóa độ trễ trực tiếp. Nghiên cứu không khẳng định một tấn công mạnh hơn các công trình trước, cũng không khẳng định một tấn công từ chối dịch vụ trên bất kỳ hệ thống triển khai nào.
@@ -831,7 +834,7 @@ Chúng tôi đã xem xét liệu số ứng viên trước NMS có dự đoán �
 Giữa $10^2$ và $10^4$ ứng viên được tiêm, độ trễ NMS tăng từ 4 đến 1360 lần tùy cách cài đặt và hình học, nên số ứng viên có ý nghĩa nhưng không quyết định độ trễ; giới hạn top-$k$ loại bỏ phần lớn mức tăng. Các patch của thuật toán di truyền được tối ưu trên 100 ảnh không làm tăng $\Ntau$ đo được ở 320 px và thêm 1 đến 1,5\% thời gian toàn trình, tương tự tìm kiếm ngẫu nhiên; một baseline gradient làm $\Ntau$ tăng 2,3 lần mà không có tác động toàn trình nhìn thấy được (khoảng 0,997 đến 1,015, MDE 0,55\%). Dự đoán chỉ dựa trên $\Ntau$ về thời gian NMS sai trong khoảng 5\% với NMS gốc Ultralytics nhưng sai gấp 4 lần với vòng lặp PyTorch thuần.
 
 \paragraph{Về nghiên cứu tình huống SG-GA (Q5--Q6).}
-Trên các cohort lịch sử, SG-GA không vượt GA đặt ở tâm (OLD128: $-0{,}0051$, $p=0{,}1504$; X1-500: $-0{,}0293$, $p=0{,}001953$), không khác tìm kiếm ngẫu nhiên và thấp hơn GA đặt ngẫu nhiên; kết quả âm được giữ nguyên, và X1-500 là mở rộng sau quan sát, không phải xác nhận độc lập. Hiệu ứng của diện tích, EOT và chuyển giao giữa mô hình được ghi nhận ở mức mô tả; số lượng ở ranh giới X2 tăng hạn chế và không đồng nhất giữa các họ bộ phát hiện.
+Trên các cohort lịch sử, SG-GA không vượt GA đặt ở tâm (nhóm 128 ảnh: $-0{,}005$, $p=0{,}15$; nhóm 500 ảnh: $-0{,}029$, $p=0{,}002$), không khác tìm kiếm ngẫu nhiên và thấp hơn GA đặt ngẫu nhiên; kết quả âm được giữ nguyên, và nhóm 500 ảnh là mở rộng sau quan sát, không phải xác nhận độc lập. Hiệu ứng của diện tích, EOT và chuyển giao giữa mô hình được ghi nhận ở mức mô tả; số lượng ở ranh giới khảo sát đa kiến trúc tăng hạn chế và không đồng nhất giữa các họ bộ phát hiện.
 
 \paragraph{Giới hạn và hướng phát triển.}
 Điện thoại không ghim được lõi nên không có kết quả Arm, và tác động của patch 640 px đang chờ đường cơ sở sạch 640 px (A/A ở 640 px có MDE 1,9\% và drift cao). Phần còn thiếu, thuộc hướng tiếp theo: một lần đo 640 px sạch hơn; một giao thức ghim lõi cho điện thoại (ví dụ kiểm chứng giả thuyết luồng phụ hoặc đo không ghim có khai báo rõ); quét chu kỳ phát quanh điểm gãy (120 đến 250~ms); phép kiểm proxy xác nhận trên patch thật khi máy rảnh; thí nghiệm in-và-chụp; và bộ phát hiện lớn hơn nơi NMS chiếm phần lớn hơn của pipeline. $\Ntau$ đơn độc chưa đủ để suy ra độ trễ hay chất lượng dịch vụ; bài chưa hoàn thành bản đồ điều kiện đầy đủ (cách cài đặt, giới hạn, ngưỡng, tài nguyên, chu kỳ phát) và không phát biểu tính vô ích của $\Ntau$ trong mọi cấu hình.
@@ -853,27 +856,7 @@ Một trợ lý lập trình AI (Claude Code) đã được dùng để giúp vi
 \appendix
 \section{Nguồn số liệu}
 \label{app:src}
-Bảng~\ref{tab:sources} liệt kê, cho từng nhóm số trong bài, tệp nguồn và trạng thái truy vết. ``Đã kiểm lại'' nghĩa là con số được đọc lại từ tệp tóm tắt trong phiên soạn bản này; ``chép từ bản v2'' nghĩa là con số được lấy từ bản thảo trước (đã qua audit ở mục review của kho mã) và chưa được truy lại tới dòng thô trong phiên này, nên cần truy lại trước khi nộp.
-\begin{table}[t]
-\centering\small
-\caption{Nguồn số liệu và trạng thái truy vết.}
-\label{tab:sources}
-\begin{tabularx}{\textwidth}{@{}p{3.6cm}p{6.6cm}X@{}}
-\toprule
-Nhóm số & Tệp nguồn (từ gốc kho mã) & Trạng thái \\
-\midrule
-A/A 320 px (profile P1\_cpu2) & \texttt{sponge-sim/results/e5/AA\_P1cpu2\_20261101/summary.json} & Đã kiểm lại \\
-A/A 640 px & \texttt{sponge-sim/results/e5/AA640\_P1cpu2\_20261102/summary.json} & Đã kiểm lại \\
-A/A lần đầu (P1, E1, E4) & \texttt{sponge-sim/results/e5/20261021T151412/summary.json} & Đã kiểm lại (tỷ số, MDE, drift) \\
-Tiêm ứng viên & \texttt{sponge-sim/results/e1/E1\_P1cpu2\_20261101/summary.json} & Đã kiểm lại \\
-Đo lại patch (320 px) & \texttt{sponge-sim/results/e6/E6\_P1cpu2\_20261102/summary.json} & Đã kiểm lại \\
-Fitness huấn luyện (sinh patch) & \texttt{sponge-sim/results/e7\_gpu/final/runs/e7/*/seed*/checkpoint\_q*.json} & Đã kiểm lại \\
-OLD128, X1-500: chênh lệch SG-GA trừ GA tâm & \texttt{outputs/extended\_q1\_20261002}, \texttt{outputs/x1\_500img\_20261018} & Số chính đã xác minh trong ghi chú dự án; các bảng chi tiết chép từ bản v2 \\
-Diện tích, EOT, ngân sách, luồng dịch vụ, đánh đổi phòng thủ, chuyển giao, X2, biến thể tham chiếu & \texttt{outputs/} (các thư mục cohort tương ứng), \texttt{outputs/x2\_architecture\_20261020} & Chép từ bản v2; cần truy lại \\
-Vi benchmark hộp lịch sử & \texttt{outputs/benchmark/results.json} & Chép từ bản v2 \\
-\bottomrule
-\end{tabularx}
-\end{table}
+Mọi con số trong bài truy được tới một trường trong tệp tóm tắt do một script trong kho mã tạo ra. Bảng đối chiếu từng nhóm số với tệp nguồn và trạng thái truy vết (đã kiểm lại hay còn phải truy lại) nằm trong tệp \texttt{docs/NGUON\_SO\_LIEU.md} của kho mã, không đưa đường dẫn vào thân bài. Các bảng của phần cohort lịch sử (diện tích, EOT, luồng dịch vụ, đánh đổi phòng thủ, chuyển giao, khảo sát đa kiến trúc, biến thể tham chiếu) được chép từ bản thảo trước và phải được truy lại tới bản ghi thô trước khi nộp.
 
 \bibliographystyle{unsrtnat}
 \bibliography{../paper_en/references,refs_extra}
