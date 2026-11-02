@@ -381,3 +381,9 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - Thong tin bai da dien: URL kho ma https://github.com/reikageisme/Sponge-patch-nms ; Funding: khong nhan tai tro, du an doc lap; Competing interests: khong co; cau khai bao dung AI (Claude Code) giu nguyen. Chua co Acknowledgements/CRediT ban Anh.
 - Ket qua da xac minh/khong doi: A/A P1_cpu2 320 px MDE toan trinh 0,55% (2/11 drift); E1: ti so 10^2->10^4 NMS tu 4 den 1360 lan theo cach cai dat va hinh hoc, top-k 300 giam NMS 72-650 lan; E6 320 px: SG-GA khong tang N, toan trinh +1,1-1,5% giong tim kiem ngau nhien, B4 gradient N x2,3 nhung toan trinh 1,006 [0,997; 1,015] (MDE 0,55%); du doan chi-tu-N sai ~5% (Ultralytics) den ~4 lan (PyTorch thuan); nhanh 640 px cua E6 dang cho clean640 (C2/C4 ti so 3,5-3,6 la chi phi do phan giai, khong doc duoc).
 - Quy tac van ap dung: khong xoa/ghi de outputs/** va ket qua da chay; khong sua core/ attack/ experiments/; khong dung project_yolov13/**; moi con so phai truy duoc; PREREG+tag truoc khi do; khong dung mang cho phep do (tru ngoai le cai dat dien thoai da xong); khong doi power plan.
+
+## 02/11 11:00 - Ra soat toan bo tai lieu: xem docs/REVIEW_TOAN_BO_20261102.md
+- Da doc: REVIEW_THAY_NAM, REVIEW/03,04,05,06_open_items, KIEM_TOAN_Q1 (muc 9-11), Q1_SCIENTIFIC_AUDIT (muc 11-14), GD2_PLAN, DOAN_DONG_GOPIEN, CLEANUP_PROPOSAL, tieu de cac tai lieu audit khac, PDF bai cu.
+- 15 khoang trong G1-G15 (quan trong nhat: G1 chua co ARM; G3 ban Viet ghi sai tac gia; G4 ban Viet con nhan noi bo va nhieu chu so; G5 chua khac biet du ro voi EVADE; G6 tag chua push).
+- Da sua ngay G3: paper_vi/main_vi.tex chi con 2 tac gia (Anh, Bao), Nam la GVHD va tac gia lien he.
+- E6-A1 van dang chay (64.169 dong luc 10:40).
