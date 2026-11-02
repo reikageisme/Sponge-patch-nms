@@ -344,3 +344,40 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - `prereg/PREREG_E6_addendum_clean640.md`: NHÁP, CHƯA TAG, chờ duyệt (cần chọn A/A 640 px hay dùng MDE 320 px). DEVIATIONS đã ghi.
 - references.bib: đã kiểm bằng web 7 mục (Sponge, Overload, SlowTrack, EVADE, Thys, Neubeck, Cameron); còn 9 mục "from memory" chưa kiểm: Brown, Athalye, Ilyas, Redmon, DETR, COCO, Ultralytics, PyTorch, Efron, Holm. Cameron là wild cluster bootstrap-t, bài đã sửa câu cho đúng vai trò.
 - Còn: URL kho mã, biên dịch TeX, giảm chữ số nếu cần.
+
+## TRANG THAI HIEN TAI 02/11/2026 10:36 (ghi theo yeu cau, truoc moi viec khac)
+
+### Dang chay nen (KHONG dung may, KHONG sua ma trong sponge-sim/src hay studies cho den khi xong)
+- A/A 640 px: XONG. results/e5/AA640_P1cpu2_20261102 (summary.json). Ghim PASS (effective_cores 0,756). MDE toan trinh 1,9% (forward 1,7; NMS thuan 2,4; NMS torchvision 1,3). Drift tham chieu: 8/11 diem bi co (khoi 1,2,5,6,7,8,9,end), lech toi da 18%; bo cac khoi bi co con 30 anh, CI log toan trinh [-0,035; 0,023]. Nguyen nhan drift chua xac dinh; co tac vu soan thao nhe chay song song tren cung may luc do. Doc MDE 640 nhu can tren than trong. Chua ghi vao DEVIATIONS.md (con no).
+- E6-A1 (nhanh clean640 + C2 + C4, --skip-clean320): DANG CHAY. results/e6/E6A1_P1cpu2_20261102 (log .log cung ten, chua co dong [E6] DONE). Luc ghi: 57.328 dong raw, uoc tinh con khoang 30-60 phut. Lenh phan tich khi xong:
+  python -X utf8 studies/e6_remeasure/analyze.py results/e6/E6A1_P1cpu2_20261102 results/e5/AA640_P1cpu2_20261102/summary.json results/e1/E1_P1cpu2_20261101/summary.json P1_cpu2 --a1
+  Sau do: dien hang 640 px Bang patches vao paper_vi/main_vi.tex va paper_en/main.tex (hien la o do), cap nhat Discussion/Threats/Conclusion, ghi DEVIATIONS (drift A/A 640), commit.
+- Smoke chay truoc do (thu muc scratchpad) cho thay pin verify co the FAIL khi may ban (pytest chay song song): fail-closed dung y.
+
+### 11 phat hien /code-review sponge-sim/src (CHUA SUA; da bao cao bang ReportFindings)
+1. attacks_provenance.py:278 gradient_tanh: best = current moi buoc -> best_training_fitness la gia tri buoc cuoi, khong phai tot nhat. Anh huong bai: Bang fitness huan luyen (B4 334,1) dang ghi "tot nhat"; can doi nhan "buoc cuoi" hoac theo doi max chay.
+2. hw_linux.py:56 pin(): os.sched_setaffinity(0, ...) tren Linux chi ghim luong goi; luong da ton tai khong duoc ghim, doc lai khong phat hien. Nghi van (chua kiem chung) la mot nguyen nhan "khong profile nao qua" tren dien thoai.
+3. attacks_provenance.py:194 optimize(): tra complete.json cu ma khong kiem spec/seed khop.
+4. attacks_provenance.py:221 resume khong khoi phuc RNG CUDA (chi CPU torch, numpy, python RNG khong dung) -> chay noi tiep tren GPU khong tai lap tung byte.
+5. backends.py:104 metadata() ultra_impl luon 'torchvision.ops.nms' khi torchvision duoc import (luon dung) -> khong phan anh duong ma that.
+6. attacks_provenance.py:151 find_locations coi moi mode khac center/random la saliency; make_eot coi mode la la full -> go sai chu khong bao loi.
+7. stats.py:85 spearman tra NaN khi dau vao khong doi; NaN vao summary.json (JSON khong chuan).
+8. attacks_provenance.py:176 objective() nhan cap nhung bo qua.
+9. timing.py:32 timed() giu ket qua cua moi lan lap (ap luc bo nho).
+10. hw.py:102 verify_pin khong dung try/finally de khoi phuc torch.set_num_threads; chi kiem mot lan luc dau (khong kiem lai cuoi phien); tuong tu hw_linux.py:103.
+11. cohorts.py:27 records() khoa theo image_id, ban ghi trung (cung threshold, cap) bi de im lang.
+
+### 3 lua chon dang CHO NGUOI DUNG (chua tra loi)
+- A. Sua cac loi trong sponge-sim/src (nhanh moi, co test hoi quy), khong dong toi ket qua da chay; cap nhat nhan B4 trong bai. Tin nhan mau: "Sua cac phat hien review trong sponge-sim/src, them test, va cap nhat nhan B4 trong bai."
+- B. Soan PREREG (chua tag) thu ghim loi tung luong cho dien thoai (can bat lai sshd tren dien thoai; moi lan do tren dien thoai can PREREG rieng va xac nhan may ranh). Tin nhan mau: "Soan PREREG thu ghim loi tung luong cho dien thoai, chua tag."
+- C. Chi sua nhan fitness B4 trong ban Viet va ban Anh. Tin nhan mau: "Sua nhan fitness B4 thanh gia tri buoc cuoi trong ca hai ban."
+- Luu y: khong sua ma trong luc E6-A1 dang do (se lam lech ma da gan tag prereg-e6a1-20261102).
+
+### Quyet dinh da chot truoc do
+- Tieu de bai (chot 01/11/2026): "Does the Number of Pre-NMS Candidates Predict Detector Latency? A Pinned-Core Measurement Study with a Patch-Optimization Case Study". Tieu de VN cu (Tan cong doi khang Sponge Patch...) khong dung nua. Ban chinh thuc: paper_en/main.tex. Ban Viet de ra soat: paper_vi/main_vi.tex (khoang 21.800 tu, 24 bang; gop phan do ghim loi moi + cac cohort lich su OLD128/X1-500/X2; tai lieu bo sung o paper_vi/refs_extra.bib chua kiem web; Phu luc A ghi nguon so lieu, nhom nao da kiem lai va nhom nao chep tu ban v2 PDF AdversarialSpongeAttack.pdf can truy lai). Chi dich sang Anh sau khi nguoi dung duyet ban Viet.
+- Thiet bi dien thoai: Samsung Galaxy A36 (Snapdragon 6 Gen 3), SSH 192.168.1.139 cong 8022, user u0_a445, khoa ~/.ssh/phone_a36, chay trong proot Ubuntu o Termux, chi doc/ghi ~/sponge-sim. pin_verify 01/11: KHONG co profile dat (ket qua am, ghi nhan, khong doi tieu chi). sshd da tat (pkill sshd); muon lam viec tiep tren dien thoai phai bat lai sshd. Goi la "dien thoai Arm (Galaxy A36)", khong goi la Edge Server.
+- May GPU thue (V100): E7 xong 80/80 don vi, 240/240 hash patch khop; nguoi dung PHAI tu huy/dung may thue (tinh tien theo gio) - chua xac nhan da huy.
+- Tag da co: prereg-e1-20261101, prereg-e5phone-20261101, prereg-e6-20261101, prereg-e7-20261101 (cung commit 9130774); prereg-e5-20261021, prereg-e2a-20261021; prereg-e6a1-20261102 (commit 1678cd8, phu luc nhanh clean640 + A/A 640, DA DUOYET boi nguoi dung 02/11 voi lenh "lam ca 3"). Khong tag them neu chua duoc duyet.
+- Thong tin bai da dien: URL kho ma https://github.com/reikageisme/Sponge-patch-nms ; Funding: khong nhan tai tro, du an doc lap; Competing interests: khong co; cau khai bao dung AI (Claude Code) giu nguyen. Chua co Acknowledgements/CRediT ban Anh.
+- Ket qua da xac minh/khong doi: A/A P1_cpu2 320 px MDE toan trinh 0,55% (2/11 drift); E1: ti so 10^2->10^4 NMS tu 4 den 1360 lan theo cach cai dat va hinh hoc, top-k 300 giam NMS 72-650 lan; E6 320 px: SG-GA khong tang N, toan trinh +1,1-1,5% giong tim kiem ngau nhien, B4 gradient N x2,3 nhung toan trinh 1,006 [0,997; 1,015] (MDE 0,55%); du doan chi-tu-N sai ~5% (Ultralytics) den ~4 lan (PyTorch thuan); nhanh 640 px cua E6 dang cho clean640 (C2/C4 ti so 3,5-3,6 la chi phi do phan giai, khong doc duoc).
+- Quy tac van ap dung: khong xoa/ghi de outputs/** va ket qua da chay; khong sua core/ attack/ experiments/; khong dung project_yolov13/**; moi con so phai truy duoc; PREREG+tag truoc khi do; khong dung mang cho phep do (tru ngoai le cai dat dien thoai da xong); khong doi power plan.
