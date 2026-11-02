@@ -74,23 +74,25 @@ def main():
             pipe[(r['image_id'], r['arm'], r['seed'], r['backend'])].append(r['total_ns'] / 1e6)
     med = {k: float(np.median(v)) for k, v in micro.items()}
     pmed = {k: float(np.median(v)) for k, v in pipe.items()}
-    arms = sorted({k[1] for k in med if k[1] != 'clean'})
+    a1 = len(sys.argv) > 5 and sys.argv[5] == '--a1'  # PREREG_E6_addendum_clean640: C2/C4 so với clean640
+    arms = sorted({k[1] for k in med if k[1] not in ('clean', 'clean640')})
     out = dict(experiment='E6', run_dir=str(run_dir), profile=profile, bootstrap_seed=SEED, n_boot=stats.N_BOOT,
                pin=dict(effective_cores=pin['effective_cores'], passed=pin['passed']),
                drift=dict(points=len(refs), flagged=sum(r['flagged'] for r in refs), max_abs=max(abs(r['rel_change']) for r in refs)),
                mde_aa_pct={s: aa[s]['mde_ratio_pct'] for s in ('forward', 'total', 'nms_torch_pure', 'nms_tv_nms')}, arms={})
     for arm in arms:
+        ref = 'clean640' if (a1 and arm in ('C2', 'C4')) else 'clean'
         ids = sorted({k[0] for k in med if k[1] == arm})
         seeds = sorted({k[2] for k in med if k[1] == arm})
         a = {}
         for tau in (0.01, 0.25):
-            nc = np.array([[nmap[(i, 'clean', None, tau)] for _ in seeds] for i in ids], float)
+            nc = np.array([[nmap[(i, ref, None, tau)] for _ in seeds] for i in ids], float)
             npat = np.array([[nmap[(i, arm, s, tau)] for s in seeds] for i in ids], float)
             ratio = npat / np.maximum(nc, 1)
             a[f'N_tau{tau}'] = dict(clean_median=float(np.median(nc[:, 0])), patched_median=float(np.median(npat)),
                                     ratio_mean=float(ratio.mean()), ratio_ci95=stats.two_level_bootstrap(ratio, SEED).tolist())
             for be in BACKENDS:
-                tc = np.array([[med[(i, 'clean', None, tau, be)] for _ in seeds] for i in ids])
+                tc = np.array([[med[(i, ref, None, tau, be)] for _ in seeds] for i in ids])
                 tp = np.array([[med[(i, arm, s, tau, be)] for s in seeds] for i in ids])
                 rt = tp / tc
                 dN, dt = npat - nc, tp - tc
@@ -99,11 +101,11 @@ def main():
                     rho_dN_dt=stats.spearman(dN.ravel(), dt.ravel()), rho_ci95=two_level_rho(dN, dt),
                     rho_between_clean=stats.spearman(nc[:, 0], tc[:, 0]))
         for be in ('torch_pure', 'tv_nms'):
-            tc = np.array([[pmed[(i, 'clean', None, be)] for _ in seeds] for i in ids])
+            tc = np.array([[pmed[(i, ref, None, be)] for _ in seeds] for i in ids])
             tp = np.array([[pmed[(i, arm, s, be)] for s in seeds] for i in ids])
             rt = tp / tc
             lo, hi = stats.two_level_bootstrap(rt, SEED)
-            nms_c = np.array([[med[(i, 'clean', None, 0.01, be)] for _ in seeds] for i in ids])
+            nms_c = np.array([[med[(i, ref, None, 0.01, be)] for _ in seeds] for i in ids])
             nms_p = np.array([[med[(i, arm, s, 0.01, be)] for s in seeds] for i in ids])
             share = (nms_p - nms_c) / tc
             a[f'total_{be}'] = dict(ratio_mean=float(rt.mean()), ratio_ci95=[float(lo), float(hi)],
@@ -120,7 +122,7 @@ def main():
         for (i, arm, s, tau, b), t in med.items():
             if b != be or tau != 0.01:
                 continue
-            canvas_anchor = 8400 if arm in ('C2', 'C4') else 2100
+            canvas_anchor = 8400 if arm in ('C2', 'C4', 'clean640') else 2100
             n = nmap[(i, arm, s, tau)]
             if n <= 0:
                 continue

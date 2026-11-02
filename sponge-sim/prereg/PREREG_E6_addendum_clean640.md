@@ -1,6 +1,6 @@
 # PREREG E6-A1 (bổ sung): nhánh `clean640` cho E6
 
-Trạng thái: **NHÁP, chờ duyệt** (chưa tag). Tag dự kiến: `prereg-e6a1-<ngày>`. Soạn 02/11/2026.
+Trạng thái: **ĐÃ DUYỆT 02/11/2026, phương án (a)**; tag `prereg-e6a1-20261102` đặt TRƯỚC khi đo.  Soạn 02/11/2026.
 Bổ sung cho `PREREG_E6.md` (tag `prereg-e6-20261101`); không thay đổi bất kỳ endpoint hay quy tắc nào của PREREG_E6.
 
 ## Lý do (khuyết điểm thiết kế đã biết)
@@ -20,13 +20,15 @@ SAU khi đo, khi đọc kết quả; ghi vào `DEVIATIONS.md`. Bổ sung này kh
 - **A1-2**: tỷ số độ trễ toàn trình patched / clean640 cho C2, C4, hai backend; so với MDE `total` của A/A P1_cpu2 hợp lệ gần nhất.
   Quy tắc đọc như PREREG_E6: CI nằm trọn trong ±MDE ⇒ "không phát hiện tác động vượt MDE = x%"; không dùng "tương đương".
 - **A1-3 (mô tả)**: sai số dự đoán chỉ-từ-N cho `clean640` và C2/C4 (lưới A = 8400); tương quan hạng giữa ảnh trên `clean640`.
-- Không p-value. MDE: A/A hiện có chỉ ở 320 px; **MDE 640 px chưa có**. Hai lựa chọn (chọn một trước khi tag): (a) chạy thêm A/A 640 px (~khoảng 30 phút) rồi dùng; (b) dùng MDE 320 px kèm ghi rõ "chưa hiệu chuẩn ở 640 px", không kết luận "không phát hiện" ở 640 px.
-  Khuyến nghị: (a).
+- Không p-value. **MDE 640 px: chọn phương án (a)**: chạy A/A P1_cpu2 ở canvas 640 (`studies/e5_protocol/run.py --profiles P1_cpu2 --canvas 640`, cùng cấu hình E5: 100 ảnh × 20 lần, ABBA/BAAB, 20.000 bootstrap, seed 20261021), ngay TRƯỚC lượt đo A1. MDE dùng cho A1-2 là `total` của A/A 640 này; ngưỡng drift 3%.
+  A/A 640 không hợp lệ (ghim FAIL) thì dừng và báo; không dùng MDE 320 thay thế để kết luận "không phát hiện" ở 640 px.
+- Duyệt: người dùng duyệt phương án (a) và yêu cầu chạy ngày 02/11/2026 ("làm cả 3"; máy đã được tuyên bố sẵn sàng).
 
 ## Điều kiện chạy
 - Verify ghim `P1_cpu2` (cận trên + cận dưới 0,5) PASS, nếu không thì dừng. Drift tham chiếu > 3% ghi vào báo cáo, giữ trong phân tích chính, kèm phân tích bỏ khối bị cờ.
 - Máy rảnh (không dùng tay, cắm sạc, Balanced không đổi), ước tính ~20 phút cho đo A1 (không tính A/A 640).
-- Chạy lại `analyze.py` với tham số nhánh đối chứng (`C2`→`clean640`, `C4`→`clean640`); thay đổi này chỉ ở phân tích và được khai trước tại đây.
+- Lệnh: `python -X utf8 studies/e6_remeasure/run.py --run-dir results/e6/E6A1_P1cpu2_<ngày> --profile P1_cpu2 --e7-dir results/e7_gpu/final/runs/e7 --arms clean640,C2,C4 --skip-clean320`;
+phân tích: `analyze.py <run> <A/A 640 summary.json> <E1 summary.json> P1_cpu2 --a1` (C2, C4 so với `clean640`; mã đã thêm cờ `--a1`, mặc định không đổi). Thay đổi mã chỉ gồm: nhánh `clean640`, cờ `--skip-clean320`, `--canvas` của E5, cờ `--a1`; các đường mã cũ giữ nguyên.
 
 ## Báo cáo
 Số đưa vào bài tại Bảng 3 (hàng 640 px) và đoạn Results; bỏ ô "không diễn giải được". Nếu A1-2 ra "không phát hiện", ghi kèm MDE và CI, không viết "không có tác động".

@@ -32,6 +32,7 @@ ARMS = {
     'B2': ('e7', 'B2_ga_random_location', 320, 'random', 64),
     'B3': ('e7', 'B3_random_search', 320, 'saliency', 64),
     'B4': ('e7', 'B4_gradient_tanh', 320, 'saliency', 64),
+    'clean640': ('none', 'clean640', 640, 'none', 0),  # PREREG_E6_addendum_clean640: ảnh sạch ở canvas 640
     'R_sg': ('old', 'sg_ga', 320, 'saliency', 64),               # patch cũ (4 ảnh tối ưu), chỉ tham khảo
     'R_tanh': ('old', 'tanh_whitebox_patch', 320, 'saliency', 64),
 }
@@ -63,6 +64,7 @@ def main():
     ap.add_argument('--run-dir', required=True)
     ap.add_argument('--profile', default='P1_cpu2')
     ap.add_argument('--e7-dir', default='')
+    ap.add_argument('--skip-clean320', action='store_true', help='E6-A1: không đo lại nhánh clean 320 px')
     ap.add_argument('--arms', default=','.join(PRIMARY[1:] + SECONDARY))
     ap.add_argument('--smoke', action='store_true')
     ap.add_argument('--final-q', type=int, default=FINAL_Q, help='checkpoint E7 dùng làm patch cuối (mặc định 62500; smoke dùng 40)')
@@ -92,6 +94,8 @@ def main():
 
     patches, patch_sha = {}, {}
     for arm in arms:
+        if ARMS[arm][0] == 'none':
+            continue
         for s in cfg['seeds']:
             path = patch_path(arm, s, a.e7_dir, repo, final_q)
             if not path.exists():
@@ -135,8 +139,11 @@ def main():
     for bi, image_id in enumerate(ids_primary):
         if bi % cfg['images_per_block'] == 0:
             w.write(dict(kind='reference', block=bi // cfg['images_per_block'], **timing.drift(timing.reference_ms(), ref0), wall_utc=time.time()))
-        units = [('clean', None)]
+        units = [] if a.skip_clean320 else [('clean', None)]
+        units += [('clean640', None)] if 'clean640' in arms else []
         for arm in arms:
+            if ARMS[arm][0] == 'none':
+                continue
             if arm in SECONDARY and image_id not in ids_secondary:
                 continue
             units += [(arm, s) for s in cfg['seeds']]
@@ -148,7 +155,7 @@ def main():
                 cache_img.clear()
                 cache_img[key] = ap_.load_image_canvas(data / 'images' / names[image_id], canvas)
             base = cache_img[key]
-            if arm == 'clean':
+            if arm in ('clean', 'clean640'):
                 img, loc = base, None
             else:
                 _, _, _, location, size = ARMS[arm]
@@ -184,7 +191,7 @@ def main():
                 for name in cfg['pipeline_backends']:
                     b = BACKENDS[name]
                     def full():
-                        im = base if arm == 'clean' else ap_.insert(base, patches[(arm, seed)][None], [tuple(loc)])
+                        im = base if arm in ('clean', 'clean640') else ap_.insert(base, patches[(arm, seed)][None], [tuple(loc)])
                         with torch.no_grad():
                             r = model(im)
                         r = r[0] if isinstance(r, (tuple, list)) else r
