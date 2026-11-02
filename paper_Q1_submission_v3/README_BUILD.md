@@ -28,7 +28,7 @@ pdfLaTeX cũng được nếu có gói `vntex` (mã hóa T5).
 - Bảng hẹp đặt trong một cột (`[!htbp]`), bảng rộng toàn trang (`table*`, `[!t]`); có `\FloatBarrier` (gói placeins) trước mỗi mục/tiểu mục và nới tham số đặt float, để hình/bảng không trôi về cuối bài.
 
 ## Lưu ý về nội dung
-- Không còn chỗ đỏ. Kết quả 640 px đã được điền từ lần đo bổ sung, ghi rõ là sơ bộ vì drift tham chiếu cao (9/11 khối); nên đo lại khi máy rảnh.
+- Không còn chỗ đỏ. Kết quả 640 px lấy từ lần đo lại (A/A 640 px: drift 3/11, MDE 0,69%; đo patch 640 px: lệch tham chiếu tối đa 7,9%); lần đo đầu bị nhiễu nặng được giữ trong kho mã và nêu trong Bảng sai lệch.
 - 19 tài liệu bổ sung (chép từ bản thảo cũ) chưa kiểm bằng web; xem chú thích trong `references.bib`.
 - Các bảng của phần cohort lịch sử được chép từ bản thảo trước, phải truy lại tới dữ liệu thô trước khi nộp (danh sách ở `docs/NGUON_SO_LIEU.md` của kho mã).
 - Đây là bản tiếng Việt để rà soát; bản tiếng Anh sẽ dịch sau khi tác giả duyệt bản này.

@@ -6,11 +6,12 @@ Chuyển ra khỏi thân bài (02/11/2026) theo yêu cầu của thầy: không 
 | Nhóm số trong bài | Tệp nguồn (từ gốc kho mã) | Trạng thái |
 |---|---|---|
 | A/A 320 px (CPU logic 2, lõi hiệu năng thứ hai) | `sponge-sim/results/e5/AA_P1cpu2_20261101/summary.json` | Đã kiểm lại |
-| A/A 640 px | `sponge-sim/results/e5/AA640_P1cpu2_20261102/summary.json` | Đã kiểm lại |
+| A/A 640 px (số dùng trong bài: lần đo lại) | `sponge-sim/results/e5/AA640_P1cpu2_20261102b/summary.json` (lần đầu, nhiễu: `AA640_P1cpu2_20261102`) | Đã kiểm lại |
 | A/A lần đầu (một lõi hiệu năng P1; một lõi tiết kiệm điện E1; bốn lõi E4) | `sponge-sim/results/e5/20261021T151412/summary.json` | Đã kiểm lại (tỷ số, MDE, drift) |
 | Tiêm ứng viên (đáp ứng liều, top-k, số lớp, độ dốc, pipeline) | `sponge-sim/results/e1/E1_P1cpu2_20261101/summary.json` | Đã kiểm lại |
 | Đo lại patch 320 px, dự đoán chỉ-từ-N | `sponge-sim/results/e6/E6_P1cpu2_20261102/summary.json` | Đã kiểm lại |
-| Đo lại patch 640 px (nhánh sạch 640 px) | `sponge-sim/results/e6/E6A1_P1cpu2_20261102/summary.json` | Đã kiểm lại; đưa vào bài như kết quả sơ bộ vì drift tham chiếu rất cao (9/11 khối); nên đo lại |
+| Đo patch 640 px so với ảnh sạch 640 px (số dùng trong bài: lần đo lại) | `sponge-sim/results/e6/E6A1_P1cpu2_20261102b/summary.json` (lần đầu, nhiễu: `E6A1_P1cpu2_20261102`) | Đã kiểm lại |
+| Độ nhạy E9 với MDE 640 px mới và dữ liệu 640 px mới | `sponge-sim/results/e9/E9_P1cpu2_20261102/summary_part_a_sens_aa640b.json`, `summary_part_b_sens_e6a1b.json` | Đã kiểm lại (ngoài đăng ký) |
 | Tiêm toàn pipeline, ngưỡng N* (Bảng N*) | `sponge-sim/results/e9/E9_P1cpu2_20261102/summary_part_a.json` | Đã kiểm lại |
 | Bộ dự đoán M_N / M_NK (Bảng sai số) | `sponge-sim/results/e9/E9_P1cpu2_20261102/summary_part_b.json` | Đã kiểm lại |
 | Hình 4–8 | `sponge-sim/studies/figures/make_figs_v3.py` (đọc các tệp ở trên) | Sinh lại được |
