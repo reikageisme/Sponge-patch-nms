@@ -22,7 +22,7 @@ xelatex main_vi
 pdfLaTeX cũng được nếu có gói `vntex` (mã hóa T5).
 
 ## Kiểm tra cấu trúc đã làm (02/11/2026, chưa biên dịch thật vì máy không có TeX)
-- Ngoặc `{}` cân; mọi môi trường `\begin`/`\end` khớp; không nhãn trùng; mọi `\ref` có `\label`; hai hình đều tồn tại.
+- Ngoặc `{}` cân; mọi môi trường `\begin`/`\end` khớp; không nhãn trùng; mọi `\ref` có `\label`; cả 7 hình đều tồn tại.
 - Không có ký tự Unicode đặc biệt ngoài chữ Latin/tiếng Việt trong thân bài.
 - Đã chuyển chú thích `%` ra khỏi dòng khóa của các mục `.bib` (BibTeX không hiểu `%` bên trong mục).
 - Bảng hẹp đặt trong một cột (`[!htbp]`), bảng rộng toàn trang (`table*`, `[!t]`); có `\FloatBarrier` (gói placeins) trước mỗi mục/tiểu mục và nới tham số đặt float, để hình/bảng không trôi về cuối bài.
