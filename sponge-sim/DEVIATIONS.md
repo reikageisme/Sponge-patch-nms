@@ -40,3 +40,9 @@ Mỗi mục: ngày, PREREG nào, thay đổi gì, lý do, đã thấy dữ liệ
 
 ## 02/11/2026 — E6: thiếu nhánh clean ở 640 px
 PREREG_E6 (tag prereg-e6-20261101) chỉ có nhánh `clean` ở 320 px; C2 và C4 đo ở 640 px nên tỷ số toàn trình 3,5–3,6 là chi phí độ phân giải (results/e6/E6_P1cpu2_20261102/summary.json:arms.C2.total_tv_nms). Phát hiện sau khi đo. Không dùng C2/C4 để kết luận tác động patch ở 640 px. Đề xuất bổ sung: prereg/PREREG_E6_addendum_clean640.md (chưa tag, chờ duyệt).
+
+## 02/11/2026 — A/A 640 px và E6-A1: drift tham chiếu rất cao
+- A/A 640 px (`results/e5/AA640_P1cpu2_20261102`): ghim PASS (0,756) nhưng 8/11 điểm tham chiếu bị cờ, lệch tối đa 18%. MDE toàn trình 1,9%.
+- E6-A1 (`results/e6/E6A1_P1cpu2_20261102`): ghim PASS (0,951) nhưng 9/11 điểm bị cờ. Khối 3 (09:55) benchmark tham chiếu chậm 12 lần (115,7 ms so với 9,75 ms lúc đầu); khối 3→4 kéo dài 27 phút (bình thường ~5 phút); các khối 4–9 chậm hơn 9–154%. Máy bị một tải khác chiếm trong khoảng 09:41–10:45; nguyên nhân chưa xác định. Trong thời gian này trợ lý có chạy các tác vụ đọc/ghi tệp và soạn văn bản (nhẹ) và người dùng có thể đã dùng máy; không loại trừ được.
+- Xử lý theo PREREG: giữ trong phân tích chính, báo kèm. Kết quả chính: không tỷ số toàn trình nào của C2/C4 so với clean640 có cận dưới CI vượt 1 + MDE (1,9%); các CI rộng (ví dụ C4 torch_pure 1,131 [1,005; 1,317]). Không đủ tin cậy để kết luận về 640 px.
+- Đề xuất (chờ người dùng duyệt): chạy lại E6-A1 (cùng mã, cùng tag prereg-e6a1-20261102, thư mục run mới) và nếu cần A/A 640 px, khi máy rảnh thật và trợ lý không chạy bất kỳ tác vụ nào song song. Run hiện tại giữ nguyên, không xóa.
