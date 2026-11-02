@@ -19,12 +19,13 @@ Laptop i5-1335U, profile `P1_cpu2` (CPU logic 2), Windows Balanced (`381b4222-f6
 tensor chuẩn bị sẵn (resize trực tiếp). Không patch, không camera. Điện thoại: KHÔNG thuộc PREREG này (chưa qua kiểm chứng ghim).
 
 ## Phần A — Thiết kế đo
-- Mã: `sponge-sim/studies/e9_pipeline/run.py`, `analyze.py` (VIẾT TRƯỚC KHI TAG; tag phủ cả mã). Dùng lại `inject.make`, `backends`,
+- Mã: `sponge-sim/studies/e9_pipeline/run.py`, `analyze.py` (đã viết 02/11; tag phủ cả mã). Phần B của `analyze.py` đã tự kiểm trên dữ liệu tổng hợp (`--selftest-b`, PASS) và CHƯA chạy trên dữ liệu E6/E6-A1 thật. Dùng lại `inject.make`, `backends`,
   `provenance.tau_filter`, `timing.timed`, `hw.verify_pin` như E1; không sửa mã cũ của E1/E6.
 - Ảnh: 20 ảnh đầu của danh sách giữ ra cố định của E5 (`studies/e5_protocol/run.py:IMAGE_IDS[:20]`), cùng 20 ảnh cho cả hai độ phân giải.
   Ảnh chỉ quyết định bước forward; ứng viên được tiêm thay đầu ra đã giải mã (như E1 phần B).
 - 320 px (A = 2100): N ∈ {0, 100, 300, 1000, 2100}. 640 px (A = 8400): N ∈ {0, 300, 1000, 3000, 8400}.
-- Hình học: disjoint, dense_cluster, mixed (`inject.py`, như E1). N = 0 chỉ một ô. nc = 80.
+- Hình học: disjoint, dense_cluster, mixed (`inject.py`, như E1). N = 0 không có hình học; ô N = 0 (mẫu số của mọi tỷ số) được đo 3 lần ở 3 vị trí ngẫu nhiên trong mỗi ảnh, trung vị gộp cả 3. nc = 80.
+  (Thêm sau smoke 2 ảnh ngày 02/11, trước khi tag: thời gian toàn trình dao động khoảng ±20% giữa các lần lặp, một ô mẫu số là không đủ.)
 - Cap ∈ {None, 300}; ô cap = 300 chỉ khi N > 300.
 - Backend: torch_pure, tv_nms, tv_batched, ultra_native (như E1).
 - Mỗi ô (độ phân giải, ảnh, N, hình học, cap): 1 warm-up + 5 lần (320 px), 1 warm-up + 3 lần (640 px); trong ô, 4 backend xen kẽ theo khối Latin
@@ -34,7 +35,9 @@ tensor chuẩn bị sẵn (resize trực tiếp). Không patch, không camera. �
 - Seed tiêm: như E1 (`inject_seed_base + crc32("A|N|nc|geometry") mod 100000`), cùng tập ứng viên cho mọi ảnh; SHA256 ghi theo phép đo.
 - Tham chiếu xung nhịp mỗi 2 ảnh và cuối phiên; cờ drift 3% ghi lại, giữ trong phân tích chính, kèm phân tích độ nhạy bỏ khối bị cờ.
 - Verify ghim: cận trên + cận dưới effective_cores ≥ 0,5; FAIL thì không chạy. Kiểm verify lại ở cuối phiên và ghi kết quả (không dùng để loại dữ liệu).
-- Ước lượng thời gian (từ trung vị E1 và A/A, chưa đo thử): 320 px ≈ 8–10 phút, 640 px ≈ 20–25 phút; tổng ≈ 35 phút. Smoke 2 ảnh trước khi tag.
+- Ước lượng thời gian theo smoke 2 ảnh (02/11; 1,2 phút cho 320 px và 3,5 phút cho 640 px với 2 ảnh): 20 ảnh ≈ 12 phút (320 px) + 35 phút (640 px), cộng ô N = 0 lặp lại. Smoke lần 2 (sau khi thêm 3 ô N = 0; 1,3 + 5,5 phút cho 2 ảnh) cho ước lượng ≈ 70 phút cho 20 ảnh; dự trù 60–80 phút.
+  Smoke lần 2: ghim PASS đầu 0,93, cuối 0,63 (vẫn qua cận dưới 0,5); điểm tham chiếu cuối lệch 37% (bị cờ). Với 2 ảnh, tỷ số ở 640 px dao động mạnh (0,83–1,39) nên không đọc gì từ smoke; đây là rủi ro nhiễu ở 640 px cần ghi khi báo cáo.
+  Smoke: thư mục scratchpad `e9_smoke` (không phải kết quả); ghim PASS đầu và cuối (0,83 và 0,85), 1/3 điểm tham chiếu bị cờ.
 
 ## Phần A — Endpoint (đơn vị suy luận: ảnh; mỗi ô của mỗi ảnh tóm bằng trung vị các lần; CI = bootstrap theo ảnh, 20.000 lần, seed 20261021)
 - **A-Chính 1 (ngưỡng N* ở 320 px)**: với mỗi backend, hình học disjoint, cap None: tỷ số toàn trình R(N) = total(N) / total(0) theo ảnh rồi trung bình

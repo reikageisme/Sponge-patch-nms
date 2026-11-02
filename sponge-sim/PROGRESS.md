@@ -406,3 +406,9 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - CHUA dien vao bai: cho nguoi dung quyet dinh chay lai E6-A1 khi may ranh that (khuyen nghi) hay dung so hien tai kem canh bao.
 
 ## 02/11 - May GPU thue: NGUOI DUNG XAC NHAN DA HUY tu lau. Khong nhac lai nua.
+
+## 02/11 - E9: ma da viet va smoke 2 anh (CHUA TAG)
+- studies/e9_pipeline/run.py (Phan A, do) va analyze.py (Phan A + Phan B; --selftest-b PASS tren du lieu tong hop; Phan B CHUA chay tren E6/E6-A1 that de giu kiem tra xac nhan).
+- Smoke 1 (scratchpad e9_smoke, 306 s): chay dung; phat hien mau so N=0 chi 1 o la khong du (toan trinh dao dong +-20% giua cac lan lap) -> them baseline_copies=3 (sua truoc tag, ghi trong PREREG).
+- Smoke 2 (scratchpad e9_smoke2, 427 s): dung 3 o N=0; ghim dau 0,93 cuoi 0,63; 1/3 diem tham chieu bi co (cuoi, 37%). Uoc tinh full 20 anh ~70 phut.
+- Cho nguoi dung: duyet PREREG_E9 -> tag prereg-e9-<ngay> -> chay full khi may ranh that (quy tac 9: khong chay gi song song).
