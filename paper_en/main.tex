@@ -41,7 +41,7 @@
 city={Ho Chi Minh City},country={Vietnam}}
 
 \begin{abstract}
-Latency-oriented adversarial inputs for object detectors commonly use the number of candidate boxes that enter non-maximum suppression (NMS), $\Ntau$, as the quantity to maximize, on the assumption that more candidates mean a slower pipeline. We ask whether $\Ntau$ is in fact a reliable predictor of latency. We build a measurement protocol with verified core pinning, per-stage timing, and an A/A calibration that yields the minimum detectable effect (MDE) of every comparison, and we apply it on a laptop CPU and on an Arm smartphone SoC. A positive control injects $10^2$ to $10^4$ synthetic candidates into the same pipeline and shows how NMS latency depends on $\Ntau$, on the NMS implementation, and on box geometry. We then use a genetic-algorithm patch optimizer as a case study: patches are optimized on 100 images at 320 and 640 pixels and at two score thresholds, re-measured under the pinned protocol, and used to test how well an $\Ntau$-only predictor calibrated on synthetic injections predicts the latency of real candidate sets. \nodata{headline numbers: positive-control ratio, patch effect on $\Ntau$ and on end-to-end latency relative to the MDE, error of the $\Ntau$-only predictor, ARM-device result}.
+Latency-oriented adversarial inputs for object detectors commonly use the number of candidate boxes that enter non-maximum suppression (NMS), $\Ntau$, as the quantity to maximize, on the assumption that more candidates mean a slower pipeline. We ask whether $\Ntau$ is in fact a reliable predictor of latency. We build a measurement protocol with verified core pinning, per-stage timing, and an A/A calibration that yields the minimum detectable effect (MDE) of every comparison, and we apply it on a pinned laptop CPU; an Arm smartphone SoC was also prepared but could not be pinned. A positive control injects $10^2$ to $10^4$ synthetic candidates into the same pipeline and shows how NMS latency depends on $\Ntau$, on the NMS implementation, and on box geometry. We then use a genetic-algorithm patch optimizer as a case study: patches are optimized on 100 images at 320 and 640 pixels and at two score thresholds, re-measured under the pinned protocol, and used to test how well an $\Ntau$-only predictor calibrated on synthetic injections predicts the latency of real candidate sets. Injecting $10^2$ to $10^4$ candidates raises NMS latency 4- to 1360-fold depending on implementation and geometry. Patches from the genetic optimizer did not raise $\Ntau$ detectably at 320 px, and a gradient baseline that raised $\Ntau$ 2.3-fold left end-to-end time unchanged within the 0.55\% MDE (ratio 1.006, 95\% interval 0.997 to 1.015). An $\Ntau$-only predictor errs by about 5\% for one NMS implementation and by a factor of 4 for another. The smartphone could not be pinned under load, so no Arm result is reported.
 \end{abstract}
 
 \begin{keywords}
@@ -61,7 +61,7 @@ This paper treats the relation between $\Ntau$ and latency as a measurement prob
 \end{description}
 
 \paragraph{Contributions.}
-(i) A measurement protocol for pipeline latency with core pinning verified under load, stage-wise timing, and an A/A calibration that reports the MDE of every comparison. (ii) A positive control that injects synthetic candidates at the decoded-output boundary of a real pipeline and maps latency as a function of $\Ntau$, implementation, geometry, and top-$k$ cap, on a laptop CPU and on an Arm smartphone SoC. (iii) A case study of a published-style genetic patch optimizer scaled to 100 optimization images, 640-pixel inputs, and a 0.25 score threshold, with comparison to random-search, placement, and gradient baselines. (iv) A direct test of the $\Ntau$ proxy: prediction error of an $\Ntau$-only model on held-out real candidate sets. The protocol, the hypotheses, and the endpoints were fixed in a public repository before the corresponding measurements were taken.
+(i) A measurement protocol for pipeline latency with core pinning verified under load, stage-wise timing, and an A/A calibration that reports the MDE of every comparison. (ii) A positive control that injects synthetic candidates at the decoded-output boundary of a real pipeline and maps latency as a function of $\Ntau$, implementation, geometry, and top-$k$ cap, on a pinned laptop CPU (the Arm smartphone could not be pinned under load). (iii) A case study of a published-style genetic patch optimizer scaled to 100 optimization images, 640-pixel inputs, and a 0.25 score threshold, with comparison to random-search, placement, and gradient baselines. (iv) A direct test of the $\Ntau$ proxy: prediction error of an $\Ntau$-only model on held-out real candidate sets. The protocol, the hypotheses, and the endpoints were fixed in a public repository before the corresponding measurements were taken.
 
 \section{Related Work}
 \paragraph{Energy-latency and sponge attacks.}
@@ -89,7 +89,7 @@ Phantom Sponges \cite{phantom2023} & Object detectors with NMS & Boxes surviving
 Overload \cite{overload2024} & Object detectors, edge hardware & Detector latency, with a spatial-attention weighting & Optimized quantity and explanation of slowdown \\
 SlowTrack \cite{slowtrack2024} & Camera-based perception chain for driving & System-level latency over a multi-frame chain & Not examined here (chain-level work) \\
 EVADE \cite{evade2025} & NMS latency attacks, realistic deployments & Practicality across hardware, formats, quantization, latency requirements & Attack objective under evaluation \\
-\textbf{This study} & YOLOv8n pipeline, laptop CPU and Arm SoC & Relation between $\Ntau$ and latency, calibrated with a positive control and an A/A noise floor & The hypothesis under test \\
+\textbf{This study} & YOLOv8n pipeline, laptop CPU (Arm SoC attempted) & Relation between $\Ntau$ and latency, calibrated with a positive control and an A/A noise floor & The hypothesis under test \\
 \bottomrule
 \end{tabularx}
 \end{table*}
@@ -153,46 +153,47 @@ The unit of inference is the image for A/A and dose-response analyses and the (i
 
 \section{Experiments}
 \subsection{Protocol calibration (A/A)}
-Table~\ref{tab:aa} reports the MDE of each stage for each profile. \nodata{A/A on laptop logical CPU 2 (valid pinned run), laptop efficiency core, and smartphone profiles; fill from results of the A/A runs; also the number of drift-flagged blocks per device}
+Table~\ref{tab:aa} reports the MDE of each stage on the pinned laptop profile (logical CPU~2, one torch thread; effective cores 0.91 under load). The end-to-end MDE is 0.55\%, and the MDE of the NMS stages is 0.64\% (pure PyTorch) and 1.1\% (torchvision). Two of the 11 reference-benchmark points of this run exceeded the 3\% drift flag (blocks 1 and 3, largest change 26\%); excluding the two flagged blocks leaves 80 images, and the end-to-end A/A difference stays within $\pm0.5\%$ (95\% interval for the mean log ratio $-0.0038$ to $0.0046$). The A/A of the other planned profiles (laptop efficiency core, smartphone) is not available: the smartphone did not pass pin verification (Section~\ref{sec:phone}).
 
 \begin{table}[t]
 \centering\small
-\caption{A/A calibration: minimum detectable effect (\%) per stage and profile, 100 images $\times$ 20 repetitions.}
+\caption{A/A calibration on the pinned laptop profile: minimum detectable effect (MDE, \%) and median time per stage, 100 images $\times$ 20 repetitions (2 of 11 reference points were drift-flagged; they are kept in the analysis).}
 \label{tab:aa}
-\begin{tabular}{@{}lccc@{}}
+\begin{tabular}{@{}lcc@{}}
 \toprule
-Stage & Laptop (P-core) & Laptop (E-core) & Smartphone \\
+Stage & MDE (\%) & Median time (ms) \
 \midrule
-Forward pass & \nodata{} & \nodata{} & \nodata{} \\
-NMS (pure PyTorch) & \nodata{} & \nodata{} & \nodata{} \\
-NMS (torchvision) & \nodata{} & \nodata{} & \nodata{} \\
-End to end & \nodata{} & \nodata{} & \nodata{} \\
-Flagged blocks / total & \nodata{} & \nodata{} & \nodata{} \\
+Pre-processing & 1.0 & 5.60 \
+Forward pass & 0.69 & 45.8 \
+Score filter ($\tau$) & 1.0 & 0.066 \
+NMS (pure PyTorch) & 0.64 & 1.14 \
+NMS (torchvision) & 1.1 & 0.101 \
+End to end & 0.55 & 53.5 \
 \bottomrule
 \end{tabular}
 \end{table}
 
 \subsection{Positive control: synthetic candidate injection}
 We replace the decoded detector output with a synthetic candidate set of size $\Ntau\in\{10^2,\dots,10^4\}$ and measure the score-filter and NMS stages in isolation, for the four implementations, three box geometries, two class counts, and two cap settings. The geometries are disjoint boxes (no overlap, so NMS keeps every box), dense clusters (heavy overlap, so most boxes are removed early), and an even mixture. Candidate sets are generated deterministically from a seed and hashed. For input sizes of 320 and 640 pixels the real heads have 2100 and 8400 anchors; sizes beyond these limits use a synthetic head and are reported separately. Table~\ref{tab:dose} gives the latency ratio between $\Ntau=10^4$ and $\Ntau=10^2$.
-\nodata{dose-response ratios with 95\% intervals per implementation and geometry, laptop and smartphone; fill from the dose-response summaries; also whether any end-to-end measurement crosses the 100~ms reference deadline, which is a threshold chosen by the authors and not an application requirement}
+On the pinned laptop profile, pure-PyTorch NMS with 2100 disjoint candidates takes 252~ms against 0.89~ms with 10 candidates, a ratio of 281 (95\% interval 278 to 285), well above $1+\mathrm{MDE}$. Every end-to-end repetition of that pure-PyTorch pipeline with 2100 injected candidates (20 of 20; Wilson 95\% interval 0.84 to 1.0) exceeds the 100~ms reference deadline, whose value is chosen by the authors. The dependence on $\Ntau$ between $10^2$ and $10^4$ is detected for all four implementations and all three geometries at this sensitivity (lower interval bounds far above $1+\mathrm{MDE}$), but its size varies by two orders of magnitude with implementation and geometry (Table~\ref{tab:dose}). For the dense cluster, pure PyTorch grows by only a factor of 4.0, which is consistent with most boxes being suppressed early, whereas torchvision \texttt{nms} grows 22.5-fold; for disjoint boxes the ratios are 225 and 1360.
 
 \begin{table}[t]
 \centering\small
-\caption{Latency ratio of NMS at $\Ntau=10^4$ to $\Ntau=10^2$ (class-agnostic, 80 classes, no cap), median with 95\% interval.}
+\caption{Latency ratio of NMS at $\Ntau=10^4$ to $\Ntau=10^2$ (class-agnostic, 80 classes, no cap), laptop only; the smartphone was not measured.}
 \label{tab:dose}
 \begin{tabular}{@{}llcc@{}}
 \toprule
-Implementation & Geometry & Laptop & Smartphone \\
+Implementation & Geometry & Ratio (laptop) & 95\% interval \\
 \midrule
-Pure PyTorch & disjoint & \nodata{} & \nodata{} \\
-Pure PyTorch & dense cluster & \nodata{} & \nodata{} \\
-torchvision \texttt{nms} & disjoint & \nodata{} & \nodata{} \\
-torchvision \texttt{nms} & dense cluster & \nodata{} & \nodata{} \\
+Pure PyTorch & disjoint & 225 & 221 to 231 \\
+Pure PyTorch & dense cluster & 4.0 & 3.9 to 4.2 \\
+torchvision \texttt{nms} & disjoint & 1360 & 1250 to 1410 \\
+torchvision \texttt{nms} & dense cluster & 22.5 & 20.8 to 23.5 \\
 \bottomrule
 \end{tabular}
 \end{table}
 
-\figtodo{Fig.~2, dose-response curves}{NMS latency versus $\Ntau$ (log--log) for the four implementations and three geometries, laptop and smartphone, with 95\% intervals.}
+\figtodo{Fig.~2, dose-response curves}{NMS latency versus $\Ntau$ (log--log) for the four implementations and three geometries, laptop, with 95\% intervals.}
 
 \subsection{Case study: a genetic patch optimizer}
 \paragraph{Optimizer.}
@@ -204,59 +205,67 @@ We include random search with saliency placement, the genetic algorithm with cen
 \paragraph{Measurement.}
 Patches are frozen by SHA-256 before measurement. The held-out images, with and without each patch, are measured on the pinned profile: $\Ntau$ at $\tau\in\{0.01,0.25\}$, the score-filter and NMS stages for four implementations, and end-to-end latency for two implementations.
 \paragraph{Results.}
-\nodata{effect of each patch condition on $\Ntau$ (ratio to clean, two-level interval), on NMS latency, and on end-to-end latency, relative to the A/A MDE; comparison with baselines; 640-pixel and 0.25-threshold results}
+The patches were generated on a GPU, frozen by hash, and measured on the pinned laptop profile (effective cores 0.84 under load; 0 of 11 reference points drift-flagged; end-to-end MDE 0.55\%). Table~\ref{tab:patches} gives ratios of patched to clean images at 320 px. Three findings stand out.
+
+First, the genetic-algorithm patches do not raise $\Ntau$ detectably: the median $\Ntau$ at $\tau=0.01$ falls from 86.5 to 85.5 (320 px, $\tau_{\mathrm{obj}}=0.01$) and to 85 (320 px, $\tau_{\mathrm{obj}}=0.25$), and the intervals of the mean ratio include one. Random search, GA with centre placement and GA with random placement give the same picture. Second, all of them add a small but detectable amount of end-to-end time, 1.1 to 1.5\%, with intervals that exclude one but sit at about twice the end-to-end MDE; the baselines with no gradient show the same increase, so it is not specific to the optimized patches. Third, the gradient baseline raises $\Ntau$ 2.3-fold (median 93 to 166 at $\tau=0.01$; 6.7-fold at $\tau=0.25$) and raises the torchvision NMS stage by 21\% and the pure-PyTorch NMS stage 2.3-fold, but its end-to-end ratio is 1.006 with a 95\% interval of 0.997 to 1.015, which spans the MDE. Under this protocol an increase of $\Ntau$ by a factor of 2.3 is therefore not visible end to end, because on clean images NMS takes 0.16\% of the total time (median of the torchvision profile) and the forward pass dominates.
+
+The 640-px conditions (patch of 128 px at 4\% area, and 64 px at 1\% area) raise $\Ntau$ at $\tau=0.01$ from 86.5 to 134 and from 93 to 138.5 respectively. Their time ratios against the 320-px clean images are about 3.5 to 3.6, but this is the cost of the larger input; the study design has no clean 640-px arm, so the effect of the patch at 640 px on latency is \nodata{not measured: no clean 640-px baseline} and is not interpreted.
 
 \begin{table*}[t]
 \centering\small
-\caption{Effect of optimized patches relative to clean images on the pinned laptop profile. Ratios are patched over clean; intervals are 95\% two-level bootstrap intervals over images and seeds; the last column is the A/A MDE of the end-to-end stage.}
+\caption{Effect of optimized patches relative to clean images on the pinned laptop profile. Ratios are patched over clean; intervals are 95\% two-level bootstrap intervals over images and seeds; the NMS and end-to-end columns use the torchvision pipeline; the last column is the A/A MDE of the end-to-end stage. The first three rows use 100 images $\times$ 5 seeds; the baselines use 50 images $\times$ 5 seeds.}
 \label{tab:patches}
 \begin{tabular}{@{}lccccc@{}}
 \toprule
 Condition & $\Ntau$ ratio ($\tau$=0.01) & $\Ntau$ ratio ($\tau$=0.25) & NMS latency ratio & End-to-end ratio & MDE (\%) \\
 \midrule
-320 px, 4\% area, $\tau$=0.01 & \nodata{} & \nodata{} & \nodata{} & \nodata{} & \nodata{} \\
-640 px, 4\% area, $\tau$=0.01 & \nodata{} & \nodata{} & \nodata{} & \nodata{} & \nodata{} \\
-320 px, 4\% area, $\tau$=0.25 & \nodata{} & \nodata{} & \nodata{} & \nodata{} & \nodata{} \\
-Random search & \nodata{} & \nodata{} & \nodata{} & \nodata{} & \nodata{} \\
-GA, centre placement & \nodata{} & \nodata{} & \nodata{} & \nodata{} & \nodata{} \\
-GA, random placement & \nodata{} & \nodata{} & \nodata{} & \nodata{} & \nodata{} \\
-Gradient score ascent & \nodata{} & \nodata{} & \nodata{} & \nodata{} & \nodata{} \\
+320 px, 4\% area, $\tau$=0.01 & 1.04 (0.99--1.10) & 0.94 (0.86--1.03) & 1.003 (0.987--1.018) & 1.013 (1.006--1.021) & 0.55 \\
+320 px, 4\% area, $\tau$=0.25 & 1.04 (0.99--1.09) & 0.95 (0.86--1.05) & 1.010 (0.992--1.028) & 1.015 (1.007--1.025) & 0.55 \\
+640 px, 4\% area, $\tau$=0.01 & \multicolumn{5}{c}{not interpretable: no clean 640-px baseline} \\
+Random search & 1.04 (0.98--1.09) & 1.00 (0.86--1.23) & 1.003 (0.981--1.028) & 1.011 (0.999--1.025) & 0.55 \\
+GA, centre placement & 1.03 (0.96--1.09) & 0.92 (0.81--1.07) & 1.014 (0.991--1.037) & 1.014 (1.001--1.032) & 0.55 \\
+GA, random placement & 1.05 (1.01--1.09) & 0.96 (0.89--1.04) & 1.022 (0.997--1.053) & 1.013 (1.001--1.027) & 0.55 \\
+Gradient score ascent & 2.26 (1.88--2.70) & 6.7 (3.7--10.7) & 1.209 (1.170--1.248) & 1.006 (0.997--1.015) & 0.55 \\
 \bottomrule
 \end{tabular}
 \end{table*}
 
 \subsection{Does $\Ntau$ predict the latency of real candidate sets?}
 For every measured unit with $\Ntau>0$ we predict $t_{\mathrm{NMS}}$ from $\Ntau$ alone by interpolating, on a log--log scale, the dose-response curve of the matching implementation and input size for each geometry. We report the median and 90th percentile of $|\ln(t_{\mathrm{measured}}/t_{\mathrm{pred}})|$ against the mixed-geometry curve and the fraction of measured points that fall between the disjoint and dense-cluster curves. These quantities describe the distance between an $\Ntau$-only prediction and the measurement; no pass/fail threshold is set in advance.
-\nodata{prediction error and envelope containment per implementation, per patch condition, and for clean images; within-image and between-image rank correlations between $\Ntau$ change and NMS latency change}
+The $\Ntau$-only prediction is accurate for some implementations and poor for others. The median absolute log error against the mixed-geometry curve is 0.05 for Ultralytics-native NMS, 0.15 for torchvision batched NMS, 0.33 for torchvision \texttt{nms}, and 1.38 for pure PyTorch, i.e. a typical factor of 4 for the latter; the 90th percentiles are 0.15, 0.40, 0.47 and 1.73. The fraction of the 3347 measured points that lie between the disjoint and dense-cluster curves is 0.44, 0.35, 0.93 and 0.76 respectively. The error is about the same for clean and patched images (Table~\ref{tab:patches} arms), so the miss is a property of the synthetic curve and the real candidate sets and not of the patches. Between clean images the rank correlation of $\Ntau$ with NMS time is high (0.84 to 0.94, depending on implementation), whereas for the within-image change caused by a patch it is lower (0.36 to 0.73), which suggests that $\Ntau$ ranks images by cost better than it ranks the effect of an edit to one image. Both correlations are descriptive; the 95\% intervals are in the summary file.
 
 \figtodo{Fig.~3, predicted versus measured NMS latency}{Scatter of measured NMS latency versus the $\Ntau$-only prediction from the dose-response curve, clean and patched, per implementation, with the envelope between the disjoint and dense-cluster curves.}
 
 \subsection{Smartphone results}
-The positive control and the A/A calibration are repeated on the smartphone profile that passed verification, with a reduced grid and fewer repetitions because of thermal limits. \nodata{smartphone dose-response ratios, MDE, drift-flag count, and, if run, patch re-measurement; interpret ratios and curve shape only, not absolute times, since devices and framework builds differ}
+\label{sec:phone}
+We planned to repeat the A/A calibration and the positive control on the smartphone. Core pinning on the device was verified under load on the fast and the slow cluster (profiles defined before the run), and no profile passed verification, so no timing was taken and no dose-response or A/A figure is reported for the smartphone. This is a negative result of the pinning protocol on this device and not a statement about its latency. Consequently the smartphone arm of the research question is not answered here; Section~\ref{sec:threats} lists it as a limitation.
 
 \section{Discussion}
 \paragraph{What the positive control establishes.}
-\nodata{state what the injection shows about the dependence of NMS latency on $\Ntau$, implementation, and geometry, after the data exist}
+Between $10^2$ and $10^4$ injected candidates, NMS latency grows by a factor of 4 to 1360 depending on implementation and geometry, and the growth is detected at an MDE below 1.1\%. So the number of candidates does matter for NMS time, but its effect depends on the NMS implementation and on how the boxes overlap; $\Ntau$ alone does not fix the latency. The deadline-crossing result (every repetition of the pure-PyTorch pipeline at 2100 candidates exceeds 100~ms) shows only that the test bench can produce such a miss for that implementation, not that a deployed detector would.
+
 \paragraph{What the case study adds.}
-The case-study fitness contains no latency term, so its only link to latency is the assumption that $\Ntau$ tracks it. Whether the patch effect on end-to-end latency, measured against the MDE, is consistent with what the dose-response curve predicts from the achieved $\Ntau$ is the content of Q3 and Q4. \nodata{interpretation of the patch results and of the predictor error}
+The case-study fitness contains no latency term, so its only link to latency is the assumption that $\Ntau$ tracks it. Whether the patch effect on end-to-end latency, measured against the MDE, is consistent with what the dose-response curve predicts from the achieved $\Ntau$ is the content of Q3 and Q4. In our measurements the answer is mixed. Across images, $\Ntau$ ranks NMS time well (rank correlation above 0.84), and for the gradient baseline the pure-PyTorch NMS time rises 2.3-fold with $\Ntau$. At the level of the whole pipeline, however, the same 2.3-fold increase of $\Ntau$ changes end-to-end time by less than the interval width (1.006, interval 0.997 to 1.015), because the forward pass takes the bulk of the time at 320 px. The genetic-algorithm patches do not increase $\Ntau$ detectably, and their 1 to 1.5\% added time is shared with random search and with the baselines. We therefore find no evidence here that maximizing $\Ntau$ with this optimizer produces a latency effect, and the result for 640 px remains open because of the missing clean baseline.
+
 \paragraph{Implications for evaluation practice.}
 Reporting $\Ntau$ alone does not describe a latency effect. A latency claim needs stage-wise timing on a pinned, verified profile, an A/A estimate of the noise floor, and the NMS implementation and cap that the deployed pipeline uses. Because the cost of NMS depends on how many boxes survive, defences and attacks should be compared at equal geometry as well as equal $\Ntau$.
 
 \section{Threats to Validity}
+\label{sec:threats}
 This section collects the limits of the study; the results above should be read within them.
 \paragraph{Internal validity.}
-All laptop measurements come from one machine and one Windows power plan; the smartphone numbers come from one device. Timing noise is quantified with the A/A design, but drift of the reference benchmark exceeded the 3\% flag in a large share of blocks on the laptop in pilot runs, and the smartphone is expected to drift more; the number of flagged blocks is reported with each result and flagged blocks are kept in the primary analysis, with a sensitivity analysis that excludes them. Core pinning is verified under load, but the operating system can still schedule other work on the pinned CPU. The measurement set is 100 held-out images, and patch effects use five of the ten optimization seeds. The optimization set and the measurement set are disjoint, and patches are frozen by hash before measurement. Analyses defined after inspecting data are labelled as post hoc.
+All laptop measurements come from one machine and one Windows power plan; the one smartphone prepared for the study failed pin verification. Timing noise is quantified with the A/A design, but the reference benchmark drifted beyond the 3\% flag in 2 of 11 blocks in the A/A run (largest change 26\%), in 2 of 12 in the positive control (largest 5.6\%) and in none of 11 in the patch re-measurement (largest 1.5\%); flagged blocks are kept in the primary analysis and the A/A has a sensitivity analysis that excludes them. The smartphone could not be pinned, so no smartphone timing exists. The patch conditions at 640 px lack a clean 640-px arm and cannot be read as latency effects. Core pinning is verified under load, but the operating system can still schedule other work on the pinned CPU. The measurement set is 100 held-out images, and patch effects use five of the ten optimization seeds. The optimization set and the measurement set are disjoint, and patches are frozen by hash before measurement. Analyses defined after inspecting data are labelled as post hoc.
 \paragraph{Construct validity.}
 $\Ntau$ is the number of anchors above the threshold before NMS. Latency is measured on prepared in-memory tensors, so it excludes image decoding, camera capture, and transport. The 100~ms reference deadline is a value chosen by the authors for the positive control and is not an application requirement. Synthetic candidates have controlled geometry and scores that real detections may not share, which is why the predictor is tested on real candidate sets. The pure-PyTorch NMS loop is slower than library kernels and amplifies the dependence on $\Ntau$; results are reported per implementation and not pooled.
 \paragraph{External validity.}
-One detector architecture (YOLOv8n, float32) and one dataset family (COCO) are studied. Two-stage detectors, NMS-free detectors such as DETR \cite{carion2020detr}, other model sizes, quantized models, and accelerators are not covered. The smartphone is an Arm SoC running Ubuntu in a proot environment on Android; it is not an embedded board, proot may add system-call overhead, and the framework builds differ from the laptop (a newer PyTorch and Ultralytics release). We therefore compare ratios and curve shapes across devices and never absolute latencies. Patches are inserted digitally with software transformations; no print-and-capture or camera evaluation was performed.
+One detector architecture (YOLOv8n, float32) and one dataset family (COCO) are studied. Two-stage detectors, NMS-free detectors such as DETR \cite{carion2020detr}, other model sizes, quantized models, and accelerators are not covered. The smartphone is an Arm SoC running Ubuntu in a proot environment on Android; it is not an embedded board, proot may add system-call overhead, and the framework builds differ from the laptop (a newer PyTorch and Ultralytics release). Had the device been pinned, we would have compared ratios and curve shapes across devices and never absolute latencies. Patches are inserted digitally with software transformations; no print-and-capture or camera evaluation was performed.
 \paragraph{Conclusion validity.}
 Effects are read against the A/A MDE. A confidence interval that includes one, or an effect below the MDE, is reported as not detected at that sensitivity and is not interpreted as equivalence. The patch analyses condition on the sampled images and seeds; the two-level bootstrap accounts for both sources of variation but not for other detectors or devices. Intervals are not adjusted for multiplicity because the analyses are estimates and not a family of tests.
 \paragraph{Scope of the optimizer.}
 The case-study optimizer is gray-box: it reads pre-NMS class scores, which a deployed service typically does not expose, and it does not minimize latency directly. The study does not claim a stronger attack than prior work, nor a denial of service in any deployed system.
 
 \section{Conclusion}
-We examined whether the number of pre-NMS candidates predicts detector latency, using a protocol that verifies core pinning under load and states the minimum detectable effect of every comparison. \nodata{two or three sentences stating the positive-control result, the patch-case-study result relative to the MDE, the predictor error, and the ARM-device result, once measured}
+We examined whether the number of pre-NMS candidates predicts detector latency, using a protocol that verifies core pinning under load and states the minimum detectable effect of every comparison. Between $10^2$ and $10^4$ injected candidates, NMS latency rises by a factor of 4 to 1360, depending on implementation and geometry, so the candidate count matters but does not determine latency. Genetic-algorithm patches optimized on 100 images did not raise $\Ntau$ detectably at 320 px and added 1 to 1.5\% of end-to-end time, similar to random search; a gradient baseline raised $\Ntau$ 2.3-fold without a visible end-to-end effect (interval 0.997 to 1.015, MDE 0.55\%). An $\Ntau$-only prediction of NMS time is within about 5\% for Ultralytics-native NMS but a factor of 4 off for the pure-PyTorch loop. The smartphone could not be pinned, so no Arm result is reported, and the 640-px patch effect awaits a clean 640-px baseline.
 
 \section*{Responsible release}
 The released artefacts are the measurement harness, manifests, synthetic-injection fixtures, and raw timing records. Optimized patches are not packaged as a tool, and the work is limited to a local test bench.
