@@ -454,3 +454,8 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - 02/11: Hinh fitness theo ngan sach ve lai thanh 2 khung (khong gradient 0-2%, gradient B4 0-60%); bang/hinh mot cot dat [H] (goi float) de khong tao trang chi co float.
 - 02/11: Bo cuc lan 3 (anh Overleaf: nhieu khoang trang): bo [H] va FloatBarrier o moi muc (chi giu 1 truoc phan cuoi bai), mot cot [!htbp], toan trang [!tp], floatpagefraction 0,6.
 - 02/11: Bo cuc lan 4: hinh/bang MOT COT khong con la float (center + captionof, goi capt-of) -> khong the ket va keo hinh khac ve cuoi bai; chi hinh/bang toan trang la float [!tp]. Bang tab:algo (cot p 12,5cm) chuyen toan trang.
+
+## 02/11 - REVIEW CHI TIET CUA THAY (luu docs/REVIEW_THAY_NAM.md) -> ke hoach dai phau
+Lam duoc ngay (may laptop): (a) E10: do lai 10 nhieu loan Phantom/Overload luu san (YOLOv5s 640, outputs/extended_q1_20261002/reference) duoi ghim loi, kiem bo du doan N va mo hinh Amdahl dang ky truoc; (b) mo hinh Amdahl cho N* tren du lieu E1+E9 (post hoc) + du doan tien cuu cho E10; (c) san nhieu trong phien cua E9 tu 3 o N=0 + do nhay bo khoi bi co; (d) E6-A2: do baseline B1-B4 tren 50 anh con lai cho can; (e) cat phan B khoi bai, sua loi cu the, viet lai.
+BI CHAN (can nguoi dung): GPU (da huy may V100; laptop khong co CUDA) va thiet bi bien (Pi 5/Jetson); khoa tan so/High Performance (quy tac 7: nguoi dung tu dat); OSF/Zenodo (can tai khoan, mang); quyet dinh tac gia lien he; Surface Pro 4 Fedora (can thong tin SSH).
+Ultralytics time_limit: trong E1 khong o ultra_native nao vuot (trung vi lon nhat 140 ms << 2,05 s); truong over_ultra_time_limit chi bao o torch_pure disjoint 10^4 (vong lap Python, khong lien quan Ultralytics).
