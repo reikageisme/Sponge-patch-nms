@@ -64,6 +64,8 @@ def main():
     ap.add_argument('--run-dir', required=True)
     ap.add_argument('--profile', default='P1_cpu2')
     ap.add_argument('--e7-dir', default='')
+    ap.add_argument('--secondary-offset', type=int, default=0, help='E6-A2: vị trí bắt đầu tập ảnh của nhánh phụ')
+    ap.add_argument('--only-secondary-images', action='store_true', help='E6-A2: chỉ đo các ảnh của nhánh phụ')
     ap.add_argument('--skip-clean320', action='store_true', help='E6-A1: không đo lại nhánh clean 320 px')
     ap.add_argument('--arms', default=','.join(PRIMARY[1:] + SECONDARY))
     ap.add_argument('--smoke', action='store_true')
@@ -130,7 +132,10 @@ def main():
     w.write(dict(kind='pin', profile=a.profile, allowed=cpus, readback=readback, verify=verify, torch_threads=torch.get_num_threads()))
 
     ids_primary = IMAGE_IDS[:cfg['n_images_primary']]
-    ids_secondary = set(ids_primary[:cfg['n_images_secondary']])
+    off = a.secondary_offset  # E6-A2: nhánh phụ trên ảnh 51-100 để bảng cân (PREREG_E6_A2)
+    ids_secondary = set(ids_primary[off:off + cfg['n_images_secondary']])
+    if a.only_secondary_images:
+        ids_primary = [i for i in ids_primary if i in ids_secondary]
     rng = random.Random(cfg['order_seed'])
     orders = timing.latin_blocks(cfg['backends'], 40000, cfg['latin_seed'])
     order_k = 0
