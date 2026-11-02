@@ -428,3 +428,8 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
   He so c (ln K) am o 2 backend phan biet lop (-0,92; -1,33): mo hinh khop tren tap tiem tong hop (80 lop ngau nhien) ngoai suy sai sang ung vien that. R2 tren thang log cua M_N am o 3/4 backend (lech muc tuyet doi giua tong hop va that).
   Kiem cheo trong E1 (khop disjoint+dense, danh gia mixed): M_NK tot hon M_N o tv_batched, ultra, torch_pure; te hon o tv_nms.
 - Doc: hinh hoc (K) giai thich phan lon chi phi cua vong lap PyTorch thuan; voi nhan thu vien phan biet lop, mot mo hinh log-tuyen tinh hoc tu tiem tong hop khong chuyen duoc sang ung vien that. Ca hai deu cung co luan diem "N mot minh khong du; va mo hinh tong hop khong thay duoc do that".
+
+## 02/11 - Goi ban thao v3 de upload: paper_Q1_submission_v3/ + paper_Q1_submission_v3.zip
+- Dung tu paper_vi/main_vi.tex (da them E9: bang N* va bang M_N/M_NK; nhan B4 "buoc cuoi"; tom tat, ket luan, moi de doa cap nhat), preamble CAS tieng Viet cua goi cu, references.bib gop 40 muc, 2 hinh, cas-dc.cls/cas-common.sty.
+- Sua loi bien dich tiem an: chu thich % tren dong khoa .bib (BibTeX khong hieu) -> chuyen len dong rieng trong paper_en/references.bib va paper_vi/refs_extra.bib.
+- Chua bien dich that (khong co TeX); khuyen nghi Overleaf, XeLaTeX.
