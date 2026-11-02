@@ -466,3 +466,7 @@ Ultralytics time_limit: trong E1 khong o ultra_native nao vuot (trung vi lon nha
 - Amdahl tien cuu (quy tac: can tren KTC sai so < 0,05): DAT 3/6 o (tv_batched ca hai, tv_nms Phantom); KHONG DAT tv_nms Overload (0,046 [0,034; 0,058]) va Ultralytics ca hai (du doan 1,065-1,098, do 1,033; sai 0,044-0,067).
 - Kiem tra cau truc (post hoc, structural_check_posthoc.json): thay duong cong tong hop bang NMS do that van hut ~2,5% -> phan con lai la cac cong doan khac tang theo N (loc tau, dung dau vao NMS); mo hinh dung phai cong ca cac cong doan nay.
 - Bo du doan NMS tren tap that lon: noi suy duong cong mixed sai 0,47-1,78 (log); M_N 0,30-0,43; them K chi giup tv_nms (Delta 0,15 [0,05; 0,24]), te hon o 3 backend con lai.
+
+## 02/11 - E6-A2 XONG (tag prereg-e6a2-20261102; ghim 0,94; drift 4/6, toi da 4,8%) + gop 100 anh (results/e6/E6_pooled_baselines_100img)
+- B1 GA tam: N 1,045 [0,994;1,100]; NMS tv 1,017; toan trinh tv 1,010 [1,002;1,020]. B2 GA ngau nhien: N 1,064 [1,030;1,102]; tv 1,012 [1,005;1,022]. B3 tim kiem ngau nhien: N 1,033; tv 1,011 [1,003;1,019]. B4 gradient: N 2,40 [2,09;2,74] (tau 0,25: 6,81); NMS tv 1,228, thuan 2,37; toan trinh tv 1,008 [1,002;1,015], thuan 1,022 [1,010;1,033].
+- Nua anh 51-100 rieng (E6-A2) cung chieu voi nua 1-50.
