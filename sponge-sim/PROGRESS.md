@@ -332,3 +332,9 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - total_tv_nms ratio (patched/clean) [CI95]: B1 1.014 [1.001;1.032]; B2 1.013 [1.001;1.027]; B3 1.011 [0.999;1.025]; B4 1.006 [0.997;1.015]; C1 1.013 [1.006;1.021]; C3 1.015 [1.007;1.025]; R_sg 1.012; R_tanh 1.005. total_torch_pure: tat ca CI chua 1 tru khong co (1.004-1.021).
 - LOI THIET KE (khong the doc nhanh 640 px): nhanh clean chi o 320 px (run.py:145 canvas = 320 if arm == 'clean'); PREREG_E6 khong co clean 640. Ti so total cua C2 (3.60 tv_nms) va C4 (3.58) la patched 640 so voi clean 320: lan chi phi do phan giai (forward ~4 lan) voi tac dong patch. KHONG dung de ket luan ve patch 640. Muon doc duoc: them nhanh clean_640 (can PREREG bo sung + tag + do lai).
 - n_only_prediction_from_e1: sai so log trung vi (duong cong E1 'mixed' vs N thuc): torch_pure 1.377, tv_nms 0.334, tv_batched 0.148, ultra_native 0.052; ty le trong envelope 0.764/0.930/0.349/0.440 (can doc ky truoc khi dua vao bai: summary.json:n_only_prediction_from_e1).
+
+## 02/11 — Bản thảo đã điền số (commit 96162c9)
+- `paper_en/main.tex`: điền bảng A/A (laptop P1_cpu2), dose-response (laptop), tác động patch 320 px (E6), dự đoán chỉ-từ-N, Discussion, Conclusion, Abstract. Điện thoại: ghi là không ghim được, không có số.
+- Còn trống: nhánh 640 px (thiếu clean_640; cần PREREG bổ sung + tag, chờ duyệt), URL kho mã, Hình 2-3, kiểm trích dẫn "from memory", biên dịch TeX.
+- Lưu ý khi viết: `dose_1e2_to_1e4` trong summary E1 không ghi nc trong khóa (giá trị khớp nc=80 theo curves); A/A có 2/11 điểm drift (khối 1,3; tối đa 26%), E1 2/12 (5,6%), E6 0/11 (1,5%).
+- Việc tiếp: A) PREREG bổ sung clean_640 (chưa tag); B) vẽ Hình 2-3 từ JSON; C) kiểm trích dẫn bằng web.
