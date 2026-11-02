@@ -440,3 +440,8 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - Them 5 hinh tu du lieu (studies/figures/make_figs_v3.py): fig4 N* toan pipeline, fig5 cap, fig6 hieu ung patch, fig7 fitness theo ngan sach, fig8 cohort lich su. Tong 7 hinh du lieu + 1 so do TikZ.
 - Sua hinh/bang troi xuong cuoi: bang hep 1 cot [!htbp], bang rong table* [!t], FloatBarrier truoc moi muc/tieu muc, noi tham so float. Script dung goi: paper_vi/build_submission.py.
 - Khong con cho do. Zip: paper_Q1_submission_v3.zip.
+
+## 02/11 - Sua bo cuc goi v3 theo anh Overleaf cua nguoi dung
+- Loi: bang tran sang cot ben (dem sai so cot vi dac ta co @{}), hinh qua to, trang trong do FloatBarrier o moi tieu muc.
+- Sua (paper_vi/build_submission.py): doc dac ta cot theo cap ngoac khop; bang >=5 cot hoac tabularx -> table* [!t]; moi tabular boc adjustbox max width (\columnwidth hoac \textwidth, chi thu nho); hinh rong 0,9\textwidth; FloatBarrier chi o \section.
+- Nguoi dung cho phep do lai ngay khong can cho may ranh: chay A/A 640 roi E6-A1 (thu muc moi, cung tag), khong lam gi khac trong luc do (quy tac 9).

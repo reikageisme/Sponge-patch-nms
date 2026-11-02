@@ -17,6 +17,7 @@ pre += ('% Lệnh riêng của bản thảo này\n'
         '\\newcommand{\\Ntau}{N_{\\tau}}\n'
         '% Giữ hình/bảng gần chỗ được nhắc: chặn trôi qua ranh giới mục và nới các tham số đặt float\n'
         '\\usepackage{placeins}\n'
+        '\\usepackage{adjustbox}\n'
         '\\renewcommand{\\topfraction}{0.9}\\renewcommand{\\bottomfraction}{0.8}\\renewcommand{\\textfraction}{0.07}\n'
         '\\renewcommand{\\floatpagefraction}{0.75}\\renewcommand{\\dbltopfraction}{0.9}\\renewcommand{\\dblfloatpagefraction}{0.75}\n'
         '\\setcounter{topnumber}{4}\\setcounter{bottomnumber}{2}\\setcounter{totalnumber}{8}\\setcounter{dbltopnumber}{4}\n\n')
@@ -39,19 +40,54 @@ front = ('\\begin{document}\n\\let\\WriteBookmarks\\relax\n\\def\\floatpagepagef
 
 body = vi[vi.index('\\section{Giới thiệu}'):vi.index('\\bibliographystyle')]
 # hai cột: bảng hẹp (<= 4 cột, không tabularx) giữ một cột, đặt [!htbp]; bảng rộng dùng table* [!t]
+def colspec(block):
+    """Chuỗi đặc tả cột của tabular đầu tiên, lấy theo cặp ngoặc khớp (đặc tả có thể chứa @{} và p{...})."""
+    k = block.find('\\begin{tabular}{')
+    if k < 0:
+        return None
+    i = k + len('\\begin{tabular}{')
+    depth, j = 1, i
+    while depth:
+        depth += {'{': 1, '}': -1}.get(block[j], 0)
+        j += 1
+    return block[i:j - 1]
+
+
+def ncols(spec):
+    spec = re.sub(r'[@!]\{[^{}]*\}', '', spec)          # bỏ @{...}
+    spec = re.sub(r'[pmb]\{[^{}]*\}', 'p', spec)         # p{..} -> một cột
+    return len(re.findall(r'[lcrpX]', spec))
+
+
+def boxed(block, width):
+    """Thu nhỏ tabular (không phải tabularx) cho vừa chiều rộng; không phóng to bảng nhỏ."""
+    block = block.replace('\\begin{tabular}{', '\\begin{adjustbox}{max width=' + width + '}\n\\begin{tabular}{', 1)
+    k = block.rfind('\\end{tabular}')
+    return block[:k] + '\\end{tabular}\n\\end{adjustbox}' + block[k + len('\\end{tabular}'):] if k >= 0 else block
+
+
 def place(m):
     block = m.group(0)
-    spec = re.search(r'\\begin\{tabular\}\{([^}]*)\}', block)
-    ncols = len(re.findall(r'[lcrp]', re.sub(r'@\{[^}]*\}|p\{[^}]*\}', 'p', spec.group(1)))) if spec else 99
-    # các bảng 4 cột có ô dài (khoảng tin cậy, tên ranh giới) cũng không vừa một cột
-    long_cells = any(l in block for l in ('\\label{tab:slopes}', '\\label{tab:nk}', '\\label{tab:x2}', '\\label{tab:dose}'))
-    wide = 'tabularx' in block or ncols >= 5 or '\\textwidth' in block or long_cells
+    spec = colspec(block)
+    wide = 'tabularx' in block or spec is None or ncols(spec) >= 5
     inner = block[len('\\begin{table}[t]'):-len('\\end{table}')]
-    return ('\\begin{table*}[!t]' + inner + '\\end{table*}') if wide else ('\\begin{table}[!htbp]' + inner + '\\end{table}')
+    if wide:
+        if 'tabularx' not in inner:
+            inner = boxed(inner, '\\textwidth')
+        return '\\begin{table*}[!t]' + inner + '\\end{table*}'
+    return '\\begin{table}[!htbp]' + boxed(inner, '\\columnwidth') + '\\end{table}'
+
+
 body = re.sub(r'\\begin\{table\}\[t\].*?\\end\{table\}', place, body, flags=re.S)
-body = body.replace('\\begin{table*}[t]', '\\begin{table*}[!t]').replace('\\begin{figure*}[t]', '\\begin{figure*}[!t]').replace('\\begin{figure}[t]', '\\begin{figure}[!htbp]')
-# chặn float trôi qua ranh giới mục/tiểu mục
-body = body.replace('\\section{', '\\FloatBarrier\n\\section{').replace('\\subsection{', '\\FloatBarrier\n\\subsection{')
+# table* đã có trong nguồn: cũng thu cho vừa trang nếu là tabular thường
+body = re.sub(r'\\begin\{table\*\}\[t\].*?\\end\{table\*\}',
+              lambda m: m.group(0).replace('\\begin{table*}[t]', '\\begin{table*}[!t]', 1) if 'tabularx' in m.group(0)
+              else boxed(m.group(0).replace('\\begin{table*}[t]', '\\begin{table*}[!t]', 1), '\\textwidth'), body, flags=re.S)
+body = body.replace('\\begin{figure*}[t]', '\\begin{figure*}[!t]').replace('\\begin{figure}[t]', '\\begin{figure}[!htbp]')
+# hình rộng: 0,9 chiều rộng trang để không chiếm cả trang
+body = body.replace('\\includegraphics[width=\\textwidth]', '\\includegraphics[width=0.9\\textwidth]')
+# chỉ chặn float ở ranh giới MỤC (không chặn ở tiểu mục: tránh trang trống)
+body = body.replace('\\section{', '\\FloatBarrier\n\\section{')
 tail = '\\bibliographystyle{unsrtnat}\n\\bibliography{references}\n\n\\end{document}\n'
 tex = pre + front + body + tail
 (OUT / 'main_vi.tex').write_text(tex, encoding='utf-8')
