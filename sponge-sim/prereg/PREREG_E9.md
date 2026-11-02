@@ -1,6 +1,6 @@
 # PREREG E9 — Tiêm ứng viên vào toàn pipeline (4 backend, nhiều ảnh) và bộ dự đoán N + K
 
-Trạng thái: **NHÁP, chờ duyệt** (chưa tag). Tag dự kiến sau khi duyệt: `prereg-e9-<ngày>`. Soạn 02/11/2026.
+Trạng thái: **ĐÃ DUYỆT 02/11/2026** (người dùng: "Duyệt PREREG_E9, tag và chạy full, máy rảnh."). Tag `prereg-e9-20261102` đặt TRƯỚC khi đo. Soạn 02/11/2026.
 Tên E9 (không dùng E8 vì `attacks_provenance.py` đã nhắc "E8" cho một kế hoạch cũ).
 Lý do: thầy nhận xét phát hiện "N tăng ~300 lần, toàn trình chỉ +2–6%" dựa trên dữ liệu lịch sử chưa ghim lõi và gần kết luận của EVADE
 (`docs/REVIEW_THAY_NAM.md` mục 4); `REVIEW/04_q1_gap_analysis.md` §2 yêu cầu so "bộ dự đoán chỉ-từ-N" với "bộ dự đoán thêm backend/cap/hình học"
