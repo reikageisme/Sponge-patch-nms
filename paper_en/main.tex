@@ -193,7 +193,12 @@ torchvision \texttt{nms} & dense cluster & 22.5 & 20.8 to 23.5 \\
 \end{tabular}
 \end{table}
 
-\figtodo{Fig.~2, dose-response curves}{NMS latency versus $\Ntau$ (log--log) for the four implementations and three geometries, laptop, with 95\% intervals.}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig2_dose_response.pdf}
+\caption{NMS latency versus $\Ntau$ on the pinned laptop profile (grid of 10{,}000 anchors, 80 classes, no cap) for the four implementations and three box geometries. Lines are medians; shaded bands are 95\% bootstrap intervals over repetitions. Both axes are logarithmic.}
+\label{fig:dose}
+\end{figure*}
 
 \subsection{Case study: a genetic patch optimizer}
 \paragraph{Optimizer.}
@@ -234,7 +239,12 @@ Gradient score ascent & 2.26 (1.88--2.70) & 6.7 (3.7--10.7) & 1.209 (1.170--1.24
 For every measured unit with $\Ntau>0$ we predict $t_{\mathrm{NMS}}$ from $\Ntau$ alone by interpolating, on a log--log scale, the dose-response curve of the matching implementation and input size for each geometry. We report the median and 90th percentile of $|\ln(t_{\mathrm{measured}}/t_{\mathrm{pred}})|$ against the mixed-geometry curve and the fraction of measured points that fall between the disjoint and dense-cluster curves. These quantities describe the distance between an $\Ntau$-only prediction and the measurement; no pass/fail threshold is set in advance.
 The $\Ntau$-only prediction is accurate for some implementations and poor for others. The median absolute log error against the mixed-geometry curve is 0.05 for Ultralytics-native NMS, 0.15 for torchvision batched NMS, 0.33 for torchvision \texttt{nms}, and 1.38 for pure PyTorch, i.e. a typical factor of 4 for the latter; the 90th percentiles are 0.15, 0.40, 0.47 and 1.73. The fraction of the 3347 measured points that lie between the disjoint and dense-cluster curves is 0.44, 0.35, 0.93 and 0.76 respectively. The error is about the same for clean and patched images (Table~\ref{tab:patches} arms), so the miss is a property of the synthetic curve and the real candidate sets and not of the patches. Between clean images the rank correlation of $\Ntau$ with NMS time is high (0.84 to 0.94, depending on implementation), whereas for the within-image change caused by a patch it is lower (0.36 to 0.73), which suggests that $\Ntau$ ranks images by cost better than it ranks the effect of an edit to one image. Both correlations are descriptive; the 95\% intervals are in the summary file.
 
-\figtodo{Fig.~3, predicted versus measured NMS latency}{Scatter of measured NMS latency versus the $\Ntau$-only prediction from the dose-response curve, clean and patched, per implementation, with the envelope between the disjoint and dense-cluster curves.}
+\begin{figure*}[t]
+\centering
+\includegraphics[width=\textwidth]{figures/fig3_pred_vs_measured.pdf}
+\caption{Measured NMS latency of real candidate sets ($\tau=0.01$, 320-px conditions) versus the $\Ntau$-only prediction from the mixed-geometry dose-response curve, per implementation. The dashed line is equality. Blue points are clean images, red points are patched images (the clean points are few and mostly hidden because each clean image is a single point).}
+\label{fig:pred}
+\end{figure*}
 
 \subsection{Smartphone results}
 \label{sec:phone}
