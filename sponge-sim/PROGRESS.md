@@ -433,3 +433,10 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - Dung tu paper_vi/main_vi.tex (da them E9: bang N* va bang M_N/M_NK; nhan B4 "buoc cuoi"; tom tat, ket luan, moi de doa cap nhat), preamble CAS tieng Viet cua goi cu, references.bib gop 40 muc, 2 hinh, cas-dc.cls/cas-common.sty.
 - Sua loi bien dich tiem an: chu thich % tren dong khoa .bib (BibTeX khong hieu) -> chuyen len dong rieng trong paper_en/references.bib va paper_vi/refs_extra.bib.
 - Chua bien dich that (khong co TeX); khuyen nghi Overleaf, XeLaTeX.
+
+## 02/11 - Goi v3 hoan thien lai (sau khi nguoi dung bien dich tren Overleaf)
+- Dien cho do 640 px bang so E6-A1 (ghi la so bo, drift cao); bang patches co hang 640 px (dau dagger).
+- Bang 1 va bang cac huong: them noi + nam cong bo.
+- Them 5 hinh tu du lieu (studies/figures/make_figs_v3.py): fig4 N* toan pipeline, fig5 cap, fig6 hieu ung patch, fig7 fitness theo ngan sach, fig8 cohort lich su. Tong 7 hinh du lieu + 1 so do TikZ.
+- Sua hinh/bang troi xuong cuoi: bang hep 1 cot [!htbp], bang rong table* [!t], FloatBarrier truoc moi muc/tieu muc, noi tham so float. Script dung goi: paper_vi/build_submission.py.
+- Khong con cho do. Zip: paper_Q1_submission_v3.zip.

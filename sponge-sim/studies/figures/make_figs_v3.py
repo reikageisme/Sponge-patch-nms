@@ -1,0 +1,121 @@
+"""Hình bổ sung cho bản thảo v3, vẽ từ các tệp tóm tắt (chỉ đọc). python make_figs_v3.py OUT_DIR
+
+fig4_pipeline_nstar   : tỷ số toàn trình theo N khi tiêm vào toàn pipeline (E9, hộp rời nhau, không giới hạn), 320 và 640 px.
+fig5_cap_effect       : độ trễ NMS ở N = 10^4 không giới hạn so với top-300 (E1).
+fig6_patch_effects    : tỷ số N, NMS (torchvision) và toàn trình của các điều kiện patch 320 px so với MDE (E6).
+fig7_training_budget  : fitness huấn luyện theo ngân sách, tương đối so với mốc 10.000 (sinh patch trên GPU).
+fig8_historical       : tỷ số ứng viên của các cohort lịch sử (số chép từ bản thảo v2, xem docs/NGUON_SO_LIEU.md).
+"""
+import glob
+import json
+import os
+import sys
+from collections import defaultdict
+from pathlib import Path
+
+import numpy as np
+import matplotlib
+matplotlib.use('Agg')
+import matplotlib.pyplot as plt
+from matplotlib.ticker import NullFormatter, ScalarFormatter
+
+SIM = Path(__file__).resolve().parents[2]
+OUT = Path(sys.argv[1])
+OUT.mkdir(parents=True, exist_ok=True)
+BE = [('torch_pure', 'Pure PyTorch'), ('tv_nms', 'torchvision nms'), ('tv_batched', 'torchvision batched'), ('ultra_native', 'Ultralytics native')]
+plt.rcParams.update({'font.size': 8, 'axes.titlesize': 9})
+
+
+def save(fig, name):
+    fig.tight_layout()
+    fig.savefig(OUT / f'{name}.pdf')
+    fig.savefig(OUT / f'{name}.png', dpi=200)
+    plt.close(fig)
+
+
+# ---- fig4: E9 phần A
+a = json.loads((SIM / 'results/e9/E9_P1cpu2_20261102/summary_part_a.json').read_text(encoding='utf-8'))
+fig, ax = plt.subplots(1, 2, figsize=(7.2, 2.8))
+for k, cv in enumerate((320, 640)):
+    mde = a['mde_total_pct'][str(cv)] if str(cv) in a['mde_total_pct'] else a['mde_total_pct'][cv]
+    for be, lab in BE:
+        s = a['ratios'][f'{cv}|{be}|disjoint|capNone']
+        ns = sorted(int(n) for n in s)
+        r = [s[str(n)]['ratio'] for n in ns]
+        lo = [s[str(n)]['ci95'][0] for n in ns]
+        hi = [s[str(n)]['ci95'][1] for n in ns]
+        ax[k].plot(ns, r, marker='o', ms=3, label=lab)
+        ax[k].fill_between(ns, lo, hi, alpha=.2)
+    ax[k].axhline(1 + mde / 100, color='k', ls='--', lw=.8, label=f'1 + MDE ({mde:.2g}%)')
+    ax[k].set_xscale('log'); ax[k].set_yscale('log')
+    ax[k].set_xticks(ns); ax[k].set_xticklabels([str(n) for n in ns])
+    ax[k].xaxis.set_minor_formatter(NullFormatter())
+    ax[k].set_yticks([1, 1.5, 2, 3, 5, 7] if cv == 320 else [1, 1.5, 2, 3, 5, 10])
+    ax[k].yaxis.set_major_formatter(ScalarFormatter()); ax[k].yaxis.set_minor_formatter(NullFormatter())
+    ax[k].set_xlabel(r'injected $N_\tau$'); ax[k].set_title(f'{cv} px, disjoint boxes, no cap')
+ax[0].set_ylabel('end-to-end latency ratio vs. $N_\\tau=0$')
+ax[0].legend(fontsize=6)
+ax[1].legend(handles=ax[1].get_lines()[-1:], fontsize=6)
+save(fig, 'fig4_pipeline_nstar')
+
+# ---- fig5: E1 cap
+c = json.loads((SIM / 'results/e1/E1_P1cpu2_20261101/summary.json').read_text(encoding='utf-8'))['curves']
+fig, ax = plt.subplots(1, 3, figsize=(7.2, 2.5), sharey=True)
+for k, (g, gl) in enumerate((('disjoint', 'disjoint'), ('mixed', 'mixed'), ('dense_cluster', 'dense cluster'))):
+    x = np.arange(len(BE))
+    none = [c[f'P1_cpu2|10000|{be}|{g}|80|None|10000']['median_ms'] for be, _ in BE]
+    cap = [c[f'P1_cpu2|10000|{be}|{g}|80|300|10000']['median_ms'] for be, _ in BE]
+    ax[k].bar(x - .2, none, .4, label='no cap')
+    ax[k].bar(x + .2, cap, .4, label='top-300 cap')
+    ax[k].set_yscale('log'); ax[k].set_xticks(x); ax[k].set_xticklabels([l.replace(' ', '\n', 1) for _, l in BE], fontsize=6)
+    ax[k].set_title(f'{gl}, $N_\\tau=10^4$')
+ax[0].set_ylabel('NMS latency (ms)'); ax[0].legend(fontsize=6)
+save(fig, 'fig5_cap_effect')
+
+# ---- fig6: E6 patch effects (320 px)
+e6 = json.loads((SIM / 'results/e6/E6_P1cpu2_20261102/summary.json').read_text(encoding='utf-8'))
+arms = [('C1', 'GA, τ_obj 0.01'), ('C3', 'GA, τ_obj 0.25'), ('B1', 'GA centre'), ('B2', 'GA random loc.'), ('B3', 'random search'), ('B4', 'gradient (tanh)')]
+mde_total = e6['mde_aa_pct']['total']
+fig, ax = plt.subplots(1, 3, figsize=(7.2, 2.6), sharey=True)
+for k, (key, title) in enumerate((('N_tau0.01', r'$N_\tau$ ($\tau$=0.01)'), ('nms_tau0.01_tv_nms', 'NMS (torchvision)'), ('total_tv_nms', 'end-to-end'))):
+    for i, (arm, lab) in enumerate(arms):
+        v = e6['arms'][arm][key]
+        r, (lo, hi) = v['ratio_mean'], v['ratio_ci95']
+        ax[k].errorbar(r, i, xerr=[[r - lo], [hi - r]], fmt='o', ms=3, capsize=2, color='tab:red' if arm == 'B4' else 'tab:blue')
+    ax[k].axvline(1, color='k', lw=.8)
+    if key == 'total_tv_nms':
+        ax[k].axvspan(1 - mde_total / 100, 1 + mde_total / 100, color='grey', alpha=.25)
+        title = f'end-to-end (grey band: ±MDE {mde_total:.2g}%)'
+    ax[k].set_title(title); ax[k].set_xlabel('patched / clean')
+ax[0].set_yticks(range(len(arms))); ax[0].set_yticklabels([l for _, l in arms]); ax[0].invert_yaxis()
+save(fig, 'fig6_patch_effects')
+
+# ---- fig7: fitness theo ngân sách
+R = SIM / 'results/e7_gpu/final/runs/e7'
+fit = defaultdict(list)
+for f in glob.glob(str(R / '*' / 'seed*' / 'checkpoint_q*.json')):
+    d = json.loads(Path(f).read_text(encoding='utf-8'))
+    fit[(Path(f).parts[-3], d['queries'])].append(d['best_training_fitness'])
+conds = sorted({k[0] for k in fit})
+fig, ax = plt.subplots(figsize=(3.6, 2.6))
+for cnd in conds:
+    qs = sorted(q for (cc, q) in fit if cc == cnd)
+    base = np.mean(fit[(cnd, qs[0])])
+    ax.plot(qs, [100 * (np.mean(fit[(cnd, q)]) / base - 1) for q in qs], marker='o', ms=3, label=cnd.split('_')[0])
+ax.set_xscale('log'); ax.set_xticks([10000, 25000, 62500]); ax.set_xticklabels(['10,000', '25,000', '62,500'])
+ax.xaxis.set_minor_formatter(NullFormatter())
+ax.set_xlabel('budget (candidate–image forward passes)'); ax.set_ylabel('fitness change vs. 10,000 (%)')
+ax.legend(fontsize=6, ncol=2)
+save(fig, 'fig7_training_budget')
+
+# ---- fig8: cohort lịch sử (số từ bản thảo v2, bảng tỷ số ứng viên tại 2500 lượt ảnh)
+hist = {'128 images': {'SG-GA': (1.0278, .0083), 'GA centre': (1.0329, .0093), 'GA random loc.': (1.0519, .0092), 'random search': (1.0268, .0072)},
+        '500 images': {'SG-GA': (1.0268, .0074), 'GA centre': (1.0561, .0123), 'GA random loc.': (1.0707, .0143), 'random search': (1.0250, .0040)}}
+fig, ax = plt.subplots(1, 2, figsize=(7.2, 2.2), sharey=True)
+for k, (coh, d) in enumerate(hist.items()):
+    for i, (m, (mu, sd)) in enumerate(d.items()):
+        ax[k].errorbar(mu, i, xerr=sd, fmt='o', ms=3, capsize=2)
+    ax[k].axvline(1, color='k', lw=.8); ax[k].set_title(coh); ax[k].set_xlabel('candidate ratio (patched / clean)')
+ax[0].set_yticks(range(4)); ax[0].set_yticklabels(list(hist['128 images'])); ax[0].invert_yaxis()
+save(fig, 'fig8_historical')
+print('ok', sorted(p.name for p in OUT.glob('*.pdf')))

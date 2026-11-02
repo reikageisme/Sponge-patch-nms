@@ -10,9 +10,10 @@ Chuyển ra khỏi thân bài (02/11/2026) theo yêu cầu của thầy: không 
 | A/A lần đầu (một lõi hiệu năng P1; một lõi tiết kiệm điện E1; bốn lõi E4) | `sponge-sim/results/e5/20261021T151412/summary.json` | Đã kiểm lại (tỷ số, MDE, drift) |
 | Tiêm ứng viên (đáp ứng liều, top-k, số lớp, độ dốc, pipeline) | `sponge-sim/results/e1/E1_P1cpu2_20261101/summary.json` | Đã kiểm lại |
 | Đo lại patch 320 px, dự đoán chỉ-từ-N | `sponge-sim/results/e6/E6_P1cpu2_20261102/summary.json` | Đã kiểm lại |
-| Đo lại patch 640 px (nhánh sạch 640 px) | `sponge-sim/results/e6/E6A1_P1cpu2_20261102/summary.json` | Đã đo nhưng drift tham chiếu rất cao (9/11 khối); chưa đưa vào bài, chờ đo lại |
+| Đo lại patch 640 px (nhánh sạch 640 px) | `sponge-sim/results/e6/E6A1_P1cpu2_20261102/summary.json` | Đã kiểm lại; đưa vào bài như kết quả sơ bộ vì drift tham chiếu rất cao (9/11 khối); nên đo lại |
 | Tiêm toàn pipeline, ngưỡng N* (Bảng N*) | `sponge-sim/results/e9/E9_P1cpu2_20261102/summary_part_a.json` | Đã kiểm lại |
 | Bộ dự đoán M_N / M_NK (Bảng sai số) | `sponge-sim/results/e9/E9_P1cpu2_20261102/summary_part_b.json` | Đã kiểm lại |
+| Hình 4–8 | `sponge-sim/studies/figures/make_figs_v3.py` (đọc các tệp ở trên) | Sinh lại được |
 | Fitness huấn luyện (sinh patch trên GPU) | `sponge-sim/results/e7_gpu/final/runs/e7/*/seed*/checkpoint_q*.json` | Đã kiểm lại |
 | Nhóm 128 ảnh và nhóm 500 ảnh: chênh lệch SG-GA trừ GA tâm | `outputs/extended_q1_20261002`, `outputs/x1_500img_20261018` | Số chính đã xác minh trong ghi chú dự án; các bảng chi tiết chép từ bản v2 |
 | Diện tích, EOT, ngân sách, luồng dịch vụ, đánh đổi phòng thủ, chuyển giao, khảo sát đa kiến trúc, biến thể tham chiếu | `outputs/` (thư mục các nhóm tương ứng), `outputs/x2_architecture_20261020` (khảo sát đa kiến trúc) | Chép từ bản v2; cần truy lại |
