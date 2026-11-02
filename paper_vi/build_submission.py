@@ -20,7 +20,7 @@ pre += ('% Lệnh riêng của bản thảo này\n'
         '\\usepackage{adjustbox}\n'
         '\\usepackage{float}\n'
         '\\renewcommand{\\topfraction}{0.9}\\renewcommand{\\bottomfraction}{0.8}\\renewcommand{\\textfraction}{0.07}\n'
-        '\\renewcommand{\\floatpagefraction}{0.75}\\renewcommand{\\dbltopfraction}{0.9}\\renewcommand{\\dblfloatpagefraction}{0.75}\n'
+        '\\renewcommand{\\floatpagefraction}{0.6}\\renewcommand{\\dbltopfraction}{0.9}\\renewcommand{\\dblfloatpagefraction}{0.6}\n'
         '\\setcounter{topnumber}{4}\\setcounter{bottomnumber}{2}\\setcounter{totalnumber}{8}\\setcounter{dbltopnumber}{4}\n\n')
 
 title = re.search(r'\\title\{(.*?)\}\n', vi).group(1)
@@ -89,6 +89,11 @@ body = body.replace('\\begin{figure*}[t]', '\\begin{figure*}[!t]').replace('\\be
 body = body.replace('\\includegraphics[width=\\textwidth]', '\\includegraphics[width=0.9\\textwidth]')
 # chỉ chặn float ở ranh giới MỤC (không chặn ở tiểu mục: tránh trang trống)
 body = body.replace('\\section{', '\\FloatBarrier\n\\section{')
+# Bản 3 (sau ảnh Overleaf 02/11): [H] và rào chắn ở mỗi mục để lại nhiều khoảng trắng. Để LaTeX tự xếp cho đầy trang:
+# bảng/hình một cột [!htbp], toàn trang [!tp] (được phép đứng trên trang float), bỏ mọi rào chắn trừ một rào trước phần cuối bài.
+body = body.replace('\\FloatBarrier\n', '')
+body = body.replace('[H]', '[!htbp]').replace('\\begin{table*}[!t]', '\\begin{table*}[!tp]').replace('\\begin{figure*}[!t]', '\\begin{figure*}[!tp]')
+body = body.replace('\\section*{', '\\FloatBarrier\n\\section*{', 1)
 tail = '\\bibliographystyle{unsrtnat}\n\\bibliography{references}\n\n\\end{document}\n'
 tex = pre + front + body + tail
 (OUT / 'main_vi.tex').write_text(tex, encoding='utf-8')

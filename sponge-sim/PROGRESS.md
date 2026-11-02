@@ -452,3 +452,4 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - Do nhay E9: N* 640 khong doi tru tv_batched mixed; Phan B tren du lieu moi cung chieu. Ghi DEVIATIONS.
 - Bai (paper_vi + goi v3) da cap nhat so 640 px tu lan do lai: bang A/A cot 640 (MDE 0,69%), doan ket qua 640 px, hang 640 bang patches, tom tat/thao luan/moi de doa/ket luan; E9 giu MDE dang ky 1,9% kem cau do nhay; bang sai lech ghi lan do lai.
 - 02/11: Hinh fitness theo ngan sach ve lai thanh 2 khung (khong gradient 0-2%, gradient B4 0-60%); bang/hinh mot cot dat [H] (goi float) de khong tao trang chi co float.
+- 02/11: Bo cuc lan 3 (anh Overleaf: nhieu khoang trang): bo [H] va FloatBarrier o moi muc (chi giu 1 truoc phan cuoi bai), mot cot [!htbp], toan trang [!tp], floatpagefraction 0,6.
