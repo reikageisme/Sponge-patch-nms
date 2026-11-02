@@ -404,3 +404,5 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - Phan tich: results/e6/E6A1_P1cpu2_20261102/summary.json (log results/e6/E6A1_analyze.log). Ghim PASS 0,951; 9/11 diem tham chieu bi co; khoi 3 cham 12 lan, 09:41-10:45 may bi tai khac chiem.
 - So: N (tau 0,01) clean640 119 -> C2 134, C4 138,5; ti so N C2 1,067 [0,999; 1,158], C4 1,065 [1,037; 1,095]. NMS torchvision C2 1,139 [1,063; 1,218], C4 1,124 [1,026; 1,239]. Toan trinh tv_nms C2 1,052 [0,988; 1,146], C4 1,093 [0,984; 1,258]; torch_pure C2 1,078 [1,008; 1,181], C4 1,131 [1,005; 1,317]. MDE 640 = 1,9%: khong ti so toan trinh nao co can duoi > 1,019. Sai so N-only (median |ln|): torch_pure 1,44; tv_nms 0,39; tv_batched 0,22; ultra 0,15.
 - CHUA dien vao bai: cho nguoi dung quyet dinh chay lai E6-A1 khi may ranh that (khuyen nghi) hay dung so hien tai kem canh bao.
+
+## 02/11 - May GPU thue: NGUOI DUNG XAC NHAN DA HUY tu lau. Khong nhac lai nua.
