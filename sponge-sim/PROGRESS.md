@@ -394,3 +394,8 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - Gom rao don: bo cac cau rao don lap lai trong phan Ket qua; them 1 doan "Quy uoc doc cac ket qua" (viii y) trong muc Moi de doa.
 - Ban sao truoc khi don: scratchpad main_vi_before_clean.tex (khong trong repo; git giu lich su).
 - Con lai: hang 640 px cho E6-A1; dich sang Anh sau khi nguoi dung duyet ban Viet.
+
+## 02/11 - PREREG_E9 (NHAP, CHUA TAG): sponge-sim/prereg/PREREG_E9.md
+- Phan A: tiem ung vien vao toan pipeline, 4 backend x 3 hinh hoc x cap None/300, 20 anh, 320 px (N 0-2100) va 640 px (N 0-8400). Endpoint chinh: nguong N* (N nho nhat lam toan trinh tang vuot MDE A/A: 0,55% o 320, 1,9% o 640). Uoc tinh ~35 phut do, may ranh, sau E6-A1, khong tac vu song song.
+- Phan B: bo du doan M_N (ln t ~ ln N) va M_NK (them ln K, K = so hop NMS giu lai) khop tren E1 micro; kiem tra 1 tren E6 320 px (post hoc), kiem tra 2 xac nhan tren E6-A1 640 px (chua phan tich). Endpoint: Delta sai so trung vi M_N - M_NK, CI hai tang.
+- Can truoc khi tag: viet studies/e9_pipeline/run.py + analyze.py, smoke 2 anh, nguoi dung duyet. Chua viet ma.
