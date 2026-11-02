@@ -10,7 +10,7 @@ Chuyển ra khỏi thân bài (02/11/2026) theo yêu cầu của thầy: không 
 | A/A lần đầu (một lõi hiệu năng P1; một lõi tiết kiệm điện E1; bốn lõi E4) | `sponge-sim/results/e5/20261021T151412/summary.json` | Đã kiểm lại (tỷ số, MDE, drift) |
 | Tiêm ứng viên (đáp ứng liều, top-k, số lớp, độ dốc, pipeline) | `sponge-sim/results/e1/E1_P1cpu2_20261101/summary.json` | Đã kiểm lại |
 | Đo lại patch 320 px, dự đoán chỉ-từ-N | `sponge-sim/results/e6/E6_P1cpu2_20261102/summary.json` | Đã kiểm lại |
-| Đo lại patch 640 px (nhánh sạch 640 px) | `sponge-sim/results/e6/E6A1_P1cpu2_20261102/` | Đang đo; chưa có số |
+| Đo lại patch 640 px (nhánh sạch 640 px) | `sponge-sim/results/e6/E6A1_P1cpu2_20261102/summary.json` | Đã đo nhưng drift tham chiếu rất cao (9/11 khối); chưa đưa vào bài, chờ đo lại |
 | Tiêm toàn pipeline, ngưỡng N* (Bảng N*) | `sponge-sim/results/e9/E9_P1cpu2_20261102/summary_part_a.json` | Đã kiểm lại |
 | Bộ dự đoán M_N / M_NK (Bảng sai số) | `sponge-sim/results/e9/E9_P1cpu2_20261102/summary_part_b.json` | Đã kiểm lại |
 | Fitness huấn luyện (sinh patch trên GPU) | `sponge-sim/results/e7_gpu/final/runs/e7/*/seed*/checkpoint_q*.json` | Đã kiểm lại |
