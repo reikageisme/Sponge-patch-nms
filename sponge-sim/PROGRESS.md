@@ -412,3 +412,19 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - Smoke 1 (scratchpad e9_smoke, 306 s): chay dung; phat hien mau so N=0 chi 1 o la khong du (toan trinh dao dong +-20% giua cac lan lap) -> them baseline_copies=3 (sua truoc tag, ghi trong PREREG).
 - Smoke 2 (scratchpad e9_smoke2, 427 s): dung 3 o N=0; ghim dau 0,93 cuoi 0,63; 1/3 diem tham chieu bi co (cuoi, 37%). Uoc tinh full 20 anh ~70 phut.
 - Cho nguoi dung: duyet PREREG_E9 -> tag prereg-e9-<ngay> -> chay full khi may ranh that (quy tac 9: khong chay gi song song).
+
+## 02/11 - E9 DO XONG (tag prereg-e9-20261102, 2676 s). results/e9/E9_P1cpu2_20261102 (summary_part_a.json)
+- Ghim PASS dau 0,969, cuoi 0,827. Drift tham chieu 12/21 diem bi co (toi da 30%) -> giu trong phan tich chinh, can phan tich do nhay.
+- N* (disjoint, khong cap; N nho nhat lam toan trinh tang vuot MDE: 0,55% o 320, 1,9% o 640):
+  320 px: torch_pure 100 (x1,21; den x6,55 o 2100), tv_nms 1000 (x1,028; x1,11 o 2100), tv_batched 300 (x1,036; x1,21 o 2100), ultra_native 100 (x1,024; x1,15 o 2100).
+  640 px: torch_pure 300 (x1,21; den x10,9 o 8400), tv_nms 3000 (x1,075; x1,58 o 8400), tv_batched 1000 (x1,084; x1,09 o 8400), ultra_native 3000 (x1,085; x1,59 o 8400).
+- Cap 300: o 320 px tv_nms/ultra disjoint khong phat hien tang (>2100); torch_pure cap 300 van x1,64 (300 hop van cham voi vong lap Python).
+- N that do duoc (E6): ~90 o 320 px, 119-138 o 640 px -> duoi moi N* tru torch_pure va ultra o 320 px (N*=100, sat bien).
+- Luu y: N* lay muc dau tien vuot nguong nen nhay voi nhieu (vd torch_pure dense 320: 1,067 o 1000 roi 1,022 o 2100).
+- Phan B dang chay (bootstrap cham).
+- Phan B XONG (summary_part_b.json). Sai so trung vi |ln(do/du doan)|, M_N -> M_NK, Delta [CI hai tang]:
+  Kiem tra 2 (xac nhan, E6-A1 640 px; luu y E6-A1 drift cao): torch_pure 0,895 -> 0,452, Delta 0,443 [0,281; 0,561] (CAI THIEN); tv_nms 0,468 -> 0,534, Delta -0,066 [-0,210; 0,038] (khong phat hien); tv_batched 0,601 -> 1,789, Delta -1,19 [-1,34; -1,06] (TE HON); ultra_native 0,441 -> 2,160, Delta -1,72 [-1,89; -1,52] (TE HON).
+  Kiem tra 1 (post hoc, E6 320 px) cung chieu: torch_pure Delta 0,509 [0,402; 0,589]; tv_nms -0,058 [-0,189; 0,050]; tv_batched -1,35; ultra -1,86.
+  He so c (ln K) am o 2 backend phan biet lop (-0,92; -1,33): mo hinh khop tren tap tiem tong hop (80 lop ngau nhien) ngoai suy sai sang ung vien that. R2 tren thang log cua M_N am o 3/4 backend (lech muc tuyet doi giua tong hop va that).
+  Kiem cheo trong E1 (khop disjoint+dense, danh gia mixed): M_NK tot hon M_N o tv_batched, ultra, torch_pure; te hon o tv_nms.
+- Doc: hinh hoc (K) giai thich phan lon chi phi cua vong lap PyTorch thuan; voi nhan thu vien phan biet lop, mot mo hinh log-tuyen tinh hoc tu tiem tong hop khong chuyen duoc sang ung vien that. Ca hai deu cung co luan diem "N mot minh khong du; va mo hinh tong hop khong thay duoc do that".
