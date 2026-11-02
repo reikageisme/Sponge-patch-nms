@@ -19,6 +19,7 @@ pre += ('% Lệnh riêng của bản thảo này\n'
         '\\usepackage{placeins}\n'
         '\\usepackage{adjustbox}\n'
         '\\usepackage{float}\n'
+        '\\usepackage{capt-of}\n'
         '\\renewcommand{\\topfraction}{0.9}\\renewcommand{\\bottomfraction}{0.8}\\renewcommand{\\textfraction}{0.07}\n'
         '\\renewcommand{\\floatpagefraction}{0.6}\\renewcommand{\\dbltopfraction}{0.9}\\renewcommand{\\dblfloatpagefraction}{0.6}\n'
         '\\setcounter{topnumber}{4}\\setcounter{bottomnumber}{2}\\setcounter{totalnumber}{8}\\setcounter{dbltopnumber}{4}\n\n')
@@ -70,7 +71,8 @@ def boxed(block, width):
 def place(m):
     block = m.group(0)
     spec = colspec(block)
-    wide = 'tabularx' in block or spec is None or ncols(spec) >= 5
+    long_p = spec is not None and any(float(w) >= 7 for w in re.findall(r'p\{([\d.]+)cm\}', spec))  # cột p{} dài hơn một cột trang
+    wide = 'tabularx' in block or spec is None or ncols(spec) >= 5 or long_p
     inner = block[len('\\begin{table}[t]'):-len('\\end{table}')]
     if wide:
         if 'tabularx' not in inner:
@@ -94,6 +96,17 @@ body = body.replace('\\section{', '\\FloatBarrier\n\\section{')
 body = body.replace('\\FloatBarrier\n', '')
 body = body.replace('[H]', '[!htbp]').replace('\\begin{table*}[!t]', '\\begin{table*}[!tp]').replace('\\begin{figure*}[!t]', '\\begin{figure*}[!tp]')
 body = body.replace('\\section*{', '\\FloatBarrier\n\\section*{', 1)
+# Bản 4 (ảnh Overleaf lần 4: hình một cột kẹt lại và kéo mọi hình phía sau về cuối bài, vì LaTeX giữ thứ tự float cùng loại).
+# Bảng/hình MỘT CỘT không còn là float: đặt thẳng vào dòng văn bản (center + \captionof), không thể kẹt hay đẩy hình khác;
+# chỉ còn bảng/hình toàn trang là float [!tp].
+def inline(m, kind):
+    block = m.group(0)
+    block = block.replace('\\begin{' + kind + '}[!htbp]', '\\par\\begin{center}', 1)
+    block = block.replace('\\caption{', '\\captionof{' + kind + '}{', 1)
+    k = block.rfind('\\end{' + kind + '}')
+    return block[:k] + '\\end{center}\\par' + block[k + len('\\end{' + kind + '}'):]
+for kind in ('table', 'figure'):
+    body = re.sub(r'\\begin\{' + kind + r'\}\[!htbp\].*?\\end\{' + kind + r'\}', lambda m, k=kind: inline(m, k), body, flags=re.S)
 tail = '\\bibliographystyle{unsrtnat}\n\\bibliography{references}\n\n\\end{document}\n'
 tex = pre + front + body + tail
 (OUT / 'main_vi.tex').write_text(tex, encoding='utf-8')
