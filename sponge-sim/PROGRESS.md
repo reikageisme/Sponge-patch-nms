@@ -470,3 +470,8 @@ Ultralytics time_limit: trong E1 khong o ultra_native nao vuot (trung vi lon nha
 ## 02/11 - E6-A2 XONG (tag prereg-e6a2-20261102; ghim 0,94; drift 4/6, toi da 4,8%) + gop 100 anh (results/e6/E6_pooled_baselines_100img)
 - B1 GA tam: N 1,045 [0,994;1,100]; NMS tv 1,017; toan trinh tv 1,010 [1,002;1,020]. B2 GA ngau nhien: N 1,064 [1,030;1,102]; tv 1,012 [1,005;1,022]. B3 tim kiem ngau nhien: N 1,033; tv 1,011 [1,003;1,019]. B4 gradient: N 2,40 [2,09;2,74] (tau 0,25: 6,81); NMS tv 1,228, thuan 2,37; toan trinh tv 1,008 [1,002;1,015], thuan 1,022 [1,010;1,033].
 - Nua anh 51-100 rieng (E6-A2) cung chieu voi nua 1-50.
+
+## 02/11 - Ban Viet v4 (dai phau theo review chi tiet cua thay) + goi v3 dung lai
+- Cau truc: Gioi thieu (Q1-Q4, bo dong gop "giu ket qua am") -> Lien quan -> Bai toan + mo hinh chi phi + MO HINH AMDAHL -> Giao thuc (pham vi + SMT + nguon dien; thiet ke tan cong toan anh) -> Ket qua (A/A co 2 MDE 640; doi chung duong; N* + Amdahl post hoc + san nhieu trong phien; TAN CONG TOAN ANH THAT (E10) + Hinh 9; SG-GA, bang can 100 anh, 1 doan cohort cu da xac minh) -> Thao luan (Amdahl la cong cu du doan) -> Moi de doa (pham vi thiet bi CPU 1 loi, khong GPU; dien thoai 1 cau) -> Ket luan.
+- Da cat: phan cohort lich su (9 bang, Hinh 8), muc dien thoai; sua cong thuc t_meas/t_pred, tham chieu cheo, giai thich 3,5-3,6 vs 3,4, tom tat ~250 tu. ~17.600 tu.
+- Con lai (can nguoi dung): GPU/Jetson/Pi 5; khoa tan so; OSF/Zenodo; tac gia lien he/ORCID; ban tieng Anh.

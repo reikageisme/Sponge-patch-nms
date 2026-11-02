@@ -74,6 +74,10 @@ save(fig, 'fig5_cap_effect')
 
 # ---- fig6: E6 patch effects (320 px)
 e6 = json.loads((SIM / 'results/e6/E6_P1cpu2_20261102/summary.json').read_text(encoding='utf-8'))
+# baseline B1-B4: số gộp 100 ảnh (E6 + E6-A2, PREREG_E6_A2)
+_pool = json.loads((SIM / 'results/e6/E6_pooled_baselines_100img/summary.json').read_text(encoding='utf-8'))['arms']
+for _a in ('B1', 'B2', 'B3', 'B4'):
+    e6['arms'][_a] = _pool[_a]
 arms = [('C1', 'GA, τ_obj 0.01'), ('C3', 'GA, τ_obj 0.25'), ('B1', 'GA centre'), ('B2', 'GA random loc.'), ('B3', 'random search'), ('B4', 'gradient (tanh)')]
 mde_total = e6['mde_aa_pct']['total']
 fig, ax = plt.subplots(1, 3, figsize=(7.2, 2.6), sharey=True)
@@ -124,3 +128,27 @@ for k, (coh, d) in enumerate(hist.items()):
 ax[0].set_yticks(range(4)); ax[0].set_yticklabels(list(hist['128 images'])); ax[0].invert_yaxis()
 save(fig, 'fig8_historical')
 print('ok', sorted(p.name for p in OUT.glob('*.pdf')))
+
+# ---- fig9: tấn công toàn ảnh thật (E10)
+e10 = json.loads((SIM / 'results/e10/E10_P1cpu2_20261102/summary.json').read_text(encoding='utf-8'))
+fig, ax = plt.subplots(1, 2, figsize=(7.2, 2.5), gridspec_kw=dict(width_ratios=[1, 2.2]))
+meths = [('overload', 'Overload'), ('phantom_sponges', 'Phantom Sponges')]
+for i, (m, lab) in enumerate(meths):
+    v = e10['n_ratio'][f'{m}|tau0.25']
+    ax[0].errorbar(i, v['mean'], yerr=[[v['mean'] - v['ci95'][0]], [v['ci95'][1] - v['mean']]], fmt='o', capsize=3)
+ax[0].set_yscale('log'); ax[0].set_xticks([0, 1]); ax[0].set_xticklabels([l for _, l in meths], fontsize=7)
+ax[0].set_xlim(-.5, 1.5); ax[0].set_ylabel(r'$N_\tau$ ratio (patched / clean)'); ax[0].set_title(r'candidates ($\tau$=0.25)')
+pbe = [('tv_nms', 'tv nms'), ('tv_batched', 'tv batched'), ('ultra_native', 'Ultralytics')]
+mde = max(e10['in_session_mde_pct'].values())
+ax[1].axhspan(1, 1 + mde / 100, color='grey', alpha=.25)
+for j, (m, lab) in enumerate(meths):
+    for k, (be, bl) in enumerate(pbe):
+        x = k + (j - .5) * .3
+        t = e10['total_ratio'][f'{m}|{be}']
+        ax[1].errorbar(x, t['mean'], yerr=[[t['mean'] - t['ci95'][0]], [t['ci95'][1] - t['mean']]], fmt='o', ms=4, capsize=2,
+                       color='tab:blue' if j == 0 else 'tab:orange', label=lab if k == 0 else None)
+        ax[1].plot(x, e10['amdahl'][f'{m}|{be}']['r_pred_mean'], 'x', color='k', ms=6, label='Amdahl prediction' if (j == 0 and k == 0) else None)
+ax[1].set_xticks(range(3)); ax[1].set_xticklabels([b for _, b in pbe], fontsize=7)
+ax[1].set_ylabel('end-to-end ratio'); ax[1].set_title('end-to-end latency (grey: in-session MDE)'); ax[1].legend(fontsize=6)
+save(fig, 'fig9_attacks')
+print('fig9 ok')

@@ -32,3 +32,8 @@ pdfLaTeX cũng được nếu có gói `vntex` (mã hóa T5).
 - 19 tài liệu bổ sung (chép từ bản thảo cũ) chưa kiểm bằng web; xem chú thích trong `references.bib`.
 - Các bảng của phần cohort lịch sử được chép từ bản thảo trước, phải truy lại tới dữ liệu thô trước khi nộp (danh sách ở `docs/NGUON_SO_LIEU.md` của kho mã).
 - Đây là bản tiếng Việt để rà soát; bản tiếng Anh sẽ dịch sau khi tác giả duyệt bản này.
+
+## Bản v4 (02/11/2026, sau review chi tiết của thầy)
+- Cấu trúc mới: giao thức -> đối chứng dương -> ngưỡng toàn trình và mô hình kiểu Amdahl -> tấn công toàn ảnh thật (Overload, Phantom Sponges đo lại dưới ghim lõi) -> nghiên cứu tình huống SG-GA ngắn.
+- Đã cắt phần cohort lịch sử và điện thoại (chỉ còn một câu trong giới hạn); bảng patch cân 100 ảnh × 5 seed; công thức dùng t_meas/t_pred; thêm Hình 9.
+- Hình 8 (`fig8_historical.pdf`) còn trong thư mục nhưng không dùng.
