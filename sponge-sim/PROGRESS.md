@@ -459,3 +459,10 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 Lam duoc ngay (may laptop): (a) E10: do lai 10 nhieu loan Phantom/Overload luu san (YOLOv5s 640, outputs/extended_q1_20261002/reference) duoi ghim loi, kiem bo du doan N va mo hinh Amdahl dang ky truoc; (b) mo hinh Amdahl cho N* tren du lieu E1+E9 (post hoc) + du doan tien cuu cho E10; (c) san nhieu trong phien cua E9 tu 3 o N=0 + do nhay bo khoi bi co; (d) E6-A2: do baseline B1-B4 tren 50 anh con lai cho can; (e) cat phan B khoi bai, sua loi cu the, viet lai.
 BI CHAN (can nguoi dung): GPU (da huy may V100; laptop khong co CUDA) va thiet bi bien (Pi 5/Jetson); khoa tan so/High Performance (quy tac 7: nguoi dung tu dat); OSF/Zenodo (can tai khoan, mang); quyet dinh tac gia lien he; Surface Pro 4 Fedora (can thong tin SSH).
 Ultralytics time_limit: trong E1 khong o ultra_native nao vuot (trung vi lon nhat 140 ms << 2,05 s); truong over_ultra_time_limit chi bao o torch_pure disjoint 10^4 (vong lap Python, khong lien quan Ultralytics).
+
+## 02/11 - E10 XONG (tag prereg-e10-20261102; 2750 s; ghim 0,85/0,98; drift 0/11, toi da 2%)
+- N tai tau 0,25: sach 45 -> Overload 5578 (ti so 389x [135; 753]), Phantom 4812 (340x [104; 678]); tau 0,01: 254 -> 11674 / 14488.
+- Toan trinh (YOLOv5s 640, CPU 1 loi): +2,9% den +3,4% (vd Overload tv_nms 1,034 [1,022; 1,045]); MDE trong phien 2,0-2,4%; vuot MDE chi o tv_nms.
+- Amdahl tien cuu (quy tac: can tren KTC sai so < 0,05): DAT 3/6 o (tv_batched ca hai, tv_nms Phantom); KHONG DAT tv_nms Overload (0,046 [0,034; 0,058]) va Ultralytics ca hai (du doan 1,065-1,098, do 1,033; sai 0,044-0,067).
+- Kiem tra cau truc (post hoc, structural_check_posthoc.json): thay duong cong tong hop bang NMS do that van hut ~2,5% -> phan con lai la cac cong doan khac tang theo N (loc tau, dung dau vao NMS); mo hinh dung phai cong ca cac cong doan nay.
+- Bo du doan NMS tren tap that lon: noi suy duong cong mixed sai 0,47-1,78 (log); M_N 0,30-0,43; them K chi giup tv_nms (Delta 0,15 [0,05; 0,24]), te hon o 3 backend con lai.
