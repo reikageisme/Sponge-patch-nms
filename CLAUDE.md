@@ -17,6 +17,7 @@ Nhóm: Phạm Tuấn Anh, Mai Quốc Bảo; GVHD và tác giả liên hệ: Đin
 6. Kết quả âm giữ nguyên. Không dùng "tương đương / không phụ thuộc / chứng minh" khi chỉ có p > 0,05 hoặc CI chứa 0; phải kèm MDE.
 7. Không cài gói hệ thống, không dùng mạng, không đổi power plan/turbo: chỉ ĐỌC cấu hình và in checklist cho tôi tự làm.
 8. Chỉ `git add` đúng file của việc đang làm. Repo đã dirty từ trước (5 file code đã sửa sau các lượt chạy cũ). Không reset/clean/force-push.
+9. Trong lúc đo ghim core (A/A, E1, E5, E6, bất kỳ phép đo thời gian nào, trên laptop hay điện thoại), Claude Code CHỈ được chạy đúng tiến trình đo đó. KHÔNG chạy song song bất kỳ việc gì khác (đọc/ghi file, soạn bài, phân tích, git, web search, test) dù nhân danh "việc nhẹ". Chỉ được kiểm tiến độ khi tiến trình đo đã kết thúc (dùng cơ chế thông báo khi xong, không poll). Việc khác phải đợi đo xong. Lý do: A/A 640 px và E6-A1 ngày 02/11/2026 bị drift tham chiếu rất cao (8/11 và 9/11 khối bị cờ, có khối chậm 12 lần) trong lúc trợ lý làm việc song song.
 
 ## Bản đồ repo (D:/Physical-Visual-DoS-EdgeAI-main)
 - Cohort dữ liệu (tên bắt buộc dùng thống nhất):
