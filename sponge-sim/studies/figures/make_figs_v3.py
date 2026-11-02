@@ -97,15 +97,20 @@ for f in glob.glob(str(R / '*' / 'seed*' / 'checkpoint_q*.json')):
     d = json.loads(Path(f).read_text(encoding='utf-8'))
     fit[(Path(f).parts[-3], d['queries'])].append(d['best_training_fitness'])
 conds = sorted({k[0] for k in fit})
-fig, ax = plt.subplots(figsize=(3.6, 2.6))
+# hai khung: điều kiện không gradient (thang 0–2%) và baseline gradient (thang 0–60%), để không bị B4 đè bẹp
+fig, axs = plt.subplots(1, 2, figsize=(3.5, 2.1), gridspec_kw=dict(width_ratios=[1.6, 1]))
 for cnd in conds:
     qs = sorted(q for (cc, q) in fit if cc == cnd)
     base = np.mean(fit[(cnd, qs[0])])
-    ax.plot(qs, [100 * (np.mean(fit[(cnd, q)]) / base - 1) for q in qs], marker='o', ms=3, label=cnd.split('_')[0])
-ax.set_xscale('log'); ax.set_xticks([10000, 25000, 62500]); ax.set_xticklabels(['10,000', '25,000', '62,500'])
-ax.xaxis.set_minor_formatter(NullFormatter())
-ax.set_xlabel('budget (candidate–image forward passes)'); ax.set_ylabel('fitness change vs. 10,000 (%)')
-ax.legend(fontsize=6, ncol=2)
+    ax = axs[1] if cnd.startswith('B4') else axs[0]
+    ax.plot(range(len(qs)), [100 * (np.mean(fit[(cnd, q)]) / base - 1) for q in qs], marker='o', ms=2.5, lw=1,
+            label=cnd.split('_')[0], color='black' if cnd.startswith('B4') else None)
+for ax, title in zip(axs, ('gradient-free (GA, random search)', 'gradient (B4)')):
+    ax.set_xticks(range(3)); ax.set_xticklabels(['10k', '25k', '62.5k'], fontsize=6)
+    ax.set_title(title, fontsize=7); ax.tick_params(labelsize=6); ax.grid(alpha=.3)
+axs[0].set_ylabel('fitness change vs. 10k (%)', fontsize=7)
+axs[0].legend(fontsize=5, ncol=2, loc='upper left', handlelength=1.2, frameon=False)
+fig.supxlabel('budget (candidate–image forward passes)', fontsize=7)
 save(fig, 'fig7_training_budget')
 
 # ---- fig8: cohort lịch sử (số từ bản thảo v2, bảng tỷ số ứng viên tại 2500 lượt ảnh)

@@ -18,6 +18,7 @@ pre += ('% Lệnh riêng của bản thảo này\n'
         '% Giữ hình/bảng gần chỗ được nhắc: chặn trôi qua ranh giới mục và nới các tham số đặt float\n'
         '\\usepackage{placeins}\n'
         '\\usepackage{adjustbox}\n'
+        '\\usepackage{float}\n'
         '\\renewcommand{\\topfraction}{0.9}\\renewcommand{\\bottomfraction}{0.8}\\renewcommand{\\textfraction}{0.07}\n'
         '\\renewcommand{\\floatpagefraction}{0.75}\\renewcommand{\\dbltopfraction}{0.9}\\renewcommand{\\dblfloatpagefraction}{0.75}\n'
         '\\setcounter{topnumber}{4}\\setcounter{bottomnumber}{2}\\setcounter{totalnumber}{8}\\setcounter{dbltopnumber}{4}\n\n')
@@ -75,7 +76,7 @@ def place(m):
         if 'tabularx' not in inner:
             inner = boxed(inner, '\\textwidth')
         return '\\begin{table*}[!t]' + inner + '\\end{table*}'
-    return '\\begin{table}[!htbp]' + boxed(inner, '\\columnwidth') + '\\end{table}'
+    return '\\begin{table}[H]' + boxed(inner, '\\columnwidth') + '\\end{table}'  # một cột: đặt đúng chỗ, không tạo trang chỉ có float
 
 
 body = re.sub(r'\\begin\{table\}\[t\].*?\\end\{table\}', place, body, flags=re.S)
@@ -83,7 +84,7 @@ body = re.sub(r'\\begin\{table\}\[t\].*?\\end\{table\}', place, body, flags=re.S
 body = re.sub(r'\\begin\{table\*\}\[t\].*?\\end\{table\*\}',
               lambda m: m.group(0).replace('\\begin{table*}[t]', '\\begin{table*}[!t]', 1) if 'tabularx' in m.group(0)
               else boxed(m.group(0).replace('\\begin{table*}[t]', '\\begin{table*}[!t]', 1), '\\textwidth'), body, flags=re.S)
-body = body.replace('\\begin{figure*}[t]', '\\begin{figure*}[!t]').replace('\\begin{figure}[t]', '\\begin{figure}[!htbp]')
+body = body.replace('\\begin{figure*}[t]', '\\begin{figure*}[!t]').replace('\\begin{figure}[t]', '\\begin{figure}[H]').replace('\\begin{figure}[!t]', '\\begin{figure}[H]')
 # hình rộng: 0,9 chiều rộng trang để không chiếm cả trang
 body = body.replace('\\includegraphics[width=\\textwidth]', '\\includegraphics[width=0.9\\textwidth]')
 # chỉ chặn float ở ranh giới MỤC (không chặn ở tiểu mục: tránh trang trống)

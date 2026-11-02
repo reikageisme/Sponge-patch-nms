@@ -451,3 +451,4 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - E6-A1 lan 2: ghim 0,945, drift 7/11 (toi da 7,9%). C2: N 1,067 [0,999;1,158]; NMS tv 1,019 [0,989;1,048]; NMS thuan 1,100 [1,022;1,193]; toan trinh tv 1,011 [1,005;1,016], thuan 1,008 [1,002;1,014]. C4: NMS tv 1,032 [0,998;1,067]; thuan 1,090 [1,046;1,143]; toan trinh tv 1,012 [1,005;1,019], thuan 1,014 [1,006;1,022]. Can duoi chua vuot 1+MDE (1,0069).
 - Do nhay E9: N* 640 khong doi tru tv_batched mixed; Phan B tren du lieu moi cung chieu. Ghi DEVIATIONS.
 - Bai (paper_vi + goi v3) da cap nhat so 640 px tu lan do lai: bang A/A cot 640 (MDE 0,69%), doan ket qua 640 px, hang 640 bang patches, tom tat/thao luan/moi de doa/ket luan; E9 giu MDE dang ky 1,9% kem cau do nhay; bang sai lech ghi lan do lai.
+- 02/11: Hinh fitness theo ngan sach ve lai thanh 2 khung (khong gradient 0-2%, gradient B4 0-60%); bang/hinh mot cot dat [H] (goi float) de khong tao trang chi co float.
