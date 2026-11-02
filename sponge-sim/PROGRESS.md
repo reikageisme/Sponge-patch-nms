@@ -445,3 +445,8 @@ Giây / ứng viên: C1 4,5; C2 20,1; C3 4,8; B1 4,8; B2 4,8; B3 4,6; B4 (gradie
 - Loi: bang tran sang cot ben (dem sai so cot vi dac ta co @{}), hinh qua to, trang trong do FloatBarrier o moi tieu muc.
 - Sua (paper_vi/build_submission.py): doc dac ta cot theo cap ngoac khop; bang >=5 cot hoac tabularx -> table* [!t]; moi tabular boc adjustbox max width (\columnwidth hoac \textwidth, chi thu nho); hinh rong 0,9\textwidth; FloatBarrier chi o \section.
 - Nguoi dung cho phep do lai ngay khong can cho may ranh: chay A/A 640 roi E6-A1 (thu muc moi, cung tag), khong lam gi khac trong luc do (quy tac 9).
+
+## 02/11 - Do lai 640 px XONG (sach hon nhieu)
+- AA640 lan 2: ghim 0,953, drift 3/11 (toi da 3,8%), MDE total 0,69%, forward 0,76%, NMS thuan 0,98%, tv 1,37%.
+- E6-A1 lan 2: ghim 0,945, drift 7/11 (toi da 7,9%). C2: N 1,067 [0,999;1,158]; NMS tv 1,019 [0,989;1,048]; NMS thuan 1,100 [1,022;1,193]; toan trinh tv 1,011 [1,005;1,016], thuan 1,008 [1,002;1,014]. C4: NMS tv 1,032 [0,998;1,067]; thuan 1,090 [1,046;1,143]; toan trinh tv 1,012 [1,005;1,019], thuan 1,014 [1,006;1,022]. Can duoi chua vuot 1+MDE (1,0069).
+- Do nhay E9: N* 640 khong doi tru tv_batched mixed; Phan B tren du lieu moi cung chieu. Ghi DEVIATIONS.
