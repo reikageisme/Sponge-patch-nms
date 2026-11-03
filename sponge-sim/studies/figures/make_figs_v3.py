@@ -78,6 +78,11 @@ e6 = json.loads((SIM / 'results/e6/E6_P1cpu2_20261102/summary.json').read_text(e
 _pool = json.loads((SIM / 'results/e6/E6_pooled_baselines_100img/summary.json').read_text(encoding='utf-8'))['arms']
 for _a in ('B1', 'B2', 'B3', 'B4'):
     e6['arms'][_a] = _pool[_a]
+# toàn trình: dùng tỷ số đã hiệu chỉnh chi phí chèn patch (results/amdahl/threshold_check_posthoc.json, DEVIATIONS 03/11)
+_thr = json.loads((SIM / 'results/amdahl/threshold_check_posthoc.json').read_text(encoding='utf-8'))['arms']
+for _a in ('C1', 'C3', 'B1', 'B2', 'B3', 'B4'):
+    _v = _thr[f'320|{_a}|tv_nms']
+    e6['arms'][_a]['total_tv_nms'] = dict(ratio_mean=_v['r_corrected'], ratio_ci95=_v['r_corrected_ci95'])
 arms = [('C1', 'GA, τ_obj 0.01'), ('C3', 'GA, τ_obj 0.25'), ('B1', 'GA centre'), ('B2', 'GA random loc.'), ('B3', 'random search'), ('B4', 'gradient (tanh)')]
 mde_total = e6['mde_aa_pct']['total']
 fig, ax = plt.subplots(1, 3, figsize=(7.2, 2.6), sharey=True)
@@ -89,7 +94,7 @@ for k, (key, title) in enumerate((('N_tau0.01', r'$N_\tau$ ($\tau$=0.01)'), ('nm
     ax[k].axvline(1, color='k', lw=.8)
     if key == 'total_tv_nms':
         ax[k].axvspan(1 - mde_total / 100, 1 + mde_total / 100, color='grey', alpha=.25)
-        title = f'end-to-end (grey band: ±MDE {mde_total:.2g}%)'
+        title = f'end-to-end, insertion-corrected (grey: ±MDE {mde_total:.2g}%)'
     ax[k].set_title(title); ax[k].set_xlabel('patched / clean')
 ax[0].set_yticks(range(len(arms))); ax[0].set_yticklabels([l for _, l in arms]); ax[0].invert_yaxis()
 save(fig, 'fig6_patch_effects')

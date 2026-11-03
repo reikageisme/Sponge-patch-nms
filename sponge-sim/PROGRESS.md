@@ -480,3 +480,9 @@ Ultralytics time_limit: trong E1 khong o ultra_native nao vuot (trung vi lon nha
 - docs/KHUNG_BAI_20261103.md + trang Artifact https://claude.ai/artifact/TxWjqbYXWt164HdMynYYyf (rieng tu; nguoi dung phai Share cho thay).
 - Q1 E1 (Hinh 2, Bang 2); Q2 E1 cap/hinh hoc (Bang 3, Hinh 3); Q3 N* E9 + patch E6 + tan cong E10 (Bang 4-6, Hinh 4-6); Q4 du doan NMS + Amdahl (Hinh 7, Bang 7-8). Cat: Q5-Q6 cu, bang GA/fitness, do doc, so lop, bang NMS theo backend (gop), cohort lich su, dien thoai.
 - Cho thay duyet roi moi viet lai bai.
+
+## 03/11 - Buoc 2 + Buoc 3 cua thay
+- Buoc 2: cat doan cohort 128/500 anh (SG-GA chi con so do lai ghim loi), cat cau so lieu lich su chua ghim loi; dien thoai con 1 cau "da thu, khong kiem chung duoc ghim loi nen khong bao cao"; dong gop (v) da bo tu v4.
+- Buoc 3: muc moi "Nguong Delta t_NMS va kiem chung bang baseline gradient" (Bang threshold): nguong = MDE x t_total = 0,28 ms (320 px, t_total 50,8 ms) va 1,14 ms (640 px, 165,7 ms). B4: Delta t_NMS tv 0,017 ms -> du doan 1,00035 (khop 0,034% da do); thuan 0,99 ms -> du doan 1,020; do (da hieu chinh chen patch) 1,001 [0,994;1,007] va 1,015 [1,003;1,025] -> khop.
+- PHAT HIEN: phep do toan trinh E6 tinh buoc chen patch cho nhanh co patch, khong cho anh sach (0,354 ms o 320 px). Muc "tang 1,1-1,5%" truoc day chu yeu la chi phi chen. Da do chi phi chen (diag_insert), hieu chinh, cap nhat bang patch + Hinh 6 + van ban; DEVIATIONS 03/11.
+- Sua loi minh gay ra: surgery_v4 ghi de nham 4 dong B1-B4 cua bang thiet lap dieu kien bang so ti so NMS -> da khoi phuc bang thiet lap va dua so gop vao dung bang NMS theo cai dat.
