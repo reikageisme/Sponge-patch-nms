@@ -486,3 +486,8 @@ Ultralytics time_limit: trong E1 khong o ultra_native nao vuot (trung vi lon nha
 - Buoc 3: muc moi "Nguong Delta t_NMS va kiem chung bang baseline gradient" (Bang threshold): nguong = MDE x t_total = 0,28 ms (320 px, t_total 50,8 ms) va 1,14 ms (640 px, 165,7 ms). B4: Delta t_NMS tv 0,017 ms -> du doan 1,00035 (khop 0,034% da do); thuan 0,99 ms -> du doan 1,020; do (da hieu chinh chen patch) 1,001 [0,994;1,007] va 1,015 [1,003;1,025] -> khop.
 - PHAT HIEN: phep do toan trinh E6 tinh buoc chen patch cho nhanh co patch, khong cho anh sach (0,354 ms o 320 px). Muc "tang 1,1-1,5%" truoc day chu yeu la chi phi chen. Da do chi phi chen (diag_insert), hieu chinh, cap nhat bang patch + Hinh 6 + van ban; DEVIATIONS 03/11.
 - Sua loi minh gay ra: surgery_v4 ghi de nham 4 dong B1-B4 cua bang thiet lap dieu kien bang so ti so NMS -> da khoi phuc bang thiet lap va dua so gop vao dung bang NMS theo cai dat.
+
+## 03/11/2026 — Hoàn thiện bản Q3 theo yêu cầu GVHD (xem REPORT_Q3.md ở gốc kho)
+- Đã xong: E11 (mã đo sửa lỗi chèn patch, test đối xứng, PREREG_E11 commit d1b77dd, CHƯA TAG, CHƯA ĐO); bảng sinh tự động (paper_vi/tables/make_tables.py), kiểm số (check_numbers.py, Makefile); Kết quả viết lại theo khung Q1–Q4; tài liệu bổ sung; gói paper_Q3_submission_v4; kiểm 40 trích dẫn (TrackFlood có thật); gói Zenodo (paper_vi/zenodo/make_bundle.py, chưa tải); hướng dẫn profile Fedora (studies/linux_profile, chưa chạy).
+- Đang chờ người dùng: duyệt tag prereg-e11-20261103 và đo E11 (~1,5–2,5 giờ, máy rảnh). Sau đo: analyze (+ --exclude-flagged), make_tables, check_numbers --all, điền các 	odo E11 trong main_vi, vẽ lại fig6 từ E11, chạy lại make_bundle, build_submission.
+- Chờ nhóm: tác giả liên hệ/email/ORCID, CRediT, tạp chí Q3 cụ thể, xoá gói Q1 v3 hay không.
