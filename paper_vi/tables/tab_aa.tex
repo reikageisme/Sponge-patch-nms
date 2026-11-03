@@ -1,0 +1,22 @@
+% SINH TỰ ĐỘNG bởi paper_vi/tables/make_tables.py — KHÔNG SỬA TAY.
+\begin{table}[t]
+\centering\small
+\caption{Hiệu chuẩn A/A trên profile laptop đã ghim lõi (CPU logic 2; số lõi hiệu dụng dưới tải 0,91 ở 320 px): MDE (\%) và thời gian trung vị mỗi công đoạn, 100 ảnh $\times$ 20 lần lặp. Toàn trình của A/A tính từ ảnh đã nạp, gồm cả tiền xử lý (đổi kích thước); các phép đo patch và tiêm bắt đầu từ tensor đã chuẩn bị nên có $t_{\mathrm{total}}$ nhỏ hơn. 640 px: lần A/A đo lại. Các khối bị cờ drift vẫn nằm trong phân tích.}
+\label{tab:aa}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+ & \multicolumn{2}{c}{320 px} & \multicolumn{2}{c}{640 px} \\
+\cmidrule(lr){2-3}\cmidrule(lr){4-5}
+Công đoạn & MDE (\%) & Trung vị (ms) & MDE (\%) & Trung vị (ms) \\
+\midrule
+Tiền xử lý & 1,00 & 5,60 & 1,39 & 9,66 \\
+Lan truyền thuận & 0,69 & 45,8 & 0,76 & 166 \\
+Lọc điểm ($\tau$) & 1,01 & 0,0655 & 1,53 & 0,105 \\
+NMS (PyTorch thuần) & 0,64 & 1,14 & 0,98 & 1,37 \\
+NMS (torchvision) & 1,09 & 0,101 & 1,37 & 0,121 \\
+Toàn trình & 0,55 & 53,5 & 0,69 & 180 \\
+Toàn trình, lần A/A 640 px đầu (bị nhiễu) & & & 1,88 & 199 \\
+Điểm tham chiếu bị cờ / tổng & 2/11 & & 3/11 & \\
+\bottomrule
+\end{tabular}
+\end{table}

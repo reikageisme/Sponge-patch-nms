@@ -3,17 +3,26 @@ import shutil
 from pathlib import Path
 
 R = Path('D:/Sponge-patch-study')
-OUT = R / 'paper_Q1_submission_v3'
+OUT = R / 'paper_Q3_submission_v4'  # đổi tên 03/11/2026 (nhắm Q3); gói cũ paper_Q1_submission_v3 giữ nguyên
 OUT.mkdir(exist_ok=True)
 (OUT / 'figures').mkdir(exist_ok=True)
 old = (R / 'paper_Q1_submission' / 'BaoCaoKhoaHocAdversarialAttacks_Q1_VI.tex').read_text(encoding='utf-8')
-vi = (R / 'paper_vi' / 'main_vi.tex').read_text(encoding='utf-8')
+TAB = R / 'paper_vi' / 'tables'
+
+
+def inline_tables(tex):
+    """Chèn nội dung tables/tab_*.tex (sinh tự động) vào chỗ \\input, để gói nộp là một tệp .tex."""
+    return re.sub(r'\\input\{tables/([^}]+)\}', lambda m: (TAB / f'{m.group(1)}.tex').read_text(encoding='utf-8').split('\n', 1)[1].rstrip('\n'), tex)
+
+
+vi = inline_tables((R / 'paper_vi' / 'main_vi.tex').read_text(encoding='utf-8'))
 
 # ---- tiền tố: giữ preamble CAS tiếng Việt đã biên dịch được của gói cũ
 pre = old[:old.index('\\begin{document}')]
 pre = pre.replace('\\graphicspath{{media/}{./}}', '\\graphicspath{{figures/}{./}}')
 pre += ('% Lệnh riêng của bản thảo này\n'
         '\\newcommand{\\nodata}[1]{\\textcolor{red}{[CHƯA CÓ SỐ: #1]}}\n'
+        '\\newcommand{\\todo}[1]{\\textcolor{red}{[TODO: #1]}}\n'
         '\\newcommand{\\Ntau}{N_{\\tau}}\n'
         '% Giữ hình/bảng gần chỗ được nhắc: chặn trôi qua ranh giới mục và nới các tham số đặt float\n'
         '\\usepackage{placeins}\n'
@@ -34,7 +43,7 @@ front = ('\\begin{document}\n\\let\\WriteBookmarks\\relax\n\\def\\floatpagepagef
          f'\\title[mode=title]{{{title}}}\n'
          '\\author[1]{Phạm Tuấn Anh}\n\\ead{anh25807700004@hutech.edu.vn}\n'
          '\\author[1]{Mai Quốc Bảo}\n\\ead{bao2580770008@hutech.edu.vn}\n'
-         '\\cortext[cor1]{Tác giả liên hệ: Đinh Phương Nam. Email: dp.nam@hutech.edu.vn.}\n'
+         '\\nonumnote{Tác giả liên hệ, email liên hệ và ORCID: \\todo{nhóm quyết định}.}\n'
          '\\nonumnote{Giảng viên hướng dẫn: Đinh Phương Nam, Trường Đại học Công nghệ Thành phố Hồ Chí Minh (HUTECH). Email: dp.nam@hutech.edu.vn.}\n'
          '\\affiliation[1]{organization={Trường Đại học Công nghệ Thành phố Hồ Chí Minh (HUTECH)},\ncity={Thành phố Hồ Chí Minh},country={Việt Nam}}\n\n'
          f'\\begin{{abstract}}\n{abstract}\n\\end{{abstract}}\n\n'
@@ -119,6 +128,9 @@ for f in ('cas-dc.cls', 'cas-common.sty'):
 shutil.copytree(R / 'paper_Q1_submission' / 'thumbnails', OUT / 'thumbnails', dirs_exist_ok=True)
 for f in (R / 'paper_en' / 'figures').glob('*.pdf'):
     shutil.copy2(f, OUT / 'figures' / f.name)
+# tài liệu bổ sung: tệp riêng, bảng đã chèn
+sup = inline_tables((R / 'paper_vi' / 'supplement_vi.tex').read_text(encoding='utf-8')).replace('{../paper_en/figures/}', '{figures/}')
+(OUT / 'supplement_vi.tex').write_text(sup, encoding='utf-8')
 
 # ---- kiểm cấu trúc
 b = 0

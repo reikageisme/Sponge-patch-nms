@@ -1,0 +1,28 @@
+% SINH TỰ ĐỘNG bởi paper_vi/tables/make_tables.py — KHÔNG SỬA TAY.
+\begin{table}[t]
+\centering\small
+\caption{\textbf{Kiểm tra chéo, post hoc.} Lần đo patch trước (E6/E6-A1/E6-A2) tính bước chèn patch trong vùng bấm giờ chỉ ở nhánh có patch. Cột ``chưa hiệu chỉnh'' là tỷ số gốc; cột ``hiệu chỉnh'' cộng chi phí chèn đo ở một phiên khác (320px_patch64: 0,354~ms, 640px_patch128: 1,658~ms, 640px_patch64: 0,534~ms) vào mẫu số. Không dùng làm kết quả chính; kết quả chính là lần đo lại trong bảng patch của bài chính.}
+\label{tab:supp_corrected}
+\begin{tabular}{@{}llcc@{}}
+\toprule
+Điều kiện & Cách cài đặt & Chưa hiệu chỉnh & Hiệu chỉnh \\
+\midrule
+C1 (320 px) & torchvision \texttt{nms} & 1,013 (1,006--1,021) & 1,006 (0,999--1,014) \\
+C1 (320 px) & PyTorch thuần & 1,007 (0,994--1,018) & 1,000 (0,988--1,011) \\
+C3 (320 px) & torchvision \texttt{nms} & 1,015 (1,007--1,025) & 1,008 (1,000--1,018) \\
+C3 (320 px) & PyTorch thuần & 1,008 (0,996--1,019) & 1,002 (0,989--1,012) \\
+B1 (320 px) & torchvision \texttt{nms} & 1,010 (1,002--1,020) & 1,003 (0,995--1,012) \\
+B1 (320 px) & PyTorch thuần & 1,004 (0,991--1,016) & 0,997 (0,984--1,009) \\
+B2 (320 px) & torchvision \texttt{nms} & 1,012 (1,005--1,022) & 1,005 (0,997--1,014) \\
+B2 (320 px) & PyTorch thuần & 1,005 (0,993--1,015) & 0,998 (0,986--1,008) \\
+B3 (320 px) & torchvision \texttt{nms} & 1,011 (1,003--1,019) & 1,003 (0,996--1,012) \\
+B3 (320 px) & PyTorch thuần & 1,006 (0,994--1,017) & 0,999 (0,987--1,010) \\
+B4 (320 px) & torchvision \texttt{nms} & 1,008 (1,002--1,015) & 1,001 (0,994--1,007) \\
+B4 (320 px) & PyTorch thuần & 1,022 (1,010--1,033) & 1,015 (1,003--1,025) \\
+C2 (640 px) & torchvision \texttt{nms} & 1,011 (1,005--1,016) & 1,001 (0,995--1,006) \\
+C2 (640 px) & PyTorch thuần & 1,008 (1,002--1,014) & 0,998 (0,992--1,004) \\
+C4 (640 px) & torchvision \texttt{nms} & 1,012 (1,005--1,019) & 1,009 (1,002--1,016) \\
+C4 (640 px) & PyTorch thuần & 1,014 (1,006--1,022) & 1,011 (1,003--1,018) \\
+\bottomrule
+\end{tabular}
+\end{table}

@@ -1,0 +1,13 @@
+% SINH TỰ ĐỘNG bởi paper_vi/tables/make_tables.py — KHÔNG SỬA TAY.
+\begin{table}[t]
+\centering\small
+\caption{Ngưỡng $\Delta t^{*}$ để tỷ số toàn trình vượt MDE, và phép kiểm bằng baseline gradient (B4, 320 px, 100 ảnh $\times$ 5 seed). Mọi $t_{\mathrm{total}}$ và MDE lấy từ hai nhánh sạch của chính lần đo lại patch (cùng phiên với phép so sánh), pipeline bắt đầu từ tensor đã chuẩn bị.}
+\label{tab:threshold}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+ & torchvision \texttt{nms} & PyTorch thuần \\
+\midrule
+\multicolumn{3}{c}{\todo{E11 chưa đo: chạy studies/e11\_patch\_remeasure rồi chạy lại make\_tables.py}} \\
+\bottomrule
+\end{tabular}
+\end{table}

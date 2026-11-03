@@ -1,0 +1,18 @@
+% SINH TỰ ĐỘNG bởi paper_vi/tables/make_tables.py — KHÔNG SỬA TAY.
+\begin{table*}[t]
+\centering\small
+\caption{Biến thể thích nghi của hai tấn công toàn ảnh, theo Overload và Phantom Sponges (YOLOv5s, 640 px, nhiễu loạn cộng toàn ảnh, hộp trắng; 50 ảnh $\times$ 5 seed), đo trên một lõi CPU ghim, float32. $\Ntau$ trung vị ảnh sạch $\to$ có nhiễu loạn và tỷ số $\Ntau$ trung bình ($\tau=0{,}25$); tỷ số toàn trình (KTC 95\% bootstrap hai tầng); MDE toàn trình trong phiên (hai nhánh sạch); ``vượt MDE'' khi cận dưới KTC $>1+\mathrm{MDE}$. Mô hình Amdahl cho các ô này ở Bảng~\ref{tab:amdahl}.}
+\label{tab:attacks}
+\begin{tabular}{@{}lcclccc@{}}
+\toprule
+Biến thể & $\Ntau$ sạch $\to$ tấn công & Tỷ số $\Ntau$ (KTC 95\%) & Cách cài đặt & Tỷ số toàn trình (KTC 95\%) & MDE (\%) & Vượt MDE \\
+\midrule
+Overload & 45,0 $\to$ 5578,5 & 389 (135--753) & torchvision \texttt{nms} & 1,034 (1,022--1,045) & 1,98 & có \\
+ & &  & torchvision theo lô & 1,029 (1,017--1,041) & 1,97 & không \\
+ & &  & Ultralytics gốc & 1,034 (1,022--1,047) & 2,44 & không \\
+Phantom Sponges & 45,0 $\to$ 4811,5 & 340 (104--678) & torchvision \texttt{nms} & 1,032 (1,021--1,043) & 1,98 & có \\
+ & &  & torchvision theo lô & 1,031 (1,019--1,045) & 1,97 & không \\
+ & &  & Ultralytics gốc & 1,033 (1,020--1,046) & 2,44 & không \\
+\bottomrule
+\end{tabular}
+\end{table*}
