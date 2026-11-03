@@ -70,3 +70,6 @@ PREREG_E6 (tag prereg-e6-20261101) chỉ có nhánh `clean` ở 320 px; C2 và C
 - Mới công bố: N* "đo" trong phân tích Amdahl (trung bình log-tỷ số so với trung vị ba ô N=0) khác N* của bảng ngưỡng (trung bình tỷ số, theo E9 analyze) ở 3/48 ô; cả hai giữ nguyên, ghi chú trong bảng.
 - Mô tả E10 (ms NMS và toàn trình) trước đây không có tệp nguồn: thêm `studies/e10_reference/stage_medians.py` (post hoc, chỉ đọc bản ghi thô) -> `results/e10/E10_P1cpu2_20261102/stage_medians_posthoc.json`.
 - Ultralytics: không có log cảnh báo của thư viện; từ mã (`max_nms=30000`, `time_limit=2.0+0.05`) và thời gian NMS lớn nhất trong bản ghi thô (E1 183 ms, E9 139 ms, E10 92,6 ms) suy ra giới hạn không thể đã kích hoạt. Không đo lại.
+
+## 03/11/2026 — Đổi tiêu đề và khung đặt vấn đề (GVHD duyệt)
+- Tiêu đề mới "Tấn công cạn kiệt tài nguyên qua NMS có thực sự làm chậm bộ phát hiện? Một nghiên cứu đo lường trên CPU ghim lõi"; viết lại Giới thiệu, đóng góp, tóm tắt, từ khóa, Kết luận, thêm một đoạn giả thuyết trong Thảo luận. Chỉ đổi cách diễn đạt: KHÔNG đổi giả thuyết, endpoint hay quy tắc quyết định đã đăng ký, không đổi số. Chi tiết: REFRAME_REPORT.md.

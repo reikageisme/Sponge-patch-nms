@@ -1,6 +1,6 @@
 # Đề tài NCKH: Sponge Patch (nhắm Q1)
 
-Tiêu đề (chốt 01/11/2026): "Does the Number of Pre-NMS Candidates Predict Detector Latency? A Pinned-Core Measurement Study with a Patch-Optimization Case Study". Tiêu đề tiếng Việt cũ ("Tấn công đối kháng Sponge Patch: Khai thác lỗ hổng cạn kiệt tài nguyên…") không còn dùng.
+Tiêu đề (GVHD duyệt 03/11/2026): "Tấn công cạn kiệt tài nguyên qua NMS có thực sự làm chậm bộ phát hiện? Một nghiên cứu đo lường trên CPU ghim lõi". Tiêu đề trước ("Does the Number of Pre-NMS Candidates Predict Detector Latency? …", tiếng Việt "Số lượng ứng viên trước NMS có dự đoán được độ trễ của bộ phát hiện không? …") không còn dùng; khung mới: tấn công cạn kiệt tài nguyên qua NMS là đối tượng được kiểm tra (xem REFRAME_REPORT.md).
 Nhóm: Phạm Tuấn Anh, Mai Quốc Bảo; GVHD và tác giả liên hệ: Đinh Phương Nam (HUTECH). Ngôn ngữ làm việc: tiếng Việt; thuật ngữ kỹ thuật giữ tiếng Anh.
 
 ## Luận điểm đang theo đuổi (hướng A + C)

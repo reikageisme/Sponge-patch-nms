@@ -1,5 +1,7 @@
 # REPORT_Q3 — hoàn thiện bản nộp Q3 theo yêu cầu GVHD (03/11/2026)
 
+Tên bài (đổi 03/11/2026, xem REFRAME_REPORT.md): "Tấn công cạn kiệt tài nguyên qua NMS có thực sự làm chậm bộ phát hiện? Một nghiên cứu đo lường trên CPU ghim lõi".
+
 Bản thảo: `paper_vi/main_vi.tex` (tiếng Việt, không dịch). Tài liệu bổ sung: `paper_vi/supplement_vi.tex`. Gói nộp: `paper_Q3_submission_v4/`.
 Kiểm số: `python -X utf8 paper_vi/tables/check_numbers.py --all` → **KẾT QUẢ: ĐẠT**. Kết quả này chưa gồm các ô E11, vì E11 chưa đo.
 Không biên dịch được LaTeX trên máy: không có TeX, và quy tắc dự án cấm cài gói. Đã kiểm tĩnh: ngoặc cân, môi trường cân, không có `\ref` hỏng, không có nhãn trùng, đủ 40 trích dẫn. **Cần biên dịch trên Overleaf** để xác nhận không còn "??".

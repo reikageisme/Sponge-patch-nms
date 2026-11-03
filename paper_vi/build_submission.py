@@ -39,7 +39,8 @@ kw = re.search(r'\\noindent\\textbf\{Từ khóa:\} (.*)\n', vi).group(1)
 kws = ' \\sep '.join(x.strip() for x in kw.split(';'))
 
 front = ('\\begin{document}\n\\let\\WriteBookmarks\\relax\n\\def\\floatpagepagefraction{1}\n\\def\\textpagefraction{.001}\n'
-         '\\shorttitle{Số ứng viên trước NMS và độ trễ}\n\\shortauthors{Phạm Tuấn Anh và Mai Quốc Bảo}\n'
+         f'\\hypersetup{{pdftitle={{{title}}}}}\n'
+         '\\shorttitle{Tấn công cạn kiệt tài nguyên qua NMS}\n\\shortauthors{Phạm Tuấn Anh và Mai Quốc Bảo}\n'
          f'\\title[mode=title]{{{title}}}\n'
          '\\author[1]{Phạm Tuấn Anh}\n\\ead{anh25807700004@hutech.edu.vn}\n'
          '\\author[1]{Mai Quốc Bảo}\n\\ead{bao2580770008@hutech.edu.vn}\n'

@@ -1,4 +1,4 @@
-# Gói bản thảo v3 — "Số lượng ứng viên trước NMS có dự đoán được độ trễ…" (tiếng Việt, mẫu Elsevier CAS cas-dc)
+# Gói bản thảo v4 — "Tấn công cạn kiệt tài nguyên qua NMS có thực sự làm chậm bộ phát hiện? Một nghiên cứu đo lường trên CPU ghim lõi" (tiếng Việt)
 
 Dựng ngày 02/11/2026 bằng `paper_vi/build_submission.py` từ `paper_vi/main_vi.tex` (bản tiếng Việt để rà soát), dùng lại preamble CAS tiếng Việt của `paper_Q3_submission/`.
 Thư mục tự chứa: tải nguyên thư mục (hoặc `paper_Q3_submission_v4.zip` ở gốc repo) lên Overleaf là biên dịch được.

@@ -1,4 +1,4 @@
-# Gói lưu trữ: "Số lượng ứng viên trước NMS có dự đoán được độ trễ của bộ phát hiện không?"
+# Gói lưu trữ: "Tấn công cạn kiệt tài nguyên qua NMS có thực sự làm chậm bộ phát hiện? Một nghiên cứu đo lường trên CPU ghim lõi"
 
 Gói này đi kèm bản thảo `paper_vi/main_vi.tex` và tài liệu bổ sung `paper_vi/supplement_vi.tex`.
 
