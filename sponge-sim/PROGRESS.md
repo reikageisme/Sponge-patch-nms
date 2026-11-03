@@ -475,3 +475,8 @@ Ultralytics time_limit: trong E1 khong o ultra_native nao vuot (trung vi lon nha
 - Cau truc: Gioi thieu (Q1-Q4, bo dong gop "giu ket qua am") -> Lien quan -> Bai toan + mo hinh chi phi + MO HINH AMDAHL -> Giao thuc (pham vi + SMT + nguon dien; thiet ke tan cong toan anh) -> Ket qua (A/A co 2 MDE 640; doi chung duong; N* + Amdahl post hoc + san nhieu trong phien; TAN CONG TOAN ANH THAT (E10) + Hinh 9; SG-GA, bang can 100 anh, 1 doan cohort cu da xac minh) -> Thao luan (Amdahl la cong cu du doan) -> Moi de doa (pham vi thiet bi CPU 1 loi, khong GPU; dien thoai 1 cau) -> Ket luan.
 - Da cat: phan cohort lich su (9 bang, Hinh 8), muc dien thoai; sua cong thuc t_meas/t_pred, tham chieu cheo, giai thich 3,5-3,6 vs 3,4, tom tat ~250 tu. ~17.600 tu.
 - Con lai (can nguoi dung): GPU/Jetson/Pi 5; khoa tan so; OSF/Zenodo; tac gia lien he/ORCID; ban tieng Anh.
+
+## 03/11 - Khung bai mot trang de thay duyet (CHUA viet lai bai)
+- docs/KHUNG_BAI_20261103.md + trang Artifact https://claude.ai/artifact/TxWjqbYXWt164HdMynYYyf (rieng tu; nguoi dung phai Share cho thay).
+- Q1 E1 (Hinh 2, Bang 2); Q2 E1 cap/hinh hoc (Bang 3, Hinh 3); Q3 N* E9 + patch E6 + tan cong E10 (Bang 4-6, Hinh 4-6); Q4 du doan NMS + Amdahl (Hinh 7, Bang 7-8). Cat: Q5-Q6 cu, bang GA/fitness, do doc, so lop, bang NMS theo backend (gop), cohort lich su, dien thoai.
+- Cho thay duyet roi moi viet lai bai.
