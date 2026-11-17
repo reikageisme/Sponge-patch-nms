@@ -3,8 +3,7 @@
 Nhánh `review-fixes-20261116`, tách từ `e41b00f`. Chưa commit, chưa push. Không file kết quả đã đo nào bị sửa; không file nào
 trong danh sách khoá SHA-256 của `.gitattributes` bị đụng tới (`core/`, `attack/`, `experiments/local_*`).
 
-Hai bản phản biện và phần giải thích từng hướng sửa nằm ngoài repo: thư mục `Review_2026-11-16` và `Spongepatch_huong_sua`
-trên Desktop.
+Bản phản biện và phần giải thích từng hướng sửa nằm ngoài repo, ở file `PHAN_BIEN_VA_HUONG_SUA.md` cạnh thư mục repo này.
 
 ## File sửa (chỉ thêm, không đổi hành vi cũ)
 
