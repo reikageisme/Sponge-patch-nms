@@ -100,3 +100,57 @@ def mde_paired(sd: float, n: int, alpha: float = .05, power: float = .8) -> floa
     Xấp xỉ t trung tâm; ghi rõ là xấp xỉ khi báo."""
     df = n - 1
     return float((sps.t.ppf(1 - alpha / 2, df) + sps.t.ppf(power, df)) * sd / np.sqrt(n))
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Bổ sung sau phản biện 16/11/2026 (REVIEW_FIXES_20261116.md). Không đổi hàm nào ở trên.
+
+def tost_ratio(R, margin: float, seed: int, n_boot: int = N_BOOT) -> dict:
+    """TOST bằng bootstrap hai tầng cho ma trận tỉ số R [ảnh, seed].
+    "Tương đương trong biên": khoảng 90% của trung bình log tỉ số nằm trong [-ln(1+m), ln(1+m)].
+    Dùng cho câu "không tăng": không được viết khi `equivalent` là False."""
+    R = np.asarray(R, dtype=float)
+    lo, hi = two_level_bootstrap(np.log(R), seed, n_boot=n_boot, level=.90)
+    m = float(np.log1p(margin))
+    return dict(margin=margin, mean_ratio=float(np.exp(np.mean(np.log(R)))), ci90_ratio=[float(np.exp(lo)), float(np.exp(hi))],
+                equivalent=bool(lo > -m and hi < m), above_margin=bool(lo > m))
+
+
+def skill_vs_null(R, R_pred, seed: int, n_boot: int = N_BOOT, rule: float = .05) -> dict:
+    """So mô hình dự đoán với mô hình rỗng R_pred = 1 trên cùng đơn vị [ảnh, seed].
+    skill = 1 - trung_vị|ln(R/R_pred)| / trung_vị|ln(R)|; skill <= 0 nghĩa là không hơn "đoán không đổi".
+    `rule`: ngưỡng của luật pass đã đăng ký (cận trên CI của trung vị sai số < rule), áp cho cả hai mô hình."""
+    R, R_pred = np.asarray(R, dtype=float), np.asarray(R_pred, dtype=float)
+    e_model, e_null = np.abs(np.log(R / R_pred)), np.abs(np.log(R))
+    cm = two_level_bootstrap(e_model, seed, n_boot=n_boot, stat=np.nanmedian)
+    cn = two_level_bootstrap(e_null, seed, n_boot=n_boot, stat=np.nanmedian)
+    rng = np.random.default_rng(seed)
+    ni, ns = R.shape
+    sk = np.empty(n_boot)
+    for b in range(n_boot):
+        ix = np.ix_(rng.integers(0, ni, ni), rng.integers(0, ns, ns))
+        sk[b] = 1 - np.nanmedian(e_model[ix]) / np.nanmedian(e_null[ix])
+    bias = np.log(R_pred / R)
+    return dict(model_median_abs_log_err=float(np.median(e_model)), model_ci95=[float(x) for x in cm], model_passes=bool(cm[1] < rule),
+                null_median_abs_log_err=float(np.median(e_null)), null_ci95=[float(x) for x in cn], null_passes=bool(cn[1] < rule),
+                skill=float(1 - np.median(e_model) / np.median(e_null)), skill_ci95=[float(x) for x in np.quantile(sk, [.025, .975])],
+                model_better_than_null=bool(np.quantile(sk, .025) > 0),
+                signed_log_bias=float(bias.mean()), signed_log_bias_ci95=[float(x) for x in two_level_bootstrap(bias, seed, n_boot=n_boot)])
+
+
+def ratio_summaries(N_attacked, N_clean, seed: int, n_boot: int = N_BOOT) -> dict:
+    """Ba cách tóm tắt "N tăng bao nhiêu lần": N_attacked [ảnh, seed], N_clean [ảnh].
+    Trung bình các tỉ số bị kéo bởi ảnh có N sạch nhỏ; bài phải ghi rõ dùng thống kê nào."""
+    Na, Nc = np.asarray(N_attacked, dtype=float), np.asarray(N_clean, dtype=float)
+    r = Na / np.maximum(Nc[:, None], 1)
+    return dict(mean_of_ratios=float(r.mean()), mean_ci95=[float(x) for x in two_level_bootstrap(r, seed, n_boot=n_boot)],
+                median_of_ratios=float(np.median(r)),
+                median_ci95=[float(x) for x in two_level_bootstrap(r, seed, n_boot=n_boot, stat=np.nanmedian)],
+                ratio_of_medians=float(np.median(Na) / max(float(np.median(Nc)), 1.)), share_clean_below_10=float((Nc < 10).mean()))
+
+
+def tail_summary(ms, deadlines=(33.3, 100.0)) -> dict:
+    """Đuôi phân phối trên từng lần lặp (không gộp trung vị trước): p95, p99, tỉ lệ vượt deadline."""
+    x = np.asarray(ms, dtype=float)
+    return dict(n=int(len(x)), median=float(np.median(x)), p95=float(np.quantile(x, .95)), p99=float(np.quantile(x, .99)), max=float(x.max()),
+                **{f'share_over_{d:g}ms': float((x > d).mean()) for d in deadlines})

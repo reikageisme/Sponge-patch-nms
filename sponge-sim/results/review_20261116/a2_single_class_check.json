@@ -1,0 +1,422 @@
+{
+ "pairs": [
+  {
+   "anchors": 2100,
+   "backend": "torch_pure",
+   "geometry": "dense_cluster",
+   "n": 1000,
+   "nc80_ms": 1.0907499999999999,
+   "nc1_ms": 1.026,
+   "ratio": 0.9406371762548706
+  },
+  {
+   "anchors": 2100,
+   "backend": "torch_pure",
+   "geometry": "dense_cluster",
+   "n": 1500,
+   "nc80_ms": 1.15875,
+   "nc1_ms": 1.1498,
+   "ratio": 0.9922761596548004
+  },
+  {
+   "anchors": 2100,
+   "backend": "torch_pure",
+   "geometry": "dense_cluster",
+   "n": 2100,
+   "nc80_ms": 1.3125,
+   "nc1_ms": 1.26655,
+   "ratio": 0.9649904761904763
+  },
+  {
+   "anchors": 2100,
+   "backend": "torch_pure",
+   "geometry": "disjoint",
+   "n": 1000,
+   "nc80_ms": 109.11285,
+   "nc1_ms": 108.349,
+   "ratio": 0.9929994496523554
+  },
+  {
+   "anchors": 2100,
+   "backend": "torch_pure",
+   "geometry": "disjoint",
+   "n": 1500,
+   "nc80_ms": 170.48345,
+   "nc1_ms": 170.88170000000002,
+   "ratio": 1.0023360038760363
+  },
+  {
+   "anchors": 2100,
+   "backend": "torch_pure",
+   "geometry": "disjoint",
+   "n": 2100,
+   "nc80_ms": 251.68905,
+   "nc1_ms": 253.78985,
+   "ratio": 1.0083468073005162
+  },
+  {
+   "anchors": 2100,
+   "backend": "torch_pure",
+   "geometry": "mixed",
+   "n": 1000,
+   "nc80_ms": 51.8995,
+   "nc1_ms": 52.0745,
+   "ratio": 1.0033719014634053
+  },
+  {
+   "anchors": 2100,
+   "backend": "torch_pure",
+   "geometry": "mixed",
+   "n": 1500,
+   "nc80_ms": 78.69315,
+   "nc1_ms": 80.87115,
+   "ratio": 1.0276771231041075
+  },
+  {
+   "anchors": 2100,
+   "backend": "torch_pure",
+   "geometry": "mixed",
+   "n": 2100,
+   "nc80_ms": 114.6325,
+   "nc1_ms": 116.47085,
+   "ratio": 1.0160369005299545
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_batched",
+   "geometry": "dense_cluster",
+   "n": 1000,
+   "nc80_ms": 0.9246,
+   "nc1_ms": 0.2331,
+   "ratio": 0.2521090201168073
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_batched",
+   "geometry": "dense_cluster",
+   "n": 1500,
+   "nc80_ms": 5.78795,
+   "nc1_ms": 0.40215,
+   "ratio": 0.06948055874705206
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_batched",
+   "geometry": "dense_cluster",
+   "n": 2100,
+   "nc80_ms": 6.3401,
+   "nc1_ms": 0.4918,
+   "ratio": 0.07756975442027729
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_batched",
+   "geometry": "disjoint",
+   "n": 1000,
+   "nc80_ms": 1.20265,
+   "nc1_ms": 1.2130999999999998,
+   "ratio": 1.0086891448052218
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_batched",
+   "geometry": "disjoint",
+   "n": 1500,
+   "nc80_ms": 6.024150000000001,
+   "nc1_ms": 2.8183,
+   "ratio": 0.467833636280637
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_batched",
+   "geometry": "disjoint",
+   "n": 2100,
+   "nc80_ms": 6.4094,
+   "nc1_ms": 5.31315,
+   "ratio": 0.8289621493431523
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_batched",
+   "geometry": "mixed",
+   "n": 1000,
+   "nc80_ms": 1.1160999999999999,
+   "nc1_ms": 0.5845,
+   "ratio": 0.5236985933160112
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_batched",
+   "geometry": "mixed",
+   "n": 1500,
+   "nc80_ms": 6.01845,
+   "nc1_ms": 1.29665,
+   "ratio": 0.21544583738337947
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_batched",
+   "geometry": "mixed",
+   "n": 2100,
+   "nc80_ms": 6.3523,
+   "nc1_ms": 2.1617,
+   "ratio": 0.3403019378807676
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_nms",
+   "geometry": "dense_cluster",
+   "n": 1000,
+   "nc80_ms": 0.22115,
+   "nc1_ms": 0.18409999999999999,
+   "ratio": 0.8324666515939406
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_nms",
+   "geometry": "dense_cluster",
+   "n": 1500,
+   "nc80_ms": 0.25495,
+   "nc1_ms": 0.25135,
+   "ratio": 0.9858795842322025
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_nms",
+   "geometry": "dense_cluster",
+   "n": 2100,
+   "nc80_ms": 0.358,
+   "nc1_ms": 0.32265,
+   "ratio": 0.9012569832402235
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_nms",
+   "geometry": "disjoint",
+   "n": 1000,
+   "nc80_ms": 1.1726999999999999,
+   "nc1_ms": 1.1789,
+   "ratio": 1.0052869446576278
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_nms",
+   "geometry": "disjoint",
+   "n": 1500,
+   "nc80_ms": 2.43005,
+   "nc1_ms": 2.4543,
+   "ratio": 1.009979218534598
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_nms",
+   "geometry": "disjoint",
+   "n": 2100,
+   "nc80_ms": 4.7259,
+   "nc1_ms": 4.73405,
+   "ratio": 1.0017245392412026
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_nms",
+   "geometry": "mixed",
+   "n": 1000,
+   "nc80_ms": 0.6186,
+   "nc1_ms": 0.5788,
+   "ratio": 0.9356611703847396
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_nms",
+   "geometry": "mixed",
+   "n": 1500,
+   "nc80_ms": 1.0372,
+   "nc1_ms": 1.04515,
+   "ratio": 1.0076648669494794
+  },
+  {
+   "anchors": 2100,
+   "backend": "tv_nms",
+   "geometry": "mixed",
+   "n": 2100,
+   "nc80_ms": 1.84475,
+   "nc1_ms": 1.8517000000000001,
+   "ratio": 1.003767448163708
+  },
+  {
+   "anchors": 2100,
+   "backend": "ultra_native",
+   "geometry": "dense_cluster",
+   "n": 1000,
+   "nc80_ms": 1.4794,
+   "nc1_ms": 0.5216000000000001,
+   "ratio": 0.3525753683925916
+  },
+  {
+   "anchors": 2100,
+   "backend": "ultra_native",
+   "geometry": "dense_cluster",
+   "n": 1500,
+   "nc80_ms": 2.16725,
+   "nc1_ms": 0.6483000000000001,
+   "ratio": 0.29913484831007037
+  },
+  {
+   "anchors": 2100,
+   "backend": "ultra_native",
+   "geometry": "dense_cluster",
+   "n": 2100,
+   "nc80_ms": 3.2064500000000002,
+   "nc1_ms": 0.75545,
+   "ratio": 0.2356032372249684
+  },
+  {
+   "anchors": 2100,
+   "backend": "ultra_native",
+   "geometry": "disjoint",
+   "n": 1000,
+   "nc80_ms": 1.79325,
+   "nc1_ms": 1.5516,
+   "ratio": 0.8652446675031368
+  },
+  {
+   "anchors": 2100,
+   "backend": "ultra_native",
+   "geometry": "disjoint",
+   "n": 1500,
+   "nc80_ms": 3.22185,
+   "nc1_ms": 2.8669000000000002,
+   "ratio": 0.8898303769573382
+  },
+  {
+   "anchors": 2100,
+   "backend": "ultra_native",
+   "geometry": "disjoint",
+   "n": 2100,
+   "nc80_ms": 5.7142,
+   "nc1_ms": 5.17235,
+   "ratio": 0.9051748276224143
+  },
+  {
+   "anchors": 2100,
+   "backend": "ultra_native",
+   "geometry": "mixed",
+   "n": 1000,
+   "nc80_ms": 1.7037499999999999,
+   "nc1_ms": 0.9197500000000001,
+   "ratio": 0.5398385913426267
+  },
+  {
+   "anchors": 2100,
+   "backend": "ultra_native",
+   "geometry": "mixed",
+   "n": 1500,
+   "nc80_ms": 2.67225,
+   "nc1_ms": 1.4268999999999998,
+   "ratio": 0.5339695013565346
+  },
+  {
+   "anchors": 2100,
+   "backend": "ultra_native",
+   "geometry": "mixed",
+   "n": 2100,
+   "nc80_ms": 4.4471,
+   "nc1_ms": 2.39415,
+   "ratio": 0.5383620786580018
+  }
+ ],
+ "large_grids": [
+  8400,
+  10000
+ ],
+ "large_grids_without_nc1": [
+  8400,
+  10000
+ ],
+ "largest_nc80": [
+  {
+   "anchors": 8400,
+   "backend": "tv_batched",
+   "geometry": "dense_cluster",
+   "n": 8400,
+   "ms": 9.65485
+  },
+  {
+   "anchors": 8400,
+   "backend": "tv_batched",
+   "geometry": "disjoint",
+   "n": 8400,
+   "ms": 10.8527
+  },
+  {
+   "anchors": 8400,
+   "backend": "tv_batched",
+   "geometry": "mixed",
+   "n": 8400,
+   "ms": 11.501000000000001
+  },
+  {
+   "anchors": 8400,
+   "backend": "tv_nms",
+   "geometry": "dense_cluster",
+   "n": 8400,
+   "ms": 1.30815
+  },
+  {
+   "anchors": 8400,
+   "backend": "tv_nms",
+   "geometry": "disjoint",
+   "n": 8400,
+   "ms": 94.05930000000001
+  },
+  {
+   "anchors": 8400,
+   "backend": "tv_nms",
+   "geometry": "mixed",
+   "n": 8400,
+   "ms": 59.29505
+  },
+  {
+   "anchors": 10000,
+   "backend": "tv_batched",
+   "geometry": "dense_cluster",
+   "n": 10000,
+   "ms": 9.8769
+  },
+  {
+   "anchors": 10000,
+   "backend": "tv_batched",
+   "geometry": "disjoint",
+   "n": 10000,
+   "ms": 11.97505
+  },
+  {
+   "anchors": 10000,
+   "backend": "tv_batched",
+   "geometry": "mixed",
+   "n": 10000,
+   "ms": 12.473199999999999
+  },
+  {
+   "anchors": 10000,
+   "backend": "tv_nms",
+   "geometry": "dense_cluster",
+   "n": 10000,
+   "ms": 1.54445
+  },
+  {
+   "anchors": 10000,
+   "backend": "tv_nms",
+   "geometry": "disjoint",
+   "n": 10000,
+   "ms": 137.22924999999998
+  },
+  {
+   "anchors": 10000,
+   "backend": "tv_nms",
+   "geometry": "mixed",
+   "n": 10000,
+   "ms": 95.3951
+  }
+ ]
+}
