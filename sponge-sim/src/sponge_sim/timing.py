@@ -93,3 +93,59 @@ class JsonlWriter:
 
     def close(self):
         self.fh.close()
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Bổ sung sau phản biện 16/11/2026: cổng trôi theo khối (E11 bị loại vì 11/11 điểm tham chiếu bị cờ).
+
+class SessionAbort(RuntimeError):
+    pass
+
+
+class DriftGate:
+    """Đo điểm tham chiếu TRƯỚC và SAU mỗi khối; khối chỉ được nhận khi cả hai điểm lệch ref đầu phiên không quá `flag`
+    và lệch nhau không quá `flag`. Khối bị trôi được đo lại (tối đa `max_retries` lần, chờ `cooldown_s` giữa các lần);
+    hết lượt thì dừng phiên sớm bằng SessionAbort. Mọi lần thử, kể cả lần bị bỏ, được ghi với kind='block_attempt'
+    để báo cáo đầy đủ. Quy tắc (flag, max_retries, cooldown_s) phải nằm trong file đăng ký trước của phiên đo."""
+
+    def __init__(self, reference_fn=None, writer=None, flag: float = DRIFT_FLAG, max_retries: int = 3,
+                 cooldown_s: float = 60.0, sleep=time.sleep):
+        self.ref = reference_fn or reference_ms
+        self.w, self.flag, self.max_retries, self.cooldown, self.sleep = writer, flag, max_retries, cooldown_s, sleep
+        self.ref0 = None
+        self.attempts = []
+
+    def _log(self, **row):
+        row.setdefault('wall_utc', time.time())
+        self.attempts.append(row)
+        if self.w is not None:
+            self.w.write(dict(kind='block_attempt', **row))
+
+    def start(self) -> float:
+        self.ref0 = self.ref()
+        self._log(block='start', ref_ms=self.ref0, accepted=True)
+        return self.ref0
+
+    def run_block(self, block, measure):
+        """measure() -> list các dòng raw của khối (CHƯA ghi file). Trả về các dòng của lần đo được nhận."""
+        if self.ref0 is None:
+            self.start()
+        for attempt in range(self.max_retries + 1):
+            before = self.ref()
+            rows = measure()
+            after = self.ref()
+            d_b, d_a, d_in = before / self.ref0 - 1, after / self.ref0 - 1, after / before - 1
+            ok = max(abs(d_b), abs(d_a), abs(d_in)) <= self.flag
+            self._log(block=block, attempt=attempt, ref_before_ms=before, ref_after_ms=after, rel_before=d_b, rel_after=d_a,
+                      rel_within=d_in, accepted=ok, n_rows=len(rows))
+            if ok:
+                return rows
+            if attempt < self.max_retries:
+                self.sleep(self.cooldown)
+        raise SessionAbort(f'khối {block}: tham chiếu trôi quá {self.flag:.0%} sau {self.max_retries + 1} lần đo; dừng phiên')
+
+    def summary(self) -> dict:
+        blocks = [a for a in self.attempts if a.get('block') != 'start']
+        acc = [a for a in blocks if a['accepted']]
+        return dict(attempts=len(blocks), accepted=len(acc), rejected=len(blocks) - len(acc),
+                    max_abs_accepted=max([max(abs(a['rel_before']), abs(a['rel_after'])) for a in acc] or [0.0]))

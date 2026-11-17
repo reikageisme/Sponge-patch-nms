@@ -181,3 +181,52 @@ def read_thermal() -> dict:
         except Exception:
             pass
     return out
+
+
+# ----------------------------------------------------------------------------------------------------------------------
+# Bổ sung sau phản biện 16/11/2026: kiểm môi trường đã khoá trước phiên đo (chỉ đọc, không đổi cấu hình máy).
+
+def _cpulist(text) -> list[int]:
+    out = []
+    for part in (text or '').split(','):
+        part = part.strip()
+        if '-' in part:
+            a, b = part.split('-')
+            out += list(range(int(a), int(b) + 1))
+        elif part:
+            out.append(int(part))
+    return out
+
+
+def lock_status(cpu: int, sys_root: str = '/sys') -> dict:
+    """Trạng thái khoá của CPU sẽ ghim: governor performance, min = max, turbo/boost tắt, anh em SMT offline, isolcpus.
+    `ready` chỉ True khi không còn vấn đề nào. Ghi kết quả vào manifest của phiên."""
+    from pathlib import Path
+    base = Path(sys_root) / 'devices/system/cpu'
+
+    def rd(p):
+        try:
+            return Path(p).read_text().strip()
+        except OSError:
+            return None
+    f = base / f'cpu{cpu}' / 'cpufreq'
+    gov, fmin, fmax = rd(f / 'scaling_governor'), rd(f / 'scaling_min_freq'), rd(f / 'scaling_max_freq')
+    no_turbo, boost = rd(base / 'intel_pstate/no_turbo'), rd(base / 'cpufreq/boost')
+    sib = [c for c in _cpulist(rd(base / f'cpu{cpu}/topology/thread_siblings_list')) if c != cpu]
+    sib_online = [c for c in sib if rd(base / f'cpu{c}/online') != '0']
+    iso = _cpulist(rd(base / 'isolated'))
+    problems = []
+    if gov != 'performance':
+        problems.append(f'governor = {gov}, cần performance')
+    if fmin is None or fmin != fmax:
+        problems.append(f'tần số chưa khoá: min {fmin} kHz, max {fmax} kHz')
+    if no_turbo == '0' or boost == '1':
+        problems.append('turbo / boost đang bật')
+    if no_turbo is None and boost is None:
+        problems.append('không đọc được trạng thái turbo / boost')
+    if sib_online:
+        problems.append(f'CPU anh em SMT còn online: {sib_online}')
+    if iso and cpu not in iso:
+        problems.append(f'CPU {cpu} không nằm trong isolcpus {iso}')
+    return dict(ready=not problems, cpu=cpu, governor=gov, min_khz=fmin, max_khz=fmax, no_turbo=no_turbo, boost=boost,
+                smt_siblings=sib, smt_siblings_online=sib_online, isolated=iso, problems=problems)

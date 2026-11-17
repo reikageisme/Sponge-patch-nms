@@ -41,6 +41,14 @@ PHONE = dict(
           dict(anchors=10000, label='đầu giả 10^4 (vượt head thật)', n=[100, 300, 1000, 3000, 10000], nc=[80])],
     caps=[None], backends=['torch_pure', 'tv_nms'], repeats=10, warmup=2, groups_per_block=6,
     pipeline=dict(CONFIG['pipeline'], n=[]), min_effective_default=0.5, device='phone')
+# Bổ sung sau phản biện 16/11/2026 (--nc1-large): lưới MỘT LỚP ở hai head lớn, nơi torchvision.batched_nms chạy NMS riêng từng lớp
+# (hơn 4000 hộp). Lưới gốc chỉ có nc = 1 ở 2100 anchor nên chưa trả lời được "kẻ tấn công dồn một lớp thì class-batched còn rẻ không".
+# Có nc = 80 cùng phiên để so trực tiếp; bỏ phần B (toàn trình). Cần đăng ký trước riêng trước khi đo.
+NC1_LARGE = dict(
+    experiment='E1-nc1-large',
+    grid=[dict(anchors=8400, label='head 640, một lớp so với 80 lớp', n=[1000, 3000, 8400], nc=[1, 80]),
+          dict(anchors=10000, label='đầu giả 10^4, một lớp so với 80 lớp', n=[1000, 3000, 10000], nc=[1, 80])],
+    caps=[None], pipeline=dict(CONFIG['pipeline'], n=[]))
 
 
 def inject_seed(cfg, anchors, n, nc, geometry):
@@ -141,9 +149,10 @@ def main():
     ap.add_argument('--worker')
     ap.add_argument('--phone', action='store_true', help='lưới/backend gọn cho điện thoại; profile lấy từ SPONGE_PROFILES(_FILE)')
     ap.add_argument('--profiles', default='', help='ghi đè danh sách profile (phân cách bằng dấu phẩy)')
+    ap.add_argument('--nc1-large', action='store_true', help='lưới một lớp ở 8400 và 10000 anchor (xem NC1_LARGE); không đổi lưới mặc định')
     a = ap.parse_args()
     run_dir = Path(a.run_dir)
-    cfg = {**CONFIG, **(PHONE if a.phone else {}), **(SMOKE if a.smoke else {}), 'smoke': a.smoke}
+    cfg = {**CONFIG, **(PHONE if a.phone else {}), **(NC1_LARGE if a.nc1_large else {}), **(SMOKE if a.smoke else {}), 'smoke': a.smoke}
     if a.profiles:
         cfg['profiles'] = a.profiles.split(',')
     if a.worker:
@@ -161,6 +170,8 @@ def main():
             cmd.append('--smoke')
         if a.phone:
             cmd.append('--phone')
+        if a.nc1_large:
+            cmd.append('--nc1-large')
         if a.profiles:
             cmd += ['--profiles', a.profiles]
         subprocess.run(cmd, check=True)
