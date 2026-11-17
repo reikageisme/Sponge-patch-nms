@@ -91,12 +91,12 @@ def main():
     sources[cap_path]=hashlib.sha256((ROOT/cap_path).read_bytes()).hexdigest()
     # Every published section is required, including failed controls. Missing
     # negative evidence must stop regeneration rather than silently disappear.
-    for name in ('nested1500','laptop_cpu','laptop_defense','laptop_components','laptop_reference_trace','laptop_pcores'):
+    for name in ('nested1500','laptop_cpu','laptop_defense','laptop_components','laptop_reference_trace','laptop_pcores','pi3b_diagnostic','pi3b_swapguard_v2','pi3b_full20','pi3b_memory'):
         path=OUT/f'{name}.tex'
         sources[f'paper_en/segmentation_extension/{name}.tex']=hashlib.sha256(path.read_bytes()).hexdigest()
         lines.append(f'\\input{{segmentation_extension/{name}}}')
-    (OUT/'extension.tex').write_text('\n'.join(lines)+'\n',encoding='utf-8')
-    (OUT/'sources.json').write_text(json.dumps(sources,indent=2))
+    (OUT/'extension.tex').write_text('\n'.join(lines)+'\n',encoding='utf-8',newline='\n')
+    (OUT/'sources.json').write_text(json.dumps(sources,indent=2),encoding='utf-8',newline='\n')
     import matplotlib
     matplotlib.use('Agg')
     import matplotlib.pyplot as plt

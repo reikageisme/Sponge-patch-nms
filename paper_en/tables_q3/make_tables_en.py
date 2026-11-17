@@ -48,9 +48,18 @@ REG = {}
 
 def write(t, body):
     REG[t.name] = [dict(text=s, source=src) for s, src in t.cells]
+    # Shrink any table wider than the text block to fit; narrower tables are untouched.
+    body = body.replace('\\begin{tabular}', '\\begin{adjustbox}{max width=\\textwidth}\n\\begin{tabular}', 1)
+    body = body.replace('\\end{tabular}', '\\end{tabular}\n\\end{adjustbox}', 1)
+    # House style (supervisor review 16/11): plain hyphens, no en dashes.
+    body = body.replace('--', '-')
+    # Narrow tables sit in one column so they stay next to their text.
+    if t.name in NARROW:
+        body = body.replace('table*', 'table').replace('\\textwidth', '\\columnwidth')
     return t.name, body
 
 
+NARROW = set()  # all tables full width: mixing one- and two-column floats delays later tables
 END = '\n\\bottomrule\n\\end{tabular}\n'
 
 
@@ -74,9 +83,9 @@ def t_aa():
     fl = lambda p, f: t.n(len(p['drift']['flagged']), f'{f}:profiles.P1_cpu2.drift.flagged(len)') + '/' + t.n(p['drift']['reference_points'], f'{f}:profiles.P1_cpu2.drift.reference_points')  # noqa: E731
     lines.append('Flagged reference points / total & ' + fl(a, f320) + ' & & ' + fl(b, f640) + ' & \\\\')
     eff = t.n(a['pin']['effective_cores'], f'{f320}:profiles.P1_cpu2.pin.effective_cores', d=2)
-    body = rf"""\begin{{table}}[t]
+    body = rf"""\begin{{table*}}[t]
 \centering\small
-\caption{{A/A calibration on the pinned laptop profile (logical CPU 2; {eff} effective cores under load at 320 px): MDE (\%) and median time of each stage, 100 images $\times$ 20 repetitions. The A/A end-to-end time starts from the loaded image and includes pre-processing (resizing); the patch and injection measurements start from prepared tensors and therefore have a smaller $t_{{\mathrm{{total}}}}$. 640 px: the repeated A/A. Flagged blocks remain in the analysis.}}
+\caption{{A/A calibration on the pinned laptop profile ({eff} effective cores under load at 320 px): MDE (\%) and median time of each stage, 100 images $\times$ 20 repetitions. End-to-end time here includes resizing. 640 px: the repeated A/A.}}
 \label{{tab:aa}}
 \begin{{tabular}}{{@{{}}lcccc@{{}}}}
 \toprule
@@ -84,7 +93,7 @@ def t_aa():
 \cmidrule(lr){{2-3}}\cmidrule(lr){{4-5}}
 Stage & MDE (\%) & Median (ms) & MDE (\%) & Median (ms) \\
 \midrule
-""" + '\n'.join(lines) + END + '\\end{table}\n'
+""" + '\n'.join(lines) + END + '\\end{table*}\n'
     return write(t, body)
 
 
@@ -132,7 +141,7 @@ def t_cap():
                          + t.n(s['curves'][k0]['median_ms'], f'{f}:curves.{k0}.median_ms', sig=3) + ' & '
                          + t.n(s['curves'][k3]['median_ms'], f'{f}:curves.{k3}.median_ms', sig=3) + ' & '
                          + t.n(1 / c['ratio'], sel + '.ratio', sig=3) + ' (' + t.ci(1 / c['ci95'][1], 1 / c['ci95'][0], sel + '.ci95(inverted)', sig=3) + ') \\\\')
-    body = r"""\begin{table}[t]
+    body = r"""\begin{table*}[t]
 \centering\small
 \caption{Median NMS latency (ms) at $\Ntau=10^4$ (10\,000-anchor head, 80 classes) without a cap and with a top-300 cap, and the reduction factor (uncapped divided by capped; 95\% CI, bootstrap over repetitions).}
 \label{tab:cap}
@@ -140,7 +149,7 @@ def t_cap():
 \toprule
 Geometry & Implementation & No cap & Cap 300 & Reduction \\
 \midrule
-""" + '\n'.join(lines) + END + '\\end{table}\n'
+""" + '\n'.join(lines) + END + '\\end{table*}\n'
     return write(t, body)
 
 
@@ -167,7 +176,7 @@ def t_nstar():
     fb = t.n(a['drift']['flagged'], f'{fa}:drift.flagged') + '/' + t.n(a['drift']['points'], f'{fa}:drift.points')
     body = rf"""\begin{{table*}}[t]
 \centering\small
-\caption{{Threshold $N^{{*}}$: the smallest grid level at which end-to-end time rises above the MDE (lower bound of the 95\% CI, bootstrap over images, $>1+\mathrm{{MDE}}$); full-pipeline injection, 20 images, no top-$k$ cap; ``$>$'' means that no grid level exceeds it. ``Measured'' is the preregistered computation (primary result) with the preregistered MDE ({m3}\% at 320 px; {m6}\% at 640 px, from the first 640-px A/A); the column ``MDE {m6b}\%'' uses the MDE of the repeated 640-px A/A (not preregistered). $^{{\dagger}}$Post hoc: $N^{{*}}$ predicted by the Amdahl model from the injection curves (2100-anchor head at 320 px, 8400-anchor head at 640 px; the 10\,000-anchor head is not used) with the clean $t_{{\mathrm{{total}}}}$ of the same session and the preregistered MDE. $^{{\S}}$Preregistered sensitivity analysis: blocks with a flagged reference point removed ({fb} points flagged; {nf3} images remain at 320 px and {nf6} at 640 px), preregistered MDE.}}
+\caption{{Threshold $N^{{*}}$: the smallest grid level whose end-to-end ratio has a lower 95\% bound above $1+\mathrm{{MDE}}$ (full-pipeline injection, 20 images, no cap); ``$>$'': not reached. ``Measured'' uses the preregistered MDE ({m3}\% at 320 px, {m6}\% at 640 px); ``MDE {m6b}\%'' uses the repeated A/A. $^{{\dagger}}$Post hoc budget estimate. $^{{\S}}$Without flagged blocks ({fb} points flagged; {nf3} and {nf6} images remain).}}
 \label{{tab:nstar}}
 \begin{{tabular}}{{@{{}}llccccccc@{{}}}}
 \toprule
@@ -218,7 +227,7 @@ def t_amdahl():
     np_ = t.n(npass, f'{fe}:amdahl[*].passes_prereg_rule (count)') + '/' + t.n(len(e['amdahl']), f'{fe}:amdahl(len)')
     body = rf"""\begin{{table*}}[t]
 \centering\small
-\caption{{Amdahl-type model $R_{{\mathrm{{pred}}}} = 1+\Delta t_{{\mathrm{{NMS}}}}/t_{{\mathrm{{total}}}}$ against the measured end-to-end ratio $R_{{\mathrm{{meas}}}}$. Error is $|\ln(R_{{\mathrm{{meas}}}}/R_{{\mathrm{{pred}}}})|$. \textbf{{Part A is post hoc}}: the model was written after the full-pipeline injection had been seen; over all {nc} cells (four implementations, three geometries, two caps, two resolutions) the median error is {e1}, the 90th percentile {e9}, and the predicted $N^{{*}}$ equals the measured $N^{{*}}$ in {ag} cells. The measured $N^{{*}}$ in part A is a \textbf{{sensitivity analysis}} (non-preregistered aggregation): it uses the mean log ratio against the median of the three $\Ntau=0$ cells (the same computation as the prediction), so it differs from Table~\ref{{tab:nstar}} (mean ratio) in {nd} cells, e.g.\ Ultralytics, disjoint, 320 px: {du}. Part B is computed for YOLOv5s alone: $t_{{\mathrm{{total}}}}$ is the clean end-to-end time of the YOLOv5s session itself, and the NMS curve is the synthetic injection curve (it depends only on the candidate set, not on the model); specification and rule (upper bound of the 95\% CI of the median error $<0.05$) were preregistered before measurement; {np_} cells pass, and the three failing cells are reported in full.}}
+\caption{{Budget estimate $R_{{\mathrm{{pred}}}} = 1+\Delta t_{{\mathrm{{NMS}}}}/t_{{\mathrm{{total}}}}$ against the measured ratio $R_{{\mathrm{{meas}}}}$; error is $|\ln(R_{{\mathrm{{meas}}}}/R_{{\mathrm{{pred}}}})|$. Part A (post hoc): full-pipeline injection, {nc} cells, median error {e1}, 90th percentile {e9}; predicted and measured $N^{{*}}$ agree in {ag} cells. Part B: whole-image attack variants on YOLOv5s, preregistered rule (upper 95\% bound of the median error $<0.05$); {np_} cells pass.}}
 \label{{tab:amdahl}}
 \begin{{tabular}}{{@{{}}lccccc@{{}}}}
 \toprule
@@ -252,7 +261,7 @@ def t_attacks():
     ni = t.n(s['n_images'], f'{f}:n_images')
     body = rf"""\begin{{table*}}[t]
 \centering\small
-\caption{{Adaptive variants of two whole-image attacks, after Overload and Phantom Sponges (YOLOv5s, 640 px, additive whole-image perturbation, white box; {ni} images $\times$ 5 seeds), measured on one pinned CPU core, float32. Median $\Ntau$ clean $\to$ perturbed and mean $\Ntau$ ratio ($\tau=0.25$); end-to-end ratio (95\% CI, two-level bootstrap); in-session end-to-end MDE (two clean arms); ``above MDE'' when the lower CI bound is $>1+\mathrm{{MDE}}$. All quantities come from this YOLOv5s session; nothing is compared with the YOLOv8n threshold $N^{{*}}$. $^{{\dagger}}$\textbf{{Post hoc}}, descriptive: the YOLOv5s-specific threshold $\Delta t^{{*}}=\mathrm{{MDE}}\times t_{{\mathrm{{total}}}}$ (median clean end-to-end time of the same session) and the median increase of the NMS stage. The Amdahl model for these cells is in Table~\ref{{tab:amdahl}}.}}
+\caption{{Adaptive variants of two whole-image attacks (YOLOv5s, 640 px, {ni} images $\times$ 5 seeds, one pinned CPU core). Median $\Ntau$ clean $\to$ perturbed and mean of the per-image $\Ntau$ ratios ($\tau=0.25$); end-to-end ratio (95\% CI, two-level bootstrap); ``above MDE'': lower bound $>1+\mathrm{{MDE}}$ of the session. $^{{\dagger}}$Post hoc: threshold $\Delta t^{{*}}$ and median NMS increase.}}
 \label{{tab:attacks}}
 \begin{{tabular}}{{@{{}}lcclccccc@{{}}}}
 \toprule
@@ -279,7 +288,7 @@ def t_spec():
         lines.append(f'{c.split("_")[0]} & {meth} & ' + t.n(sp['canvas'], src + '.canvas') + ' & ' + t.n(sp['size'], src + '.size') + ' & '
                      + t.n(sp['threshold'], src + '.threshold', d=2) + ' & ' + t.n(sp['n_train'], src + '.n_train') + ' \\\\')
     sd = f'{min(seeds)}--{max(seeds)}'
-    body = rf"""\begin{{table}}[t]
+    body = rf"""\begin{{table*}}[t]
 \centering\small
 \caption{{Conditions of the case study, read from the specification stored in the checkpoints of the patch generation run. $\tau_{{\mathrm{{obj}}}}$ is the threshold in the optimization objective. All conditions use software EOT, seeds {sd}, and three budget levels.}}
 \label{{tab:spec}}
@@ -287,7 +296,7 @@ def t_spec():
 \toprule
 Condition & Method & Input (px) & Patch (px) & $\tau_{{\mathrm{{obj}}}}$ & Training images \\
 \midrule
-""" + '\n'.join(lines) + END + '\\end{table}\n'
+""" + '\n'.join(lines) + END + '\\end{table*}\n'
     return write(t, body)
 
 
@@ -304,7 +313,7 @@ def t_nk():
             sel = f'{f}:{key}.{be}'
             lines.append(f'{BE_EN[be]} & ' + t.n(v['median_abs_log_err_M_N'], sel + '.median_abs_log_err_M_N', d=2) + ' & ' + t.n(v['median_abs_log_err_M_NK'], sel + '.median_abs_log_err_M_NK', d=2)
                          + ' & ' + t.n(v['delta'], sel + '.delta', d=2) + ' (' + t.ci(v['delta_ci95'][0], v['delta_ci95'][1], sel + '.delta_ci95', d=2, sep=' to ') + ') \\\\')
-    body = r"""\begin{table}[t]
+    body = r"""\begin{table*}[t]
 \centering\small
 \caption{Median error $|\ln(t_{\mathrm{meas}}/t_{\mathrm{pred}})|$ of $M_N$ and $M_{NK}$ on real candidate sets, and the difference $\Delta$ ($M_N$ minus $M_{NK}$) with a 95\% two-level bootstrap CI (images, units within images). $\Delta>0$ means that adding $K$ reduces the error. The preregistered confirmation uses the first 640-px patch measurement (high noise).}
 \label{tab:nk}
@@ -312,7 +321,7 @@ def t_nk():
 \toprule
 Implementation & $M_N$ & $M_{NK}$ & $\Delta$ (95\% CI) \\
 \midrule
-""" + '\n'.join(lines) + END + '\\end{table}\n'
+""" + '\n'.join(lines) + END + '\\end{table*}\n'
     return write(t, body)
 
 
@@ -342,7 +351,7 @@ def t_patches():
         lines.append(f'{lab} & ' + ' & '.join(cells) + ' \\\\')
     body = r"""\begin{table*}[t]
 \centering\small
-\caption{Effect of the frozen patches (SHA-256) relative to clean images of the same canvas, 100 images $\times$ 5 seeds (0--4, chosen in advance). The $\Ntau$ ratios and the NMS-stage ratio (torchvision, $\tau=0.01$) are \textbf{measurements} of the patch re-measurement on the pinned profile; 95\% CI, two-level bootstrap over images $\times$ seeds. The two $R_{\mathrm{pred}}$ columns are \textbf{predictions, not measurements}: $R_{\mathrm{pred}} = 1 + \Delta t_{\mathrm{NMS}}/t_{\mathrm{total}}$ (Amdahl-type budget model, post hoc), with $\Delta t_{\mathrm{NMS}}$ measured per image $\times$ seed pair and $t_{\mathrm{total}}$ the clean end-to-end time of the same session. No measured end-to-end column is reported: the end-to-end timing of this run included the patch insertion for patched arms but not for clean images, and the re-measurement after the fix was rejected for drift (Table~\ref{tab:dev}). ``(above)'': $R_{\mathrm{pred}} > 1+\mathrm{MDE}$, with the end-to-end A/A MDE at the same resolution. 640-px rows are compared with clean 640-px images (second addendum run); baselines B1--B4 pool images 1--50 and 51--100 from two sessions, each image compared with the clean image of its own session.}
+\caption{Effect of the frozen patches relative to clean images, 100 images $\times$ 5 seeds. The $\Ntau$ ratios and the NMS-stage ratio (torchvision, $\tau=0.01$) are measured (95\% CI, two-level bootstrap). The two $R_{\mathrm{pred}}$ columns are budget estimates, not measurements (Table~\ref{tab:dev}); ``(above)'': $R_{\mathrm{pred}} > 1+\mathrm{MDE}$.}
 \label{tab:patches}
 \begin{tabular}{@{}lcccccc@{}}
 \toprule
@@ -367,7 +376,7 @@ def t_threshold():
     lines.append('$\\Delta t_{\\mathrm{NMS}}$ of the gradient baseline, measured (ms) & ' + ' & '.join(t.n(b[be]['delta_nms_ms_mean'], sb(be, 'delta_nms_ms_mean'), sig=2) + ' (' + t.ci(*b[be]['delta_nms_ms_ci95'], sb(be, 'delta_nms_ms_ci95'), sig=2) + ')' for be in b) + ' \\\\')
     lines.append('Above $\\Delta t^{*}$ (320 px) & ' + ' & '.join('yes' if b[be]['delta_nms_ms_mean'] > tc['threshold_ms'][be]['320']['threshold_ms'] else 'no' for be in b) + ' \\\\')
     lines.append('$R_{\\mathrm{pred}} = 1+\\Delta t_{\\mathrm{NMS}}/t_{\\mathrm{total}}$, predicted & ' + ' & '.join(t.n(b[be]['r_pred'], sb(be, 'r_pred'), d=4) + ' (' + t.ci(*b[be]['r_pred_ci95'], sb(be, 'r_pred_ci95'), d=4) + ')' for be in b) + ' \\\\')
-    body = r"""\begin{table}[t]
+    body = r"""\begin{table*}[t]
 \centering\small
 \caption{\textbf{Post hoc.} Threshold $\Delta t^{*}$ for the end-to-end ratio to exceed the MDE, and the prediction for the gradient baseline (B4, 320 px, 100 images $\times$ 5 seeds). $t_{\mathrm{total}}$ is the clean end-to-end time of the patch session itself (prepared tensors, no insertion step); the MDE comes from the separate A/A because this session has no two clean arms. $\Delta t_{\mathrm{NMS}}$ is a micro-benchmark measurement; $R_{\mathrm{pred}}$ is a prediction, not a measurement.}
 \label{tab:threshold}
@@ -375,7 +384,7 @@ def t_threshold():
 \toprule
  & torchvision \texttt{nms} & pure PyTorch \\
 \midrule
-""" + '\n'.join(lines) + END + '\\end{table}\n'
+""" + '\n'.join(lines) + END + '\\end{table*}\n'
     return write(t, body)
 
 
@@ -390,7 +399,7 @@ def t_x2():
         lines.append(f'{name[d]} & ' + t.n(v['images'], sel + '.images') + ' & ' + t.n(v['clean_median'], sel + '.clean_median', d=1) + ' & '
                      + t.n(v['patched_median'], sel + '.patched_median', d=1) + ' & ' + t.n(v['ratio_mean'], sel + '.ratio_mean', d=3)
                      + ' (' + t.ci(*v['ratio_ci95'], sel + '.ratio_ci95', d=3) + ') \\\\')
-    body = r"""\begin{table}[t]
+    body = r"""\begin{table*}[t]
 \centering\small
 \caption{\textbf{Post hoc, historical data}: pre-NMS candidate counts ($\tau=0.01$, 320 px) of five YOLO detectors with five earlier SG-GA patches inserted (seeds 0--4, optimized on YOLOv8n in an earlier run, budget 2500 queries). Counts only, deterministic, no timing; no preregistration. Ratios are computed per image and then averaged; 95\% CI, two-level bootstrap over images $\times$ seeds. The image set differs from the 100 images of Table~\ref{tab:patches}. The two-stage and SSD detectors of the same run count after their internal NMS and are not reported.}
 \label{tab:x2}
@@ -398,7 +407,7 @@ def t_x2():
 \toprule
 Detector & Images & Clean $\Ntau$ (median) & Patched $\Ntau$ (median) & $\Ntau$ ratio (95\% CI) \\
 \midrule
-""" + '\n'.join(lines) + END + '\\end{table}\n'
+""" + '\n'.join(lines) + END + '\\end{table*}\n'
     return write(t, body)
 
 
@@ -417,7 +426,7 @@ def t_decomp():
                          + t.n(100 * v['rest_share_of_d_total'], sel + '.rest_share_of_d_total*100', d=0) + ' \\\\')
     body = r"""\begin{table*}[t]
 \centering\small
-\caption{\textbf{Post hoc}, YOLOv5s (640 px, one pinned CPU core): decomposition of the latency increase of the adaptive variants of the two whole-image attacks, per image $\times$ seed pair against the mean of the two clean arms of the same image (ms; 95\% CI, two-level bootstrap). $\Delta t_{\mathrm{NMS}}$ is measured as a micro-benchmark at $\tau=0.25$. The ``remainder'' $=\Delta t_{\mathrm{total}}-\Delta t_{\mathrm{NMS}}$ comprises the forward pass, decoding, score filtering and building the NMS input; the raw records do not separate these stages. No new measurement.}
+\caption{\textbf{Post hoc}, YOLOv5s (640 px): decomposition of the latency increase of the whole-image attack variants per image $\times$ seed pair (ms; 95\% CI, two-level bootstrap). The remainder is $\Delta t_{\mathrm{total}}-\Delta t_{\mathrm{NMS}}$; the raw records do not separate its stages.}
 \label{tab:decomp}
 \begin{tabular}{@{}llcccc@{}}
 \toprule

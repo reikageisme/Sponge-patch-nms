@@ -5,11 +5,11 @@ After the two accepted CPU sessions, a separate prospective protocol fixes two i
 \begin{table*}[t]\centering
 \caption{Predetermined defense comparisons. Only the pre-NMS intervention reached full timing qualification. The failed output-cap smoke is retained and its full run was cancelled, without retry.}
 \label{tab:seg-laptop-defense}
-\begin{tabular}{lrrrr}\toprule
+\begin{adjustbox}{max width=\textwidth}\begin{tabular}{lrrrr}\toprule
 Intervention & Defended/baseline [95\% CI] & Baseline A/A MDE (\%) & Defended A/A MDE (\%) & Drift flags\\\midrule
 Pre-NMS cap 300 & 0.526773 [0.507007, 0.548921] & 0.149061 & 0.314700 & 1/22 \\
 Output cap 50 & Not qualified; full cancelled & --- & --- & 1/4 (smoke) \\
-\bottomrule\end{tabular}\end{table*}
+\bottomrule\end{tabular}\end{adjustbox}\end{table*}
 For the pre-NMS cap, total latency decreases by 47.322709\% [pointwise 95\% CI 45.107882, 49.299341]. The mean paired difference of image medians is -468.920147 ms [95\% CI -510.113507, -425.613187]. Each interval uses the registered 20000 image-bootstrap replicates; these intervals are not simultaneous family-wise intervals.
 All 20 image log ratios have the same negative sign. The two-sided exact sign-flip calculation enumerates all $2^{20}$ assignments, giving $p=2/2^{20}$; Holm adjustment over the two registered comparisons gives $p_{\mathrm{Holm}}=4/2^{20}$. The unmeasured/failed output-cap comparison contributes a testing placeholder of one to preserve family size; that value is not a finding of no effect. Sign-flip inference assumes sign exchangeability under the null and does not create random-population sampling or additional image independence.
 Observed kernel inputs fall from 1726--3744 to exactly 300 for every image. Retained masks change from a median of 270.5 (range 177--300) to 98 (84--118). Thus the intervention bounds kernel input but retains nonzero mask work; this total-pipeline contrast does not separately attribute savings to NMS and mask rendering. All raw spikes remain, including 50/1920 baseline and 29/1920 defended calls exceeding 1.5 times their image-specific median, each with process-CPU/wall below 0.75.

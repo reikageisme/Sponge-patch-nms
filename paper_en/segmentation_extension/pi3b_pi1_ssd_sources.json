@@ -1,0 +1,32 @@
+{
+ "run": "sponge-sim/results/pi3b_pi1_ssd_20261115/runs/full_01/",
+ "raw_sha256": "4690b2a839015b90eb3709fc7351a79f8fe321a3dfeb1e6a7a0ce136168e4366",
+ "n_images": 20,
+ "h1_adv_over_clean": "summary.json:pipeline_PI1.h1_adv_over_clean.geomean_ratio/ratio_ci95",
+ "h2_advcap_over_adv": "summary.json:pipeline_PI1.h2_advcap_over_adv.geomean_ratio/ratio_ci95",
+ "median_ms": "summary.json:pipeline_PI1.median_ms_across_images",
+ "forward_share": "summary.json:pipeline_PI1.forward_share.clean",
+ "ssd_idle": "summary.json:pipeline_PI1.gates.usb_sectors_written_values",
+ "quality_pass": true,
+ "values": {
+  "h1": 1.9672739660653011,
+  "h1_ci": [
+   1.9024149241268846,
+   2.029641788419914
+  ],
+  "h2": 0.6988133803787863,
+  "h2_ci": [
+   0.6815814232144344,
+   0.717558900665621
+  ],
+  "median_ms": {
+   "clean_total": 10054.666273,
+   "adv_total": 20296.8768655,
+   "advcap_total": 13768.326067,
+   "clean_forward": 9921.501704,
+   "adv_forward": 9924.74267825
+  },
+  "forward_share": 0.9874173475086745,
+  "mde_ratio": 1.0020416172993472
+ }
+}

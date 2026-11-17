@@ -10,5 +10,9 @@
   "paper_en/segmentation_extension/laptop_defense.tex": "8b77cf22fc520f575af81908556e6daf79a9a97aa116c2828fbbcde77fd44ce8",
   "paper_en/segmentation_extension/laptop_components.tex": "f28340c1efc4c9cb429bcf85d7595ec1be7d6ac09878e237dab834e35ae1014f",
   "paper_en/segmentation_extension/laptop_reference_trace.tex": "49dae6753bd214c0e6eefa32e780fa47735f1d5735ee1c3c870d2b08f93dcb0f",
-  "paper_en/segmentation_extension/laptop_pcores.tex": "9b6a7a5e4734113d4d7ba64e8357c44afde76bbccbeabf37dfea217d760eb99b"
+  "paper_en/segmentation_extension/laptop_pcores.tex": "9b6a7a5e4734113d4d7ba64e8357c44afde76bbccbeabf37dfea217d760eb99b",
+  "paper_en/segmentation_extension/pi3b_diagnostic.tex": "04fcd9c80e5e9919b3223da604ff4bc5f0bfb81db8c85ac8042623ee8522ea8b",
+  "paper_en/segmentation_extension/pi3b_swapguard_v2.tex": "7d7be5425495fcb269f9b5be8d292d411b0ba5fd8e224f56d2ab2477051aef62",
+  "paper_en/segmentation_extension/pi3b_full20.tex": "fcfd5ec354f13080aad414eeffbfdc16df35fad165875887209569285bf07877",
+  "paper_en/segmentation_extension/pi3b_memory.tex": "7f68ab288588007155ce49a20f6adf3929d050b33149c85ddd5ae24f11ad8db6"
 }

@@ -8,6 +8,8 @@ Mọi con số trong README đều truy được tới bản ghi thô (`file:sel
 trước và gắn `git tag` trước khi đo**; kết quả âm được giữ nguyên, kèm hiệu ứng nhỏ nhất phát hiện
 được (MDE).
 
+> **Bàn giao 17/11/2026:** việc còn lại và cách kiểm tra bài nằm ở [`docs/HANDOFF_20261117.md`](docs/HANDOFF_20261117.md). Nhánh `main` chỉ giữ phần đã tuyển chọn; toàn bộ cây làm việc (nhật ký tiến độ, kết quả thô, báo cáo) ở nhánh `handoff/20261117`.
+
 ---
 
 ## Mục lục
