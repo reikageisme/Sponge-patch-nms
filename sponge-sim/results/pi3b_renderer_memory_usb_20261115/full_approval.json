@@ -1,0 +1,7 @@
+{
+  "user_approved": true,
+  "tag": "prereg-pi3b-renderer-memory-usb-20261115",
+  "commit": "70c398ae52540e873dca0f5dd447e97bc7d00958",
+  "registration_sha256": "a19e9202b0ace3c2f796e633aae7381a6736b500626635cb7a3013396d5bb66b",
+  "smoke_summary_sha256": "3b1ebdfb9e0a9f8fa2ce8dd75bbc15b83050d3982b5edf263572a6cdab2f97a8"
+}

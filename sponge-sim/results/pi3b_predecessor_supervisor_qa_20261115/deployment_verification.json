@@ -1,0 +1,33 @@
+{
+  "command": "from pathlib import Path\nimport sys,json,hashlib\nb=Path('/home/tanh/sponge-sim/pi3b_nms_predecessor_20261115');sys.path.insert(0,str(b));import control\nobserved={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in b.iterdir() if p.is_file()}\nassert observed=={'baseline_ops.py': '829cb01fd566d67b473f363318297c064577696393a707949d1c9c325b303a34', 'bindings.py': '5b9cb5b1d8f509574e534a08888fb9484950ac69c0035d44e17945e23b232fe1', 'bracket.py': '157a353fdd33f6725db73f7dc6b6c597d03ae9ef339b5744782686de368c704f', 'build_controller_lock.py': 'e82f2baca1c5288d9ad87c5770ae2eea2ee7be3f198f5329486632682f7b5ca5', 'cache.py': '5083fe95bb0f82289e5055ca9cae8855595d7a164e778a363490f98b5a81bf2b', 'campaign.py': '8413ae3d4a2679324a07ce476e86f79696154a510e24b0f56f4875723efd8e64', 'control.py': '2bf1de637d0cc317a81109773d2b915cec90bbf46337ae877db9f75c2c0251c6', 'counters.py': '10eb26e90489283616fae24cd6b190fe50a715c0fec7b47c8fe449025a8c5a60', 'exports.py': '0f35440aa15418ab2bc8d31b17ad1c22a0ebe25daf5daa11f140035e753c21e1', 'factories.py': '06495c66682a4e806fa5e5a76dde3f90e82a07471ea3dd727bfccdfaf49fd06d', 'guard.py': 'a62f005a43cb562e93084bb04e2f5830d6cc743003e987883b095219e47bdb99', 'inventory.py': '1059453b0af8d990064b0a20c497dfd548be2e8321c8ffee04668e2f4c4eaf9e', 'kernel_input.py': 'c5b785500a5c5a796383d53642d5823e2fce03547649bc4a1c15abada449ab0f', 'material.py': 'ec309bbfaee21fcb785903ca99c7f9d65e5f9d4950e80fc3437952c576cce23a', 'pairs.py': 'bd55f9e8f984b160e78da46f4eaa835c4a45d72a31ea24bb44dd8c0460f6b5fc', 'preallocate.py': '29d5b2adf7aa4d3659a542f59268cf59714bb053f66cf2abb828ebee3c8f9d8e', 'schedule.py': 'acfe063a7f0f9bc8dbdaa650a2629003d09e0ee91c3f89a381640a4205245d25', 'usb_guard.py': 'ec549b6b3ac3ff3e66580e7014ef68169594225484399790396da4ef86e85fe2', 'worker.py': '2f40deb5cfcd9047a95015eaf7ed71282b909a33675074519a0301707831462c', 'cache_manifest.json': '61b5abaaf22ea985b98f582a34f52cc19c2272ac87f66782292d843b17bbe165', 'full20_lock.json': '1cd1789d4f30c0a6b708fad907729999f6e6e53d4ba373ce487bc8037d10be0e', 'usb_contract.json': '6837fd69f9bf5c4f75be75d8963faa405dc7e68cb1d58ad9504ff2d032c7f7e1', 'controller_lock.json': '63d427530aecee6670c604f4e65769ae8d2d2940694eb0f5ca8b06e325c96713'}\nlock=control.locked_materials(b);assert lock['qa_tag']=='qa-pi3b-nms-predecessor-supervisor-20261115'\nassert not (b/'runs').exists() and not (b/'functional_activation.json').exists()\nsnapshot=control.System().snapshot();control.validate_snapshot(snapshot)\nassert all(snapshot[k]=={'governor': 'ondemand', 'units': {'dev-zram0.swap': {'LoadState': 'loaded', 'ActiveState': 'active', 'FragmentPath': '/run/systemd/generator/dev-zram0.swap'}, 'rpi-zram-writeback.service': {'LoadState': 'loaded', 'ActiveState': 'inactive', 'FragmentPath': '/usr/lib/systemd/system/rpi-zram-writeback.service'}, 'rpi-zram-writeback.timer': {'LoadState': 'loaded', 'ActiveState': 'active', 'FragmentPath': '/run/systemd/generator/rpi-zram-writeback.timer'}}, 'setup': {'Result': 'success', 'ActiveState': 'active'}, 'swaps': [{'name': '/dev/zram0', 'kind': 'partition', 'size_kb': 926716, 'used_kb': 0, 'priority': 100}], 'mem_available_kb': 760084}[k] for k in ('governor','units','setup'))\nnorm=lambda rows:[{k:v for k,v in row.items() if k!='used_kb'} for row in rows]\nassert norm(snapshot['swaps'])==norm({'governor': 'ondemand', 'units': {'dev-zram0.swap': {'LoadState': 'loaded', 'ActiveState': 'active', 'FragmentPath': '/run/systemd/generator/dev-zram0.swap'}, 'rpi-zram-writeback.service': {'LoadState': 'loaded', 'ActiveState': 'inactive', 'FragmentPath': '/usr/lib/systemd/system/rpi-zram-writeback.service'}, 'rpi-zram-writeback.timer': {'LoadState': 'loaded', 'ActiveState': 'active', 'FragmentPath': '/run/systemd/generator/rpi-zram-writeback.timer'}}, 'setup': {'Result': 'success', 'ActiveState': 'active'}, 'swaps': [{'name': '/dev/zram0', 'kind': 'partition', 'size_kb': 926716, 'used_kb': 0, 'priority': 100}], 'mem_available_kb': 760084}['swaps'])\nassert 'torch' not in sys.modules and 'scipy' not in sys.modules\nprint(json.dumps(dict(source_sha256=observed,original_context_unchanged=True,empirical_endpoints_enabled=False,functional_activation_present=False)))\n",
+  "result": {
+    "source_sha256": {
+      "bindings.py": "5b9cb5b1d8f509574e534a08888fb9484950ac69c0035d44e17945e23b232fe1",
+      "campaign.py": "8413ae3d4a2679324a07ce476e86f79696154a510e24b0f56f4875723efd8e64",
+      "usb_guard.py": "ec549b6b3ac3ff3e66580e7014ef68169594225484399790396da4ef86e85fe2",
+      "cache.py": "5083fe95bb0f82289e5055ca9cae8855595d7a164e778a363490f98b5a81bf2b",
+      "factories.py": "06495c66682a4e806fa5e5a76dde3f90e82a07471ea3dd727bfccdfaf49fd06d",
+      "worker.py": "2f40deb5cfcd9047a95015eaf7ed71282b909a33675074519a0301707831462c",
+      "schedule.py": "acfe063a7f0f9bc8dbdaa650a2629003d09e0ee91c3f89a381640a4205245d25",
+      "build_controller_lock.py": "e82f2baca1c5288d9ad87c5770ae2eea2ee7be3f198f5329486632682f7b5ca5",
+      "baseline_ops.py": "829cb01fd566d67b473f363318297c064577696393a707949d1c9c325b303a34",
+      "pairs.py": "bd55f9e8f984b160e78da46f4eaa835c4a45d72a31ea24bb44dd8c0460f6b5fc",
+      "full20_lock.json": "1cd1789d4f30c0a6b708fad907729999f6e6e53d4ba373ce487bc8037d10be0e",
+      "material.py": "ec309bbfaee21fcb785903ca99c7f9d65e5f9d4950e80fc3437952c576cce23a",
+      "cache_manifest.json": "61b5abaaf22ea985b98f582a34f52cc19c2272ac87f66782292d843b17bbe165",
+      "kernel_input.py": "c5b785500a5c5a796383d53642d5823e2fce03547649bc4a1c15abada449ab0f",
+      "bracket.py": "157a353fdd33f6725db73f7dc6b6c597d03ae9ef339b5744782686de368c704f",
+      "usb_contract.json": "6837fd69f9bf5c4f75be75d8963faa405dc7e68cb1d58ad9504ff2d032c7f7e1",
+      "preallocate.py": "29d5b2adf7aa4d3659a542f59268cf59714bb053f66cf2abb828ebee3c8f9d8e",
+      "counters.py": "10eb26e90489283616fae24cd6b190fe50a715c0fec7b47c8fe449025a8c5a60",
+      "controller_lock.json": "63d427530aecee6670c604f4e65769ae8d2d2940694eb0f5ca8b06e325c96713",
+      "control.py": "2bf1de637d0cc317a81109773d2b915cec90bbf46337ae877db9f75c2c0251c6",
+      "exports.py": "0f35440aa15418ab2bc8d31b17ad1c22a0ebe25daf5daa11f140035e753c21e1",
+      "guard.py": "a62f005a43cb562e93084bb04e2f5830d6cc743003e987883b095219e47bdb99",
+      "inventory.py": "1059453b0af8d990064b0a20c497dfd548be2e8321c8ffee04668e2f4c4eaf9e"
+    },
+    "original_context_unchanged": true,
+    "empirical_endpoints_enabled": false,
+    "functional_activation_present": false
+  }
+}

@@ -1,0 +1,21 @@
+{
+  "audit": {
+    "structure_ok": false,
+    "conditions_ok": false,
+    "errors": [
+      "guard_or_clock_schedule",
+      "schedule_or_incomplete_cohort",
+      "terminal"
+    ],
+    "condition_errors": [
+      "logged_guard_violation",
+      "usb"
+    ],
+    "n_jobs": 0,
+    "unit": "image",
+    "n_expected_images": 2
+  },
+  "session_gate_pass": false,
+  "quality_pass": false,
+  "gate_only": false
+}

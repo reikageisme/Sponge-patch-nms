@@ -1,0 +1,7 @@
+{
+  "command": "from pathlib import Path\nimport json,time,subprocess,sys\nb=Path.home()/'sponge-sim'/'pi3b_600mhz_swapguard_v2';sys.path.insert(0,str(b));import control\nr=b/'runs'/'qa_c_timeout_01'\nfor _ in range(80):\n if (r/'qa_ready.json').exists():break\n time.sleep(.25)\nready=json.loads((r/'qa_ready.json').read_text())\nx=subprocess.run(['systemctl','show','sponge-pi3b-swapguard-v2.service','-p','MainPID','-p','InvocationID','-p','RuntimeMaxUSec','-p','ActiveState'],capture_output=True,text=True,timeout=10)\nf=dict(l.split('=',1) for l in x.stdout.splitlines())\nassert int(f['MainPID'])==ready['pid'] and f['InvocationID']==ready['invocation_id'] and f['ActiveState']=='active'\nassert f['RuntimeMaxUSec']=='45s' and not control.System().current()['swaps']\nassert int(Path(f\"/proc/{ready['child_pid']}/stat\").read_text().rsplit(')',1)[1].split()[19])==ready['child_start_ticks']\ncontrol.record(r/'qa_timeout_ready_observation.json',dict(observed_at_utc=time.time(),ready=ready,unit=f,lease_was_active=True),True)\nprint(json.dumps(dict(ready_observed_before_timeout=True,unit=f)))",
+  "exit_code": 0,
+  "output": [
+    "{\"ready_observed_before_timeout\": true, \"unit\": {\"RuntimeMaxUSec\": \"45s\", \"MainPID\": \"4946\", \"ActiveState\": \"active\", \"InvocationID\": \"761e95730dd446e3ba53e56edb4b75a3\"}}"
+  ]
+}

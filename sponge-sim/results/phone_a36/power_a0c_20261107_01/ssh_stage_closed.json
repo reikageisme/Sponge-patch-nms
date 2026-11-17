@@ -1,0 +1,11 @@
+{
+  "close_exit": -1,
+  "close_output": [
+    "Connection to 100.85.153.4 closed by remote host."
+  ],
+  "probe_exit": 255,
+  "probe_output": [
+    "banner exchange: Connection to UNKNOWN port -1: Connection refused"
+  ],
+  "no_load_performed": true
+}

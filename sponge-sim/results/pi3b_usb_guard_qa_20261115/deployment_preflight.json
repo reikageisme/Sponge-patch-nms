@@ -1,0 +1,6 @@
+{
+  "command": "from pathlib import Path\nimport json,subprocess\nb=Path('/home/tanh/sponge-sim/pi3b_renderer_memory_usb_20261115');assert not b.exists()\nx=subprocess.run(['systemctl','show','sponge-pi3b-swapguard-v2.service','-p','ActiveState','-p','MainPID'],capture_output=True,text=True,timeout=10)\nservice=dict(line.split('=',1) for line in x.stdout.splitlines());assert service==dict(ActiveState='inactive',MainPID='0')\nb.mkdir(exist_ok=False)\nprint(json.dumps(dict(created=str(b),service=service)))\n",
+  "returncode": 0,
+  "stdout": "{\"created\": \"/home/tanh/sponge-sim/pi3b_renderer_memory_usb_20261115\", \"service\": {\"MainPID\": \"0\", \"ActiveState\": \"inactive\"}}\n",
+  "stderr": ""
+}

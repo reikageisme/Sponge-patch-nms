@@ -6,7 +6,21 @@ from collections import Counter
 from pathlib import Path
 
 D = Path(__file__).resolve().parent
-t = (D / 'main.tex').read_text(encoding='utf-8')
+def expand_inputs(path, stack=()):
+    path = path.resolve()
+    if path in stack:
+        raise ValueError(f'cyclic LaTeX input: {path}')
+    source = path.read_text(encoding='utf-8')
+    def replace(match):
+        child = Path(match.group(1))
+        if not child.suffix:
+            child = child.with_suffix('.tex')
+        # TeX input paths resolve from the build directory, including nested inputs.
+        child = D / child if (D / child).exists() else path.parent / child
+        return expand_inputs(child, (*stack, path))
+    return re.sub(r'\\input\{([^}]+)\}', replace, source)
+
+t = expand_inputs(D / 'main.tex')
 b = (D / 'references.bib').read_text(encoding='utf-8')
 
 cites = set()
@@ -25,7 +39,7 @@ print('braces balance:', t.count('{') - t.count('}'), '| odd dollar count:', t.c
 labels = re.findall(r'\\label\{([^}]*)\}', t)
 refs = set(re.findall(r'\\ref\{([^}]*)\}', t))
 print('labels duplicated:', [k for k, v in Counter(labels).items() if v > 1], '| refs without label:', sorted(refs - set(labels)))
-print('NO DATA placeholders:', len(re.findall(r'\\nodata\{', t)) - 1)  # trừ phần định nghĩa lệnh
+print('NO DATA placeholders:', len(re.findall(r'\\nodata\{', t)))
 banned = ['OLD128', 'X1-500', 'outputs/', 'R3', 'X2', 'exploit', 'vulnerab', 'exhaust', 'denial', 'Edge Server', 'edge server', 'physical']
 for w in banned:
     n = len(re.findall(re.escape(w), t))

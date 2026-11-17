@@ -1,0 +1,14 @@
+{
+  "tag": "qa-pi3b-nms-observer-service-20261115",
+  "commit": "03999b202eb802ef9073a476395c83943980121a",
+  "config_sha256": "6a7b8d41db502fefd742dd51b9c865277af8ea8dc735e6b0c8c4c3912a16ead5",
+  "source_sha256": {
+    "counters.py": "42a2ed7ba8ff7f709428ef3caefe5e14f7f21baad9659ca16b0d0a01ecc22b07",
+    "inventory.py": "0eb533ad54b69c33508ab429d590405c4eaf1b0476e0c3dde211aa4a5e56d6b7",
+    "qa_worker.py": "2679ea9c36d26942c2ffb7927ca82ef2b67c41f1a7394dd5a67da093376fdc77"
+  },
+  "created_at_utc": "2026-11-15T04:05:28.839113+00:00",
+  "scientific_endpoint_enabled": false,
+  "model_or_weights_loaded": false,
+  "unit": "sponge-pi3b-nms-observer-qa-20261115.service"
+}

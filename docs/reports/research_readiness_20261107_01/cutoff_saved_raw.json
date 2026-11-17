@@ -1,0 +1,42 @@
+{
+  "status": "POSTHOC_SAVED_RAW_ONLY_NO_INTERNAL_CUTOFF_TELEMETRY",
+  "runs": {
+    "e1/E1_P1cpu2_20261101": {
+      "raw_path": "sponge-sim/results/e1/E1_P1cpu2_20261101/raw_P1_cpu2.jsonl",
+      "raw_sha256": "5f587137fbc2aa9d07b49a452292c932b3910ac6f471167e254709a40be38e41",
+      "manifest_sha256": "41949c2598e3a14af12370b6eb62b09e3c153e4140785004490a48a47ede2a13",
+      "manifest_ultra_defaults": {
+        "max_det": 300,
+        "max_nms": 30000,
+        "max_time_img": 0.05,
+        "time_limit_s": "2.0 + 0.05*batch"
+      },
+      "selected_records": 3690,
+      "selection": "backend=='ultra_native' and nms_ns present",
+      "nms_max_ns": 183020500,
+      "nms_max_raw_line": 7717,
+      "nms_intervals_above_2_05s": 0,
+      "max_recorded_nms_input": 10000
+    },
+    "e9/E9_P1cpu2_20261102": {
+      "raw_path": "sponge-sim/results/e9/E9_P1cpu2_20261102/raw_P1_cpu2.jsonl",
+      "raw_sha256": "1cbb834f26d9501c4b026dac9bbca7804a9b3746294392a67db0501db1d93fce",
+      "manifest_sha256": "6c4fe85128379eb3fa4c87551fbc8d633820b2127398d1b9e858027da9d34d4a",
+      "manifest_ultra_defaults": {
+        "max_det": 300,
+        "max_nms": 30000,
+        "max_time_img": 0.05,
+        "time_limit_s": "2.0 + 0.05*batch"
+      },
+      "selected_records": 3540,
+      "selection": "backend=='ultra_native' and nms_ns present",
+      "nms_max_ns": 139166300,
+      "nms_max_raw_line": 14067,
+      "nms_intervals_above_2_05s": 0,
+      "max_recorded_nms_input": 8400,
+      "total_max_ns": 620551400,
+      "total_max_raw_line": 13521,
+      "total_intervals_above_2_05s": 0
+    }
+  }
+}

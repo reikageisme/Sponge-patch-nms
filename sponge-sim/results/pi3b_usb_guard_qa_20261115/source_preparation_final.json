@@ -1,0 +1,15 @@
+{
+  "status": "USB_GUARD_HOST_QA_READY_BEFORE_METADATA_TAG",
+  "tag": "qa-pi3b-usb-guard-metadata-20261115",
+  "source_sha256": "9a1c2ef0124e5a54ac1d5e0e252c759636443a3d4ea7f7d50edd1b5aff821cd4",
+  "test_sha256": "2d4c1478b6cde5f2a4c66c3fe96cc1621f2d0a88bc002d1474617c964877ee38",
+  "driver_sha256": "776246c199fddb53b54fc34be0f1901f4e71755fec51195b7e9d30b6087e90c2",
+  "log_sha256": "0d06eb4bdfc08ddbe280cf62b53f6ceea329b497518611e8ed53162603ce8e38",
+  "host_summary": "41 passed in 6.93s",
+  "remote_python_syntax_checks": 3,
+  "source_note": "Three provenance-comment lines added after passing host tests; function AST unchanged.",
+  "scientific_measurement_authorized": false,
+  "driver_archive": "registered_materials/run_device_metadata_with_timestamps.py",
+  "prior_preparation_sha256": "cc9409a33c4c07b7b75caacec134c377694b72b68ba2758165bf8e5b2f1e3108",
+  "driver_update_note": "Added UTC metadata timestamps before tag/device invocation; earlier driver archive retained."
+}

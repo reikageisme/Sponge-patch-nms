@@ -1,0 +1,53 @@
+{
+  "status": "HOST_CACHE_AND_DIRECT_CHILD_CONTROLS_PASS_NO_DEVICE_ENDPOINT",
+  "test_runs": [
+    {
+      "log": "pytest_01.log",
+      "passed": 37,
+      "seconds": 12.57,
+      "scope": "initial cache controls plus12existingrendererparity",
+      "chunk": "97bb51"
+    },
+    {
+      "log": "pytest_02.log",
+      "passed": 37,
+      "seconds": 7.15,
+      "scope": "strict-registration expansion before final source refinement",
+      "chunk": "787cef"
+    },
+    {
+      "log": "pytest_03.log",
+      "passed": 37,
+      "seconds": 7.37,
+      "scope": "final cache/collector code and strict registration binding",
+      "chunk": "674e47"
+    }
+  ],
+  "source_sha256": {
+    "baseline_ops.py": "526e2cc5686c4719df2c219401382a9ebb4296d8d020a1ae44609a3fb86e78f5",
+    "build_cache.py": "fd6bb449fc6c14215fac98c7893d4d33c3f510557c7e475308e7db94c5b5d5c6",
+    "cache.py": "bc6046542946f2d238300c4680da64124ce00b11b5e27f201a84b01240b400a8",
+    "guard.py": "ee9add3a7ca142a6ab38c32d5c9f94183a066a284bc4467a89d3b3bf5a98bebd",
+    "memory_campaign.py": "7832363eb1cbc087d579e3847798eb90c4e5d42ce8c08489542adb788a58e742",
+    "memory_worker.py": "2242d74b088ed5803f1404b836603b0e42fe7cc63447d648818465796216e265",
+    "preallocate.py": "795aa41ec26b0429f27c0ebb27ca444aa56134324eedf9477af7fa5ffbd6d83c",
+    "provenance.json": "7c9741640ab9e6725fe5b0d4323b3f23b5b2f90548dc6e00797ce86386fd538c",
+    "static_memory.json": "d38f8994d4fd66a0add13cd6ac5610d0e160e37452788dbcfc969eecae96f600",
+    "static_memory.py": "3563e018b83c7ae38bc0dc14c552d466165167d80541def3cf7e7c604c51d388"
+  },
+  "test_sha256": {
+    "test_pi3b_renderer_cache_collector.py": "d0d6248d3b119142d72338a6fdbde8269d6eed439b19049b3a76f0f18fc9f91b",
+    "test_pi3b_renderer_preallocate.py": "a5672d75b56bb9ad2da96c1ebc498bfc03be57431249917857cba5ed49980530"
+  },
+  "logs_sha256": {
+    "pytest_01.log": "99b63b5a6c35036a6683b09d2ae57ecd675ca2221286fc7fdee6796986bbc13c",
+    "pytest_02.log": "dc24e4dbba660853cef6af3500df597672ab906e01ffc91f267f5274ddbbbf1c",
+    "pytest_03.log": "29799e522fb182f199bc7965d9eeb71b5f6974d115671208c6aca655c4b6080e"
+  },
+  "prior21originalfiles_unchanged": true,
+  "prior_measured_study_equal_tag": true,
+  "actual_Pi_access": false,
+  "device_cgroup_cleanup_qualified": false,
+  "scientific_registration_created": false,
+  "empirical_memory_or_latency_endpoint_recorded": false
+}

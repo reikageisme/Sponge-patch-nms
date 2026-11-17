@@ -1,0 +1,14 @@
+{
+  "status": "LOCAL_NATIVE_RECEIPT_AND_SOURCE_BINDINGS_VERIFIED_NOT_DEVICE_QUALIFIED",
+  "checkpoint_commit": "b0362697e2bbcc93acc8caafdb3c3a407c3b42fb",
+  "receipt_sha256": "792ff6cec9e69cb736e050a8dd3787e81f7a08f030e6ab3e76cdf0f98f874ca1",
+  "checks_passed": 6,
+  "source_files": 8,
+  "artifact_files": 56,
+  "captured_fixture_frames": 4,
+  "copied_exit_function_ast_sha256": {
+    "child_exit_code": "06eb6d6482af2644df07f2a66f0871380ad2daffcfaf25fcfe0c9455d10a2055",
+    "execute_child": "5d852b94dc793dbc52100343264393e9601e4514c5fec6ac541031f9a830f99e"
+  },
+  "actual_Torch_or_phone_load": false
+}

@@ -1,0 +1,17 @@
+{
+  "tag": "qa-pi3b-nms-light-api-20261115",
+  "source_sha256": {
+    "bracket.py": "35e80c3bf053c9586a70bb57f16e7a200eb0768a2e83761f1c102403788cf332",
+    "qa_worker.py": "b182e37e76696e9a298fac1f8876fa76fd1e5530b60ff801c9f18c75d17601f1",
+    "qa_config.json": "2f7a8a9f3f4cda816348191b786ffbc6034c3166a52b24f35adbe3ca97cdef7d"
+  },
+  "plan_sha256": "9bd3b4e5dc3e52115ffb794e9b351c5a3c8d24b8c6f359dd629812ff0e814573",
+  "driver_sha256": "1b1ed0811e9058ec2011d40509c0a85f2cb949ddfe88a3a41b96e97981f599ed",
+  "host_tests": 25,
+  "host_checks_sha256": "63a1c3fe8d83311c624dd918a2a26554a4ce9979d133f0939179d9f45644d9df",
+  "generated_remote_python_strings_syntax_checked": 3,
+  "scientific_endpoint_enabled": false,
+  "device_invocations_at_checkpoint": 0,
+  "output_lifetime_source_sha256": "661537e75392a8951429bf18f141f9832f36b22cba676fe67949d47be1393293",
+  "old_counter_source_sha256": "4c18b03e448a241a2a4c551db09337f8a37da2d0ef306f315574cc9fb2f066f4"
+}

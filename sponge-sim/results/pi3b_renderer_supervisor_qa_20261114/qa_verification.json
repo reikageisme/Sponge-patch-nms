@@ -1,0 +1,114 @@
+{
+  "status": "FIVE_SLEEP_ONLY_DEVICE_CASES_PASS_ORIGINAL_SHA_MATCH",
+  "cases": {
+    "qa_normal_01": "PASS_NORMAL",
+    "qa_mainkill_01": "PASS_MAIN",
+    "qa_childkill_01": "PASS_CHILD",
+    "qa_timeout_01": "PASS_TIMEOUT",
+    "qa_disconnect_01": "PASS_DISCONNECT"
+  },
+  "n_original_files": 39,
+  "original_sha256": {
+    "qa_childkill_01/activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+    "qa_childkill_01/lease_events.jsonl": "a416c054aa73009f3052a8cd0bdfdd4009d94903a2507ebd7471d73bda08f5de",
+    "qa_childkill_01/lease_state.json": "9c1a5dcd3fcc8852692ad747c7f24e7ada28d1592487ab3a275b577ba5d3d129",
+    "qa_childkill_01/qa_fault_intent.json": "ded65001ceea6bd45729282b080ee7cb659b1fcfa56dd92c83f406e8114e6b9a",
+    "qa_childkill_01/qa_fault_sent.json": "31c1a2df9f296157addc957f1930d4d4b903d46dea0cbfaaac9d44a4fce54d54",
+    "qa_childkill_01/qa_ready.json": "2c5fe843f212453454ea24a31d654bd79bbea5b20ac430d61cd0de47e2833d0a",
+    "qa_childkill_01/registration.json": "41e9d39594eec878d872b4f59796f8d1243ab8d00a6224db4cd1d360c4771561",
+    "qa_childkill_01/restore.json": "454ef6ae5e445e34a7919e60cad4f0f002693212dea05648da159245d717744b",
+    "qa_childkill_01/supervisor.log": "fa690c48d3e2011154e7b013ed576688820d781e7b815a6f3ceaa5a71d7fab3f",
+    "qa_disconnect_01/activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+    "qa_disconnect_01/lease_events.jsonl": "d928e6589dfcc30c55a7037e4942f82ce03d97c728b6fa64faa5b03164130ace",
+    "qa_disconnect_01/lease_state.json": "88b35505fc2c7811ce6f2472862dfdac7bbac4e30a63129c5ec77d4b3b506275",
+    "qa_disconnect_01/qa_ready.json": "c067950e00954154ce9909990c08fd6501a0865cc0bcaf3843790a514c95518e",
+    "qa_disconnect_01/registration.json": "41e9d39594eec878d872b4f59796f8d1243ab8d00a6224db4cd1d360c4771561",
+    "qa_disconnect_01/restore.json": "dfe8f4e39c2692b83733bde8432d8c86cbd67a360cedc8d2897a9e8a3b0610c9",
+    "qa_disconnect_01/supervisor.log": "0cacc6b067be26334ffa662874e35b7e19848fb97be50ced67466a2239c69fbe",
+    "qa_mainkill_01/activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+    "qa_mainkill_01/lease_events.jsonl": "c2240fb4b38ac5140a9cfde826dfab9c757cc071d4a620fb26d631bfb06cf4d5",
+    "qa_mainkill_01/lease_state.json": "5caac0ba36676c67d6e6ac237f8ea88d215a1d3f5882cd0a68c5fa929aa6028f",
+    "qa_mainkill_01/qa_fault_intent.json": "fff8977b965e118f8a5c4df831a0b9f35f7993279ea1c7a4365db8c0fb8b245c",
+    "qa_mainkill_01/qa_fault_sent.json": "31c1a2df9f296157addc957f1930d4d4b903d46dea0cbfaaac9d44a4fce54d54",
+    "qa_mainkill_01/qa_ready.json": "e90b12415d1ecddef4b78d294e6493c329ae59edc5c77901fbb56afdf1d96aac",
+    "qa_mainkill_01/registration.json": "41e9d39594eec878d872b4f59796f8d1243ab8d00a6224db4cd1d360c4771561",
+    "qa_mainkill_01/restore.json": "9b34db7cc1fc85005fb5bf688a36e625457371186d0f6bf7f860177cfe605992",
+    "qa_mainkill_01/supervisor.log": "a05a0956946b545b811ba1663766de8f4192e3482e1d28dc34f7452cdc953ab9",
+    "qa_normal_01/activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+    "qa_normal_01/lease_events.jsonl": "554d1827266a1995f2748e96edf45b09a9c449afae0e419450485efaf4574fe4",
+    "qa_normal_01/lease_state.json": "04d5888227882118e5b392b78d75bac499cfbd535805f49cf35af9975bc95243",
+    "qa_normal_01/qa_ready.json": "3fe6c5da3e731763c65273622dc9965d8efb87ed07937b5b6134a65ce3aaf6bb",
+    "qa_normal_01/registration.json": "41e9d39594eec878d872b4f59796f8d1243ab8d00a6224db4cd1d360c4771561",
+    "qa_normal_01/restore.json": "4da2bdeb310382ae235d8d55da9ae86ec1268f74965320a91617608185de6c3c",
+    "qa_normal_01/supervisor.log": "6ac4ea0459eb1402e33929b42a75bdabeb82297701d5b1165aabe2a9284d956f",
+    "qa_timeout_01/activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+    "qa_timeout_01/lease_events.jsonl": "56ee70d43791d28784b4b3318b8a39bb3e6ad80562d17380a72e6ca71de423e5",
+    "qa_timeout_01/lease_state.json": "d8299c434b0c2fbfe967b4c14bcbdb152c6e756aa760708b024ac6bb912d50ee",
+    "qa_timeout_01/qa_ready.json": "fab1e727d9d05991bcf58b7c036dbc040610aa16aef5009164d7112e40e11305",
+    "qa_timeout_01/registration.json": "41e9d39594eec878d872b4f59796f8d1243ab8d00a6224db4cd1d360c4771561",
+    "qa_timeout_01/restore.json": "2b089bd0069f5eb666f149b9aa0d2775e5b702a37163ff82039583975e82f746",
+    "qa_timeout_01/supervisor.log": "b3af43df0ec7beabf90cc5bbb56d03423e0aa8a1fc974b5111c780e493e9bc39"
+  },
+  "source_sha256": {
+    "analyze_memory.py": "7665e7dabc79f685c6370f647576ccb48c33d04b0f8affaafdb07ac1cc45bb64",
+    "provenance.json": "7c9741640ab9e6725fe5b0d4323b3f23b5b2f90548dc6e00797ce86386fd538c",
+    "cache.py": "bc6046542946f2d238300c4680da64124ce00b11b5e27f201a84b01240b400a8",
+    "memory_campaign.py": "919e518e62eb234efac35316d6b2e1cffc077cf77dcaae3f16f342cc6d85cc66",
+    "engineering_lock.json": "da9818d91f923eb4e3c856b6b7f66940b3ab089ea483c06bc2b0a450ea4c2cd2",
+    "baseline_ops.py": "526e2cc5686c4719df2c219401382a9ebb4296d8d020a1ae44609a3fb86e78f5",
+    "static_memory.json": "d38f8994d4fd66a0add13cd6ac5610d0e160e37452788dbcfc969eecae96f600",
+    "build_cache.py": "fd6bb449fc6c14215fac98c7893d4d33c3f510557c7e475308e7db94c5b5d5c6",
+    "full20_lock.json": "1cd1789d4f30c0a6b708fad907729999f6e6e53d4ba373ce487bc8037d10be0e",
+    "stats_frozen.py": "206d4c0583089ab6f60a6342e2a1d555508587a54d899de4549f72625a511a10",
+    "preallocate.py": "795aa41ec26b0429f27c0ebb27ca444aa56134324eedf9477af7fa5ffbd6d83c",
+    "static_memory.py": "3563e018b83c7ae38bc0dc14c552d466165167d80541def3cf7e7c604c51d388",
+    "build_engineering_lock.py": "bc7c7ea374819bc411967caad879d6ae2f08ac93329b9eea97b3d1aa3312416f",
+    "control.py": "7c0c197ad8689d98c5f4845a4d15fb57bc81d5722a28c100723a263576d15a92",
+    "memory_worker.py": "8e0a047a67a1f498ea1257b53e5049add177d3fe738e7d2d352a68c8d5704b5e",
+    "full20_summary.json": "34166aa9972cd0ffac8af3524a15565eb2ea94235c3f640de9312603e6799ca3",
+    "guard.py": "ee9add3a7ca142a6ab38c32d5c9f94183a066a284bc4467a89d3b3bf5a98bebd"
+  },
+  "service_terminal": {
+    "MainPID": "0",
+    "ActiveState": "inactive"
+  },
+  "snapshot": {
+    "governor": "ondemand",
+    "units": {
+      "dev-zram0.swap": {
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "FragmentPath": "/run/systemd/generator/dev-zram0.swap"
+      },
+      "rpi-zram-writeback.service": {
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "FragmentPath": "/usr/lib/systemd/system/rpi-zram-writeback.service"
+      },
+      "rpi-zram-writeback.timer": {
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "FragmentPath": "/run/systemd/generator/rpi-zram-writeback.timer"
+      }
+    },
+    "setup": {
+      "Result": "success",
+      "ActiveState": "active"
+    },
+    "swaps": [
+      {
+        "name": "/dev/zram0",
+        "kind": "partition",
+        "size_kb": 926716,
+        "used_kb": 0,
+        "priority": 100
+      }
+    ],
+    "mem_available_kb": 762728
+  },
+  "all_masks_removed": true,
+  "cache_exists": false,
+  "scientific_registration_exists": false,
+  "model_or_empirical_endpoint_recorded": false,
+  "ssh_kept_open": true
+}

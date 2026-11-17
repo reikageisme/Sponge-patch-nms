@@ -1,0 +1,122 @@
+{
+  "status": "SEPARATE_PI_PROTOCOLS_PRIMARY_FULL20_ACCEPTED_COMPONENTS_REJECTED",
+  "sources": {
+    "sponge-sim/results/pi3b_600mhz_20261114/runs/full_01/summary.json": {
+      "sha256": "8e1895b8be80fe97049b68046b6f5007510ad4cb0ecac33c6c01396766cca27f"
+    },
+    "sponge-sim/results/pi3b_600mhz_20261114/runs/full_01/pipeline_PI4/raw.jsonl": {
+      "sha256": "83e84900fa11c9d11a8061a69d280a064f7e741f996f1d42d5666004b4170971"
+    },
+    "sponge-sim/results/pi3b_600mhz_20261114/structural_audit.json": {
+      "sha256": "4fb7473116861aab7d2696721ff1add80aa519a99501fb2eeeb95dcc710ac2d1"
+    },
+    "sponge-sim/results/pi3b_600mhz_20261114/raw_source_map.json": {
+      "sha256": "626801fa42cdaccbfe3411c31c6b146e5e7823b3b2420fda0926fabf0f134c6b"
+    },
+    "sponge-sim/results/pi3b_swapguard_v2_20261114/runs/smoke_01/summary.json": {
+      "sha256": "15db4c11e001eb073f3e44a307404544cfcd553d4227ca754dfe0c673d194770"
+    },
+    "sponge-sim/results/pi3b_swapguard_v2_20261114/runs/smoke_01/pipeline_PI4/raw.jsonl": {
+      "sha256": "8d97e3c0ceaacc22f7fc640ccd390b952568a3c2c2b46a452b7fba337b49b7e8"
+    },
+    "sponge-sim/results/pi3b_swapguard_v2_20261114/runs/smoke_01/pipeline_PI4/gates.json": {
+      "sha256": "39a855ee0f9ec2031f896777b23abf55cfdbce26ef4fcaae56d7468a44bd297f"
+    },
+    "sponge-sim/results/pi3b_swapguard_v2_20261114/runs/smoke_01/restore.json": {
+      "sha256": "d3a58cdc35a8aac9621dab5d2b4795e69f057a489f2c2aba50ab067dcb39bdac"
+    },
+    "sponge-sim/results/pi3b_swapguard_v2_20261114/protocol_status.json": {
+      "sha256": "a2ba18b0a5a61f8e1d71f482f962e8fe44aef5a0d4efaed7dca1a74e21788db9"
+    },
+    "sponge-sim/results/pi3b_swapguard_v2_20261114/closed_smoke_audit.json": {
+      "sha256": "20d220b69544aa462aff3f5aa2da6de535cb8fe15237b1af330d12e8550815cb"
+    },
+    "sponge-sim/results/pi3b_swapguard_v2_qa_20261114/qa_c_verification.json": {
+      "sha256": "2c12ac52b6676862634c5bb3db207b0d5a088c46a772a4e63233467532765421"
+    },
+    "sponge-sim/results/pi3b_full20_20261114/runs/full_01/summary.json": {
+      "sha256": "34166aa9972cd0ffac8af3524a15565eb2ea94235c3f640de9312603e6799ca3"
+    },
+    "sponge-sim/results/pi3b_full20_20261114/runs/full_01/pipeline_PI4/raw.jsonl": {
+      "sha256": "bd851c9e690e38b7e3dd7df6079efe30fc5304b2ba83accbf321f5414eb26a9c"
+    },
+    "sponge-sim/results/pi3b_full20_20261114/runs/full_01/stages_PI4/raw.jsonl": {
+      "sha256": "3bfc20f3f9a82794ea6d3c3493a4e4f70db3a906973ecbc02b45e23c7d5d697c"
+    },
+    "sponge-sim/results/pi3b_full20_20261114/runs/full_01/pipeline_PI4/gates.json": {
+      "sha256": "a900458a31c1292ab5ff272074619f53bcd360c4d0ce00c811bfd2ce2977cd5c"
+    },
+    "sponge-sim/results/pi3b_full20_20261114/runs/full_01/stages_PI4/gates.json": {
+      "sha256": "a1fc898ee7f2c361788cc1f3217becd75a506107251f31de79ac92c41ddd0a6d"
+    },
+    "sponge-sim/results/pi3b_full20_20261114/runs/full_01/restore.json": {
+      "sha256": "0798e7f6f6734ae306b6e1b61fba8998385f73278097e66ff68866a2d34e5062"
+    },
+    "sponge-sim/results/pi3b_full20_20261114/runs/full_01/campaign_terminal.json": {
+      "sha256": "cf5cdd01c3e8bb741c4f20af25f9dd4c73c9f00ae4d93b33f9b774b86c583d3c"
+    },
+    "sponge-sim/results/pi3b_full20_20261114/independent_audit.json": {
+      "sha256": "067d88c7d7f95a6ba6ef5d51dd07a9edf7e4a800cb8c0b5b74f348a218425fae"
+    },
+    "sponge-sim/results/pi3b_full20_20261114/raw_source_map.json": {
+      "sha256": "54bf0c92a076781968079129cee7d0bcde0f6bd11a978b85b651a14a5a5c7cee"
+    },
+    "sponge-sim/results/pi3b_full20_20261114/transfer_verification.json": {
+      "sha256": "a5adcf5971da31f3d2e0229d05d7550598d5d89e91e51be3975f10d5a4093044"
+    }
+  },
+  "selectors": {
+    "old": "pipeline_PI4.{n_images,quality_pass,gates.swap_off,aa_cleanA_over_cleanB,mde_log_80pct,parity_vs_laptop}",
+    "new": "pipeline_PI4.{n_images,quality_pass,audit,gates,aa_cleanA_over_cleanB,mde_log_80pct}"
+  },
+  "old_pin_lines": [
+    1,
+    805
+  ],
+  "new_pin_lines": {
+    "pin_start": {
+      "line": 1,
+      "inside": 3.9269296501042508,
+      "outside": 0,
+      "need": 2.8,
+      "busy": [
+        0.9832214765096984,
+        0.9834437086095049,
+        0.9800664451828949,
+        0.9801980198021526
+      ],
+      "passed": true
+    },
+    "pin_end": {
+      "line": 112,
+      "inside": 3.9121155717239766,
+      "outside": 0,
+      "need": 2.8,
+      "busy": [
+        0.9805194805190663,
+        0.9771986970679175,
+        0.9771986970684965,
+        0.9771986970684965
+      ],
+      "passed": true
+    }
+  },
+  "old_attack_estimate_eligible": false,
+  "new_attack_estimate_eligible": false,
+  "format": {
+    "aa_ratios": ".4f",
+    "mde_log": ".4f"
+  },
+  "full_attack_estimate_eligible": true,
+  "full_component_estimate_eligible": false,
+  "full_selectors": "pipeline_PI4.{audit,gates,h1_adv_over_clean,h2_advcap_over_adv,holm_h1_h2,aa_cleanA_over_cleanB,mde_log_80pct,forward_share,parity_vs_laptop}; stages_PI4.{audit,stage_controls,quality_pass}; pipeline_PI1.missing",
+  "full_raw_map": "sponge-sim/results/pi3b_full20_20261114/raw_source_map.json",
+  "full_format": {
+    "primary_ratios": ".3f",
+    "aa": ".4f",
+    "mde_primary": ".5f",
+    "mde_stage": ".4f",
+    "p": ".8f",
+    "forward_percent": ".1f"
+  }
+}

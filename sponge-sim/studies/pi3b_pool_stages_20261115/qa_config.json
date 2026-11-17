@@ -1,0 +1,40 @@
+{
+  "tag": "qa-pi3b-pool-stages-20261115",
+  "scientific_endpoint_enabled": false,
+  "unit": "sponge-pi3b-pool-stages-qa-20261115.service",
+  "expected_cgroup": "/system.slice/sponge-pi3b-pool-stages-qa-20261115.service",
+  "python_version": "3.13.5",
+  "torch_version": "2.15.0+cpu",
+  "numpy_version": "2.5.4",
+  "cpus": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "threads": 4,
+  "interop_threads": 1,
+  "runtime_limit_seconds": 180,
+  "stages": [
+    "baseline",
+    "numpy_import",
+    "numpy_mm_and_diagnostics",
+    "torch_import",
+    "torch_set_intraop",
+    "torch_set_interop",
+    "torch_ones",
+    "torch_mm",
+    "torch_validation_and_gc",
+    "torch_diagnostics",
+    "final_adjacent"
+  ],
+  "numpy_mm_invocations": 1,
+  "torch_mm_invocations": 1,
+  "source_sha256": {
+    "counters.py": "ec4dd03f544096f23640f03e908368a7e644a62c68c6d2f3deb0f5f216a0734e",
+    "inventory.py": "dffe8ba397df88a5b23037da4dbff0fe143ea9ca841df10c9a2ad570c0a62966",
+    "metadata.py": "d9067b01585e5f5e536c946b3b245042fbc2ef3fa3aec92046585baee4b1d2da",
+    "qa_worker.py": "cac8fd1027b20305546dfdd8d70f1057ab7a0d90585c081b6ffe122fd9f48af9"
+  },
+  "plan_sha256": "6715dc8d53f9693736802c4120768315a205c5cc5e7663bb5252d5a0c6d56843"
+}

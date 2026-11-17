@@ -1,0 +1,2484 @@
+{
+  "audit": {
+    "structure_ok": true,
+    "conditions_ok": true,
+    "errors": [],
+    "condition_errors": [],
+    "n_jobs": 360,
+    "unit": "image",
+    "n_expected_images": 20
+  },
+  "session_gate_pass": true,
+  "quality_pass": false,
+  "gate_only": true,
+  "usb_preflight_sha256": "faf8c9ca7c942ff51429a6865651b3fe7990846d1690d18b88d6f6168aca90b1",
+  "interpretation": "Whole-process high-water RSS through output digest; not isolated renderer peak, not latency.",
+  "counter_resolution_bytes": 1024,
+  "phase": "full",
+  "precision_enforced": true,
+  "per_image_median_bytes": {
+    "000000000009": {
+      "clean": {
+        "baseline_A": 262774784,
+        "baseline_B": 262791168,
+        "candidate16M": 261836800,
+        "pooled_baseline": 262780928.0
+      },
+      "adv": {
+        "baseline_A": 466415616,
+        "baseline_B": 466460672,
+        "candidate16M": 427798528,
+        "pooled_baseline": 466438144.0
+      }
+    },
+    "000000000025": {
+      "clean": {
+        "baseline_A": 254382080,
+        "baseline_B": 254390272,
+        "candidate16M": 253300736,
+        "pooled_baseline": 254382080.0
+      },
+      "adv": {
+        "baseline_A": 506376192,
+        "baseline_B": 506494976,
+        "candidate16M": 434323456,
+        "pooled_baseline": 506441728.0
+      }
+    },
+    "000000000030": {
+      "clean": {
+        "baseline_A": 253857792,
+        "baseline_B": 253775872,
+        "candidate16M": 253337600,
+        "pooled_baseline": 253829120.0
+      },
+      "adv": {
+        "baseline_A": 535625728,
+        "baseline_B": 535592960,
+        "candidate16M": 467021824,
+        "pooled_baseline": 535599104.0
+      }
+    },
+    "000000000034": {
+      "clean": {
+        "baseline_A": 253853696,
+        "baseline_B": 253816832,
+        "candidate16M": 253308928,
+        "pooled_baseline": 253835264.0
+      },
+      "adv": {
+        "baseline_A": 463929344,
+        "baseline_B": 463958016,
+        "candidate16M": 395018240,
+        "pooled_baseline": 463943680.0
+      }
+    },
+    "000000000036": {
+      "clean": {
+        "baseline_A": 254365696,
+        "baseline_B": 254423040,
+        "candidate16M": 253313024,
+        "pooled_baseline": 254410752.0
+      },
+      "adv": {
+        "baseline_A": 506871808,
+        "baseline_B": 506900480,
+        "candidate16M": 433053696,
+        "pooled_baseline": 506886144.0
+      }
+    },
+    "000000000042": {
+      "clean": {
+        "baseline_A": 258564096,
+        "baseline_B": 258568192,
+        "candidate16M": 257118208,
+        "pooled_baseline": 258566144.0
+      },
+      "adv": {
+        "baseline_A": 535584768,
+        "baseline_B": 535633920,
+        "candidate16M": 466952192,
+        "pooled_baseline": 535599104.0
+      }
+    },
+    "000000000049": {
+      "clean": {
+        "baseline_A": 264728576,
+        "baseline_B": 264810496,
+        "candidate16M": 264007680,
+        "pooled_baseline": 264742912.0
+      },
+      "adv": {
+        "baseline_A": 514109440,
+        "baseline_B": 514121728,
+        "candidate16M": 436203520,
+        "pooled_baseline": 514115584.0
+      }
+    },
+    "000000000061": {
+      "clean": {
+        "baseline_A": 255303680,
+        "baseline_B": 255299584,
+        "candidate16M": 254873600,
+        "pooled_baseline": 255301632.0
+      },
+      "adv": {
+        "baseline_A": 486752256,
+        "baseline_B": 486752256,
+        "candidate16M": 429182976,
+        "pooled_baseline": 486752256.0
+      }
+    },
+    "000000000064": {
+      "clean": {
+        "baseline_A": 255307776,
+        "baseline_B": 255299584,
+        "candidate16M": 254902272,
+        "pooled_baseline": 255303680.0
+      },
+      "adv": {
+        "baseline_A": 535605248,
+        "baseline_B": 535678976,
+        "candidate16M": 467021824,
+        "pooled_baseline": 535672832.0
+      }
+    },
+    "000000000071": {
+      "clean": {
+        "baseline_A": 258605056,
+        "baseline_B": 258568192,
+        "candidate16M": 257142784,
+        "pooled_baseline": 258586624.0
+      },
+      "adv": {
+        "baseline_A": 503402496,
+        "baseline_B": 503513088,
+        "candidate16M": 433070080,
+        "pooled_baseline": 503504896.0
+      }
+    },
+    "000000000072": {
+      "clean": {
+        "baseline_A": 254402560,
+        "baseline_B": 254390272,
+        "candidate16M": 253325312,
+        "pooled_baseline": 254396416.0
+      },
+      "adv": {
+        "baseline_A": 467382272,
+        "baseline_B": 467349504,
+        "candidate16M": 421056512,
+        "pooled_baseline": 467365888.0
+      }
+    },
+    "000000000073": {
+      "clean": {
+        "baseline_A": 254386176,
+        "baseline_B": 254390272,
+        "candidate16M": 253300736,
+        "pooled_baseline": 254388224.0
+      },
+      "adv": {
+        "baseline_A": 519065600,
+        "baseline_B": 518991872,
+        "candidate16M": 461737984,
+        "pooled_baseline": 519012352.0
+      }
+    },
+    "000000000074": {
+      "clean": {
+        "baseline_A": 262762496,
+        "baseline_B": 262758400,
+        "candidate16M": 261881856,
+        "pooled_baseline": 262760448.0
+      },
+      "adv": {
+        "baseline_A": 520114176,
+        "baseline_B": 520114176,
+        "candidate16M": 466071552,
+        "pooled_baseline": 520114176.0
+      }
+    },
+    "000000000077": {
+      "clean": {
+        "baseline_A": 260763648,
+        "baseline_B": 260796416,
+        "candidate16M": 259125248,
+        "pooled_baseline": 260796416.0
+      },
+      "adv": {
+        "baseline_A": 520626176,
+        "baseline_B": 520597504,
+        "candidate16M": 468254720,
+        "pooled_baseline": 520611840.0
+      }
+    },
+    "000000000078": {
+      "clean": {
+        "baseline_A": 255303680,
+        "baseline_B": 255295488,
+        "candidate16M": 254906368,
+        "pooled_baseline": 255295488.0
+      },
+      "adv": {
+        "baseline_A": 532516864,
+        "baseline_B": 532541440,
+        "candidate16M": 463933440,
+        "pooled_baseline": 532523008.0
+      }
+    },
+    "000000000081": {
+      "clean": {
+        "baseline_A": 253865984,
+        "baseline_B": 253878272,
+        "candidate16M": 253337600,
+        "pooled_baseline": 253870080.0
+      },
+      "adv": {
+        "baseline_A": 535531520,
+        "baseline_B": 535552000,
+        "candidate16M": 466964480,
+        "pooled_baseline": 535543808.0
+      }
+    },
+    "000000000086": {
+      "clean": {
+        "baseline_A": 254386176,
+        "baseline_B": 254345216,
+        "candidate16M": 253300736,
+        "pooled_baseline": 254375936.0
+      },
+      "adv": {
+        "baseline_A": 471658496,
+        "baseline_B": 471539712,
+        "candidate16M": 425541632,
+        "pooled_baseline": 471552000.0
+      }
+    },
+    "000000000089": {
+      "clean": {
+        "baseline_A": 268771328,
+        "baseline_B": 268832768,
+        "candidate16M": 268120064,
+        "pooled_baseline": 268783616.0
+      },
+      "adv": {
+        "baseline_A": 535662592,
+        "baseline_B": 535592960,
+        "candidate16M": 466911232,
+        "pooled_baseline": 535627776.0
+      }
+    },
+    "000000000092": {
+      "clean": {
+        "baseline_A": 254337024,
+        "baseline_B": 254390272,
+        "candidate16M": 253304832,
+        "pooled_baseline": 254373888.0
+      },
+      "adv": {
+        "baseline_A": 510967808,
+        "baseline_B": 511033344,
+        "candidate16M": 435716096,
+        "pooled_baseline": 511021056.0
+      }
+    },
+    "000000000094": {
+      "clean": {
+        "baseline_A": 254402560,
+        "baseline_B": 254390272,
+        "candidate16M": 253292544,
+        "pooled_baseline": 254396416.0
+      },
+      "adv": {
+        "baseline_A": 535601152,
+        "baseline_B": 535568384,
+        "candidate16M": 466894848,
+        "pooled_baseline": 535584768.0
+      }
+    }
+  },
+  "raw_source_map": {
+    "000000000009": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 6,
+            "job_index": 5,
+            "rep": 0
+          },
+          {
+            "raw_line": 11,
+            "job_index": 10,
+            "rep": 1
+          },
+          {
+            "raw_line": 13,
+            "job_index": 12,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 5,
+            "job_index": 4,
+            "rep": 0
+          },
+          {
+            "raw_line": 7,
+            "job_index": 6,
+            "rep": 1
+          },
+          {
+            "raw_line": 18,
+            "job_index": 17,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 3,
+            "job_index": 2,
+            "rep": 0
+          },
+          {
+            "raw_line": 12,
+            "job_index": 11,
+            "rep": 1
+          },
+          {
+            "raw_line": 14,
+            "job_index": 13,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 4,
+            "job_index": 3,
+            "rep": 0
+          },
+          {
+            "raw_line": 10,
+            "job_index": 9,
+            "rep": 1
+          },
+          {
+            "raw_line": 16,
+            "job_index": 15,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 1,
+            "job_index": 0,
+            "rep": 0
+          },
+          {
+            "raw_line": 8,
+            "job_index": 7,
+            "rep": 1
+          },
+          {
+            "raw_line": 15,
+            "job_index": 14,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 2,
+            "job_index": 1,
+            "rep": 0
+          },
+          {
+            "raw_line": 9,
+            "job_index": 8,
+            "rep": 1
+          },
+          {
+            "raw_line": 17,
+            "job_index": 16,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000025": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 21,
+            "job_index": 20,
+            "rep": 0
+          },
+          {
+            "raw_line": 26,
+            "job_index": 25,
+            "rep": 1
+          },
+          {
+            "raw_line": 35,
+            "job_index": 34,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 20,
+            "job_index": 19,
+            "rep": 0
+          },
+          {
+            "raw_line": 25,
+            "job_index": 24,
+            "rep": 1
+          },
+          {
+            "raw_line": 32,
+            "job_index": 31,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 23,
+            "job_index": 22,
+            "rep": 0
+          },
+          {
+            "raw_line": 28,
+            "job_index": 27,
+            "rep": 1
+          },
+          {
+            "raw_line": 33,
+            "job_index": 32,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 24,
+            "job_index": 23,
+            "rep": 0
+          },
+          {
+            "raw_line": 27,
+            "job_index": 26,
+            "rep": 1
+          },
+          {
+            "raw_line": 31,
+            "job_index": 30,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 22,
+            "job_index": 21,
+            "rep": 0
+          },
+          {
+            "raw_line": 30,
+            "job_index": 29,
+            "rep": 1
+          },
+          {
+            "raw_line": 36,
+            "job_index": 35,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 19,
+            "job_index": 18,
+            "rep": 0
+          },
+          {
+            "raw_line": 29,
+            "job_index": 28,
+            "rep": 1
+          },
+          {
+            "raw_line": 34,
+            "job_index": 33,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000030": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 38,
+            "job_index": 37,
+            "rep": 0
+          },
+          {
+            "raw_line": 46,
+            "job_index": 45,
+            "rep": 1
+          },
+          {
+            "raw_line": 52,
+            "job_index": 51,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 42,
+            "job_index": 41,
+            "rep": 0
+          },
+          {
+            "raw_line": 43,
+            "job_index": 42,
+            "rep": 1
+          },
+          {
+            "raw_line": 53,
+            "job_index": 52,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 39,
+            "job_index": 38,
+            "rep": 0
+          },
+          {
+            "raw_line": 44,
+            "job_index": 43,
+            "rep": 1
+          },
+          {
+            "raw_line": 50,
+            "job_index": 49,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 40,
+            "job_index": 39,
+            "rep": 0
+          },
+          {
+            "raw_line": 47,
+            "job_index": 46,
+            "rep": 1
+          },
+          {
+            "raw_line": 51,
+            "job_index": 50,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 41,
+            "job_index": 40,
+            "rep": 0
+          },
+          {
+            "raw_line": 48,
+            "job_index": 47,
+            "rep": 1
+          },
+          {
+            "raw_line": 49,
+            "job_index": 48,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 37,
+            "job_index": 36,
+            "rep": 0
+          },
+          {
+            "raw_line": 45,
+            "job_index": 44,
+            "rep": 1
+          },
+          {
+            "raw_line": 54,
+            "job_index": 53,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000034": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 60,
+            "job_index": 59,
+            "rep": 0
+          },
+          {
+            "raw_line": 66,
+            "job_index": 65,
+            "rep": 1
+          },
+          {
+            "raw_line": 68,
+            "job_index": 67,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 55,
+            "job_index": 54,
+            "rep": 0
+          },
+          {
+            "raw_line": 63,
+            "job_index": 62,
+            "rep": 1
+          },
+          {
+            "raw_line": 70,
+            "job_index": 69,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 59,
+            "job_index": 58,
+            "rep": 0
+          },
+          {
+            "raw_line": 65,
+            "job_index": 64,
+            "rep": 1
+          },
+          {
+            "raw_line": 71,
+            "job_index": 70,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 57,
+            "job_index": 56,
+            "rep": 0
+          },
+          {
+            "raw_line": 61,
+            "job_index": 60,
+            "rep": 1
+          },
+          {
+            "raw_line": 69,
+            "job_index": 68,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 58,
+            "job_index": 57,
+            "rep": 0
+          },
+          {
+            "raw_line": 64,
+            "job_index": 63,
+            "rep": 1
+          },
+          {
+            "raw_line": 67,
+            "job_index": 66,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 56,
+            "job_index": 55,
+            "rep": 0
+          },
+          {
+            "raw_line": 62,
+            "job_index": 61,
+            "rep": 1
+          },
+          {
+            "raw_line": 72,
+            "job_index": 71,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000036": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 76,
+            "job_index": 75,
+            "rep": 0
+          },
+          {
+            "raw_line": 80,
+            "job_index": 79,
+            "rep": 1
+          },
+          {
+            "raw_line": 87,
+            "job_index": 86,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 74,
+            "job_index": 73,
+            "rep": 0
+          },
+          {
+            "raw_line": 79,
+            "job_index": 78,
+            "rep": 1
+          },
+          {
+            "raw_line": 86,
+            "job_index": 85,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 78,
+            "job_index": 77,
+            "rep": 0
+          },
+          {
+            "raw_line": 82,
+            "job_index": 81,
+            "rep": 1
+          },
+          {
+            "raw_line": 90,
+            "job_index": 89,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 77,
+            "job_index": 76,
+            "rep": 0
+          },
+          {
+            "raw_line": 81,
+            "job_index": 80,
+            "rep": 1
+          },
+          {
+            "raw_line": 88,
+            "job_index": 87,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 73,
+            "job_index": 72,
+            "rep": 0
+          },
+          {
+            "raw_line": 83,
+            "job_index": 82,
+            "rep": 1
+          },
+          {
+            "raw_line": 89,
+            "job_index": 88,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 75,
+            "job_index": 74,
+            "rep": 0
+          },
+          {
+            "raw_line": 84,
+            "job_index": 83,
+            "rep": 1
+          },
+          {
+            "raw_line": 85,
+            "job_index": 84,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000042": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 96,
+            "job_index": 95,
+            "rep": 0
+          },
+          {
+            "raw_line": 98,
+            "job_index": 97,
+            "rep": 1
+          },
+          {
+            "raw_line": 108,
+            "job_index": 107,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 91,
+            "job_index": 90,
+            "rep": 0
+          },
+          {
+            "raw_line": 100,
+            "job_index": 99,
+            "rep": 1
+          },
+          {
+            "raw_line": 106,
+            "job_index": 105,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 93,
+            "job_index": 92,
+            "rep": 0
+          },
+          {
+            "raw_line": 102,
+            "job_index": 101,
+            "rep": 1
+          },
+          {
+            "raw_line": 104,
+            "job_index": 103,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 94,
+            "job_index": 93,
+            "rep": 0
+          },
+          {
+            "raw_line": 101,
+            "job_index": 100,
+            "rep": 1
+          },
+          {
+            "raw_line": 107,
+            "job_index": 106,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 95,
+            "job_index": 94,
+            "rep": 0
+          },
+          {
+            "raw_line": 99,
+            "job_index": 98,
+            "rep": 1
+          },
+          {
+            "raw_line": 103,
+            "job_index": 102,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 92,
+            "job_index": 91,
+            "rep": 0
+          },
+          {
+            "raw_line": 97,
+            "job_index": 96,
+            "rep": 1
+          },
+          {
+            "raw_line": 105,
+            "job_index": 104,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000049": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 112,
+            "job_index": 111,
+            "rep": 0
+          },
+          {
+            "raw_line": 119,
+            "job_index": 118,
+            "rep": 1
+          },
+          {
+            "raw_line": 126,
+            "job_index": 125,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 109,
+            "job_index": 108,
+            "rep": 0
+          },
+          {
+            "raw_line": 115,
+            "job_index": 114,
+            "rep": 1
+          },
+          {
+            "raw_line": 123,
+            "job_index": 122,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 113,
+            "job_index": 112,
+            "rep": 0
+          },
+          {
+            "raw_line": 116,
+            "job_index": 115,
+            "rep": 1
+          },
+          {
+            "raw_line": 124,
+            "job_index": 123,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 114,
+            "job_index": 113,
+            "rep": 0
+          },
+          {
+            "raw_line": 117,
+            "job_index": 116,
+            "rep": 1
+          },
+          {
+            "raw_line": 122,
+            "job_index": 121,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 110,
+            "job_index": 109,
+            "rep": 0
+          },
+          {
+            "raw_line": 120,
+            "job_index": 119,
+            "rep": 1
+          },
+          {
+            "raw_line": 125,
+            "job_index": 124,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 111,
+            "job_index": 110,
+            "rep": 0
+          },
+          {
+            "raw_line": 118,
+            "job_index": 117,
+            "rep": 1
+          },
+          {
+            "raw_line": 121,
+            "job_index": 120,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000061": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 132,
+            "job_index": 131,
+            "rep": 0
+          },
+          {
+            "raw_line": 135,
+            "job_index": 134,
+            "rep": 1
+          },
+          {
+            "raw_line": 139,
+            "job_index": 138,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 130,
+            "job_index": 129,
+            "rep": 0
+          },
+          {
+            "raw_line": 136,
+            "job_index": 135,
+            "rep": 1
+          },
+          {
+            "raw_line": 142,
+            "job_index": 141,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 128,
+            "job_index": 127,
+            "rep": 0
+          },
+          {
+            "raw_line": 137,
+            "job_index": 136,
+            "rep": 1
+          },
+          {
+            "raw_line": 141,
+            "job_index": 140,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 129,
+            "job_index": 128,
+            "rep": 0
+          },
+          {
+            "raw_line": 134,
+            "job_index": 133,
+            "rep": 1
+          },
+          {
+            "raw_line": 140,
+            "job_index": 139,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 127,
+            "job_index": 126,
+            "rep": 0
+          },
+          {
+            "raw_line": 133,
+            "job_index": 132,
+            "rep": 1
+          },
+          {
+            "raw_line": 143,
+            "job_index": 142,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 131,
+            "job_index": 130,
+            "rep": 0
+          },
+          {
+            "raw_line": 138,
+            "job_index": 137,
+            "rep": 1
+          },
+          {
+            "raw_line": 144,
+            "job_index": 143,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000064": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 146,
+            "job_index": 145,
+            "rep": 0
+          },
+          {
+            "raw_line": 155,
+            "job_index": 154,
+            "rep": 1
+          },
+          {
+            "raw_line": 160,
+            "job_index": 159,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 150,
+            "job_index": 149,
+            "rep": 0
+          },
+          {
+            "raw_line": 152,
+            "job_index": 151,
+            "rep": 1
+          },
+          {
+            "raw_line": 158,
+            "job_index": 157,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 145,
+            "job_index": 144,
+            "rep": 0
+          },
+          {
+            "raw_line": 153,
+            "job_index": 152,
+            "rep": 1
+          },
+          {
+            "raw_line": 162,
+            "job_index": 161,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 148,
+            "job_index": 147,
+            "rep": 0
+          },
+          {
+            "raw_line": 154,
+            "job_index": 153,
+            "rep": 1
+          },
+          {
+            "raw_line": 157,
+            "job_index": 156,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 149,
+            "job_index": 148,
+            "rep": 0
+          },
+          {
+            "raw_line": 156,
+            "job_index": 155,
+            "rep": 1
+          },
+          {
+            "raw_line": 161,
+            "job_index": 160,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 147,
+            "job_index": 146,
+            "rep": 0
+          },
+          {
+            "raw_line": 151,
+            "job_index": 150,
+            "rep": 1
+          },
+          {
+            "raw_line": 159,
+            "job_index": 158,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000071": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 166,
+            "job_index": 165,
+            "rep": 0
+          },
+          {
+            "raw_line": 173,
+            "job_index": 172,
+            "rep": 1
+          },
+          {
+            "raw_line": 180,
+            "job_index": 179,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 163,
+            "job_index": 162,
+            "rep": 0
+          },
+          {
+            "raw_line": 174,
+            "job_index": 173,
+            "rep": 1
+          },
+          {
+            "raw_line": 177,
+            "job_index": 176,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 164,
+            "job_index": 163,
+            "rep": 0
+          },
+          {
+            "raw_line": 172,
+            "job_index": 171,
+            "rep": 1
+          },
+          {
+            "raw_line": 175,
+            "job_index": 174,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 165,
+            "job_index": 164,
+            "rep": 0
+          },
+          {
+            "raw_line": 171,
+            "job_index": 170,
+            "rep": 1
+          },
+          {
+            "raw_line": 179,
+            "job_index": 178,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 167,
+            "job_index": 166,
+            "rep": 0
+          },
+          {
+            "raw_line": 169,
+            "job_index": 168,
+            "rep": 1
+          },
+          {
+            "raw_line": 176,
+            "job_index": 175,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 168,
+            "job_index": 167,
+            "rep": 0
+          },
+          {
+            "raw_line": 170,
+            "job_index": 169,
+            "rep": 1
+          },
+          {
+            "raw_line": 178,
+            "job_index": 177,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000072": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 183,
+            "job_index": 182,
+            "rep": 0
+          },
+          {
+            "raw_line": 188,
+            "job_index": 187,
+            "rep": 1
+          },
+          {
+            "raw_line": 198,
+            "job_index": 197,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 182,
+            "job_index": 181,
+            "rep": 0
+          },
+          {
+            "raw_line": 191,
+            "job_index": 190,
+            "rep": 1
+          },
+          {
+            "raw_line": 196,
+            "job_index": 195,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 181,
+            "job_index": 180,
+            "rep": 0
+          },
+          {
+            "raw_line": 187,
+            "job_index": 186,
+            "rep": 1
+          },
+          {
+            "raw_line": 197,
+            "job_index": 196,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 185,
+            "job_index": 184,
+            "rep": 0
+          },
+          {
+            "raw_line": 189,
+            "job_index": 188,
+            "rep": 1
+          },
+          {
+            "raw_line": 195,
+            "job_index": 194,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 184,
+            "job_index": 183,
+            "rep": 0
+          },
+          {
+            "raw_line": 190,
+            "job_index": 189,
+            "rep": 1
+          },
+          {
+            "raw_line": 193,
+            "job_index": 192,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 186,
+            "job_index": 185,
+            "rep": 0
+          },
+          {
+            "raw_line": 192,
+            "job_index": 191,
+            "rep": 1
+          },
+          {
+            "raw_line": 194,
+            "job_index": 193,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000073": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 202,
+            "job_index": 201,
+            "rep": 0
+          },
+          {
+            "raw_line": 208,
+            "job_index": 207,
+            "rep": 1
+          },
+          {
+            "raw_line": 213,
+            "job_index": 212,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 201,
+            "job_index": 200,
+            "rep": 0
+          },
+          {
+            "raw_line": 209,
+            "job_index": 208,
+            "rep": 1
+          },
+          {
+            "raw_line": 212,
+            "job_index": 211,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 199,
+            "job_index": 198,
+            "rep": 0
+          },
+          {
+            "raw_line": 206,
+            "job_index": 205,
+            "rep": 1
+          },
+          {
+            "raw_line": 215,
+            "job_index": 214,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 203,
+            "job_index": 202,
+            "rep": 0
+          },
+          {
+            "raw_line": 205,
+            "job_index": 204,
+            "rep": 1
+          },
+          {
+            "raw_line": 216,
+            "job_index": 215,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 204,
+            "job_index": 203,
+            "rep": 0
+          },
+          {
+            "raw_line": 210,
+            "job_index": 209,
+            "rep": 1
+          },
+          {
+            "raw_line": 211,
+            "job_index": 210,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 200,
+            "job_index": 199,
+            "rep": 0
+          },
+          {
+            "raw_line": 207,
+            "job_index": 206,
+            "rep": 1
+          },
+          {
+            "raw_line": 214,
+            "job_index": 213,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000074": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 220,
+            "job_index": 219,
+            "rep": 0
+          },
+          {
+            "raw_line": 223,
+            "job_index": 222,
+            "rep": 1
+          },
+          {
+            "raw_line": 230,
+            "job_index": 229,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 222,
+            "job_index": 221,
+            "rep": 0
+          },
+          {
+            "raw_line": 224,
+            "job_index": 223,
+            "rep": 1
+          },
+          {
+            "raw_line": 233,
+            "job_index": 232,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 219,
+            "job_index": 218,
+            "rep": 0
+          },
+          {
+            "raw_line": 228,
+            "job_index": 227,
+            "rep": 1
+          },
+          {
+            "raw_line": 232,
+            "job_index": 231,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 221,
+            "job_index": 220,
+            "rep": 0
+          },
+          {
+            "raw_line": 227,
+            "job_index": 226,
+            "rep": 1
+          },
+          {
+            "raw_line": 231,
+            "job_index": 230,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 218,
+            "job_index": 217,
+            "rep": 0
+          },
+          {
+            "raw_line": 226,
+            "job_index": 225,
+            "rep": 1
+          },
+          {
+            "raw_line": 234,
+            "job_index": 233,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 217,
+            "job_index": 216,
+            "rep": 0
+          },
+          {
+            "raw_line": 225,
+            "job_index": 224,
+            "rep": 1
+          },
+          {
+            "raw_line": 229,
+            "job_index": 228,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000077": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 239,
+            "job_index": 238,
+            "rep": 0
+          },
+          {
+            "raw_line": 242,
+            "job_index": 241,
+            "rep": 1
+          },
+          {
+            "raw_line": 248,
+            "job_index": 247,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 240,
+            "job_index": 239,
+            "rep": 0
+          },
+          {
+            "raw_line": 244,
+            "job_index": 243,
+            "rep": 1
+          },
+          {
+            "raw_line": 252,
+            "job_index": 251,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 236,
+            "job_index": 235,
+            "rep": 0
+          },
+          {
+            "raw_line": 243,
+            "job_index": 242,
+            "rep": 1
+          },
+          {
+            "raw_line": 249,
+            "job_index": 248,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 238,
+            "job_index": 237,
+            "rep": 0
+          },
+          {
+            "raw_line": 245,
+            "job_index": 244,
+            "rep": 1
+          },
+          {
+            "raw_line": 247,
+            "job_index": 246,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 235,
+            "job_index": 234,
+            "rep": 0
+          },
+          {
+            "raw_line": 246,
+            "job_index": 245,
+            "rep": 1
+          },
+          {
+            "raw_line": 251,
+            "job_index": 250,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 237,
+            "job_index": 236,
+            "rep": 0
+          },
+          {
+            "raw_line": 241,
+            "job_index": 240,
+            "rep": 1
+          },
+          {
+            "raw_line": 250,
+            "job_index": 249,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000078": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 253,
+            "job_index": 252,
+            "rep": 0
+          },
+          {
+            "raw_line": 260,
+            "job_index": 259,
+            "rep": 1
+          },
+          {
+            "raw_line": 266,
+            "job_index": 265,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 254,
+            "job_index": 253,
+            "rep": 0
+          },
+          {
+            "raw_line": 261,
+            "job_index": 260,
+            "rep": 1
+          },
+          {
+            "raw_line": 268,
+            "job_index": 267,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 255,
+            "job_index": 254,
+            "rep": 0
+          },
+          {
+            "raw_line": 264,
+            "job_index": 263,
+            "rep": 1
+          },
+          {
+            "raw_line": 269,
+            "job_index": 268,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 256,
+            "job_index": 255,
+            "rep": 0
+          },
+          {
+            "raw_line": 263,
+            "job_index": 262,
+            "rep": 1
+          },
+          {
+            "raw_line": 270,
+            "job_index": 269,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 258,
+            "job_index": 257,
+            "rep": 0
+          },
+          {
+            "raw_line": 262,
+            "job_index": 261,
+            "rep": 1
+          },
+          {
+            "raw_line": 267,
+            "job_index": 266,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 257,
+            "job_index": 256,
+            "rep": 0
+          },
+          {
+            "raw_line": 259,
+            "job_index": 258,
+            "rep": 1
+          },
+          {
+            "raw_line": 265,
+            "job_index": 264,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000081": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 275,
+            "job_index": 274,
+            "rep": 0
+          },
+          {
+            "raw_line": 279,
+            "job_index": 278,
+            "rep": 1
+          },
+          {
+            "raw_line": 285,
+            "job_index": 284,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 273,
+            "job_index": 272,
+            "rep": 0
+          },
+          {
+            "raw_line": 282,
+            "job_index": 281,
+            "rep": 1
+          },
+          {
+            "raw_line": 287,
+            "job_index": 286,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 271,
+            "job_index": 270,
+            "rep": 0
+          },
+          {
+            "raw_line": 277,
+            "job_index": 276,
+            "rep": 1
+          },
+          {
+            "raw_line": 286,
+            "job_index": 285,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 276,
+            "job_index": 275,
+            "rep": 0
+          },
+          {
+            "raw_line": 281,
+            "job_index": 280,
+            "rep": 1
+          },
+          {
+            "raw_line": 288,
+            "job_index": 287,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 272,
+            "job_index": 271,
+            "rep": 0
+          },
+          {
+            "raw_line": 280,
+            "job_index": 279,
+            "rep": 1
+          },
+          {
+            "raw_line": 283,
+            "job_index": 282,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 274,
+            "job_index": 273,
+            "rep": 0
+          },
+          {
+            "raw_line": 278,
+            "job_index": 277,
+            "rep": 1
+          },
+          {
+            "raw_line": 284,
+            "job_index": 283,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000086": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 293,
+            "job_index": 292,
+            "rep": 0
+          },
+          {
+            "raw_line": 299,
+            "job_index": 298,
+            "rep": 1
+          },
+          {
+            "raw_line": 303,
+            "job_index": 302,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 289,
+            "job_index": 288,
+            "rep": 0
+          },
+          {
+            "raw_line": 300,
+            "job_index": 299,
+            "rep": 1
+          },
+          {
+            "raw_line": 304,
+            "job_index": 303,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 291,
+            "job_index": 290,
+            "rep": 0
+          },
+          {
+            "raw_line": 296,
+            "job_index": 295,
+            "rep": 1
+          },
+          {
+            "raw_line": 306,
+            "job_index": 305,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 292,
+            "job_index": 291,
+            "rep": 0
+          },
+          {
+            "raw_line": 297,
+            "job_index": 296,
+            "rep": 1
+          },
+          {
+            "raw_line": 301,
+            "job_index": 300,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 290,
+            "job_index": 289,
+            "rep": 0
+          },
+          {
+            "raw_line": 295,
+            "job_index": 294,
+            "rep": 1
+          },
+          {
+            "raw_line": 302,
+            "job_index": 301,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 294,
+            "job_index": 293,
+            "rep": 0
+          },
+          {
+            "raw_line": 298,
+            "job_index": 297,
+            "rep": 1
+          },
+          {
+            "raw_line": 305,
+            "job_index": 304,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000089": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 309,
+            "job_index": 308,
+            "rep": 0
+          },
+          {
+            "raw_line": 318,
+            "job_index": 317,
+            "rep": 1
+          },
+          {
+            "raw_line": 322,
+            "job_index": 321,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 311,
+            "job_index": 310,
+            "rep": 0
+          },
+          {
+            "raw_line": 315,
+            "job_index": 314,
+            "rep": 1
+          },
+          {
+            "raw_line": 323,
+            "job_index": 322,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 310,
+            "job_index": 309,
+            "rep": 0
+          },
+          {
+            "raw_line": 316,
+            "job_index": 315,
+            "rep": 1
+          },
+          {
+            "raw_line": 324,
+            "job_index": 323,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 312,
+            "job_index": 311,
+            "rep": 0
+          },
+          {
+            "raw_line": 317,
+            "job_index": 316,
+            "rep": 1
+          },
+          {
+            "raw_line": 319,
+            "job_index": 318,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 307,
+            "job_index": 306,
+            "rep": 0
+          },
+          {
+            "raw_line": 314,
+            "job_index": 313,
+            "rep": 1
+          },
+          {
+            "raw_line": 320,
+            "job_index": 319,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 308,
+            "job_index": 307,
+            "rep": 0
+          },
+          {
+            "raw_line": 313,
+            "job_index": 312,
+            "rep": 1
+          },
+          {
+            "raw_line": 321,
+            "job_index": 320,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000092": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 327,
+            "job_index": 326,
+            "rep": 0
+          },
+          {
+            "raw_line": 331,
+            "job_index": 330,
+            "rep": 1
+          },
+          {
+            "raw_line": 339,
+            "job_index": 338,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 328,
+            "job_index": 327,
+            "rep": 0
+          },
+          {
+            "raw_line": 336,
+            "job_index": 335,
+            "rep": 1
+          },
+          {
+            "raw_line": 340,
+            "job_index": 339,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 329,
+            "job_index": 328,
+            "rep": 0
+          },
+          {
+            "raw_line": 334,
+            "job_index": 333,
+            "rep": 1
+          },
+          {
+            "raw_line": 342,
+            "job_index": 341,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 330,
+            "job_index": 329,
+            "rep": 0
+          },
+          {
+            "raw_line": 332,
+            "job_index": 331,
+            "rep": 1
+          },
+          {
+            "raw_line": 337,
+            "job_index": 336,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 326,
+            "job_index": 325,
+            "rep": 0
+          },
+          {
+            "raw_line": 335,
+            "job_index": 334,
+            "rep": 1
+          },
+          {
+            "raw_line": 338,
+            "job_index": 337,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 325,
+            "job_index": 324,
+            "rep": 0
+          },
+          {
+            "raw_line": 333,
+            "job_index": 332,
+            "rep": 1
+          },
+          {
+            "raw_line": 341,
+            "job_index": 340,
+            "rep": 2
+          }
+        ]
+      }
+    },
+    "000000000094": {
+      "clean": {
+        "baseline_A": [
+          {
+            "raw_line": 348,
+            "job_index": 347,
+            "rep": 0
+          },
+          {
+            "raw_line": 351,
+            "job_index": 350,
+            "rep": 1
+          },
+          {
+            "raw_line": 360,
+            "job_index": 359,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 346,
+            "job_index": 345,
+            "rep": 0
+          },
+          {
+            "raw_line": 354,
+            "job_index": 353,
+            "rep": 1
+          },
+          {
+            "raw_line": 358,
+            "job_index": 357,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 344,
+            "job_index": 343,
+            "rep": 0
+          },
+          {
+            "raw_line": 352,
+            "job_index": 351,
+            "rep": 1
+          },
+          {
+            "raw_line": 355,
+            "job_index": 354,
+            "rep": 2
+          }
+        ]
+      },
+      "adv": {
+        "baseline_A": [
+          {
+            "raw_line": 345,
+            "job_index": 344,
+            "rep": 0
+          },
+          {
+            "raw_line": 349,
+            "job_index": 348,
+            "rep": 1
+          },
+          {
+            "raw_line": 356,
+            "job_index": 355,
+            "rep": 2
+          }
+        ],
+        "baseline_B": [
+          {
+            "raw_line": 347,
+            "job_index": 346,
+            "rep": 0
+          },
+          {
+            "raw_line": 353,
+            "job_index": 352,
+            "rep": 1
+          },
+          {
+            "raw_line": 359,
+            "job_index": 358,
+            "rep": 2
+          }
+        ],
+        "candidate16M": [
+          {
+            "raw_line": 343,
+            "job_index": 342,
+            "rep": 0
+          },
+          {
+            "raw_line": 350,
+            "job_index": 349,
+            "rep": 1
+          },
+          {
+            "raw_line": 357,
+            "job_index": 356,
+            "rep": 2
+          }
+        ]
+      }
+    }
+  },
+  "aa_controls": {
+    "clean": {
+      "n_images": 20,
+      "mean_log": -1.546460398250075e-05,
+      "sd_log": 0.00015219958311304632,
+      "geomean_ratio": 0.9999845355155939,
+      "mde_log_80pct": 0.0001005322082965261,
+      "aa_ok": true,
+      "mde_ok": true
+    },
+    "adv": {
+      "n_images": 20,
+      "mean_log": -1.8182937505165462e-05,
+      "sd_log": 0.0001207294581331227,
+      "geomean_ratio": 0.9999818172278034,
+      "mde_log_80pct": 7.97452843451674e-05,
+      "aa_ok": true,
+      "mde_ok": true
+    }
+  },
+  "restore_pending": true
+}

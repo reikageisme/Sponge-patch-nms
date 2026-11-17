@@ -1,0 +1,23 @@
+{
+  "status": "STOPPED_UNEXPECTED_READINESS_OBSERVATION_TIMEOUT_NO_RETRY",
+  "source_tool_chunk": "ecf7ac",
+  "driver_exitcode": 1,
+  "exception": "subprocess.TimeoutExpired",
+  "command": "ssh ... tanh@192.168.10.11 /home/tanh/sponge-venv/bin/python -",
+  "command_timeout_seconds": 25,
+  "stage": "wait_ready -> remote READY script",
+  "record_type": "transcription from local tool output; no original stderr file was captured",
+  "authoritative_terminal_observed_afterwards": {
+    "source_tool_chunk": "3428c7",
+    "ActiveState": "inactive",
+    "MainPID": "0"
+  },
+  "remaining_cases_not_started": [
+    "qa_mainkill_01",
+    "qa_childkill_01",
+    "qa_timeout_01",
+    "qa_disconnect_01"
+  ],
+  "supervisor_qualification_pass": false,
+  "root_cause": "UNKNOWN: no evidence separates SSH/network delay from remote readiness-query delay"
+}

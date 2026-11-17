@@ -1,0 +1,13 @@
+{
+  "tag": "qa-pi3b-nms-light-api-20261115",
+  "commit": "f7258a5e24a23fce475e4e058bb73e657436c334",
+  "config_sha256": "2f7a8a9f3f4cda816348191b786ffbc6034c3166a52b24f35adbe3ca97cdef7d",
+  "source_sha256": {
+    "bracket.py": "35e80c3bf053c9586a70bb57f16e7a200eb0768a2e83761f1c102403788cf332",
+    "qa_worker.py": "b182e37e76696e9a298fac1f8876fa76fd1e5530b60ff801c9f18c75d17601f1"
+  },
+  "created_at_utc": "2026-11-15T04:30:03.237102+00:00",
+  "scientific_endpoint_enabled": false,
+  "model_or_weights_loaded": false,
+  "unit": "sponge-pi3b-nms-light-api-qa-20261115.service"
+}

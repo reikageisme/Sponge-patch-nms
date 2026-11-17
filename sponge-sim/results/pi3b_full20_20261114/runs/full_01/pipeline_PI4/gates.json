@@ -1,0 +1,40 @@
+{
+  "quality_pass": true,
+  "audit": {
+    "structure_ok": true,
+    "errors": [],
+    "conditions_ok": true,
+    "condition_errors": [],
+    "n_timings": 720,
+    "n_guards": 1572,
+    "expected_timings": 720,
+    "raw_sha256": "bd851c9e690e38b7e3dd7df6079efe30fc5304b2ba83accbf321f5414eb26a9c"
+  },
+  "gates": {
+    "completed": true,
+    "images_complete": true,
+    "governor_ok": true,
+    "clock_ok": true,
+    "swap_off": true,
+    "reference_flags": 0,
+    "pin_ok": true,
+    "temp_max_c": 41.3,
+    "clock_min_hz": 600000000,
+    "clock_max_hz": 600000000,
+    "throttled_values": [
+      "throttled=0x50000",
+      "throttled=0x50005"
+    ],
+    "reference_ratio_range": [
+      0.9988661143347715,
+      1.0151972014582011
+    ],
+    "n_environment": 23,
+    "n_reference": 22,
+    "reference_ok": true,
+    "aa_mean_log": -0.0009716325130935908,
+    "mde_log_80pct": 0.0027535348095158725,
+    "aa_ok": true,
+    "mde_ok": true
+  }
+}

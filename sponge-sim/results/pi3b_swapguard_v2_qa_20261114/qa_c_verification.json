@@ -1,0 +1,105 @@
+{
+  "status": "ALL_FIVE_QA_C_CASES_PASS_NO_MODEL_INFERENCE",
+  "cases": {
+    "qa_c_normal_01": {
+      "status": "PASS_NORMAL_RESTORE",
+      "file_sha256": {
+        "restore.json": "64e0e291faa651b6868debbb190f1e155e7e2d966a7162f1945a30f0a647d3eb",
+        "activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+        "lease_events.jsonl": "da386ffb7efda7f12a47811ba62749ff7085acd451ac5bb9d2a4b08c3e80bf10",
+        "supervisor.log": "bb035a6f75cc69b8cca157faad492f3cfa82219fad161faf4dc7be4d3f195895",
+        "qa_ready.json": "2fefcefb2f891d09f91424d5b2d11b3a3b742cfd94f6364ab6ae3f9b182fad75",
+        "registration.json": "bc78a28373b6476bb0af87715b69e9e402ec236e3231159014da7b5fbac77afb",
+        "lease_state.json": "48a82d899ae8322899afa339265c23143a0a02e0ec9430303aa070a7c05280cd"
+      },
+      "child_identity_gone": true,
+      "restore": {
+        "status": "RESTORED",
+        "errors": [],
+        "wall_utc": 1794638084.96462
+      }
+    },
+    "qa_c_mainkill_01": {
+      "status": "PASS_MAIN_SIGKILL_RESTORE",
+      "file_sha256": {
+        "restore.json": "1c85f9cc395644c6eb4e17cc2ba77552e7050d1fff85b3a5b3ab7c87d1528a23",
+        "qa_fault_intent.json": "60350a3b7f4ccb167b287ee087442712cd0793c603ec3a72d08bb820de570410",
+        "activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+        "lease_events.jsonl": "bc5903e594ac46f796109db51f904ea22d647bc524ad0f94f4684a1be3b8c9e7",
+        "supervisor.log": "1ae629e7bb59dfad335092176b661c453092015f292de440f70bc7392bd2aa0c",
+        "qa_ready.json": "958b8ab1fc48a01a5387c45c336f05aa4f33e74e75fef16875c4361fc9a6fcc4",
+        "qa_fault_result.json": "5f4d2152ec2c97cbc144ba12f538ac4e9e1429935e330ef540a8f09b9e98cb12",
+        "registration.json": "bc78a28373b6476bb0af87715b69e9e402ec236e3231159014da7b5fbac77afb",
+        "lease_state.json": "4b03f3d14547aade3d7dc802c0431676b2114e832c01bf3a3af739ec0e6359c1"
+      },
+      "child_identity_gone": true,
+      "restore": {
+        "status": "RESTORED",
+        "errors": [],
+        "wall_utc": 1794638157.08043
+      }
+    },
+    "qa_c_childkill_01": {
+      "status": "PASS_CHILD_SIGKILL_RESTORE",
+      "file_sha256": {
+        "restore.json": "579e89ab3f484b6d883ae27efdc0e69aecca0cab7acd4e581b2c0ed2b23c43f2",
+        "qa_fault_intent.json": "23103027777e4bfeef3e0bcc69866db6a1c76e7bc641d3181089b3fa3c6b5806",
+        "activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+        "lease_events.jsonl": "1745a9c4adac42ad6e30f24b987936534e21fb114ca20cd673ce111e61f997ff",
+        "supervisor.log": "ae4ac1fccfc75935cf32f8ec49ecb447636e16f75bbb488c824660a2f685c337",
+        "qa_ready.json": "10baaa8b65b067cdb8de6b798b21152590a7c9e243eedcad582ba09b5730a8f2",
+        "qa_fault_result.json": "00fccdd8faaa9462e53063349604b8daec85108e0aea40ea2d6b6f5381bb2e6f",
+        "registration.json": "bc78a28373b6476bb0af87715b69e9e402ec236e3231159014da7b5fbac77afb",
+        "lease_state.json": "8cc465d366af25dcc1c7a83ea86d06c9ff4ccdbac4a4b6def99c97aed3f6227b"
+      },
+      "child_identity_gone": true,
+      "restore": {
+        "status": "RESTORED",
+        "errors": [],
+        "wall_utc": 1794638222.0614355
+      }
+    },
+    "qa_c_timeout_01": {
+      "status": "PASS_TIMEOUT_RESTORE",
+      "file_sha256": {
+        "restore.json": "1daf76bb52306981e7cb6d0a6668ae65383bfaf10572c59d9d4da6bff2f7d990",
+        "activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+        "lease_events.jsonl": "da44d4c035bf9653658bbf1be45b8f9a844aab66ffa3dfbc88ee0298c65f899e",
+        "supervisor.log": "320a2bc1a754097a18097b28f5d704e1d4faef97e3866a3f8fa7dd91f6692fa1",
+        "qa_ready.json": "feec6996c53aa2472d372bdc66cccd88ecaf155af7152d63315365847dd52d61",
+        "registration.json": "bc78a28373b6476bb0af87715b69e9e402ec236e3231159014da7b5fbac77afb",
+        "qa_timeout_ready_observation.json": "ccf9433e7ff46a90c44accaf5b42079ee7bd55a71675e549e3949b946217122f",
+        "lease_state.json": "08bae9b1fd055f63b1626581ba518deb1d71437993c6e244deef83dc7dca4b02"
+      },
+      "child_identity_gone": true,
+      "restore": {
+        "status": "RESTORED",
+        "errors": [],
+        "wall_utc": 1794638307.8101904
+      }
+    },
+    "qa_c_disconnect_01": {
+      "status": "PASS_DISCONNECT_RESTORE",
+      "file_sha256": {
+        "restore.json": "eb4580e4f7c40d50e38b8b8ec7e804b64abc1feb790f41affa62ed0e94d2b4eb",
+        "activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+        "lease_events.jsonl": "0691c5b645ab4a9b2c8e39c0a39563faa8588c427c9120d2760def20109e6a9b",
+        "supervisor.log": "e54b3634f088eec0761e0cd2252a82d3470f989869c0cca0e58a5c6bd5de737e",
+        "qa_ready.json": "0771dc2934dd3eaa92511cb34141b37b4d628c088a1f5df22930595f78294829",
+        "registration.json": "bc78a28373b6476bb0af87715b69e9e402ec236e3231159014da7b5fbac77afb",
+        "lease_state.json": "1394575adc801d31decc6811b9fa763699d30854f0067dbf4f4f7fe2cda79e0f"
+      },
+      "child_identity_gone": true,
+      "restore": {
+        "status": "RESTORED",
+        "errors": [],
+        "wall_utc": 1794638403.8988829
+      }
+    }
+  },
+  "failed_previous_qa_preserved": "qa_normal_01",
+  "source_tag": "qa-pi3b-swapguard-v2c-20261114",
+  "source_commit": "271fc81716c207dbf344453966a1ae606d85247c",
+  "scientific_timing_rows": 0,
+  "sshd_kept_open": true
+}

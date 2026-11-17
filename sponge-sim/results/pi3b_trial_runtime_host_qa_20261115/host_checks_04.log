@@ -1,0 +1,94 @@
+..................................................FF.                    [100%]
+================================== FAILURES ===================================
+_ test_session_full_cadence_and_material_lifetime_without_native_work[smoke-2-1] _
+
+trial_context = namespace(events=['guard_warmup_pre', 'guard_warmup_post', 'emit_control'], controls=[{'kind': 'warmup', 'label': 'glo...tory=namespace(snapshot=<function pool at 0x00000213F113BED0>, increments=<function increments at 0x00000213F1150300>))
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000213F12F8750>
+phase = 'smoke', n_images = 2, n_global = 1
+
+    @pytest.mark.parametrize('phase,n_images,n_global',[('smoke',2,1),('full',20,3)])
+    def test_session_full_cadence_and_material_lifetime_without_native_work(trial_context,monkeypatch,phase,n_images,n_global):
+        c=trial_context;c.inventory.snapshot=pool;active=[];released=[];events=[];global_calls=[]
+        def pin(workload,*,label,**kwargs):
+            assert not active;events.append(label);return {'passed':True}
+        monkeypatch.setattr(engine.sentry,'run',pin)  # The sentry itself has fake-clock tests above.
+        @contextmanager
+        def materials(image):
+            assert not active;active.append(image);events.append('enter_'+image)
+            try:yield c.prepare
+            finally:released.append(active.pop());events.append('exit_'+image)
+        def forward():
+            assert not active  # Never forward reference while material buffers are retained.
+            events.append('reference_forward');return Output()
+        def measure(fn,*,instrumented):assert not instrumented;return fn(),raw_measure()
+        def global_pipeline():global_calls.append(1);assert not active;return Output()
+>       engine.run_session(phase,global_pipeline=global_pipeline,forward_reference=forward,prepare_image=materials,
+            execute_pair=c.pair,measure=measure,guard=c.guard,inventory=c.inventory,cpu_times=lambda **kw:pytest.fail('mock sentry owns clocks'),
+            prepare_pin_workload=lambda:lambda:Output(),emit_control=c.emit_control,emit_trial=c.emit_trial)
+
+sponge-sim\tests\test_pi3b_trial_runtime.py:377: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+sponge-sim\studies\pi3b_nms_trial_runtime_20261115\engine.py:74: in run_session
+    controls.warmup(global_pipeline,3 if phase=='full' else 1,label='global',guard=guard,emit=emit_control)
+sponge-sim\studies\pi3b_nms_trial_runtime_20261115\reference.py:34: in warmup
+    try:guard('warmup_post')
+        ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+label = 'warmup_post'
+
+    def guard(label):
+        events.append('guard_'+label)
+>       if label.endswith('post'):assert outputs[-1]() is None
+                                         ^^^^^^^^^^^
+E       IndexError: list index out of range
+
+sponge-sim\tests\test_pi3b_trial_runtime.py:258: IndexError
+_ test_session_full_cadence_and_material_lifetime_without_native_work[full-20-3] _
+
+trial_context = namespace(events=['guard_warmup_pre', 'guard_warmup_post', 'emit_control'], controls=[{'kind': 'warmup', 'label': 'glo...tory=namespace(snapshot=<function pool at 0x00000213F113BED0>, increments=<function increments at 0x00000213F1150300>))
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x00000213F1C19010>
+phase = 'full', n_images = 20, n_global = 3
+
+    @pytest.mark.parametrize('phase,n_images,n_global',[('smoke',2,1),('full',20,3)])
+    def test_session_full_cadence_and_material_lifetime_without_native_work(trial_context,monkeypatch,phase,n_images,n_global):
+        c=trial_context;c.inventory.snapshot=pool;active=[];released=[];events=[];global_calls=[]
+        def pin(workload,*,label,**kwargs):
+            assert not active;events.append(label);return {'passed':True}
+        monkeypatch.setattr(engine.sentry,'run',pin)  # The sentry itself has fake-clock tests above.
+        @contextmanager
+        def materials(image):
+            assert not active;active.append(image);events.append('enter_'+image)
+            try:yield c.prepare
+            finally:released.append(active.pop());events.append('exit_'+image)
+        def forward():
+            assert not active  # Never forward reference while material buffers are retained.
+            events.append('reference_forward');return Output()
+        def measure(fn,*,instrumented):assert not instrumented;return fn(),raw_measure()
+        def global_pipeline():global_calls.append(1);assert not active;return Output()
+>       engine.run_session(phase,global_pipeline=global_pipeline,forward_reference=forward,prepare_image=materials,
+            execute_pair=c.pair,measure=measure,guard=c.guard,inventory=c.inventory,cpu_times=lambda **kw:pytest.fail('mock sentry owns clocks'),
+            prepare_pin_workload=lambda:lambda:Output(),emit_control=c.emit_control,emit_trial=c.emit_trial)
+
+sponge-sim\tests\test_pi3b_trial_runtime.py:377: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+sponge-sim\studies\pi3b_nms_trial_runtime_20261115\engine.py:74: in run_session
+    controls.warmup(global_pipeline,3 if phase=='full' else 1,label='global',guard=guard,emit=emit_control)
+sponge-sim\studies\pi3b_nms_trial_runtime_20261115\reference.py:34: in warmup
+    try:guard('warmup_post')
+        ^^^^^^^^^^^^^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+label = 'warmup_post'
+
+    def guard(label):
+        events.append('guard_'+label)
+>       if label.endswith('post'):assert outputs[-1]() is None
+                                         ^^^^^^^^^^^
+E       IndexError: list index out of range
+
+sponge-sim\tests\test_pi3b_trial_runtime.py:258: IndexError
+=========================== short test summary info ===========================
+FAILED sponge-sim\tests\test_pi3b_trial_runtime.py::test_session_full_cadence_and_material_lifetime_without_native_work[smoke-2-1]
+FAILED sponge-sim\tests\test_pi3b_trial_runtime.py::test_session_full_cadence_and_material_lifetime_without_native_work[full-20-3]
+2 failed, 51 passed in 2.50s

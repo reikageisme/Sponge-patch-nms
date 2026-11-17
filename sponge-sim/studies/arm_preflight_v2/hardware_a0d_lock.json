@@ -1,0 +1,12 @@
+{
+  "status": "REGISTER_BEFORE_ONE_FIXED_PUBLIC_METADATA_READ",
+  "source_path": "sponge-sim/studies/arm_preflight_v2/arm_hardware_metadata.sh",
+  "source_sha256": "59a0bfeae3ef273636c142bbcb6737b6f55c49b6886a8d607a0db5e16c2a8e43",
+  "tag": "prereg-arm-hardware-a0d-20261107",
+  "prereg_path": "sponge-sim/prereg/PREREG_ARM_HARDWARE_A0D_20261107.md",
+  "remote_source": "studies/arm_hardware_a0d_20261107_01/arm_hardware_metadata.sh",
+  "remote_result": "results/phone_a36/hardware_a0d_20261107_01",
+  "battery_queries": 0,
+  "load_permitted": false,
+  "keep_sshd_running": true
+}

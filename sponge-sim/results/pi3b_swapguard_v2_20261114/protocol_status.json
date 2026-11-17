@@ -1,0 +1,36 @@
+{
+  "status": "CLOSED_AFTER_SMOKE_MDE_FAILURE_FULL_CANCELLED_NO_RETRY",
+  "tag": "prereg-pi3b-swapguard-v2-20261114",
+  "commit": "560b3aaf657fa574240e8ab463eefc20425538d8",
+  "gate_failed": "pipeline_PI4.mde_log_80pct",
+  "measured": 0.1335119103548224,
+  "maximum": 0.05,
+  "completed_smoke_timings": 24,
+  "n_images": 2,
+  "auxiliary_status": {
+    "pipeline_PI1": "CANCELLED_NOT_STARTED",
+    "stages_PI4": "CANCELLED_NOT_STARTED"
+  },
+  "full_status": "CANCELLED_NOT_STARTED",
+  "restore_status": "RESTORED",
+  "original_files_sha256": {
+    "restore.json": "d3a58cdc35a8aac9621dab5d2b4795e69f057a489f2c2aba50ab067dcb39bdac",
+    "lease_events.jsonl": "89e9df4ab16f5bd87d8f7a8af436f03e38ac4564b5ac0165d5d7d1fff40e7b00",
+    "campaign_terminal.json": "cd36711a19e35854b93c5adb5dafecb16be1b768331a94b080dbe2763f41c822",
+    "pipeline_PI4.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "pipeline_PI4.gate.log": "6dffe35ff48d83adf84f0aea967042904a7c6133d3059582efe466751b4df188",
+    "supervisor.log": "aa7cd95bf6d4531285c405f6954322fb9e63c2869004432b3c5b026a0ae25aad",
+    "registration.json": "1b5e95b15438492c2e219d19ce73d1c2bdb66d6a3277adaccb7047872a8d4fc6",
+    "lease_state.json": "f71b07e5b7016d36ed92ddae3ff0cf8763ae53428db9303a5b4e721a85b0045e",
+    "status.json": "980553fce2c9ef0db9aacb3eeafaec1467f1ea8c02eb60f9336ef9ecfbf7f747",
+    "pipeline_PI4/preparation.json": "8649d7384566fb00389f0085ddcc42c9f57cf911558beff03216fd89b70daa53",
+    "pipeline_PI4/raw.jsonl": "8d97e3c0ceaacc22f7fc640ccd390b952568a3c2c2b46a452b7fba337b49b7e8",
+    "pipeline_PI4/gates.json": "39a855ee0f9ec2031f896777b23abf55cfdbce26ef4fcaae56d7468a44bd297f",
+    "pipeline_PI4/manifest.json": "21848d3be87c0fce34c253ab299413b579c654aee71afa276c2aacb4be969fee",
+    "pipeline_PI4/terminal.json": "ae42f04594c25158458792d18e3f0c8f63a91bd9590085804249416253bd2e2e"
+  },
+  "original_files_remote_before_after_local_match": true,
+  "source_lock_unchanged": "2041162d361e37a8a2bf045d1f58d05d181a0f16b1e13d552d7b8eb74ea00d23",
+  "no_active_worker": true,
+  "sshd_left_open": true
+}

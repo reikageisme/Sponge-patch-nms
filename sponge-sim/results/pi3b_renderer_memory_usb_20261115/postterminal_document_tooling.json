@@ -1,0 +1,7 @@
+{
+  "scope": "Postterminal document builder only; no raw/source/measurement changes",
+  "initial_error": "KeyError technical_smoke_pass: partial V1 summary correctly lacks that key",
+  "correction": "Assert existing V1 session_gate_pass=False, quality_pass=False and n_jobs=0; keep negative outcome unchanged",
+  "final": "Memory fragment and extension generated successfully",
+  "old_figures_overwritten": false
+}

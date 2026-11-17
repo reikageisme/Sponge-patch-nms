@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "read_only": true,
+  "command": "cd \"$HOME/sponge-sim/pi3b_600mhz\" && sha256sum run.py campaign.sh lock.json\nprintf \"ACTIVE_REGISTERED_WORKERS\\n\"\nps -eo pid=,args= | awk '/[p]i3b_600mhz\\/(run.py|campaign.sh)/ {print}'\nprintf \"EXISTING_CAMPAIGNS\\n\"\nfind runs -mindepth 1 -maxdepth 1 -type d -printf \"%f\\n\"",
+  "output": [
+    "9cc349be2c265fb4615d0016e9dae4a5aef53961df0d603abcb42d7a9fdbec8a  run.py",
+    "262617ea1aecfd8454cdf67deb5144146df3ab2512d9c76d2cb4241528e45095  campaign.sh",
+    "c645656a96a8faea160143159fcad7db253f93d6664c3c19baa78ed74e117099  lock.json",
+    "ACTIVE_REGISTERED_WORKERS",
+    "EXISTING_CAMPAIGNS",
+    "full_01",
+    "smoke_01"
+  ]
+}

@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/home/tanh/sponge-sim/pi3b_600mhz_swapguard_v2/control.py", line 316, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/home/tanh/sponge-sim/pi3b_600mhz_swapguard_v2/control.py", line 312, in main
+    return payload(args)
+  File "/home/tanh/sponge-sim/pi3b_600mhz_swapguard_v2/control.py", line 213, in payload
+    Lease(args.directory).apply()
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~^^
+  File "/home/tanh/sponge-sim/pi3b_600mhz_swapguard_v2/control.py", line 138, in apply
+    self.system.ctl('stop','dev-zram0.swap')
+    ~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tanh/sponge-sim/pi3b_600mhz_swapguard_v2/control.py", line 59, in ctl
+    return self.command('sudo', '-n', 'systemctl', *argv)
+           ~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tanh/sponge-sim/pi3b_600mhz_swapguard_v2/control.py", line 55, in command
+    raise RuntimeError(f'{list(argv)}: rc={result.returncode}; {result.stderr.strip()}')
+RuntimeError: ['sudo', '-n', 'systemctl', 'stop', 'dev-zram0.swap']: rc=1; Job failed. See "journalctl -xe" for details.
+{"status": "RESTORE_FAILED", "errors": ["swap state: ['sudo', '-n', 'systemctl', 'start', 'dev-zram0.swap']: rc=1; A dependency job for dev-zram0.swap failed. See 'journalctl -xe' for details."], "wall_utc": 1794637740.677969}

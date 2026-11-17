@@ -1,0 +1,10 @@
+{
+  "status": "REVIEWABLE_SCOPE_PATCH_NOT_APPLIED",
+  "current_main_sha256": "980b73acd24382e6b337696b35c39165af750408d9bc77a7e64511ecda8a626c",
+  "proposal_patch_sha256": "f4e66ae3c6fb676a6ddc6fbb8797116e89d20f938dd736738ab8e10007f38c89",
+  "proposed_logical_lf_content_sha256": "b8c5d191f41e71b814cab347043da60356b85918350931e1c9ea90afed1e8d13",
+  "git_apply_check_exit_code": 0,
+  "original_main_unchanged": true,
+  "title_authors_unchanged": true,
+  "full_pdf_built": false
+}

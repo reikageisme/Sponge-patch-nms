@@ -1,0 +1,167 @@
+{
+  "status": "FIVE_SLEEP_CASES_AND_ALL_ORIGINAL_SHAS_VERIFIED",
+  "original_files": 39,
+  "files": {
+    "runs/qa_childkill_01/activation_probe.json": {
+      "sha256": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+      "bytes": 117
+    },
+    "runs/qa_childkill_01/lease_events.jsonl": {
+      "sha256": "9b42b14394845a96237c9cfb9b1e65b388db722ec5bb5a56a1a6f417f0739196",
+      "bytes": 753
+    },
+    "runs/qa_childkill_01/lease_state.json": {
+      "sha256": "ddc2dbeeb918aa9dc45b99a810d59085820dba030c955608b681e17c90d129b3",
+      "bytes": 1022
+    },
+    "runs/qa_childkill_01/qa_fault_intent.json": {
+      "sha256": "cc19a73cad8cdd0297ca6de95801d0a6c144a3781e4feaf029b56990a1392c29",
+      "bytes": 356
+    },
+    "runs/qa_childkill_01/qa_fault_sent.json": {
+      "sha256": "31c1a2df9f296157addc957f1930d4d4b903d46dea0cbfaaac9d44a4fce54d54",
+      "bytes": 18
+    },
+    "runs/qa_childkill_01/qa_ready.json": {
+      "sha256": "5ff4b2ef5a99cb680e5c0488bd1cd8021cd66ed47d307a6b84abfdb3651e389d",
+      "bytes": 181
+    },
+    "runs/qa_childkill_01/registration.json": {
+      "sha256": "907d3db188119aada5e2a24d94afaa6f1038d64e9a559559370ed68595f736db",
+      "bytes": 207
+    },
+    "runs/qa_childkill_01/restore.json": {
+      "sha256": "7f3e056d37845ba58d60ae80300da901c8cba295421c58c42cea0bd7e39efc97",
+      "bytes": 76
+    },
+    "runs/qa_childkill_01/supervisor.log": {
+      "sha256": "b074d9fcd5accf3e3d1365c24885b7e90cf01d13ed8200921db6c2b2dd11b00b",
+      "bytes": 780
+    },
+    "runs/qa_disconnect_01/activation_probe.json": {
+      "sha256": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+      "bytes": 117
+    },
+    "runs/qa_disconnect_01/lease_events.jsonl": {
+      "sha256": "15e51cab1093b18b17ffe48093cdcfc3d646a5ca2c7f8fcba8286aeb19a59e8d",
+      "bytes": 751
+    },
+    "runs/qa_disconnect_01/lease_state.json": {
+      "sha256": "a4c74e82b83df0ea87b3734dae291efb7b7364ed8d38601f848ac48b1fc2aad3",
+      "bytes": 1022
+    },
+    "runs/qa_disconnect_01/qa_ready.json": {
+      "sha256": "11dc09ee5df4299b0f5ee4c82b5e4427c168eb3fb17963c05231ff485a4326c3",
+      "bytes": 181
+    },
+    "runs/qa_disconnect_01/registration.json": {
+      "sha256": "907d3db188119aada5e2a24d94afaa6f1038d64e9a559559370ed68595f736db",
+      "bytes": 207
+    },
+    "runs/qa_disconnect_01/restore.json": {
+      "sha256": "aafc4586a231666c58ea73cb6a7b345ff4dcf1f3ef52a705170e02ded8bbf725",
+      "bytes": 76
+    },
+    "runs/qa_disconnect_01/supervisor.log": {
+      "sha256": "12b0ad1dcd827b3e89e1c4f53b8b1cefac84cb90dfa1be70dfcb57d201cac01d",
+      "bytes": 69
+    },
+    "runs/qa_mainkill_01/activation_probe.json": {
+      "sha256": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+      "bytes": 117
+    },
+    "runs/qa_mainkill_01/lease_events.jsonl": {
+      "sha256": "9dc19a1ece7683f53134d97b4696533457ee640fd38fd192f02ba3c5801919d0",
+      "bytes": 756
+    },
+    "runs/qa_mainkill_01/lease_state.json": {
+      "sha256": "10b58d17a880e26b8c2c4138529a2e2aac354abc67dca07832257e4d07ba729a",
+      "bytes": 1022
+    },
+    "runs/qa_mainkill_01/qa_fault_intent.json": {
+      "sha256": "d9aba3c4901ecaa2e44411cbbf799d5c0527f9ec6cbedcfe75aac1c0e24cb20f",
+      "bytes": 355
+    },
+    "runs/qa_mainkill_01/qa_fault_sent.json": {
+      "sha256": "31c1a2df9f296157addc957f1930d4d4b903d46dea0cbfaaac9d44a4fce54d54",
+      "bytes": 18
+    },
+    "runs/qa_mainkill_01/qa_ready.json": {
+      "sha256": "c1598cffffe4f5224e3ac001004b00dc83397e19c93d0409b6e8febd22534e32",
+      "bytes": 181
+    },
+    "runs/qa_mainkill_01/registration.json": {
+      "sha256": "907d3db188119aada5e2a24d94afaa6f1038d64e9a559559370ed68595f736db",
+      "bytes": 207
+    },
+    "runs/qa_mainkill_01/restore.json": {
+      "sha256": "cf1e050da5e621dc810898fe9b8541ba9d15b867938aa0f39d9f50fc3adc14c0",
+      "bytes": 76
+    },
+    "runs/qa_mainkill_01/supervisor.log": {
+      "sha256": "b8d81b550a0194d1c6e8c9e337ab793b26069a7ba64e3e17d1739d12a1621675",
+      "bytes": 69
+    },
+    "runs/qa_normal_01/activation_probe.json": {
+      "sha256": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+      "bytes": 117
+    },
+    "runs/qa_normal_01/lease_events.jsonl": {
+      "sha256": "f9767720830eec22f3c7f463eb307564d7758a4738bc13c1e01a2e3b6f82b29e",
+      "bytes": 757
+    },
+    "runs/qa_normal_01/lease_state.json": {
+      "sha256": "d557092b1b2c80c17622f2133cae07f184f3d3f6e427a6346a247b62c1122ca8",
+      "bytes": 1022
+    },
+    "runs/qa_normal_01/qa_ready.json": {
+      "sha256": "bb8ec68ba782b811b7ef62e671dfbf67e93ec8b734eb704821725a76805bc17a",
+      "bytes": 181
+    },
+    "runs/qa_normal_01/registration.json": {
+      "sha256": "907d3db188119aada5e2a24d94afaa6f1038d64e9a559559370ed68595f736db",
+      "bytes": 207
+    },
+    "runs/qa_normal_01/restore.json": {
+      "sha256": "147419941b0553e15a7dad29faf58b974d1f9caf7ac509f4b8d08b18a0f44b1f",
+      "bytes": 76
+    },
+    "runs/qa_normal_01/supervisor.log": {
+      "sha256": "82c69eb414093c1114438dade8c757141b590eb91172e4a7dabcba2320f6d69a",
+      "bytes": 69
+    },
+    "runs/qa_timeout_01/activation_probe.json": {
+      "sha256": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+      "bytes": 117
+    },
+    "runs/qa_timeout_01/lease_events.jsonl": {
+      "sha256": "4f28c3877cc12abd8c55e76ccc11be4ffda00b064fd23a27f1d6c90a030fb630",
+      "bytes": 754
+    },
+    "runs/qa_timeout_01/lease_state.json": {
+      "sha256": "6f005a51f245fa7b7c03d0f4923ff640b8b2197b69506e7db8eb93013c82e338",
+      "bytes": 1022
+    },
+    "runs/qa_timeout_01/qa_ready.json": {
+      "sha256": "2330db9d6044d71fa42968518352ea40162ff2ff0f0228e2fe769fd5b66014f1",
+      "bytes": 181
+    },
+    "runs/qa_timeout_01/registration.json": {
+      "sha256": "907d3db188119aada5e2a24d94afaa6f1038d64e9a559559370ed68595f736db",
+      "bytes": 207
+    },
+    "runs/qa_timeout_01/restore.json": {
+      "sha256": "d907f75179222ba3ec6bf9689529dfffb6770b4f619a5c55df68b47f7276ba7e",
+      "bytes": 76
+    },
+    "runs/qa_timeout_01/supervisor.log": {
+      "sha256": "0bdadf5b247a52bcfc0f52d1370621742f49ff48870654446813c5c5d4a0e7b0",
+      "bytes": 69
+    }
+  },
+  "source_unchanged": true,
+  "restore_independent_readback": true,
+  "ssh_kept_open": true,
+  "scientific_registration_exists": false,
+  "empirical_endpoint_recorded": false
+}

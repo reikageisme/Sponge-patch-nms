@@ -1,0 +1,87 @@
+{
+  "source": {
+    "key": "yolo13_2025",
+    "version": "arXiv2506.17733v2 (5 September2025)",
+    "url": "https://arxiv.org/html/2506.17733v2#S4",
+    "pdf": "https://arxiv.org/pdf/2506.17733v2",
+    "table": "Table I",
+    "location": "HTML lines200–218; protocol IV-A2 lines247–249",
+    "pdf_page": 7,
+    "protocol_pdf_page": 7,
+    "local_pdf": "D:\\Physical-Visual-DoS-EdgeAI-main\\_paper_revision_20261013\\yolov13_v2_primary.pdf",
+    "pdf_sha256": "7b37fe059ae4686dd19664da8167f6f249dda6d799902ce4a55f20d6ac778611",
+    "verification": "pypdf text extraction of downloaded primary v2 PDF confirms Table I and Tesla T4 TensorRT FP16 on page7"
+  },
+  "published_rows": [
+    {
+      "model": "YOLO11n",
+      "ap50_95_pct": 38.6,
+      "ap50_pct": 54.2,
+      "ap75_pct": 41.6,
+      "latency_ms": 1.53,
+      "params_m": 2.6,
+      "flops_g": 6.5
+    },
+    {
+      "model": "YOLOv12n",
+      "ap50_95_pct": 40.1,
+      "ap50_pct": 56,
+      "ap75_pct": 43.4,
+      "latency_ms": 1.83,
+      "params_m": 2.6,
+      "flops_g": 6.5
+    },
+    {
+      "model": "YOLOv13n",
+      "ap50_95_pct": 41.6,
+      "ap50_pct": 57.8,
+      "ap75_pct": 45.1,
+      "latency_ms": 1.97,
+      "params_m": 2.5,
+      "flops_g": 6.4
+    },
+    {
+      "model": "YOLOv13s",
+      "ap50_95_pct": 48,
+      "ap50_pct": 65.2,
+      "ap75_pct": 52,
+      "latency_ms": 2.98,
+      "params_m": 9,
+      "flops_g": 20.8
+    }
+  ],
+  "local_rows": [
+    {
+      "model": "YOLO11n",
+      "map_mean": 42.44488037617512,
+      "map_sd": 0.22486641407945,
+      "latency_ms": 2.5845304467624293,
+      "budget": 120
+    },
+    {
+      "model": "YOLOv12n",
+      "map_mean": 40.48860892246941,
+      "map_sd": 0.31084250397260066,
+      "latency_ms": 2.772171694533269,
+      "budget": 120
+    },
+    {
+      "model": "YOLOv13n",
+      "map_mean": 40.795714305233155,
+      "map_sd": 0.9678070935734108,
+      "latency_ms": 4.162779607270894,
+      "budget": 5
+    },
+    {
+      "model": "YOLOv13s",
+      "map_mean": 47.970522976642506,
+      "map_sd": 1.130778011660596,
+      "latency_ms": 51.786075857348905,
+      "budget": 10
+    }
+  ],
+  "scope": "Separate published COCO80/T4TensorRTFP16 inference and local person/RTX5060FP32 pipeline protocols; not cross-study superiority.",
+  "image": "D:\\Physical-Visual-DoS-EdgeAI-main\\paper_assets_20261013\\COMPARISON\\so_sanh_cong_bo_va_thuc_nghiem.png",
+  "sha256": "84797109add6239a8e463b280120315df04ceb15f50bfafb88e4e5b2fb107bdc",
+  "errorbars": "Local mAP sample SD across5seeds only; no published uncertainty invented."
+}

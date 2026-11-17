@@ -1,0 +1,56 @@
+{
+  "memory_worker.py": {
+    "source": "sponge-sim/studies/pi3b_renderer_prealloc_20261114/memory_worker.py",
+    "first_line": 1,
+    "last_line": 125,
+    "sha256": "8e0a047a67a1f498ea1257b53e5049add177d3fe738e7d2d352a68c8d5704b5e"
+  },
+  "memory_campaign.py": {
+    "source": "sponge-sim/studies/pi3b_renderer_prealloc_20261114/memory_campaign.py",
+    "first_line": 1,
+    "last_line": 133,
+    "sha256": "919e518e62eb234efac35316d6b2e1cffc077cf77dcaae3f16f342cc6d85cc66"
+  },
+  "cache.py": {
+    "source": "sponge-sim/studies/pi3b_renderer_prealloc_20261114/cache.py",
+    "first_line": 1,
+    "last_line": 109,
+    "sha256": "bc6046542946f2d238300c4680da64124ce00b11b5e27f201a84b01240b400a8"
+  },
+  "baseline_ops.py": {
+    "source": "sponge-sim/studies/pi3b_renderer_prealloc_20261114/baseline_ops.py",
+    "first_line": 1,
+    "last_line": 94,
+    "sha256": "526e2cc5686c4719df2c219401382a9ebb4296d8d020a1ae44609a3fb86e78f5"
+  },
+  "preallocate.py": {
+    "source": "sponge-sim/studies/pi3b_renderer_prealloc_20261114/preallocate.py",
+    "first_line": 1,
+    "last_line": 29,
+    "sha256": "795aa41ec26b0429f27c0ebb27ca444aa56134324eedf9477af7fa5ffbd6d83c"
+  },
+  "guard.py": {
+    "source": "sponge-sim/studies/pi3b_renderer_prealloc_20261114/guard.py",
+    "first_line": 1,
+    "last_line": 89,
+    "sha256": "ee9add3a7ca142a6ab38c32d5c9f94183a066a284bc4467a89d3b3bf5a98bebd"
+  },
+  "control.py": {
+    "source": "sponge-sim/studies/pi3b_renderer_prealloc_20261114/control.py",
+    "first_line": 1,
+    "last_line": 342,
+    "sha256": "7c0c197ad8689d98c5f4845a4d15fb57bc81d5722a28c100723a263576d15a92"
+  },
+  "analyze_memory.py": {
+    "source": "sponge-sim/studies/pi3b_renderer_prealloc_20261114/analyze_memory.py",
+    "first_line": 1,
+    "last_line": 162,
+    "sha256": "7665e7dabc79f685c6370f647576ccb48c33d04b0f8affaafdb07ac1cc45bb64"
+  },
+  "stats_frozen.py": {
+    "source": "sponge-sim/studies/pi3b_renderer_prealloc_20261114/stats_frozen.py",
+    "first_line": 1,
+    "last_line": 108,
+    "sha256": "206d4c0583089ab6f60a6342e2a1d555508587a54d899de4549f72625a511a10"
+  }
+}

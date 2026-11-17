@@ -1,0 +1,58 @@
+{
+  "status": "STRUCTURAL_AUDIT_COMPLETE_REGISTERED_SWAP_GATE_FAIL",
+  "main_data": {
+    "images": 20,
+    "timings": 720,
+    "per_image_per_arm": 6,
+    "arms": [
+      "clean_total_A",
+      "clean_total_B",
+      "adv_total",
+      "advcap_total",
+      "clean_forward",
+      "adv_forward"
+    ],
+    "random_schedule_matches": true,
+    "reference_points": 22,
+    "all_timestamps_and_durations_positive": true
+  },
+  "first_swap_enabled": {
+    "raw_line": 243,
+    "block_index_zero_based": 6,
+    "image": "000000000049",
+    "wall_utc": 1794629452.3029306,
+    "utc_iso": "2026-11-14T04:10:52.302931+00:00",
+    "swap_total_kb": 926716,
+    "vmstat": {
+      "pswpin": 2130,
+      "pswpout": 6079,
+      "pgmajfault": 6096,
+      "oom_kill": 0
+    }
+  },
+  "env_swap_enabled_count": 15,
+  "max_temp_snapshot_c": 39.7,
+  "min_mem_available_kb": 134760,
+  "max_recorded_rss_bytes": 663420928,
+  "max_recorded_rss_is_not_peak_within_timing": true,
+  "auxiliary": {
+    "pipeline_PI1": {
+      "log_sha256": "294041f184db33a9e199470f52deacee900f0e45cf36467fc4df82ca35906919",
+      "reason": "SWAP_OFF_PRECONDITION_FAILED",
+      "failure_source_line": 132,
+      "timing_rows": 0,
+      "result_directory_created": false,
+      "retry_allowed": false,
+      "retry_rule": "Safety/configuration gate failure, not an infrastructure restart exception"
+    },
+    "stages_PI4": {
+      "log_sha256": "294041f184db33a9e199470f52deacee900f0e45cf36467fc4df82ca35906919",
+      "reason": "SWAP_OFF_PRECONDITION_FAILED",
+      "failure_source_line": 132,
+      "timing_rows": 0,
+      "result_directory_created": false,
+      "retry_allowed": false,
+      "retry_rule": "Safety/configuration gate failure, not an infrastructure restart exception"
+    }
+  }
+}

@@ -1,0 +1,52 @@
+{
+  "status": "READ_ONLY_DIAGNOSIS_AND_UNAPPROVED_DESIGN_ONLY",
+  "checked_at_utc": "2026-11-14T05:41:39.611136+00:00",
+  "old_original_files_unchanged": {
+    "runs/full_01.pid": true,
+    "runs/full_01/status.txt": true,
+    "runs/full_01/stages_PI4.log": true,
+    "runs/full_01/pipeline_PI4.log": true,
+    "runs/full_01/pipeline_PI1.log": true,
+    "runs/full_01/campaign.log": true,
+    "runs/full_01/pipeline_PI4/raw.jsonl": true,
+    "runs/full_01/pipeline_PI4/manifest.json": true,
+    "runs/smoke_01/status.txt": true,
+    "runs/smoke_01/stages_PI4.log": true,
+    "runs/smoke_01/pipeline_PI4.log": true,
+    "runs/smoke_01/pipeline_PI1.log": true,
+    "runs/smoke_01/stages_PI4/raw.jsonl": true,
+    "runs/smoke_01/stages_PI4/manifest.json": true,
+    "runs/smoke_01/pipeline_PI1/raw.jsonl": true,
+    "runs/smoke_01/pipeline_PI1/manifest.json": true,
+    "runs/smoke_01/campaign.log": true,
+    "runs/smoke_01/pipeline_PI4/raw.jsonl": true,
+    "runs/smoke_01/pipeline_PI4/manifest.json": true,
+    "runs/full_01.out": true,
+    "runs/smoke_01.out": true
+  },
+  "registered_study_sources_equal_deployed_archive": {
+    "run.py": true,
+    "campaign.sh": true,
+    "analyze.py": true,
+    "build_lock.py": true,
+    "parity_ref.py": true,
+    "lock.json": true
+  },
+  "evidence_sha256": {
+    "systemd_readonly_01.json": "541b27d8f2140a43f6e2400c2df204aa040ae959b85414282106f52072256147",
+    "systemd_readonly_02.json": "791cb4a07a2bad42d7c8b4efe9f20a62bf9981bbaace54d49ccde9f48f98834e"
+  },
+  "draft": {
+    "path": "sponge-sim\\prereg\\DRAFT_PI3B_SWAPGUARD_V2_20261114.md",
+    "sha256": "0e07045725199e7ecf55928cfb52cbd2c2b3e0425601211a1ce8ac9bd87a7f36",
+    "implemented": false,
+    "preregistered": false,
+    "tagged": false
+  },
+  "file_content_hashes_verified": 8,
+  "all_probe_commands_exit_zero": true,
+  "no_new_benchmark": true,
+  "no_remote_configuration_changes": true,
+  "causal_claim": "Possible dependency activation routes observed in current units; historical requesting job unknown",
+  "historical_limit": "Current unit contents were captured after the run; not proof of identical historical contents"
+}

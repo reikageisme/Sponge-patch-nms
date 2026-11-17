@@ -1,0 +1,24 @@
+% Tài liệu tham khảo: APA 7 (biblatex-apa, biber), danh mục xếp theo tác giả và ĐÁNH SỐ [n]; trích dẫn trong bài là [n].
+% Không sửa tay: tệp .bib sinh bởi paper_vi/tables/make_refs.py.
+\usepackage{csquotes}
+\usepackage[style=apa,backend=biber,language=english,autolang=other,labelnumber,sortcites=true]{biblatex}
+% Danh mục phải in trong môi trường tiếng Anh: biblatex-apa không có định nghĩa cho tiếng Việt (lỗi \mkbibdateapalongextra).
+\newcommand{\printapabib}{\begin{otherlanguage}{english}\printbibliography[title={Tài liệu tham khảo}]\end{otherlanguage}}
+\DeclareFieldFormat{labelnumberwidth}{\mkbibbrackets{#1}}
+\defbibenvironment{bibliography}
+  {\list{\printtext[labelnumberwidth]{\printfield{labelnumber}}}
+     {\setlength{\labelwidth}{\labelnumberwidth}%
+      \setlength{\leftmargin}{\labelwidth}%
+      \setlength{\labelsep}{\biblabelsep}%
+      \addtolength{\leftmargin}{\labelsep}%
+      \setlength{\itemsep}{\bibitemsep}%
+      \setlength{\parsep}{\bibparsep}}%
+   \renewcommand*{\makelabel}[1]{\hss##1}}
+  {\endlist}
+  {\item}
+\DeclareCiteCommand{\cite}[\mkbibbrackets]
+  {\usebibmacro{cite:init}}
+  {\usebibmacro{citeindex}\printtext[bibhyperref]{\printfield{labelnumber}}}
+  {\multicitedelim}
+  {}
+\let\citep\cite

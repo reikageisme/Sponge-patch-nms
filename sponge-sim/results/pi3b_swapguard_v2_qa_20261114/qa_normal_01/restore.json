@@ -1,0 +1,7 @@
+{
+  "status": "RESTORE_FAILED",
+  "errors": [
+    "swap state: ['sudo', '-n', 'systemctl', 'start', 'dev-zram0.swap']: rc=1; A dependency job for dev-zram0.swap failed. See 'journalctl -xe' for details."
+  ],
+  "wall_utc": 1794637740.677969
+}

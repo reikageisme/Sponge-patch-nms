@@ -1,0 +1,94 @@
+{
+  "tag": "qa-pi3b-nms-light-api-20261115",
+  "commit": "f7258a5e24a23fce475e4e058bb73e657436c334",
+  "source_sha256": {
+    "bracket.py": "35e80c3bf053c9586a70bb57f16e7a200eb0768a2e83761f1c102403788cf332",
+    "qa_worker.py": "b182e37e76696e9a298fac1f8876fa76fd1e5530b60ff801c9f18c75d17601f1"
+  },
+  "config_sha256": "2f7a8a9f3f4cda816348191b786ffbc6034c3166a52b24f35adbe3ca97cdef7d",
+  "before_context": {
+    "governor": "ondemand\n",
+    "swaps": "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority\n/dev/zram0                              partition\t926716\t\t0\t\t100\n",
+    "affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "gc_enabled": true
+  },
+  "real_wall_bracket_exercised": false,
+  "observer_overhead_measured": false,
+  "model_or_nms_executed": false,
+  "rss_endpoint_recorded": false,
+  "scientific_timing_qualified": false,
+  "before": {
+    "pid": 24574,
+    "calling_tid": 24574,
+    "process_cpu_ns": 538139899,
+    "calling_thread_cpu_ns": 538186462,
+    "process": {
+      "ru_minflt": 2549,
+      "ru_majflt": 0,
+      "ru_nvcsw": 1,
+      "ru_nivcsw": 27
+    },
+    "calling_thread": {
+      "ru_minflt": 2549,
+      "ru_majflt": 0,
+      "ru_nvcsw": 1,
+      "ru_nivcsw": 27
+    }
+  },
+  "after": {
+    "pid": 24574,
+    "calling_tid": 24574,
+    "process_cpu_ns": 538464066,
+    "calling_thread_cpu_ns": 538472243,
+    "process": {
+      "ru_minflt": 2550,
+      "ru_majflt": 0,
+      "ru_nvcsw": 1,
+      "ru_nivcsw": 27
+    },
+    "calling_thread": {
+      "ru_minflt": 2550,
+      "ru_majflt": 0,
+      "ru_nvcsw": 1,
+      "ru_nivcsw": 27
+    }
+  },
+  "increments": {
+    "cpu_clocks": {
+      "process_cpu_ns": 324167,
+      "calling_thread_cpu_ns": 285781
+    },
+    "process": {
+      "ru_minflt": 1,
+      "ru_majflt": 0,
+      "ru_nvcsw": 0,
+      "ru_nivcsw": 0
+    },
+    "calling_thread": {
+      "ru_minflt": 1,
+      "ru_majflt": 0,
+      "ru_nvcsw": 0,
+      "ru_nivcsw": 0
+    },
+    "observer_work_included": true,
+    "sequential_not_identical_clock_intervals": true,
+    "unique_wait_cause_identified": false
+  },
+  "after_context": {
+    "governor": "ondemand\n",
+    "swaps": "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority\n/dev/zram0                              partition\t926716\t\t0\t\t100\n",
+    "affinity": [
+      0,
+      1,
+      2,
+      3
+    ],
+    "gc_enabled": true
+  },
+  "status": "PASS_LIGHT_RESOURCE_API_ONLY"
+}

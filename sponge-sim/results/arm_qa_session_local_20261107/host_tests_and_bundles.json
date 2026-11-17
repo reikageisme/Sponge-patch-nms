@@ -1,0 +1,38 @@
+{
+  "status": "HOST_TEST_AND_DRAFT_BINDINGS_RECORDED_NOT_DEVICE_QUALIFICATION",
+  "test_exit_code": 0,
+  "test_stdout": "154 passed in 7.72s",
+  "test_files_sha256": {
+    "sponge-sim/tests/test_arm_draft_bundle.py": "1c717302b4996a98732d42537517d9e3a53bb917952f925c0a0c7d20a881c321",
+    "sponge-sim/tests/test_arm_linux_observe.py": "d0fcadf4818a149cd4b86a556af9ceac2b32c0b50ee02a5d599de48d4ec06792",
+    "sponge-sim/tests/test_arm_metadata_only.py": "83e682649c4839a8dc545d21602c249f83c0313b8ad75937f1c1919d7509d1a0",
+    "sponge-sim/tests/test_arm_pin_analysis.py": "86e72a2a0e567ed52f3eddc96971f9198c77b2c3443876938bb8fc2af95e9e9f",
+    "sponge-sim/tests/test_arm_pin_worker.py": "ed337ee18cc6d4841c1170558306103f37299733dbc8db47b0a2f92d33974f13",
+    "sponge-sim/tests/test_arm_posix_runtime.py": "9202d05ecce29ffa290683384982d9200df9a36c886cac421f9a9efcf8bfd65d",
+    "sponge-sim/tests/test_arm_preflight_v2.py": "7362335438c5c2d87b71e846d381851bfb905724b7d098a81a0070fd19ca440e",
+    "sponge-sim/tests/test_arm_qa_session.py": "f5cc71724872c598f6c2b9ca9d9f2c84fb601a23bc619adc25419a830503bd9a",
+    "sponge-sim/tests/test_arm_session.py": "4093d743af66baad7bed96588afee6ae170374fc8a6450d33e8eb631fcf68bca",
+    "sponge-sim/tests/test_laptop_pcores.py": "9bcfa15c92e073cf8817335b681b3fbf45973b82a49fb4231022fec356ccda29",
+    "sponge-sim/tests/test_paper_saved_artifacts.py": "4c245d648ca3cebeea9d69b3155a86961138295c2b97960d0dd4ec6c9263135c",
+    "sponge-sim/tests/test_laptop_reference_trace.py": "c6f28f3a4a8c91cf7b48dad0a4c37195f62af1ceef94741ae8f87f98adaf634f",
+    "sponge-sim/tests/test_laptop_stage_drift.py": "e45ff4d257c18b4d31d59ae3db4048b703e5771f0ed5beaaab348ea675bf356c",
+    "sponge-sim/tests/test_laptop_stages.py": "e631bf261a6571a7f8e4dcf96eb066a1f69083f5dcb99994f750b9bddc8598e1",
+    "sponge-sim/tests/test_laptop_seg.py": "f0b1ae1811e180e8a2a91587f6c01e29fc13699892f8bc93d7e72179c94326e1"
+  },
+  "bundles": {
+    "bundle_01": {
+      "status": "DRAFT_UNRUN_NOT_AUTHORIZED_FOR_LOAD",
+      "manifest_sha256": "7d36a5ce4455ec4b488a1eab0834776e13a60f79651495e273315f20bc2a7fbd",
+      "hashed_files": 13,
+      "prereg_tag": null
+    },
+    "bundle_02": {
+      "status": "DRAFT_UNRUN_NOT_AUTHORIZED_FOR_LOAD",
+      "manifest_sha256": "9c55f2c5da4c7d97f62e29c31665e58b15063b6ea9aaa6ab3f3da2b8cf57c615",
+      "hashed_files": 14,
+      "prereg_tag": null
+    }
+  },
+  "phone_load_performed": false,
+  "Termux_API_companion_app_answer": "PENDING_UNKNOWN_NO_INSTALL_ASSUMED"
+}

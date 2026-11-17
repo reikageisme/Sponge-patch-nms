@@ -1,0 +1,135 @@
+{
+  "status": "LOCAL_ENGINEERING_CHECKS_PASSED_NOT_DEVICE_QUALIFIED",
+  "scope": "LOCAL_LINUX_ENGINEERING_ONLY_NOT_A36_NO_LOAD_BENCHMARK",
+  "checks": {
+    "own_thread_mask_readback": true,
+    "bounded_fixture_sensor_read": true,
+    "exclusive_event_fsync_ack": true,
+    "unknown_power_rejected": true,
+    "sensor_helper_timeout_rejected": true,
+    "own_sleeping_child_TERM_to_KILL_and_reap": true
+  },
+  "source_sha256": {
+    "checks.py": "3b318e5d698892acdf4c84bbfbeb65776ba4ebfecb88882206b763b9b386ac63",
+    "linux_observe.py": "8e8101d2713efc40a62e4282f43b1b1f6c18cd3830e88e4a7f325d30bb64eb8a",
+    "posix_runtime.py": "9c4e65b4f2a43eb16b841e3d060f0a15428834944e5b53e33f2c92a8fb240f80",
+    "local_linux_check.py": "a13db33712a49ce06724f1fb0c6ba9d433f2c1444d44c8e547b431ab6d61e553"
+  },
+  "original_allowed_cpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "chosen_virtual_cpu": 0,
+  "thread_readback": {
+    "before": {
+      "started_s": 6.353435464,
+      "finished_s": 6.354846139,
+      "threads": {
+        "342": {
+          "tid": 342,
+          "read_started_s": 6.353577956,
+          "stat_before": "342 (python3) R 341 342 342 34816 342 4194560 2915 0 0 0 9 6 0 0 20 0 1 0 464 29364224 5274 18446744073709551615 4333568 8024065 140726968796240 0 0 0 0 16781312 2 0 0 0 17 0 0 0 0 0 0 11038136 11672456 551305216 140726968799773 140726968799947 140726968799947 140726968803303 0\n",
+          "status": "Name:\tpython3\nUmask:\t0022\nState:\tR (running)\nTgid:\t342\nNgid:\t0\nPid:\t342\nPPid:\t341\nTracerPid:\t0\nUid:\t1000\t1000\t1000\t1000\nGid:\t1000\t1000\t1000\t1000\nFDSize:\t64\nGroups:\t4 24 27 30 46 100 1000 1001 \nNStgid:\t342\nNSpid:\t342\nNSpgid:\t342\nNSsid:\t342\nKthread:\t0\nVmPeak:\t   28736 kB\nVmSize:\t   28676 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   21196 kB\nVmRSS:\t   21196 kB\nRssAnon:\t    8932 kB\nRssFile:\t   12264 kB\nRssShmem:\t       0 kB\nVmData:\t   10124 kB\nVmStk:\t     132 kB\nVmExe:\t    3608 kB\nVmLib:\t    7316 kB\nVmPTE:\t      96 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffffff\nThreads:\t1\nSigQ:\t1/30983\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t000001ffffffffff\nCapAmb:\t0000000000000000\nNoNewPrivs:\t0\nSeccomp:\t0\nSeccomp_filters:\t0\nSpeculation_Store_Bypass:\tthread vulnerable\nSpeculationIndirectBranch:\tconditional enabled\nCpus_allowed:\t001\nCpus_allowed_list:\t0\nMems_allowed:\t00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t1060\nnonvoluntary_ctxt_switches:\t1\n",
+          "status_mask": [
+            0
+          ],
+          "mask": [
+            0
+          ],
+          "stat_after": "342 (python3) R 341 342 342 34816 342 4194560 2916 0 0 0 9 6 0 0 20 0 1 0 464 29364224 5274 18446744073709551615 4333568 8024065 140726968796240 0 0 0 0 16781312 2 0 0 0 17 0 0 0 0 0 0 11038136 11672456 551305216 140726968799773 140726968799947 140726968799947 140726968803303 0\n",
+          "state": "R",
+          "ticks": 15,
+          "starttime": 464,
+          "last_cpu": 0,
+          "read_finished_s": 6.354723197
+        }
+      },
+      "errors": [],
+      "first_tids": [
+        342
+      ],
+      "last_tids": [
+        342
+      ],
+      "complete": true
+    },
+    "changes": [
+      {
+        "tid": 342,
+        "starttime": 464,
+        "old_mask": [
+          0
+        ],
+        "readback": [
+          0
+        ]
+      }
+    ],
+    "after": {
+      "started_s": 6.355353902,
+      "finished_s": 6.356603967,
+      "threads": {
+        "342": {
+          "tid": 342,
+          "read_started_s": 6.355464145,
+          "stat_before": "342 (python3) R 341 342 342 34816 342 4194560 2916 0 0 0 9 6 0 0 20 0 1 0 464 29364224 5274 18446744073709551615 4333568 8024065 140726968796240 0 0 0 0 16781312 2 0 0 0 17 0 0 0 0 0 0 11038136 11672456 551305216 140726968799773 140726968799947 140726968799947 140726968803303 0\n",
+          "status": "Name:\tpython3\nUmask:\t0022\nState:\tR (running)\nTgid:\t342\nNgid:\t0\nPid:\t342\nPPid:\t341\nTracerPid:\t0\nUid:\t1000\t1000\t1000\t1000\nGid:\t1000\t1000\t1000\t1000\nFDSize:\t64\nGroups:\t4 24 27 30 46 100 1000 1001 \nNStgid:\t342\nNSpid:\t342\nNSpgid:\t342\nNSsid:\t342\nKthread:\t0\nVmPeak:\t   28736 kB\nVmSize:\t   28676 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   21200 kB\nVmRSS:\t   21200 kB\nRssAnon:\t    8936 kB\nRssFile:\t   12264 kB\nRssShmem:\t       0 kB\nVmData:\t   10124 kB\nVmStk:\t     132 kB\nVmExe:\t    3608 kB\nVmLib:\t    7316 kB\nVmPTE:\t      96 kB\nVmSwap:\t       0 kB\nHugetlbPages:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffffff\nThreads:\t1\nSigQ:\t1/30983\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000000001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t000001ffffffffff\nCapAmb:\t0000000000000000\nNoNewPrivs:\t0\nSeccomp:\t0\nSeccomp_filters:\t0\nSpeculation_Store_Bypass:\tthread vulnerable\nSpeculationIndirectBranch:\tconditional enabled\nCpus_allowed:\t001\nCpus_allowed_list:\t0\nMems_allowed:\t00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000000,00000001\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t1060\nnonvoluntary_ctxt_switches:\t1\n",
+          "status_mask": [
+            0
+          ],
+          "mask": [
+            0
+          ],
+          "stat_after": "342 (python3) R 341 342 342 34816 342 4194560 2917 0 0 0 9 6 0 0 20 0 1 0 464 29364224 5274 18446744073709551615 4333568 8024065 140726968796240 0 0 0 0 16781312 2 0 0 0 17 0 0 0 0 0 0 11038136 11672456 551305216 140726968799773 140726968799947 140726968799947 140726968803303 0\n",
+          "state": "R",
+          "ticks": 15,
+          "starttime": 464,
+          "last_cpu": 0,
+          "read_finished_s": 6.356487457
+        }
+      },
+      "errors": [],
+      "first_tids": [
+        342
+      ],
+      "last_tids": [
+        342
+      ],
+      "complete": true
+    },
+    "readback_complete": true
+  },
+  "fixture_frame": {
+    "started_s": 6.689683094,
+    "raw": {
+      "/mnt/d/Sponge-patch-study/sponge-sim/results/arm_observer_local_20261107/native_01/cpu.type": "fixture-cpu",
+      "/mnt/d/Sponge-patch-study/sponge-sim/results/arm_observer_local_20261107/native_01/cpu.temp": "50000",
+      "/mnt/d/Sponge-patch-study/sponge-sim/results/arm_observer_local_20261107/native_01/battery.type": "Battery",
+      "/mnt/d/Sponge-patch-study/sponge-sim/results/arm_observer_local_20261107/native_01/battery.temp": "350",
+      "/mnt/d/Sponge-patch-study/sponge-sim/results/arm_observer_local_20261107/native_01/soc": "50",
+      "/mnt/d/Sponge-patch-study/sponge-sim/results/arm_observer_local_20261107/native_01/status": "Charging"
+    },
+    "errors": [],
+    "reading": {
+      "sampled_s": 6.689683094,
+      "zones_c": {
+        "fixture_cpu": 50.0
+      },
+      "battery_c": 35.0,
+      "battery_pct": 50.0,
+      "charging": true
+    },
+    "finished_s": 6.706005368
+  },
+  "preserved_fixture_fifo": "/tmp/sponge-local-unit-yn3t43s7/blocked_sensor"
+}

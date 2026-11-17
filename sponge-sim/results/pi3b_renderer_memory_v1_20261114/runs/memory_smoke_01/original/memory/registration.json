@@ -1,0 +1,8 @@
+{
+  "tag": "prereg-pi3b-renderer-memory-v1-20261114",
+  "commit": "289c2e373c6f965337aaeea7edddc1d7ade29497",
+  "lock_sha256": "8243cfaab4c5343e8b61ab8dd115a7cead8f2733e413dae107c355b795d407ba",
+  "cache_manifest_sha256": "61b5abaaf22ea985b98f582a34f52cc19c2272ac87f66782292d843b17bbe165",
+  "parent_torch_imported": false,
+  "phase": "smoke"
+}

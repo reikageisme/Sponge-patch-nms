@@ -1,0 +1,18 @@
+{
+  "status": "CLOSED_SMOKE_PRECONDITION_USB_FAILED_NO_RETRY",
+  "tag": "prereg-pi3b-renderer-memory-v1-20261114",
+  "commit": "289c2e373c6f965337aaeea7edddc1d7ade29497",
+  "smoke_attempts": 1,
+  "expected_jobs": 36,
+  "completed_rss_jobs": 0,
+  "first_violations": [
+    "usb"
+  ],
+  "raw_sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+  "full_status": "CANCELLED_NOT_STARTED_SMOKE_FAILED",
+  "retry_allowed": false,
+  "scientific_effect_estimate_available": false,
+  "source_unchanged": true,
+  "ssh_kept_open": true,
+  "user_confirmed_usb_is_intentional_extra_storage": true
+}

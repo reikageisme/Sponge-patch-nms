@@ -1,0 +1,27 @@
+{
+  "tag": "qa-pi3b-nms-observer-service-20261115",
+  "scientific_endpoint_enabled": false,
+  "unit": "sponge-pi3b-nms-observer-qa-20261115.service",
+  "expected_cgroup": "/system.slice/sponge-pi3b-nms-observer-qa-20261115.service",
+  "torch_version": "2.15.0+cpu",
+  "cpus": [
+    0,
+    1,
+    2,
+    3
+  ],
+  "threads": 4,
+  "interop_threads": 1,
+  "functional_matmul_shape": [
+    512,
+    512
+  ],
+  "functional_matmul_invocations": 1,
+  "runtime_limit_seconds": 180,
+  "source_sha256": {
+    "counters.py": "42a2ed7ba8ff7f709428ef3caefe5e14f7f21baad9659ca16b0d0a01ecc22b07",
+    "inventory.py": "0eb533ad54b69c33508ab429d590405c4eaf1b0476e0c3dde211aa4a5e56d6b7",
+    "qa_worker.py": "2679ea9c36d26942c2ffb7927ca82ef2b67c41f1a7394dd5a67da093376fdc77"
+  },
+  "plan_sha256": "4e1f074a9eb9c79da18acf24f34df01350ad7fc1cbbcce584f0fd976e40a5212"
+}

@@ -1,0 +1,20 @@
+{
+  "initial_suite": {
+    "passed": 36,
+    "failed": 2
+  },
+  "errors": [
+    "Import-forbidding hook was installed before pytest monkeypatch setup finished; pytest itself imports inspect. Set import hook last, restore first; same invariant test retained.",
+    "Synthetic six-anchor head triggers Ultralytics six-column end-to-end shortcut, so it correctly makes no fixed-kernel call. Use seven-anchor positive fixture and retain six-anchor as a negative rejection test."
+  ],
+  "host_library_config_side_effect": "First host attempt created Ultralytics settings through /tmp/Ultralytics fallback because requested test config parent did not exist; not removed/moved. Later fixtures create their temp config parent before import.",
+  "logs_retained": [
+    "host_core_01.log",
+    "host_core_02.log",
+    "host_core_03.log",
+    "host_core_04.log",
+    "host_core_05.log"
+  ],
+  "no_pi_cohort_or_gate_changes": true,
+  "no_scientific_timing_retry": true
+}

@@ -1,0 +1,1 @@
+{"sequence": 1, "event": {"kind": "fixture_reading", "reading": {"sampled_s": 5.563519167, "zones_c": {"fixture_cpu": 50.0}, "battery_c": 35.0, "battery_pct": 50.0, "charging": true}}}

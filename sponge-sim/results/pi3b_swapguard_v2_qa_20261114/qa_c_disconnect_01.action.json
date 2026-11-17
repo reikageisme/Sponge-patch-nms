@@ -1,0 +1,27 @@
+{
+  "status": "FRONTEND_DISCONNECTED_RESTORE_OBSERVED_NEEDS_FINAL_ASSESSMENT",
+  "own_local_ssh_pid": 20812,
+  "frontend_exit_code": 1,
+  "ready": {
+    "ready": {
+      "pid": 5297,
+      "child_pid": 5468,
+      "child_start_ticks": 1431097,
+      "invocation_id": "8647f0f13711474cbd8f7054db245dc6"
+    },
+    "unit": {
+      "MainPID": "5297",
+      "ActiveState": "active",
+      "InvocationID": "8647f0f13711474cbd8f7054db245dc6"
+    }
+  },
+  "restore": {
+    "status": "RESTORED",
+    "errors": [],
+    "wall_utc": 1794638403.8988829
+  },
+  "sshd_not_stopped": true,
+  "launch_command": "/home/tanh/sponge-venv/bin/python /home/tanh/sponge-sim/pi3b_600mhz_swapguard_v2/control.py launch --mode qa --name qa_c_disconnect_01 --tag qa-pi3b-swapguard-v2c-20261114 --commit 271fc81716c207dbf344453966a1ae606d85247c --qa-seconds 15 --qa-timeout 90",
+  "ready_probe": "\nfrom pathlib import Path\nimport subprocess,json\nr=Path.home()/'sponge-sim/pi3b_600mhz_swapguard_v2/runs/qa_c_disconnect_01'\np=r/'qa_ready.json'\nif p.exists():\n d=json.loads(p.read_text())\n x=subprocess.run(['systemctl','show','sponge-pi3b-swapguard-v2.service','-p','MainPID','-p','InvocationID','-p','ActiveState'],capture_output=True,text=True,timeout=10)\n f=dict(l.split('=',1) for l in x.stdout.splitlines())\n assert f['ActiveState']=='active' and int(f['MainPID'])==d['pid'] and f['InvocationID']==d['invocation_id']\n print(json.dumps(dict(ready=d,unit=f)))\nelse:print('null')\n",
+  "restore_probe": "\nfrom pathlib import Path\nimport json\np=Path.home()/'sponge-sim/pi3b_600mhz_swapguard_v2/runs/qa_c_disconnect_01/restore.json'\nprint(p.read_text() if p.exists() else 'null')\n"
+}

@@ -1,0 +1,10 @@
+{
+  "first_host_run": "host_checks_01.log",
+  "passed": 46,
+  "failed": 1,
+  "failure": "reorder fixture assigned list indices sequentially via rows.index on a list it was modifying, undoing intended reorder",
+  "correction": "resolve both indices first, then swap; unchanged production reference gate",
+  "scientific_data_seen": false,
+  "native_actions": 0,
+  "old_data_or_gates_changed": false
+}

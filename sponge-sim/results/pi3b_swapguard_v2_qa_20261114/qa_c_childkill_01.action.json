@@ -1,0 +1,7 @@
+{
+  "command": "from pathlib import Path\nimport json,time,subprocess,sys,os,signal\nb=Path.home()/'sponge-sim'/'pi3b_600mhz_swapguard_v2';sys.path.insert(0,str(b));import control\nr=b/'runs'/'qa_c_childkill_01'\nfor _ in range(80):\n if (r/'qa_ready.json').exists():break\n time.sleep(.25)\nready=json.loads((r/'qa_ready.json').read_text())\nx=subprocess.run(['systemctl','show','sponge-pi3b-swapguard-v2.service','-p','MainPID','-p','InvocationID'],capture_output=True,text=True,timeout=10)\nf=dict(l.split('=',1) for l in x.stdout.splitlines())\nassert int(f['MainPID'])==ready['pid'] and f['InvocationID']==ready['invocation_id']\npid=ready['child_pid']\nassert int(Path(f'/proc/{pid}/stat').read_text().rsplit(')',1)[1].split()[19])==ready['child_start_ticks']\nassert '/system.slice/sponge-pi3b-swapguard-v2.service' in Path(f'/proc/{pid}/cgroup').read_text()\ncontrol.record(r/'qa_fault_intent.json',dict(action='SIGKILL_child',verified=ready,unit=f),True)\nos.kill(pid,signal.SIGKILL)\ncontrol.record(r/'qa_fault_result.json',dict(action='SIGKILL_child',pid=pid,signal_sent=True),True)\nprint(json.dumps(dict(action='SIGKILL_child',pid_identity_and_cgroup_verified=True,signal_sent=True)))",
+  "exit_code": 0,
+  "output": [
+    "{\"action\": \"SIGKILL_child\", \"pid_identity_and_cgroup_verified\": true, \"signal_sent\": true}"
+  ]
+}

@@ -1,0 +1,11 @@
+{
+  "purpose": "Complete recovery of failed zram setup with its declared ExecStop after verified swap inactive",
+  "command": "from pathlib import Path\nimport json,subprocess\nassert len(Path('/proc/swaps').read_text().splitlines())==1,'swap still active; do not reset device'\ncommands=[['sudo','-n','/usr/lib/systemd/system-generators/zram-generator','--reset-device','zram0'],['sudo','-n','systemctl','start','dev-zram0.swap'],['sudo','-n','systemctl','start','rpi-zram-writeback.timer']]\nfor argv in commands:\n p=subprocess.run(argv,capture_output=True,text=True,timeout=30)\n print(json.dumps(dict(argv=argv,returncode=p.returncode,out=p.stdout,err=p.stderr)),flush=True)\n if p.returncode:raise SystemExit(p.returncode)\np=subprocess.run(['systemctl','show','dev-zram0.swap','systemd-zram-setup@zram0.service','rpi-zram-writeback.timer','-p','Id','-p','ActiveState','-p','Result'],capture_output=True,text=True,timeout=10)\nprint(json.dumps(dict(final_units=p.stdout,swaps=Path('/proc/swaps').read_text(),governor=Path('/sys/devices/system/cpu/cpufreq/policy0/scaling_governor').read_text())))",
+  "exit_code": 0,
+  "output": [
+    "{\"argv\": [\"sudo\", \"-n\", \"/usr/lib/systemd/system-generators/zram-generator\", \"--reset-device\", \"zram0\"], \"returncode\": 0, \"out\": \"\", \"err\": \"\"}",
+    "{\"argv\": [\"sudo\", \"-n\", \"systemctl\", \"start\", \"dev-zram0.swap\"], \"returncode\": 0, \"out\": \"\", \"err\": \"\"}",
+    "{\"argv\": [\"sudo\", \"-n\", \"systemctl\", \"start\", \"rpi-zram-writeback.timer\"], \"returncode\": 0, \"out\": \"\", \"err\": \"\"}",
+    "{\"final_units\": \"Result=success\\nId=dev-zram0.swap\\nActiveState=active\\n\\nResult=success\\nId=systemd-zram-setup@zram0.service\\nActiveState=active\\n\\nResult=success\\nId=rpi-zram-writeback.timer\\nActiveState=active\\n\", \"swaps\": \"Filename\\t\\t\\t\\tType\\t\\tSize\\t\\tUsed\\t\\tPriority\\n/dev/zram0                              partition\\t926716\\t\\t0\\t\\t100\\n\", \"governor\": \"ondemand\\n\"}"
+  ]
+}

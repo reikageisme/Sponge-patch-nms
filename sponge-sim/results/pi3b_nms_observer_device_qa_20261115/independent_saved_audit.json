@@ -1,0 +1,182 @@
+{
+  "status": "SAVED_SERVICE_POOL_METADATA_REPLAY_PASS",
+  "scientific_endpoint": false,
+  "raw_path": "original/qa_result_01.json",
+  "raw_sha256": "46b61a1fea56413e7bdac6eca84632ca412aac29eedced63e6ad3644e4ec805b",
+  "unit": "native TID inventory, not image/latency/RSS",
+  "snapshot_table": [
+    {
+      "selector": "pre_import_inventory",
+      "pid": 24264,
+      "n_threads": 1,
+      "tids": [
+        24264
+      ],
+      "cgroup": "/system.slice/sponge-pi3b-nms-observer-qa-20261115.service",
+      "ancestor_availability": {
+        "/system.slice/sponge-pi3b-nms-observer-qa-20261115.service": {
+          "cgroup.type": "OK",
+          "cgroup.controllers": "OK",
+          "cpu.max": "UNAVAILABLE",
+          "cpu.stat": "OK",
+          "cpu.weight": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "memory.high": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "memory.events.local": "UNAVAILABLE",
+          "memory.pressure": "UNAVAILABLE"
+        },
+        "/system.slice": {
+          "cgroup.type": "OK",
+          "cgroup.controllers": "OK",
+          "cpu.max": "OK",
+          "cpu.stat": "OK",
+          "cpu.weight": "OK",
+          "memory.max": "UNAVAILABLE",
+          "memory.high": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "memory.events.local": "UNAVAILABLE",
+          "memory.pressure": "UNAVAILABLE"
+        },
+        "/": {
+          "cgroup.type": "UNAVAILABLE",
+          "cgroup.controllers": "OK",
+          "cpu.max": "UNAVAILABLE",
+          "cpu.stat": "OK",
+          "cpu.weight": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "memory.high": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "memory.events.local": "UNAVAILABLE",
+          "memory.pressure": "UNAVAILABLE"
+        }
+      }
+    },
+    {
+      "selector": "pool_before",
+      "pid": 24264,
+      "n_threads": 10,
+      "tids": [
+        24264,
+        24265,
+        24266,
+        24267,
+        24269,
+        24270,
+        24271,
+        24272,
+        24273,
+        24274
+      ],
+      "cgroup": "/system.slice/sponge-pi3b-nms-observer-qa-20261115.service",
+      "ancestor_availability": {
+        "/system.slice/sponge-pi3b-nms-observer-qa-20261115.service": {
+          "cgroup.type": "OK",
+          "cgroup.controllers": "OK",
+          "cpu.max": "UNAVAILABLE",
+          "cpu.stat": "OK",
+          "cpu.weight": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "memory.high": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "memory.events.local": "UNAVAILABLE",
+          "memory.pressure": "UNAVAILABLE"
+        },
+        "/system.slice": {
+          "cgroup.type": "OK",
+          "cgroup.controllers": "OK",
+          "cpu.max": "OK",
+          "cpu.stat": "OK",
+          "cpu.weight": "OK",
+          "memory.max": "UNAVAILABLE",
+          "memory.high": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "memory.events.local": "UNAVAILABLE",
+          "memory.pressure": "UNAVAILABLE"
+        },
+        "/": {
+          "cgroup.type": "UNAVAILABLE",
+          "cgroup.controllers": "OK",
+          "cpu.max": "UNAVAILABLE",
+          "cpu.stat": "OK",
+          "cpu.weight": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "memory.high": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "memory.events.local": "UNAVAILABLE",
+          "memory.pressure": "UNAVAILABLE"
+        }
+      }
+    },
+    {
+      "selector": "pool_after",
+      "pid": 24264,
+      "n_threads": 10,
+      "tids": [
+        24264,
+        24265,
+        24266,
+        24267,
+        24269,
+        24270,
+        24271,
+        24272,
+        24273,
+        24274
+      ],
+      "cgroup": "/system.slice/sponge-pi3b-nms-observer-qa-20261115.service",
+      "ancestor_availability": {
+        "/system.slice/sponge-pi3b-nms-observer-qa-20261115.service": {
+          "cgroup.type": "OK",
+          "cgroup.controllers": "OK",
+          "cpu.max": "UNAVAILABLE",
+          "cpu.stat": "OK",
+          "cpu.weight": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "memory.high": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "memory.events.local": "UNAVAILABLE",
+          "memory.pressure": "UNAVAILABLE"
+        },
+        "/system.slice": {
+          "cgroup.type": "OK",
+          "cgroup.controllers": "OK",
+          "cpu.max": "OK",
+          "cpu.stat": "OK",
+          "cpu.weight": "OK",
+          "memory.max": "UNAVAILABLE",
+          "memory.high": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "memory.events.local": "UNAVAILABLE",
+          "memory.pressure": "UNAVAILABLE"
+        },
+        "/": {
+          "cgroup.type": "UNAVAILABLE",
+          "cgroup.controllers": "OK",
+          "cpu.max": "UNAVAILABLE",
+          "cpu.stat": "OK",
+          "cpu.weight": "UNAVAILABLE",
+          "memory.max": "UNAVAILABLE",
+          "memory.high": "UNAVAILABLE",
+          "memory.current": "UNAVAILABLE",
+          "memory.events": "UNAVAILABLE",
+          "memory.events.local": "UNAVAILABLE",
+          "memory.pressure": "UNAVAILABLE"
+        }
+      }
+    }
+  ],
+  "all_native_thread_deltas_recomputed": true,
+  "original_file_count": 2,
+  "original_bytes": 35651,
+  "expected_thread_count_is_not_utilization": true,
+  "no_claim_about_nms_cause": true
+}

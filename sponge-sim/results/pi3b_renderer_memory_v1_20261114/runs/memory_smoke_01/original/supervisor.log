@@ -1,0 +1,19 @@
+Traceback (most recent call last):
+  File "/home/tanh/sponge-sim/pi3b_renderer_memory_v1_20261114/control.py", line 336, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/home/tanh/sponge-sim/pi3b_renderer_memory_v1_20261114/control.py", line 333, in main
+    return payload(args)
+  File "/home/tanh/sponge-sim/pi3b_renderer_memory_v1_20261114/control.py", line 282, in payload
+    collect(SimpleNamespace(registration=HERE/'memory_registration.json',cache=Path(CACHE_DIRECTORY),
+    ~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        tag=args.tag,commit=args.commit,output=args.directory/'memory',phase=args.phase))
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/home/tanh/sponge-sim/pi3b_renderer_memory_v1_20261114/memory_campaign.py", line 107, in collect
+    check()
+    ~~~~~^^
+  File "/home/tanh/sponge-sim/pi3b_renderer_memory_v1_20261114/memory_campaign.py", line 98, in check
+    if problems:raise RuntimeError('parent condition guard: '+str(problems))
+                ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: parent condition guard: ['usb']
+{"status": "RESTORED", "errors": [], "wall_utc": 1794675896.7699723}

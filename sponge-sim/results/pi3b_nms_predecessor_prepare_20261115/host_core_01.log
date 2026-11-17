@@ -1,0 +1,78 @@
+..........................F.....F.....                                   [100%]
+================================== FAILURES ===================================
+_______ test_no_import_or_explicit_file_api_in_initialized_sampler_path _______
+
+fake_api = namespace(RUSAGE_SELF=0, RUSAGE_THREAD=1, getrusage=<function fake_api.<locals>.<lambda> at 0x0000022BB937FCC0>)
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x0000022B9A9E2270>
+
+    def test_no_import_or_explicit_file_api_in_initialized_sampler_path(fake_api,monkeypatch):
+        b.setup_resources()
+        def forbidden(*args,**kwargs):raise AssertionError('import/file API after initialization')
+        with monkeypatch.context() as scoped:
+>           scoped.setattr(builtins,'__import__',forbidden);scoped.setattr(builtins,'open',forbidden)
+                                                            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+
+sponge-sim\tests\test_pi3b_nms_predecessor_core.py:62: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+args = ('inspect', {'__name__': '_pytest.monkeypatch', '__doc__': 'Monkeypatching and mocking functionality.', '__package__': '_pytest', '__loader__': <_frozen_importlib_external.SourceFileLoader object at 0x0000022B974B5B50>, ...}, None, None, 0)
+kwargs = {}
+
+>   def forbidden(*args,**kwargs):raise AssertionError('import/file API after initialization')
+                                  ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E   AssertionError: import/file API after initialization
+
+sponge-sim\tests\test_pi3b_nms_predecessor_core.py:60: AssertionError
+___________ test_real_finite_kernel_input_and_full_detection_parity ___________
+
+real_backend = (<module 'ultralytics.utils.nms' from 'C:\\Users\\Tanh\\AppData\\Roaming\\Python\\Python314\\site-packages\\ultralytic...vision.ops' from 'C:\\Users\\Tanh\\AppData\\Roaming\\Python\\Python314\\site-packages\\torchvision\\ops\\__init__.py'>)
+
+    def test_real_finite_kernel_input_and_full_detection_parity(real_backend):
+        nms,ops=real_backend;original=ops.nms;x=prediction();before=x.clone()
+>       result=k.capture(x,nms,ops)
+               ^^^^^^^^^^^^^^^^^^^^
+
+sponge-sim\tests\test_pi3b_nms_predecessor_core.py:147: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+prediction = tensor([[[2.0000e+01, 2.1000e+01, 1.0000e+02, 2.0000e+02, 3.0000e+02, 4.0000e+02],
+         [2.0000e+01, 2.1000e+01, 1...3750e-01, 9.3750e-01, 9.3750e-01],
+         [9.6875e-01, 9.6875e-01, 9.6875e-01, 9.6875e-01, 9.6875e-01, 9.6875e-01]]])
+nms = <module 'ultralytics.utils.nms' from 'C:\\Users\\Tanh\\AppData\\Roaming\\Python\\Python314\\site-packages\\ultralytics\\utils\\nms.py'>
+vision_ops = <module 'torchvision.ops' from 'C:\\Users\\Tanh\\AppData\\Roaming\\Python\\Python314\\site-packages\\torchvision\\ops\\__init__.py'>
+
+    def capture(prediction,nms,vision_ops):
+        if (prediction.device.type!='cpu' or prediction.dtype!=torch.float32 or prediction.ndim!=3
+            or prediction.shape[0]!=1 or prediction.shape[1]!=116 or not bool(torch.isfinite(prediction).all())):
+            raise ValueError('fixed YOLOv8 segmentation head contract differs')
+        original=vision_ops.nms
+        calls=[]
+        def recorded(boxes,scores,threshold):
+            if calls:raise ValueError('multiple kernel invocations')
+            if scores.ndim!=1 or boxes.ndim!=2 or tuple(boxes.shape)!=(len(scores),4) or not 0<len(scores)<=MAX_NMS or threshold!=IOU:
+                raise ValueError('kernel argument contract differs')
+            b,s=copy_layout(boxes),copy_layout(scores)
+            keep=original(boxes,scores,threshold)
+            validate_keep(keep,len(scores))
+            calls.append(dict(boxes=b,scores=s,threshold=threshold,keep=keep.detach().clone(),
+                original_box_layout=signature(boxes),original_score_layout=signature(scores)))
+            return keep
+        vision_ops.nms=recorded
+        try:
+            detections=suppress(nms,prediction.clone())
+        finally:
+            vision_ops.nms=original
+>       if len(calls)!=1 or vision_ops.nms is not original:raise ValueError('missing/restoration of backend interception')
+                                                           ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       ValueError: missing/restoration of backend interception
+
+sponge-sim\studies\pi3b_nms_predecessor_20261115\kernel_input.py:78: ValueError
+---------------------------- Captured stdout setup ----------------------------
+WARNING user config directory 'C:\Users\Tanh\AppData\Local\Temp\pytest-of-Tanh\pytest-88\test_real_finite_kernel_input_0\ultralytics\Ultralytics' is not writable, using '\tmp\Ultralytics'. Set YOLO_CONFIG_DIR to override.
+Creating new Ultralytics Settings v0.0.6 file  
+View Ultralytics Settings with 'yolo settings' or at '\tmp\Ultralytics\settings.json'
+Update Settings with 'yolo settings key=value', i.e. 'yolo settings runs_dir=path/to/dir'. For help see https://docs.ultralytics.com/quickstart/#ultralytics-settings.
+=========================== short test summary info ===========================
+FAILED sponge-sim\tests\test_pi3b_nms_predecessor_core.py::test_no_import_or_explicit_file_api_in_initialized_sampler_path
+FAILED sponge-sim\tests\test_pi3b_nms_predecessor_core.py::test_real_finite_kernel_input_and_full_detection_parity
+2 failed, 36 passed in 9.16s

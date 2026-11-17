@@ -1,0 +1,31 @@
+{
+  "paper_saved_artifact_tests": {
+    "passed": 7,
+    "seconds": 4.34,
+    "chunk": "930016"
+  },
+  "independent_arithmetic": {
+    "status": "PASS",
+    "chunk": "13f7ea",
+    "endpoints": 7
+  },
+  "structure": {
+    "citations": 31,
+    "bib_entries": 31,
+    "missing_citations": [],
+    "unresolved_refs": [],
+    "duplicate_labels": [],
+    "braces_balance": 0,
+    "odd_dollars": 0,
+    "no_data_placeholders": 0,
+    "chunk": "af4e85"
+  },
+  "generated_tables": {
+    "tables": 12,
+    "entries": 815,
+    "match": true,
+    "narrative_verified": false
+  },
+  "full_tex_pdf_build_verified": false,
+  "tex_compilers_on_PATH": []
+}

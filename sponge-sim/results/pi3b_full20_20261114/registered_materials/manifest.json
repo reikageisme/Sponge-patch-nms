@@ -1,0 +1,44 @@
+{
+  "files": {
+    "analyze.py": {
+      "source": "sponge-sim/studies/pi3b_full20_20261114/analyze.py",
+      "sha256": "c5a041026d407ee62c9e9358c4cf69a0a71de7a0d323f69e7dcaa95e92c6acf7"
+    },
+    "audit.py": {
+      "source": "sponge-sim/studies/pi3b_full20_20261114/audit.py",
+      "sha256": "c9c5b4eabdc4dfe325bceb71501261ea6220afaf03e13d8cf451b51468355953"
+    },
+    "build_lock.py": {
+      "source": "sponge-sim/studies/pi3b_full20_20261114/build_lock.py",
+      "sha256": "db7cbe2b6eff61fc2b70374efd94460e548f03fd5b1ff494262baabe93cfea0a"
+    },
+    "control.py": {
+      "source": "sponge-sim/studies/pi3b_full20_20261114/control.py",
+      "sha256": "53bb13694bb56a7e5a01a1267c666c397da95bb74aa5c43a77dce529cf518e72"
+    },
+    "guard.py": {
+      "source": "sponge-sim/studies/pi3b_full20_20261114/guard.py",
+      "sha256": "0922c853451a9943a843cfc1c9d60f73e85f5941f66a3b4624900c8ae348d48c"
+    },
+    "run.py": {
+      "source": "sponge-sim/studies/pi3b_full20_20261114/run.py",
+      "sha256": "cadc78041d3f4e611c789c76c22b1a885131b9ca632a52a27300a440baa4425f"
+    },
+    "stats_frozen.py": {
+      "source": "sponge-sim/studies/pi3b_full20_20261114/stats_frozen.py",
+      "sha256": "57545941474dc39845cad309718d0c220fc26189e5ca296592d77638bd22195d"
+    },
+    "lock.json": {
+      "source": "sponge-sim/studies/pi3b_full20_20261114/lock.json",
+      "sha256": "1cd1789d4f30c0a6b708fad907729999f6e6e53d4ba373ce487bc8037d10be0e"
+    },
+    "prereg.md": {
+      "source": "sponge-sim/prereg/PREREG_PI3B_FULL20_AFTER_PILOT_20261114.md",
+      "sha256": "97fd6d717fff32f3d3daa95f8ee40dd99a2da153db50fc1c188fd41d14bbd5d8"
+    },
+    "laptop_reference_counts.json": {
+      "source": "sponge-sim/results/pi3b_600mhz_20261114/laptop_reference_counts.json",
+      "sha256": "917cd654ddf7ed83235b63f3d21aa64c465ce5b4827b31f8025ca47a2d26d83b"
+    }
+  }
+}

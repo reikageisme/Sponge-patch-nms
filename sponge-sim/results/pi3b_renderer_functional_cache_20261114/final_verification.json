@@ -1,0 +1,12 @@
+{
+  "status": "CLOSED_FORTY_FUNCTIONAL_CASES_PASS_NO_RESOURCE_ENDPOINT",
+  "original_files_verified": 90,
+  "all11_tested_python_source_unchanged": true,
+  "prior21full20originals_unchanged": true,
+  "manifest_sha256": "61b5abaaf22ea985b98f582a34f52cc19c2272ac87f66782292d843b17bbe165",
+  "audit_sha256": "6f6af19efa89fcaa7dd822f01f57a739a0faddc01e536db2799352dab1bb3867",
+  "report_sha256": "5e36bc6f07f00ff7ffb0830b264c08438d2a30c9890f4a976083765886969f72",
+  "empirical_resource_or_latency_endpoint_recorded": false,
+  "scientific_registration_created": false,
+  "ssh_kept_open": true
+}

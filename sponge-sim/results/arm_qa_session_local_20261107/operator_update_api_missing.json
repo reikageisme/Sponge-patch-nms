@@ -1,0 +1,15 @@
+{
+  "source": "user_report",
+  "Termux_API_companion_installed": false,
+  "main_Termux_install_source": "UNKNOWN_PENDING_USER_OUTPUT",
+  "screenshot_app_identification": "Termux: Ma & Huong dan / Coded Toolbox; guide app rather than Termux:API",
+  "device_installation_performed": false,
+  "phone_load_performed": false,
+  "official_sources": [
+    "https://f-droid.org/en/packages/com.termux.api/",
+    "https://github.com/termux/termux-api/blob/master/README.md",
+    "https://github.com/termux/termux-app/releases/",
+    "https://github.com/termux/termux-api/blob/v0.53.0/app/src/main/java/com/termux/api/apis/BatteryStatusAPI.java"
+  ],
+  "next_read_only_user_command": "echo \"$TERMUX_APK_RELEASE\""
+}

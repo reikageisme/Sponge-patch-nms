@@ -1,0 +1,18 @@
+{
+  "status": "PREPARED_SESSION_RUNTIME_NOT_NATIVE_QUALIFIED",
+  "source_archive_files": 8,
+  "test_archive_verified": true,
+  "new_tests": 53,
+  "combined_tests": 199,
+  "final_host_log_sha256": "d8df58ccf8b991a30fcf0b3b5a0f8158f13c7204f36180915528bd22b477b4dc",
+  "preserved_failed_logs": [
+    "host_checks_01.log",
+    "host_checks_04.log",
+    "host_checks_06_lifetime_regression.log"
+  ],
+  "native_queries_or_loads": 0,
+  "pending_ready_review_unchanged": true,
+  "bib_unchanged": true,
+  "report_sha256": "40e7e3d74c122a52b55a06a094820f4947b2e0cc037e548df8bb3d36f827c62c",
+  "scientific_registration_or_admission_implemented": false
+}

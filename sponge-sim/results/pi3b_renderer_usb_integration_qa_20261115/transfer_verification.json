@@ -1,0 +1,187 @@
+{
+  "status": "FIVE_SLEEP_CASES_AND_ALL_ORIGINAL_SHAS_VERIFIED",
+  "original_files": 44,
+  "files": {
+    "runs/qa_childkill_01/activation_probe.json": {
+      "sha256": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+      "bytes": 117
+    },
+    "runs/qa_childkill_01/lease_events.jsonl": {
+      "sha256": "93d18e7e65ac4c8326f2d0a10a7b5b5b57d7628619d589766a3a6ba730082163",
+      "bytes": 750
+    },
+    "runs/qa_childkill_01/lease_state.json": {
+      "sha256": "7ac78ea9e5a4e980b30c5692501efde3161d90f47ab5cbc289a53fcf4e9a5adc",
+      "bytes": 1022
+    },
+    "runs/qa_childkill_01/qa_fault_intent.json": {
+      "sha256": "a2cb77c6530855eccd500f4cf731c802ff46e36cdeebd95427ef300e843b61f7",
+      "bytes": 356
+    },
+    "runs/qa_childkill_01/qa_fault_sent.json": {
+      "sha256": "31c1a2df9f296157addc957f1930d4d4b903d46dea0cbfaaac9d44a4fce54d54",
+      "bytes": 18
+    },
+    "runs/qa_childkill_01/qa_ready.json": {
+      "sha256": "b8a61428f2da219dd7409d6e4befa6590245a4b56d9f6fdd999cf81a074a423c",
+      "bytes": 181
+    },
+    "runs/qa_childkill_01/registration.json": {
+      "sha256": "616adbb83f3561cfb29e60ace1000ccd9ed74d62b591d20b42d511ed6704d42a",
+      "bytes": 208
+    },
+    "runs/qa_childkill_01/restore.json": {
+      "sha256": "f0502e1837d94f90da105f60a0795d1be09365bdd59c4f964cca493e0236356b",
+      "bytes": 76
+    },
+    "runs/qa_childkill_01/supervisor.log": {
+      "sha256": "6a6e6e79fbe4668883adf66db68c23e5f5015652b5a59268655954b5afdd8928",
+      "bytes": 783
+    },
+    "runs/qa_childkill_01/usb_preflight.json": {
+      "sha256": "1da57226b93f727853fb45e8a35058e6cf08127f1a527251aa9f8180436b869f",
+      "bytes": 5164
+    },
+    "runs/qa_disconnect_01/activation_probe.json": {
+      "sha256": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+      "bytes": 117
+    },
+    "runs/qa_disconnect_01/lease_events.jsonl": {
+      "sha256": "aa385ee4e6394e0dbe39fb491efe170d86585321b4dcbda6de96ab03ac6c73a4",
+      "bytes": 754
+    },
+    "runs/qa_disconnect_01/lease_state.json": {
+      "sha256": "f34af1041b9cc805256a5cd77f1fc7d12bd537cc2b05d5e91181233b99c3ffb3",
+      "bytes": 1022
+    },
+    "runs/qa_disconnect_01/qa_ready.json": {
+      "sha256": "a3b13e98bcf7cc72a1fb5b25b5d25461732688d15853249124e1cbf2de387a7c",
+      "bytes": 181
+    },
+    "runs/qa_disconnect_01/registration.json": {
+      "sha256": "616adbb83f3561cfb29e60ace1000ccd9ed74d62b591d20b42d511ed6704d42a",
+      "bytes": 208
+    },
+    "runs/qa_disconnect_01/restore.json": {
+      "sha256": "7228a6680266eba057d46790aad2eab16dfb524c757999c53ca322ed0de6aa65",
+      "bytes": 75
+    },
+    "runs/qa_disconnect_01/supervisor.log": {
+      "sha256": "f5622eb7f8f1144125076edb8d7071613943351c47d56b0594014381924f6abf",
+      "bytes": 68
+    },
+    "runs/qa_disconnect_01/usb_preflight.json": {
+      "sha256": "1da57226b93f727853fb45e8a35058e6cf08127f1a527251aa9f8180436b869f",
+      "bytes": 5164
+    },
+    "runs/qa_mainkill_01/activation_probe.json": {
+      "sha256": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+      "bytes": 117
+    },
+    "runs/qa_mainkill_01/lease_events.jsonl": {
+      "sha256": "da6bcd844263bb3df5a9bf8b5392b6c04f00c2c0ca09de520772f18b2409c0b5",
+      "bytes": 753
+    },
+    "runs/qa_mainkill_01/lease_state.json": {
+      "sha256": "fa6efddbbd6ea5f8551461ce74a349e7d0f8740fb83aecfa08b5de01c9edcbc6",
+      "bytes": 1022
+    },
+    "runs/qa_mainkill_01/qa_fault_intent.json": {
+      "sha256": "4f84bf48d369066f8916e4206c21ec4a6a371ed0098324c4e2d21602813f1fb3",
+      "bytes": 355
+    },
+    "runs/qa_mainkill_01/qa_fault_sent.json": {
+      "sha256": "31c1a2df9f296157addc957f1930d4d4b903d46dea0cbfaaac9d44a4fce54d54",
+      "bytes": 18
+    },
+    "runs/qa_mainkill_01/qa_ready.json": {
+      "sha256": "e87fa66f6e22bea6c4d16adc1a5dad0b45f7fbfefcfadfd4c53e1ef46f9e7dcc",
+      "bytes": 181
+    },
+    "runs/qa_mainkill_01/registration.json": {
+      "sha256": "616adbb83f3561cfb29e60ace1000ccd9ed74d62b591d20b42d511ed6704d42a",
+      "bytes": 208
+    },
+    "runs/qa_mainkill_01/restore.json": {
+      "sha256": "dd8f501f37d28a9d5d789a0b6ee87d84ecd5d957ea9885313d6e0c3978981d33",
+      "bytes": 75
+    },
+    "runs/qa_mainkill_01/supervisor.log": {
+      "sha256": "6940f663d57cda50b4bc4dbb225a720134455e1db322605653bf9afaaf3c5b7e",
+      "bytes": 68
+    },
+    "runs/qa_mainkill_01/usb_preflight.json": {
+      "sha256": "1da57226b93f727853fb45e8a35058e6cf08127f1a527251aa9f8180436b869f",
+      "bytes": 5164
+    },
+    "runs/qa_normal_01/activation_probe.json": {
+      "sha256": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+      "bytes": 117
+    },
+    "runs/qa_normal_01/lease_events.jsonl": {
+      "sha256": "a2f5b455713a12bfd35034e608722d9294ec291ea129535736a75f696576a6eb",
+      "bytes": 758
+    },
+    "runs/qa_normal_01/lease_state.json": {
+      "sha256": "cada77d22148fbfefad04736540d6370810561f83c4154d4d1c75cbc003ddcd0",
+      "bytes": 1022
+    },
+    "runs/qa_normal_01/qa_ready.json": {
+      "sha256": "454692bf4578fb5e2a6f21c97dbad219a78447ceb644c98f0b31d0f31aca1bcf",
+      "bytes": 181
+    },
+    "runs/qa_normal_01/registration.json": {
+      "sha256": "616adbb83f3561cfb29e60ace1000ccd9ed74d62b591d20b42d511ed6704d42a",
+      "bytes": 208
+    },
+    "runs/qa_normal_01/restore.json": {
+      "sha256": "fee7dcab3c4da754eb04162d9fa3e67bd62fdb3378fac83bcff5c5a362aed26d",
+      "bytes": 75
+    },
+    "runs/qa_normal_01/supervisor.log": {
+      "sha256": "eaf99ab650c0854b893d2bb271e890be1044381be8418c1d570ee019f173d7f4",
+      "bytes": 68
+    },
+    "runs/qa_normal_01/usb_preflight.json": {
+      "sha256": "1da57226b93f727853fb45e8a35058e6cf08127f1a527251aa9f8180436b869f",
+      "bytes": 5164
+    },
+    "runs/qa_timeout_01/activation_probe.json": {
+      "sha256": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+      "bytes": 117
+    },
+    "runs/qa_timeout_01/lease_events.jsonl": {
+      "sha256": "0ba161b87e34948b42ce03eb635e5cf502609cc22a69650f35e4d99ef70c66e1",
+      "bytes": 757
+    },
+    "runs/qa_timeout_01/lease_state.json": {
+      "sha256": "b2ea203473f623b1a6fac2c5e9879b079277104721809d1bbe46d68fe33fda86",
+      "bytes": 1022
+    },
+    "runs/qa_timeout_01/qa_ready.json": {
+      "sha256": "d6ae9d72de4387639153f795806a12042aadc42aa6ec051e332950d6d6540525",
+      "bytes": 181
+    },
+    "runs/qa_timeout_01/registration.json": {
+      "sha256": "616adbb83f3561cfb29e60ace1000ccd9ed74d62b591d20b42d511ed6704d42a",
+      "bytes": 208
+    },
+    "runs/qa_timeout_01/restore.json": {
+      "sha256": "b388cb0eb207852a1dcadc7147a891ceb80e70a79ddb9d1ed7635fea69815f20",
+      "bytes": 76
+    },
+    "runs/qa_timeout_01/supervisor.log": {
+      "sha256": "ea02e81fcf211d0aa1b512979fb8fa6d8f786944ae515da0d58e11e95aa231e4",
+      "bytes": 69
+    },
+    "runs/qa_timeout_01/usb_preflight.json": {
+      "sha256": "1da57226b93f727853fb45e8a35058e6cf08127f1a527251aa9f8180436b869f",
+      "bytes": 5164
+    }
+  },
+  "source_unchanged": true,
+  "restore_independent_readback": true,
+  "ssh_kept_open": true,
+  "scientific_registration_exists": false,
+  "empirical_endpoint_recorded": false
+}

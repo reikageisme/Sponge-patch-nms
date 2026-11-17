@@ -1,0 +1,10 @@
+{
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "sha256": {
+    "bracket.py": "35e80c3bf053c9586a70bb57f16e7a200eb0768a2e83761f1c102403788cf332",
+    "qa_worker.py": "b182e37e76696e9a298fac1f8876fa76fd1e5530b60ff801c9f18c75d17601f1",
+    "qa_config.json": "2f7a8a9f3f4cda816348191b786ffbc6034c3166a52b24f35adbe3ca97cdef7d"
+  }
+}

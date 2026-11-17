@@ -1,0 +1,12 @@
+{
+  "status": "ANNOTATION_ONLY_CORRECTION",
+  "image": "000000000077",
+  "one_based_frozen_index": 14,
+  "previous_label_index": 15,
+  "raw_statistics_changed": false,
+  "prior_figure_preserved": true,
+  "corrected_files": {
+    "component_diagnostics_corrected.png": "1111aeecd90c6cadf78d9887ca9a8294d7b1ec294d437d7557ed2ffad3485b37",
+    "component_diagnostics_corrected.pdf": "6976b026b741240a59e4d85b0ba978bb3d04ab7a4cb050debef7cda6f01b500d"
+  }
+}

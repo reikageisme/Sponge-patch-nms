@@ -1,0 +1,17 @@
+{
+  "image": "000000000049",
+  "condition": "clean",
+  "filename": "000000000049_clean.pt",
+  "sha256": "51b37e4567a767b7bf39f6ea436176acb9eec622b782796e34065becb5d6d43c",
+  "k": 7,
+  "shape": [
+    640,
+    640
+  ],
+  "mask_sha256": "d6dfbec0d28fd16183b9773e45fd170aecc37ca14b9608473df0ff4f6a357f57",
+  "counts": {
+    "k": 7,
+    "n_tau": 43,
+    "kernel_n": 43
+  }
+}

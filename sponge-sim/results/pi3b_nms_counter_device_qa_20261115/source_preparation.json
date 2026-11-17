@@ -1,0 +1,11 @@
+{
+  "status": "ENGINEERING_METADATA_QA_PREPARED_NO_OPERATOR",
+  "tag": "qa-pi3b-nms-counters-20261115",
+  "counter_source_sha256": "4c18b03e448a241a2a4c551db09337f8a37da2d0ef306f315574cc9fb2f066f4",
+  "driver_sha256": "6a2999a4b0e41ac2bc9614c2201e2c50592e50a5ad7e53c9d00347ce07524f51",
+  "remote_python_syntax_checks": 3,
+  "source_host_qa": "sponge-sim/results/pi3b_nms_trace_qa_20261114/verification.json",
+  "source_host_qa_sha256": "b24270e343a43651a33b64f30094bc9471d31ab04dd199c06a42dcd83928dbe8",
+  "scientific_endpoint": false,
+  "static_checker_note": "First host string-evaluation check lacked its synthetic commit variable; corrected checker context before device invocation, not a source/API change or device retry."
+}

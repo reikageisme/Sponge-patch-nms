@@ -1,0 +1,21 @@
+{
+  "status": "READ_ONLY_A0_FETCH_AND_SOURCE_VERIFIED",
+  "tag": "prereg-arm-metadata-a0-20261107",
+  "commit": "143be483f1b30d10d579860d50e3c8b0f0b84bc8",
+  "source_check": "checks.py/linux_observe.py/metadata_only.py all OK on device before invoke",
+  "remote_sha256": "2778ddc2d66e70f17b7150df302c918d7c03ab401975c15f0b33650507ddbad0",
+  "local_sha256": "2778ddc2d66e70f17b7150df302c918d7c03ab401975c15f0b33650507ddbad0",
+  "exit_code": 0,
+  "torch_imported": false,
+  "load_started": false,
+  "warnings": [
+    "proot could not sanitize /proc/self/fd/0,1,2; preserved as command stderr"
+  ],
+  "remaining_gates": [
+    "typed sensor registry incl anomalous nodes",
+    "SOC/charging live source: power_supply list denied",
+    "actual idle/mobileoff/current charging state",
+    "Android/proot cleanup/overhead QA",
+    "supervised load launcher and separate PREREG"
+  ]
+}

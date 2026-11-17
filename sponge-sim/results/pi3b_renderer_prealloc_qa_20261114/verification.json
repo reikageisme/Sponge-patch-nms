@@ -1,0 +1,22 @@
+{
+  "status": "LAPTOP_FINITE_SYNTHETIC_OUTPUT_PARITY_PASS_NOT_PERFORMANCE",
+  "tests_passed": 12,
+  "pytest_reported_seconds": 13.33,
+  "pytest_seconds_are_not_latency_endpoint": true,
+  "pytest_log_sha256": "28abc0ff86b47c6f94b9c6c8a367ff8252119761b513128bef4514488d027dee",
+  "platform": "Windows-11-10.0.26300-SP0",
+  "torch": "2.13.0+cpu",
+  "source_sha256": {
+    "baseline_ops.py": "526e2cc5686c4719df2c219401382a9ebb4296d8d020a1ae44609a3fb86e78f5",
+    "preallocate.py": "795aa41ec26b0429f27c0ebb27ca444aa56134324eedf9477af7fa5ffbd6d83c",
+    "provenance.json": "7c9741640ab9e6725fe5b0d4323b3f23b5b2f90548dc6e00797ce86386fd538c",
+    "static_memory.json": "d38f8994d4fd66a0add13cd6ac5610d0e160e37452788dbcfc969eecae96f600",
+    "static_memory.py": "3563e018b83c7ae38bc0dc14c552d466165167d80541def3cf7e7c604c51d388"
+  },
+  "installed_baseline_unchanged": true,
+  "device_access": false,
+  "empirical_rss_or_latency_recorded": false,
+  "scientific_tag_created": false,
+  "baseline_full20_commit": "8d4517b",
+  "limits": "Synthetic FP32 finite inputs on laptop; no actual Pi/real-image output parity, speed, peak RSS or universal equivalence."
+}

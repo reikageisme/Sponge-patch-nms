@@ -1,0 +1,37 @@
+{
+  "status": "A0C_METADATA_CAPTURED_LOAD_CLOSED",
+  "prereg_tag": "prereg-arm-power-a0c-20261107",
+  "prereg_commit": "e48d114bed4398c357725e5e350048fc3b60926f",
+  "remote_local_files_sha256": {
+    "battery.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "battery.raw.json": "99697461b34ed73f686cf281eb56e6502fafcb6ea0a0d891c8c9dbdce22fce96",
+    "battery.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "collector.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "collector.stdout": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "command.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "command.txt": "6be2566f602688ba0cb8cdae4e1e9f1b5239e4a5cfbdb2d4d1c00ba20e72f3c8",
+    "completed.txt": "bb2f4f859eb52d6d3fd1cccc648f7d3a278fba7e6c6d3e25af59c242000edb18",
+    "environment.txt": "dad8a61862fff19ef18c3530e73bbf5c647603a64d91ef1fafa1cee1f48b997a",
+    "packages.exit": "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa",
+    "packages.stderr": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "packages.txt": "d82ff69e57fe039864413a9013e8e90893b7be8e72276bb4ac86ecbef12e67b2",
+    "query_finished_utc.txt": "f1d0edfe6b2e74be18e874c3513a9c5768d1f7d15388699402db603c5d940a82",
+    "query_started_utc.txt": "1461be3494e5c0e3300a246903ad420bb3aa2678113ed91f97d4eb682780b618"
+  },
+  "battery_raw_selector_values": {
+    "present": true,
+    "health": "GOOD",
+    "plugged": "UNPLUGGED",
+    "status": "DISCHARGING",
+    "temperature": 35.7,
+    "percentage": 24
+  },
+  "timestamp_interpretation": "UTC_WALL_BRACKETS_ONLY_NOT_MONOTONIC_LIVE_READING",
+  "Termux_version": "googleplay.2026.10.09",
+  "APK_release_env_empty": true,
+  "CLI_version_is_not_APK_version": true,
+  "companion_APK_version_verified": false,
+  "API_transport_route_verified": false,
+  "phone_load_performed": false,
+  "sshd_connection_refused_after_close": true
+}

@@ -1,0 +1,162 @@
+{
+  "source_path": "D:\\Physical-Visual-DoS-EdgeAI-main\\outputs\\extended_q1_20261002\\analysis.json",
+  "sha256": "5f3b9de12755c5f9508590973590e631cd674bd9f9691618143cb39c9f5f2526",
+  "rows": [
+    {
+      "name": "area_1",
+      "side": 32,
+      "area_pct": 1.0,
+      "seed_values": [
+        1.0175433928002198,
+        1.0239964606436267,
+        1.0178461382221156,
+        1.0234591385154792,
+        1.0272682621684914,
+        1.023786121577559,
+        1.0182854369168681,
+        1.0153197027471568,
+        1.0213245680736964,
+        1.0077291842534586
+      ],
+      "n_seeds": 10,
+      "mean": 1.0196558405918672,
+      "sample_std": 0.005595251752988874,
+      "conditional_paired_seed_bootstrap_95ci": [
+        1.0162123985503224,
+        1.022755725486675
+      ],
+      "bootstrap_draws": 20000,
+      "exact_two_sided_sign_flip_p": 0.001953125,
+      "sign_flip_assignments": 1024,
+      "null_mean": 1.0,
+      "paired_standardized_effect_dz": 3.5129501691085547,
+      "assumptions": "paired seed effects exchangeable/sign-symmetric under null; fixed held-out images",
+      "not_an_image_population_confidence_interval": true
+    },
+    {
+      "name": "area_2",
+      "side": 45,
+      "area_pct": 1.9775390625,
+      "seed_values": [
+        1.0355357568599741,
+        1.0250389275221103,
+        1.0210815129429927,
+        1.0327756602948561,
+        1.0271472827854136,
+        1.0275730286953277,
+        1.0237029952397654,
+        1.0345219726930854,
+        1.0189126181481278,
+        1.027602749454012
+      ],
+      "n_seeds": 10,
+      "mean": 1.0273892504635664,
+      "sample_std": 0.0055492336998422985,
+      "conditional_paired_seed_bootstrap_95ci": [
+        1.0242075307718026,
+        1.0306438606159585
+      ],
+      "bootstrap_draws": 20000,
+      "exact_two_sided_sign_flip_p": 0.001953125,
+      "sign_flip_assignments": 1024,
+      "null_mean": 1.0,
+      "paired_standardized_effect_dz": 4.935681563446283,
+      "assumptions": "paired seed effects exchangeable/sign-symmetric under null; fixed held-out images",
+      "not_an_image_population_confidence_interval": true
+    },
+    {
+      "name": "sg_ga",
+      "side": 64,
+      "area_pct": 4.0,
+      "seed_values": [
+        1.033104370872894,
+        1.036734404793918,
+        1.0322064393037889,
+        1.036105286916422,
+        1.0303166041463308,
+        1.0353740226195853,
+        1.0180483525640822,
+        1.0258239514431677,
+        1.029844449684023,
+        1.025050840444202
+      ],
+      "n_seeds": 10,
+      "mean": 1.0302608722788411,
+      "sample_std": 0.0058711316078628294,
+      "conditional_paired_seed_bootstrap_95ci": [
+        1.0266337890668544,
+        1.033484743275696
+      ],
+      "bootstrap_draws": 20000,
+      "exact_two_sided_sign_flip_p": 0.001953125,
+      "sign_flip_assignments": 1024,
+      "null_mean": 1.0,
+      "paired_standardized_effect_dz": 5.154180539627943,
+      "assumptions": "paired seed effects exchangeable/sign-symmetric under null; fixed held-out images",
+      "not_an_image_population_confidence_interval": true
+    },
+    {
+      "name": "area_8",
+      "side": 90,
+      "area_pct": 7.91015625,
+      "seed_values": [
+        0.9945568265362139,
+        0.9938877810649592,
+        1.0182473357932602,
+        1.001763264213749,
+        0.997031579392052,
+        0.9892868355955646,
+        0.9995264528898158,
+        1.001823120128458,
+        1.000643216021203,
+        1.006440553442081
+      ],
+      "n_seeds": 10,
+      "mean": 1.0003206965077358,
+      "sample_std": 0.007965614583433102,
+      "conditional_paired_seed_bootstrap_95ci": [
+        0.9960193104136776,
+        1.0053301582761456
+      ],
+      "bootstrap_draws": 20000,
+      "exact_two_sided_sign_flip_p": 0.90625,
+      "sign_flip_assignments": 1024,
+      "null_mean": 1.0,
+      "paired_standardized_effect_dz": 0.04026010854238318,
+      "assumptions": "paired seed effects exchangeable/sign-symmetric under null; fixed held-out images",
+      "not_an_image_population_confidence_interval": true
+    },
+    {
+      "name": "area_16",
+      "side": 128,
+      "area_pct": 16.0,
+      "seed_values": [
+        0.9893754704667528,
+        0.9795960719431057,
+        0.9923634217698623,
+        0.970266186065528,
+        0.9782712913810163,
+        0.9790721736268798,
+        0.9890540657800209,
+        0.987333200889511,
+        0.9679629645973343,
+        0.9801529937376945
+      ],
+      "n_seeds": 10,
+      "mean": 0.9813447840257705,
+      "sample_std": 0.008179203718581564,
+      "conditional_paired_seed_bootstrap_95ci": [
+        0.9764951326739787,
+        0.9860217355178318
+      ],
+      "bootstrap_draws": 20000,
+      "exact_two_sided_sign_flip_p": 0.001953125,
+      "sign_flip_assignments": 1024,
+      "null_mean": 1.0,
+      "paired_standardized_effect_dz": -2.280810775240681,
+      "assumptions": "paired seed effects exchangeable/sign-symmetric under null; fixed held-out images",
+      "not_an_image_population_confidence_interval": true
+    }
+  ],
+  "reason": "Regenerated from scalar/CI: original plot title mislabeled area as component ablation; original image retained."
+}

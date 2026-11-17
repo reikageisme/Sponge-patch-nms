@@ -1,0 +1,18 @@
+{
+  "status": "CLOSED_INCOMPLETE_SUPERVISOR_QUALIFICATION_NO_RETRY",
+  "tag": "925c544f618491e5b21a3621d77804a10686d111",
+  "allocated_cases": 1,
+  "planned_cases": 5,
+  "live_ready_observation_qualified": false,
+  "normal_payload_frontend_exit_success": true,
+  "normal_payload_restore_verified": true,
+  "original_files": 8,
+  "remote_local_remote_original_sha_match": true,
+  "runtime_tag_archive_files_verified": 23,
+  "old_rss_full_originals_unchanged": 1814,
+  "bib_unchanged": true,
+  "functional_activation_authorized": false,
+  "new_model_or_nms_timing_endpoints": 0,
+  "sshd_kept_open": true,
+  "driver_timeout_cause": "UNKNOWN"
+}

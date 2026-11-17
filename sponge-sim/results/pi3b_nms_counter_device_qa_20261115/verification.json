@@ -1,0 +1,9 @@
+{
+  "status": "PASS_METADATA_API_ONLY",
+  "remote_local_remote_sha_match": true,
+  "source_unchanged": true,
+  "result_sha256": "00475e1c850361d1fd46788de8c3dbf8339798f74c70965de198fffd9f6c5f47",
+  "no_model_operator_or_rss": true,
+  "configuration_unchanged": true,
+  "ssh_kept_open": true
+}

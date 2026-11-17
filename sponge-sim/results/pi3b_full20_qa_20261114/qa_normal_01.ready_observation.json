@@ -1,0 +1,14 @@
+{
+  "ready": {
+    "pid": 6411,
+    "child_pid": 6596,
+    "child_start_ticks": 1788469,
+    "invocation_id": "40d705b3ea6a4a5eae85f3e70936780c"
+  },
+  "unit": {
+    "MainPID": "6411",
+    "ActiveState": "active",
+    "InvocationID": "40d705b3ea6a4a5eae85f3e70936780c"
+  },
+  "observed_at_utc": 1794641956.512654
+}

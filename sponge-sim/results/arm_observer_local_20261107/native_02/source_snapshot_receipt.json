@@ -1,0 +1,12 @@
+{
+  "status": "EXACT_EXECUTED_SOURCE_BYTES_MATCH_NATIVE_RECEIPT",
+  "method": "Current checks/session with only subsequent fresh-guard additions removed; other files copied. Every file verified against pre-existing native receipt SHA before write.",
+  "source_sha256": {
+    "checks.py": "8c881f720eeecac3fc59520cbca2c278887b0352896c18049995bb5e85d39f7c",
+    "linux_observe.py": "8e8101d2713efc40a62e4282f43b1b1f6c18cd3830e88e4a7f325d30bb64eb8a",
+    "posix_runtime.py": "a3f0bbcad4ad36547d947e6f563e985938a18bf5656624ffb9edba64454085bb",
+    "session.py": "1b6f63cfe2f6876ce9b09b8ac61be3023b7eaa6e663814c51e444ba55a07b252",
+    "local_linux_check.py": "12c9483c7b9fa94aaba6af622da86c52450b2dece6cee256dcc7df356a1074d1"
+  },
+  "subsequent_change": "Current guard/session reject reuse; separately covered by 96 host unit/regression tests, not attributed to native_02."
+}

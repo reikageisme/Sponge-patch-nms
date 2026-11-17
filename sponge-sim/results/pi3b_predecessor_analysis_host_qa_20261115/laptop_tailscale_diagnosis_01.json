@@ -1,0 +1,40 @@
+{
+  "status": "LOCAL_TAILSCALE_UNSYNCED_GENERAL_HTTPS_REACHABLE",
+  "user_symptom": "M\u1ea5t m\u1ea1ng/Tailscale",
+  "observed_local_time": "2026-11-15T13:23:15+07:00",
+  "tailscale": {
+    "backend": "NoState",
+    "self_online": false,
+    "peer_count": 0,
+    "service": "Running",
+    "health": [
+      "starting",
+      "unable to connect coordination server"
+    ]
+  },
+  "checks": {
+    "wifi_up": true,
+    "default_gateway_present": true,
+    "controlplane_dns_resolved": true,
+    "microsoft_dns_resolved": true,
+    "controlplane_https_status": 302,
+    "microsoft_https_status": 200,
+    "user_proxy_enabled": false,
+    "winhttp_proxy": "Direct",
+    "machine_logs_directory": "Access denied",
+    "bounded_supported_daemon_log_reader": "connected; no relevant error line in six seconds"
+  },
+  "service_restarted": false,
+  "network_settings_changed": false,
+  "sshd_stopped": false,
+  "root_cause_confirmed": false,
+  "next_action": "User PowerShell Administrator: Restart-Service -Name Tailscale, then tailscale status; suggested, not executed",
+  "evidence_tool_chunks": [
+    "9abcc4",
+    "163bf9",
+    "923789",
+    "ffc9b2",
+    "cb72ad",
+    "3355a2"
+  ]
+}

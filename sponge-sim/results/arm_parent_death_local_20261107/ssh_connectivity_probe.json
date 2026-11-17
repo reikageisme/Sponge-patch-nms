@@ -1,0 +1,9 @@
+{
+  "operation": "read_only_authorized_connectivity_probe",
+  "exit_code": 0,
+  "output": [
+    "WORKSPACE_READY_NO_LOAD"
+  ],
+  "sshd_shutdown_requested": false,
+  "no_load": true
+}

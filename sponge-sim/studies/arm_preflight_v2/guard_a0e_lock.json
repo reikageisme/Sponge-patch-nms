@@ -1,0 +1,16 @@
+{
+  "status": "REGISTER_BEFORE_ONE_PHONE_SLEEP_ONLY_CONTROL",
+  "tag": "prereg-arm-guard-a0e-20261107",
+  "source_sha256": {
+    "checks.py": "a25d28b632a73a54076bbec31cf12e1f4da0e1a89964cdaf10443d4a99629c0f",
+    "linux_observe.py": "8e8101d2713efc40a62e4282f43b1b1f6c18cd3830e88e4a7f325d30bb64eb8a",
+    "posix_runtime.py": "44b9ae76170db33fb28db6ace45e8d4d28ef1325263cb77537053e2711d73142",
+    "parent_death_local_check.py": "ee400c071bfcbf9fb79b97bbd32be4d356d33ca630e9d30efa3868e37a0a326e"
+  },
+  "remote_source": "studies/arm_guard_a0e_20261107_01",
+  "remote_result": "results/phone_a36/guard_a0e_20261107_01",
+  "load_permitted": false,
+  "outer_timeout_s": 120,
+  "outer_kill_after_s": 5,
+  "keep_sshd_running": true
+}

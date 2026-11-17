@@ -1,0 +1,25 @@
+{
+  "status": "HOST_ENGINEERING_TESTS_PASS_DEVICE_QA_PENDING",
+  "timestamp_utc": "2026-11-14T06:24:49.601034+00:00",
+  "command": "python -m pytest sponge-sim/tests/test_pi3b_swapguard_v2.py -q -p no:cacheprovider",
+  "result": {
+    "exit_code": 0,
+    "passed": 42,
+    "elapsed_seconds": 3.08,
+    "tool_chunk_id": "b8a678"
+  },
+  "test_source_sha256": "e6a6b687493c546d81095022d301c26648d44ce8030cc2bbd116554898038701",
+  "study_source_sha256": {
+    "analyze.py": "718439eef012f549effcb77b6ba27a5f9bc5580a1f684688ecac202cc1e14ec8",
+    "audit.py": "579dca6ba922c12afa954adb201fb1d1d1063bc972ff74fb695919c0c40c0795",
+    "build_lock.py": "e01f064513af9352976689928374aacbda6b8c6d1a8192b8685319b7f5c25d4f",
+    "control.py": "83bf54d7cf65c2172dd56350e0dd827ebc9b0f2b446b853c080d8b48b55003e5",
+    "guard.py": "d803ff62aa7b1f8e6999aa3443f28f1936373b90d2bebf7eefa3c20988edc3ab",
+    "run.py": "dbe72bf077284cce1efd44af65c76207166c1e5003509755baf7846554353aaf",
+    "stats_frozen.py": "1b63222ac880a90f44098846bd949ce8e9b337a30080840fe31e472cf5cfdd4e"
+  },
+  "lock_sha256": "4e44fa0bc119b092cbe0180f8157b1cffaa2920d3bbd8ec0ffc115961b6460b4",
+  "qa_plan_sha256": "34695edd2651498ca8394191fbf79bd1b64a0534805dd40324d3f1844a373e4f",
+  "original_files_verified_unchanged": 21,
+  "scientific_measurement": false
+}

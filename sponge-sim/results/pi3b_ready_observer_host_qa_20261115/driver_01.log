@@ -1,0 +1,5 @@
+{"case": "observer_normal_01", "status": "PASS_NORMAL"}
+{"case": "observer_mainkill_01", "status": "PASS_MAIN"}
+{"case": "observer_childkill_01", "status": "PASS_CHILD"}
+{"case": "observer_timeout_01", "status": "PASS_TIMEOUT"}
+{"case": "observer_disconnect_01", "status": "PASS_DISCONNECT"}

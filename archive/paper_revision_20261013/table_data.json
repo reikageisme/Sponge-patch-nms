@@ -1,0 +1,569 @@
+{
+  "algorithm": {
+    "caption": "Bảng 1. Quy trình tối ưu và đánh giá miếng dán.",
+    "headers": [
+      "Bước",
+      "Thao tác"
+    ],
+    "rows": [
+      [
+        "1",
+        "Khởi tạo 20 tensor RGB; chọn vị trí theo chính sách."
+      ],
+      [
+        "2",
+        "Chèn từng cá thể vào bốn ảnh tối ưu."
+      ],
+      [
+        "3",
+        "Lấy mẫu biến đổi; suy luận và đọc confidence trước NMS."
+      ],
+      [
+        "4",
+        "Tính fitness; ghi số lượt ảnh và cá thể tốt nhất."
+      ],
+      [
+        "5",
+        "Giữ năm cá thể ưu tú; lai ghép ngang và đột biến."
+      ],
+      [
+        "6",
+        "Dừng khi hết ngân sách lượt ảnh; khóa miếng dán."
+      ],
+      [
+        "7",
+        "Đánh giá độc lập ứng viên, AP, latency và QoS."
+      ]
+    ],
+    "note": "Một đánh giá cá thể dùng bốn lượt ảnh với một mẫu EOT/ảnh, 16 lượt với bốn mẫu. Tập kiểm tra không chọn miếng dán. Đột biến ở nhánh mở rộng dùng Gaussian σ=0,2, xác suất 0,1, chặn RGB về [0;1]."
+  },
+  "protocols": {
+    "caption": "Bảng 2. Phân biệt giao thức Sponge và benchmark detector bổ sung.",
+    "headers": [
+      "Thuộc tính",
+      "Nhánh A: Sponge/NMS",
+      "Nhánh B: phát hiện người"
+    ],
+    "rows": [
+      [
+        "Mục tiêu",
+        "Ứng viên, AP, chi phí và QoS sạch–patch",
+        "Chất lượng, ngân sách học và latency detector"
+      ],
+      [
+        "Mô hình",
+        "YOLOv8n; chuyển giao sáu detector",
+        "YOLO11n, YOLOv12n, YOLOv13n/s"
+      ],
+      [
+        "Dữ liệu",
+        "Bốn ảnh tối ưu; 128 ảnh COCO val2017 kiểm tra",
+        "11.123 ảnh COCO + AdvT-shirt"
+      ],
+      [
+        "Đầu vào",
+        "320 × 320; patch cơ sở 64 × 64",
+        "416 px; target một lớp person"
+      ],
+      [
+        "Lặp",
+        "10 seed miếng dán",
+        "5 seed mỗi model; 20 quỹ đạo"
+      ],
+      [
+        "Thiết bị",
+        "CPU laptop i5-1335U",
+        "RTX 5060, 7,96 GiB VRAM"
+      ],
+      [
+        "Ngân sách",
+        "400/1.000/2.500 lượt ảnh",
+        "5/10/20/30/60/120 phút theo CSV"
+      ],
+      [
+        "Đánh giá",
+        "COCO AP hộp; thresholds/cap công bố riêng",
+        "Test 1.668 ảnh; latency batch 1 FP32"
+      ]
+    ],
+    "note": "Nhánh B dùng split cố định 7.786/1.669/1.668; holdout đối với fine-tuning, chưa bảo đảm độc lập với pretraining. Không gộp AP hai nhánh hoặc coi benchmark person là thử nghiệm DoS."
+  },
+  "sponge_primary": {
+    "caption": "Bảng 3. Tỷ số ứng viên và AP trên 128 ảnh ở ngân sách 2.500 lượt ảnh.",
+    "headers": [
+      "Điều kiện",
+      "Tỷ số ứng viên μ ± SD",
+      "AP hộp (%) μ ± SD",
+      "Lượt ảnh"
+    ],
+    "rows": [
+      [
+        "Sạch",
+        "1,0000",
+        "34,08",
+        "0"
+      ],
+      [
+        "SG-GA",
+        "1,0278 ± 0,0083",
+        "29,97 ± 0,47",
+        "2.500"
+      ],
+      [
+        "GA tâm",
+        "1,0329 ± 0,0093",
+        "25,88 ± 0,46",
+        "2.500"
+      ],
+      [
+        "GA vị trí ngẫu nhiên",
+        "1,0519 ± 0,0092",
+        "30,27 ± 0,64",
+        "2.500"
+      ],
+      [
+        "Tìm kiếm ngẫu nhiên",
+        "1,0268 ± 0,0072",
+        "29,93 ± 0,26",
+        "2.500"
+      ]
+    ],
+    "note": "10 seed; τ=0,01, không cap. Ratio là mean theo ảnh của ứng viên patch/ứng viên sạch rồi tổng hợp theo seed. AP gộp ảnh trước khi tổng hợp seed. Baseline sạch không tạo SD nhân tạo. Primary SG-GA−GA tâm: −0,005132; CI bootstrap 95% [−0,011178; 0,000706]; p đảo dấu=0,150391."
+  },
+  "area": {
+    "caption": "Bảng 4. Đánh giá diện tích miếng dán trên ảnh kiểm tra.",
+    "headers": [
+      "Patch (px)",
+      "Diện tích (%)",
+      "Tỷ số ứng viên μ ± SD",
+      "AP hộp (%) μ ± SD"
+    ],
+    "rows": [
+      [
+        "32 × 32",
+        "1,00",
+        "1,0197 ± 0,0056",
+        "32,24 ± 0,35"
+      ],
+      [
+        "45 × 45",
+        "1,98",
+        "1,0274 ± 0,0055",
+        "31,73 ± 0,08"
+      ],
+      [
+        "64 × 64",
+        "4,00",
+        "1,0303 ± 0,0059",
+        "30,17 ± 0,50"
+      ],
+      [
+        "90 × 90",
+        "7,91",
+        "1,0003 ± 0,0080",
+        "28,30 ± 0,59"
+      ],
+      [
+        "128 × 128",
+        "16,00",
+        "0,9813 ± 0,0082",
+        "22,14 ± 0,23"
+      ]
+    ],
+    "note": "128 ảnh, 10 seed, 400 lượt ảnh; τ=0,01, không cap. Mức 4% là SG-GA cơ sở. Diện tích đổi cả vùng che và số chiều tìm kiếm; không suy luận tác động đơn lẻ hoặc DoS từ giảm AP."
+  },
+  "processing": {
+    "caption": "Bảng 5. Thời gian đường xử lý tensor đã chuẩn bị và ngân sách 300 ms.",
+    "headers": [
+      "Luồng CPU",
+      "Điều kiện",
+      "Mean median (ms)",
+      "Mean p95 (ms)",
+      "Trễ (%)"
+    ],
+    "rows": [
+      [
+        "1",
+        "Sạch",
+        "51,09",
+        "78,20",
+        "0,00"
+      ],
+      [
+        "1",
+        "SG-GA",
+        "52,87",
+        "82,69",
+        "0,00"
+      ],
+      [
+        "2",
+        "Sạch",
+        "78,66",
+        "97,21",
+        "0,00"
+      ],
+      [
+        "2",
+        "SG-GA",
+        "79,32",
+        "94,11",
+        "0,00"
+      ],
+      [
+        "4",
+        "Sạch",
+        "58,83",
+        "76,21",
+        "0,00"
+      ],
+      [
+        "4",
+        "SG-GA",
+        "58,94",
+        "78,26",
+        "0,00"
+      ]
+    ],
+    "note": "Mỗi dòng tổng hợp 10 block seed, 16 ảnh/block và ba lượt đo/ảnh. Mean của median/p95 từng block, không phải quantile gộp. SG-GA là patch nguồn của nhánh backend, giữ đúng manifest; đổi luồng CPU vẫn trên một thiết bị. Không gồm camera/hàng đợi."
+  },
+  "stream": {
+    "caption": "Bảng 6. Dịch vụ theo toàn bộ ảnh phát: sạch và SG-GA.",
+    "headers": [
+      "Chu kỳ (ms)",
+      "Chính sách",
+      "Điều kiện",
+      "Bỏ (%)",
+      "Thiếu/trễ (%)",
+      "Đúng hạn (ảnh/s)",
+      "AP đúng hạn (%)"
+    ],
+    "rows": [
+      [
+        "100",
+        "FIFO",
+        "Sạch",
+        "0,00",
+        "85,31",
+        "1,08",
+        "5,55"
+      ],
+      [
+        "100",
+        "FIFO",
+        "SG-GA 2.500",
+        "0,00",
+        "85,00",
+        "1,13",
+        "5,57"
+      ],
+      [
+        "100",
+        "Bỏ khi bận",
+        "Sạch",
+        "50,94",
+        "50,94",
+        "4,89",
+        "19,49"
+      ],
+      [
+        "100",
+        "Bỏ khi bận",
+        "SG-GA 2.500",
+        "49,38",
+        "49,38",
+        "5,00",
+        "18,98"
+      ],
+      [
+        "100",
+        "Điều tiết",
+        "Sạch",
+        "55,31",
+        "55,31",
+        "4,45",
+        "18,60"
+      ],
+      [
+        "100",
+        "Điều tiết",
+        "SG-GA 2.500",
+        "52,50",
+        "52,50",
+        "4,73",
+        "15,49"
+      ],
+      [
+        "300",
+        "FIFO",
+        "Sạch",
+        "0,00",
+        "0,00",
+        "3,33",
+        "38,67"
+      ],
+      [
+        "300",
+        "FIFO",
+        "SG-GA 2.500",
+        "0,00",
+        "0,00",
+        "3,33",
+        "34,38"
+      ],
+      [
+        "300",
+        "Bỏ khi bận",
+        "Sạch",
+        "0,00",
+        "0,00",
+        "3,33",
+        "38,67"
+      ],
+      [
+        "300",
+        "Bỏ khi bận",
+        "SG-GA 2.500",
+        "0,31",
+        "0,62",
+        "3,31",
+        "34,24"
+      ],
+      [
+        "300",
+        "Điều tiết",
+        "Sạch",
+        "35,62",
+        "35,62",
+        "2,15",
+        "24,76"
+      ],
+      [
+        "300",
+        "Điều tiết",
+        "SG-GA 2.500",
+        "37,81",
+        "37,81",
+        "2,07",
+        "22,88"
+      ]
+    ],
+    "note": "Mean 10 seed, mỗi block 32 ảnh; deadline 300 ms. Đây là 120 block sạch/SG-GA trong tổng 240 block của giao thức. Ảnh bỏ hoặc trễ được tính dự đoán rỗng khi đo AP đúng hạn. FIFO sạch đã quá tải ở chu kỳ 100 ms, nên không quy thất bại đó cho patch."
+  },
+  "defense": {
+    "caption": "Bảng 7. Đánh đổi ngưỡng/cap với chất lượng và hậu xử lý.",
+    "headers": [
+      "Điều kiện",
+      "τ",
+      "Top-k",
+      "AP (%)",
+      "AR100 (%)",
+      "Lọc + NMS (ms)"
+    ],
+    "rows": [
+      [
+        "Sạch",
+        "0,01",
+        "Không cap",
+        "34,08",
+        "40,79",
+        "3,40"
+      ],
+      [
+        "Sạch",
+        "0,01",
+        "100",
+        "33,36",
+        "38,91",
+        "2,05"
+      ],
+      [
+        "Sạch",
+        "0,25",
+        "Không cap",
+        "28,54",
+        "31,26",
+        "0,78"
+      ],
+      [
+        "SG-GA 2.500",
+        "0,01",
+        "Không cap",
+        "29,97",
+        "37,40",
+        "3,25"
+      ],
+      [
+        "SG-GA 2.500",
+        "0,01",
+        "100",
+        "29,23",
+        "35,54",
+        "2,04"
+      ],
+      [
+        "SG-GA 2.500",
+        "0,25",
+        "Không cap",
+        "24,72",
+        "27,58",
+        "0,81"
+      ]
+    ],
+    "note": "Mean theo 10 seed trên 128 ảnh; AP/AR gộp ảnh trước khi tổng hợp seed. Cùng patch, thay cấu hình hậu xử lý. Các ô thời gian là mean đã lưu trong analysis, không phải median. Không mặc định top-k/threshold là phòng thủ thành công với mọi ứng dụng."
+  },
+  "transfer": {
+    "caption": "Bảng 8. Chuyển giao: tỷ số latency bên trong từng detector.",
+    "headers": [
+      "Detector",
+      "Tỷ số latency",
+      "CI bootstrap 95%",
+      "AP sạch (%)",
+      "AP patch (%)"
+    ],
+    "rows": [
+      [
+        "YOLOv8n (nguồn)",
+        "1,0180",
+        "[1,0011; 1,0355]",
+        "36,28",
+        "29,43"
+      ],
+      [
+        "YOLOv8s",
+        "1,0084",
+        "[0,9962; 1,0194]",
+        "47,43",
+        "38,20"
+      ],
+      [
+        "SSDLite MobileNetV3",
+        "1,0066",
+        "[0,9891; 1,0243]",
+        "26,62",
+        "24,45"
+      ],
+      [
+        "Faster R-CNN MobileNetV3",
+        "1,0419",
+        "[1,0274; 1,0554]",
+        "27,16",
+        "23,56"
+      ],
+      [
+        "RetinaNet ResNet50",
+        "1,0071",
+        "[0,9990; 1,0136]",
+        "35,17",
+        "30,37"
+      ],
+      [
+        "DETR ResNet50",
+        "0,9969",
+        "[0,9886; 1,0050]",
+        "31,37",
+        "26,99"
+      ]
+    ],
+    "note": "16 ảnh chung, 10 miếng dán nguồn. CI theo seed trên ảnh cố định. Mỗi model có preprocessing/hậu xử lý riêng; không so latency tuyệt đối giữa dòng. DETR không có NMS. Không kết luận DoS xuyên kiến trúc từ giảm AP."
+  },
+  "yolo_metrics": {
+    "caption": "Bảng 9. Benchmark person tại mốc chọn theo validation.",
+    "headers": [
+      "Model",
+      "Mốc (phút)",
+      "Precision (%)",
+      "Recall (%)",
+      "mAP50 (%)",
+      "mAP95 (%)",
+      "Pipeline (ms)"
+    ],
+    "rows": [
+      [
+        "YOLO11n",
+        "120",
+        "77,10 ± 0,35",
+        "55,98 ± 0,57",
+        "65,07 ± 0,29",
+        "42,44 ± 0,22",
+        "2,58 ± 0,42"
+      ],
+      [
+        "YOLOv12n",
+        "120",
+        "75,32 ± 1,38",
+        "54,25 ± 0,36",
+        "62,92 ± 0,27",
+        "40,49 ± 0,31",
+        "2,77 ± 0,07"
+      ],
+      [
+        "YOLOv13n",
+        "5",
+        "76,43 ± 2,37",
+        "54,35 ± 0,87",
+        "63,19 ± 0,72",
+        "40,80 ± 0,97",
+        "4,16 ± 0,21"
+      ],
+      [
+        "YOLOv13s",
+        "10",
+        "80,46 ± 1,44",
+        "61,08 ± 1,22",
+        "70,94 ± 1,06",
+        "47,97 ± 1,13",
+        "51,79 ± 2,08"
+      ]
+    ],
+    "note": "μ ± sample SD giữa năm seed. Mỗi model có sweet spot riêng, không cùng ngân sách/capacity. Test một lớp person, 1.668 ảnh; RTX 5060, 416 px, batch 1 FP32, median 500 ảnh sau 32 warm-up. Chưa có raw timing để tái tính p95/p99 hoặc cùng operating point accuracy/latency."
+  },
+  "routes": {
+    "caption": "Bảng 10. Đối chiếu hướng nghiên cứu: lợi ích, giới hạn và căn cứ của nhóm.",
+    "headers": [
+      "Hướng / nguồn",
+      "Ưu điểm có căn cứ",
+      "Chi phí / giới hạn",
+      "Quan hệ với nghiên cứu này"
+    ],
+    "rows": [
+      [
+        "Underload [C:underload2025]",
+        "Phòng thủ có xét năng lực hardware; đo phục hồi thời gian thực.",
+        "Cần huấn luyện đối kháng; phụ thuộc mô hình/threat đã thử.",
+        "Nhóm đo workload/QoS; chưa có bảo đảm phòng thủ tương đương."
+      ],
+      [
+        "EVADE [C:evade2025]",
+        "Kiểm tính thực dụng qua hardware/format/quantization và deadline.",
+        "Kết quả âm chỉ có phạm vi cấu hình đã đánh giá.",
+        "Nhóm bổ sung thử nghiệm hẹp có truy vết; chỉ một laptop và một GPU."
+      ],
+      [
+        "APDE [C:apde2025]",
+        "Đánh giá nhiều patch/model/metric; đối chứng adaptive.",
+        "Phát hiện patch/AP không tự bảo đảm availability.",
+        "Nhóm tách AP/candidates/QoS; tập nhỏ, chưa so đủ SOTA."
+      ],
+      [
+        "BadPatch / GRAC [C:badpatch2025] [C:grac2025]",
+        "Thử vật lý, áo/texture, nhiều điều kiện nhìn.",
+        "Evasion và gradient/diện tích khác; không phải QoS Sponge.",
+        "Nhóm giữ patch 4%, không gradient; chưa xác nhận quang học."
+      ],
+      [
+        "SG-GA của nhóm",
+        "Không đọc gradient/trọng số; cùng diện tích/query; đánh giá độc lập.",
+        "Cần confidence trước NMS; primary chưa hơn GA tâm.",
+        "Giá trị hiện tại là kiểm định ranh giới surrogate; không tuyên bố tấn công mạnh hơn."
+      ],
+      [
+        "Benchmark detector của nhóm",
+        "Cùng split/hardware, 20 quỹ đạo; tradeoff đo trực tiếp.",
+        "Khác capacity/mốc; chưa có pretrained mốc 0 hoặc DoS trên detector mới.",
+        "13s tăng mAP, latency cao; dùng chọn cấu hình cho phép thử tiếp."
+      ]
+    ],
+    "note": "So sánh vai trò và ràng buộc, không xếp hạng sức mạnh xuyên threat model. Ưu điểm tiềm năng về quyền truy cập phải được cân cùng hạn chế hiệu quả và giả định telemetry."
+  }
+}

@@ -1,0 +1,6 @@
+{
+  "tag": "prereg-pi3b-swapguard-v2-20261114",
+  "commit": "560b3aaf657fa574240e8ab463eefc20425538d8",
+  "mode": "smoke",
+  "lock_sha256": "2041162d361e37a8a2bf045d1f58d05d181a0f16b1e13d552d7b8eb74ea00d23"
+}

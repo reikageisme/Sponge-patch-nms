@@ -1,0 +1,6 @@
+{
+  "command": "from pathlib import Path\nimport json,subprocess\nb=Path('/home/tanh/sponge-sim/pi3b_nms_light_20261115');assert not b.exists()\nservices={}\nfor unit in ('sponge-pi3b-swapguard-v2.service','sponge-pi3b-nms-light-api-qa-20261115.service'):\n r=subprocess.run(['systemctl','show',unit,'-p','MainPID','-p','ActiveState'],capture_output=True,text=True,timeout=10)\n s=dict(x.split('=',1) for x in r.stdout.splitlines());assert s.get('MainPID')=='0' and s.get('ActiveState')=='inactive',s\n services[unit]=s\nb.mkdir(exist_ok=False)\nprint(json.dumps(dict(created=str(b),services=services)))\n",
+  "returncode": 0,
+  "stdout": "{\"created\": \"/home/tanh/sponge-sim/pi3b_nms_light_20261115\", \"services\": {\"sponge-pi3b-swapguard-v2.service\": {\"MainPID\": \"0\", \"ActiveState\": \"inactive\"}, \"sponge-pi3b-nms-light-api-qa-20261115.service\": {\"MainPID\": \"0\", \"ActiveState\": \"inactive\"}}}\n",
+  "stderr": ""
+}

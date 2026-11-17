@@ -1,0 +1,18 @@
+{
+  "tag": "qa-pi3b-nms-observer-service-20261115",
+  "scientific_endpoint_enabled": false,
+  "host_tests_passed": 31,
+  "host_test_log_sha256": "f2bdaa38aaecc76d1c98fdad35469ccfcf92580d43cb783155e7a565744439ef",
+  "initial_failure_retained": "host_initial_failure.json",
+  "source_sha256": {
+    "counters.py": "42a2ed7ba8ff7f709428ef3caefe5e14f7f21baad9659ca16b0d0a01ecc22b07",
+    "inventory.py": "0eb533ad54b69c33508ab429d590405c4eaf1b0476e0c3dde211aa4a5e56d6b7",
+    "qa_worker.py": "2679ea9c36d26942c2ffb7927ca82ef2b67c41f1a7394dd5a67da093376fdc77",
+    "qa_config.json": "6a7b8d41db502fefd742dd51b9c865277af8ea8dc735e6b0c8c4c3912a16ead5"
+  },
+  "plan_sha256": "4e1f074a9eb9c79da18acf24f34df01350ad7fc1cbbcce584f0fd976e40a5212",
+  "driver_sha256": "537af0cf9d0917b27d8b908b4855cbcf824a35492102046594bc0cb355890e4f",
+  "generated_remote_python_strings_syntax_checked": 3,
+  "parser_ast_unchanged": true,
+  "device_invocations_at_checkpoint": 0
+}

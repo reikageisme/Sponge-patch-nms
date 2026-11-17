@@ -1,0 +1,22 @@
+{
+  "status": "HANDOFF_ANALYSIS_COMPLETE_FINITE_PROTOCOL_CLOSED_DIAGNOSTIC_ONLY",
+  "original_files_rehashed": 21,
+  "original_raw_unchanged": true,
+  "registered_source_and_lock_bytes_unchanged": true,
+  "remote_source_still_matches": true,
+  "all_material_snapshot_hashes_match": true,
+  "summary_sha256": "8e1895b8be80fe97049b68046b6f5007510ad4cb0ecac33c6c01396766cca27f",
+  "independent_recalculation_matches": true,
+  "main_registered_quality_pass": false,
+  "auxiliary_retry_performed": false,
+  "full02_absent": true,
+  "no_active_worker": true,
+  "remote_settings_changed": false,
+  "paper_manuscript_not_edited": true,
+  "report_sha256": "e8359a614c71893c1800244fd561806e7259467beba461098ec354cde0d1a4f3",
+  "fast_contract_tests": {
+    "summary": "3 passed, 5 deselected in 2.42s",
+    "test_source_sha256": "ffeabaed29260baf8a14a16cc94f4972f8f25de1a7847175bb104221fb3c15d7"
+  },
+  "scope_note": "Board under declared undervoltage600MHz; no accepted pure no-swap latency result or DoS claim"
+}

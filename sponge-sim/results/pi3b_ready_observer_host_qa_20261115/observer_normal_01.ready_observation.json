@@ -1,0 +1,29 @@
+{
+  "ready": {
+    "pid": 25634,
+    "child_pid": 25782,
+    "child_start_ticks": 10331521,
+    "invocation_id": "14d3c6950c3142b791ca5ac35271c069",
+    "torch_imported": false,
+    "scipy_imported": false
+  },
+  "unit": {
+    "MainPID": "25634",
+    "ActiveState": "active",
+    "InvocationID": "14d3c6950c3142b791ca5ac35271c069"
+  },
+  "required_state": {
+    "governor": "powersave",
+    "swaps": [],
+    "masks": {
+      "dev-zram0.swap": true,
+      "rpi-zram-writeback.service": true,
+      "rpi-zram-writeback.timer": true
+    }
+  },
+  "usb_preflight_sha256": "a70a6491ebb426c783b6e070df96aaa5dd62c4c5934ac7e688f224f36def0dc3",
+  "observed_at_utc": 1794727387.7935655,
+  "sequential_not_atomic": true,
+  "manager_queries": 1,
+  "source_qualification_performed": false
+}

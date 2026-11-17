@@ -1,0 +1,33 @@
+{
+  "tag": "prereg-pi3b-renderer-memory-v1-20261114",
+  "commit": "289c2e373c6f965337aaeea7edddc1d7ade29497",
+  "config_sha256": "8243cfaab4c5343e8b61ab8dd115a7cead8f2733e413dae107c355b795d407ba",
+  "weights_sha256": "a7cd8f929e1903d78a12a48efecab430209f18dc46cb96c3599a5980c63c423c",
+  "cache_manifest_sha256": "61b5abaaf22ea985b98f582a34f52cc19c2272ac87f66782292d843b17bbe165",
+  "protocol": {
+    "filename": "PREREG_PI3B_RENDERER_MEMORY_V1_20261114.md",
+    "sha256": "1ece06c0ab565bfaa908430f6320cf90f6d26228b4253e54a231aa7cf54e3b3c"
+  },
+  "phase": "smoke",
+  "created_at_utc": "2026-11-14T17:04:37.373360+00:00",
+  "expected_jobs": 36,
+  "expected_image_ids": [
+    "000000000009",
+    "000000000030"
+  ],
+  "original_run_directory": "/home/tanh/sponge-sim/pi3b_renderer_memory_v1_20261114/runs/memory_smoke_01",
+  "original_artifact_subdirectory": "original",
+  "source_sha256": {
+    "analyze_memory.py": "59765ba9884e83862765322e041da9348680e781852ab3530c98bbf218931ed1",
+    "baseline_ops.py": "5bd6f0237b951fa170d299271164c0a388efd8a0bba18600d10235854e3225f3",
+    "cache.py": "150b36b0fb58d10932fad8fbcfb914be9bd079535bd6aec7366fe5a95f04701f",
+    "control.py": "4652c4684e2b930529e392f7b4b5f5984c9bbc56846795f0f2dee75d6b9ffa4b",
+    "guard.py": "f669bc058b42869b7b2b40743c2cd2b6492d29ef3f86258d875ce68ca0cf3525",
+    "memory_campaign.py": "205e656469372f688088b0dc1d40b119fe6334b87304c284117a9bb6f859aa5e",
+    "memory_worker.py": "19599b0aee6e2bd3f40a75ff336d1680137f035399e8c32c49361f10f6c6d256",
+    "preallocate.py": "ef2cc77dddf4842f476a3d99f714fe56dfdc8d65adcdb857ac3239d01e1fbebf",
+    "stats_frozen.py": "748cc250a30806db715c02412915d357acaf289470b117bddeccf78eda20e8a6"
+  },
+  "latency_endpoint_recorded": false,
+  "full_not_automatically_authorized": true
+}

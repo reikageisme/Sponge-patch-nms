@@ -1,0 +1,18 @@
+{
+  "status": "HOST_ENGINEERING_AND_REGRESSION_TESTS_ONLY",
+  "result": "104 passed",
+  "arm_control_tests": 76,
+  "cpu_regression_tests": 28,
+  "phone_access": false,
+  "scientific_measurement": false,
+  "source_sha256": {
+    "checks.py": "a25d28b632a73a54076bbec31cf12e1f4da0e1a89964cdaf10443d4a99629c0f",
+    "linux_observe.py": "8e8101d2713efc40a62e4282f43b1b1f6c18cd3830e88e4a7f325d30bb64eb8a",
+    "posix_runtime.py": "a3f0bbcad4ad36547d947e6f563e985938a18bf5656624ffb9edba64454085bb",
+    "session.py": "56cf946253731b28cfa2e0298e77d0268698c2eda914b7d754df0e12e047930e",
+    "pin_analysis.py": "7da2925df9f1b20c8e9e8c4c7e85427acac413d5951cb75e316d8822e3ba4213",
+    "local_linux_check.py": "12c9483c7b9fa94aaba6af622da86c52450b2dece6cee256dcc7df356a1074d1"
+  },
+  "native_02_receipt_sha256": "8fa655b342257b558a1e70d7bf7a29b62c023eb49b6a83153202d0d1187f0c12",
+  "scope_note": "native_02 binds its executed_source; current fresh-guard reuse check and pin analyzer are host-tested additions, not attributed to that native run"
+}

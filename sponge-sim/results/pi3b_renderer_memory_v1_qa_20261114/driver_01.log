@@ -1,0 +1,5 @@
+{"case": "qa_normal_01", "status": "PASS_NORMAL"}
+{"case": "qa_mainkill_01", "status": "PASS_MAIN"}
+{"case": "qa_childkill_01", "status": "PASS_CHILD"}
+{"case": "qa_timeout_01", "status": "PASS_TIMEOUT"}
+{"case": "qa_disconnect_01", "status": "PASS_DISCONNECT"}

@@ -1,0 +1,14 @@
+{
+  "status": "BLOCKED_BEFORE_DEPLOYMENT",
+  "attempt": "prepare_device.py 925c544f618491e5b21a3621d77804a10686d111",
+  "client_exitcode": 1,
+  "ssh_error": "ssh: connect to host 192.168.10.11 port 22: Connection timed out",
+  "error_source": "transcribed from tool chunk c7fa1d, not a remote original",
+  "native_cases_launched": 0,
+  "model_loads": 0,
+  "case_retry": false,
+  "device_state_readback_available": false,
+  "sshd_stop_requested": false,
+  "tailscale_returncode": 0,
+  "tailscale_stderr": ""
+}

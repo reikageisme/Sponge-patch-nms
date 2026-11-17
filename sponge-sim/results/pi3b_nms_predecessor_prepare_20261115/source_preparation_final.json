@@ -1,0 +1,45 @@
+{
+  "status": "PREPARED_CORE_NOT_RUNNABLE",
+  "source_sha256": {
+    "baseline_ops.py": "829cb01fd566d67b473f363318297c064577696393a707949d1c9c325b303a34",
+    "bracket.py": "157a353fdd33f6725db73f7dc6b6c597d03ae9ef339b5744782686de368c704f",
+    "cache.py": "5083fe95bb0f82289e5055ca9cae8855595d7a164e778a363490f98b5a81bf2b",
+    "factories.py": "06495c66682a4e806fa5e5a76dde3f90e82a07471ea3dd727bfccdfaf49fd06d",
+    "kernel_input.py": "25fd938e1a49dde931e838fcae88bbbb83e1e26841fb9bd2fec94fe7077e66ce",
+    "material.py": "ec309bbfaee21fcb785903ca99c7f9d65e5f9d4950e80fc3437952c576cce23a",
+    "pairs.py": "bd55f9e8f984b160e78da46f4eaa835c4a45d72a31ea24bb44dd8c0460f6b5fc",
+    "preallocate.py": "29d5b2adf7aa4d3659a542f59268cf59714bb053f66cf2abb828ebee3c8f9d8e",
+    "schedule.py": "acfe063a7f0f9bc8dbdaa650a2629003d09e0ee91c3f89a381640a4205245d25"
+  },
+  "engineering_lock_sha256": "758cbe6d14808f37ed323fa59d35487e00643891400a97882a9294f6cc125eb7",
+  "tests_sha256": {
+    "test_pi3b_nms_predecessor_bracket.py": "dd3d4ce06ae5b473e4796af041515422b66613ea14c2e4c0b3f36bc2fd571687",
+    "test_pi3b_nms_predecessor_core.py": "0aa161b2bf21068e20e74badec3a05401c499700fa0620f9617588486514e141"
+  },
+  "source_inspection_sha256": "f49dbf387dbbbe76c3c6ce6e148da577eda316fe14909d155e8529842565a304",
+  "initial_failures_retained": true,
+  "final_tests": 51,
+  "final_log_sha256": "b5cd7cac4e87867ed3907629a09c782bd065ea4b4c67559edc4cc34dfa1b70b4",
+  "bracket_validation_delta_ast_unchanged": true,
+  "renderer_cache_function_asts_unchanged": true,
+  "lazy_resource_import_removed_from_sample": true,
+  "no_native_scientific_or_functional_launch": true,
+  "authoritative_core_lock": "engineering_lock_v2.json",
+  "initial_preparation_retained": "source_preparation.json",
+  "host_distribution_metadata": {
+    "torch": "2.13.0",
+    "torchvision": "0.1.6",
+    "ultralytics": "8.4.90",
+    "numpy": "2.5.0",
+    "python": "3.14.6"
+  },
+  "host_runtime_versions": {
+    "torch": "2.13.0+cpu",
+    "torchvision": "0.28.0+cpu",
+    "numpy": "2.5.0",
+    "python": "3.14.6"
+  },
+  "version_mismatch_recorded": true,
+  "actual_registered_torchvision_operator_available": true,
+  "host_backend_is_not_pi_backend_qualification": true
+}

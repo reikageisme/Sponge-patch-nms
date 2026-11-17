@@ -1,0 +1,6 @@
+{
+  "command": "from pathlib import Path\nimport json,hashlib\nb=Path('/home/tanh/sponge-sim/pi3b_nms_trace_20261114')\nprint(json.dumps(dict(result_sha256=hashlib.sha256((b/'qa_snapshot_01.json').read_bytes()).hexdigest(),source_sha256=hashlib.sha256((b/'counters.py').read_bytes()).hexdigest())))",
+  "returncode": 0,
+  "stdout": "{\"result_sha256\": \"00475e1c850361d1fd46788de8c3dbf8339798f74c70965de198fffd9f6c5f47\", \"source_sha256\": \"4c18b03e448a241a2a4c551db09337f8a37da2d0ef306f315574cc9fb2f066f4\"}\n",
+  "stderr": ""
+}

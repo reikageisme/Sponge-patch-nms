@@ -1,0 +1,41 @@
+{
+  "receipt_kind": "Postterminal reconstruction of tool observations; not original device raw",
+  "recorded_at_utc": "2026-11-15T03:51:03.684341+00:00",
+  "frontend_receipt": "full_frontend_terminal.json",
+  "frontend_ssh_returncode": 255,
+  "frontend_utc": "2026-11-15T02:17:43.642525+00:00",
+  "same_owned_service": "sponge-pi3b-swapguard-v2.service",
+  "same_main_pid": 18518,
+  "same_invocation_id": "4c60b8fb7a7a42c2abd50f31c7f45237",
+  "service_start_readback": "Sun 2026-11-15 08:21:48 +07",
+  "active_runtime_max_usec": "6h",
+  "attached_at_utc": "2026-11-15T03:28:19.415364+00:00",
+  "observer_exec_session_id": 21399,
+  "observer_terminal_tool_chunk": "8192cc",
+  "terminal_observed_at_utc": "2026-11-15T03:43:55.863579+00:00",
+  "terminal_observation": {
+    "MainPID": "0",
+    "ActiveState": "inactive",
+    "SubState": "dead",
+    "InvocationID": "",
+    "ExecMainStartTimestamp": "",
+    "RuntimeMaxUSec": "infinity",
+    "Result": "success"
+  },
+  "terminal_is_unloaded_unit_defaults": true,
+  "default_result_is_not_scientific_quality_evidence": true,
+  "unit_state_polls": 18,
+  "progress_files_read_during_run": false,
+  "raw_files_read_during_run": false,
+  "experiment_restarted": false,
+  "configuration_changed": false,
+  "reattachment_scope": "Service identity, owned argv/cgroup, then unit-state-only wait for same invocation; no model/raw/progress queries",
+  "independent_experiment_evidence": [
+    "runs/memory_full_01/original/campaign_terminal.json",
+    "runs/memory_full_01/original/restore.json",
+    "runs/memory_full_01/summary.json",
+    "independent_full_audit.json"
+  ],
+  "reason_for_reattachment": "Original frontend SSH transport exited255 while owned service remained active. No job relaunch, collection began only after authoritative inactive/MainPID0 observation.",
+  "root_cause_of_ssh_disconnect": "UNKNOWN"
+}

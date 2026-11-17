@@ -1,0 +1,14 @@
+{
+  "exit_code": 0,
+  "read_only": true,
+  "command": "printf \"SWAP_UNIT_HISTORY\\n\"\njournalctl --utc --since \"2026-11-14 03:44:00\" --until \"2026-11-14 05:13:28\" -u dev-zram0.swap -u systemd-zram-setup@zram0.service --no-pager --output=short-iso 2>&1\nprintf \"CURRENT_UNIT_STATE_READ_ONLY\\n\"\nsystemctl show dev-zram0.swap -p ActiveState -p ActiveEnterTimestamp -p FragmentPath -p TriggeredBy --no-pager 2>&1",
+  "output": [
+    "SWAP_UNIT_HISTORY",
+    "-- No entries --",
+    "CURRENT_UNIT_STATE_READ_ONLY",
+    "TriggeredBy=",
+    "ActiveState=active",
+    "FragmentPath=/run/systemd/generator/dev-zram0.swap",
+    "ActiveEnterTimestamp=Sat 2026-11-14 11:09:21 +07"
+  ]
+}

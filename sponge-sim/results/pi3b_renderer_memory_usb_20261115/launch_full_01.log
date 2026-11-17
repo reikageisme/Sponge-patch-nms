@@ -1,0 +1,9 @@
+{"ssh_returncode": 255, "service": {"MainPID": "18518", "ActiveState": "active"}, "command": "/home/tanh/sponge-venv/bin/python /home/tanh/sponge-sim/pi3b_renderer_memory_usb_20261115/control.py launch --mode memory --phase full --name memory_full_01 --tag prereg-pi3b-renderer-memory-usb-20261115 --commit 70c398ae52540e873dca0f5dd447e97bc7d00958", "finished_at_utc": "2026-11-15T02:17:43.642525+00:00", "authoritative_service_terminal": false}
+Traceback (most recent call last):
+  File "D:\Sponge-patch-study\sponge-sim\results\pi3b_renderer_memory_usb_20261115\launch_full.py", line 77, in <module>
+    if __name__=='__main__':raise SystemExit(main(sys.argv[1]))
+                                             ~~~~^^^^^^^^^^^^^
+  File "D:\Sponge-patch-study\sponge-sim\results\pi3b_renderer_memory_usb_20261115\launch_full.py", line 73, in main
+    if not receipt['authoritative_service_terminal']:raise RuntimeError('service still live; wait same service, do not restart/fetch')
+                                                     ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: service still live; wait same service, do not restart/fetch

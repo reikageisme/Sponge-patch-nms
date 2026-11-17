@@ -1,0 +1,1 @@
+{"kind": "cell_done", "result": {"status": "diagnostic_recorded", "profile_qualified": false, "output_finite": true, "checksum": 1.0, "qa": {"decision": "FAIL", "passed": false, "reason": "engineering_fixture"}}, "torch_imported": false, "fixture": true}

@@ -78,23 +78,27 @@ e6 = json.loads((SIM / 'results/e6/E6_P1cpu2_20261102/summary.json').read_text(e
 _pool = json.loads((SIM / 'results/e6/E6_pooled_baselines_100img/summary.json').read_text(encoding='utf-8'))['arms']
 for _a in ('B1', 'B2', 'B3', 'B4'):
     e6['arms'][_a] = _pool[_a]
-# toàn trình: dùng tỷ số đã hiệu chỉnh chi phí chèn patch (results/amdahl/threshold_check_posthoc.json, DEVIATIONS 03/11)
+# toàn trình: KHÔNG dùng số đo (lỗi chèn patch ở E6, E11 lần 1 bị loại vì drift; DEVIATIONS 03/11) mà dùng DỰ ĐOÁN
+# Amdahl 1 + dNMS/t_total (results/amdahl/threshold_check_posthoc.json: r_pred), torchvision nms và PyTorch thuần
 _thr = json.loads((SIM / 'results/amdahl/threshold_check_posthoc.json').read_text(encoding='utf-8'))['arms']
 for _a in ('C1', 'C3', 'B1', 'B2', 'B3', 'B4'):
-    _v = _thr[f'320|{_a}|tv_nms']
-    e6['arms'][_a]['total_tv_nms'] = dict(ratio_mean=_v['r_corrected'], ratio_ci95=_v['r_corrected_ci95'])
+    for _be in ('tv_nms', 'torch_pure'):
+        _v = _thr[f'320|{_a}|{_be}']
+        e6['arms'][_a][f'pred_{_be}'] = dict(ratio_mean=_v['r_pred'], ratio_ci95=_v['r_pred_ci95'])
 arms = [('C1', 'GA, τ_obj 0.01'), ('C3', 'GA, τ_obj 0.25'), ('B1', 'GA centre'), ('B2', 'GA random loc.'), ('B3', 'random search'), ('B4', 'gradient (tanh)')]
 mde_total = e6['mde_aa_pct']['total']
 fig, ax = plt.subplots(1, 3, figsize=(7.2, 2.6), sharey=True)
-for k, (key, title) in enumerate((('N_tau0.01', r'$N_\tau$ ($\tau$=0.01)'), ('nms_tau0.01_tv_nms', 'NMS (torchvision)'), ('total_tv_nms', 'end-to-end'))):
+for k, (key, title) in enumerate((('N_tau0.01', r'$N_\tau$ ($\tau$=0.01)'), ('nms_tau0.01_tv_nms', 'NMS (torchvision)'), ('pred', 'end-to-end'))):
     for i, (arm, lab) in enumerate(arms):
-        v = e6['arms'][arm][key]
-        r, (lo, hi) = v['ratio_mean'], v['ratio_ci95']
-        ax[k].errorbar(r, i, xerr=[[r - lo], [hi - r]], fmt='o', ms=3, capsize=2, color='tab:red' if arm == 'B4' else 'tab:blue')
+        col = 'tab:red' if arm == 'B4' else 'tab:blue'
+        for kk, mk, dy in ((('pred_tv_nms', 'o', -.12), ('pred_torch_pure', 's', .12)) if key == 'pred' else ((key, 'o', 0),)):
+            v = e6['arms'][arm][kk]
+            r, (lo, hi) = v['ratio_mean'], v['ratio_ci95']
+            ax[k].errorbar(r, i + dy, xerr=[[r - lo], [hi - r]], fmt=mk, ms=3, capsize=2, color=col, mfc=col if mk == 'o' else 'none')
     ax[k].axvline(1, color='k', lw=.8)
-    if key == 'total_tv_nms':
+    if key == 'pred':
         ax[k].axvspan(1 - mde_total / 100, 1 + mde_total / 100, color='grey', alpha=.25)
-        title = f'end-to-end, insertion-corrected (grey: ±MDE {mde_total:.2g}%)'
+        title = 'end-to-end, PREDICTED\n(o tv nms, □ PyTorch; grey ±MDE)'
     ax[k].set_title(title); ax[k].set_xlabel('patched / clean')
 ax[0].set_yticks(range(len(arms))); ax[0].set_yticklabels([l for _, l in arms]); ax[0].invert_yaxis()
 save(fig, 'fig6_patch_effects')

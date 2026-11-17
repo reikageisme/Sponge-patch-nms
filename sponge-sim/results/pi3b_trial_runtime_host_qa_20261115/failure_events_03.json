@@ -1,0 +1,11 @@
+{
+  "host_run": "host_checks_06_lifetime_regression.log",
+  "failed": 2,
+  "deselected": 51,
+  "failure_type": "production lifetime bug found in new unregistered session helper",
+  "failure": "outer make_pair local kept context-yielded factory and captured material alive across context exit into next reference",
+  "correction": "del make_pair in finally inside material context before provider exits; retain stronger weakref regression for full20 and smoke2",
+  "native_actions": 0,
+  "old_data_or_source_changed": false,
+  "new_trial_data_seen": false
+}

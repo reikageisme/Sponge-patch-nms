@@ -1,0 +1,36 @@
+{
+  "status": "READ_ONLY_FIXED_PATHS_NOT_LOAD_AUTHORIZATION",
+  "rows": [
+    {
+      "field": "type",
+      "path": "/sys/class/power_supply/battery/type",
+      "readable": false,
+      "error": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/sys/class/power_supply/battery/type'"
+    },
+    {
+      "field": "capacity",
+      "path": "/sys/class/power_supply/battery/capacity",
+      "readable": false,
+      "error": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/sys/class/power_supply/battery/capacity'"
+    },
+    {
+      "field": "status",
+      "path": "/sys/class/power_supply/battery/status",
+      "readable": false,
+      "error": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/sys/class/power_supply/battery/status'"
+    },
+    {
+      "field": "temp",
+      "path": "/sys/class/power_supply/battery/temp",
+      "readable": false,
+      "error": "FileNotFoundError",
+      "message": "[Errno 2] No such file or directory: '/sys/class/power_supply/battery/temp'"
+    }
+  ],
+  "units": "RAW_UNVERIFIED",
+  "temperature_conversion_performed": false,
+  "source_sha256": "69a62631538785a38b6a79a5a945c543184e455c7a2bcf7fed9731cc07e6267e"
+}

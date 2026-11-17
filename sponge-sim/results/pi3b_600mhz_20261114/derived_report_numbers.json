@@ -1,0 +1,23 @@
+{
+  "status": "DIAGNOSTIC_ONLY_REGISTERED_QUALITY_FAIL",
+  "defense_reduction_pct": 27.40889976943671,
+  "defense_reduction_pct_ci95": [
+    25.594665413258898,
+    29.08465501063786
+  ],
+  "AA_mean_log_abs": 0.0015310758398949134,
+  "MDE_ratio_excess_pct": 0.45335990024188977,
+  "forward_share_pct": {
+    "clean": 98.74712394973825,
+    "adv": 53.527959347860964
+  },
+  "median_seconds": {
+    "clean_total": 4.3409501952500005,
+    "adv_total": 8.004150418750001,
+    "advcap_total": 5.697310257750001,
+    "clean_forward": 4.2855263492499995,
+    "adv_forward": 4.2920901245
+  },
+  "units": "fraction/percent/seconds derived explicitly from summary; no new measurement",
+  "source": "runs/full_01/summary.json:pipeline_PI4"
+}

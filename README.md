@@ -1,6 +1,6 @@
 # Sponge Patch: when does inflating NMS become an availability problem?
 
-[Tiếng Việt](README.vi.md) · [Measurement harness](sponge-sim/README.md) · [Progress log](sponge-sim/PROGRESS.md) · [Deviations](sponge-sim/DEVIATIONS.md) · [Internal review](REVIEW/04_q1_gap_analysis.md)
+[Tiếng Việt](README.vi.md) · [Measurement harness](sponge-sim/README.md) · [Progress log](sponge-sim/PROGRESS.md) · [Deviations](sponge-sim/DEVIATIONS.md) · [Internal review](docs/REVIEW/04_q1_gap_analysis.md)
 
 Research code for the HUTECH project *"Sponge Patch adversarial attacks: exploiting resource exhaustion with spatial
 optimisation"*. The project began as an attack paper. Its current, evidence-driven question is narrower and, we think,
@@ -94,8 +94,8 @@ boundary. It varies backend, box geometry, class count and top-k cap, and measur
 | `sponge-sim/` | New measurement harness: pinning, 4 NMS backends, synthetic injection, statistics, pre-registrations, results |
 | `outputs/extended_q1_20261002`, `outputs/x1_500img_20261018` | Raw evaluation records of cohorts OLD128 and X1-500 (read-only) |
 | `core/`, `attack/`, `experiments/` | Original attack and evaluation code (frozen; reused only through copies with source headers) |
-| `REVIEW/` | Internal audit: paper vs repository, gap analysis |
-| `BaoCaoKhoaHocAdversarialAttacks_Q1_VI_v2.tex` | Manuscript in progress |
+| `docs/REVIEW/` | Internal audit: paper vs repository, gap analysis |
+| `paper_en/main.tex` | Official manuscript (English); older Vietnamese versions under `paper/` |
 | `docs/CLAUDE_CODE_SETUP.md` | Tooling notes for the research assistant setup |
 
 ## Reproduce the checks

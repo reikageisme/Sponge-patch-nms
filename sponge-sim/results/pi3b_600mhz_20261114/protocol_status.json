@@ -1,0 +1,31 @@
+{
+  "status": "CLOSED_FULL01_DIAGNOSTIC_SWAP_GATE_FAIL_NO_RETRIES",
+  "primary": {
+    "name": "pipeline_PI4",
+    "exit_code": 0,
+    "quality_pass": false,
+    "timings": 720,
+    "images": 20,
+    "failed_gates": [
+      "swap_off"
+    ]
+  },
+  "auxiliary": {
+    "pipeline_PI1": {
+      "exit_code": 1,
+      "timing_rows": 0,
+      "reason": "swap_off_configuration_gate",
+      "retry_allowed": false
+    },
+    "stages_PI4": {
+      "exit_code": 1,
+      "timing_rows": 0,
+      "reason": "swap_off_configuration_gate",
+      "retry_allowed": false
+    }
+  },
+  "data_seen_before_decision": "All main20-image data inspected before no-retry assessment; no outcome-selected filtering",
+  "modified_locked_study_files": false,
+  "new_measurement_started": false,
+  "remote_settings_changed": false
+}

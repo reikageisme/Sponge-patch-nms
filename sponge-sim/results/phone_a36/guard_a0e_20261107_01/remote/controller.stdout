@@ -1,0 +1,1 @@
+LOCAL_ENGINEERING_PASS_NOT_DEVICE_QUALIFIED {'parent_exit_kills_direct_child_after_exec': True, 'parent_SIGKILL_kills_direct_child_after_exec': True, 'ordinary_TERM_KILL_reap_still_works': True, 'no_Torch_import_or_device_access': True, 'executed_sources_unchanged': True}

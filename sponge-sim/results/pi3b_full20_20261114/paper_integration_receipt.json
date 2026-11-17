@@ -1,0 +1,27 @@
+{
+  "status": "GENERATED_NEW_SECTION_KEPT_PRIOR_NEGATIVES_MAIN_LEFT_UNSTAGED",
+  "protected_sha256": {
+    "paper_en\\references.bib": "58bcb86a185ac4f338168adc894cd9b188d17fe1f1afad510ff05924f38f7d12",
+    "paper_en\\segmentation_extension\\laptop_components.pdf": "da3a66580f51165e8b72aa8a9967b747bcb7c041161f589ce4a356583431ca9d",
+    "paper_en\\segmentation_extension\\laptop_defense.pdf": "84a71e74572db3c23a3a9c0cbc76c76436a2183971571f8ef2a9a4dd9d758ae6",
+    "paper_en\\segmentation_extension\\laptop_pcores.pdf": "e4a21a74b36893d1eff914f667a6936c705c946850c8cd7c3327a6fb260525a5",
+    "paper_en\\segmentation_extension\\laptop_reference_trace.pdf": "ca891b145d830c91d92c59f830541ac2be4d490c0adef0c46548d3635001960b",
+    "paper_en\\segmentation_extension\\laptop_sessions.pdf": "d9b24eb200235bac70e61f07f621c88baf2c00206a666f94572d28d548136645",
+    "paper_en\\segmentation_extension\\mask_dose_response.pdf": "cf866211e41b703c13b0cab36b4326fee181439325640f8e8f41fd4ae1624b20",
+    "paper_en\\segmentation_extension\\nested1500_native.pdf": "34210578295d65aeb72d9678e8e5f939e645f9d4d8568fe5126c6d4a98199f4e",
+    "paper_en\\segmentation_extension\\val500_counts.pdf": "4e87f7974c9c8541da10c3cead27842ef170572cfac47cf4e9aa0065d64afc66",
+    "paper_en\\segmentation_extension\\laptop_components.png": "ac33e1123caeff59d086a7ccac244ad87f8981eaca0c7732f0c482761cb84082",
+    "paper_en\\segmentation_extension\\laptop_defense.png": "a71f752d889412053e82c83193ccaf06179654d1ff02648fe12f18dc8f169a6c",
+    "paper_en\\segmentation_extension\\laptop_pcores.png": "2f3f385bd3f0a7c59b72ea626326dfe78ad6740573ae9f73f9f5943f289cd179",
+    "paper_en\\segmentation_extension\\laptop_reference_trace.png": "d80d43a87c9e070b443ea0b65a5a519175e4daf12fdbaad0338593a9cc5e1f4f",
+    "paper_en\\segmentation_extension\\laptop_sessions.png": "684d116df72860f3acf3c1336d1ffb85b2f6e859bed7981fe965bbcaca815199",
+    "paper_en\\segmentation_extension\\mask_dose_response.png": "0d2e3793cb27f4e2c542f8b422762dd906d7810c6c2982bbd851648f5689f372",
+    "paper_en\\segmentation_extension\\val500_counts.png": "479678fdcd25b9ba2fa3d25c5329069fd683a7a4495987d07019adf4f71195ea"
+  },
+  "protected_unchanged": true,
+  "main_before_sha256": "84a6de6ad6dcd77f258f6842c1fdc0d06b64859f89b521af4f568bf62d14886c",
+  "main_after_sha256": "9df83a51aafee94d7e968a1a86a365f8dcc3fb2f850f64b8e52b3448f457f48f",
+  "main_task_delta": "Only update Pi scope paragraph after qualified primary; preexisting user changes preserved",
+  "patch_sha256": "ee08569fd86b892922c6b05d67150851fe1f49a47420d5c544afe63351575bb2",
+  "full_pdf_compiled": false
+}

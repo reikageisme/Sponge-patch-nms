@@ -1,0 +1,126 @@
+{
+  "status": "STDLIB_SMOKE_MEDIANS_AA_UNITS_AND_MASK_HASHES_REPLAYED",
+  "n_rows": 36,
+  "unit": "image",
+  "n_images": 2,
+  "raw_sha256": "5e945cf1ec3b612dd282b19294755d3c3bd965ea73fbf296b08c29b6ddc64ca7",
+  "table": [
+    {
+      "image": "000000000009",
+      "condition": "clean",
+      "k": 6,
+      "pooled_baseline_bytes": 262754304.0,
+      "candidate_bytes": 261910528,
+      "pooled_baseline_kib_exact": "256596",
+      "candidate_kib_exact": "255772",
+      "raw_lines": {
+        "baseline_A": [
+          6,
+          11,
+          13
+        ],
+        "baseline_B": [
+          5,
+          7,
+          18
+        ],
+        "candidate16M": [
+          3,
+          12,
+          14
+        ]
+      }
+    },
+    {
+      "image": "000000000009",
+      "condition": "adv",
+      "k": 202,
+      "pooled_baseline_bytes": 466448384.0,
+      "candidate_bytes": 427700224,
+      "pooled_baseline_kib_exact": "455516",
+      "candidate_kib_exact": "417676",
+      "raw_lines": {
+        "baseline_A": [
+          4,
+          10,
+          16
+        ],
+        "baseline_B": [
+          1,
+          8,
+          15
+        ],
+        "candidate16M": [
+          2,
+          9,
+          17
+        ]
+      }
+    },
+    {
+      "image": "000000000030",
+      "condition": "clean",
+      "k": 1,
+      "pooled_baseline_bytes": 253863936.0,
+      "candidate_bytes": 253308928,
+      "pooled_baseline_kib_exact": "247914",
+      "candidate_kib_exact": "247372",
+      "raw_lines": {
+        "baseline_A": [
+          20,
+          28,
+          34
+        ],
+        "baseline_B": [
+          24,
+          25,
+          35
+        ],
+        "candidate16M": [
+          21,
+          26,
+          32
+        ]
+      }
+    },
+    {
+      "image": "000000000030",
+      "condition": "adv",
+      "k": 300,
+      "pooled_baseline_bytes": 535703552.0,
+      "candidate_bytes": 466952192,
+      "pooled_baseline_kib_exact": "523148",
+      "candidate_kib_exact": "456008",
+      "raw_lines": {
+        "baseline_A": [
+          22,
+          29,
+          33
+        ],
+        "baseline_B": [
+          23,
+          30,
+          31
+        ],
+        "candidate16M": [
+          19,
+          27,
+          36
+        ]
+      }
+    }
+  ],
+  "aa_independent": {
+    "clean": {
+      "mean_log": -8.887000440564518e-06,
+      "sd_log": 7.870385497763976e-05,
+      "mde_log_80pct": 0.0007837245288998985
+    },
+    "adv": {
+      "mean_log": 3.40592256533309e-06,
+      "sd_log": 6.969533183775294e-05,
+      "mde_log_80pct": 0.000694018623694906
+    }
+  },
+  "no_efficacy_inference": true
+}

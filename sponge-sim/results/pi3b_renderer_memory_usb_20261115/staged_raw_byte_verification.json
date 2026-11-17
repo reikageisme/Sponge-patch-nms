@@ -1,0 +1,11 @@
+{
+  "status": "STAGED_FULL_ORIGINAL_BLOBS_SHA256_MATCH",
+  "n_full_original_files": 1814,
+  "bytes": 30153532,
+  "staged_paths_at_check": 1851,
+  "raw_bytes_rewritten": false,
+  "protected_paths_staged": false,
+  "whitespace_check_returncode": 0,
+  "whitespace_note": "Initial generic git diff --check flags CRLF as whitespace because -text intentionally preserves artifact bytes. Per-command cr-at-eol check passes; no file normalization/config change.",
+  "original_ten_runtime_sources_not_staged": true
+}

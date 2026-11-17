@@ -1,0 +1,31 @@
+{
+  "status": "HOST_CONTRACTS_PASS_BEFORE_FULL20_DEVICE_QA",
+  "passed": 60,
+  "elapsed_seconds": 3.93,
+  "tool_chunk_id": "d21934",
+  "source_sha256": {
+    "analyze.py": "c5a041026d407ee62c9e9358c4cf69a0a71de7a0d323f69e7dcaa95e92c6acf7",
+    "audit.py": "c9c5b4eabdc4dfe325bceb71501261ea6220afaf03e13d8cf451b51468355953",
+    "build_lock.py": "fae67a2e7c25bb7d915a772fb27dc59f6d5a54482801a2fa997251524988d5fa",
+    "control.py": "dd4fba009b4816505642c458a9eda9e7178902a0203a9481f9ceee1c6108d060",
+    "guard.py": "0922c853451a9943a843cfc1c9d60f73e85f5941f66a3b4624900c8ae348d48c",
+    "run.py": "cadc78041d3f4e611c789c76c22b1a885131b9ca632a52a27300a440baa4425f",
+    "stats_frozen.py": "57545941474dc39845cad309718d0c220fc26189e5ca296592d77638bd22195d"
+  },
+  "lock_sha256": "e18a7efc44dab24a4c075df686d01ac38fa3b95f9b3a47ef931b89dfec403f28",
+  "contract_fixture_sha256": "5bbf6f38413b88efa56d492986dc3606b74b72005a58e1fa248e9641b2ebd7bd",
+  "orchestrator_sha256": "28ca46efda5f3843ce47490666b2a794a4a8a06e7fa2b10d998f88494987a7c4",
+  "lease_classes_AST_unchanged": {
+    "System": true,
+    "Lease": true
+  },
+  "guard_AST_unchanged": true,
+  "statistics_AST_unchanged": true,
+  "initial_host_issue": {
+    "passed": 59,
+    "failed": 1,
+    "reason": "payload mode check preceded missing-systemd-context validation for argsNone; corrected before device execution",
+    "tool_chunk_id": "96e3d9"
+  },
+  "new_model_measurements": 0
+}

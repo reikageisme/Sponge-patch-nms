@@ -1,0 +1,1 @@
+{"sequence": 2, "event": {"kind": "baseline_before_load", "reading": {"sampled_s": 7.099130987, "zones_c": {"fixture_cpu": 45.0}, "battery_c": 35.0, "battery_pct": 50.0, "charging": true}, "observed_s": 7.133578767}}

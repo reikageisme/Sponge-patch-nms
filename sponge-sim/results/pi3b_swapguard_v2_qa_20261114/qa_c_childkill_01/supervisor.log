@@ -1,0 +1,10 @@
+Traceback (most recent call last):
+  File "/home/tanh/sponge-sim/pi3b_600mhz_swapguard_v2/control.py", line 325, in <module>
+    raise SystemExit(main())
+                     ~~~~^^
+  File "/home/tanh/sponge-sim/pi3b_600mhz_swapguard_v2/control.py", line 321, in main
+    return payload(args)
+  File "/home/tanh/sponge-sim/pi3b_600mhz_swapguard_v2/control.py", line 236, in payload
+    raise RuntimeError(f'QA child exited unexpectedly: {code}')
+RuntimeError: QA child exited unexpectedly: -9
+{"status": "RESTORED", "errors": [], "wall_utc": 1794638222.0614355}

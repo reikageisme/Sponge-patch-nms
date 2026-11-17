@@ -1,0 +1,38 @@
+{
+  "workspace": "/home/tanh/sponge-sim/pi3b_renderer_memory_usb_20261115",
+  "qa_tag": "qa-pi3b-renderer-memory-usb-20261115",
+  "empirical_endpoints_enabled": false,
+  "source_sha256": {
+    "analyze_memory.py": "287d013b11f2ba0486e78e88c35e334c7804bf6c500f9054933519a0f699df25",
+    "baseline_ops.py": "a4a2273ceb0adc963344a7ab23707015e5c042caea231acbbfec0164480177ca",
+    "build_engineering_lock.py": "36f85d866f5ad92000f3b109af09093f21fd724309636c4cde573d7552567aeb",
+    "cache.py": "896c4b34b2091e944eae49a8e5745ad532b4c0e311791337c45f660935037a9f",
+    "control.py": "a52289f20dc41a2c4a118aca2a486a8c217863a95bc1180e0b3b89b8d38df359",
+    "guard.py": "9b38481bc70e563732be47bc7cc0eef646d32fd19739918313eadce3cd4f7ebe",
+    "memory_campaign.py": "3db9cb35fcda2a7b1660a81fc4b454da2db47875f26abae7896aced83dc2c461",
+    "memory_worker.py": "51d65dfd10f7a3854192206da0b240eb55912d70aa36628ef4b90f3c20d6dcda",
+    "preallocate.py": "da833bcd1352c5d81c9e667df64043c751d0c6166109edcd1ede727d5bebb154",
+    "stats_frozen.py": "dd4770ba9ec5385e7266676242bf62e794fb5212c22c770f0cff780e3551333e",
+    "usb_guard.py": "9a1c2ef0124e5a54ac1d5e0e252c759636443a3d4ea7f7d50edd1b5aff821cd4"
+  },
+  "reference_sha256": {
+    "cache_manifest.json": "61b5abaaf22ea985b98f582a34f52cc19c2272ac87f66782292d843b17bbe165",
+    "cache_functional_audit.json": "6f6af19efa89fcaa7dd822f01f57a739a0faddc01e536db2799352dab1bb3867",
+    "usb_contract.json": "8303b42f23f235d7545d03e6827d898fecef89862fd43ec66c12cbbf8ca879c0"
+  },
+  "safety": {
+    "governor": "powersave",
+    "gates": {
+      "reference_drift": 0.03,
+      "max_reference_flags": 2,
+      "clock_hz": [
+        594000000,
+        606000000
+      ],
+      "abort_temp_c": 75.0,
+      "abort_mem_available_kb": 40000,
+      "aa_abs_log": 0.02,
+      "mde_log": 0.05
+    }
+  }
+}

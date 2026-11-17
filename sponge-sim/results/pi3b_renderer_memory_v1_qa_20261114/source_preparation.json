@@ -1,0 +1,38 @@
+{
+  "status": "ENGINEERING_SOURCE_FROZEN_BEFORE_SLEEP_ONLY_QA",
+  "qa_tag": "qa-pi3b-renderer-memory-v1-20261114",
+  "source_sha256": {
+    "analyze_memory.py": "59765ba9884e83862765322e041da9348680e781852ab3530c98bbf218931ed1",
+    "baseline_ops.py": "5bd6f0237b951fa170d299271164c0a388efd8a0bba18600d10235854e3225f3",
+    "build_engineering_lock.py": "ee5093542ee70312d8c06b80a49add0a47d1fb5622a76ffa15245f33753ad293",
+    "cache.py": "150b36b0fb58d10932fad8fbcfb914be9bd079535bd6aec7366fe5a95f04701f",
+    "cache_functional_audit.json": "6f6af19efa89fcaa7dd822f01f57a739a0faddc01e536db2799352dab1bb3867",
+    "cache_manifest.json": "61b5abaaf22ea985b98f582a34f52cc19c2272ac87f66782292d843b17bbe165",
+    "control.py": "4652c4684e2b930529e392f7b4b5f5984c9bbc56846795f0f2dee75d6b9ffa4b",
+    "engineering_lock.json": "d15da9346c0a3d21841c1c4ad6ce980a11c4e0b11bd8da27d7db2a373bc7c7cf",
+    "guard.py": "f669bc058b42869b7b2b40743c2cd2b6492d29ef3f86258d875ce68ca0cf3525",
+    "memory_campaign.py": "205e656469372f688088b0dc1d40b119fe6334b87304c284117a9bb6f859aa5e",
+    "memory_worker.py": "19599b0aee6e2bd3f40a75ff336d1680137f035399e8c32c49361f10f6c6d256",
+    "preallocate.py": "ef2cc77dddf4842f476a3d99f714fe56dfdc8d65adcdb857ac3239d01e1fbebf",
+    "provenance.json": "37311c41b0efb87d49896827dcc34c9d645000a158aab6894240672bb21bc5f7",
+    "stats_frozen.py": "748cc250a30806db715c02412915d357acaf289470b117bddeccf78eda20e8a6"
+  },
+  "test_sha256": {
+    "test_pi3b_renderer_memory_v1_contracts.py": "158755567f4efb610d0e347110bd6def7812b2ae60f875cb32ba0352806709bc",
+    "test_pi3b_renderer_memory_v1_supervisor.py": "2ae1725ffce307644cf729082ea69f2a61b7af9be68783e0234d23c983e9610c"
+  },
+  "logs": {
+    "pytest_01.log": {
+      "sha256": "95ea1add10c091260054ff616ab279f65ebbebff80e120cfc4a2e2fda3f48aaf",
+      "summary": "65 passed in 90.02s (0:01:30)"
+    },
+    "pytest_02.log": {
+      "sha256": "7d8387712f77647a93061cdc14b98dbdc3f5e3169b3928131236616c496ec48b",
+      "summary": "77 passed in 81.10s (0:01:21)"
+    }
+  },
+  "driver_sha256": "cf27a09df8c68d16786d901c0589cfe2c77a7e2ae6bbed218d3cac1e34b621d5",
+  "scientific_registration_exists": false,
+  "empirical_endpoint_recorded": false,
+  "archive_bytes_identical": true
+}

@@ -1,0 +1,281 @@
+{
+  "experiment": "PI3B-600MHZ-SWAPGUARD-V2",
+  "seed": 20261114,
+  "governor": "powersave",
+  "weights": "yolov8n-seg.pt",
+  "inputs": [
+    "000000000009_inputs.pt",
+    "000000000025_inputs.pt",
+    "000000000030_inputs.pt",
+    "000000000034_inputs.pt",
+    "000000000036_inputs.pt",
+    "000000000042_inputs.pt",
+    "000000000049_inputs.pt",
+    "000000000061_inputs.pt",
+    "000000000064_inputs.pt",
+    "000000000071_inputs.pt",
+    "000000000072_inputs.pt",
+    "000000000073_inputs.pt",
+    "000000000074_inputs.pt",
+    "000000000077_inputs.pt",
+    "000000000078_inputs.pt",
+    "000000000081_inputs.pt",
+    "000000000086_inputs.pt",
+    "000000000089_inputs.pt",
+    "000000000092_inputs.pt",
+    "000000000094_inputs.pt"
+  ],
+  "files": [
+    {
+      "name": "000000000009_inputs.pt",
+      "sha256": "0002529c6ee33e19c9a93fce355b8d5f09ac637bfcdae864dbef298272f64eb9",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000025_inputs.pt",
+      "sha256": "b8808fba4b3d871a4bfa1b296c63a95e6f7a87482ee2ad8109dc2898302663b0",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000030_inputs.pt",
+      "sha256": "998ed80df31a5d269abd8d2a2cb82fe9e6e95ed2d0275c45265d79b4b2faf0ff",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000034_inputs.pt",
+      "sha256": "b3af06da408a1ed32a2a5cb3abe4e14bc0b7b205b29e1269e1303356ce9e8582",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000036_inputs.pt",
+      "sha256": "54e8dc5af0e7573e70a91145a09d60d799aa6c67f5c33885ee06d9a360062802",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000042_inputs.pt",
+      "sha256": "148e2ab47cb35e30964d21001ceac27578e59233cde4307df10c0ee71527cefb",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000049_inputs.pt",
+      "sha256": "5e159ebf9b4ab5e8d40a3fce5c2e27a79633a0fb98582ea185c01964e0dccccc",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000061_inputs.pt",
+      "sha256": "609a3be054009761d2ef4b60d5b8253ce78013512ac3505d17f6f51c0ff1572c",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000064_inputs.pt",
+      "sha256": "4224d849f300bbb165da233de65c051f6a8f3095f49dbb600abf62fc5758d07e",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000071_inputs.pt",
+      "sha256": "cf44e973d48ba661534a362d31565805fae81b05e14a381b511e524d2b082a2c",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000072_inputs.pt",
+      "sha256": "cc0e4b5e36b4628230e4cf13a1fda42f38e9aabf55c429f1318156eb95b6fb5e",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000073_inputs.pt",
+      "sha256": "f0a618c3332af1d9344d88a4baa5927367dc244719c2c1e397c2c48f630925af",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000074_inputs.pt",
+      "sha256": "f93827b9d2e65ad480d4fe21e34598c92052747f2a56ee486778d9dca56c2ec4",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000077_inputs.pt",
+      "sha256": "f6079c18804f10fd900429ac07a1ab2014ceee5a44d54c0ac6aab15a10dab342",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000078_inputs.pt",
+      "sha256": "60e770c5dfea80c74b682e50304a13923f2b1ab7546b8b396ce60b6aa0ed330d",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000081_inputs.pt",
+      "sha256": "4dbda8d1e9505d722fe8795c5f49eca71f616ce9cef6f0da1d173cf159d4e188",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000086_inputs.pt",
+      "sha256": "ab1e19109de5db60d2438a291655dd493ab1f8cff465b1c6447b7ad51bff4a6a",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000089_inputs.pt",
+      "sha256": "0f81fc08b2e5f04c89e3c863cb4d0c794aa2d9032d2864f560f3c87992ab2457",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000092_inputs.pt",
+      "sha256": "0886feaee5e3b74cfab5a932f379823d1c2c0684c342ae106dc61829c50e67ed",
+      "bytes": 9832389
+    },
+    {
+      "name": "000000000094_inputs.pt",
+      "sha256": "fc19fb7bafd9b2719f2ce1be45a2807644784aadfa27519132c7cea70e2ec264",
+      "bytes": 9832389
+    },
+    {
+      "name": "yolov8n-seg.pt",
+      "sha256": "a7cd8f929e1903d78a12a48efecab430209f18dc46cb96c3599a5980c63c423c",
+      "bytes": 7071756
+    },
+    {
+      "name": "run.py",
+      "sha256": "028a11f97f726941950be4dc406c8138cd3695a42b246a526d5c7519127c611b",
+      "bytes": 19854
+    },
+    {
+      "name": "guard.py",
+      "sha256": "d803ff62aa7b1f8e6999aa3443f28f1936373b90d2bebf7eefa3c20988edc3ab",
+      "bytes": 4032
+    },
+    {
+      "name": "audit.py",
+      "sha256": "104b6f86ae11919591a09c8886120ea3de9a773accdb620858d6d6a0d3b4e4e7",
+      "bytes": 9381
+    },
+    {
+      "name": "analyze.py",
+      "sha256": "e3e891dae75bf50f7ca10f86c13241bdc65e593746e237c0caa0bd56877e815a",
+      "bytes": 14127
+    },
+    {
+      "name": "control.py",
+      "sha256": "3204b60139c4b044e185890285e658540e649dbb3bcce711ff2330a75b1ffd38",
+      "bytes": 16184
+    },
+    {
+      "name": "stats_frozen.py",
+      "sha256": "1b63222ac880a90f44098846bd949ce8e9b337a30080840fe31e472cf5cfdd4e",
+      "bytes": 4283
+    },
+    {
+      "name": "build_lock.py",
+      "sha256": "58cddc2682861109884a222534c123d9ce12e6144a1e5e80cf3832c86d589e2d",
+      "bytes": 2001
+    }
+  ],
+  "versions": {
+    "torch": "2.15.0+cpu",
+    "torchvision": "0.29.2+cpu",
+    "ultralytics": "8.4.90",
+    "numpy": "2.5.4",
+    "python": "3.13.5"
+  },
+  "nms_source_sha256": "3220699ae742312e3fc3816ea917ff17ffd17a96b57593c4c2caff3ff72cf4f7",
+  "ops_source_sha256": "828de5d265ab91a792acae836f9380d07abda2a15a501170fc9f49d7a448688d",
+  "laptop_versions": {
+    "torch": "2.13.0+cpu",
+    "torchvision": "0.28.0+cpu",
+    "ultralytics": "8.4.90"
+  },
+  "derived_from": {
+    "sponge-sim/studies/laptop_seg/run.py": "258e63c9f4ce376458d1a817811c277420865ea4d1b6bdd04e0409dea1797da4",
+    "sponge-sim/studies/laptop_seg/defense_replay.py": "7cce9ab4949897163738626b37ede0dad547f1a3249cc337fdcf855ab33bed0f",
+    "sponge-sim/studies/laptop_seg/output_lifetime.py": "661537e75392a8951429bf18f141f9832f36b22cba676fe67949d47be1393293",
+    "sponge-sim/studies/laptop_seg/lock_carryover_full.json": "e0481a56789d1b6d628e416a9fb02b0118e2faa1cfd7d83f40f32bdd4bd9c0a0"
+  },
+  "profiles": {
+    "PI4": {
+      "cpus": [
+        0,
+        1,
+        2,
+        3
+      ]
+    },
+    "PI1": {
+      "cpus": [
+        3
+      ]
+    }
+  },
+  "defense": {
+    "max_det": 300,
+    "max_nms": 300
+  },
+  "dose_levels": [
+    1,
+    10,
+    30,
+    100,
+    300
+  ],
+  "gates": {
+    "reference_drift": 0.03,
+    "max_reference_flags": 2,
+    "clock_hz": [
+      594000000,
+      606000000
+    ],
+    "abort_temp_c": 75.0,
+    "abort_mem_available_kb": 40000,
+    "aa_abs_log": 0.02,
+    "mde_log": 0.05
+  },
+  "full": {
+    "n_images": 20,
+    "repeats": {
+      "pipeline_PI4": 6,
+      "pipeline_PI1": 4,
+      "stages_PI4": 5
+    },
+    "dose_images": 5,
+    "global_warmup": 3,
+    "reference_warmup": 1,
+    "reference_samples": 3,
+    "warmup_per_image": 1,
+    "pin_seconds": 3
+  },
+  "smoke": {
+    "n_images": 2,
+    "repeats": {
+      "pipeline_PI4": 2,
+      "pipeline_PI1": 2,
+      "stages_PI4": 2
+    },
+    "dose_images": 1,
+    "global_warmup": 1,
+    "reference_warmup": 1,
+    "reference_samples": 3,
+    "warmup_per_image": 1,
+    "pin_seconds": 3
+  },
+  "registration_tag": "prereg-pi3b-swapguard-v2-20261114",
+  "qa_tag": "qa-pi3b-swapguard-v2c-20261114",
+  "mde_t_critical_sums": {
+    "2": 14.082586656645868,
+    "20": 2.9539746046772377
+  },
+  "reference_counts_sha256": "917cd654ddf7ed83235b63f3d21aa64c465ce5b4827b31f8025ca47a2d26d83b",
+  "previous_lock_sha256": "c645656a96a8faea160143159fcad7db253f93d6664c3c19baa78ed74e117099",
+  "guard_policy": "pre_post_every_clocked_call_v2",
+  "stage_aa": {
+    "arms": [
+      "nms_adv_B",
+      "mask_adv_B"
+    ],
+    "full_required": true,
+    "smoke_descriptive_only": true
+  },
+  "campaign": {
+    "settle_seconds": {
+      "smoke": 10,
+      "full": 60
+    },
+    "session_timeout_seconds": 14400,
+    "total_timeout_seconds": 21600
+  }
+}

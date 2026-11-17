@@ -1,0 +1,32 @@
+{
+  "status": "CLOSED_LIGHT_RESOURCE_API_PASS_INTEGRATION_NOT_QUALIFIED",
+  "tag": "qa-pi3b-nms-light-api-20261115",
+  "commit": "f7258a5e24a23fce475e4e058bb73e657436c334",
+  "source_config_exact_tag": true,
+  "original_files_verified": {
+    "qa_result_01.json": {
+      "sha256": "8ac3e25561ef2e5c23b89bf8d986cc930bfcaf8ddefdcb09ec0018c892175388",
+      "bytes": 2391
+    },
+    "qa_manifest.json": {
+      "sha256": "074d99eb4e37bd86ccda174a5b314064087418e0778d9e83f1352440c277a9f7",
+      "bytes": 578
+    }
+  },
+  "independent_audit_sha256": "9d8b5fd628367e7dd9320a84ef46873ce575baf598b762cad3f991752d2488f6",
+  "report_sha256": "277eadc8225dca2b5f0b61e717cabb36703781f2a7a8b3ac98283d1841cdcaa7",
+  "draft_method_sha256": "452adcec3d399642c6101eb1537046c90069e6aaf9751d5c1cba1a35908659ba",
+  "host_tests": 25,
+  "native_resource_samples": 2,
+  "native_real_wall_brackets": 0,
+  "overhead_measured": false,
+  "filesystem_absence_invariant_qualified": false,
+  "lazy_import_gap_recorded": true,
+  "future_runtime_dependency_setup_and_integration_qa_required": true,
+  "previous_pool_stage_originals_rehashed": 2,
+  "previous_usb_full_originals_rehashed": 1814,
+  "protected_bib_unchanged": true,
+  "no_new_nms_timing": true,
+  "no_qa02": true,
+  "ssh_kept_open": true
+}

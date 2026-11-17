@@ -1,0 +1,17 @@
+{
+  "status": "SSH_TIMEOUT_REVALIDATED_BEFORE_NATIVE_LOAD",
+  "source_tool_chunks": [
+    "e0be85",
+    "051da0"
+  ],
+  "remote_command": "printf connected",
+  "port": 22,
+  "host": "192.168.10.11",
+  "tailscale_backend": "NoState",
+  "tailscale_peer_count": 0,
+  "tailscale_health": "Tailscale is starting. Please wait.",
+  "native_cases": 0,
+  "device_qa_restarted": false,
+  "sshd_shutdown": false,
+  "record_type": "transcribed local tool evidence, not remote original"
+}

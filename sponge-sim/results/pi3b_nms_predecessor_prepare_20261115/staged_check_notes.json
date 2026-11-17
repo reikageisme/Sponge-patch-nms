@@ -1,0 +1,14 @@
+{
+  "status": "STAGED_SOURCE_DOC_CHECK_PASS_VERBATIM_FAILURE_LOG_EXCLUDED",
+  "initial_check_rejected_preserved_raw_trailing_spaces": true,
+  "excluded_raw_log": "sponge-sim/results/pi3b_nms_predecessor_prepare_20261115/host_core_01.log",
+  "excluded_log_lines": [
+    15,
+    35,
+    72
+  ],
+  "raw_sha256": "e776b135c1e97b1da04594eddb537d4eae218bc1bcc6f0538792dd3e0a1be29b",
+  "raw_log_not_modified": true,
+  "source_doc_check_returncode": 0,
+  "reason": "Original pytest traceback/Ultralytics stdout has trailing spaces; preserve exact bytes rather than formatting a retained failure log."
+}

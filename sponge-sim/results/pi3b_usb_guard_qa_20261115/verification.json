@@ -1,0 +1,9 @@
+{
+  "status": "PASS_USB_METADATA_API_ONLY",
+  "result_sha256": "47eef786fd4902f2b0661a00153bfaae6f09abe9a2a12966589c388e597423fa",
+  "remote_local_remote_sha_match": true,
+  "source_unchanged": true,
+  "configuration_unchanged": true,
+  "no_model_or_resource_endpoint": true,
+  "ssh_kept_open": true
+}

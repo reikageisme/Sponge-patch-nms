@@ -1,0 +1,19 @@
+{
+  "exit_code": 0,
+  "output": [
+    "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./battery.exit",
+    "99697461b34ed73f686cf281eb56e6502fafcb6ea0a0d891c8c9dbdce22fce96  ./battery.raw.json",
+    "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./battery.stderr",
+    "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./collector.stderr",
+    "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./collector.stdout",
+    "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./command.exit",
+    "6be2566f602688ba0cb8cdae4e1e9f1b5239e4a5cfbdb2d4d1c00ba20e72f3c8  ./command.txt",
+    "bb2f4f859eb52d6d3fd1cccc648f7d3a278fba7e6c6d3e25af59c242000edb18  ./completed.txt",
+    "dad8a61862fff19ef18c3530e73bbf5c647603a64d91ef1fafa1cee1f48b997a  ./environment.txt",
+    "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./packages.exit",
+    "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./packages.stderr",
+    "d82ff69e57fe039864413a9013e8e90893b7be8e72276bb4ac86ecbef12e67b2  ./packages.txt",
+    "f1d0edfe6b2e74be18e874c3513a9c5768d1f7d15388699402db603c5d940a82  ./query_finished_utc.txt",
+    "1461be3494e5c0e3300a246903ad420bb3aa2678113ed91f97d4eb682780b618  ./query_started_utc.txt"
+  ]
+}

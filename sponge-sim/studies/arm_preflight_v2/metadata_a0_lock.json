@@ -1,0 +1,20 @@
+{
+  "status": "READ_ONLY_A0_NOT_LOAD_AUTHORIZATION",
+  "host": "100.85.153.4",
+  "user": "u0_a445",
+  "port": 8022,
+  "host_key_alias": "[192.168.1.139]:8022",
+  "remote_source_rel": "studies/arm_metadata_a0_20261107_01",
+  "remote_result_rel": "results/phone_a36/metadata_a0_20261107_01",
+  "python": "/root/sponge-sim/venv/bin/python",
+  "sysfs": "raw_only_explicit_A0",
+  "torch_import": false,
+  "load": false,
+  "user_state": "SSH via Tailscale authorized and sshd enabled; idle/charging/mobile-off NOT asserted",
+  "source_sha256": {
+    "sponge-sim/studies/arm_preflight_v2/checks.py": "a25d28b632a73a54076bbec31cf12e1f4da0e1a89964cdaf10443d4a99629c0f",
+    "sponge-sim/studies/arm_preflight_v2/linux_observe.py": "8e8101d2713efc40a62e4282f43b1b1f6c18cd3830e88e4a7f325d30bb64eb8a",
+    "sponge-sim/studies/arm_preflight_v2/metadata_only.py": "3b4ded62d465eee2d05fefbb5922198d1a6af0d9a4fea805117be087bc7e31b2",
+    "sponge-sim/prereg/PREREG_ARM_METADATA_A0_20261107.md": "27650b6d7e464ad8df266165009348189ad7ad4cf4019b672414aec1dc14e139"
+  }
+}

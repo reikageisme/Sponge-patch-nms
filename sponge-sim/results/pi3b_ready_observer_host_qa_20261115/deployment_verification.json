@@ -1,0 +1,10 @@
+{
+  "status": "EXACT_READY_OBSERVER_SIDECAR_DEPLOYED",
+  "qualification_commit": "7c6b8a8a783c51a701c565015e95837c2288626a",
+  "payload_commit": "925c544f618491e5b21a3621d77804a10686d111",
+  "probe_sha256": "ad9196e38a2d8336262397b36e05b376e10f75397057e1c284c4abce7e598bde",
+  "result": {
+    "probe_sha256": "ad9196e38a2d8336262397b36e05b376e10f75397057e1c284c4abce7e598bde",
+    "model_run": false
+  }
+}

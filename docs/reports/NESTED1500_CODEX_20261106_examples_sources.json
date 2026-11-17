@@ -1,0 +1,133 @@
+{
+  "selection": "audit IDs in cohort order at positions0,21,42,63; zero start; no outcome screening",
+  "cases": [
+    {
+      "image": "000000008844.jpg",
+      "task": "v8",
+      "seed": 0,
+      "native_k": 1,
+      "record_path": "stage1000/v8/seed0/batch0008_attempt01",
+      "input_sha256": "3ad8a838a564491c969d9cf5b8060f01ee7a0df3ee8d14101f6e766ff0ec4c62"
+    },
+    {
+      "image": "000000008844.jpg",
+      "task": "v11",
+      "seed": 0,
+      "native_k": 2,
+      "record_path": "stage1000/v11/seed0/batch0008_attempt01",
+      "input_sha256": "c93d2ce238aaf9a1975a2488103842f602c716198f573fbdfec52222fcfb5a37"
+    },
+    {
+      "image": "000000008844.jpg",
+      "task": "y26_many",
+      "seed": 0,
+      "native_k": 300,
+      "record_path": "stage1000/y26_many/seed0/batch0008_attempt01",
+      "input_sha256": "36e03482bcc4e49d8caf993e2802847979af560363900694d16b56f77bc18a29"
+    },
+    {
+      "image": "000000008844.jpg",
+      "task": "y26_native",
+      "seed": 0,
+      "native_k": 269,
+      "record_path": "stage1000/y26_native/seed0/batch0008_attempt01",
+      "input_sha256": "aeab2a0f5e260e4634fdcb9c359ff2775be3ecc1409fec841e39e1a3197f3356"
+    },
+    {
+      "image": "000000062353.jpg",
+      "task": "v8",
+      "seed": 0,
+      "native_k": 5,
+      "record_path": "stage1000/v8/seed0/batch0556_attempt01",
+      "input_sha256": "4c28c659a58b791c6f27490cf79b29dbbb3e30b7c2d2ba383cad54be9b321c33"
+    },
+    {
+      "image": "000000062353.jpg",
+      "task": "v11",
+      "seed": 0,
+      "native_k": 4,
+      "record_path": "stage1000/v11/seed0/batch0556_attempt01",
+      "input_sha256": "702a0c07ad085cfe37bec24a54b5d31aa93b0f16ff3059e7bc2f297fc57d45df"
+    },
+    {
+      "image": "000000062353.jpg",
+      "task": "y26_many",
+      "seed": 0,
+      "native_k": 272,
+      "record_path": "stage1000/y26_many/seed0/batch0556_attempt01",
+      "input_sha256": "8834f5a3030e5a5dfab7b580a0360668d31fd81db8132fdec0a7ee628c60d49a"
+    },
+    {
+      "image": "000000062353.jpg",
+      "task": "y26_native",
+      "seed": 0,
+      "native_k": 186,
+      "record_path": "stage1000/y26_native/seed0/batch0556_attempt01",
+      "input_sha256": "051c3355547f569f8e76dff80d373ea4b098a2a925f34af4aacbc47ed439aec2"
+    },
+    {
+      "image": "000000033707.jpg",
+      "task": "v8",
+      "seed": 0,
+      "native_k": 3,
+      "record_path": "stage1500/v8/seed0/batch0032_attempt01",
+      "input_sha256": "491a3a2cd25f82ef7d7639ebc2b52a47a331de3b390ba4871657f4de82979ad1"
+    },
+    {
+      "image": "000000033707.jpg",
+      "task": "v11",
+      "seed": 0,
+      "native_k": 2,
+      "record_path": "stage1500/v11/seed0/batch0032_attempt01",
+      "input_sha256": "8ceeea80fe73f0ec1c1f78e1b431a53975c64f69548e7137944f16ebc2e273fa"
+    },
+    {
+      "image": "000000033707.jpg",
+      "task": "y26_many",
+      "seed": 0,
+      "native_k": 278,
+      "record_path": "stage1500/y26_many/seed0/batch0032_attempt01",
+      "input_sha256": "548a5a577006387ff2b058035432aafaed43637b69b37bb0306281536e971087"
+    },
+    {
+      "image": "000000033707.jpg",
+      "task": "y26_native",
+      "seed": 0,
+      "native_k": 204,
+      "record_path": "stage1500/y26_native/seed0/batch0032_attempt01",
+      "input_sha256": "ef86e6e5e53275c9d5da48e6e25acfa74445d8c8e87a798bfa5c9f477f5fa3ed"
+    },
+    {
+      "image": "000000568147.jpg",
+      "task": "v8",
+      "seed": 0,
+      "native_k": 5,
+      "record_path": "stage1500/v8/seed0/batch0488_attempt01",
+      "input_sha256": "2d814005b2f6560d1577d21d1a0ae3e6cb84de65ce5d2df56ecca22032fad03a"
+    },
+    {
+      "image": "000000568147.jpg",
+      "task": "v11",
+      "seed": 0,
+      "native_k": 6,
+      "record_path": "stage1500/v11/seed0/batch0488_attempt01",
+      "input_sha256": "7329466ab32ed9a6e483e5f28d2cb277b8f3916232dc1ae5fdce9c4bd62388fd"
+    },
+    {
+      "image": "000000568147.jpg",
+      "task": "y26_many",
+      "seed": 0,
+      "native_k": 220,
+      "record_path": "stage1500/y26_many/seed0/batch0488_attempt01",
+      "input_sha256": "59b8491ce1a3eb0603788f88e0f9a22c2e233b0ea527c431f4933a2bd7975f7b"
+    },
+    {
+      "image": "000000568147.jpg",
+      "task": "y26_native",
+      "seed": 0,
+      "native_k": 230,
+      "record_path": "stage1500/y26_native/seed0/batch0488_attempt01",
+      "input_sha256": "d25a532434932850644ef271cb4eee5776f3567e01fffe1c1cd3235d168363a5"
+    }
+  ]
+}

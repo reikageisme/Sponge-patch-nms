@@ -1,0 +1,61 @@
+{
+  "sponge-sim/studies/pi3b_nms_predecessor_20261115/schedule.py": {
+    "sha256": "acfe063a7f0f9bc8dbdaa650a2629003d09e0ee91c3f89a381640a4205245d25",
+    "selected_functions": [
+      {
+        "name": "schedule",
+        "start_line": 13,
+        "end_line": 27
+      }
+    ],
+    "relationship": "same schedule/pure validator AST, or explicit formula/chunk-enumeration adaptation; original immutable"
+  },
+  "sponge-sim/studies/pi3b_nms_predecessor_20261115/bracket.py": {
+    "sha256": "157a353fdd33f6725db73f7dc6b6c597d03ae9ef339b5744782686de368c704f",
+    "selected_functions": [
+      {
+        "name": "nonnegative_integer",
+        "start_line": 43,
+        "end_line": 45
+      },
+      {
+        "name": "validate",
+        "start_line": 48,
+        "end_line": 55
+      },
+      {
+        "name": "increments",
+        "start_line": 72,
+        "end_line": 81
+      }
+    ],
+    "relationship": "same schedule/pure validator AST, or explicit formula/chunk-enumeration adaptation; original immutable"
+  },
+  "sponge-sim/studies/pi3b_full20_20261114/stats_frozen.py": {
+    "sha256": "57545941474dc39845cad309718d0c220fc26189e5ca296592d77638bd22195d",
+    "selected_functions": [
+      {
+        "name": "bootstrap_ci",
+        "start_line": 23,
+        "end_line": 29
+      },
+      {
+        "name": "mde_paired",
+        "start_line": 102,
+        "end_line": 106
+      }
+    ],
+    "relationship": "same schedule/pure validator AST, or explicit formula/chunk-enumeration adaptation; original immutable"
+  },
+  "sponge-sim/results/pi3b_renderer_memory_usb_20261115/audit_full_raw.py": {
+    "sha256": "3630ce0cc7341d11640772359b9793e3bb0f6c152d5fb5096fa614984c303675",
+    "selected_functions": [
+      {
+        "name": "stats",
+        "start_line": 37,
+        "end_line": 50
+      }
+    ],
+    "relationship": "same schedule/pure validator AST, or explicit formula/chunk-enumeration adaptation; original immutable"
+  }
+}

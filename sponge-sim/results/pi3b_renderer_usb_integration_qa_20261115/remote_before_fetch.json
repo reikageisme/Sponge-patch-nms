@@ -1,0 +1,244 @@
+{
+  "command": "from pathlib import Path\nimport sys,json,subprocess,hashlib\nb=Path('/home/tanh/sponge-sim/pi3b_renderer_memory_usb_20261115');sys.path.insert(0,str(b));import control\nx=subprocess.run(['systemctl','show','sponge-pi3b-swapguard-v2.service','-p','ActiveState','-p','MainPID'],capture_output=True,text=True,timeout=10)\nservice=dict(line.split('=',1) for line in x.stdout.splitlines())\nassert service==dict(ActiveState='inactive',MainPID='0'),service\nlock=control.locked_materials(b);snapshot=control.System().snapshot();control.validate_snapshot(snapshot)\nassert not any(control.System().current()['masks'].values())\nworkers=[]\nknown={str(b/n) for n in ('control.py','memory_campaign.py','memory_worker.py')}\nfor p in Path('/proc').iterdir():\n if p.name.isdigit():\n  try:\n   argv=[v.decode(errors='replace') for v in (p/'cmdline').read_bytes().split(b'\\0') if v]\n   if any(v in known for v in argv):workers.append(dict(pid=int(p.name),argv=argv))\n  except OSError:pass\nassert not workers\nsha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()\nfiles={p.relative_to(b).as_posix():dict(sha256=sha(p),bytes=p.stat().st_size) for p in sorted((b/'runs').rglob('*')) if p.is_file()}\nassert not (b/'memory_registration.json').exists()\nassert 'torch' not in sys.modules and 'scipy' not in sys.modules\nprint(json.dumps(dict(service=service,snapshot=snapshot,workers=workers,files=files,\n source_sha256={p.name:sha(p) for p in b.iterdir() if p.is_file()},scientific_registration_exists=False,torch_imported=False,scipy_imported=False)))\n",
+  "result": {
+    "service": {
+      "MainPID": "0",
+      "ActiveState": "inactive"
+    },
+    "snapshot": {
+      "governor": "ondemand",
+      "units": {
+        "dev-zram0.swap": {
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "FragmentPath": "/run/systemd/generator/dev-zram0.swap"
+        },
+        "rpi-zram-writeback.service": {
+          "LoadState": "loaded",
+          "ActiveState": "inactive",
+          "FragmentPath": "/usr/lib/systemd/system/rpi-zram-writeback.service"
+        },
+        "rpi-zram-writeback.timer": {
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "FragmentPath": "/run/systemd/generator/rpi-zram-writeback.timer"
+        }
+      },
+      "setup": {
+        "Result": "success",
+        "ActiveState": "active"
+      },
+      "swaps": [
+        {
+          "name": "/dev/zram0",
+          "kind": "partition",
+          "size_kb": 926716,
+          "used_kb": 0,
+          "priority": 100
+        }
+      ],
+      "mem_available_kb": 764800
+    },
+    "workers": [],
+    "files": {
+      "runs/qa_childkill_01/activation_probe.json": {
+        "sha256": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+        "bytes": 117
+      },
+      "runs/qa_childkill_01/lease_events.jsonl": {
+        "sha256": "93d18e7e65ac4c8326f2d0a10a7b5b5b57d7628619d589766a3a6ba730082163",
+        "bytes": 750
+      },
+      "runs/qa_childkill_01/lease_state.json": {
+        "sha256": "7ac78ea9e5a4e980b30c5692501efde3161d90f47ab5cbc289a53fcf4e9a5adc",
+        "bytes": 1022
+      },
+      "runs/qa_childkill_01/qa_fault_intent.json": {
+        "sha256": "a2cb77c6530855eccd500f4cf731c802ff46e36cdeebd95427ef300e843b61f7",
+        "bytes": 356
+      },
+      "runs/qa_childkill_01/qa_fault_sent.json": {
+        "sha256": "31c1a2df9f296157addc957f1930d4d4b903d46dea0cbfaaac9d44a4fce54d54",
+        "bytes": 18
+      },
+      "runs/qa_childkill_01/qa_ready.json": {
+        "sha256": "b8a61428f2da219dd7409d6e4befa6590245a4b56d9f6fdd999cf81a074a423c",
+        "bytes": 181
+      },
+      "runs/qa_childkill_01/registration.json": {
+        "sha256": "616adbb83f3561cfb29e60ace1000ccd9ed74d62b591d20b42d511ed6704d42a",
+        "bytes": 208
+      },
+      "runs/qa_childkill_01/restore.json": {
+        "sha256": "f0502e1837d94f90da105f60a0795d1be09365bdd59c4f964cca493e0236356b",
+        "bytes": 76
+      },
+      "runs/qa_childkill_01/supervisor.log": {
+        "sha256": "6a6e6e79fbe4668883adf66db68c23e5f5015652b5a59268655954b5afdd8928",
+        "bytes": 783
+      },
+      "runs/qa_childkill_01/usb_preflight.json": {
+        "sha256": "1da57226b93f727853fb45e8a35058e6cf08127f1a527251aa9f8180436b869f",
+        "bytes": 5164
+      },
+      "runs/qa_disconnect_01/activation_probe.json": {
+        "sha256": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+        "bytes": 117
+      },
+      "runs/qa_disconnect_01/lease_events.jsonl": {
+        "sha256": "aa385ee4e6394e0dbe39fb491efe170d86585321b4dcbda6de96ab03ac6c73a4",
+        "bytes": 754
+      },
+      "runs/qa_disconnect_01/lease_state.json": {
+        "sha256": "f34af1041b9cc805256a5cd77f1fc7d12bd537cc2b05d5e91181233b99c3ffb3",
+        "bytes": 1022
+      },
+      "runs/qa_disconnect_01/qa_ready.json": {
+        "sha256": "a3b13e98bcf7cc72a1fb5b25b5d25461732688d15853249124e1cbf2de387a7c",
+        "bytes": 181
+      },
+      "runs/qa_disconnect_01/registration.json": {
+        "sha256": "616adbb83f3561cfb29e60ace1000ccd9ed74d62b591d20b42d511ed6704d42a",
+        "bytes": 208
+      },
+      "runs/qa_disconnect_01/restore.json": {
+        "sha256": "7228a6680266eba057d46790aad2eab16dfb524c757999c53ca322ed0de6aa65",
+        "bytes": 75
+      },
+      "runs/qa_disconnect_01/supervisor.log": {
+        "sha256": "f5622eb7f8f1144125076edb8d7071613943351c47d56b0594014381924f6abf",
+        "bytes": 68
+      },
+      "runs/qa_disconnect_01/usb_preflight.json": {
+        "sha256": "1da57226b93f727853fb45e8a35058e6cf08127f1a527251aa9f8180436b869f",
+        "bytes": 5164
+      },
+      "runs/qa_mainkill_01/activation_probe.json": {
+        "sha256": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+        "bytes": 117
+      },
+      "runs/qa_mainkill_01/lease_events.jsonl": {
+        "sha256": "da6bcd844263bb3df5a9bf8b5392b6c04f00c2c0ca09de520772f18b2409c0b5",
+        "bytes": 753
+      },
+      "runs/qa_mainkill_01/lease_state.json": {
+        "sha256": "fa6efddbbd6ea5f8551461ce74a349e7d0f8740fb83aecfa08b5de01c9edcbc6",
+        "bytes": 1022
+      },
+      "runs/qa_mainkill_01/qa_fault_intent.json": {
+        "sha256": "4f84bf48d369066f8916e4206c21ec4a6a371ed0098324c4e2d21602813f1fb3",
+        "bytes": 355
+      },
+      "runs/qa_mainkill_01/qa_fault_sent.json": {
+        "sha256": "31c1a2df9f296157addc957f1930d4d4b903d46dea0cbfaaac9d44a4fce54d54",
+        "bytes": 18
+      },
+      "runs/qa_mainkill_01/qa_ready.json": {
+        "sha256": "e87fa66f6e22bea6c4d16adc1a5dad0b45f7fbfefcfadfd4c53e1ef46f9e7dcc",
+        "bytes": 181
+      },
+      "runs/qa_mainkill_01/registration.json": {
+        "sha256": "616adbb83f3561cfb29e60ace1000ccd9ed74d62b591d20b42d511ed6704d42a",
+        "bytes": 208
+      },
+      "runs/qa_mainkill_01/restore.json": {
+        "sha256": "dd8f501f37d28a9d5d789a0b6ee87d84ecd5d957ea9885313d6e0c3978981d33",
+        "bytes": 75
+      },
+      "runs/qa_mainkill_01/supervisor.log": {
+        "sha256": "6940f663d57cda50b4bc4dbb225a720134455e1db322605653bf9afaaf3c5b7e",
+        "bytes": 68
+      },
+      "runs/qa_mainkill_01/usb_preflight.json": {
+        "sha256": "1da57226b93f727853fb45e8a35058e6cf08127f1a527251aa9f8180436b869f",
+        "bytes": 5164
+      },
+      "runs/qa_normal_01/activation_probe.json": {
+        "sha256": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+        "bytes": 117
+      },
+      "runs/qa_normal_01/lease_events.jsonl": {
+        "sha256": "a2f5b455713a12bfd35034e608722d9294ec291ea129535736a75f696576a6eb",
+        "bytes": 758
+      },
+      "runs/qa_normal_01/lease_state.json": {
+        "sha256": "cada77d22148fbfefad04736540d6370810561f83c4154d4d1c75cbc003ddcd0",
+        "bytes": 1022
+      },
+      "runs/qa_normal_01/qa_ready.json": {
+        "sha256": "454692bf4578fb5e2a6f21c97dbad219a78447ceb644c98f0b31d0f31aca1bcf",
+        "bytes": 181
+      },
+      "runs/qa_normal_01/registration.json": {
+        "sha256": "616adbb83f3561cfb29e60ace1000ccd9ed74d62b591d20b42d511ed6704d42a",
+        "bytes": 208
+      },
+      "runs/qa_normal_01/restore.json": {
+        "sha256": "fee7dcab3c4da754eb04162d9fa3e67bd62fdb3378fac83bcff5c5a362aed26d",
+        "bytes": 75
+      },
+      "runs/qa_normal_01/supervisor.log": {
+        "sha256": "eaf99ab650c0854b893d2bb271e890be1044381be8418c1d570ee019f173d7f4",
+        "bytes": 68
+      },
+      "runs/qa_normal_01/usb_preflight.json": {
+        "sha256": "1da57226b93f727853fb45e8a35058e6cf08127f1a527251aa9f8180436b869f",
+        "bytes": 5164
+      },
+      "runs/qa_timeout_01/activation_probe.json": {
+        "sha256": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+        "bytes": 117
+      },
+      "runs/qa_timeout_01/lease_events.jsonl": {
+        "sha256": "0ba161b87e34948b42ce03eb635e5cf502609cc22a69650f35e4d99ef70c66e1",
+        "bytes": 757
+      },
+      "runs/qa_timeout_01/lease_state.json": {
+        "sha256": "b2ea203473f623b1a6fac2c5e9879b079277104721809d1bbe46d68fe33fda86",
+        "bytes": 1022
+      },
+      "runs/qa_timeout_01/qa_ready.json": {
+        "sha256": "d6ae9d72de4387639153f795806a12042aadc42aa6ec051e332950d6d6540525",
+        "bytes": 181
+      },
+      "runs/qa_timeout_01/registration.json": {
+        "sha256": "616adbb83f3561cfb29e60ace1000ccd9ed74d62b591d20b42d511ed6704d42a",
+        "bytes": 208
+      },
+      "runs/qa_timeout_01/restore.json": {
+        "sha256": "b388cb0eb207852a1dcadc7147a891ceb80e70a79ddb9d1ed7635fea69815f20",
+        "bytes": 76
+      },
+      "runs/qa_timeout_01/supervisor.log": {
+        "sha256": "ea02e81fcf211d0aa1b512979fb8fa6d8f786944ae515da0d58e11e95aa231e4",
+        "bytes": 69
+      },
+      "runs/qa_timeout_01/usb_preflight.json": {
+        "sha256": "1da57226b93f727853fb45e8a35058e6cf08127f1a527251aa9f8180436b869f",
+        "bytes": 5164
+      }
+    },
+    "source_sha256": {
+      "analyze_memory.py": "287d013b11f2ba0486e78e88c35e334c7804bf6c500f9054933519a0f699df25",
+      "usb_guard.py": "9a1c2ef0124e5a54ac1d5e0e252c759636443a3d4ea7f7d50edd1b5aff821cd4",
+      "provenance.json": "303c22b5970531e6d58c914fd02f21bfc2c20beda2e064ec0dbd136f35f13d28",
+      "cache.py": "896c4b34b2091e944eae49a8e5745ad532b4c0e311791337c45f660935037a9f",
+      "memory_campaign.py": "3db9cb35fcda2a7b1660a81fc4b454da2db47875f26abae7896aced83dc2c461",
+      "engineering_lock.json": "b3149bfecee590cd5f3e6f8a44dc0e84d13883adcb5b663d238a1f0de207291e",
+      "cache_functional_audit.json": "6f6af19efa89fcaa7dd822f01f57a739a0faddc01e536db2799352dab1bb3867",
+      "baseline_ops.py": "a4a2273ceb0adc963344a7ab23707015e5c042caea231acbbfec0164480177ca",
+      "stats_frozen.py": "dd4770ba9ec5385e7266676242bf62e794fb5212c22c770f0cff780e3551333e",
+      "cache_manifest.json": "61b5abaaf22ea985b98f582a34f52cc19c2272ac87f66782292d843b17bbe165",
+      "usb_contract.json": "8303b42f23f235d7545d03e6827d898fecef89862fd43ec66c12cbbf8ca879c0",
+      "preallocate.py": "da833bcd1352c5d81c9e667df64043c751d0c6166109edcd1ede727d5bebb154",
+      "build_engineering_lock.py": "36f85d866f5ad92000f3b109af09093f21fd724309636c4cde573d7552567aeb",
+      "control.py": "a52289f20dc41a2c4a118aca2a486a8c217863a95bc1180e0b3b89b8d38df359",
+      "memory_worker.py": "51d65dfd10f7a3854192206da0b240eb55912d70aa36628ef4b90f3c20d6dcda",
+      "qa_metadata_01.json": "47eef786fd4902f2b0661a00153bfaae6f09abe9a2a12966589c388e597423fa",
+      "guard.py": "9b38481bc70e563732be47bc7cc0eef646d32fd19739918313eadce3cd4f7ebe"
+    },
+    "scientific_registration_exists": false,
+    "torch_imported": false,
+    "scipy_imported": false
+  }
+}

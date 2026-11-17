@@ -1,0 +1,26 @@
+{
+  "returncode": 0,
+  "stdout": "",
+  "stderr": "",
+  "tag": "qa-pi3b-renderer-memory-20261114",
+  "commit": "3409c07d7e5c912dba02bc238106637de54bd6bf",
+  "files": {
+    "analyze_memory.py": "7665e7dabc79f685c6370f647576ccb48c33d04b0f8affaafdb07ac1cc45bb64",
+    "baseline_ops.py": "526e2cc5686c4719df2c219401382a9ebb4296d8d020a1ae44609a3fb86e78f5",
+    "build_cache.py": "fd6bb449fc6c14215fac98c7893d4d33c3f510557c7e475308e7db94c5b5d5c6",
+    "build_engineering_lock.py": "bc7c7ea374819bc411967caad879d6ae2f08ac93329b9eea97b3d1aa3312416f",
+    "cache.py": "bc6046542946f2d238300c4680da64124ce00b11b5e27f201a84b01240b400a8",
+    "control.py": "7c0c197ad8689d98c5f4845a4d15fb57bc81d5722a28c100723a263576d15a92",
+    "engineering_lock.json": "da9818d91f923eb4e3c856b6b7f66940b3ab089ea483c06bc2b0a450ea4c2cd2",
+    "full20_lock.json": "1cd1789d4f30c0a6b708fad907729999f6e6e53d4ba373ce487bc8037d10be0e",
+    "full20_summary.json": "34166aa9972cd0ffac8af3524a15565eb2ea94235c3f640de9312603e6799ca3",
+    "guard.py": "ee9add3a7ca142a6ab38c32d5c9f94183a066a284bc4467a89d3b3bf5a98bebd",
+    "memory_campaign.py": "919e518e62eb234efac35316d6b2e1cffc077cf77dcaae3f16f342cc6d85cc66",
+    "memory_worker.py": "8e0a047a67a1f498ea1257b53e5049add177d3fe738e7d2d352a68c8d5704b5e",
+    "preallocate.py": "795aa41ec26b0429f27c0ebb27ca444aa56134324eedf9477af7fa5ffbd6d83c",
+    "provenance.json": "7c9741640ab9e6725fe5b0d4323b3f23b5b2f90548dc6e00797ce86386fd538c",
+    "static_memory.json": "d38f8994d4fd66a0add13cd6ac5610d0e160e37452788dbcfc969eecae96f600",
+    "static_memory.py": "3563e018b83c7ae38bc0dc14c552d466165167d80541def3cf7e7c604c51d388",
+    "stats_frozen.py": "206d4c0583089ab6f60a6342e2a1d555508587a54d899de4549f72625a511a10"
+  }
+}

@@ -1,0 +1,18 @@
+{
+  "status": "PARSED_SAVED_PAYLOAD_ONLY_NOT_LIVE_READING",
+  "payload": {
+    "raw_sha256": "99697461b34ed73f686cf281eb56e6502fafcb6ea0a0d891c8c9dbdce22fce96",
+    "battery_c": 35.7,
+    "battery_pct": 24,
+    "status": "DISCHARGING",
+    "plugged": "UNPLUGGED",
+    "health": "GOOD"
+  },
+  "charging": false,
+  "source_sha256": "1297e549d2b1c5b81e28a05465979d91b4b494bb4b941df44da54190c7545116",
+  "Celsius_implementation_binding_verified": false,
+  "monotonic_timestamps_created": false,
+  "thermal_registry_present": false,
+  "phone_profile_qualified": false,
+  "load_permitted": false
+}

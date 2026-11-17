@@ -1,0 +1,14 @@
+{
+  "status": "PARTIAL_BINDING_REVIEW_NOT_LOAD_AUTHORIZATION",
+  "source_raw_sha256": "2778ddc2d66e70f17b7150df302c918d7c03ab401975c15f0b33650507ddbad0",
+  "candidate_cpu_id": 0,
+  "cpu_selection_rule": "Lowest inherited readable ID; no performance/core-type claim",
+  "torch_dist_version": "2.15.0",
+  "expected_torch_runtime_version": null,
+  "torch_init_sha256": "7ed81103f3d256de131b886e67be458b3205784e3b4af9c495041282391e19db",
+  "formal_sensor_registry": null,
+  "soc_verified": false,
+  "charging_verified": false,
+  "load_gate_passed": false,
+  "note": "Do not equate DIST metadata with torch.__version__ or fill a load-ready config from this review; thermal scale/sentinels unresolved and battery live inputs unavailable."
+}

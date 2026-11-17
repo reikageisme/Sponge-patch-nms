@@ -1,0 +1,20 @@
+{
+  "status": "CLOSED_NEGATIVE_SMOKE_ALL_ORIGINAL_SHAS_AND_RESTORE_VERIFIED",
+  "original_files_verified": 10,
+  "raw_rows": 0,
+  "rss_endpoint_observations": 0,
+  "full_started": false,
+  "retry_performed": false,
+  "prior_original_counts_unchanged": {
+    "pi3b_full20_20261114": 21,
+    "pi3b_renderer_functional_cache_20261114": 90
+  },
+  "report_sha256": "b4a3535ca27887db3c44e00e103a2ec4b3e9699f7fd322fb2584b3ad5f814fef",
+  "protocol_status_sha256": "2d323b422cb3af0dc5a1280cc082e48629d98540c881882d8bd65b1d39834b41",
+  "summary_sha256": "4a5553ceb35b271c3b5afa05b5147c8619d69b6092196c082b3d14edc759f6d7",
+  "transfer_verification_sha256": "6a43ac5031802c9223f07918caef896b8fb27e03f7707ce8de63803b328bb1ee",
+  "source_unchanged": true,
+  "independent_restore_readback": true,
+  "ssh_kept_open": true,
+  "guard_condition_failure_not_algorithm_effect": true
+}

@@ -1,0 +1,19 @@
+{
+  "status": "BEFORE_NATIVE_ENGINEERING_ONLY_NO_LOAD",
+  "commit": "a93902882df3d80abdbb14246f17158ad467999f",
+  "source_sha256": {
+    "checks.py": "a25d28b632a73a54076bbec31cf12e1f4da0e1a89964cdaf10443d4a99629c0f",
+    "linux_observe.py": "8e8101d2713efc40a62e4282f43b1b1f6c18cd3830e88e4a7f325d30bb64eb8a",
+    "posix_runtime.py": "44b9ae76170db33fb28db6ace45e8d4d28ef1325263cb77537053e2711d73142",
+    "session.py": "56cf946253731b28cfa2e0298e77d0268698c2eda914b7d754df0e12e047930e",
+    "pin_analysis.py": "7da2925df9f1b20c8e9e8c4c7e85427acac413d5951cb75e316d8822e3ba4213",
+    "pin_worker.py": "05e097aca0f31cc2a4712f096091157ea845d5b8688a2f2c8a1f0552b518a590",
+    "qa_session.py": "2d6e74bb0d77219634b361595478f5c5f1723a44ad52420124688eeae43bf861",
+    "qa_local_check.py": "5998a2f4afb4bae285fa2d2e33bd4a979e760ca77542b5807532120690ead159",
+    "parent_death_local_check.py": "ee400c071bfcbf9fb79b97bbd32be4d356d33ca630e9d30efa3868e37a0a326e"
+  },
+  "planned_new_outputs": [
+    "sponge-sim/results/arm_parent_death_local_20261107/native_01",
+    "sponge-sim/results/arm_qa_session_local_20261107/native_02"
+  ]
+}

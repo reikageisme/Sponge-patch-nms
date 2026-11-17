@@ -1,0 +1,254 @@
+[
+  {
+    "index": 0,
+    "image": "000000000009",
+    "condition": "adv",
+    "arm": "baseline_B",
+    "rep": 0
+  },
+  {
+    "index": 1,
+    "image": "000000000009",
+    "condition": "adv",
+    "arm": "candidate16M",
+    "rep": 0
+  },
+  {
+    "index": 2,
+    "image": "000000000009",
+    "condition": "clean",
+    "arm": "candidate16M",
+    "rep": 0
+  },
+  {
+    "index": 3,
+    "image": "000000000009",
+    "condition": "adv",
+    "arm": "baseline_A",
+    "rep": 0
+  },
+  {
+    "index": 4,
+    "image": "000000000009",
+    "condition": "clean",
+    "arm": "baseline_B",
+    "rep": 0
+  },
+  {
+    "index": 5,
+    "image": "000000000009",
+    "condition": "clean",
+    "arm": "baseline_A",
+    "rep": 0
+  },
+  {
+    "index": 6,
+    "image": "000000000009",
+    "condition": "clean",
+    "arm": "baseline_B",
+    "rep": 1
+  },
+  {
+    "index": 7,
+    "image": "000000000009",
+    "condition": "adv",
+    "arm": "baseline_B",
+    "rep": 1
+  },
+  {
+    "index": 8,
+    "image": "000000000009",
+    "condition": "adv",
+    "arm": "candidate16M",
+    "rep": 1
+  },
+  {
+    "index": 9,
+    "image": "000000000009",
+    "condition": "adv",
+    "arm": "baseline_A",
+    "rep": 1
+  },
+  {
+    "index": 10,
+    "image": "000000000009",
+    "condition": "clean",
+    "arm": "baseline_A",
+    "rep": 1
+  },
+  {
+    "index": 11,
+    "image": "000000000009",
+    "condition": "clean",
+    "arm": "candidate16M",
+    "rep": 1
+  },
+  {
+    "index": 12,
+    "image": "000000000009",
+    "condition": "clean",
+    "arm": "baseline_A",
+    "rep": 2
+  },
+  {
+    "index": 13,
+    "image": "000000000009",
+    "condition": "clean",
+    "arm": "candidate16M",
+    "rep": 2
+  },
+  {
+    "index": 14,
+    "image": "000000000009",
+    "condition": "adv",
+    "arm": "baseline_B",
+    "rep": 2
+  },
+  {
+    "index": 15,
+    "image": "000000000009",
+    "condition": "adv",
+    "arm": "baseline_A",
+    "rep": 2
+  },
+  {
+    "index": 16,
+    "image": "000000000009",
+    "condition": "adv",
+    "arm": "candidate16M",
+    "rep": 2
+  },
+  {
+    "index": 17,
+    "image": "000000000009",
+    "condition": "clean",
+    "arm": "baseline_B",
+    "rep": 2
+  },
+  {
+    "index": 18,
+    "image": "000000000030",
+    "condition": "adv",
+    "arm": "candidate16M",
+    "rep": 0
+  },
+  {
+    "index": 19,
+    "image": "000000000030",
+    "condition": "clean",
+    "arm": "baseline_A",
+    "rep": 0
+  },
+  {
+    "index": 20,
+    "image": "000000000030",
+    "condition": "clean",
+    "arm": "candidate16M",
+    "rep": 0
+  },
+  {
+    "index": 21,
+    "image": "000000000030",
+    "condition": "adv",
+    "arm": "baseline_A",
+    "rep": 0
+  },
+  {
+    "index": 22,
+    "image": "000000000030",
+    "condition": "adv",
+    "arm": "baseline_B",
+    "rep": 0
+  },
+  {
+    "index": 23,
+    "image": "000000000030",
+    "condition": "clean",
+    "arm": "baseline_B",
+    "rep": 0
+  },
+  {
+    "index": 24,
+    "image": "000000000030",
+    "condition": "clean",
+    "arm": "baseline_B",
+    "rep": 1
+  },
+  {
+    "index": 25,
+    "image": "000000000030",
+    "condition": "clean",
+    "arm": "candidate16M",
+    "rep": 1
+  },
+  {
+    "index": 26,
+    "image": "000000000030",
+    "condition": "adv",
+    "arm": "candidate16M",
+    "rep": 1
+  },
+  {
+    "index": 27,
+    "image": "000000000030",
+    "condition": "clean",
+    "arm": "baseline_A",
+    "rep": 1
+  },
+  {
+    "index": 28,
+    "image": "000000000030",
+    "condition": "adv",
+    "arm": "baseline_A",
+    "rep": 1
+  },
+  {
+    "index": 29,
+    "image": "000000000030",
+    "condition": "adv",
+    "arm": "baseline_B",
+    "rep": 1
+  },
+  {
+    "index": 30,
+    "image": "000000000030",
+    "condition": "adv",
+    "arm": "baseline_B",
+    "rep": 2
+  },
+  {
+    "index": 31,
+    "image": "000000000030",
+    "condition": "clean",
+    "arm": "candidate16M",
+    "rep": 2
+  },
+  {
+    "index": 32,
+    "image": "000000000030",
+    "condition": "adv",
+    "arm": "baseline_A",
+    "rep": 2
+  },
+  {
+    "index": 33,
+    "image": "000000000030",
+    "condition": "clean",
+    "arm": "baseline_A",
+    "rep": 2
+  },
+  {
+    "index": 34,
+    "image": "000000000030",
+    "condition": "clean",
+    "arm": "baseline_B",
+    "rep": 2
+  },
+  {
+    "index": 35,
+    "image": "000000000030",
+    "condition": "adv",
+    "arm": "candidate16M",
+    "rep": 2
+  }
+]

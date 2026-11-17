@@ -1,0 +1,16 @@
+{
+  "status": "LOCAL_REFS_READ_ONLY_NOT_EXTERNAL_TIMESTAMP_VERIFICATION",
+  "refs": {
+    "prereg-m2-m3-confirmation-20261106": "a15e14e56d346fa9ec31818be8749535fe6b2039",
+    "prereg-coco-defense-20261106": "a15e14e56d346fa9ec31818be8749535fe6b2039",
+    "prereg-nested1500-five-starts-20261106": "d908bc9b217f107730c45dd9aa2cabf647c37d24",
+    "prereg-laptop-carryover-20261107": "a57662d32d8a37f448776622bfa1941862c62634",
+    "prereg-laptop-session-confirm-20261107": "17f2cd6805cbfd4cc636d58aec086209bf59c4cc",
+    "prereg-laptop-defense-20261107": "e0aa31370a054327454918238b1085c6a2805328",
+    "prereg-laptop-components-20261107": "0b468db6130714be0521bc3d8bf547b206dbfcef",
+    "prereg-forward-reference-20261107": "e9dda8a90752c7ff0dd311f4f0db19c519a96b30",
+    "prereg-arm-metadata-a0-20261107": "143be483f1b30d10d579860d50e3c8b0f0b84bc8",
+    "prereg-arm-battery-a0b-20261107": "f72125c9cb51751da001940a81942374baccaec5"
+  },
+  "external_timestamp_doi_verified": false
+}

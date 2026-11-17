@@ -1,0 +1,52 @@
+....................................F................................... [ 55%]
+..........................................................               [100%]
+================================== FAILURES ===================================
+__ test_lease_and_non_usb_guard_ast_match_previously_qualified_full20_source __
+
+    def test_lease_and_non_usb_guard_ast_match_previously_qualified_full20_source():
+        old=STUDY.parent/'pi3b_full20_20261114'
+        a=ast.parse((old/'control.py').read_text(encoding='utf-8'));b=ast.parse((STUDY/'control.py').read_text(encoding='utf-8'))
+        for name in ('record','validate_snapshot','System','Lease'):
+            get=lambda tree:next(n for n in tree.body if getattr(n,'name',None)==name)
+            assert ast.dump(get(a))==ast.dump(get(b))
+        ga=ast.parse((old/'guard.py').read_text());gb=ast.parse((STUDY/'guard.py').read_text())
+        for name in ('parse_swaps','strict_temp','read_fast','violations'):
+            x=copy.deepcopy(next(n for n in ga.body if getattr(n,'name',None)==name))
+            y=copy.deepcopy(next(n for n in gb.body if getattr(n,'name',None)==name))
+            if name=='read_fast':
+                for n in ast.walk(y):
+                    if isinstance(n,ast.Call):n.keywords=[k for k in n.keywords if k.arg!='usb_state']
+            if name=='violations':
+                assert y.args.args[-1].arg=='usb_baseline';y.args.args.pop();y.args.defaults.pop()
+                def usb_node(node):
+                    return any((isinstance(n,ast.Name) and n.id in ('usb_baseline','usb_guard')) or
+                        (isinstance(n,ast.Subscript) and isinstance(n.value,ast.Name) and n.value.id=='env'
+                         and isinstance(n.slice,ast.Constant) and n.slice.value in ('usb','usb_state')) for n in ast.walk(node))
+                for f in (x,y):
+                    clause=next(n for n in f.body if isinstance(n,ast.Try));clause.body=[n for n in clause.body if not usb_node(n)]
+            assert ast.dump(x)==ast.dump(y),name
+        for name in ('baseline_ops.py','preallocate.py','stats_frozen.py'):
+            prior=STUDY.parent/'pi3b_renderer_memory_v1_20261114'/name
+>           assert ast.dump(ast.parse(prior.read_text()))==ast.dump(ast.parse((STUDY/name).read_text()))
+                                      ^^^^^^^^^^^^^^^^^
+
+sponge-sim\tests\test_pi3b_renderer_usb_supervisor.py:78: 
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+C:\Program Files\Python314\Lib\pathlib\__init__.py:788: in read_text
+    return f.read()
+           ^^^^^^^^
+_ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _ _
+
+self = <encodings.cp1252.IncrementalDecoder object at 0x0000018766EE6EE0>
+input = b'# Copied/adapted from sponge-sim/studies/pi3b_renderer_prealloc_20261114/stats_frozen.py:1-108\n# SHA256 206d4c05830...\xa1o."""\n    df = n - 1\n    return float((sps.t.ppf(1 - alpha / 2, df) + sps.t.ppf(power, df)) * sd / np.sqrt(n))\n'
+final = True
+
+    def decode(self, input, final=False):
+>       return codecs.charmap_decode(input,self.errors,decoding_table)[0]
+               ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+E       UnicodeDecodeError: 'charmap' codec can't decode byte 0x81 in position 891: character maps to <undefined>
+
+C:\Program Files\Python314\Lib\encodings\cp1252.py:23: UnicodeDecodeError
+=========================== short test summary info ===========================
+FAILED sponge-sim\tests\test_pi3b_renderer_usb_supervisor.py::test_lease_and_non_usb_guard_ast_match_previously_qualified_full20_source
+1 failed, 129 passed in 130.10s (0:02:10)

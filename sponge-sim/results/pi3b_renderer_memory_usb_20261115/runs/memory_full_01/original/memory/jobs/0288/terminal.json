@@ -1,0 +1,9 @@
+{
+  "status": "COMPLETED",
+  "returncode": 0,
+  "owned_pid": 22799,
+  "direct_child_reaped": true,
+  "termination_sent": false,
+  "failure": null,
+  "latency_endpoint_recorded": false
+}

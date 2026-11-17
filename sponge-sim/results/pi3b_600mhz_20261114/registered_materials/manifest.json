@@ -1,0 +1,18 @@
+{
+  "status": "POST_FETCH_ARCHIVE_OF_REGISTERED_SOURCE_AND_ANALYSIS_INPUTS",
+  "prereg_tag": "prereg-pi3b-600mhz-20261114",
+  "files_sha256": {
+    "run.py": "9cc349be2c265fb4615d0016e9dae4a5aef53961df0d603abcb42d7a9fdbec8a",
+    "campaign.sh": "262617ea1aecfd8454cdf67deb5144146df3ab2512d9c76d2cb4241528e45095",
+    "analyze.py": "8af562c9bca2b3e5c0889e7d11d271e0cd6d70e0c452028e239741ee002aea58",
+    "lock.json": "c645656a96a8faea160143159fcad7db253f93d6664c3c19baa78ed74e117099",
+    "build_lock.py": "dda544961de8c24d6b49441800cab428dfd7d8ff27a061051bc8af252f792429",
+    "parity_ref.py": "ed6fa81558ae92353275353fa0fdc3ef952233c7536cd837ff1d8f1bf9701ab0",
+    "stats.py": "65df04a44d2b99dd9fa79e8fa6835929d47a8d572711fe23a8aaa9e2fb2f1581",
+    "laptop_reference_counts.json": "917cd654ddf7ed83235b63f3d21aa64c465ce5b4827b31f8025ca47a2d26d83b"
+  },
+  "lock_note": "Exact deployed CRLF bytes retained; LF Git-tag blob differs only in line endings",
+  "python": "3.14.6 (tags/v3.14.6:c63aec6, Jun 10 2026, 10:26:10) [MSC v.1944 64 bit (AMD64)]",
+  "numpy": "2.5.0",
+  "scipy": "1.18.0"
+}

@@ -1,0 +1,12 @@
+[
+  {
+    "session": "pipeline_PI4",
+    "returncode": 0,
+    "gate_returncode": 0
+  },
+  {
+    "session": "stages_PI4",
+    "returncode": 0,
+    "gate_returncode": 66
+  }
+]

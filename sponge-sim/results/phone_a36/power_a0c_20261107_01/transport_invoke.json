@@ -1,0 +1,8 @@
+{
+  "operation": "one_registered_metadata_invocation",
+  "exit_code": 0,
+  "output": [
+    "termux_power_metadata.sh: OK"
+  ],
+  "prereg_commit": "e48d114bed4398c357725e5e350048fc3b60926f"
+}

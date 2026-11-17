@@ -1,0 +1,15 @@
+{
+  "functional_only_enabled": true,
+  "scientific_enabled": false,
+  "tag": "qa-pi3b-nms-predecessor-material-20261115",
+  "controller_lock_sha256": "63d427530aecee6670c604f4e65769ae8d2d2940694eb0f5ca8b06e325c96713",
+  "supervisor_qa_sha256": "40b703c7fb2aa0b3c014fb593300f4c57bc3aa21eca031fe43f4d2d21b9fa453",
+  "cases": 40,
+  "campaign_timeout_seconds": 3600,
+  "plan_path": "sponge-sim/prereg/QA_PI3B_NMS_PREDECESSOR_MATERIAL_20261115.md",
+  "plan_sha256": "f54a0df95f126d59cdec51879d55ecf8786f0d582eefa00ae2ba320140ecbdcb",
+  "qualification_method_tag": "qa-pi3b-ready-observer-20261115",
+  "qualification_method_commit": "7c6b8a8a783c51a701c565015e95837c2288626a",
+  "old_failed_qualification_replaced": false,
+  "authorization_basis": "standing explicit do-all finite functional/device QA; not the sleeping-only exception or scientific-full approval"
+}

@@ -1,0 +1,64 @@
+{
+  "case": "qa_mainkill_01",
+  "restore": {
+    "status": "RESTORED",
+    "errors": [],
+    "wall_utc": 1794642000.3763955
+  },
+  "activation": {
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Failed to start dev-zram0.swap: Unit dev-zram0.swap is masked.\n"
+  },
+  "child_identity_gone": true,
+  "current": {
+    "governor": "ondemand",
+    "units": {
+      "dev-zram0.swap": {
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "FragmentPath": "/run/systemd/generator/dev-zram0.swap"
+      },
+      "rpi-zram-writeback.service": {
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "FragmentPath": "/usr/lib/systemd/system/rpi-zram-writeback.service"
+      },
+      "rpi-zram-writeback.timer": {
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "FragmentPath": "/run/systemd/generator/rpi-zram-writeback.timer"
+      }
+    },
+    "setup": {
+      "Result": "success",
+      "ActiveState": "active"
+    },
+    "swaps": [
+      {
+        "name": "/dev/zram0",
+        "kind": "partition",
+        "size_kb": 926716,
+        "used_kb": 0,
+        "priority": 100
+      }
+    ],
+    "mem_available_kb": 760324
+  },
+  "journal": "2026-11-14T07:39:42+00:00 pi sudo[6856]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl stop rpi-zram-writeback.timer\n2026-11-14T07:39:42+00:00 pi sudo[6856]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T07:39:43+00:00 pi sudo[6856]: pam_unix(sudo:session): session closed for user root\n2026-11-14T07:39:43+00:00 pi sudo[6859]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl stop dev-zram0.swap\n2026-11-14T07:39:43+00:00 pi sudo[6859]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T07:39:43+00:00 pi sudo[6859]: pam_unix(sudo:session): session closed for user root\n2026-11-14T07:39:43+00:00 pi sudo[6867]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl mask --runtime dev-zram0.swap rpi-zram-writeback.service rpi-zram-writeback.timer\n2026-11-14T07:39:43+00:00 pi sudo[6867]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T07:39:48+00:00 pi sudo[6867]: pam_unix(sudo:session): session closed for user root\n2026-11-14T07:39:48+00:00 pi sudo[6967]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/tee /sys/devices/system/cpu/cpufreq/policy0/scaling_governor\n2026-11-14T07:39:48+00:00 pi sudo[6967]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T07:39:48+00:00 pi sudo[6967]: pam_unix(sudo:session): session closed for user root\n2026-11-14T07:39:49+00:00 pi sudo[6981]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl start dev-zram0.swap\n2026-11-14T07:39:49+00:00 pi sudo[6981]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T07:39:49+00:00 pi sudo[6981]: pam_unix(sudo:session): session closed for user root\n2026-11-14T07:39:53+00:00 pi systemd[1]: sponge-pi3b-swapguard-v2.service: Sent signal SIGKILL to main process 6807 (python) on client request.\n2026-11-14T07:39:53+00:00 pi systemd[1]: sponge-pi3b-swapguard-v2.service: Main process exited, code=killed, status=9/KILL\n2026-11-14T07:39:54+00:00 pi sudo[7030]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl unmask --runtime dev-zram0.swap rpi-zram-writeback.service rpi-zram-writeback.timer\n2026-11-14T07:39:54+00:00 pi sudo[7030]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T07:39:59+00:00 pi sudo[7030]: pam_unix(sudo:session): session closed for user root\n2026-11-14T07:39:59+00:00 pi sudo[7124]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/tee /sys/devices/system/cpu/cpufreq/policy0/scaling_governor\n2026-11-14T07:39:59+00:00 pi sudo[7124]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T07:39:59+00:00 pi sudo[7124]: pam_unix(sudo:session): session closed for user root\n2026-11-14T07:39:59+00:00 pi sudo[7127]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl start dev-zram0.swap\n2026-11-14T07:39:59+00:00 pi sudo[7127]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T07:39:59+00:00 pi sudo[7127]: pam_unix(sudo:session): session closed for user root\n2026-11-14T07:39:59+00:00 pi sudo[7138]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl start rpi-zram-writeback.timer\n2026-11-14T07:39:59+00:00 pi sudo[7138]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T07:40:00+00:00 pi sudo[7138]: pam_unix(sudo:session): session closed for user root\n2026-11-14T07:40:00+00:00 pi systemd[1]: sponge-pi3b-swapguard-v2.service: Failed with result 'signal'.\n2026-11-14T07:40:00+00:00 pi systemd[1]: sponge-pi3b-swapguard-v2.service: Consumed 9.065s CPU time.\n",
+  "supervisor_log": "{\"status\": \"RESTORED\", \"errors\": [], \"wall_utc\": 1794642000.3763955}\n",
+  "sha256": {
+    "restore.json": "09461a74f8d4d55447dadeb8fd0dc7e59be139e21c5c869ce0fbe2437308940c",
+    "qa_fault_intent.json": "1525acf3e4d3fa2e1ff3c9fa5a08c338d7c43fa8fe568d1bbefe82cfb3319e1d",
+    "activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+    "lease_events.jsonl": "e9eb257dda4703d570d78e5fe98c5346844facfb79f4401a2245fe4717c78b04",
+    "qa_fault_sent.json": "31c1a2df9f296157addc957f1930d4d4b903d46dea0cbfaaac9d44a4fce54d54",
+    "supervisor.log": "ec2c61633a8a8ba2578143406c38850dc3035eb60b177110dd355626ea4ce8c8",
+    "qa_ready.json": "454a406e0165299a39bbd51dcf219da20f2017b578e8414a20104c02242e3d95",
+    "registration.json": "a536d7d77d36234ec5b9215b5f2e92deff1f204686ce70fb77ce87cd21912742",
+    "lease_state.json": "3fef97dee4f859ea8ce5451b8ef006e74cffded8e01d81a7d57403cc1b8ff858"
+  },
+  "status": "PASS_MAIN",
+  "frontend_exit_code": 255,
+  "launch": "/home/tanh/sponge-venv/bin/python /home/tanh/sponge-sim/pi3b_full20_20261114/control.py launch --mode qa --name qa_mainkill_01 --tag qa-pi3b-full20-20261114 --commit 7a63da73e67a6bfdc10e9009b04681ce475afd01 --qa-seconds 60 --qa-timeout 120"
+}

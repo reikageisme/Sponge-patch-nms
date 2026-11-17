@@ -1,0 +1,34 @@
+{
+  "tag": "prereg-pi3b-renderer-memory-usb-20261115",
+  "commit": "70c398ae52540e873dca0f5dd447e97bc7d00958",
+  "config_sha256": "a19e9202b0ace3c2f796e633aae7381a6736b500626635cb7a3013396d5bb66b",
+  "weights_sha256": "a7cd8f929e1903d78a12a48efecab430209f18dc46cb96c3599a5980c63c423c",
+  "cache_manifest_sha256": "61b5abaaf22ea985b98f582a34f52cc19c2272ac87f66782292d843b17bbe165",
+  "protocol": {
+    "filename": "PREREG_PI3B_RENDERER_MEMORY_USB_20261115.md",
+    "sha256": "578fbf70b8494dc1126e8845da4d718f2b901a169533d6fa73a5d5edda6194a2"
+  },
+  "phase": "smoke",
+  "created_at_utc": "2026-11-14T18:09:04.806728+00:00",
+  "expected_jobs": 36,
+  "expected_image_ids": [
+    "000000000009",
+    "000000000030"
+  ],
+  "original_run_directory": "/home/tanh/sponge-sim/pi3b_renderer_memory_usb_20261115/runs/memory_smoke_01",
+  "original_artifact_subdirectory": "original",
+  "source_sha256": {
+    "analyze_memory.py": "287d013b11f2ba0486e78e88c35e334c7804bf6c500f9054933519a0f699df25",
+    "baseline_ops.py": "a4a2273ceb0adc963344a7ab23707015e5c042caea231acbbfec0164480177ca",
+    "cache.py": "896c4b34b2091e944eae49a8e5745ad532b4c0e311791337c45f660935037a9f",
+    "control.py": "a52289f20dc41a2c4a118aca2a486a8c217863a95bc1180e0b3b89b8d38df359",
+    "guard.py": "9b38481bc70e563732be47bc7cc0eef646d32fd19739918313eadce3cd4f7ebe",
+    "memory_campaign.py": "3db9cb35fcda2a7b1660a81fc4b454da2db47875f26abae7896aced83dc2c461",
+    "memory_worker.py": "51d65dfd10f7a3854192206da0b240eb55912d70aa36628ef4b90f3c20d6dcda",
+    "preallocate.py": "da833bcd1352c5d81c9e667df64043c751d0c6166109edcd1ede727d5bebb154",
+    "stats_frozen.py": "dd4770ba9ec5385e7266676242bf62e794fb5212c22c770f0cff780e3551333e",
+    "usb_guard.py": "9a1c2ef0124e5a54ac1d5e0e252c759636443a3d4ea7f7d50edd1b5aff821cd4"
+  },
+  "latency_endpoint_recorded": false,
+  "full_not_automatically_authorized": true
+}

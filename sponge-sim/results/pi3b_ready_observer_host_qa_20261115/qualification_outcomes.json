@@ -1,0 +1,15 @@
+{
+  "status": "FIVE_READY_OBSERVER_CASES_PASS",
+  "cases": {
+    "observer_normal_01": "PASS_NORMAL",
+    "observer_mainkill_01": "PASS_MAIN",
+    "observer_childkill_01": "PASS_CHILD",
+    "observer_timeout_01": "PASS_TIMEOUT",
+    "observer_disconnect_01": "PASS_DISCONNECT"
+  },
+  "qualification_tag": "qa-pi3b-ready-observer-20261115",
+  "qualification_commit": "7c6b8a8a783c51a701c565015e95837c2288626a",
+  "payload_tag": "qa-pi3b-nms-predecessor-supervisor-20261115",
+  "payload_commit": "925c544f618491e5b21a3621d77804a10686d111",
+  "model_inference": false
+}

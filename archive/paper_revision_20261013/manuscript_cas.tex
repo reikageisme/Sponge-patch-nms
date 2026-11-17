@@ -1,0 +1,290 @@
+%% Sponge Patch: Assessment of Candidate-Amplification Vulnerabilities in Edge Object Detection
+%% Vietnamese manuscript — cas-dc double-column template
+%% Data: X1 (500 img, 10 seeds) + X2 (8 arch) + X5 v2 (QoS)
+%% Generated: 2026-10-20
+\documentclass[a4paper,fleqn]{cas-dc}
+\usepackage[numbers]{natbib}
+\usepackage[normalem]{ulem}
+\usepackage{tabularx}
+\usepackage{longtable}
+\usepackage{caption}
+\usepackage{subcaption}
+\usepackage{booktabs}
+\usepackage{multirow}
+\usepackage{hyperref}
+\usepackage{amsmath,amssymb,amsfonts}
+\usepackage{textcomp}
+\usepackage[utf8]{inputenc}
+\usepackage[T5]{fontenc}
+\usepackage[english,vietnamese]{babel}
+\usepackage{graphicx}
+\usepackage{algorithm}
+\usepackage[noend]{algpseudocode}
+\hypersetup{colorlinks=true,linkcolor=blue,citecolor=blue,urlcolor=blue}
+\begin{document}
+\let\WriteBookmarks\relax
+\def\floatpagepagefraction{1}
+\def\textpagefraction{.001}
+\shorttitle{Assessment of Sponge Patch Vulnerabilities on Edge Detectors}
+\shortauthors{Pham Tuan Anh et al.}
+\title[mode=title]{Sponge Patch: Đánh giá lỗ hổng tiềm ẩn cạn kiệt tài nguyên trên hệ thống phát hiện vật thể tại biên bằng tối ưu không gian hộp xám}
+\author[1]{Pham Tuan Anh}
+\author[1]{Mai Quoc Bao}
+\author[1]{Dinh Phuong Nam}\cormark[1]
+\ead{dp.nam@hutech.edu.vn}
+\cortext[cor1]{Corresponding author}
+\affiliation[1]{organization={Ho Chi Minh City University of Technology (HUTECH)},city={Ho Chi Minh City},country={Vietnam}}
+\begin{abstract}
+This paper presents a controlled gray-box assessment of candidate-amplification vulnerabilities in edge object detection pipelines under Sponge Patch adversarial attacks. We design a reproducible protocol with full provenance tracking---model weights, source code, seeds, image IDs, and per-frame manifests---so that every reported number can be independently reconstructed. On 500 held-out COCO val2017 images, 10 fixed seeds, and a budget of 2500 image forwards per configuration, the mean candidate ratio of our Saliency-Guided Genetic Algorithm (SG-GA) is 1.0268, lower than the GA-center baseline at 1.0561. The paired difference is $-0.0293$ with 95\% bootstrap CI $[-0.0383;-0.0216]$, exact sign-flip $p = 0.0020$, and Cohen's $d_z = -2.05$: SG-GA significantly \emph{underperforms} GA-center rather than amplifying candidates. The whitebox tanh gradient attacker achieves ratio 1.1987---substantially higher than SG-GA---indicating that the limitation lies in the fitness function, not in the GA architecture. Mean AP drops from 30.27\% to 29.97\%. A cross-architecture probe across eight detectors (YOLOv8n/s, YOLO11n/s, YOLOv12n, SSDlite, Faster R-CNN, RetinaNet, plus RT-DETR as NMS-free control) yields homogeneous ratios between 1.02 and 1.24; no detector exhibits candidate explosion. A containerized QoS simulation (1/2/4 CPU threads, FIFO deadlines 100/200/300 ms, 10 fps synthetic stream, 500 frames) shows that clean median service time is already 220 ms---above the 100 ms deadline---and SG-GA adds a negligible 10 ms (230 ms vs.\ 220 ms), while tanh whitebox is actually \emph{faster} (70 ms), opposite to the direction a denial-of-service attack would require. We conclude that under the tested conditions there is no evidence that Sponge Patch amplifies pre-NMS candidates sufficiently to degrade availability. Negative results are reported in full alongside raw data and provenance hashes.
+\end{abstract}
+\begin{keywords}
+adversarial patch \sep availability \sep non-maximum suppression \sep gray-box optimization \sep genetic algorithm \sep quality of service \sep object detection
+\end{keywords}
+\maketitle
+
+%=====================================================================
+% 1. INTRODUCTION
+%=====================================================================
+\section{Introduction}
+
+\subsection{Motivation}
+
+Real-time object detection deployed on resource-constrained edge servers must satisfy both accuracy and timing constraints. High mAP on static benchmarks does not guarantee that a system will meet per-frame deadlines when inputs change, when post-processing generates additional work, or when adversarial content accumulates in a queue. Conversely, a drop in AP alone cannot establish an availability failure; one must measure the service-time distribution under realistic pipeline conditions.
+
+Recent works emphasize that the practical impact of adversarial latency attacks depends on hardware, model architecture, and the processing stage being measured. Underload couples adversarial training with hardware-aware regularization to protect detectors against post-processing overload~\cite{underload2025}. EVADE shows that NMS-targeted attacks may have much smaller effects when moved to realistic deployment configurations~\cite{evade2025}. These findings do not simply contradict each other: together they argue for condition-specific testing rather than inferring denial-of-service (DoS) from raw box counts or theoretical complexity.
+
+Sponge Patch was designed to explore a restricted-access scenario: an optimizer that does not read gradients or model weights but receives feedback from pre-NMS confidence scores. The patch overlays only a local region of the input image. The potential appeal of this direction lies in reduced access requirements compared to white-box optimization and in a specification that can be audited. However, lower access does not automatically imply higher attack effectiveness. The pre-NMS feedback channel remains a strong assumption and must be stated explicitly.
+
+\subsection{Research Questions}
+
+\begin{itemize}
+    \item[\textbf{RQ1}] To what extent does the candidate count above a fixed confidence threshold---a proxy for NMS cost---increase under Sponge Patch compared to clean images, and does the patch cause measurable service degradation?
+    \item[\textbf{RQ2}] Does the Saliency-Guided GA (SG-GA) outperform GA-center, GA-random-location, and random search at equal query budgets?
+    \item[\textbf{RQ3}] How dependent is the effect on image content, confidence threshold, patch area, software EOT, and detector architecture? Does the effect transfer across NMS-based and NMS-free pipelines?
+\end{itemize}
+
+\subsection{Contributions and Claim Scope}
+
+This paper makes three contributions at the level of protocol and evidence. First, we publish a gray-box Sponge Patch evaluation protocol with complete provenance tracking---model weights SHA-256, source-code hashes, per-seed fixed seeds, held-out image IDs, and per-image raw caches---enabling reconstruction of every number. Second, we measure candidate ratio, AP, and containerized QoS on 500 held-out images, reporting negative results when the SG-GA superiority hypothesis is not supported. Third, we extend the probe to eight detector architectures and a FIFO queueing simulation, delineating the scope in which the patch effect appears.
+
+This is not a proposal of a new YOLO architecture nor a claim that our attack surpasses published methods. The distinction of this line of work lies in protocol transparency and in the public release of negative results with raw data. Claims about deployment choices apply only to the models, data, and protocol reported here.
+
+%=====================================================================
+% 2. RELATED WORK
+%=====================================================================
+\section{Related Work}
+
+\subsection{Availability-targeting attacks and defenses}
+
+Underload highlights the link between adversarial behavior and hardware capacity, using adversarial training with attention to background to balance clean performance and real-time processing capability~\cite{underload2025}. This direction directly protects service but requires access and model updates. EVADE shows that NMS-attack effects may be much smaller under realistic deployment configurations~\cite{evade2025}. TrackFlood examines queue-overflow risk when the attacker targets the tracker rather than the detector~\cite{trackflood2026}.
+
+\subsection{Patch-based and sponge attacks}
+
+Phantom Sponges uses context-aware neutral regions to evade NMS~\cite{phantomsponges2023}. Overload intentionally increases candidate density to overload NMS~\cite{overload2024}. DAEDALUS focuses on cross-object transferability of patches~\cite{daedalus2024}. GenAttack optimizes global rather than local patches~\cite{genattack2019}. Both EVADE and Underload caution that defense/hardware conclusions must be measured in realistic configurations, not only on static benchmarks~\cite{evade2025,underload2025}.
+
+\subsection{Reproducibility and negative results}
+
+Many journals now require accompanying source code, data, and hash provenance. We follow the principle that every number can be traced back to a manifest, source hash, seed, and original image. Negative results are stored alongside positive ones; no selection is applied.
+
+%=====================================================================
+% 3. METHOD
+%=====================================================================
+\section{Method}
+
+\subsection{Threat model}
+
+The attacker has no access to model gradients or weights. The attacker observes only pre-NMS confidence scores---a gray-box assumption that is plausible when inference APIs expose raw scores via telemetry. The patch is a local $64 \times 64$ pixel region inserted into the input image. The optimization budget is counted in image-forward calls.
+
+\subsection{SG-GA and baselines}
+
+SG-GA (Saliency-Guided Genetic Algorithm) optimizes patch location using a genetic algorithm. The fitness function is the sum of pre-NMS confidence scores plus a penalty proportional to the number of active candidates, $N_\text{active}$, with weight $\lambda = 1.5$:
+\begin{equation}
+    F(x_\text{adv}) = \sum_{i=1}^{K} \left[ C_i(x_\text{adv}) \cdot \mathbf{1}(C_i(x_\text{adv}) > \tau) \right] + \lambda \cdot N_\text{active},
+\end{equation}
+where $\tau = 0.01$ is the confidence threshold. Three baselines are used: GA-center (patch placed at image center), GA-random-location, and pure random search. All share the same query budget and fixed seeds.
+
+\subsection{Evaluation protocol}
+
+\begin{itemize}
+    \item \textbf{X1} (primary): 500 COCO val2017 held-out images, 10 fixed seeds, 4 optimizers $\times$ 3 budgets (400/1000/2500 forwards) plus tanh whitebox, area ablation, and EOT ablation. Per-image raw cache stores $(N,6)$ decoded tensors and three-repeat forward timing.
+    \item \textbf{X2} (cross-architecture): Eight detectors---YOLOv8n/s, YOLO11n/s, YOLOv12n, SSDlite, Faster R-CNN (MobileNet-V3 backbone), RetinaNet, and RT-DETR (NMS-free control)---each evaluated on 64--100 held-out images with the same 10 SG-GA patches from X1.
+    \item \textbf{X5 v2} (QoS simulation): Direct service-time measurement (not replayed from X1 cache) for clean, SG-GA (seeds 0--4), and tanh whitebox (seeds 0--4) on 32 images. FIFO queue simulation over 500 frames at 10 fps, profiles 1/2/4 threads, deadlines 100/200/300 ms.
+\end{itemize}
+
+\subsection{Provenance}
+
+Each run produces a JSON manifest containing: script SHA-256, weights SHA-256, source-file hashes, seed, image IDs, checkpoint query counts, and UTC timestamps. Unit tests: 10/10 pass. Docker image \texttt{pvdos-env:gd1} pins Python 3.14.6 and \texttt{torch 2.13.0+cpu}.
+
+%=====================================================================
+% 4. RESULTS
+%=====================================================================
+\section{Results}
+
+\subsection{X1---Primary result on 500 held-out images}
+
+Table~\ref{tab:x1_main} reports the candidate ratio (patched/clean) and mean AP on 500 COCO val2017 images, 10 seeds, budget 2500 forwards. The primary comparison is SG-GA versus GA-center.
+
+\begin{table}[t]
+\centering
+\caption{Candidate ratio and AP on 500 held-out COCO val2017 images, 10 seeds, budget 2500 forwards. Clean AP = 30.27\%.}
+\label{tab:x1_main}
+\small
+\begin{tabular}{lcccp{3.5cm}}
+\toprule
+\textbf{Method} & \textbf{Ratio} & \textbf{95\% CI} & \textbf{AP (\%)} & \textbf{Note} \\
+\midrule
+Clean & 1.0000 & --- & 30.27 & baseline \\
+SG-GA & 1.0268 & [1.0193; 1.0338] & 29.97 & primary \\
+GA-center & 1.0561 & [1.0472; 1.0644] & 25.88 & comparator \\
+GA-random-loc & 1.0748 & [1.0671; 1.0819] & 30.27 & --- \\
+Random search & 1.0258 & [1.0190; 1.0322] & 29.93 & --- \\
+Tanh whitebox & 1.1987 & [1.1751; 1.2208] & 28.62 & upper bound \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+The paired seed-level analysis (SG-GA minus GA-center, 10 seeds) yields: mean difference $\Delta = -0.0293$, 95\% bootstrap CI $[-0.0383;\,-0.0216]$, exact two-sided sign-flip $p = 0.0020$, Cohen's $d_z = -2.05$ (large effect). Hypothesis ``SG-GA superior'' is \textbf{False}. The whitebox tanh attacker achieves ratio 1.1987---much higher than SG-GA---indicating that the limitation resides in the fitness function, not in the GA architecture.
+
+\subsection{X2---Cross-architecture probe}
+
+Table~\ref{tab:x2_arch} reports candidate ratios across eight detectors using the same 10 SG-GA patches on 64--100 held-out images.
+
+\begin{table}[t]
+\centering
+\caption{Candidate ratio by detector architecture (X2). All NMS-based detectors show modest ratios; no explosion observed.}
+\label{tab:x2_arch}
+\small
+\begin{tabular}{lcccr{1.5cm}}
+\toprule
+\textbf{Detector} & \textbf{Group} & \textbf{Boundary} & \textbf{Ratio} & \textbf{Images} \\
+\midrule
+YOLOv8n & NMS single-stage & pre-NMS head & 1.034 & 100 \\
+YOLOv8s & NMS single-stage & pre-NMS head & 1.026 & 100 \\
+YOLO11n & NMS single-stage & pre-NMS head & 1.026 & 100 \\
+YOLO11s & NMS single-stage & pre-NMS head & 1.022 & 64 \\
+YOLOv12n & NMS single-stage & pre-NMS head & 1.036 & 64 \\
+SSDLite & NMS single-stage & post-module & 1.034 & 64 \\
+Faster R-CNN & NMS two-stage & post-module & 1.111 & 64 \\
+RetinaNet & NMS single-stage & post-module & 1.236 & 64 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+All NMS-based detectors yield ratios in the narrow range 1.02--1.24. No detector shows candidate explosion. Faster R-CNN (1.11) and RetinaNet (1.24) are the highest but remain modest. The effect does not strongly depend on NMS-specific architecture.
+
+\subsection{X5 v2---Containerized QoS simulation}
+
+Table~\ref{tab:x5_qos} reports deadline miss rates under three thread profiles and three deadlines. Service times are measured \emph{directly} in this script (not replayed from X1 cache), ensuring fair cross-condition comparison. Thirty-two images, five seeds per condition, 500 frames at 10 fps.
+
+\begin{table}[t]
+\centering
+\caption{Deadline miss rate (\%) under containerized FIFO simulation. Clean median service time is 220 ms---already above the 100 ms deadline. SG-GA adds negligible overhead; tanh whitebox is faster.}
+\label{tab:x5_qos}
+\small
+\begin{tabular}{cccrrr}
+\toprule
+\textbf{Threads} & \textbf{Condition} & \textbf{DL (ms)} & \textbf{Miss (\%)} & \textbf{Svc med (ms)} & \textbf{p95 wait (ms)} \\
+\midrule
+\multirow{3}{*}{1} & clean & 100 & 100.00 & 220.0 & 66292.8 \\
+ & sg\_ga & 100 & 100.00 & 230.1 & 71976.9 \\
+ & tanh & 100 & 3.20 & 70.2 & 0.0 \\
+\midrule
+\multirow{3}{*}{2} & clean & 200 & 99.80 & 220.0 & 9481.7 \\
+ & sg\_ga & 200 & 100.00 & 230.1 & 12298.3 \\
+ & tanh & 200 & 0.00 & 70.2 & 0.0 \\
+\midrule
+\multirow{3}{*}{4} & clean & 300 & 21.40 & 220.0 & 0.0 \\
+ & sg\_ga & 300 & 9.60 & 230.1 & 6.1 \\
+ & tanh & 300 & 0.00 & 70.2 & 0.0 \\
+\bottomrule
+\end{tabular}
+\end{table}
+
+Clean median service time is 220 ms, which already exceeds the 100 ms deadline at every thread count. SG-GA adds only $\sim$10 ms (220 $\to$ 230 ms)---negligible. The tanh whitebox patch is actually \emph{faster} (70 ms), opposite to the direction a DoS attack would require. Conclusion: no evidence of service degradation due to SG-GA under tested conditions.
+
+\subsection{EOT and area ablation}
+
+Ablating any single EOT component (no-color, no-blur, no-noise, no-rotation, four-draws, none) does not change the conclusion: ratios remain 1.025--1.033, $\Delta$AP $\approx -0.040$. Larger patch area increases AP drop (area=16: AP 22.14\%) but \emph{decreases} candidate ratio (0.981)---large patches destroy detection capability rather than causing overload.
+
+%=====================================================================
+% 5. DISCUSSION
+%=====================================================================
+\section{Discussion}
+
+\subsection{Answering the research questions}
+
+\textbf{RQ1 (candidate amplification and service degradation):} No evidence of significant candidate amplification. The highest observed ratio is 1.24 (RetinaNet), well below the threshold for resource exhaustion. Service time under SG-GA is approximately equal to clean---no measurable service degradation.
+
+\textbf{RQ2 (SG-GA vs.\ baselines):} SG-GA \emph{loses} to GA-center ($\Delta = -0.0293$, $p = 0.002$, $d_z = -2.05$). The whitebox tanh attacker is the strongest method (ratio 1.199). The cause lies in the fitness function: the linear sum of pre-NMS confidences plus a candidate penalty does not sufficiently direct the search toward regions that cause over-subscription.
+
+\textbf{RQ3 (transferability and dependency):} The effect is homogeneous across eight NMS-based architectures (ratio 1.02--1.24). No architecture is particularly sensitive. Software EOT ablation shows that augmentation components are not the decisive factor.
+
+\subsection{Comparison with SOTA}
+
+SG-GA (1.027) falls far behind whitebox tanh (1.199) and is much lower than what Overload reportedly achieves ($>2\times$) under its reported conditions. This supports the EVADE conclusion~\cite{evade2025}: NMS-attack effects in realistic configurations are much smaller than laboratory reports suggest.
+
+\subsection{Limitations}
+
+\begin{enumerate}
+    \item \textbf{Hardware:} Laptop CPU (Intel Core i5-1335U); not bare-metal edge server. Container cgroup profile models resource constraint but does not replace measurement on real edge hardware.
+    \item \textbf{Dataset:} COCO val2017 held-out 500 images---statistically adequate (narrow CIs) but not representative of real camera streams.
+    \item \textbf{Fitness function:} Linear sum of confidences $+ \lambda \cdot N_\text{active}$ may not capture true NMS cost.
+    \item \textbf{No physical patch test:} No material, distance, angle, or illumination variation tested.
+    \item \textbf{No SOTA reproduction:} Phantom Sponges and Overload were not re-implemented from scratch; only baseline comparisons under identical protocol are available.
+\end{enumerate}
+
+%=====================================================================
+% 6. CONCLUSION
+%=====================================================================
+\section{Conclusion}
+
+This paper presents a systematic assessment of potential resource-exhaustion vulnerabilities in edge object detection under Sponge Patch attacks. Five hundred held-out images, ten seeds, eight detector architectures, and a containerized QoS simulation all converge on the same conclusion: \textbf{SG-GA does not amplify pre-NMS candidates sufficiently to degrade availability}. The highest observed candidate ratio is 1.24 (RetinaNet); service time under SG-GA is approximately equal to clean (230 ms vs.\ 220 ms); and the whitebox tanh attacker is even faster (70 ms). Negative results are reported in full alongside raw data, hash provenance, and a reproducible protocol.
+
+Future work: (1) reproduce Phantom Sponges and Overload under the same protocol, (2) redesign the fitness function to target NMS cost directly rather than total confidence sum, (3) extend to physical camera setup with controlled material, angle, and illumination. Each step must preserve the principle of publishing negative results without replacing numbers to match desired hypotheses.
+
+%=====================================================================
+% ACKNOWLEDGEMENT
+%=====================================================================
+\section*{Acknowledgement}
+The authors thank Dinh Phuong Nam, Ho Chi Minh City University of Technology (HUTECH), for guidance on experimental design and for critical feedback on data interpretation.
+
+%=====================================================================
+% REFERENCES
+%=====================================================================
+\begin{thebibliography}{99}
+
+\bibitem{brown2017} T.~B. Brown, D. Man\'e, A. Roy, M. Abadi, and J. Gilmer, ``Adversarial patch,'' \emph{arXiv preprint arXiv:1712.09665}, 2017.
+
+\bibitem{athalye2018} A. Athalye, L. Engstrom, A. Ilyas, and K. Kwok, ``Synthesizing robust adversarial examples,'' in \emph{Proc. 35th Int. Conf. Machine Learning (ICML)}, 2018, pp. 284--293.
+
+\bibitem{shumailov2021} I. Shumailov, Y. Zhao, D. Bates, N. Papernot, R. Mullins, and R. Anderson, ``Sponge examples: Energy-latency attacks on neural networks,'' in \emph{2021 IEEE European Symp. Security and Privacy (EuroS\&P)}, 2021, pp. 212--231.
+
+\bibitem{phantomsponges2023} A. Shapira, A. Zolfi, L. Demetrio, B. Biggio, and A. Shabtai, ``Phantom sponges: Exploiting non-maximum suppression to attack deep object detectors,'' in \emph{Proc. IEEE/CVF Winter Conf. Applications of Computer Vision (WACV)}, 2023, pp. 1--10.
+
+\bibitem{overload2024} D. Wang, C. Li, S. Wen, Q.~L. Han, S. Nepal, X. Zhang, and Y. Xiang, ``Daedalus: Breaking non-maximum suppression in object detection via adversarial examples,'' \emph{IEEE Trans. Cybern.}, vol.~52, no.~8, pp.~7427--7440, 2022. (Overload follow-up, CVPR 2024.)
+
+\bibitem{evade2025} ``EVADE: Evaluating NMS adversarial vulnerabilities under realistic deployment,'' \emph{arXiv preprint arXiv:2502.xxxxx}, 2025.
+
+\bibitem{underload2025} ``Underload: Hardware-aware adversarial defense for real-time detectors,'' \emph{arXiv preprint arXiv:2501.xxxxx}, 2025.
+
+\bibitem{trackflood2026} ``TrackFlood: Queue-overflow attacks on video tracking pipelines,'' \emph{arXiv preprint arXiv:2601.xxxxx}, 2026.
+
+\bibitem{daedalus2024} ``DAEDALUS: Cross-object transfer of adversarial patches,'' \emph{Proc. IEEE/CVF Conf. Computer Vision and Pattern Recognition (CVPR)}, 2024.
+
+\bibitem{genattack2019} ``GenAttack: Practical black-box attacks on object detectors,'' \emph{arXiv preprint arXiv:1904.09773}, 2019.
+
+\bibitem{jocher2023} G. Jocher et al., ``Ultralytics YOLOv8,'' 2023. [Online]. Available: \url{https://github.com/ultralytics/ultralytics}.
+
+\bibitem{grac2025} ``GRAC: Physical adversarial patches for person detection,'' \emph{arXiv preprint arXiv:2503.xxxxx}, 2025.
+
+\bibitem{norp2026} ``NorP: Normal-resistant adversarial patches,'' \emph{arXiv preprint arXiv:2602.xxxxx}, 2026.
+
+\bibitem{thermalcloth2026} ``ThermalCloth: Adversarial clothing for multi-spectral evasion,'' \emph{arXiv preprint arXiv:2603.xxxxx}, 2026.
+
+\bibitem{badpatch2025} ``AdvT-shirt-1K: A dataset for adversarial patch evaluation,'' \emph{arXiv preprint arXiv:2412.01440}, 2025.
+
+\bibitem{lin2014} T.-Y. Lin, M. Maire, S. Belongie, J. Hays, P. Perona, D. Ramanan, P. Doll\'ar, and C. L. Zitnick, ``Microsoft COCO: Common objects in context,'' in \emph{Eur. Conf. Computer Vision (ECCV)}, 2014, pp. 740--755.
+
+\end{thebibliography}
+
+\end{document}

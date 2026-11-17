@@ -1,0 +1,5 @@
+Running as unit: sponge-pi3b-swapguard-v2.service
+Finished with result: timeout
+Main processes terminated with: code=killed, status=15/TERM
+Service runtime: 52.592s
+CPU time consumed: 9.022s

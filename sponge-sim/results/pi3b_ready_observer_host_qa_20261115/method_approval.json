@@ -1,0 +1,10 @@
+{
+  "user_approved": true,
+  "accepts_new_qualification_after_failed_attempt": true,
+  "qualification_tag": "qa-pi3b-ready-observer-20261115",
+  "qualification_commit": "7c6b8a8a783c51a701c565015e95837c2288626a",
+  "qualification_lock_sha256": "7170b6446e5608b6693c0789bcc98a28c4333ce9296b857487c0547b6240b77a",
+  "original_failure_sha256": "de47cf3830c502f2b774302eba98847aae10b874f53014f43742ee8f7343eaec",
+  "user_review_event_sha256": "74fe188eca532ecc53105c2c0776ff0d4a4c2cb2f69c8db7d3738400b0f2fc5b",
+  "scope": "ONE five-sleeping-case set only; no model/full NMS; unchanged25/40/restore; stop first error/no retry"
+}

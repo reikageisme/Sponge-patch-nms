@@ -1,0 +1,9 @@
+{
+  "verbatim_failed_log_exceptions": {
+    "host_checks_04.log": "61c38b3efcdfc7996037772b09970da56454444ca8fa89cead8b97b7c95384bb",
+    "host_checks_06_lifetime_regression.log": "e1d048baebce1878d478c142214cbcdec5a75b9a7c82cc5e2a1595cf8ff31816"
+  },
+  "reason": "pytest traceback formatting contains a space after file:line; preserve original bytes",
+  "source_or_data_normalized": false,
+  "check_scope": "all staged files except ONLY these two immutable failed logs; command-only cr-at-eol,-blank-at-eof"
+}

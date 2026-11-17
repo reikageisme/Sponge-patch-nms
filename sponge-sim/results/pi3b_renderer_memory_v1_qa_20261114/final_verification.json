@@ -1,0 +1,35 @@
+{
+  "status": "RSS_V1_HOST_AND_SLEEP_DEVICE_QA_VERIFIED_NO_ENDPOINT",
+  "tag_commit": "d58118f8162398925076c4ac0fe0d1db856694d0",
+  "host_tests": {
+    "pytest_01.log": {
+      "sha256": "95ea1add10c091260054ff616ab279f65ebbebff80e120cfc4a2e2fda3f48aaf",
+      "summary": "65 passed in 90.02s (0:01:30)"
+    },
+    "pytest_02.log": {
+      "sha256": "7d8387712f77647a93061cdc14b98dbdc3f5e3169b3928131236616c496ec48b",
+      "summary": "77 passed in 81.10s (0:01:21)"
+    }
+  },
+  "source_files_verified": 14,
+  "original_files_verified": 39,
+  "prior_original_counts_unchanged": {
+    "pi3b_full20_20261114": 21,
+    "pi3b_renderer_functional_cache_20261114": 90
+  },
+  "scientific_registration_exists": false,
+  "empirical_endpoint_recorded": false,
+  "service_terminal": true,
+  "restore_readback_verified": true,
+  "ssh_kept_open": true,
+  "warning_lines": [
+    {
+      "case": "qa_disconnect_01",
+      "line": "2026-11-14T16:54:23+00:00 pi systemd[1]: sponge-pi3b-swapguard-v2.service: Failed to open /run/systemd/transient/sponge-pi3b-swapguard-v2.service: No such file or directory"
+    }
+  ],
+  "report_sha256": "84bf3280a8ea546f473684620484158e2fcc98eda1eb689b80d1add45045f070",
+  "source_preparation_sha256": "b712c17c26a911684fe9303c4a82dd6682b6a186a8f6692b922ae5294c665281",
+  "transfer_verification_sha256": "07451831d63cac92b821031a2bf2d3d9cd230fbb0dadbafcd08bcfaeb4649532",
+  "protected_bib_sha256": "58bcb86a185ac4f338168adc894cd9b188d17fe1f1afad510ff05924f38f7d12"
+}

@@ -1,0 +1,16 @@
+{
+  "status": "READ_ONLY_A0B_SOURCE_FETCH_VERIFIED",
+  "tag": "prereg-arm-battery-a0b-20261107",
+  "commit": "f72125c9cb51751da001940a81942374baccaec5",
+  "remote_sha256": "904abc10b05631c41a0a0b788f4370f1b06124ea5709af8031f05721f5cdd119",
+  "local_sha256": "904abc10b05631c41a0a0b788f4370f1b06124ea5709af8031f05721f5cdd119",
+  "source_sha256": "69a62631538785a38b6a79a5a945c543184e455c7a2bcf7fed9731cc07e6267e",
+  "source_check_on_device": "OK before invocation",
+  "exit_code": 0,
+  "load_started": false,
+  "converted_temperature": false,
+  "warnings": [
+    "proot fd0/1/2 binding sanitization warnings"
+  ],
+  "readable_fields": []
+}

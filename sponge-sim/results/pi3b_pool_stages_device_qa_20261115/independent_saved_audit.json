@@ -1,0 +1,348 @@
+{
+  "status": "INDEPENDENT_STAGED_METADATA_REPLAY_PASS",
+  "raw_sha256": "e3b1a9f186d8a31d7bb03d76064f54eab13d744d430cb53737dacbd493cb6d4a",
+  "snapshots": 11,
+  "thread_observation_frames": 77,
+  "stage_table": [
+    {
+      "label": "baseline",
+      "n_tids": 1,
+      "tids": [
+        24414
+      ],
+      "raw_selector": "snapshots[0].inventory.threads",
+      "library_selector": "snapshots[0].loaded_libraries"
+    },
+    {
+      "label": "numpy_import",
+      "n_tids": 4,
+      "tids": [
+        24414,
+        24415,
+        24416,
+        24417
+      ],
+      "raw_selector": "snapshots[1].inventory.threads",
+      "library_selector": "snapshots[1].loaded_libraries"
+    },
+    {
+      "label": "numpy_mm_and_diagnostics",
+      "n_tids": 4,
+      "tids": [
+        24414,
+        24415,
+        24416,
+        24417
+      ],
+      "raw_selector": "snapshots[2].inventory.threads",
+      "library_selector": "snapshots[2].loaded_libraries"
+    },
+    {
+      "label": "torch_import",
+      "n_tids": 4,
+      "tids": [
+        24414,
+        24415,
+        24416,
+        24417
+      ],
+      "raw_selector": "snapshots[3].inventory.threads",
+      "library_selector": "snapshots[3].loaded_libraries"
+    },
+    {
+      "label": "torch_set_intraop",
+      "n_tids": 7,
+      "tids": [
+        24414,
+        24415,
+        24416,
+        24417,
+        24419,
+        24420,
+        24421
+      ],
+      "raw_selector": "snapshots[4].inventory.threads",
+      "library_selector": "snapshots[4].loaded_libraries"
+    },
+    {
+      "label": "torch_set_interop",
+      "n_tids": 7,
+      "tids": [
+        24414,
+        24415,
+        24416,
+        24417,
+        24419,
+        24420,
+        24421
+      ],
+      "raw_selector": "snapshots[5].inventory.threads",
+      "library_selector": "snapshots[5].loaded_libraries"
+    },
+    {
+      "label": "torch_ones",
+      "n_tids": 10,
+      "tids": [
+        24414,
+        24415,
+        24416,
+        24417,
+        24419,
+        24420,
+        24421,
+        24422,
+        24423,
+        24424
+      ],
+      "raw_selector": "snapshots[6].inventory.threads",
+      "library_selector": "snapshots[6].loaded_libraries"
+    },
+    {
+      "label": "torch_mm",
+      "n_tids": 10,
+      "tids": [
+        24414,
+        24415,
+        24416,
+        24417,
+        24419,
+        24420,
+        24421,
+        24422,
+        24423,
+        24424
+      ],
+      "raw_selector": "snapshots[7].inventory.threads",
+      "library_selector": "snapshots[7].loaded_libraries"
+    },
+    {
+      "label": "torch_validation_and_gc",
+      "n_tids": 10,
+      "tids": [
+        24414,
+        24415,
+        24416,
+        24417,
+        24419,
+        24420,
+        24421,
+        24422,
+        24423,
+        24424
+      ],
+      "raw_selector": "snapshots[8].inventory.threads",
+      "library_selector": "snapshots[8].loaded_libraries"
+    },
+    {
+      "label": "torch_diagnostics",
+      "n_tids": 10,
+      "tids": [
+        24414,
+        24415,
+        24416,
+        24417,
+        24419,
+        24420,
+        24421,
+        24422,
+        24423,
+        24424
+      ],
+      "raw_selector": "snapshots[9].inventory.threads",
+      "library_selector": "snapshots[9].loaded_libraries"
+    },
+    {
+      "label": "final_adjacent",
+      "n_tids": 10,
+      "tids": [
+        24414,
+        24415,
+        24416,
+        24417,
+        24419,
+        24420,
+        24421,
+        24422,
+        24423,
+        24424
+      ],
+      "raw_selector": "snapshots[10].inventory.threads",
+      "library_selector": "snapshots[10].loaded_libraries"
+    }
+  ],
+  "transitions": [
+    {
+      "before": "baseline",
+      "after": "numpy_import",
+      "born_identities": [
+        {
+          "tid": 24415,
+          "start_ticks": 9206958
+        },
+        {
+          "tid": 24416,
+          "start_ticks": 9206958
+        },
+        {
+          "tid": 24417,
+          "start_ticks": 9206958
+        }
+      ],
+      "gone_identities": [],
+      "newly_mapped_libraries": [
+        "/home/tanh/sponge-venv/lib/python3.13/site-packages/numpy.libs/libgfortran-e1b7dfc8-d8198c01.so.5.0.0",
+        "/home/tanh/sponge-venv/lib/python3.13/site-packages/numpy.libs/libscipy_openblas64_-f552eb69.so",
+        "/home/tanh/sponge-venv/lib/python3.13/site-packages/numpy/_core/_multiarray_umath.cpython-313-aarch64-linux-gnu.so",
+        "/home/tanh/sponge-venv/lib/python3.13/site-packages/numpy/linalg/_umath_linalg.cpython-313-aarch64-linux-gnu.so",
+        "/usr/lib/aarch64-linux-gnu/libffi.so.8.1.4",
+        "/usr/lib/aarch64-linux-gnu/libgcc_s.so.1",
+        "/usr/lib/aarch64-linux-gnu/libpthread.so.0",
+        "/usr/lib/aarch64-linux-gnu/libstdc++.so.6.0.33",
+        "/usr/lib/python3.13/lib-dynload/_contextvars.cpython-313-aarch64-linux-gnu.so",
+        "/usr/lib/python3.13/lib-dynload/_ctypes.cpython-313-aarch64-linux-gnu.so"
+      ],
+      "temporal_cooccurrence_only": true,
+      "library_ownership_identified": false
+    },
+    {
+      "before": "numpy_import",
+      "after": "numpy_mm_and_diagnostics",
+      "born_identities": [],
+      "gone_identities": [],
+      "newly_mapped_libraries": [
+        "/home/tanh/sponge-venv/lib/python3.13/site-packages/yaml/_yaml.cpython-313-aarch64-linux-gnu.so"
+      ],
+      "temporal_cooccurrence_only": true,
+      "library_ownership_identified": false
+    },
+    {
+      "before": "numpy_mm_and_diagnostics",
+      "after": "torch_import",
+      "born_identities": [],
+      "gone_identities": [],
+      "newly_mapped_libraries": [
+        "/home/tanh/sponge-venv/lib/python3.13/site-packages/torch/_C.cpython-313-aarch64-linux-gnu.so",
+        "/home/tanh/sponge-venv/lib/python3.13/site-packages/torch/lib/libarm_compute.so",
+        "/home/tanh/sponge-venv/lib/python3.13/site-packages/torch/lib/libarm_compute_graph.so",
+        "/home/tanh/sponge-venv/lib/python3.13/site-packages/torch/lib/libc10.so",
+        "/home/tanh/sponge-venv/lib/python3.13/site-packages/torch/lib/libgfortran.so.5",
+        "/home/tanh/sponge-venv/lib/python3.13/site-packages/torch/lib/libgomp.so.1",
+        "/home/tanh/sponge-venv/lib/python3.13/site-packages/torch/lib/libopenblas.so.0",
+        "/home/tanh/sponge-venv/lib/python3.13/site-packages/torch/lib/libshm.so",
+        "/home/tanh/sponge-venv/lib/python3.13/site-packages/torch/lib/libtorch.so",
+        "/home/tanh/sponge-venv/lib/python3.13/site-packages/torch/lib/libtorch_cpu.so",
+        "/home/tanh/sponge-venv/lib/python3.13/site-packages/torch/lib/libtorch_global_deps.so",
+        "/home/tanh/sponge-venv/lib/python3.13/site-packages/torch/lib/libtorch_python.so",
+        "/usr/lib/aarch64-linux-gnu/libdl.so.2",
+        "/usr/lib/aarch64-linux-gnu/librt.so.1",
+        "/usr/lib/aarch64-linux-gnu/libssl.so.3",
+        "/usr/lib/aarch64-linux-gnu/libuuid.so.1.3.0",
+        "/usr/lib/python3.13/lib-dynload/_asyncio.cpython-313-aarch64-linux-gnu.so",
+        "/usr/lib/python3.13/lib-dynload/_multiprocessing.cpython-313-aarch64-linux-gnu.so",
+        "/usr/lib/python3.13/lib-dynload/_posixshmem.cpython-313-aarch64-linux-gnu.so",
+        "/usr/lib/python3.13/lib-dynload/_queue.cpython-313-aarch64-linux-gnu.so",
+        "/usr/lib/python3.13/lib-dynload/_ssl.cpython-313-aarch64-linux-gnu.so",
+        "/usr/lib/python3.13/lib-dynload/_uuid.cpython-313-aarch64-linux-gnu.so",
+        "/usr/lib/python3.13/lib-dynload/mmap.cpython-313-aarch64-linux-gnu.so"
+      ],
+      "temporal_cooccurrence_only": true,
+      "library_ownership_identified": false
+    },
+    {
+      "before": "torch_import",
+      "after": "torch_set_intraop",
+      "born_identities": [
+        {
+          "tid": 24419,
+          "start_ticks": 9208103
+        },
+        {
+          "tid": 24420,
+          "start_ticks": 9208103
+        },
+        {
+          "tid": 24421,
+          "start_ticks": 9208103
+        }
+      ],
+      "gone_identities": [],
+      "newly_mapped_libraries": [],
+      "temporal_cooccurrence_only": true,
+      "library_ownership_identified": false
+    },
+    {
+      "before": "torch_set_intraop",
+      "after": "torch_set_interop",
+      "born_identities": [],
+      "gone_identities": [],
+      "newly_mapped_libraries": [],
+      "temporal_cooccurrence_only": true,
+      "library_ownership_identified": false
+    },
+    {
+      "before": "torch_set_interop",
+      "after": "torch_ones",
+      "born_identities": [
+        {
+          "tid": 24422,
+          "start_ticks": 9208110
+        },
+        {
+          "tid": 24423,
+          "start_ticks": 9208110
+        },
+        {
+          "tid": 24424,
+          "start_ticks": 9208110
+        }
+      ],
+      "gone_identities": [],
+      "newly_mapped_libraries": [],
+      "temporal_cooccurrence_only": true,
+      "library_ownership_identified": false
+    },
+    {
+      "before": "torch_ones",
+      "after": "torch_mm",
+      "born_identities": [],
+      "gone_identities": [],
+      "newly_mapped_libraries": [],
+      "temporal_cooccurrence_only": true,
+      "library_ownership_identified": false
+    },
+    {
+      "before": "torch_mm",
+      "after": "torch_validation_and_gc",
+      "born_identities": [],
+      "gone_identities": [],
+      "newly_mapped_libraries": [],
+      "temporal_cooccurrence_only": true,
+      "library_ownership_identified": false
+    },
+    {
+      "before": "torch_validation_and_gc",
+      "after": "torch_diagnostics",
+      "born_identities": [],
+      "gone_identities": [],
+      "newly_mapped_libraries": [],
+      "temporal_cooccurrence_only": true,
+      "library_ownership_identified": false
+    },
+    {
+      "before": "torch_diagnostics",
+      "after": "final_adjacent",
+      "born_identities": [],
+      "gone_identities": [],
+      "newly_mapped_libraries": [],
+      "temporal_cooccurrence_only": true,
+      "library_ownership_identified": false
+    }
+  ],
+  "raw_path": "original/qa_result_01.json",
+  "scientific_endpoint": false,
+  "boot_cmdline_selector": "kernel_metadata.proc.cmdline",
+  "kernel_flag_selector": "kernel_metadata.kernel_config",
+  "original_files": 2,
+  "original_bytes": 199122,
+  "no_library_ownership_or_nms_causality_claim": true
+}

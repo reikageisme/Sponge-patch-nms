@@ -1,0 +1,18 @@
+{
+  "status": "QA_B_CLOSED_AFTER_FIRST_CASE_FAILURE_REMAINING_FOUR_CANCELLED",
+  "remote_local_sha256_match": {
+    "restore.json": "f9d39c4dadd03883fd30609ae85b9a6663a7884da1a7e1ee52d3cdc4b68272a5",
+    "lease_events.jsonl": "e245f2270f1e442de77c74d6e74620d10ea231944f617e559c9bf9f782641972",
+    "supervisor.log": "bf3a9b415e4a9ee91cc796f507f715db3a434875f101945330bacd8f20349a5a",
+    "registration.json": "907e42a860c2e9ffba591ed00be3afe641cfe7e4a7ce50267f34965210b680bb",
+    "lease_state.json": "b499009baec91e525fa93f8897e14c1f0fbf83526268ff1c17fceef582f2b5cb"
+  },
+  "case": "qa_normal_01",
+  "activation_probe_reached": false,
+  "new_model_timing_rows": 0,
+  "restore_receipt_status": "RESTORE_FAILED",
+  "separate_recovery": "qa_normal_01.recovery_reset.json",
+  "recovered_setup_result": "success",
+  "recovered_governor": "ondemand",
+  "no_retry_same_source": true
+}

@@ -1,0 +1,1 @@
+{"audit": {"structure_ok": true, "conditions_ok": true, "errors": [], "condition_errors": [], "n_jobs": 360, "unit": "image", "n_expected_images": 20}, "session_gate_pass": true, "quality_pass": false}

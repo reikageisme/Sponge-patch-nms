@@ -1,0 +1,10 @@
+{
+  "phase": "ONE_FUNCTIONAL_ONLY_MATERIAL40",
+  "standing_user_instructions": [
+    "Còn những gì thiếu cứ làm hết cho đầy đủ và chi tiết như việc đã làm với phàn cuda",
+    "Ok cho phép chạy thực nghiệm"
+  ],
+  "scope": "source/tensor/count/kernel/mask functional qualification; no latency/RSS/scientific smoke/full",
+  "limited_sleeping_exception_extended": false,
+  "actual_supervisor_review_sha256": "40b703c7fb2aa0b3c014fb593300f4c57bc3aa21eca031fe43f4d2d21b9fa453"
+}

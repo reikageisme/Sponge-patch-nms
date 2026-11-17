@@ -1,0 +1,11 @@
+Traceback (most recent call last):
+  File "/home/tanh/sponge-sim/pi3b_nms_predecessor_20261115/control.py", line 335, in <module>
+    if __name__=='__main__':raise SystemExit(main())
+                                             ~~~~^^
+  File "/home/tanh/sponge-sim/pi3b_nms_predecessor_20261115/control.py", line 332, in main
+    return payload(args)
+  File "/home/tanh/sponge-sim/pi3b_nms_predecessor_20261115/control.py", line 271, in payload
+    code=child.wait(timeout=args.qa_seconds);raise RuntimeError(f'QA child exited unexpectedly: {code}')
+                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+RuntimeError: QA child exited unexpectedly: -9
+{"status": "RESTORED", "errors": [], "wall_utc": 1794727460.794743}

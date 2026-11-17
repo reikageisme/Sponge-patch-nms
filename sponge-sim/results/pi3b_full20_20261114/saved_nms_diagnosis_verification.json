@@ -1,0 +1,10 @@
+{
+  "status": "POSTDATA_ALL200_CALLS_DIAGNOSTIC_VERIFIED_NO_RESCORING",
+  "raw_sha256": "3bfc20f3f9a82794ea6d3c3493a4e4f70db3a906973ecbc02b45e23c7d5d697c",
+  "diagnostic_sha256": "a57e7ec9fcd50a33fb71a3842e998ea91c26c8914cb0f375c3ecc876b880359d",
+  "transitions_sha256": "54a652cc8f26fe97c3f6948cb8153d953163e3af7971ea2fb22bf60fc0c43b47",
+  "all_calls_kept": true,
+  "no_device_measurement": true,
+  "registered_component_quality_pass": false,
+  "figure_visually_inspected": true
+}

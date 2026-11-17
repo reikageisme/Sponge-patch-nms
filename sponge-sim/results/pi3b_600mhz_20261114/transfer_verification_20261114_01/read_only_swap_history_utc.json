@@ -1,0 +1,17 @@
+{
+  "exit_code": 0,
+  "read_only": true,
+  "command": "journalctl --utc --since \"2026-11-14 03:44:00 UTC\" --until \"2026-11-14 05:13:28 UTC\" -u dev-zram0.swap -u systemd-zram-setup@zram0.service --no-pager --output=short-iso 2>&1",
+  "note": "Explicit UTC bounds; previous read_only_swap_context used unqualified bounds parsed in device local timezone",
+  "output": [
+    "2026-11-14T03:44:00+00:00 pi systemd[1]: dev-zram0.swap: Deactivated successfully.",
+    "2026-11-14T03:44:00+00:00 pi systemd[1]: Stopping systemd-zram-setup@zram0.service - Create swap on /dev/zram0...",
+    "2026-11-14T03:44:00+00:00 pi systemd[1]: systemd-zram-setup@zram0.service: Deactivated successfully.",
+    "2026-11-14T03:44:00+00:00 pi systemd[1]: Stopped systemd-zram-setup@zram0.service - Create swap on /dev/zram0.",
+    "2026-11-14T04:09:19+00:00 pi systemd[1]: Starting systemd-zram-setup@zram0.service - Create swap on /dev/zram0...",
+    "2026-11-14T04:09:20+00:00 pi systemd-makefs[2636]: /dev/zram0 successfully formatted as swap (label \"zram0\", uuid d4e24e00-556a-413c-a4be-5bc74a8e9bc3)",
+    "2026-11-14T04:09:20+00:00 pi systemd[1]: Finished systemd-zram-setup@zram0.service - Create swap on /dev/zram0.",
+    "2026-11-14T04:09:20+00:00 pi systemd[1]: Activating swap dev-zram0.swap - rpi-swap managed swap device (zram+file)...",
+    "2026-11-14T04:09:21+00:00 pi systemd[1]: Activated swap dev-zram0.swap - rpi-swap managed swap device (zram+file)."
+  ]
+}

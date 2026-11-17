@@ -1,0 +1,7 @@
+{
+  "exit_code": 0,
+  "output": [
+    "SSH_SERVICE_KEPT_OPEN_NO_MODEL_LOAD"
+  ],
+  "sshd_shutdown_requested": false
+}

@@ -1,0 +1,10 @@
+{
+  "purpose": "Recover setup unit after failed engineering QA; not a new QA trial",
+  "command": "from pathlib import Path\nimport json,subprocess\nchecks=subprocess.run(['systemctl','show','dev-zram0.swap','-p','What','-p','LoadState'],capture_output=True,text=True,timeout=10)\nfields=dict(x.split('=',1) for x in checks.stdout.splitlines() if '=' in x)\nassert checks.returncode==0 and fields=={'What':'/dev/zram0','LoadState':'loaded'},fields\nassert not any((Path('/run/systemd/system')/u).is_symlink() for u in ['dev-zram0.swap','rpi-zram-writeback.service','rpi-zram-writeback.timer'])\nfor argv in [['sudo','-n','systemctl','stop','rpi-zram-writeback.timer'],['sudo','-n','systemctl','stop','dev-zram0.swap'],['sudo','-n','systemctl','start','dev-zram0.swap'],['sudo','-n','systemctl','start','rpi-zram-writeback.timer']]:\n p=subprocess.run(argv,capture_output=True,text=True,timeout=30)\n print(json.dumps(dict(argv=argv,returncode=p.returncode,out=p.stdout,err=p.stderr)),flush=True)\n if p.returncode:raise SystemExit(p.returncode)\np=subprocess.run(['systemctl','show','dev-zram0.swap','systemd-zram-setup@zram0.service','rpi-zram-writeback.timer','-p','Id','-p','ActiveState','-p','Result'],capture_output=True,text=True,timeout=10)\nprint(json.dumps(dict(final_units=p.stdout,swaps=Path('/proc/swaps').read_text(),governor=Path('/sys/devices/system/cpu/cpufreq/policy0/scaling_governor').read_text())))",
+  "exit_code": 1,
+  "output": [
+    "{\"argv\": [\"sudo\", \"-n\", \"systemctl\", \"stop\", \"rpi-zram-writeback.timer\"], \"returncode\": 0, \"out\": \"\", \"err\": \"\"}",
+    "{\"argv\": [\"sudo\", \"-n\", \"systemctl\", \"stop\", \"dev-zram0.swap\"], \"returncode\": 0, \"out\": \"\", \"err\": \"\"}",
+    "{\"argv\": [\"sudo\", \"-n\", \"systemctl\", \"start\", \"dev-zram0.swap\"], \"returncode\": 1, \"out\": \"\", \"err\": \"A dependency job for dev-zram0.swap failed. See 'journalctl -xe' for details.\\n\"}"
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "status": "V2_CLOSED_FAILED_MDE_EVIDENCE_AND_PAPER_VERIFIED_NEW_FULL20_APPROVED_NOT_STARTED",
+  "old_files_unchanged": 21,
+  "new_original_files_unchanged": 14,
+  "source_frozen": true,
+  "full_started": false,
+  "smoke_quality_pass": false,
+  "restore_pass": true,
+  "study_tag": "prereg-pi3b-swapguard-v2-20261114",
+  "study_commit": "560b3aaf657fa574240e8ab463eefc20425538d8",
+  "report_sha256": "b5ccabd529816349074de09d47eabe87d6960a60b066459c123798df9330203b",
+  "summary_sha256": "15db4c11e001eb073f3e44a307404544cfcd553d4227ca754dfe0c673d194770",
+  "plot_png_sha256": "8a37c16aec4db9878d2a3966771f2cec6ce03c6cdb37b05f77b830983214948c",
+  "main_dirty_file_left_unstaged": true,
+  "new_full20_method_approved_in_reply": true,
+  "no_new_full20_measurement_yet": true
+}

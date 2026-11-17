@@ -1,0 +1,8 @@
+{
+  "initial_check_status": "FAILED_FILE_NOT_FOUND",
+  "error": "initial ad-hoc offline verification omitted /original when resolving saved RSS originals",
+  "initial_error_source": "tool cf3d33",
+  "correct_path": "runs/memory_full_01/original",
+  "measurement_or_original_files_changed": false,
+  "source_or_gate_changed": false
+}

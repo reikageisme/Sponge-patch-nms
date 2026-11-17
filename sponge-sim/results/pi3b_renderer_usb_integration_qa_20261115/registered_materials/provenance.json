@@ -1,0 +1,66 @@
+{
+  "copied_sources": {
+    "memory_worker.py": {
+      "source": "sponge-sim/studies/pi3b_renderer_memory_v1_20261114/memory_worker.py",
+      "first_line": 1,
+      "last_line": 143,
+      "sha256": "19599b0aee6e2bd3f40a75ff336d1680137f035399e8c32c49361f10f6c6d256"
+    },
+    "memory_campaign.py": {
+      "source": "sponge-sim/studies/pi3b_renderer_memory_v1_20261114/memory_campaign.py",
+      "first_line": 1,
+      "last_line": 140,
+      "sha256": "205e656469372f688088b0dc1d40b119fe6334b87304c284117a9bb6f859aa5e"
+    },
+    "cache.py": {
+      "source": "sponge-sim/studies/pi3b_renderer_memory_v1_20261114/cache.py",
+      "first_line": 1,
+      "last_line": 111,
+      "sha256": "150b36b0fb58d10932fad8fbcfb914be9bd079535bd6aec7366fe5a95f04701f"
+    },
+    "baseline_ops.py": {
+      "source": "sponge-sim/studies/pi3b_renderer_memory_v1_20261114/baseline_ops.py",
+      "first_line": 1,
+      "last_line": 96,
+      "sha256": "5bd6f0237b951fa170d299271164c0a388efd8a0bba18600d10235854e3225f3"
+    },
+    "preallocate.py": {
+      "source": "sponge-sim/studies/pi3b_renderer_memory_v1_20261114/preallocate.py",
+      "first_line": 1,
+      "last_line": 31,
+      "sha256": "ef2cc77dddf4842f476a3d99f714fe56dfdc8d65adcdb857ac3239d01e1fbebf"
+    },
+    "guard.py": {
+      "source": "sponge-sim/studies/pi3b_renderer_memory_v1_20261114/guard.py",
+      "first_line": 1,
+      "last_line": 91,
+      "sha256": "f669bc058b42869b7b2b40743c2cd2b6492d29ef3f86258d875ce68ca0cf3525"
+    },
+    "control.py": {
+      "source": "sponge-sim/studies/pi3b_renderer_memory_v1_20261114/control.py",
+      "first_line": 1,
+      "last_line": 338,
+      "sha256": "4652c4684e2b930529e392f7b4b5f5984c9bbc56846795f0f2dee75d6b9ffa4b"
+    },
+    "analyze_memory.py": {
+      "source": "sponge-sim/studies/pi3b_renderer_memory_v1_20261114/analyze_memory.py",
+      "first_line": 1,
+      "last_line": 173,
+      "sha256": "59765ba9884e83862765322e041da9348680e781852ab3530c98bbf218931ed1"
+    },
+    "stats_frozen.py": {
+      "source": "sponge-sim/studies/pi3b_renderer_memory_v1_20261114/stats_frozen.py",
+      "first_line": 1,
+      "last_line": 110,
+      "sha256": "748cc250a30806db715c02412915d357acaf289470b117bddeccf78eda20e8a6"
+    },
+    "build_engineering_lock.py": {
+      "source": "sponge-sim/studies/pi3b_renderer_memory_v1_20261114/build_engineering_lock.py",
+      "first_line": 1,
+      "last_line": 28,
+      "sha256": "ee5093542ee70312d8c06b80a49add0a47d1fb5622a76ffa15245f33753ad293"
+    }
+  },
+  "usb_contract_source": "sponge-sim/results/pi3b_usb_guard_qa_20261115/qa_metadata_01.json",
+  "usb_contract_source_sha256": "47eef786fd4902f2b0661a00153bfaae6f09abe9a2a12966589c388e597423fa"
+}

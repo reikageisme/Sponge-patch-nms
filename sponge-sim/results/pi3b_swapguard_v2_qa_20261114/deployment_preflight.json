@@ -1,0 +1,9 @@
+{
+  "command": "from pathlib import Path\nimport json,hashlib,sys\nb=Path.home()/'sponge-sim'/'pi3b_600mhz_swapguard_v2'\nl=json.loads((b/'lock.json').read_text())\nold=b.with_name('pi3b_600mhz')\nfor n in l['inputs']+[l['weights']]:\n (b/n).symlink_to(old/n)\nhashes={}\nfor r in l['files']:\n p=b/r['name']; h=hashlib.sha256(p.read_bytes()).hexdigest()\n assert h==r['sha256'],r['name']\n hashes[r['name']]=h\nsys.path.insert(0,str(b))\nimport control\nsnapshot=control.System().snapshot()\ncontrol.validate_snapshot(snapshot)\nimport numpy,scipy,psutil\nprint(json.dumps(dict(source_and_inputs_verified=hashes,lock_sha256=hashlib.sha256((b/'lock.json').read_bytes()).hexdigest(),snapshot=snapshot,versions=dict(numpy=numpy.__version__,scipy=scipy.__version__,psutil=psutil.__version__),no_model_import=True)))",
+  "exit_code": 1,
+  "output": [
+    "Traceback (most recent call last):",
+    "  File \"<stdin>\", line 17, in <module>",
+    "ModuleNotFoundError: No module named 'scipy'"
+  ]
+}

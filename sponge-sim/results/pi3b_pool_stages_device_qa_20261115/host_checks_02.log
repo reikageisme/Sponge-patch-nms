@@ -1,0 +1,23 @@
+.............F...............................                            [100%]
+================================== FAILURES ===================================
+_________________ test_stage_name_birth_reuse_is_not_accepted _________________
+
+tmp_path = WindowsPath('C:/Users/Tanh/AppData/Local/Temp/pytest-of-Tanh/pytest-86/test_stage_name_birth_reuse_is0')
+monkeypatch = <_pytest.monkeypatch.MonkeyPatch object at 0x000002B62D7F9F30>
+
+    def test_stage_name_birth_reuse_is_not_accepted(tmp_path,monkeypatch):
+        proc,cg=tmp_path/'proc',tmp_path/'cg';task=proc/'self/task/11';task.mkdir(parents=True);(cg/'qa').mkdir(parents=True)
+        (task/'stat').write_text('placeholder');(task/'comm').write_text('worker\n');(proc/'self/maps').write_text('')
+        snap=dict(complete_stable_set=True,tids_before=[11],threads={'11':dict(stat=dict(start_ticks=5))},
+                  cgroup_path='/qa',cgroup_ancestors=[dict(path='/qa'),dict(path='/')])
+        monkeypatch.setattr(m.inventory,'snapshot',lambda *args:snap)
+        sequence=iter([5,6]);monkeypatch.setattr(m,'birth',lambda *args:next(sequence))
+        assert not m.stage('a',proc,cg)['complete']
+>       b=copy.deepcopy(a);b['inventory']['start_ticks']+=1
+                        ^
+E       NameError: name 'a' is not defined
+
+sponge-sim\tests\test_pi3b_pool_stage_metadata.py:109: NameError
+=========================== short test summary info ===========================
+FAILED sponge-sim\tests\test_pi3b_pool_stage_metadata.py::test_stage_name_birth_reuse_is_not_accepted
+1 failed, 44 passed in 0.78s

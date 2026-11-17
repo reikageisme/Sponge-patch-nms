@@ -1,0 +1,21 @@
+{
+  "status": "READ_ONLY_A0B_NOT_LOAD_AUTHORIZATION",
+  "source_sha256": {
+    "sponge-sim/studies/arm_preflight_v2/battery_paths_only.py": "69a62631538785a38b6a79a5a945c543184e455c7a2bcf7fed9731cc07e6267e",
+    "sponge-sim/prereg/PREREG_ARM_BATTERY_A0B_20261107.md": "48efd6deae7985cea7e7a9676f543f682acb9213791c78c7bf520c0c035a2a87"
+  },
+  "host": "100.85.153.4",
+  "user": "u0_a445",
+  "port": 8022,
+  "remote_source_rel": "studies/arm_battery_a0b_20261107_01",
+  "remote_result_rel": "results/phone_a36/battery_a0b_20261107_01",
+  "files": [
+    "type",
+    "capacity",
+    "status",
+    "temp"
+  ],
+  "attempts_per_file": 1,
+  "conversion": false,
+  "load": false
+}

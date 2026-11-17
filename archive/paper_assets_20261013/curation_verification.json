@@ -1,0 +1,8 @@
+{
+  "source_entries": 830,
+  "unique_sha256": 476,
+  "copy_hash_mismatches": [],
+  "all_15_contact_sheets_visually_reviewed": true,
+  "embedded_media_identical_to_existing_disk_assets": 27,
+  "qa_scope": "Curated image copies, byte identity and visual triage only; not experimental replay"
+}

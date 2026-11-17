@@ -1,0 +1,28 @@
+{
+  "status": "PRIMARY_SOURCE_READING_NOT_BINARY_FINGERPRINT",
+  "phone_version_from": "capture/environment.txt:TERMUX_VERSION",
+  "observed_googleplay_version": "googleplay.2026.10.09",
+  "references": [
+    {
+      "url": "https://github.com/termux-play-store/termux-apps/releases",
+      "support": "release lists googleplay.2026.10.09"
+    },
+    {
+      "url": "https://github.com/termux-play-store/termux-apps/blob/main/termux-app/src/main/java/com/termux/app/api/TermuxApiHandler.java",
+      "support": "main branch dispatches BatteryStatus inside main app; no proof of installed binary dispatch"
+    },
+    {
+      "url": "https://github.com/termux-play-store/termux-apps/blob/main/termux-app/src/main/java/com/termux/app/api/BatteryStatusAPI.java",
+      "support": "main source numeric Celsius; missing temp may be null"
+    },
+    {
+      "url": "https://github.com/termux/termux-api/blob/v0.53.0/app/src/main/java/com/termux/api/apis/BatteryStatusAPI.java",
+      "support": "pinned initial schema reference, distinct from A36 binary"
+    }
+  ],
+  "exact_release_source_fetch": "web cache miss; not treated as source absence or successful binding",
+  "actual_binary_sha256": null,
+  "companion_apk_version": null,
+  "CLI_is_not_APK_version": true,
+  "no_migration_or_installation_performed": true
+}

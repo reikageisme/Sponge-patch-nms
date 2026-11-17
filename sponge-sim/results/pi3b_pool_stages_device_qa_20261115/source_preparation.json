@@ -1,0 +1,18 @@
+{
+  "tag": "qa-pi3b-pool-stages-20261115",
+  "scientific_endpoint_enabled": false,
+  "source_sha256": {
+    "counters.py": "ec4dd03f544096f23640f03e908368a7e644a62c68c6d2f3deb0f5f216a0734e",
+    "inventory.py": "dffe8ba397df88a5b23037da4dbff0fe143ea9ca841df10c9a2ad570c0a62966",
+    "metadata.py": "d9067b01585e5f5e536c946b3b245042fbc2ef3fa3aec92046585baee4b1d2da",
+    "qa_worker.py": "cac8fd1027b20305546dfdd8d70f1057ab7a0d90585c081b6ffe122fd9f48af9",
+    "qa_config.json": "5cb2531e9c52076860eea0eb5a638e7ad5762fd862476356b59814a6f17c979d"
+  },
+  "plan_sha256": "6715dc8d53f9693736802c4120768315a205c5cc5e7663bb5252d5a0c6d56843",
+  "driver_sha256": "b1b96283493da95865e6d31709f65aa74a1ff0cd4299a3cc56058affed852439",
+  "host_tests": 45,
+  "host_checks_sha256": "35ca4c26066ae8d4f0952f14f749d5221cb43db08f52417d371e43fa94bb0424",
+  "copied_parser_inventory_ast_unchanged": true,
+  "remote_python_strings_syntax_checked": 3,
+  "device_invocations_at_checkpoint": 0
+}

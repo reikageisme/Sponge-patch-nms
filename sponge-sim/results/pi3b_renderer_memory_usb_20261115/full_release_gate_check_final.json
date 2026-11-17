@@ -1,0 +1,10 @@
+{
+  "status": "FULL_RELEASE_AND_FETCH_REFUSE_WITHOUT_APPROVAL_MANIFEST",
+  "launcher_sha256": "b69f56e2a36ba7e6aabe740619e2a12ff356e3c1198873f4f558ecdb119cd184",
+  "collector_sha256": "847ee386c03597c9fc4668edd777768a8db5e9a73022f6e1146938f245de9f30",
+  "no_remote_action": true,
+  "approval_exists": false,
+  "no_full_directory": true,
+  "launcher_function_ast_unchanged_after_provenance_comment_fix": true,
+  "previous_check_sha256": "a60218a888d282e8b5101112ecb74d3b8c3f7deb12851b80dc5e4a5c0d2e3edf"
+}

@@ -1,0 +1,9 @@
+{
+  "status": "FUNCTIONAL40_READY_BEFORE_FIRST_MODEL_LOAD",
+  "package_files": 25,
+  "runtime_python_unchanged": 19,
+  "host_tests": 12,
+  "source_archive_verified": true,
+  "scientific_enabled": false,
+  "model_not_yet_run": true
+}

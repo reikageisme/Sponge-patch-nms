@@ -1,0 +1,202 @@
+{
+  "status": "STATIC_ARITHMETIC_NOT_MEASURED_RSS_OR_FPS",
+  "date": "2026-11-08",
+  "MiB_divisor": 1048576,
+  "assumptions": "Square batch1 RGB float32 input; K dense masks; byte size only. No model/OS/runtime/workspace/allocator peak inference.",
+  "rows": [
+    {
+      "height": 320,
+      "width": 320,
+      "K": 10,
+      "input_float32_bytes": 1228800,
+      "clean_adv_pair_float32_bytes": 2457600,
+      "dense_uint8_masks_bytes": 1024000,
+      "all_masks_float32_bytes_hypothetical": 4096000,
+      "current_float_upsample_chunk_max_bytes": 4096000,
+      "current_chunk_step": 312,
+      "current_uint8_chunks_total_bytes": 1024000,
+      "current_uint8_cat_output_bytes": 1024000,
+      "MiB": {
+        "input_float32": 1.171875,
+        "clean_adv_pair_float32": 2.34375,
+        "dense_uint8_masks": 0.9765625,
+        "current_float_upsample_chunk_max": 3.90625,
+        "current_uint8_chunks_total": 0.9765625,
+        "current_uint8_cat_output": 0.9765625
+      }
+    },
+    {
+      "height": 320,
+      "width": 320,
+      "K": 50,
+      "input_float32_bytes": 1228800,
+      "clean_adv_pair_float32_bytes": 2457600,
+      "dense_uint8_masks_bytes": 5120000,
+      "all_masks_float32_bytes_hypothetical": 20480000,
+      "current_float_upsample_chunk_max_bytes": 20480000,
+      "current_chunk_step": 312,
+      "current_uint8_chunks_total_bytes": 5120000,
+      "current_uint8_cat_output_bytes": 5120000,
+      "MiB": {
+        "input_float32": 1.171875,
+        "clean_adv_pair_float32": 2.34375,
+        "dense_uint8_masks": 4.8828125,
+        "current_float_upsample_chunk_max": 19.53125,
+        "current_uint8_chunks_total": 4.8828125,
+        "current_uint8_cat_output": 4.8828125
+      }
+    },
+    {
+      "height": 320,
+      "width": 320,
+      "K": 100,
+      "input_float32_bytes": 1228800,
+      "clean_adv_pair_float32_bytes": 2457600,
+      "dense_uint8_masks_bytes": 10240000,
+      "all_masks_float32_bytes_hypothetical": 40960000,
+      "current_float_upsample_chunk_max_bytes": 40960000,
+      "current_chunk_step": 312,
+      "current_uint8_chunks_total_bytes": 10240000,
+      "current_uint8_cat_output_bytes": 10240000,
+      "MiB": {
+        "input_float32": 1.171875,
+        "clean_adv_pair_float32": 2.34375,
+        "dense_uint8_masks": 9.765625,
+        "current_float_upsample_chunk_max": 39.0625,
+        "current_uint8_chunks_total": 9.765625,
+        "current_uint8_cat_output": 9.765625
+      }
+    },
+    {
+      "height": 320,
+      "width": 320,
+      "K": 300,
+      "input_float32_bytes": 1228800,
+      "clean_adv_pair_float32_bytes": 2457600,
+      "dense_uint8_masks_bytes": 30720000,
+      "all_masks_float32_bytes_hypothetical": 122880000,
+      "current_float_upsample_chunk_max_bytes": 122880000,
+      "current_chunk_step": 312,
+      "current_uint8_chunks_total_bytes": 30720000,
+      "current_uint8_cat_output_bytes": 30720000,
+      "MiB": {
+        "input_float32": 1.171875,
+        "clean_adv_pair_float32": 2.34375,
+        "dense_uint8_masks": 29.296875,
+        "current_float_upsample_chunk_max": 117.1875,
+        "current_uint8_chunks_total": 29.296875,
+        "current_uint8_cat_output": 29.296875
+      }
+    },
+    {
+      "height": 640,
+      "width": 640,
+      "K": 10,
+      "input_float32_bytes": 4915200,
+      "clean_adv_pair_float32_bytes": 9830400,
+      "dense_uint8_masks_bytes": 4096000,
+      "all_masks_float32_bytes_hypothetical": 16384000,
+      "current_float_upsample_chunk_max_bytes": 16384000,
+      "current_chunk_step": 78,
+      "current_uint8_chunks_total_bytes": 4096000,
+      "current_uint8_cat_output_bytes": 4096000,
+      "MiB": {
+        "input_float32": 4.6875,
+        "clean_adv_pair_float32": 9.375,
+        "dense_uint8_masks": 3.90625,
+        "current_float_upsample_chunk_max": 15.625,
+        "current_uint8_chunks_total": 3.90625,
+        "current_uint8_cat_output": 3.90625
+      }
+    },
+    {
+      "height": 640,
+      "width": 640,
+      "K": 50,
+      "input_float32_bytes": 4915200,
+      "clean_adv_pair_float32_bytes": 9830400,
+      "dense_uint8_masks_bytes": 20480000,
+      "all_masks_float32_bytes_hypothetical": 81920000,
+      "current_float_upsample_chunk_max_bytes": 81920000,
+      "current_chunk_step": 78,
+      "current_uint8_chunks_total_bytes": 20480000,
+      "current_uint8_cat_output_bytes": 20480000,
+      "MiB": {
+        "input_float32": 4.6875,
+        "clean_adv_pair_float32": 9.375,
+        "dense_uint8_masks": 19.53125,
+        "current_float_upsample_chunk_max": 78.125,
+        "current_uint8_chunks_total": 19.53125,
+        "current_uint8_cat_output": 19.53125
+      }
+    },
+    {
+      "height": 640,
+      "width": 640,
+      "K": 100,
+      "input_float32_bytes": 4915200,
+      "clean_adv_pair_float32_bytes": 9830400,
+      "dense_uint8_masks_bytes": 40960000,
+      "all_masks_float32_bytes_hypothetical": 163840000,
+      "current_float_upsample_chunk_max_bytes": 127795200,
+      "current_chunk_step": 78,
+      "current_uint8_chunks_total_bytes": 40960000,
+      "current_uint8_cat_output_bytes": 40960000,
+      "MiB": {
+        "input_float32": 4.6875,
+        "clean_adv_pair_float32": 9.375,
+        "dense_uint8_masks": 39.0625,
+        "current_float_upsample_chunk_max": 121.875,
+        "current_uint8_chunks_total": 39.0625,
+        "current_uint8_cat_output": 39.0625
+      }
+    },
+    {
+      "height": 640,
+      "width": 640,
+      "K": 300,
+      "input_float32_bytes": 4915200,
+      "clean_adv_pair_float32_bytes": 9830400,
+      "dense_uint8_masks_bytes": 122880000,
+      "all_masks_float32_bytes_hypothetical": 491520000,
+      "current_float_upsample_chunk_max_bytes": 127795200,
+      "current_chunk_step": 78,
+      "current_uint8_chunks_total_bytes": 122880000,
+      "current_uint8_cat_output_bytes": 122880000,
+      "MiB": {
+        "input_float32": 4.6875,
+        "clean_adv_pair_float32": 9.375,
+        "dense_uint8_masks": 117.1875,
+        "current_float_upsample_chunk_max": 121.875,
+        "current_uint8_chunks_total": 117.1875,
+        "current_uint8_cat_output": 117.1875
+      }
+    }
+  ],
+  "current_laptop_all_pairs_retained": {
+    "n_images": 20,
+    "bytes": 196608000,
+    "MiB": 187.5
+  },
+  "one_pair_streamed": {
+    "bytes": 9830400,
+    "MiB": 9.375
+  },
+  "limitations": [
+    "Chunk/cat buffers are not summed into a claimed whole-process peak.",
+    "Hypothetical all-float stack is NOT the current chunked renderer allocation.",
+    "Current crop already operates in place with separable row/column masks.",
+    "Changing backend/precision/resolution/caps requires separate registered conditions and correctness checks.",
+    "No Pi3 hardware, install, model inference or memory/timing benchmark used."
+  ],
+  "local_source_sha256": {
+    "C:\\Users\\Tanh\\AppData\\Roaming\\Python\\Python314\\site-packages\\ultralytics\\utils\\ops.py": "828de5d265ab91a792acae836f9380d07abda2a15a501170fc9f49d7a448688d",
+    "sponge-sim\\studies\\laptop_seg\\run.py": "258e63c9f4ce376458d1a817811c277420865ea4d1b6bdd04e0409dea1797da4",
+    "sponge-sim\\studies\\laptop_seg\\lock_carryover_full.json": "e0481a56789d1b6d628e416a9fb02b0118e2faa1cfd7d83f40f32bdd4bd9c0a0"
+  },
+  "local_locators": {
+    "preload": "run.py:161 frozen, 162 images, 165 attacked arrays",
+    "mask": "ops.py:513 process_mask_native, 32M-pixel chunks, uint8 list, torch.cat",
+    "crop": "ops.py:461 crop_mask, row/column in-place separation"
+  }
+}

@@ -1,0 +1,11 @@
+.............................................................            [100%]
+============================== warnings summary ===============================
+sponge-sim\studies\pi3b_renderer_prealloc_20261114\control.py:217
+  D:\Sponge-patch-study\sponge-sim\studies\pi3b_renderer_prealloc_20261114\control.py:217: SyntaxWarning: "\." is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\."? A raw string is also an option.
+    if not re.fullmatch('[A-Za-z_]+\.py',name) or hashlib.sha256((base/name).read_bytes()).hexdigest()!=digest:
+
+tests/test_pi3b_renderer_supervisor_analysis.py::test_lease_and_guard_ast_match_previously_qualified_full20_source
+  <unknown>:217: SyntaxWarning: "\." is an invalid escape sequence. Such sequences will not work in the future. Did you mean "\\."? A raw string is also an option.
+
+-- Docs: https://docs.pytest.org/en/stable/how-to/capture-warnings.html
+61 passed, 2 warnings in 36.73s

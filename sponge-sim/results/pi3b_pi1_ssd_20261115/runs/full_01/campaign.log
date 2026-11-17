@@ -1,0 +1,6 @@
+start_utc=2026-11-15T08:48:10Z mode=full tag=prereg-pi3b-pi1-ssd-20261115 commit=d5c14c83bdff26ed5722db489375742aaba217d7 orig_governor=ondemand
+governor=powersave swap_total_kb=0
+throttled=throttled=0x50005 clock=frequency(48)=600000000 temp=temp=38.6'C
+usb_block=sda sdb 
+mounts_sd=0
+restored governor=ondemand swap_total_kb=926716

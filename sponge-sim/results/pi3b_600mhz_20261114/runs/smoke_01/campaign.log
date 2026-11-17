@@ -1,0 +1,5 @@
+start_utc=2026-11-14T03:21:30Z mode=smoke tag=prereg-pi3b-600mhz-20261114 commit=c80cf8163e71e643acd2708f368f06ba6f349168 orig_governor=ondemand
+governor=powersave swap_total_kb=0
+throttled=throttled=0x50005 clock=frequency(48)=600000000 temp=temp=33.8'C
+end_utc=2026-11-14T03:42:55Z
+restored governor=ondemand swap_total_kb=0

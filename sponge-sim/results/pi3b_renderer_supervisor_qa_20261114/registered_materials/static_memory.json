@@ -1,0 +1,179 @@
+{
+  "status": "STATIC_STORAGE_MODEL_NOT_RSS_OR_SPEED",
+  "assumptions": [
+    "FP32 coefficients and resized logits, uint8 output, standard dense tensor storage.",
+    "Includes coefficient tensor, output/chunks only; excludes model, inputs, prototypes, crop grids, allocator, thread stacks and operator workspaces.",
+    "No native profiler or empirical peak-memory measurement; formulas may not predict runtime RSS.",
+    "Bilinear interpolation may have unmodeled internal allocations. Small K can regress modeled storage."
+  ],
+  "rows": [
+    {
+      "k": 0,
+      "shape": [
+        640,
+        640
+      ],
+      "pixel_budget": 32000000,
+      "baseline_step": 78,
+      "candidate_step": 78,
+      "coefficients_bytes": 0,
+      "baseline_max_modeled_live_bytes": 0,
+      "candidate_max_modeled_live_bytes": 0,
+      "modeled_difference_bytes": 0
+    },
+    {
+      "k": 1,
+      "shape": [
+        640,
+        640
+      ],
+      "pixel_budget": 32000000,
+      "baseline_step": 78,
+      "candidate_step": 78,
+      "coefficients_bytes": 102400,
+      "baseline_max_modeled_live_bytes": 2150400,
+      "candidate_max_modeled_live_bytes": 2150400,
+      "modeled_difference_bytes": 0
+    },
+    {
+      "k": 39,
+      "shape": [
+        640,
+        640
+      ],
+      "pixel_budget": 32000000,
+      "baseline_step": 78,
+      "candidate_step": 78,
+      "coefficients_bytes": 3993600,
+      "baseline_max_modeled_live_bytes": 83865600,
+      "candidate_max_modeled_live_bytes": 83865600,
+      "modeled_difference_bytes": 0
+    },
+    {
+      "k": 78,
+      "shape": [
+        640,
+        640
+      ],
+      "pixel_budget": 32000000,
+      "baseline_step": 78,
+      "candidate_step": 78,
+      "coefficients_bytes": 7987200,
+      "baseline_max_modeled_live_bytes": 167731200,
+      "candidate_max_modeled_live_bytes": 167731200,
+      "modeled_difference_bytes": 0
+    },
+    {
+      "k": 100,
+      "shape": [
+        640,
+        640
+      ],
+      "pixel_budget": 32000000,
+      "baseline_step": 78,
+      "candidate_step": 78,
+      "coefficients_bytes": 10240000,
+      "baseline_max_modeled_live_bytes": 169984000,
+      "candidate_max_modeled_live_bytes": 178995200,
+      "modeled_difference_bytes": -9011200
+    },
+    {
+      "k": 300,
+      "shape": [
+        640,
+        640
+      ],
+      "pixel_budget": 32000000,
+      "baseline_step": 78,
+      "candidate_step": 78,
+      "coefficients_bytes": 30720000,
+      "baseline_max_modeled_live_bytes": 276480000,
+      "candidate_max_modeled_live_bytes": 281395200,
+      "modeled_difference_bytes": -4915200
+    },
+    {
+      "k": 0,
+      "shape": [
+        640,
+        640
+      ],
+      "pixel_budget": 16000000,
+      "baseline_step": 78,
+      "candidate_step": 39,
+      "coefficients_bytes": 0,
+      "baseline_max_modeled_live_bytes": 0,
+      "candidate_max_modeled_live_bytes": 0,
+      "modeled_difference_bytes": 0
+    },
+    {
+      "k": 1,
+      "shape": [
+        640,
+        640
+      ],
+      "pixel_budget": 16000000,
+      "baseline_step": 78,
+      "candidate_step": 39,
+      "coefficients_bytes": 102400,
+      "baseline_max_modeled_live_bytes": 2150400,
+      "candidate_max_modeled_live_bytes": 2150400,
+      "modeled_difference_bytes": 0
+    },
+    {
+      "k": 39,
+      "shape": [
+        640,
+        640
+      ],
+      "pixel_budget": 16000000,
+      "baseline_step": 78,
+      "candidate_step": 39,
+      "coefficients_bytes": 3993600,
+      "baseline_max_modeled_live_bytes": 83865600,
+      "candidate_max_modeled_live_bytes": 83865600,
+      "modeled_difference_bytes": 0
+    },
+    {
+      "k": 78,
+      "shape": [
+        640,
+        640
+      ],
+      "pixel_budget": 16000000,
+      "baseline_step": 78,
+      "candidate_step": 39,
+      "coefficients_bytes": 7987200,
+      "baseline_max_modeled_live_bytes": 167731200,
+      "candidate_max_modeled_live_bytes": 103833600,
+      "modeled_difference_bytes": 63897600
+    },
+    {
+      "k": 100,
+      "shape": [
+        640,
+        640
+      ],
+      "pixel_budget": 16000000,
+      "baseline_step": 78,
+      "candidate_step": 39,
+      "coefficients_bytes": 10240000,
+      "baseline_max_modeled_live_bytes": 169984000,
+      "candidate_max_modeled_live_bytes": 115097600,
+      "modeled_difference_bytes": 54886400
+    },
+    {
+      "k": 300,
+      "shape": [
+        640,
+        640
+      ],
+      "pixel_budget": 16000000,
+      "baseline_step": 78,
+      "candidate_step": 39,
+      "coefficients_bytes": 30720000,
+      "baseline_max_modeled_live_bytes": 276480000,
+      "candidate_max_modeled_live_bytes": 217497600,
+      "modeled_difference_bytes": 58982400
+    }
+  ]
+}

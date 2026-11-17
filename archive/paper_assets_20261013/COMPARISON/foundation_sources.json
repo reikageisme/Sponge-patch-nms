@@ -1,0 +1,71 @@
+{
+  "underload": {
+    "url": "https://arxiv.org/html/2412.02171v2",
+    "version": "13 March 2025",
+    "table": "Table 1, YOLOv8s COCO columns",
+    "metric": "mAP50 percent",
+    "rows": [
+      [
+        "Standard clean",
+        57.7
+      ],
+      [
+        "Standard Overload",
+        20.1
+      ],
+      [
+        "Underload clean",
+        45.7
+      ],
+      [
+        "Underload Overload",
+        42.0
+      ]
+    ],
+    "note": "Published adversarial-training comparison, not our graybox patch protocol."
+  },
+  "evade": {
+    "url": "https://proceedings.neurips.cc/paper_files/paper/2025/file/371713c3e5314dff9483c62c5abb98a8-Paper-Conference.pdf",
+    "table": "Table 3, PDF page 7, YOLOv8n same-source/same-target entries",
+    "metric": "Rounded-up average output boxes after NMS",
+    "rows": [
+      [
+        "Genuine",
+        6
+      ],
+      [
+        "Daedalus",
+        247
+      ],
+      [
+        "Overload",
+        300
+      ],
+      [
+        "Phantom Sponge",
+        228
+      ],
+      [
+        "Beyond Phantom Sponge",
+        151
+      ]
+    ],
+    "note": "COCO2017 validation. Counts after NMS are not our before-NMS candidates; counts are not latency."
+  },
+  "local": {
+    "path": "outputs/extended_q1_20261002/analysis.json",
+    "metric": "COCO AP50:95 bbox percent",
+    "rows": [
+      [
+        "Clean",
+        34.079449954282424
+      ],
+      [
+        "SG-GA q2500",
+        29.967882466988264
+      ]
+    ],
+    "note": "128-image COCO val2017 subset, YOLOv8n 320 px, patch4%,10seeds; patch AP SD0.468259pp. Different objective/data/metric from published panels.",
+    "sha256": "5f3b9de12755c5f9508590973590e631cd674bd9f9691618143cb39c9f5f2526"
+  }
+}

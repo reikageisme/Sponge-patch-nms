@@ -1,0 +1,107 @@
+{
+  "source": {
+    "key": "yolo13_2025",
+    "version": "arXiv2506.17733v2 (5 September2025)",
+    "url": "https://arxiv.org/html/2506.17733v2#S4",
+    "pdf": "https://arxiv.org/pdf/2506.17733v2",
+    "table": "Table I",
+    "location": "HTML lines200–218; protocol IV-A2 lines247–249",
+    "pdf_page": 7,
+    "protocol_pdf_page": 7,
+    "local_pdf": "D:\\Physical-Visual-DoS-EdgeAI-main\\_paper_revision_20261013\\yolov13_v2_primary.pdf",
+    "pdf_sha256": "7b37fe059ae4686dd19664da8167f6f249dda6d799902ce4a55f20d6ac778611",
+    "verification": "pypdf text extraction of downloaded primary v2 PDF confirms Table I and Tesla T4 TensorRT FP16 on page7"
+  },
+  "published_protocol": {
+    "dataset": "MS COCO2017 validation,80classes",
+    "training_dataset": "COCOtrain2017",
+    "input_px": 640,
+    "hardware": "Tesla T4",
+    "backend": "TensorRT",
+    "precision": "FP16",
+    "timing_label": "Published inference latency; do not relabel preprocessing+inference+postprocessing pipeline",
+    "training_epochs": 600,
+    "batch_training": 256,
+    "source_note": "Paper says YOLO11 and YOLO12 v1.0 variants reproduced using official settings on same platform"
+  },
+  "published_rows": [
+    {
+      "model": "YOLO11n",
+      "ap50_95_pct": 38.6,
+      "ap50_pct": 54.2,
+      "ap75_pct": 41.6,
+      "latency_ms": 1.53,
+      "params_m": 2.6,
+      "flops_g": 6.5
+    },
+    {
+      "model": "YOLOv12n",
+      "ap50_95_pct": 40.1,
+      "ap50_pct": 56,
+      "ap75_pct": 43.4,
+      "latency_ms": 1.83,
+      "params_m": 2.6,
+      "flops_g": 6.5
+    },
+    {
+      "model": "YOLOv13n",
+      "ap50_95_pct": 41.6,
+      "ap50_pct": 57.8,
+      "ap75_pct": 45.1,
+      "latency_ms": 1.97,
+      "params_m": 2.5,
+      "flops_g": 6.4
+    },
+    {
+      "model": "YOLOv13s",
+      "ap50_95_pct": 48,
+      "ap50_pct": 65.2,
+      "ap75_pct": 52,
+      "latency_ms": 2.98,
+      "params_m": 9,
+      "flops_g": 20.8
+    }
+  ],
+  "local_protocol": {
+    "dataset": "11,123 COCO+AdvT-shirt fixedsplit; test1668images;1personclass",
+    "input_px": 416,
+    "hardware": "RTX5060",
+    "backend": "PyTorchSDPAfallback",
+    "precision": "FP32latency",
+    "timing_label": "Preprocess+inference+postprocess perframe median; then5seedmean",
+    "not_comparable_axes": true
+  },
+  "figure_guidance": "Two separate panels by protocol; compare rankings/tradeoff WITHIN each panel; no cross-panel AP subtraction or latencyratio, no claim local beats published. Caption says changed dataset/classes/split/input/backend/precision/capacity/budgets. Values41.7/43.2/44.7 are NOT TableI AP50:95 and must not enter chart.",
+  "foundation_comparison": [
+    {
+      "key": "underload2025",
+      "advantage": "Defense explicitly hardware-aware and evaluates real-time restoration against latency attacks.",
+      "limitation": "Requires adversarial training and particular testedhardware/threat; not evidence for our grayboxpatch efficacy.",
+      "our_route_relation": "Our CPUcomponent/stream measurement useful as cheaper mechanismcheck, but does not supersede robusttraining result."
+    },
+    {
+      "key": "evade2025",
+      "advantage": "Practicalframework checks formats/hardware/quantization and downstream deadlines.",
+      "limitation": "Negativeimpact conditional on testeddeployments, not universal impossibility.",
+      "our_route_relation": "Our fixedbudgetgrayboxpatch and nullprimary adds independently auditable boundary evidence; fewer platforms means narrower validity."
+    },
+    {
+      "key": "apde2025",
+      "advantage": "Unifiedpatchdefensebenchmark, multipleattacks/models/metrics,adaptiveevaluations.",
+      "limitation": "Patch/integritydefense not identical to availabilityQoS; defendedAP cannot stand in for latency.",
+      "our_route_relation": "Our candidate/AP/backend/QoS separation covers systemsquestion; small128subset and methods not SOTAsuperiority."
+    },
+    {
+      "key": "badpatch2025",
+      "advantage": "Naturalisticcustomizablepatches and physicalAdvT-shirtdatawithperson/patchboxes.",
+      "limitation": "Evasiondataset, no SpongeDoSdeadlinevalidation; our1131vs1123mirror mismatch disclosed.",
+      "our_route_relation": "Usefulphysicalclothingcorpus for persondetectorselection; our digital4%patch not equallyphysical."
+    },
+    {
+      "key": "grac2025",
+      "advantage": "Optimizesviewpointgradientconflict/illumination and confirms physicalcamouflage.",
+      "limitation": "Gradient-basedobjectsurface texture and evasion target differ from locallimitedquerypatch.",
+      "our_route_relation": "Our no-gradientconstraint may fit narrowerfeedbackchannels; currentmeasurementdoesnotshowbetterstrengthortransfer."
+    }
+  ]
+}

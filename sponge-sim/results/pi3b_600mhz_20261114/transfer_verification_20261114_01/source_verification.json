@@ -1,0 +1,39 @@
+{
+  "tag": "prereg-pi3b-600mhz-20261114",
+  "commit": "c80cf8163e71e643acd2708f368f06ba6f349168",
+  "files": {
+    "run.py": {
+      "working_sha256": "9cc349be2c265fb4615d0016e9dae4a5aef53961df0d603abcb42d7a9fdbec8a",
+      "tag_blob_sha256": "9cc349be2c265fb4615d0016e9dae4a5aef53961df0d603abcb42d7a9fdbec8a",
+      "byte_equal": true
+    },
+    "campaign.sh": {
+      "working_sha256": "262617ea1aecfd8454cdf67deb5144146df3ab2512d9c76d2cb4241528e45095",
+      "tag_blob_sha256": "262617ea1aecfd8454cdf67deb5144146df3ab2512d9c76d2cb4241528e45095",
+      "byte_equal": true
+    },
+    "analyze.py": {
+      "working_sha256": "8af562c9bca2b3e5c0889e7d11d271e0cd6d70e0c452028e239741ee002aea58",
+      "tag_blob_sha256": "8af562c9bca2b3e5c0889e7d11d271e0cd6d70e0c452028e239741ee002aea58",
+      "byte_equal": true
+    },
+    "lock.json": {
+      "working_sha256": "c645656a96a8faea160143159fcad7db253f93d6664c3c19baa78ed74e117099",
+      "tag_blob_sha256": "48c8ceaaa7b94a01e1109c0d1828f24acdfbb41dfef84cd9c75e153d532b10ca",
+      "byte_equal": false
+    },
+    "build_lock.py": {
+      "working_sha256": "dda544961de8c24d6b49441800cab428dfd7d8ff27a061051bc8af252f792429",
+      "tag_blob_sha256": "dda544961de8c24d6b49441800cab428dfd7d8ff27a061051bc8af252f792429",
+      "byte_equal": true
+    },
+    "parity_ref.py": {
+      "working_sha256": "ed6fa81558ae92353275353fa0fdc3ef952233c7536cd837ff1d8f1bf9701ab0",
+      "tag_blob_sha256": "ed6fa81558ae92353275353fa0fdc3ef952233c7536cd837ff1d8f1bf9701ab0",
+      "byte_equal": true
+    }
+  },
+  "remote_runner_campaign_lock_match_working": true,
+  "tag_lock_note": "Git blob LF vs deployed/working CRLF, parsed JSON identical; raw bytes NOT rewritten",
+  "all_locked_materials_local_sha_match": true
+}

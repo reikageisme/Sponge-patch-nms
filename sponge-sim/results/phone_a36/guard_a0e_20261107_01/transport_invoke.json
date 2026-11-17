@@ -1,0 +1,11 @@
+{
+  "exit_code": 0,
+  "output": [
+    "checks.py: OK",
+    "linux_observe.py: OK",
+    "posix_runtime.py: OK",
+    "parent_death_local_check.py: OK"
+  ],
+  "prereg_commit": "381d1c3601ae2a49c2fa5dc0391bee72ad83aad4",
+  "sshd_shutdown_requested": false
+}

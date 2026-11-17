@@ -1,0 +1,44 @@
+{
+  "status": "BUILD_DEPENDENCIES_NOW_COMMITTED_EXACT_BYTES",
+  "commit": "85d921c246bb7d2303bc282ae2c20d226be01fd4",
+  "previously_untracked_dependencies": [
+    "paper_en/apa7num.bst",
+    "paper_en/tables_q3/numbers_en.json",
+    "paper_en/tables_q3/tab_aa.tex",
+    "paper_en/tables_q3/tab_amdahl.tex",
+    "paper_en/tables_q3/tab_attacks.tex",
+    "paper_en/tables_q3/tab_cap.tex",
+    "paper_en/tables_q3/tab_decomp.tex",
+    "paper_en/tables_q3/tab_dose.tex",
+    "paper_en/tables_q3/tab_nk.tex",
+    "paper_en/tables_q3/tab_nstar.tex",
+    "paper_en/tables_q3/tab_patches.tex",
+    "paper_en/tables_q3/tab_spec.tex",
+    "paper_en/tables_q3/tab_threshold.tex",
+    "paper_en/tables_q3/tab_x2.tex"
+  ],
+  "all_dependency_bytes_unchanged": true,
+  "current_main_and_other_audited_bytes_unchanged": true,
+  "scope_proposal_applied": false,
+  "whitespace_check": {
+    "command": [
+      "git",
+      "-c",
+      "core.whitespace=blank-at-eol,blank-at-eof,space-before-tab,cr-at-eol",
+      "diff",
+      "--check",
+      "HEAD^",
+      "HEAD",
+      "--",
+      ".",
+      ":(exclude)docs/reports/research_readiness_20261107_01/manuscript_scope_proposal.patch"
+    ],
+    "exit_code": 0,
+    "exception": "Unified-diff blank context lines intentionally contain one space; patch syntax separately validated by git apply --check."
+  },
+  "patch_apply_check_exit_code": 0,
+  "checker_sha256": "b52ac0ea37aaa1243605d00cce8972d81a2b6de540ca01ba7c2740998d99a3ee",
+  "generator_sha256": "141e896482762f875d2413f579ed819d7819de4871a819ba49071ddbe34d2f4c",
+  "tests_sha256": "587f14a1142bf91c75d01877b49bc05f597355bc6d92cdde2988c285b44211bb",
+  "full_pdf_built": false
+}

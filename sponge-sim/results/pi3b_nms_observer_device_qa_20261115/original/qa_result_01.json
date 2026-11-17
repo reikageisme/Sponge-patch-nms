@@ -1,0 +1,1349 @@
+{
+  "tag": "qa-pi3b-nms-observer-service-20261115",
+  "commit": "03999b202eb802ef9073a476395c83943980121a",
+  "scope": "Engineering thread/cgroup API + one functional matmul only",
+  "source_sha256": {
+    "counters.py": "42a2ed7ba8ff7f709428ef3caefe5e14f7f21baad9659ca16b0d0a01ecc22b07",
+    "inventory.py": "0eb533ad54b69c33508ab429d590405c4eaf1b0476e0c3dde211aa4a5e56d6b7",
+    "qa_worker.py": "2679ea9c36d26942c2ffb7927ca82ef2b67c41f1a7394dd5a67da093376fdc77"
+  },
+  "config_sha256": "6a7b8d41db502fefd742dd51b9c865277af8ea8dc735e6b0c8c4c3912a16ead5",
+  "before_context": {
+    "governor": "ondemand\n",
+    "swaps": "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority\n/dev/zram0                              partition\t926716\t\t0\t\t100\n",
+    "affinity": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "nms_endpoint_recorded": false,
+  "performance_endpoint_recorded": false,
+  "simultaneous_execution_qualified": false,
+  "observer_sham_qualified": false,
+  "pre_import_inventory": {
+    "pid": 24264,
+    "start_ticks": 9146578,
+    "cgroup_path": "/system.slice/sponge-pi3b-nms-observer-qa-20261115.service",
+    "threads": {
+      "24264": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9146578,
+          "state": "R",
+          "minflt": 2646,
+          "majflt": 0,
+          "utime_ticks": 46,
+          "stime_ticks": 10,
+          "processor_at_sample": 0
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 1,
+          "nonvoluntary_ctxt_switches": 19
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    "end_start_ticks": {
+      "24264": {
+        "status": "OK",
+        "start_ticks": 9146578
+      }
+    },
+    "tids_before": [
+      24264
+    ],
+    "tids_after": [
+      24264
+    ],
+    "cgroup_ancestors": [
+      {
+        "path": "/system.slice/sponge-pi3b-nms-observer-qa-20261115.service",
+        "files": {
+          "cgroup.type": {
+            "status": "OK",
+            "text": "domain\n"
+          },
+          "cgroup.controllers": {
+            "status": "OK",
+            "text": "pids\n"
+          },
+          "cpu.max": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "cpu.stat": {
+            "status": "OK",
+            "text": "usage_usec 584193\nuser_usec 476157\nsystem_usec 108035\nnice_usec 0\n",
+            "values": {
+              "usage_usec": 584193,
+              "user_usec": 476157,
+              "system_usec": 108035,
+              "nice_usec": 0
+            }
+          },
+          "cpu.weight": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.max": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.high": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.current": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events.local": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.pressure": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          }
+        }
+      },
+      {
+        "path": "/system.slice",
+        "files": {
+          "cgroup.type": {
+            "status": "OK",
+            "text": "domain\n"
+          },
+          "cgroup.controllers": {
+            "status": "OK",
+            "text": "cpu pids\n"
+          },
+          "cpu.max": {
+            "status": "OK",
+            "text": "max 100000\n",
+            "parsed": {
+              "quota_us": null,
+              "period_us": 100000
+            }
+          },
+          "cpu.stat": {
+            "status": "OK",
+            "text": "usage_usec 40096644281\nuser_usec 36296876534\nsystem_usec 3799767747\nnice_usec 1964000\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "values": {
+              "usage_usec": 40096644281,
+              "user_usec": 36296876534,
+              "system_usec": 3799767747,
+              "nice_usec": 1964000,
+              "nr_periods": 0,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            }
+          },
+          "cpu.weight": {
+            "status": "OK",
+            "text": "100\n"
+          },
+          "memory.max": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.high": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.current": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events.local": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.pressure": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          }
+        }
+      },
+      {
+        "path": "/",
+        "files": {
+          "cgroup.type": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "cgroup.controllers": {
+            "status": "OK",
+            "text": "cpuset cpu io pids\n"
+          },
+          "cpu.max": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "cpu.stat": {
+            "status": "OK",
+            "text": "usage_usec 63106024000\nuser_usec 56970592000\nsystem_usec 6135432000\nnice_usec 1964000\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "values": {
+              "usage_usec": 63106024000,
+              "user_usec": 56970592000,
+              "system_usec": 6135432000,
+              "nice_usec": 1964000,
+              "nr_periods": 0,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            }
+          },
+          "cpu.weight": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.max": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.high": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.current": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events.local": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.pressure": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          }
+        }
+      }
+    ],
+    "complete_stable_set": true,
+    "sequential_not_atomic": true,
+    "configured_threads_do_not_prove_parallel_execution": true,
+    "observer_work_included": true,
+    "nms_endpoint_recorded": false
+  },
+  "torch_configuration": {
+    "version": "2.15.0+cpu",
+    "threads": 4,
+    "interop": 1,
+    "parallel_info": "ATen/Parallel:\n\tat::get_num_threads() : 4\n\tat::get_num_interop_threads() : 1\nOpenMP 201511 (a.k.a. OpenMP 4.5)\n\tomp_get_max_threads() : 4\nIntel(R) MKL-DNN v3.13.3 (Git Hash b38f97eb6f2173513112f15a0481750b8a66e901)\nstd::thread::hardware_concurrency() : 4\nEnvironment variables:\n\tOMP_NUM_THREADS : 4\nATen parallel backend: OpenMP\n",
+    "environment": {
+      "OMP_NUM_THREADS": "4",
+      "MKL_NUM_THREADS": "4",
+      "OPENBLAS_NUM_THREADS": "4"
+    }
+  },
+  "functional_check": {
+    "shape": [
+      512,
+      512
+    ],
+    "operations": 1,
+    "all_entries_equal": 512,
+    "exact_pass": true
+  },
+  "pool_before": {
+    "pid": 24264,
+    "start_ticks": 9146578,
+    "cgroup_path": "/system.slice/sponge-pi3b-nms-observer-qa-20261115.service",
+    "threads": {
+      "24264": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9146578,
+          "state": "R",
+          "minflt": 41578,
+          "majflt": 9,
+          "utime_ticks": 1089,
+          "stime_ticks": 86,
+          "processor_at_sample": 3
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 53,
+          "nonvoluntary_ctxt_switches": 1016
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24265": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9146833,
+          "state": "S",
+          "minflt": 1,
+          "majflt": 0,
+          "utime_ticks": 10,
+          "stime_ticks": 0,
+          "processor_at_sample": 1
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 1,
+          "nonvoluntary_ctxt_switches": 2
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24266": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9146833,
+          "state": "S",
+          "minflt": 1,
+          "majflt": 0,
+          "utime_ticks": 10,
+          "stime_ticks": 0,
+          "processor_at_sample": 2
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 1,
+          "nonvoluntary_ctxt_switches": 1
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24267": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9146833,
+          "state": "S",
+          "minflt": 1,
+          "majflt": 0,
+          "utime_ticks": 10,
+          "stime_ticks": 0,
+          "processor_at_sample": 3
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 1,
+          "nonvoluntary_ctxt_switches": 2
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24269": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9147705,
+          "state": "S",
+          "minflt": 1,
+          "majflt": 0,
+          "utime_ticks": 0,
+          "stime_ticks": 0,
+          "processor_at_sample": 2
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 1,
+          "nonvoluntary_ctxt_switches": 0
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24270": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9147705,
+          "state": "S",
+          "minflt": 1,
+          "majflt": 0,
+          "utime_ticks": 0,
+          "stime_ticks": 0,
+          "processor_at_sample": 3
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 1,
+          "nonvoluntary_ctxt_switches": 0
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24271": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9147706,
+          "state": "S",
+          "minflt": 1,
+          "majflt": 0,
+          "utime_ticks": 0,
+          "stime_ticks": 0,
+          "processor_at_sample": 0
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 1,
+          "nonvoluntary_ctxt_switches": 0
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24272": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9147710,
+          "state": "S",
+          "minflt": 305,
+          "majflt": 0,
+          "utime_ticks": 6,
+          "stime_ticks": 0,
+          "processor_at_sample": 1
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 6,
+          "nonvoluntary_ctxt_switches": 1
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24273": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9147710,
+          "state": "S",
+          "minflt": 310,
+          "majflt": 0,
+          "utime_ticks": 6,
+          "stime_ticks": 0,
+          "processor_at_sample": 2
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 5,
+          "nonvoluntary_ctxt_switches": 1
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24274": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9147710,
+          "state": "S",
+          "minflt": 311,
+          "majflt": 0,
+          "utime_ticks": 6,
+          "stime_ticks": 0,
+          "processor_at_sample": 0
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 8,
+          "nonvoluntary_ctxt_switches": 3
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    "end_start_ticks": {
+      "24264": {
+        "status": "OK",
+        "start_ticks": 9146578
+      },
+      "24265": {
+        "status": "OK",
+        "start_ticks": 9146833
+      },
+      "24266": {
+        "status": "OK",
+        "start_ticks": 9146833
+      },
+      "24267": {
+        "status": "OK",
+        "start_ticks": 9146833
+      },
+      "24269": {
+        "status": "OK",
+        "start_ticks": 9147705
+      },
+      "24270": {
+        "status": "OK",
+        "start_ticks": 9147705
+      },
+      "24271": {
+        "status": "OK",
+        "start_ticks": 9147706
+      },
+      "24272": {
+        "status": "OK",
+        "start_ticks": 9147710
+      },
+      "24273": {
+        "status": "OK",
+        "start_ticks": 9147710
+      },
+      "24274": {
+        "status": "OK",
+        "start_ticks": 9147710
+      }
+    },
+    "tids_before": [
+      24264,
+      24265,
+      24266,
+      24267,
+      24269,
+      24270,
+      24271,
+      24272,
+      24273,
+      24274
+    ],
+    "tids_after": [
+      24264,
+      24265,
+      24266,
+      24267,
+      24269,
+      24270,
+      24271,
+      24272,
+      24273,
+      24274
+    ],
+    "cgroup_ancestors": [
+      {
+        "path": "/system.slice/sponge-pi3b-nms-observer-qa-20261115.service",
+        "files": {
+          "cgroup.type": {
+            "status": "OK",
+            "text": "domain\n"
+          },
+          "cgroup.controllers": {
+            "status": "OK",
+            "text": "pids\n"
+          },
+          "cpu.max": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "cpu.stat": {
+            "status": "OK",
+            "text": "usage_usec 12310053\nuser_usec 11430763\nsystem_usec 879289\nnice_usec 0\n",
+            "values": {
+              "usage_usec": 12310053,
+              "user_usec": 11430763,
+              "system_usec": 879289,
+              "nice_usec": 0
+            }
+          },
+          "cpu.weight": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.max": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.high": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.current": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events.local": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.pressure": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          }
+        }
+      },
+      {
+        "path": "/system.slice",
+        "files": {
+          "cgroup.type": {
+            "status": "OK",
+            "text": "domain\n"
+          },
+          "cgroup.controllers": {
+            "status": "OK",
+            "text": "cpu pids\n"
+          },
+          "cpu.max": {
+            "status": "OK",
+            "text": "max 100000\n",
+            "parsed": {
+              "quota_us": null,
+              "period_us": 100000
+            }
+          },
+          "cpu.stat": {
+            "status": "OK",
+            "text": "usage_usec 40108394557\nuser_usec 36307848775\nsystem_usec 3800545782\nnice_usec 1964000\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "values": {
+              "usage_usec": 40108394557,
+              "user_usec": 36307848775,
+              "system_usec": 3800545782,
+              "nice_usec": 1964000,
+              "nr_periods": 0,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            }
+          },
+          "cpu.weight": {
+            "status": "OK",
+            "text": "100\n"
+          },
+          "memory.max": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.high": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.current": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events.local": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.pressure": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          }
+        }
+      },
+      {
+        "path": "/",
+        "files": {
+          "cgroup.type": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "cgroup.controllers": {
+            "status": "OK",
+            "text": "cpuset cpu io pids\n"
+          },
+          "cpu.max": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "cpu.stat": {
+            "status": "OK",
+            "text": "usage_usec 63117844000\nuser_usec 56981624000\nsystem_usec 6136220000\nnice_usec 1964000\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "values": {
+              "usage_usec": 63117844000,
+              "user_usec": 56981624000,
+              "system_usec": 6136220000,
+              "nice_usec": 1964000,
+              "nr_periods": 0,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            }
+          },
+          "cpu.weight": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.max": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.high": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.current": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events.local": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.pressure": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          }
+        }
+      }
+    ],
+    "complete_stable_set": true,
+    "sequential_not_atomic": true,
+    "configured_threads_do_not_prove_parallel_execution": true,
+    "observer_work_included": true,
+    "nms_endpoint_recorded": false
+  },
+  "pool_after": {
+    "pid": 24264,
+    "start_ticks": 9146578,
+    "cgroup_path": "/system.slice/sponge-pi3b-nms-observer-qa-20261115.service",
+    "threads": {
+      "24264": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9146578,
+          "state": "R",
+          "minflt": 41584,
+          "majflt": 9,
+          "utime_ticks": 1094,
+          "stime_ticks": 86,
+          "processor_at_sample": 3
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 53,
+          "nonvoluntary_ctxt_switches": 1019
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24265": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9146833,
+          "state": "S",
+          "minflt": 1,
+          "majflt": 0,
+          "utime_ticks": 10,
+          "stime_ticks": 0,
+          "processor_at_sample": 1
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 1,
+          "nonvoluntary_ctxt_switches": 2
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24266": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9146833,
+          "state": "S",
+          "minflt": 1,
+          "majflt": 0,
+          "utime_ticks": 10,
+          "stime_ticks": 0,
+          "processor_at_sample": 2
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 1,
+          "nonvoluntary_ctxt_switches": 1
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24267": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9146833,
+          "state": "S",
+          "minflt": 1,
+          "majflt": 0,
+          "utime_ticks": 10,
+          "stime_ticks": 0,
+          "processor_at_sample": 3
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 1,
+          "nonvoluntary_ctxt_switches": 2
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24269": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9147705,
+          "state": "S",
+          "minflt": 1,
+          "majflt": 0,
+          "utime_ticks": 0,
+          "stime_ticks": 0,
+          "processor_at_sample": 2
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 1,
+          "nonvoluntary_ctxt_switches": 0
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24270": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9147705,
+          "state": "S",
+          "minflt": 1,
+          "majflt": 0,
+          "utime_ticks": 0,
+          "stime_ticks": 0,
+          "processor_at_sample": 3
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 1,
+          "nonvoluntary_ctxt_switches": 0
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24271": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9147706,
+          "state": "S",
+          "minflt": 1,
+          "majflt": 0,
+          "utime_ticks": 0,
+          "stime_ticks": 0,
+          "processor_at_sample": 0
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 1,
+          "nonvoluntary_ctxt_switches": 0
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24272": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9147710,
+          "state": "S",
+          "minflt": 305,
+          "majflt": 0,
+          "utime_ticks": 6,
+          "stime_ticks": 0,
+          "processor_at_sample": 1
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 6,
+          "nonvoluntary_ctxt_switches": 1
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24273": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9147710,
+          "state": "S",
+          "minflt": 310,
+          "majflt": 0,
+          "utime_ticks": 6,
+          "stime_ticks": 0,
+          "processor_at_sample": 2
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 5,
+          "nonvoluntary_ctxt_switches": 1
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      },
+      "24274": {
+        "status": "OK",
+        "stat": {
+          "start_ticks": 9147710,
+          "state": "S",
+          "minflt": 311,
+          "majflt": 0,
+          "utime_ticks": 6,
+          "stime_ticks": 0,
+          "processor_at_sample": 0
+        },
+        "thread_status": {
+          "Cpus_allowed_list": "0-3",
+          "voluntary_ctxt_switches": 8,
+          "nonvoluntary_ctxt_switches": 3
+        },
+        "affinity": [
+          0,
+          1,
+          2,
+          3
+        ]
+      }
+    },
+    "end_start_ticks": {
+      "24264": {
+        "status": "OK",
+        "start_ticks": 9146578
+      },
+      "24265": {
+        "status": "OK",
+        "start_ticks": 9146833
+      },
+      "24266": {
+        "status": "OK",
+        "start_ticks": 9146833
+      },
+      "24267": {
+        "status": "OK",
+        "start_ticks": 9146833
+      },
+      "24269": {
+        "status": "OK",
+        "start_ticks": 9147705
+      },
+      "24270": {
+        "status": "OK",
+        "start_ticks": 9147705
+      },
+      "24271": {
+        "status": "OK",
+        "start_ticks": 9147706
+      },
+      "24272": {
+        "status": "OK",
+        "start_ticks": 9147710
+      },
+      "24273": {
+        "status": "OK",
+        "start_ticks": 9147710
+      },
+      "24274": {
+        "status": "OK",
+        "start_ticks": 9147710
+      }
+    },
+    "tids_before": [
+      24264,
+      24265,
+      24266,
+      24267,
+      24269,
+      24270,
+      24271,
+      24272,
+      24273,
+      24274
+    ],
+    "tids_after": [
+      24264,
+      24265,
+      24266,
+      24267,
+      24269,
+      24270,
+      24271,
+      24272,
+      24273,
+      24274
+    ],
+    "cgroup_ancestors": [
+      {
+        "path": "/system.slice/sponge-pi3b-nms-observer-qa-20261115.service",
+        "files": {
+          "cgroup.type": {
+            "status": "OK",
+            "text": "domain\n"
+          },
+          "cgroup.controllers": {
+            "status": "OK",
+            "text": "pids\n"
+          },
+          "cpu.max": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "cpu.stat": {
+            "status": "OK",
+            "text": "usage_usec 12357817\nuser_usec 11478526\nsystem_usec 879290\nnice_usec 0\n",
+            "values": {
+              "usage_usec": 12357817,
+              "user_usec": 11478526,
+              "system_usec": 879290,
+              "nice_usec": 0
+            }
+          },
+          "cpu.weight": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.max": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.high": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.current": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events.local": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.pressure": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          }
+        }
+      },
+      {
+        "path": "/system.slice",
+        "files": {
+          "cgroup.type": {
+            "status": "OK",
+            "text": "domain\n"
+          },
+          "cgroup.controllers": {
+            "status": "OK",
+            "text": "cpu pids\n"
+          },
+          "cpu.max": {
+            "status": "OK",
+            "text": "max 100000\n",
+            "parsed": {
+              "quota_us": null,
+              "period_us": 100000
+            }
+          },
+          "cpu.stat": {
+            "status": "OK",
+            "text": "usage_usec 40108442256\nuser_usec 36307896474\nsystem_usec 3800545782\nnice_usec 1964000\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "values": {
+              "usage_usec": 40108442256,
+              "user_usec": 36307896474,
+              "system_usec": 3800545782,
+              "nice_usec": 1964000,
+              "nr_periods": 0,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            }
+          },
+          "cpu.weight": {
+            "status": "OK",
+            "text": "100\n"
+          },
+          "memory.max": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.high": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.current": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events.local": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.pressure": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          }
+        }
+      },
+      {
+        "path": "/",
+        "files": {
+          "cgroup.type": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "cgroup.controllers": {
+            "status": "OK",
+            "text": "cpuset cpu io pids\n"
+          },
+          "cpu.max": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "cpu.stat": {
+            "status": "OK",
+            "text": "usage_usec 63117892000\nuser_usec 56981668000\nsystem_usec 6136224000\nnice_usec 1964000\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+            "values": {
+              "usage_usec": 63117892000,
+              "user_usec": 56981668000,
+              "system_usec": 6136224000,
+              "nice_usec": 1964000,
+              "nr_periods": 0,
+              "nr_throttled": 0,
+              "throttled_usec": 0,
+              "nr_bursts": 0,
+              "burst_usec": 0
+            }
+          },
+          "cpu.weight": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.max": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.high": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.current": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.events.local": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          },
+          "memory.pressure": {
+            "status": "UNAVAILABLE",
+            "error": "FileNotFoundError"
+          }
+        }
+      }
+    ],
+    "complete_stable_set": true,
+    "sequential_not_atomic": true,
+    "configured_threads_do_not_prove_parallel_execution": true,
+    "observer_work_included": true,
+    "nms_endpoint_recorded": false
+  },
+  "pool_delta": {
+    "threads": {
+      "24264": {
+        "minflt": 6,
+        "majflt": 0,
+        "utime_ticks": 5,
+        "stime_ticks": 0,
+        "voluntary_ctxt_switches": 0,
+        "nonvoluntary_ctxt_switches": 3
+      },
+      "24265": {
+        "minflt": 0,
+        "majflt": 0,
+        "utime_ticks": 0,
+        "stime_ticks": 0,
+        "voluntary_ctxt_switches": 0,
+        "nonvoluntary_ctxt_switches": 0
+      },
+      "24266": {
+        "minflt": 0,
+        "majflt": 0,
+        "utime_ticks": 0,
+        "stime_ticks": 0,
+        "voluntary_ctxt_switches": 0,
+        "nonvoluntary_ctxt_switches": 0
+      },
+      "24267": {
+        "minflt": 0,
+        "majflt": 0,
+        "utime_ticks": 0,
+        "stime_ticks": 0,
+        "voluntary_ctxt_switches": 0,
+        "nonvoluntary_ctxt_switches": 0
+      },
+      "24269": {
+        "minflt": 0,
+        "majflt": 0,
+        "utime_ticks": 0,
+        "stime_ticks": 0,
+        "voluntary_ctxt_switches": 0,
+        "nonvoluntary_ctxt_switches": 0
+      },
+      "24270": {
+        "minflt": 0,
+        "majflt": 0,
+        "utime_ticks": 0,
+        "stime_ticks": 0,
+        "voluntary_ctxt_switches": 0,
+        "nonvoluntary_ctxt_switches": 0
+      },
+      "24271": {
+        "minflt": 0,
+        "majflt": 0,
+        "utime_ticks": 0,
+        "stime_ticks": 0,
+        "voluntary_ctxt_switches": 0,
+        "nonvoluntary_ctxt_switches": 0
+      },
+      "24272": {
+        "minflt": 0,
+        "majflt": 0,
+        "utime_ticks": 0,
+        "stime_ticks": 0,
+        "voluntary_ctxt_switches": 0,
+        "nonvoluntary_ctxt_switches": 0
+      },
+      "24273": {
+        "minflt": 0,
+        "majflt": 0,
+        "utime_ticks": 0,
+        "stime_ticks": 0,
+        "voluntary_ctxt_switches": 0,
+        "nonvoluntary_ctxt_switches": 0
+      },
+      "24274": {
+        "minflt": 0,
+        "majflt": 0,
+        "utime_ticks": 0,
+        "stime_ticks": 0,
+        "voluntary_ctxt_switches": 0,
+        "nonvoluntary_ctxt_switches": 0
+      }
+    },
+    "observer_work_included": true,
+    "unique_wait_cause_identified": false,
+    "cgroup_counters_are_shared_not_thread_attribution": true
+  },
+  "after_context": {
+    "governor": "ondemand\n",
+    "swaps": "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority\n/dev/zram0                              partition\t926716\t\t0\t\t100\n",
+    "affinity": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "status": "PASS_SERVICE_POOL_INVENTORY_API_ONLY"
+}

@@ -1,0 +1,44 @@
+{
+  "files": {
+    "analyze.py": {
+      "source": "sponge-sim/studies/pi3b_600mhz_swapguard_v2/analyze.py",
+      "sha256": "e3e891dae75bf50f7ca10f86c13241bdc65e593746e237c0caa0bd56877e815a"
+    },
+    "audit.py": {
+      "source": "sponge-sim/studies/pi3b_600mhz_swapguard_v2/audit.py",
+      "sha256": "104b6f86ae11919591a09c8886120ea3de9a773accdb620858d6d6a0d3b4e4e7"
+    },
+    "build_lock.py": {
+      "source": "sponge-sim/studies/pi3b_600mhz_swapguard_v2/build_lock.py",
+      "sha256": "58cddc2682861109884a222534c123d9ce12e6144a1e5e80cf3832c86d589e2d"
+    },
+    "control.py": {
+      "source": "sponge-sim/studies/pi3b_600mhz_swapguard_v2/control.py",
+      "sha256": "3204b60139c4b044e185890285e658540e649dbb3bcce711ff2330a75b1ffd38"
+    },
+    "guard.py": {
+      "source": "sponge-sim/studies/pi3b_600mhz_swapguard_v2/guard.py",
+      "sha256": "d803ff62aa7b1f8e6999aa3443f28f1936373b90d2bebf7eefa3c20988edc3ab"
+    },
+    "run.py": {
+      "source": "sponge-sim/studies/pi3b_600mhz_swapguard_v2/run.py",
+      "sha256": "028a11f97f726941950be4dc406c8138cd3695a42b246a526d5c7519127c611b"
+    },
+    "stats_frozen.py": {
+      "source": "sponge-sim/studies/pi3b_600mhz_swapguard_v2/stats_frozen.py",
+      "sha256": "1b63222ac880a90f44098846bd949ce8e9b337a30080840fe31e472cf5cfdd4e"
+    },
+    "lock.json": {
+      "source": "sponge-sim/studies/pi3b_600mhz_swapguard_v2/lock.json",
+      "sha256": "2041162d361e37a8a2bf045d1f58d05d181a0f16b1e13d552d7b8eb74ea00d23"
+    },
+    "prereg.md": {
+      "source": "sponge-sim/prereg/PREREG_PI3B_SWAPGUARD_V2_20261114.md",
+      "sha256": "f5496c3ef5800eea1a72d51592683d6ba573abf1435a666213128c4402127fc2"
+    },
+    "laptop_reference_counts.json": {
+      "source": "sponge-sim/results/pi3b_600mhz_20261114/laptop_reference_counts.json",
+      "sha256": "917cd654ddf7ed83235b63f3d21aa64c465ce5b4827b31f8025ca47a2d26d83b"
+    }
+  }
+}

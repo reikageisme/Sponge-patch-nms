@@ -1,0 +1,16 @@
+{
+  "status": "METADATA_QA_VERIFIED_NOT_NMS_CAUSAL_RESULT",
+  "original_result_sha256": "00475e1c850361d1fd46788de8c3dbf8339798f74c70965de198fffd9f6c5f47",
+  "counter_source_sha256": "4c18b03e448a241a2a4c551db09337f8a37da2d0ef306f315574cc9fb2f066f4",
+  "verification_sha256": "476f09d5f4e0cc0f729ae6d330656c72f5290405839dcdd1c67163ae77b92283",
+  "report_sha256": "991fb79abd32a2c25c5361b786d611ed849dc81b35cf1c71a066e3ae26dea1d2",
+  "missing_optional_cgroup_files": [
+    "memory.events",
+    "memory.pressure"
+  ],
+  "ssh_scope_only": true,
+  "configuration_unchanged": true,
+  "closed_rss_v1_original_files_unchanged": 10,
+  "no_scientific_endpoint": true,
+  "ssh_kept_open": true
+}

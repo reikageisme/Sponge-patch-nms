@@ -1,0 +1,31 @@
+{
+  "status": "TWO_TASK_EDITS_APPLIED_TO_PREEXISTING_DIRTY_MAIN_LEFT_UNSTAGED",
+  "original_user_working_sha256": "980b73acd24382e6b337696b35c39165af750408d9bc77a7e64511ecda8a626c",
+  "reconstructed_before_sha256_variants": {
+    "as_is": "980b73acd24382e6b337696b35c39165af750408d9bc77a7e64511ecda8a626c",
+    "LF": "980b73acd24382e6b337696b35c39165af750408d9bc77a7e64511ecda8a626c",
+    "CRLF": "d60a16a5d07b3c690830737f0bf04707a496114bb3f15964fc186d68bcb07792"
+  },
+  "working_after_sha256": "84a6de6ad6dcd77f258f6842c1fdc0d06b64859f89b521af4f568bf62d14886c",
+  "patch_sha256": "d4eef45a923dd5740d9469e035e9bef22c9cfb233ef62723f754f00dbdbc0557",
+  "only_intentional_edits": [
+    "Pi rejected-evidence scope references",
+    "limit table-checker certification claim"
+  ],
+  "bib_sha256": "58bcb86a185ac4f338168adc894cd9b188d17fe1f1afad510ff05924f38f7d12",
+  "full_pdf_compiled": false,
+  "tex_compilers_on_PATH": [],
+  "paper_tests": {
+    "passed": 6,
+    "seconds": 2.17,
+    "tool_chunk_id": "29d0f7"
+  },
+  "structure_check": "balanced31citations/no unresolved refs or duplicate labels/no data placeholders",
+  "generated_table_registry": {
+    "tables": 12,
+    "entries": 815,
+    "match": true,
+    "narrative_certified": false
+  },
+  "patch_format": "zero-context unified diff; git apply --unidiff-zero"
+}

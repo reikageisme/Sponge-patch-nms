@@ -1,0 +1,15 @@
+{
+  "status": "PREPARED_NOT_APPROVED_NOT_RUN",
+  "new_source_archive_files": 8,
+  "plan_archive_verified": true,
+  "old_payload_tag_files": 23,
+  "old_failed_raw_unchanged": 8,
+  "bib_unchanged": true,
+  "host_tests": 146,
+  "host_log_sha256": "93b7bcfdaea57bb90965553ffdfe7923ecd1bc712ef86ee9c835fb4b138a4ba1",
+  "qualification_lock_sha256": "7170b6446e5608b6693c0789bcc98a28c4333ce9296b857487c0547b6240b77a",
+  "old_failure_sha256": "de47cf3830c502f2b774302eba98847aae10b874f53014f43742ee8f7343eaec",
+  "native_actions": 0,
+  "explicit_exception_approval_present": false,
+  "report_sha256": "97773435f7b7385d32bca99771e29b7d9853cdc53e6bb0af9ee92c1db6550cd0"
+}

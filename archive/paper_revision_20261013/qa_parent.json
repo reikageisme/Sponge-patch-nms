@@ -1,0 +1,20 @@
+{
+  "candidate_sha256": "ceb21762cbd15525f3ab62af273776b4828c7e2d9ce642e57f1fe43749d63f99",
+  "native_word_pdf_pages": 24,
+  "visual_inspection_parent": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11,
+    12
+  ],
+  "status": "PASS: no clipping, missing glyphs, overlapping or separated figure captions. Editable OMML and native tables intact.",
+  "renderer": "Microsoft Word read-only PDF export + bundled Poppler110dpi; packaged soffice unavailable"
+}

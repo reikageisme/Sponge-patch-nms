@@ -1,0 +1,194 @@
+{
+  "date": "2026-11-06",
+  "status": "ANALYZED;draft_design_UNRUN",
+  "phone_access_this_turn": false,
+  "rented_gpu_deleted_by_user": true,
+  "local_sources": [
+    {
+      "path": "paper_en/main.tex",
+      "sha256": "980b73acd24382e6b337696b35c39165af750408d9bc77a7e64511ecda8a626c",
+      "role": "current working manuscript; user edits pre-exist this review"
+    },
+    {
+      "path": "sponge-sim/results/phone_a36/pin_20261101/pin_verify.json",
+      "sha256": "6239ef5ff9ca42ce4fcfeb5a26e7bb3d6187aa39dd025a7467a980b8db636b8b",
+      "role": "historical01/11; verify.<profile>,profiles_passed,conclusion"
+    },
+    {
+      "path": "sponge-sim/results/phone_a36/pin_20261101/profiles.json",
+      "sha256": "44136fa355b3678a1146ad16f7e8649e94fb4fc21fe77e8310c060f61caaff8a",
+      "role": "historical accepted-profile map"
+    },
+    {
+      "path": "sponge-sim/src/sponge_sim/hw_linux.py",
+      "sha256": "1c07bb8f12a88e5847f6604f0e8d802a4f5e70903a0412983e4a7d544391d512",
+      "role": "current source:pin,_last_cpus_of_threads,verify_pin"
+    },
+    {
+      "path": "sponge-sim/studies/e5_phone/pin_verify.py",
+      "sha256": "f20b336ace7bcf5d4e602581286bc50d82cafac3e26961f4c31e778ae7f24804",
+      "role": "current source:fresh-process/pool initialization inspection"
+    },
+    {
+      "path": "sponge-sim/studies/e5_phone/run.py",
+      "sha256": "b5f2d14ad29a9f2e8308ce83ef0e3ac2d552b04ac0a8acadba9c4817c138d4c4",
+      "role": "current source:worker,total,thermal supervisor"
+    },
+    {
+      "path": "sponge-sim/src/sponge_sim/backends.py",
+      "sha256": "0b76a2542b9b3b4fa021ba8818da34b36cdd3b7cc38ffd719bddb07532b9f330",
+      "role": "TorchPure/TvNms agnostic semantics checked; missing prepare is not a current class-aware bug"
+    },
+    {
+      "path": "sponge-sim/prereg/PREREG_E5_phone.md",
+      "sha256": "a3673216913c16bb6101f7365ff1c998ad34cd3a28cb8e05fb6b7f7a7e8e55b6",
+      "role": "existing phone requirements; not a new measurement authorization"
+    },
+    {
+      "path": "sponge-sim/results/large_seed_20261106/export/summary1500.json",
+      "sha256": "64fe58bb6f3995df1277fce03dffd3a0c47f75f482eeadf50f6ef43e209b78b8",
+      "role": "count endpoints; not attack latency"
+    },
+    {
+      "path": "sponge-sim/results/large_seed_20261106/export/bootstrap_sensitivity.json",
+      "sha256": "7c4a27394339993da5aa680f5b07a5a6e1849b3316d32e4ffec20cfee1fd1dd8",
+      "role": "registered median percentile shift; exploratory follow-up"
+    },
+    {
+      "path": "sponge-sim/results/stability_20261106/stability_full_20261106/confirmation_summary.json",
+      "sha256": "a7889e0440e00ebb4bc4d7ef2bbc3bcd306af06e4443a376562b876733bd99c5",
+      "role": "stable,all_sessions[].quality_pass,flagged_references"
+    }
+  ],
+  "phone_historical_verification": {
+    "big1": {
+      "allowed": [
+        5
+      ],
+      "effective_cores": 0.9062818116748237,
+      "share_samples_inside": 0.4,
+      "passed": false
+    },
+    "big4": {
+      "allowed": [
+        4,
+        5,
+        6,
+        7
+      ],
+      "effective_cores": 3.40270342145276,
+      "share_samples_inside": 0.8741258741258742,
+      "passed": false
+    },
+    "little1": {
+      "allowed": [
+        1
+      ],
+      "effective_cores": 1.7581064471255095,
+      "share_samples_inside": 0.3,
+      "passed": false
+    },
+    "little4": {
+      "allowed": [
+        0,
+        1,
+        2,
+        3
+      ],
+      "effective_cores": 3.129678448473322,
+      "share_samples_inside": 0.6190476190476191,
+      "passed": false
+    }
+  },
+  "stability_flags": [
+    14,
+    14,
+    10
+  ],
+  "primary_web_sources": [
+    {
+      "title": "Samsung A36 announcement",
+      "url": "https://samsungmobilepress.com/articles/samsung-marks-a-step-forward-with-ai-for-everyone-by-introducing-new-galaxy-a56-5g-galaxy-a36-5g-and-galaxy-a26-5g",
+      "accessed": "2026-11-06",
+      "scope": "A36 platform identity"
+    },
+    {
+      "title": "Qualcomm Snapdragon6Gen3 product brief",
+      "url": "https://www.qualcomm.com/content/dam/qcomm-martech/dm-assets/documents/Snapdragon-6-Gen-3-Product-Brief.pdf",
+      "accessed": "2026-11-06",
+      "scope": "CPU cluster counts/max rates; does not identify phone core IDs"
+    },
+    {
+      "title": "RaspberryPi4 official product",
+      "url": "https://www.raspberrypi.com/products/raspberry-pi-4-model-b/",
+      "accessed": "2026-11-06",
+      "scope": "BCM2711/A72 specification; board revision must be read if measured"
+    },
+    {
+      "title": "RaspberryPi5 official product",
+      "url": "https://www.raspberrypi.com/products/raspberry-pi-5/",
+      "accessed": "2026-11-06",
+      "scope": "BCM2712/A76 specification"
+    },
+    {
+      "title": "PRoot-Distro upstream limitations",
+      "url": "https://github.com/termux/proot-distro#proot-limitations",
+      "accessed": "2026-11-06",
+      "scope": "ptrace overhead; no real root, custom cgroups or kernel isolation"
+    },
+    {
+      "title": "Linux cgroupv2 documentation",
+      "url": "https://docs.kernel.org/admin-guide/cgroup-v2.html",
+      "accessed": "2026-11-06",
+      "scope": "cpu.max bandwidth budget per period"
+    },
+    {
+      "title": "QEMU RaspberryPi boards",
+      "url": "https://www.qemu.org/docs/master/system/arm/raspi.html",
+      "accessed": "2026-11-06",
+      "scope": "documented raspi4b model; no Pi5 in inspected list, docs version11.1.50"
+    },
+    {
+      "title": "QEMU invocation/icount",
+      "url": "https://www.qemu.org/docs/master/system/invocation.html",
+      "accessed": "2026-11-06",
+      "scope": "instruction counting is not cycle-accurate timing"
+    },
+    {
+      "title": "Linux sched_setaffinity manual",
+      "url": "https://man7.org/linux/man-pages/man2/sched_setaffinity.2.html",
+      "accessed": "2026-11-06",
+      "scope": "per-thread masks and meaning of pid0"
+    },
+    {
+      "title": "Linux proc_pid_stat manual",
+      "url": "https://man7.org/linux/man-pages/man5/proc_pid_stat.5.html",
+      "accessed": "2026-11-06",
+      "scope": "field39 is last executed CPU"
+    },
+    {
+      "title": "Linux CPU frequency scaling",
+      "url": "https://docs.kernel.org/admin-guide/pm/cpufreq.html",
+      "accessed": "2026-11-06",
+      "scope": "DVFS and governor context; no controls changed"
+    },
+    {
+      "title": "Android Thermal API",
+      "url": "https://developer.android.com/games/optimize/adpf/thermal",
+      "accessed": "2026-11-06",
+      "scope": "thermal policy is device-specific; API availability cannot be assumed"
+    },
+    {
+      "title": "PyTorch CPU threading notes",
+      "url": "https://docs.pytorch.org/docs/2.15/notes/cpu_threading_torchscript_inference.html",
+      "accessed": "2026-11-06",
+      "scope": "runtime threading context; no phone environment verified by web documentation"
+    }
+  ],
+  "inference_limits": [
+    "No RaspberryPi measured data",
+    "No new phone environment readback",
+    "Thread-pool and stale-residency explanations are hypotheses, not confirmed device root causes",
+    "No Q1 acceptance forecast"
+  ]
+}

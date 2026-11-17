@@ -1,0 +1,38 @@
+{
+  "original": {
+    "governor": "ondemand",
+    "units": {
+      "dev-zram0.swap": {
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "FragmentPath": "/run/systemd/generator/dev-zram0.swap"
+      },
+      "rpi-zram-writeback.service": {
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "FragmentPath": "/usr/lib/systemd/system/rpi-zram-writeback.service"
+      },
+      "rpi-zram-writeback.timer": {
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "FragmentPath": "/run/systemd/generator/rpi-zram-writeback.timer"
+      }
+    },
+    "swaps": [
+      {
+        "name": "/dev/zram0",
+        "kind": "partition",
+        "size_kb": 926716,
+        "used_kb": 6480,
+        "priority": 100
+      }
+    ],
+    "mem_available_kb": 722040
+  },
+  "phase": "RESTORE_FAILED",
+  "owned_masks": [
+    "dev-zram0.swap",
+    "rpi-zram-writeback.service",
+    "rpi-zram-writeback.timer"
+  ]
+}

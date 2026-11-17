@@ -1,0 +1,25 @@
+................F..............................                          [100%]
+================================== FAILURES ===================================
+___ test_reference_summary_cannot_rescue_missing_or_bad_raw_trace[reorder] ____
+
+fault = 'reorder'
+
+    @pytest.mark.parametrize('fault',['missing','duplicate','reorder','baseline','flag','missing_sample','bad_sample','failed_post'])
+    def test_reference_summary_cannot_rescue_missing_or_bad_raw_trace(fault):
+        rows=reference_series(1);summaries=[r for r in rows if r['kind']=='reference']
+        if fault=='missing':rows.remove(summaries[-1])
+        elif fault=='duplicate':rows.append(copy.deepcopy(summaries[-1]))
+        elif fault=='reorder':rows[rows.index(summaries[0])],rows[rows.index(summaries[1])]=summaries[1],summaries[0]
+        elif fault=='baseline':summaries[1]['baseline_ns']=104
+        elif fault=='flag':summaries[1]['flagged']=False
+        elif fault=='missing_sample':rows.pop(next(i for i,r in enumerate(rows) if r['kind']=='reference_sample'))
+        elif fault=='bad_sample':next(r for r in rows if r['kind']=='reference_sample')['measurement']['wall_ns']=101
+        elif fault=='failed_post':next(r for r in rows if r['kind']=='reference_sample')['post_guard_ok']=False
+>       with pytest.raises(ValueError):ref.reference_gate(rows,['000000000009','000000000030'])
+             ^^^^^^^^^^^^^^^^^^^^^^^^^
+E       Failed: DID NOT RAISE ValueError
+
+sponge-sim\tests\test_pi3b_trial_runtime.py:119: Failed
+=========================== short test summary info ===========================
+FAILED sponge-sim\tests\test_pi3b_trial_runtime.py::test_reference_summary_cannot_rescue_missing_or_bad_raw_trace[reorder]
+1 failed, 46 passed in 0.52s

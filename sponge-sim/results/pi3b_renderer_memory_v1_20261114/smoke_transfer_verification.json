@@ -1,0 +1,51 @@
+{
+  "status": "ALL_ORIGINAL_SMOKE_SHAS_REMOTE_LOCAL_REMOTE",
+  "original_files": 10,
+  "files": {
+    "lease_events.jsonl": {
+      "sha256": "e38aa1c954ef76217cd53d92c796c4d668c0e058ddedcb088afa4970a8643ee2",
+      "bytes": 755
+    },
+    "lease_state.json": {
+      "sha256": "acc350483753cdd38b31a718f7b2182355476e2d8294aa2284a687a53f91182d",
+      "bytes": 1022
+    },
+    "registration.json": {
+      "sha256": "647dadd96cc14f5f5f39edd9d3a2feba0328cf47a17ef7336442db5889fcadc0",
+      "bytes": 235
+    },
+    "restore.json": {
+      "sha256": "acd864b07cf472dac406bb0e29ad9ce13e12c9ad75b4a103383671c2e951f87f",
+      "bytes": 76
+    },
+    "supervisor.log": {
+      "sha256": "1aa5b5729c1ef170358cf632226c028defbf522e24b56ccdde463d9d07694b01",
+      "bytes": 1338
+    },
+    "memory/guards.jsonl": {
+      "sha256": "2a69412dd1ed981a3dd9aad11e39d265d2594bd1a9fd30df4d825464ffc75883",
+      "bytes": 414
+    },
+    "memory/raw.jsonl": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0
+    },
+    "memory/registration.json": {
+      "sha256": "525c7281e76f431c8745accbc050d03fccf224b7f82320d86e9f79ddca9fa0dc",
+      "bytes": 344
+    },
+    "memory/schedule.json": {
+      "sha256": "44083a656562e0e0028a3693b1f3490614c6fa760e64a4223b125c035f53e4c2",
+      "bytes": 4264
+    },
+    "memory/terminal.json": {
+      "sha256": "d4810578e2afcb553c8395c9542e8dc845af4c46853162e09606ac0a4675cc43",
+      "bytes": 140
+    }
+  },
+  "runtime_source_unchanged": true,
+  "materials_unchanged": true,
+  "prelaunch_manifest_verified": true,
+  "restore_readback_verified": true,
+  "ssh_kept_open": true
+}

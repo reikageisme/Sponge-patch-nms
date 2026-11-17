@@ -1,0 +1,20 @@
+{
+  "status": "TECHNICAL_USB_PRESENT_SMOKE_PASS_NO_EFFICACY_INFERENCE",
+  "tag": "prereg-pi3b-renderer-memory-usb-20261115",
+  "commit": "70c398ae52540e873dca0f5dd447e97bc7d00958",
+  "original_files_verified": 194,
+  "raw_jobs": 36,
+  "inference_images": 2,
+  "quality_pass": false,
+  "technical_smoke_pass": true,
+  "independent_restore_readback": true,
+  "ssh_kept_open": true,
+  "raw_sha256": "5e945cf1ec3b612dd282b19294755d3c3bd965ea73fbf296b08c29b6ddc64ca7",
+  "summary_sha256": "3b1ebdfb9e0a9f8fa2ce8dd75bbc15b83050d3982b5edf263572a6cdab2f97a8",
+  "independent_audit_sha256": "1b2b7786a84c1e7ebf41120354a54e075f552bc081875f00016ec8f15d2122ee",
+  "transfer_verification_sha256": "b74646c6d4228c17d86bcf2ed9bd7815c796d3b6d25f7dc70fd00cf83bf6f7d5",
+  "report_sha256": "0b65c5ab1aba623b159e2e2948c440af248e0947884c21ed0f83447f91cf9ddd",
+  "runtime_source_unchanged": true,
+  "user_full_approval_received": true,
+  "full_started_at_this_checkpoint": false
+}

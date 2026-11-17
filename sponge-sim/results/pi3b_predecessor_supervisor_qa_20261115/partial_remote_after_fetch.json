@@ -1,0 +1,109 @@
+{
+  "command": "from pathlib import Path\nimport sys,json,hashlib,subprocess\nb=Path('/home/tanh/sponge-sim/pi3b_nms_predecessor_20261115');sys.path.insert(0,str(b));import control\nr=subprocess.run(['systemctl','show','sponge-pi3b-swapguard-v2.service','-p','ActiveState','-p','MainPID'],capture_output=True,text=True,timeout=10)\nservice=dict(x.split('=',1) for x in r.stdout.splitlines());assert service.get('MainPID')=='0' and service.get('ActiveState') in ('inactive','failed'),service\nsha=lambda p:hashlib.sha256(p.read_bytes()).hexdigest()\nfiles={p.relative_to(b/'runs').as_posix():dict(sha256=sha(p),bytes=p.stat().st_size) for p in sorted((b/'runs').rglob('*')) if p.is_file()}\nsources={p.name:sha(p) for p in b.iterdir() if p.is_file()}\nsnapshot=control.System().snapshot();control.validate_snapshot(snapshot)\nmasks=control.System().current()['masks'];assert not any(masks.values())\nworkers=[]\nfor p in Path('/proc').iterdir():\n if p.name.isdecimal():\n  try:\n   argv=[x.decode(errors='replace') for x in (p/'cmdline').read_bytes().split(b'\\0') if x]\n   if any(str(b/n) in argv for n in ('control.py','worker.py','campaign.py')):workers.append(dict(pid=int(p.name),argv=argv))\n  except OSError:pass\nassert not workers,workers\nprint(json.dumps(dict(service=service,files=files,source_sha256=sources,snapshot=snapshot,masks=masks,workers=workers,torch_imported='torch' in sys.modules)))\n",
+  "result": {
+    "service": {
+      "MainPID": "0",
+      "ActiveState": "inactive"
+    },
+    "files": {
+      "qa_normal_01/activation_probe.json": {
+        "sha256": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+        "bytes": 117
+      },
+      "qa_normal_01/lease_events.jsonl": {
+        "sha256": "9bc39b489f3c1310d25f53fe867fff65b3ed4a78e81f245f31ff173a6b02c44f",
+        "bytes": 757
+      },
+      "qa_normal_01/lease_state.json": {
+        "sha256": "2416e1faad160bb11c1fbc6c57bd7e2214f0440c003b24a648d826aef76109e2",
+        "bytes": 1022
+      },
+      "qa_normal_01/qa_ready.json": {
+        "sha256": "cffa224b2689cfe4dd575447ce7e1cdc5d61d6744cb6c3e4e612ca9356ce3582",
+        "bytes": 182
+      },
+      "qa_normal_01/registration.json": {
+        "sha256": "2c974a97bb231e0870d84ae86961af084541aa95467108e2b83c61d35156153c",
+        "bytes": 215
+      },
+      "qa_normal_01/restore.json": {
+        "sha256": "5bace11e8d4ebafd7c99850ee7f32948218e2a82145c2397a7190b0c6d73745c",
+        "bytes": 76
+      },
+      "qa_normal_01/supervisor.log": {
+        "sha256": "444513987d68e5f220c0ad9eeeaebae5883083194d0ce2c69c523065407a0b71",
+        "bytes": 69
+      },
+      "qa_normal_01/usb_preflight.json": {
+        "sha256": "a70a6491ebb426c783b6e070df96aaa5dd62c4c5934ac7e688f224f36def0dc3",
+        "bytes": 5167
+      }
+    },
+    "source_sha256": {
+      "bindings.py": "5b9cb5b1d8f509574e534a08888fb9484950ac69c0035d44e17945e23b232fe1",
+      "campaign.py": "8413ae3d4a2679324a07ce476e86f79696154a510e24b0f56f4875723efd8e64",
+      "usb_guard.py": "ec549b6b3ac3ff3e66580e7014ef68169594225484399790396da4ef86e85fe2",
+      "cache.py": "5083fe95bb0f82289e5055ca9cae8855595d7a164e778a363490f98b5a81bf2b",
+      "factories.py": "06495c66682a4e806fa5e5a76dde3f90e82a07471ea3dd727bfccdfaf49fd06d",
+      "worker.py": "2f40deb5cfcd9047a95015eaf7ed71282b909a33675074519a0301707831462c",
+      "schedule.py": "acfe063a7f0f9bc8dbdaa650a2629003d09e0ee91c3f89a381640a4205245d25",
+      "build_controller_lock.py": "e82f2baca1c5288d9ad87c5770ae2eea2ee7be3f198f5329486632682f7b5ca5",
+      "baseline_ops.py": "829cb01fd566d67b473f363318297c064577696393a707949d1c9c325b303a34",
+      "pairs.py": "bd55f9e8f984b160e78da46f4eaa835c4a45d72a31ea24bb44dd8c0460f6b5fc",
+      "full20_lock.json": "1cd1789d4f30c0a6b708fad907729999f6e6e53d4ba373ce487bc8037d10be0e",
+      "material.py": "ec309bbfaee21fcb785903ca99c7f9d65e5f9d4950e80fc3437952c576cce23a",
+      "cache_manifest.json": "61b5abaaf22ea985b98f582a34f52cc19c2272ac87f66782292d843b17bbe165",
+      "kernel_input.py": "c5b785500a5c5a796383d53642d5823e2fce03547649bc4a1c15abada449ab0f",
+      "bracket.py": "157a353fdd33f6725db73f7dc6b6c597d03ae9ef339b5744782686de368c704f",
+      "usb_contract.json": "6837fd69f9bf5c4f75be75d8963faa405dc7e68cb1d58ad9504ff2d032c7f7e1",
+      "preallocate.py": "29d5b2adf7aa4d3659a542f59268cf59714bb053f66cf2abb828ebee3c8f9d8e",
+      "counters.py": "10eb26e90489283616fae24cd6b190fe50a715c0fec7b47c8fe449025a8c5a60",
+      "controller_lock.json": "63d427530aecee6670c604f4e65769ae8d2d2940694eb0f5ca8b06e325c96713",
+      "control.py": "2bf1de637d0cc317a81109773d2b915cec90bbf46337ae877db9f75c2c0251c6",
+      "exports.py": "0f35440aa15418ab2bc8d31b17ad1c22a0ebe25daf5daa11f140035e753c21e1",
+      "guard.py": "a62f005a43cb562e93084bb04e2f5830d6cc743003e987883b095219e47bdb99",
+      "inventory.py": "1059453b0af8d990064b0a20c497dfd548be2e8321c8ffee04668e2f4c4eaf9e"
+    },
+    "snapshot": {
+      "governor": "ondemand",
+      "units": {
+        "dev-zram0.swap": {
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "FragmentPath": "/run/systemd/generator/dev-zram0.swap"
+        },
+        "rpi-zram-writeback.service": {
+          "LoadState": "loaded",
+          "ActiveState": "inactive",
+          "FragmentPath": "/usr/lib/systemd/system/rpi-zram-writeback.service"
+        },
+        "rpi-zram-writeback.timer": {
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "FragmentPath": "/run/systemd/generator/rpi-zram-writeback.timer"
+        }
+      },
+      "setup": {
+        "Result": "success",
+        "ActiveState": "active"
+      },
+      "swaps": [
+        {
+          "name": "/dev/zram0",
+          "kind": "partition",
+          "size_kb": 926716,
+          "used_kb": 0,
+          "priority": 100
+        }
+      ],
+      "mem_available_kb": 765856
+    },
+    "masks": {
+      "dev-zram0.swap": false,
+      "rpi-zram-writeback.service": false,
+      "rpi-zram-writeback.timer": false
+    },
+    "workers": [],
+    "torch_imported": false
+  }
+}

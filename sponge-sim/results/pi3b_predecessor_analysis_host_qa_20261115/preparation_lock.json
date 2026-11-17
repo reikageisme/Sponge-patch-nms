@@ -1,0 +1,40 @@
+{
+  "status": "PREPARED_OFFLINE_NUMERICAL_ANALYZER_NOT_CAMPAIGN_QUALIFIED",
+  "source_sha256": {
+    "__init__.py": "56098fd397f42cee5f92fe8e67e35ab10426d7dec017210e08e5ccb9eaa03820",
+    "analyze.py": "76c3dddf78380261793fd9a2932b727b52ffeec9b4cdbedc601b7faad306ded6",
+    "records.py": "7861fa60d5f7b3450ea68251e1c45342f4a15f2f5ef59e41f995e307e41d20fd",
+    "schedule.py": "fd4ffb2a0bd1c633eead72bf9566cee0eb64dc5816045d9cdb8f27d26e468fca",
+    "source_provenance.json": "963a350d8104be2d7fc72e82b0410d7ae60e8cdd48940f48f068203a165ddb71",
+    "statistics.py": "fb3f0f96e203c75a69df50a7c9df4dffe34b35a173801adb4fd138fe867c8222"
+  },
+  "test_source_sha256": "4fc161aefb4b05ed53039279e1249570811e844847f8776e68faf8a8d2ee8392",
+  "draft_sha256": "2e6735a4a7a6dd5866d786011dd296ff5a6024e00c3d587e3d072de5342c0d91",
+  "phase_trials": {
+    "smoke": 360,
+    "full": 3600
+  },
+  "full_image_units": 20,
+  "smoke_image_units": 2,
+  "controls": {
+    "AA": 12,
+    "instrumentation": 6
+  },
+  "bootstrap_replicates": 20000,
+  "bootstrap_seed": 2026111501,
+  "all_sign_patterns": 1048576,
+  "aa_abs_mean_log": 0.02,
+  "mde_log80pct": 0.05,
+  "scientific_registration_verified": false,
+  "campaign_quality_audit_implemented": false,
+  "device_worker_or_launcher": false,
+  "empirical_data_consumed": false,
+  "synthetic_validation_only": true,
+  "prior_runtime_tag": "925c544f618491e5b21a3621d77804a10686d111",
+  "prior_runtime_archive_tag_files_unchanged": 23,
+  "protected_bib_unchanged": true,
+  "host_analysis_tests_initial": 30,
+  "host_analysis_tests_final": 31,
+  "combined_host_tests": 100,
+  "combined_host_log_sha256": "daf640eca4ab84c0f231f7000a2b05a43725133bba6d164fc02b77359bd0d056"
+}

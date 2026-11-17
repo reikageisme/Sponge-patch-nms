@@ -1,0 +1,16 @@
+{
+  "ready": {
+    "pid": 12250,
+    "child_pid": 12400,
+    "child_start_ticks": 5104204,
+    "invocation_id": "5b8fb2fad1ad4d4a9caa80fd9c5c9897",
+    "torch_imported": false,
+    "scipy_imported": false
+  },
+  "unit": {
+    "MainPID": "12250",
+    "ActiveState": "active",
+    "InvocationID": "5b8fb2fad1ad4d4a9caa80fd9c5c9897"
+  },
+  "observed_at_utc": 1794675114.4173846
+}

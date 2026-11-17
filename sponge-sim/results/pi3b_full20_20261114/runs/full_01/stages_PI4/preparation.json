@@ -1,0 +1,24 @@
+{
+  "wall_utc": 1794659132.5308719,
+  "argv": [
+    "/home/tanh/sponge-sim/pi3b_full20_20261114/run.py",
+    "--lock",
+    "/home/tanh/sponge-sim/pi3b_full20_20261114/lock.json",
+    "--base",
+    "/home/tanh/sponge-sim/pi3b_full20_20261114",
+    "--run-dir",
+    "/home/tanh/sponge-sim/pi3b_full20_20261114/runs/full_01/stages_PI4",
+    "--tag",
+    "prereg-pi3b-full20-after-pilot-20261114",
+    "--commit",
+    "aa6b666f13160bffe13286ec2ed7c1e75f51f0ba",
+    "--profile",
+    "PI4",
+    "--mode",
+    "stages"
+  ],
+  "runner_sha256": "cadc78041d3f4e611c789c76c22b1a885131b9ca632a52a27300a440baa4425f",
+  "status": "PREPARING",
+  "profile": "PI4",
+  "mode": "stages"
+}

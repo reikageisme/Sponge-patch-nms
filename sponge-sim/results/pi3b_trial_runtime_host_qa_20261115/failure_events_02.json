@@ -1,0 +1,9 @@
+{
+  "host_run": "host_checks_04.log",
+  "passed": 51,
+  "failed": 2,
+  "failure": "session fake guard checked pair-output weakref list before any pair had run; global/reference fake outputs were not registered in that list",
+  "correction": "register global/reference fake output weakrefs too; preserve lifetime assertion and unchanged production code",
+  "native_actions": 0,
+  "old_data_or_gates_changed": false
+}

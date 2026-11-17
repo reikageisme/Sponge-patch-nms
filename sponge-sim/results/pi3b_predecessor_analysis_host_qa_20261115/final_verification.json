@@ -1,0 +1,13 @@
+{
+  "status": "PREPARED_NUMERICAL_ANALYSIS_HOST_ONLY",
+  "source_files_verified": 6,
+  "tests": 100,
+  "analysis_tests": 31,
+  "measurement_data_consumed": false,
+  "native_cases": 0,
+  "scientific_registration_exists": false,
+  "full_campaign_audit_implemented": false,
+  "prior_runtime_package_unchanged": true,
+  "report_sha256": "94d3d180249850b186a58ad3b750ce9edcd80c1e890cdcfe8d67b1f80de65a2c",
+  "preparation_lock_sha256": "b89ce77f83e4111bbb376b4ec35bf78f77cddce3ef6531612bf3e346b5f2d0f1"
+}

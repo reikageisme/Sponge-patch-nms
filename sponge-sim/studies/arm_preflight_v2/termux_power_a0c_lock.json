@@ -1,0 +1,13 @@
+{
+  "status": "REGISTER_BEFORE_ONE_NATIVE_METADATA_READ_NO_LOAD",
+  "source_sha256": "d708e809716b890266e1a2c034b8a324fc9ebd7eedc29d2974ec646730d3f54a",
+  "source_path": "sponge-sim/studies/arm_preflight_v2/termux_power_metadata.sh",
+  "prereg_path": "sponge-sim/prereg/PREREG_ARM_POWER_A0C_20261107.md",
+  "tag": "prereg-arm-power-a0c-20261107",
+  "remote_source": "studies/arm_power_a0c_20261107_01/termux_power_metadata.sh",
+  "remote_result": "results/phone_a36/power_a0c_20261107_01",
+  "query_count": 1,
+  "query_timeout_s": 10,
+  "query_kill_after_s": 2,
+  "load_permitted": false
+}

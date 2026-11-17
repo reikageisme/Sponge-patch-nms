@@ -1,0 +1,152 @@
+{
+  "status": "WORKTREE_READINESS_SNAPSHOT_NOT_SUBMISSION_READY",
+  "files": {
+    "paper_en/main.tex": "980b73acd24382e6b337696b35c39165af750408d9bc77a7e64511ecda8a626c",
+    "paper_en/tables_q3/tab_spec.tex": "009e4057486c4c35641f3e7f23a4f178e6902658e477c43b39c9ec1afa21e8d7",
+    "paper_en/tables_q3/tab_aa.tex": "b9a21784074cfdc39d639eb609b9b0d05e2c6f3792718c275b1919ecfa2c8fa6",
+    "paper_en/tables_q3/tab_dose.tex": "f3a4c7dcdb82dc011190633c488d877a4fe738c9ad388ea0da581f56001f19c8",
+    "paper_en/tables_q3/tab_cap.tex": "b94e556afa9f635d66a06e07ea7ebb8f4cdb502c93c2a220eccff58cb2879f18",
+    "paper_en/tables_q3/tab_nstar.tex": "29f9df42ffe5ae2c1e716cc9277721faad55a94a242e74280ac98960f0c15998",
+    "paper_en/tables_q3/tab_threshold.tex": "28ca755bc8cb02a9c76a99a4152f95406c3f7aec2a3303bd2b2efbde9b43ae66",
+    "paper_en/tables_q3/tab_patches.tex": "396e6c13e88faf5268b3bf8e160c53fb264f96469aeb26127aab96ac5b65c4be",
+    "paper_en/tables_q3/tab_x2.tex": "66eaded37b85d3f522fd90d59bb7aaa0fffb977fd7cc5fabf6883ba57d680bb0",
+    "paper_en/tables_q3/tab_attacks.tex": "5950f723f69aa6c1b35cc3b790bfb3f2811cf82a8c1f1a45d43e7c879b7cf306",
+    "paper_en/tables_q3/tab_decomp.tex": "c2e03bb892036f3052132e8b28fcb0045edd593e158f3f1cfa966aa3de45b588",
+    "paper_en/tables_q3/tab_nk.tex": "8c96ecf152c06d7471fe3b81cb4f18531e674fc7df49c569c7ed084ffe534c84",
+    "paper_en/tables_q3/tab_amdahl.tex": "62d3ed638364c18da5060c04e56e7413068e2521c1682bf23b89d3ff643f9cca",
+    "paper_en/segmentation_extension/extension.tex": "f2c65f828e03cda3b89451ac2823afb49a3a93d22c924ad671406a63ca7cf583",
+    "paper_en/segmentation_extension/nested1500.tex": "696cd0a0108e4e04ddb9f7a176d673d4d8c97c76205ec9e2892a13ff5f71e77e",
+    "paper_en/segmentation_extension/nested1500_native.pdf": "34210578295d65aeb72d9678e8e5f939e645f9d4d8568fe5126c6d4a98199f4e",
+    "paper_en/segmentation_extension/laptop_cpu.tex": "807a5d42c70d7ece4ffeea60188e3bf41ab25edc4af97b98c8d4622eefbca792",
+    "paper_en/segmentation_extension/laptop_sessions.pdf": "d9b24eb200235bac70e61f07f621c88baf2c00206a666f94572d28d548136645",
+    "paper_en/segmentation_extension/laptop_defense.tex": "8b77cf22fc520f575af81908556e6daf79a9a97aa116c2828fbbcde77fd44ce8",
+    "paper_en/segmentation_extension/laptop_defense.pdf": "84a71e74572db3c23a3a9c0cbc76c76436a2183971571f8ef2a9a4dd9d758ae6",
+    "paper_en/segmentation_extension/laptop_components.tex": "f28340c1efc4c9cb429bcf85d7595ec1be7d6ac09878e237dab834e35ae1014f",
+    "paper_en/segmentation_extension/laptop_components.pdf": "da3a66580f51165e8b72aa8a9967b747bcb7c041161f589ce4a356583431ca9d",
+    "paper_en/segmentation_extension/laptop_reference_trace.tex": "49dae6753bd214c0e6eefa32e780fa47735f1d5735ee1c3c870d2b08f93dcb0f",
+    "paper_en/segmentation_extension/laptop_reference_trace.pdf": "ca891b145d830c91d92c59f830541ac2be4d490c0adef0c46548d3635001960b",
+    "paper_en/segmentation_extension/mask_dose_response.pdf": "cf866211e41b703c13b0cab36b4326fee181439325640f8e8f41fd4ae1624b20",
+    "paper_en/segmentation_extension/val500_counts.pdf": "4e87f7974c9c8541da10c3cead27842ef170572cfac47cf4e9aa0065d64afc66",
+    "paper_en/figures/fig2_dose_response.pdf": "148f24ceb8838d50e0ff266a71c2d7fcade8bd803e6a6aa80ebe46d71f1eaeeb",
+    "paper_en/figures/fig5_cap_effect.pdf": "55857b2280e809a0a295af0654bb952f7be3b10b8027bda5eaaf13a22591e2db",
+    "paper_en/figures/fig4_pipeline_nstar.pdf": "ff87c16b7b9cb0d9d6a2a1eaead19ab48a4d08f5b63306246e8683e5bfb13763",
+    "paper_en/figures/fig6_patch_effects.pdf": "e275da4bea51f0ea95e4845aad9ef8577a02ae6a12bb1abc1831b52aa01d03e1",
+    "paper_en/figures/fig9_attacks.pdf": "16a47ce41c87a2201f9bf41c5316179221854ac8513181c63204d6b5652d1a7b",
+    "paper_en/figures/fig3_pred_vs_measured.pdf": "e3a78c31ee12e4e7078d156f093bd3faa3b0059d22707589a189eb371e87f321",
+    "paper_en/references.bib": "58bcb86a185ac4f338168adc894cd9b188d17fe1f1afad510ff05924f38f7d12",
+    "paper_en/apa7num.bst": "9179f2323dda02071402cfa9c3a80221c902d6e210ec21fd54b43ce4f1ce7328",
+    "paper_en/cas-dc.cls": "9f7dd6cfc91f7ce52d0db29579894662e1dd8ae96d42cf18d6d0c697e42464f5",
+    "paper_en/cas-common.sty": "e95a01f4b33531d01ade231669fcc1e42f52193dddcb22ead5b63240eb952f8f",
+    "paper_en/tables_q3/numbers_en.json": "499026c6ebab6b1f0d890c4d9d4985e1e120eda2543375dac78dbdf12c3f895b"
+  },
+  "missing_inputs": [],
+  "graphics": [
+    {
+      "source": "paper_en/segmentation_extension/nested1500.tex",
+      "name": "segmentation_extension/nested1500_native.pdf",
+      "resolved": "paper_en/segmentation_extension/nested1500_native.pdf"
+    },
+    {
+      "source": "paper_en/segmentation_extension/laptop_cpu.tex",
+      "name": "segmentation_extension/laptop_sessions.pdf",
+      "resolved": "paper_en/segmentation_extension/laptop_sessions.pdf"
+    },
+    {
+      "source": "paper_en/segmentation_extension/laptop_defense.tex",
+      "name": "segmentation_extension/laptop_defense.pdf",
+      "resolved": "paper_en/segmentation_extension/laptop_defense.pdf"
+    },
+    {
+      "source": "paper_en/segmentation_extension/laptop_components.tex",
+      "name": "segmentation_extension/laptop_components.pdf",
+      "resolved": "paper_en/segmentation_extension/laptop_components.pdf"
+    },
+    {
+      "source": "paper_en/segmentation_extension/laptop_reference_trace.tex",
+      "name": "segmentation_extension/laptop_reference_trace.pdf",
+      "resolved": "paper_en/segmentation_extension/laptop_reference_trace.pdf"
+    },
+    {
+      "source": "paper_en/segmentation_extension/extension.tex",
+      "name": "segmentation_extension/mask_dose_response.pdf",
+      "resolved": "paper_en/segmentation_extension/mask_dose_response.pdf"
+    },
+    {
+      "source": "paper_en/segmentation_extension/extension.tex",
+      "name": "segmentation_extension/val500_counts.pdf",
+      "resolved": "paper_en/segmentation_extension/val500_counts.pdf"
+    },
+    {
+      "source": "paper_en/main.tex",
+      "name": "fig2_dose_response.pdf",
+      "resolved": "paper_en/figures/fig2_dose_response.pdf"
+    },
+    {
+      "source": "paper_en/main.tex",
+      "name": "fig5_cap_effect.pdf",
+      "resolved": "paper_en/figures/fig5_cap_effect.pdf"
+    },
+    {
+      "source": "paper_en/main.tex",
+      "name": "fig4_pipeline_nstar.pdf",
+      "resolved": "paper_en/figures/fig4_pipeline_nstar.pdf"
+    },
+    {
+      "source": "paper_en/main.tex",
+      "name": "fig6_patch_effects.pdf",
+      "resolved": "paper_en/figures/fig6_patch_effects.pdf"
+    },
+    {
+      "source": "paper_en/main.tex",
+      "name": "fig9_attacks.pdf",
+      "resolved": "paper_en/figures/fig9_attacks.pdf"
+    },
+    {
+      "source": "paper_en/main.tex",
+      "name": "fig3_pred_vs_measured.pdf",
+      "resolved": "paper_en/figures/fig3_pred_vs_measured.pdf"
+    }
+  ],
+  "untracked_dependencies": [
+    "paper_en/apa7num.bst",
+    "paper_en/tables_q3/numbers_en.json",
+    "paper_en/tables_q3/tab_aa.tex",
+    "paper_en/tables_q3/tab_amdahl.tex",
+    "paper_en/tables_q3/tab_attacks.tex",
+    "paper_en/tables_q3/tab_cap.tex",
+    "paper_en/tables_q3/tab_decomp.tex",
+    "paper_en/tables_q3/tab_dose.tex",
+    "paper_en/tables_q3/tab_nk.tex",
+    "paper_en/tables_q3/tab_nstar.tex",
+    "paper_en/tables_q3/tab_patches.tex",
+    "paper_en/tables_q3/tab_spec.tex",
+    "paper_en/tables_q3/tab_threshold.tex",
+    "paper_en/tables_q3/tab_x2.tex"
+  ],
+  "checks": {
+    "structure": {
+      "exit_code": 0,
+      "stdout": "citations used: 31 | bib entries: 31\n  cited but missing in bib: []\n  in bib but never cited  : []\nenvironments balanced: True \nbraces balance: 0 | odd dollar count: 0\nlabels duplicated: [] | refs without label: []\nNO DATA placeholders: 0\n  banned/internal term \"exhaust\": 10\n  banned/internal term \"denial\": 7\n  banned/internal term \"physical\": 12\nwords (approx, without LaTeX commands): 18422\n",
+      "stderr": ""
+    },
+    "numbers": {
+      "exit_code": 0,
+      "stdout": "{\n  \"status\": \"GENERATED_TABLE_AND_REGISTRY_CHECK_ONLY\",\n  \"tables_match\": true,\n  \"differing_tables\": [],\n  \"provenance_registry_match\": true,\n  \"table_count\": 12,\n  \"registered_numeric_entries\": 815,\n  \"narrative_claims_verified\": false,\n  \"full_tex_build_verified\": false\n}\n",
+      "stderr": ""
+    }
+  },
+  "tex_engines_on_path": {
+    "xelatex": null,
+    "pdflatex": null,
+    "lualatex": null,
+    "tectonic": null,
+    "latexmk": null
+  },
+  "full_pdf_built": false,
+  "narrative_claims_fully_verified": false,
+  "tests": {
+    "command": "python -m pytest sponge-sim/tests/test_paper_saved_artifacts.py sponge-sim/tests/test_laptop_reference_trace.py sponge-sim/tests/test_laptop_stage_drift.py sponge-sim/tests/test_laptop_stages.py sponge-sim/tests/test_laptop_seg.py -q -p no:cacheprovider",
+    "exit_code": 0,
+    "stdout": "41 passed in 5.02s"
+  }
+}

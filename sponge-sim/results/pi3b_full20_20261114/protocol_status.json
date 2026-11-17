@@ -1,0 +1,17 @@
+{
+  "status": "CLOSED_PRIMARY_ACCEPTED_COMPONENTS_REJECTED_NO_RETRY",
+  "registration_tag": "prereg-pi3b-full20-after-pilot-20261114",
+  "commit": "aa6b666f13160bffe13286ec2ed7c1e75f51f0ba",
+  "pipeline_PI4": "COMPLETED_QUALITY_PASS",
+  "stages_PI4": "COMPLETED_JOINT_QUALITY_FAIL_NMS_AA_MDE",
+  "pipeline_PI1": "CANCELLED_NOT_STARTED",
+  "campaign_exit_code": 66,
+  "restore": "RESTORED",
+  "retries": 0,
+  "full02_exists": false,
+  "ssh_kept_open": true,
+  "raw_unit": "image",
+  "n_images": 20,
+  "component_estimates_qualified": false,
+  "denial_of_service_established": false
+}

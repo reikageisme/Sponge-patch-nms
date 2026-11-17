@@ -1,0 +1,39 @@
+{
+  "status": "DRAFT_UNRUN_NOT_AUTHORIZED_FOR_LOAD",
+  "prereg_tag": null,
+  "prereg_commit": null,
+  "source_root": "source",
+  "cell_order_seed": 20261107,
+  "cells": [
+    "templates/1_pool_before_pin_main.json",
+    "templates/2_pin_before_pool_main.json",
+    "templates/3_pin_before_pool_all.json",
+    "templates/4_pool_before_pin_all.json"
+  ],
+  "files_sha256": {
+    "source/checks.py": "a25d28b632a73a54076bbec31cf12e1f4da0e1a89964cdaf10443d4a99629c0f",
+    "source/linux_observe.py": "8e8101d2713efc40a62e4282f43b1b1f6c18cd3830e88e4a7f325d30bb64eb8a",
+    "source/posix_runtime.py": "a3f0bbcad4ad36547d947e6f563e985938a18bf5656624ffb9edba64454085bb",
+    "source/session.py": "56cf946253731b28cfa2e0298e77d0268698c2eda914b7d754df0e12e047930e",
+    "source/pin_analysis.py": "7da2925df9f1b20c8e9e8c4c7e85427acac413d5951cb75e316d8822e3ba4213",
+    "source/pin_worker.py": "05e097aca0f31cc2a4712f096091157ea845d5b8688a2f2c8a1f0552b518a590",
+    "source/qa_session.py": "2d6e74bb0d77219634b361595478f5c5f1723a44ad52420124688eeae43bf861",
+    "source/metadata_only.py": "3b4ded62d465eee2d05fefbb5922198d1a6af0d9a4fea805117be087bc7e31b2",
+    "templates/1_pool_before_pin_main.json": "d6d1051a3d4331d873ec8fc086733ebdabc4dc4a754ce2955ecfd8b8ebc23a8c",
+    "templates/2_pin_before_pool_main.json": "55c0c5ba478d84cf6f48046b08d7031b5cc28823e05c1727c7b4709b0e890ec7",
+    "templates/3_pin_before_pool_all.json": "8a230925039db2cc941f1610edf5f7a7f611835151ffce2b7d717c3ed63da7e9",
+    "templates/4_pool_before_pin_all.json": "f23e1db00377ded75fc6fc69053ba72014d8db3ebbc506e48167a719fdb19337",
+    "README.md": "9c7ed615f71ed31f49c20a8885ed5d913771a02bbf5a20ca83670d3f28d37461",
+    "DRAFT_PROTOCOL.md": "a589996e9c9b4106ffb865ba6ffdf46f102c1c51962d7daee393e79928a785d6"
+  },
+  "builder_sha256": "255b21b7a31d829fa55722ea27162e147e53470e58065a3e7f8bfde4b669a529",
+  "unresolved": [
+    "actual CPU ID",
+    "Torch version/init SHA",
+    "sensor IDs/type/unit/permissions",
+    "device cleanup and observation overhead",
+    "registered/qualified device entry",
+    "actual idle/network/charging state",
+    "registered protocol/tag"
+  ]
+}

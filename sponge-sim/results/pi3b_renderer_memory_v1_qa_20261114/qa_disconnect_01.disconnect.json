@@ -1,0 +1,21 @@
+{
+  "local_ssh_pid": 16012,
+  "frontend_exit_code": 1,
+  "observation": {
+    "ready": {
+      "pid": 13589,
+      "child_pid": 13738,
+      "child_start_ticks": 5116759,
+      "invocation_id": "e7faeadfae52400e9f16ce87c019df91",
+      "torch_imported": false,
+      "scipy_imported": false
+    },
+    "unit": {
+      "MainPID": "13589",
+      "ActiveState": "active",
+      "InvocationID": "e7faeadfae52400e9f16ce87c019df91"
+    },
+    "observed_at_utc": 1794675240.1214054
+  },
+  "sshd_kept_open": true
+}

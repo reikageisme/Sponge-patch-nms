@@ -1,0 +1,18 @@
+{
+  "candidate_sha256": "ceb21762cbd15525f3ab62af273776b4828c7e2d9ce642e57f1fe43749d63f99",
+  "visual_inspection_agent": [
+    13,
+    14,
+    15,
+    16,
+    17,
+    18,
+    19,
+    20,
+    21,
+    22,
+    23,
+    24
+  ],
+  "status": "PASS all12pages original PNG resolution. Headers fixed, native tables repeat headers, figures and captions together, bibliography preprints flagged. No mandatory layout fixes."
+}

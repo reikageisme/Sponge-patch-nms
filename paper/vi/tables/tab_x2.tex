@@ -1,0 +1,17 @@
+% SINH TỰ ĐỘNG bởi paper_vi/tables/make_tables.py — KHÔNG SỬA TAY.
+\begin{table}[t]
+\centering\small
+\caption{\textbf{Post hoc, dữ liệu lịch sử}: số ứng viên trước NMS ($\tau=0{,}01$, 320 px) của năm bộ phát hiện YOLO khi chèn năm patch SG-GA cũ (seed 0--4, tối ưu trên YOLOv8n ở một lần chạy trước, ngân sách 2500 lượt). Chỉ đếm ứng viên, tất định, không đo thời gian; không có tệp đăng ký trước. Tỷ số tính theo ảnh, rồi lấy trung bình; KTC 95\% bootstrap hai tầng ảnh $\times$ seed. Tập ảnh khác tập 100 ảnh của Bảng~\ref{tab:patches}. Các bộ phát hiện hai giai đoạn và SSD của cùng lần chạy đếm sau NMS nội bộ nên không được báo.}
+\label{tab:x2}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Bộ phát hiện & Ảnh & $\Ntau$ sạch (trung vị) & $\Ntau$ có patch (trung vị) & Tỷ số $\Ntau$ (KTC 95\%) \\
+\midrule
+YOLOv8n & 100 & 95,5 & 104,0 & 1,034 (0,990--1,080) \\
+YOLOv8s & 100 & 93,0 & 98,5 & 1,026 (0,979--1,078) \\
+YOLO11n & 100 & 93,5 & 96,0 & 1,026 (0,990--1,066) \\
+YOLO11s & 64 & 83,5 & 85,0 & 1,021 (0,962--1,083) \\
+YOLOv12n & 64 & 79,5 & 89,0 & 1,036 (0,975--1,099) \\
+\bottomrule
+\end{tabular}
+\end{table}

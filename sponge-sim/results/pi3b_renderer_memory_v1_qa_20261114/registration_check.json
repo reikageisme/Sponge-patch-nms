@@ -1,0 +1,94 @@
+{
+  "command": "from pathlib import Path\nimport sys,json,hashlib\nb=Path('/home/tanh/sponge-sim/pi3b_renderer_memory_v1_20261114');sys.path.insert(0,str(b));import control\nexpected={'analyze_memory.py': '59765ba9884e83862765322e041da9348680e781852ab3530c98bbf218931ed1', 'baseline_ops.py': '5bd6f0237b951fa170d299271164c0a388efd8a0bba18600d10235854e3225f3', 'build_engineering_lock.py': 'ee5093542ee70312d8c06b80a49add0a47d1fb5622a76ffa15245f33753ad293', 'cache.py': '150b36b0fb58d10932fad8fbcfb914be9bd079535bd6aec7366fe5a95f04701f', 'cache_functional_audit.json': '6f6af19efa89fcaa7dd822f01f57a739a0faddc01e536db2799352dab1bb3867', 'cache_manifest.json': '61b5abaaf22ea985b98f582a34f52cc19c2272ac87f66782292d843b17bbe165', 'control.py': '4652c4684e2b930529e392f7b4b5f5984c9bbc56846795f0f2dee75d6b9ffa4b', 'engineering_lock.json': 'd15da9346c0a3d21841c1c4ad6ce980a11c4e0b11bd8da27d7db2a373bc7c7cf', 'guard.py': 'f669bc058b42869b7b2b40743c2cd2b6492d29ef3f86258d875ce68ca0cf3525', 'memory_campaign.py': '205e656469372f688088b0dc1d40b119fe6334b87304c284117a9bb6f859aa5e', 'memory_worker.py': '19599b0aee6e2bd3f40a75ff336d1680137f035399e8c32c49361f10f6c6d256', 'preallocate.py': 'ef2cc77dddf4842f476a3d99f714fe56dfdc8d65adcdb857ac3239d01e1fbebf', 'provenance.json': '37311c41b0efb87d49896827dcc34c9d645000a158aab6894240672bb21bc5f7', 'stats_frozen.py': '748cc250a30806db715c02412915d357acaf289470b117bddeccf78eda20e8a6'}\nobserved={p.name:hashlib.sha256(p.read_bytes()).hexdigest() for p in b.iterdir() if p.is_file()}\nassert expected==observed\nlock=control.locked_materials(b);assert lock['qa_tag']=='qa-pi3b-renderer-memory-v1-20261114'\nassert not (b/'memory_registration.json').exists() and not (b/'runs').exists()\nsnapshot=control.System().snapshot();control.validate_snapshot(snapshot)\nassert snapshot=={'governor': 'ondemand', 'units': {'dev-zram0.swap': {'LoadState': 'loaded', 'ActiveState': 'active', 'FragmentPath': '/run/systemd/generator/dev-zram0.swap'}, 'rpi-zram-writeback.service': {'LoadState': 'loaded', 'ActiveState': 'inactive', 'FragmentPath': '/usr/lib/systemd/system/rpi-zram-writeback.service'}, 'rpi-zram-writeback.timer': {'LoadState': 'loaded', 'ActiveState': 'active', 'FragmentPath': '/run/systemd/generator/rpi-zram-writeback.timer'}}, 'setup': {'Result': 'success', 'ActiveState': 'active'}, 'swaps': [{'name': '/dev/zram0', 'kind': 'partition', 'size_kb': 926716, 'used_kb': 0, 'priority': 100}], 'mem_available_kb': 763636} or all(snapshot[k]=={'governor': 'ondemand', 'units': {'dev-zram0.swap': {'LoadState': 'loaded', 'ActiveState': 'active', 'FragmentPath': '/run/systemd/generator/dev-zram0.swap'}, 'rpi-zram-writeback.service': {'LoadState': 'loaded', 'ActiveState': 'inactive', 'FragmentPath': '/usr/lib/systemd/system/rpi-zram-writeback.service'}, 'rpi-zram-writeback.timer': {'LoadState': 'loaded', 'ActiveState': 'active', 'FragmentPath': '/run/systemd/generator/rpi-zram-writeback.timer'}}, 'setup': {'Result': 'success', 'ActiveState': 'active'}, 'swaps': [{'name': '/dev/zram0', 'kind': 'partition', 'size_kb': 926716, 'used_kb': 0, 'priority': 100}], 'mem_available_kb': 763636}[k] for k in ('governor','units','setup','swaps'))\nassert 'torch' not in sys.modules and 'scipy' not in sys.modules\nprint(json.dumps(dict(source_sha256=observed,lock=lock,snapshot=snapshot,scientific_registration_exists=False,torch_imported=False,scipy_imported=False)))\n",
+  "result": {
+    "source_sha256": {
+      "analyze_memory.py": "59765ba9884e83862765322e041da9348680e781852ab3530c98bbf218931ed1",
+      "provenance.json": "37311c41b0efb87d49896827dcc34c9d645000a158aab6894240672bb21bc5f7",
+      "cache.py": "150b36b0fb58d10932fad8fbcfb914be9bd079535bd6aec7366fe5a95f04701f",
+      "memory_campaign.py": "205e656469372f688088b0dc1d40b119fe6334b87304c284117a9bb6f859aa5e",
+      "engineering_lock.json": "d15da9346c0a3d21841c1c4ad6ce980a11c4e0b11bd8da27d7db2a373bc7c7cf",
+      "cache_functional_audit.json": "6f6af19efa89fcaa7dd822f01f57a739a0faddc01e536db2799352dab1bb3867",
+      "baseline_ops.py": "5bd6f0237b951fa170d299271164c0a388efd8a0bba18600d10235854e3225f3",
+      "stats_frozen.py": "748cc250a30806db715c02412915d357acaf289470b117bddeccf78eda20e8a6",
+      "cache_manifest.json": "61b5abaaf22ea985b98f582a34f52cc19c2272ac87f66782292d843b17bbe165",
+      "preallocate.py": "ef2cc77dddf4842f476a3d99f714fe56dfdc8d65adcdb857ac3239d01e1fbebf",
+      "build_engineering_lock.py": "ee5093542ee70312d8c06b80a49add0a47d1fb5622a76ffa15245f33753ad293",
+      "control.py": "4652c4684e2b930529e392f7b4b5f5984c9bbc56846795f0f2dee75d6b9ffa4b",
+      "memory_worker.py": "19599b0aee6e2bd3f40a75ff336d1680137f035399e8c32c49361f10f6c6d256",
+      "guard.py": "f669bc058b42869b7b2b40743c2cd2b6492d29ef3f86258d875ce68ca0cf3525"
+    },
+    "lock": {
+      "workspace": "/home/tanh/sponge-sim/pi3b_renderer_memory_v1_20261114",
+      "qa_tag": "qa-pi3b-renderer-memory-v1-20261114",
+      "empirical_endpoints_enabled": false,
+      "source_sha256": {
+        "analyze_memory.py": "59765ba9884e83862765322e041da9348680e781852ab3530c98bbf218931ed1",
+        "baseline_ops.py": "5bd6f0237b951fa170d299271164c0a388efd8a0bba18600d10235854e3225f3",
+        "build_engineering_lock.py": "ee5093542ee70312d8c06b80a49add0a47d1fb5622a76ffa15245f33753ad293",
+        "cache.py": "150b36b0fb58d10932fad8fbcfb914be9bd079535bd6aec7366fe5a95f04701f",
+        "control.py": "4652c4684e2b930529e392f7b4b5f5984c9bbc56846795f0f2dee75d6b9ffa4b",
+        "guard.py": "f669bc058b42869b7b2b40743c2cd2b6492d29ef3f86258d875ce68ca0cf3525",
+        "memory_campaign.py": "205e656469372f688088b0dc1d40b119fe6334b87304c284117a9bb6f859aa5e",
+        "memory_worker.py": "19599b0aee6e2bd3f40a75ff336d1680137f035399e8c32c49361f10f6c6d256",
+        "preallocate.py": "ef2cc77dddf4842f476a3d99f714fe56dfdc8d65adcdb857ac3239d01e1fbebf",
+        "stats_frozen.py": "748cc250a30806db715c02412915d357acaf289470b117bddeccf78eda20e8a6"
+      },
+      "reference_sha256": {
+        "cache_manifest.json": "61b5abaaf22ea985b98f582a34f52cc19c2272ac87f66782292d843b17bbe165",
+        "cache_functional_audit.json": "6f6af19efa89fcaa7dd822f01f57a739a0faddc01e536db2799352dab1bb3867"
+      },
+      "safety": {
+        "governor": "powersave",
+        "gates": {
+          "reference_drift": 0.03,
+          "max_reference_flags": 2,
+          "clock_hz": [
+            594000000,
+            606000000
+          ],
+          "abort_temp_c": 75.0,
+          "abort_mem_available_kb": 40000,
+          "aa_abs_log": 0.02,
+          "mde_log": 0.05
+        }
+      }
+    },
+    "snapshot": {
+      "governor": "ondemand",
+      "units": {
+        "dev-zram0.swap": {
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "FragmentPath": "/run/systemd/generator/dev-zram0.swap"
+        },
+        "rpi-zram-writeback.service": {
+          "LoadState": "loaded",
+          "ActiveState": "inactive",
+          "FragmentPath": "/usr/lib/systemd/system/rpi-zram-writeback.service"
+        },
+        "rpi-zram-writeback.timer": {
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "FragmentPath": "/run/systemd/generator/rpi-zram-writeback.timer"
+        }
+      },
+      "setup": {
+        "Result": "success",
+        "ActiveState": "active"
+      },
+      "swaps": [
+        {
+          "name": "/dev/zram0",
+          "kind": "partition",
+          "size_kb": 926716,
+          "used_kb": 0,
+          "priority": 100
+        }
+      ],
+      "mem_available_kb": 763572
+    },
+    "scientific_registration_exists": false,
+    "torch_imported": false,
+    "scipy_imported": false
+  }
+}

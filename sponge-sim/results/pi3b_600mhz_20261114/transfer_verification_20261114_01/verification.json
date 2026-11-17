@@ -1,0 +1,89 @@
+{
+  "status": "ALL_FETCHED_FILES_SHA_MATCH_REMOTE_STABLE",
+  "files_sha256": {
+    "runs/full_01.pid": "53d94404d51892dcc65dd7f6490d0363100e76abdc6c31d6eccf9b6b0dfa373d",
+    "runs/full_01/status.txt": "fdeffb7a70030f6aced2a6bd84d6e09d68f1377dd91a6f5ad86d0cac28bc4c3e",
+    "runs/full_01/stages_PI4.log": "294041f184db33a9e199470f52deacee900f0e45cf36467fc4df82ca35906919",
+    "runs/full_01/pipeline_PI4.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/full_01/pipeline_PI1.log": "294041f184db33a9e199470f52deacee900f0e45cf36467fc4df82ca35906919",
+    "runs/full_01/campaign.log": "d1ba3166a5713edd2bfda2f9d969dcf7728228bd9daf921396898ffd3a9f4e09",
+    "runs/full_01/pipeline_PI4/raw.jsonl": "83e84900fa11c9d11a8061a69d280a064f7e741f996f1d42d5666004b4170971",
+    "runs/full_01/pipeline_PI4/manifest.json": "a3f062fc9d3e2bfac5189f1df1a2c69af51483c01c489ef95986fd3e283cbc23",
+    "runs/smoke_01/status.txt": "1cede335bdec157be78d74cc23a1bf3dc4b2452519fb2738b73dee0c4811564f",
+    "runs/smoke_01/stages_PI4.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/smoke_01/pipeline_PI4.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/smoke_01/pipeline_PI1.log": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+    "runs/smoke_01/stages_PI4/raw.jsonl": "028967662d7d5ad680619760dbe8f2d6767e6daa9ba16e5329926efcde3ae24f",
+    "runs/smoke_01/stages_PI4/manifest.json": "607a7339990e5a2bfdc14e875714b60385093964b71020ca7c36b78a590b331e",
+    "runs/smoke_01/pipeline_PI1/raw.jsonl": "6a9da5c0b9989671ba8e143b5a019326818d1776214e6cc6eb65e7180763261c",
+    "runs/smoke_01/pipeline_PI1/manifest.json": "83b7b191654d1151673b05d674b928147a6d0841a9b0b6fd8916bfe8990fb7ff",
+    "runs/smoke_01/campaign.log": "ffaa2cd74acdbfc289858a0b77e2f6874db51c4fdf5a332f452b5c435b820ffa",
+    "runs/smoke_01/pipeline_PI4/raw.jsonl": "acadee5f8ca5dbeacbe8868a19025f8f54200258cfb4f25fa5e1bce7cba80c68",
+    "runs/smoke_01/pipeline_PI4/manifest.json": "24a24025d2e128c0efd9101aafab1a84ef4990be8bb6a7e7232f1e04ab45d681",
+    "runs/full_01.out": "52346ac7d9587582c41e55dfa8fdc69c86383035c317397e8b50ac6e87b8b0e4",
+    "runs/smoke_01.out": "52346ac7d9587582c41e55dfa8fdc69c86383035c317397e8b50ac6e87b8b0e4"
+  },
+  "raws": {
+    "runs/full_01/pipeline_PI4/raw.jsonl": {
+      "sha256": "83e84900fa11c9d11a8061a69d280a064f7e741f996f1d42d5666004b4170971",
+      "line_count": 806,
+      "newline_count": 806,
+      "kinds": {
+        "pin_start": 1,
+        "reference": 22,
+        "environment": 21,
+        "counts": 20,
+        "timing": 720,
+        "memory": 20,
+        "pin_end": 1,
+        "done": 1
+      }
+    },
+    "runs/smoke_01/stages_PI4/raw.jsonl": {
+      "sha256": "028967662d7d5ad680619760dbe8f2d6767e6daa9ba16e5329926efcde3ae24f",
+      "line_count": 38,
+      "newline_count": 38,
+      "kinds": {
+        "pin_start": 1,
+        "reference": 4,
+        "environment": 3,
+        "counts": 2,
+        "timing": 24,
+        "memory": 2,
+        "pin_end": 1,
+        "done": 1
+      }
+    },
+    "runs/smoke_01/pipeline_PI1/raw.jsonl": {
+      "sha256": "6a9da5c0b9989671ba8e143b5a019326818d1776214e6cc6eb65e7180763261c",
+      "line_count": 38,
+      "newline_count": 38,
+      "kinds": {
+        "pin_start": 1,
+        "reference": 4,
+        "environment": 3,
+        "counts": 2,
+        "timing": 24,
+        "memory": 2,
+        "pin_end": 1,
+        "done": 1
+      }
+    },
+    "runs/smoke_01/pipeline_PI4/raw.jsonl": {
+      "sha256": "acadee5f8ca5dbeacbe8868a19025f8f54200258cfb4f25fa5e1bce7cba80c68",
+      "line_count": 38,
+      "newline_count": 38,
+      "kinds": {
+        "pin_start": 1,
+        "reference": 4,
+        "environment": 3,
+        "counts": 2,
+        "timing": 24,
+        "memory": 2,
+        "pin_end": 1,
+        "done": 1
+      }
+    }
+  },
+  "remote_mutation": false
+}

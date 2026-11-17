@@ -1,0 +1,1039 @@
+{
+  "status": "METADATA_ONLY_NOT_LOAD_AUTHORIZATION",
+  "python": "3.14.4 (main, Aug 20 2026, 10:41:58) [GCC 15.2.0]",
+  "executable": "/root/sponge-sim/venv/bin/python",
+  "architecture": "aarch64",
+  "platform": "Linux-6.17.0-PRoot-Distro-aarch64-with-glibc2.43",
+  "allowed_cpus": [
+    0,
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7
+  ],
+  "ticks_hz": 100,
+  "thread_snapshot": {
+    "started_s": 719766.976413964,
+    "finished_s": 719766.990918651,
+    "threads": {
+      "25531": {
+        "tid": 25531,
+        "read_started_s": 719766.977457401,
+        "stat_before": "25531 (python) R 25303 25288 25288 0 -1 4194304 3348 421 157 65 17 13 1 1 20 0 1 0 93861752 32153600 4896 18446744073709551615 137438953472 137438954600 548753537360 0 0 0 0 16781312 2 0 0 0 17 4 0 0 0 0 0 137438953472 137438954600 138115637248 548753538542 548753538770 548753538770 548753543106 0\n",
+        "status": "Name:\tpython\nUmask:\t0022\nState:\tR (running)\nTgid:\t25531\nNgid:\t0\nPid:\t25531\nPPid:\t25303\nTracerPid:\t25303\nUid:\t10445\t10445\t10445\t10445\nGid:\t10445\t10445\t10445\t10445\nFDSize:\t64\nGroups:\t3003 9997 20445 50445 \nKthread:\t0\nVmPeak:\t   31400 kB\nVmSize:\t   31400 kB\nVmLck:\t       0 kB\nVmPin:\t       0 kB\nVmHWM:\t   19584 kB\nVmRSS:\t   19584 kB\nRssAnon:\t   10880 kB\nRssFile:\t    8704 kB\nRssShmem:\t       0 kB\nVmData:\t   13096 kB\nVmStk:\t     136 kB\nVmExe:\t       4 kB\nVmLib:\t   16236 kB\nVmPTE:\t     100 kB\nVmSwap:\t       0 kB\nCoreDumping:\t0\nTHP_enabled:\t1\nuntag_mask:\t0xffffffffffffff\nThreads:\t1\nSigQ:\t1/25279\nSigPnd:\t0000000000000000\nShdPnd:\t0000000000000000\nSigBlk:\t0000000000000000\nSigIgn:\t0000002001001000\nSigCgt:\t0000000000000002\nCapInh:\t0000000000000000\nCapPrm:\t0000000000000000\nCapEff:\t0000000000000000\nCapBnd:\t0000000000000000\nCapAmb:\t0000000000000000\nNoNewPrivs:\t1\nSeccomp:\t2\nSeccomp_filters:\t2\nSpeculation_Store_Bypass:\tthread vulnerable\nSpeculationIndirectBranch:\tunknown\nCpus_allowed:\tff\nCpus_allowed_list:\t0-7\nMems_allowed:\t1\nMems_allowed_list:\t0\nvoluntary_ctxt_switches:\t2182\nnonvoluntary_ctxt_switches:\t221\n",
+        "status_mask": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "mask": [
+          0,
+          1,
+          2,
+          3,
+          4,
+          5,
+          6,
+          7
+        ],
+        "stat_after": "25531 (python) R 25303 25288 25288 0 -1 4194304 3348 421 157 65 17 13 1 1 20 0 1 0 93861752 32153600 4896 18446744073709551615 137438953472 137438954600 548753537360 0 0 0 0 16781312 2 0 0 0 17 5 0 0 0 0 0 137438953472 137438954600 138115637248 548753538542 548753538770 548753538770 548753543106 0\n",
+        "state": "R",
+        "ticks": 30,
+        "starttime": 93861752,
+        "last_cpu": 5,
+        "read_finished_s": 719766.983320266
+      }
+    },
+    "errors": [],
+    "first_tids": [
+      25531
+    ],
+    "last_tids": [
+      25531
+    ],
+    "complete": true
+  },
+  "omp": {
+    "OMP_NUM_THREADS": null,
+    "MKL_NUM_THREADS": null,
+    "OPENBLAS_NUM_THREADS": null
+  },
+  "packages": {
+    "torch": {
+      "version": "2.15.0",
+      "init_path": "/root/sponge-sim/venv/lib/python3.14/site-packages/torch/__init__.py",
+      "init_sha256": "7ed81103f3d256de131b886e67be458b3205784e3b4af9c495041282391e19db"
+    },
+    "torchvision": {
+      "version": "0.29.2",
+      "init_path": "/root/sponge-sim/venv/lib/python3.14/site-packages/torchvision/__init__.py",
+      "init_sha256": "9410a7e648ff07a695587173d09301d7da997a017cd8cef7b54e5b2f6dc8c342"
+    },
+    "ultralytics": {
+      "version": "8.4.197",
+      "init_path": "/root/sponge-sim/venv/lib/python3.14/site-packages/ultralytics/__init__.py",
+      "init_sha256": "9739f68a3a9319bd8c309863a772401ce9560238ee6e3dcf186ef0693f725271"
+    },
+    "scipy": {
+      "version": "1.18.1",
+      "init_path": "/root/sponge-sim/venv/lib/python3.14/site-packages/scipy/__init__.py",
+      "init_sha256": "39ccae300a4739cc53719bd3b39ce3f8f66e736c6eb672006e338a4c5cc3dc76"
+    },
+    "psutil": {
+      "version": "7.2.2",
+      "init_path": "/root/sponge-sim/venv/lib/python3.14/site-packages/psutil/__init__.py",
+      "init_sha256": "d138a5786b163b56ba86ea0b2d5589dfca37e1bcdf8de1057fe1e933d6ab808a"
+    }
+  },
+  "torch_imported": false,
+  "sysfs_requested": true,
+  "sysfs_raw": {
+    "thermal": [
+      {
+        "id": "thermal_zone0",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone0/type",
+            "raw": "aoss-0",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone0/temp",
+            "raw": "61500",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone1",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone1/type",
+            "raw": "cpuss-0",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone1/temp",
+            "raw": "70100",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone10",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone10/type",
+            "raw": "cpu-1-7",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone10/temp",
+            "raw": "69100",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone11",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone11/type",
+            "raw": "gpuss-0",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone11/temp",
+            "raw": "57100",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone12",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone12/type",
+            "raw": "gpuss-1",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone12/temp",
+            "raw": "59800",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone13",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone13/type",
+            "raw": "camera-0",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone13/temp",
+            "raw": "55700",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone14",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone14/type",
+            "raw": "zeroc-0",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone14/temp",
+            "raw": "0",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone15",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone15/type",
+            "raw": "aoss-1",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone15/temp",
+            "raw": "62200",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone16",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone16/type",
+            "raw": "cpu-0-0",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone16/temp",
+            "raw": "71800",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone17",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone17/type",
+            "raw": "cpu-0-1",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone17/temp",
+            "raw": "71100",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone18",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone18/type",
+            "raw": "cpu-0-2",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone18/temp",
+            "raw": "69100",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone19",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone19/type",
+            "raw": "cpu-0-3",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone19/temp",
+            "raw": "67000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone2",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone2/type",
+            "raw": "cpuss-1",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone2/temp",
+            "raw": "70800",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone20",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone20/type",
+            "raw": "nspss-0",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone20/temp",
+            "raw": "56100",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone21",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone21/type",
+            "raw": "nspss-1",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone21/temp",
+            "raw": "56800",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone22",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone22/type",
+            "raw": "nspss-2",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone22/temp",
+            "raw": "56800",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone23",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone23/type",
+            "raw": "video",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone23/temp",
+            "raw": "57400",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone24",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone24/type",
+            "raw": "ddr",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone24/temp",
+            "raw": "61500",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone25",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone25/type",
+            "raw": "mdmss-0",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone25/temp",
+            "raw": "58500",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone26",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone26/type",
+            "raw": "mdmss-1",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone26/temp",
+            "raw": "55700",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone27",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone27/type",
+            "raw": "mdmss-2",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone27/temp",
+            "raw": "56800",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone28",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone28/type",
+            "raw": "mdmss-3",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone28/temp",
+            "raw": "57100",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone29",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone29/type",
+            "raw": "zeroc-1",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone29/temp",
+            "raw": "0",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone3",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone3/type",
+            "raw": "cpu-1-0",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone3/temp",
+            "raw": "69400",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone30",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone30/type",
+            "raw": "pm6150l-bcl-lvl0",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone30/temp",
+            "raw": "0",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone31",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone31/type",
+            "raw": "pm6150l-bcl-lvl1",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone31/temp",
+            "raw": "0",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone32",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone32/type",
+            "raw": "pm6150l-bcl-lvl2",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone32/temp",
+            "raw": "0",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone33",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone33/type",
+            "raw": "pm6450_tz",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone33/temp",
+            "raw": "37000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone34",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone34/type",
+            "raw": "pm6150l_tz",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone34/temp",
+            "raw": "55234",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone35",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone35/type",
+            "raw": "xo-therm",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone35/temp",
+            "raw": "48029",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone36",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone36/type",
+            "raw": "sys-therm-1",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone36/temp",
+            "raw": "481271",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone37",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone37/type",
+            "raw": "sys-therm-2",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone37/temp",
+            "raw": "662478",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone38",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone38/type",
+            "raw": "ac",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone38/temp",
+            "raw": "47900",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone39",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone39/type",
+            "raw": "battery",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone39/temp",
+            "raw": "39100",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone4",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone4/type",
+            "raw": "cpu-1-1",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone4/temp",
+            "raw": "70800",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone40",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone40/type",
+            "raw": "pa",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone40/temp",
+            "raw": "49139",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone41",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone41/type",
+            "raw": "pa1",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone41/temp",
+            "raw": "11080",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone42",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone42/type",
+            "raw": "bcl-warn",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone42/temp",
+            "raw": "-273000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone43",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone43/type",
+            "raw": "sub1-modem-cfg",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone43/temp",
+            "raw": "-273000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone44",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone44/type",
+            "raw": "sub1-lte-cc",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone44/temp",
+            "raw": "-273000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone45",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone45/type",
+            "raw": "sub1_mcg_fr1_cc",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone45/temp",
+            "raw": "-273000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone46",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone46/type",
+            "raw": "sub1_mcg_fr2_cc",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone46/temp",
+            "raw": "-273000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone47",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone47/type",
+            "raw": "sub1_scg_fr1_cc",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone47/temp",
+            "raw": "-273000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone48",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone48/type",
+            "raw": "sub1_scg_fr2_cc",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone48/temp",
+            "raw": "-273000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone49",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone49/type",
+            "raw": "sdr0-pa",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone49/temp",
+            "raw": "-273000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone5",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone5/type",
+            "raw": "cpu-1-2",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone5/temp",
+            "raw": "68000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone50",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone50/type",
+            "raw": "sdr1-pa",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone50/temp",
+            "raw": "-273000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone51",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone51/type",
+            "raw": "sdr0",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone51/temp",
+            "raw": "-273000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone52",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone52/type",
+            "raw": "sdr1",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone52/temp",
+            "raw": "-273000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone53",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone53/type",
+            "raw": "mmw0",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone53/temp",
+            "raw": "-273000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone54",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone54/type",
+            "raw": "mmw1",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone54/temp",
+            "raw": "-273000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone55",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone55/type",
+            "raw": "mmw2",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone55/temp",
+            "raw": "-273000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone56",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone56/type",
+            "raw": "mmw3",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone56/temp",
+            "raw": "-273000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone57",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone57/type",
+            "raw": "mmw-ific0",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone57/temp",
+            "raw": "-273000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone6",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone6/type",
+            "raw": "cpu-1-3",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone6/temp",
+            "raw": "70800",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone7",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone7/type",
+            "raw": "cpu-1-4",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone7/temp",
+            "raw": "65000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone8",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone8/type",
+            "raw": "cpu-1-5",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone8/temp",
+            "raw": "68000",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      },
+      {
+        "id": "thermal_zone9",
+        "nodes": {
+          "type": {
+            "path": "/sys/class/thermal/thermal_zone9/type",
+            "raw": "cpu-1-6",
+            "readable": true
+          },
+          "temp": {
+            "path": "/sys/class/thermal/thermal_zone9/temp",
+            "raw": "68400",
+            "readable": true
+          }
+        },
+        "unit_contract": "REQUIRES_EXPLICIT_REVIEW_BEFORE_REGISTRY"
+      }
+    ],
+    "power": [],
+    "errors": [
+      {
+        "path": "/sys/class/power_supply",
+        "error": "PermissionError",
+        "message": "[Errno 13] Permission denied: '/sys/class/power_supply'"
+      }
+    ],
+    "temperature_conversion_performed": false
+  }
+}

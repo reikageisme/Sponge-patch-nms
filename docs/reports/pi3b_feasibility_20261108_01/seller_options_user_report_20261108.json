@@ -1,0 +1,22 @@
+{
+  "source": "user_reply_20261108",
+  "facebook_price_vnd": 380000,
+  "shopee_price_vnd": 450000,
+  "difference_vnd": 70000,
+  "wifi_fault_mentioned": true,
+  "which_listing_has_fault": "UNSPECIFIED",
+  "user_accepts_Ethernet": true,
+  "available_microSD_GB": [
+    8,
+    32
+  ],
+  "power_supply": "user can source5V; current/cable quality unverified",
+  "actual_listing_or_warranty_verified": false,
+  "purchase_performed": false,
+  "recommendation": "conditional consideration for offline ARM board; test actual unit, choose32GB card, proper5.1V2.5A microUSB supply recommendation",
+  "primary_sources": [
+    "https://www.raspberrypi.com/products/raspberry-pi-3-model-b/",
+    "https://www.raspberrypi.com/documentation/computers/raspberry-pi.html#power-supply",
+    "https://www.raspberrypi.com/documentation/computers/getting-started.html"
+  ]
+}

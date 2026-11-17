@@ -1,0 +1,1054 @@
+[
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000009.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000025.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000030.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000034.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000036.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000042.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000049.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000061.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000064.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000071.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000072.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000073.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000074.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000077.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000078.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000081.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000086.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000089.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000092.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000094.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000109.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000110.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000113.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000127.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000133.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000136.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000138.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000142.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000143.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000144.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000149.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000151.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000154.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000164.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000165.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000192.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000194.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000196.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000201.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000208.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000241.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000247.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000250.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000257.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000260.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000263.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000283.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000294.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000307.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000308.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000309.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000312.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000315.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000321.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000322.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000326.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000328.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000332.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000338.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000349.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000357.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000359.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000360.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000368.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000370.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000382.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000384.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000387.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000389.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000394.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000395.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000397.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000400.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000404.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000415.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000419.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000428.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000431.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000436.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000438.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000443.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000446.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000450.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000459.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000471.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000472.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000474.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000486.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000488.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000490.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000491.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000502.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000508.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000510.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000514.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000520.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000529.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000531.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000532.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000536.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000540.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000542.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000544.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000560.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000562.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000564.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000569.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000572.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000575.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000581.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000584.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000589.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000590.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000595.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000597.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000599.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000605.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000612.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000620.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000623.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000625.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000626.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000629.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000634.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000636.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000641.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000643.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco128/images/train2017/000000000650.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000000139.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000000285.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000000632.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000000724.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000000776.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000000785.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000000802.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000000872.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000000885.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000001000.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000001268.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000001296.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000001353.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000001425.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000001490.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000001503.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000001532.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000001584.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000001675.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000001761.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000001818.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000001993.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000002006.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000002149.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000002153.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000002157.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000002261.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000002299.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000002431.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000002473.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000002532.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000002587.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000002592.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000002685.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000002923.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000003156.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000003255.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000003501.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000003553.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000003661.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000003845.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000003934.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000004134.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000004395.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000004495.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000004765.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000004795.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000005001.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000005037.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000005060.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000005193.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000005477.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000005503.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000005529.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000005586.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000005600.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000005992.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000006012.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000006040.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000006213.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000006460.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000006471.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000006614.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000006723.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000006763.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000006771.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000006818.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000006894.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000006954.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000007088.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000007108.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000007278.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000007281.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000007386.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000007511.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000007574.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000007784.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000007795.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000007816.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000007818.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000007888.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000007977.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000007991.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000008021.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000008211.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000008277.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000008532.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000008629.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000008690.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000008762.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000008844.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000008899.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000009378.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000009400.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000009448.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000009483.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000009590.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000009769.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000009772.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000009891.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000009914.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000010092.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000010363.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000010583.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000010707.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000010764.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000010977.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000010995.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000011051.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000011122.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000011149.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000011197.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000011511.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000011615.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000011699.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000011760.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000011813.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000012062.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000012120.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000012280.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000012576.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000012639.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000012667.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000012670.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000012748.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000013004.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000013177.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/datasets/coco_val2017_extended/images/000000013201.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/vendor_underload/demo_imgs/X1DIs2K7h7.png",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/vendor_underload/robust_pkgs/ultralytics-yolov5-robust-0.0.1/build/lib/yolov5/data/images/bus.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/vendor_underload/robust_pkgs/ultralytics-yolov5-robust-0.0.1/build/lib/yolov5/data/images/zidane.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/vendor_underload/robust_pkgs/ultralytics-yolov5-robust-0.0.1/yolov5/data/images/bus.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/vendor_underload/robust_pkgs/ultralytics-yolov5-robust-0.0.1/yolov5/data/images/zidane.jpg",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/weights/reference/smoke_overload_1790955568047058100/overload_patch261.png",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  },
+  {
+    "source": "outputs/weights/reference/smoke_phantom_sponges_1790955553529307100/ps_patch264.png",
+    "reason": "dataset / weights / vendor assets / document QA; not manuscript evidence"
+  }
+]

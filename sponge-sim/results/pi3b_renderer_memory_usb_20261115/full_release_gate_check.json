@@ -1,0 +1,9 @@
+{
+  "status": "FULL_LAUNCH_RELEASE_GATE_REFUSES_WITHOUT_POST_SMOKE_APPROVAL",
+  "launcher_sha256": "ce77aa80c9a831d5f99951199c719f2fb4009535533348734a8e8c2630f0a85f",
+  "generated_python_syntax_checks": 2,
+  "no_remote_action": true,
+  "no_full_directory": true,
+  "approval_exists": false,
+  "proposed_review_sha256": "8992281d13b72be4e7f8967757150f9b6b106be4a0c6902e64012b9bde02c44d"
+}

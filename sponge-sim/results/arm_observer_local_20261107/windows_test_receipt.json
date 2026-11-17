@@ -1,0 +1,9 @@
+{
+  "status": "ENGINEERING_TESTS_ONLY",
+  "command": "python -m pytest sponge-sim/tests/test_arm_preflight_v2.py sponge-sim/tests/test_arm_linux_observe.py sponge-sim/tests/test_arm_posix_runtime.py sponge-sim/tests/test_laptop_seg.py -q -p no:cacheprovider",
+  "result": "80 passed",
+  "arm_test_count": 52,
+  "cpu_regression_test_count": 28,
+  "scientific_device_measurement": false,
+  "native_receipt_sha256": "ae14e740c21a9481b785ea97fad6a7bbdb66d9568d8d77eb3b21a9187e9b7e6b"
+}

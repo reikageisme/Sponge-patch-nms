@@ -1,0 +1,65 @@
+{
+  "case": "qa_childkill_01",
+  "restore": {
+    "status": "RESTORED",
+    "errors": [],
+    "wall_utc": 1794679016.2790349
+  },
+  "activation": {
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Failed to start dev-zram0.swap: Unit dev-zram0.swap is masked.\n"
+  },
+  "child_identity_gone": true,
+  "current": {
+    "governor": "ondemand",
+    "units": {
+      "dev-zram0.swap": {
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "FragmentPath": "/run/systemd/generator/dev-zram0.swap"
+      },
+      "rpi-zram-writeback.service": {
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "FragmentPath": "/usr/lib/systemd/system/rpi-zram-writeback.service"
+      },
+      "rpi-zram-writeback.timer": {
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "FragmentPath": "/run/systemd/generator/rpi-zram-writeback.timer"
+      }
+    },
+    "setup": {
+      "Result": "success",
+      "ActiveState": "active"
+    },
+    "swaps": [
+      {
+        "name": "/dev/zram0",
+        "kind": "partition",
+        "size_kb": 926716,
+        "used_kb": 0,
+        "priority": 100
+      }
+    ],
+    "mem_available_kb": 758636
+  },
+  "journal": "2026-11-14T17:56:35+00:00 pi sudo[15800]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl stop rpi-zram-writeback.timer\n2026-11-14T17:56:35+00:00 pi sudo[15800]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T17:56:35+00:00 pi sudo[15800]: pam_unix(sudo:session): session closed for user root\n2026-11-14T17:56:35+00:00 pi sudo[15803]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl stop dev-zram0.swap\n2026-11-14T17:56:35+00:00 pi sudo[15803]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T17:56:35+00:00 pi sudo[15803]: pam_unix(sudo:session): session closed for user root\n2026-11-14T17:56:35+00:00 pi sudo[15811]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl mask --runtime dev-zram0.swap rpi-zram-writeback.service rpi-zram-writeback.timer\n2026-11-14T17:56:35+00:00 pi sudo[15811]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T17:56:41+00:00 pi sudo[15811]: pam_unix(sudo:session): session closed for user root\n2026-11-14T17:56:41+00:00 pi sudo[15911]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/tee /sys/devices/system/cpu/cpufreq/policy0/scaling_governor\n2026-11-14T17:56:41+00:00 pi sudo[15911]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T17:56:41+00:00 pi sudo[15911]: pam_unix(sudo:session): session closed for user root\n2026-11-14T17:56:42+00:00 pi sudo[15926]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl start dev-zram0.swap\n2026-11-14T17:56:42+00:00 pi sudo[15926]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T17:56:42+00:00 pi sudo[15926]: pam_unix(sudo:session): session closed for user root\n2026-11-14T17:56:48+00:00 pi systemd[1]: sponge-pi3b-swapguard-v2.service: Main process exited, code=exited, status=1/FAILURE\n2026-11-14T17:56:49+00:00 pi sudo[15972]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl unmask --runtime dev-zram0.swap rpi-zram-writeback.service rpi-zram-writeback.timer\n2026-11-14T17:56:49+00:00 pi sudo[15972]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T17:56:54+00:00 pi sudo[15972]: pam_unix(sudo:session): session closed for user root\n2026-11-14T17:56:54+00:00 pi sudo[16066]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/tee /sys/devices/system/cpu/cpufreq/policy0/scaling_governor\n2026-11-14T17:56:54+00:00 pi sudo[16066]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T17:56:54+00:00 pi sudo[16066]: pam_unix(sudo:session): session closed for user root\n2026-11-14T17:56:55+00:00 pi sudo[16069]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl start dev-zram0.swap\n2026-11-14T17:56:55+00:00 pi sudo[16069]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T17:56:55+00:00 pi sudo[16069]: pam_unix(sudo:session): session closed for user root\n2026-11-14T17:56:55+00:00 pi sudo[16081]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl start rpi-zram-writeback.timer\n2026-11-14T17:56:55+00:00 pi sudo[16081]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-14T17:56:55+00:00 pi sudo[16081]: pam_unix(sudo:session): session closed for user root\n2026-11-14T17:56:56+00:00 pi systemd[1]: sponge-pi3b-swapguard-v2.service: Failed with result 'exit-code'.\n2026-11-14T17:56:56+00:00 pi systemd[1]: sponge-pi3b-swapguard-v2.service: Consumed 4.038s CPU time.\n",
+  "supervisor_log": "Traceback (most recent call last):\n  File \"/home/tanh/sponge-sim/pi3b_renderer_memory_usb_20261115/control.py\", line 372, in <module>\n    if __name__=='__main__':raise SystemExit(main())\n                                             ~~~~^^\n  File \"/home/tanh/sponge-sim/pi3b_renderer_memory_usb_20261115/control.py\", line 369, in main\n    return payload(args)\n  File \"/home/tanh/sponge-sim/pi3b_renderer_memory_usb_20261115/control.py\", line 304, in payload\n    code=child.wait(timeout=args.qa_seconds);raise RuntimeError(f'QA child exited unexpectedly: {code}')\n                                             ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^\nRuntimeError: QA child exited unexpectedly: -9\n{\"status\": \"RESTORED\", \"errors\": [], \"wall_utc\": 1794679016.2790349}\n",
+  "sha256": {
+    "usb_preflight.json": "1da57226b93f727853fb45e8a35058e6cf08127f1a527251aa9f8180436b869f",
+    "restore.json": "f0502e1837d94f90da105f60a0795d1be09365bdd59c4f964cca493e0236356b",
+    "qa_fault_intent.json": "a2cb77c6530855eccd500f4cf731c802ff46e36cdeebd95427ef300e843b61f7",
+    "activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+    "lease_events.jsonl": "93d18e7e65ac4c8326f2d0a10a7b5b5b57d7628619d589766a3a6ba730082163",
+    "qa_fault_sent.json": "31c1a2df9f296157addc957f1930d4d4b903d46dea0cbfaaac9d44a4fce54d54",
+    "supervisor.log": "6a6e6e79fbe4668883adf66db68c23e5f5015652b5a59268655954b5afdd8928",
+    "qa_ready.json": "b8a61428f2da219dd7409d6e4befa6590245a4b56d9f6fdd999cf81a074a423c",
+    "registration.json": "616adbb83f3561cfb29e60ace1000ccd9ed74d62b591d20b42d511ed6704d42a",
+    "lease_state.json": "7ac78ea9e5a4e980b30c5692501efde3161d90f47ab5cbc289a53fcf4e9a5adc"
+  },
+  "status": "PASS_CHILD",
+  "frontend_exit_code": 1,
+  "launch": "/home/tanh/sponge-venv/bin/python /home/tanh/sponge-sim/pi3b_renderer_memory_usb_20261115/control.py launch --mode qa --name qa_childkill_01 --tag qa-pi3b-renderer-memory-usb-20261115 --commit c6a9747643b097595055cbdf7e7317ed48e8e10e --qa-seconds 60 --qa-timeout 120"
+}

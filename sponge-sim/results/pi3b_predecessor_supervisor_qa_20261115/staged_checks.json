@@ -1,0 +1,7 @@
+{
+  "status": "SCOPED_STAGE_ONLY",
+  "whitespace_findings": [
+    "control.py and exact registered copy contain trailing blank line; retained locked bytes, no native data yet"
+  ],
+  "check_policy": "command-only core.whitespace=cr-at-eol,-blank-at-eof; source hashes unchanged"
+}

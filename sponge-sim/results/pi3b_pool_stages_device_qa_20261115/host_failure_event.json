@@ -1,0 +1,9 @@
+{
+  "stage": "Before tag/device",
+  "first_suite": "42PASS",
+  "expanded_suite": "44PASS/1FAIL",
+  "error": "NameError in expanded host test: final two assertions accidentally moved to another function by insertion patch",
+  "correction": "Moved unchanged assertions back to original function; no runtime relaxation",
+  "final_suite": "45PASS0.64s",
+  "logs_retained": true
+}

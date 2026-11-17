@@ -1,0 +1,173 @@
+{
+  "scope": "Metadata API QA only, not NMS/RSS/latency",
+  "source_sha256": "4c18b03e448a241a2a4c551db09337f8a37da2d0ef306f315574cc9fb2f066f4",
+  "tag": "qa-pi3b-nms-counters-20261115",
+  "commit": "2703f8857c66eeaa9d15d888816d7b86be3910b4",
+  "before_context": {
+    "governor": "ondemand\n",
+    "swaps": "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority\n/dev/zram0                              partition\t926716\t\t0\t\t100\n",
+    "affinity": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "before": {
+    "pid": 14771,
+    "start_ticks": 5245214,
+    "calling_tid": 14771,
+    "calling_thread_start_ticks": 5245214,
+    "thread_status": {
+      "Cpus_allowed_list": "0-3",
+      "voluntary_ctxt_switches": 0,
+      "nonvoluntary_ctxt_switches": 36
+    },
+    "cgroup_path": "/user.slice/user-1000.slice/session-319.scope",
+    "cgroup": {
+      "cpu.max": {
+        "status": "OK",
+        "text": "max 100000\n"
+      },
+      "cpu.stat": {
+        "status": "OK",
+        "text": "usage_usec 457131\nuser_usec 358611\nsystem_usec 98519\nnice_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+        "values": {
+          "usage_usec": 457131,
+          "user_usec": 358611,
+          "system_usec": 98519,
+          "nice_usec": 0,
+          "nr_periods": 0,
+          "nr_throttled": 0,
+          "throttled_usec": 0,
+          "nr_bursts": 0,
+          "burst_usec": 0
+        }
+      },
+      "memory.events": {
+        "status": "UNAVAILABLE",
+        "error": "FileNotFoundError"
+      },
+      "memory.pressure": {
+        "status": "UNAVAILABLE",
+        "error": "FileNotFoundError"
+      }
+    },
+    "process_counters": {
+      "ru_minflt": 2215,
+      "ru_majflt": 1,
+      "ru_nvcsw": 3,
+      "ru_nivcsw": 36
+    },
+    "process_cpu_ns": 421559173,
+    "calling_thread_cpu_ns": 421634851,
+    "scope": "Self-process/thread + cgroup; includes observer work, not pure operator time"
+  },
+  "after": {
+    "pid": 14771,
+    "start_ticks": 5245214,
+    "calling_tid": 14771,
+    "calling_thread_start_ticks": 5245214,
+    "thread_status": {
+      "Cpus_allowed_list": "0-3",
+      "voluntary_ctxt_switches": 3,
+      "nonvoluntary_ctxt_switches": 36
+    },
+    "cgroup_path": "/user.slice/user-1000.slice/session-319.scope",
+    "cgroup": {
+      "cpu.max": {
+        "status": "OK",
+        "text": "max 100000\n"
+      },
+      "cpu.stat": {
+        "status": "OK",
+        "text": "usage_usec 470018\nuser_usec 368180\nsystem_usec 101837\nnice_usec 0\nnr_periods 0\nnr_throttled 0\nthrottled_usec 0\nnr_bursts 0\nburst_usec 0\n",
+        "values": {
+          "usage_usec": 470018,
+          "user_usec": 368180,
+          "system_usec": 101837,
+          "nice_usec": 0,
+          "nr_periods": 0,
+          "nr_throttled": 0,
+          "throttled_usec": 0,
+          "nr_bursts": 0,
+          "burst_usec": 0
+        }
+      },
+      "memory.events": {
+        "status": "UNAVAILABLE",
+        "error": "FileNotFoundError"
+      },
+      "memory.pressure": {
+        "status": "UNAVAILABLE",
+        "error": "FileNotFoundError"
+      }
+    },
+    "process_counters": {
+      "ru_minflt": 2217,
+      "ru_majflt": 1,
+      "ru_nvcsw": 3,
+      "ru_nivcsw": 36
+    },
+    "process_cpu_ns": 429066361,
+    "calling_thread_cpu_ns": 429078236,
+    "scope": "Self-process/thread + cgroup; includes observer work, not pure operator time"
+  },
+  "increments": {
+    "process": {
+      "ru_minflt": 2,
+      "ru_majflt": 0,
+      "ru_nvcsw": 0,
+      "ru_nivcsw": 0
+    },
+    "cpu_clocks": {
+      "process_cpu_ns": 7507188,
+      "calling_thread_cpu_ns": 7443385
+    },
+    "cgroup": {
+      "cpu.stat": {
+        "status": "OK",
+        "delta": {
+          "usage_usec": 12887,
+          "user_usec": 9569,
+          "system_usec": 3318,
+          "nice_usec": 0,
+          "nr_periods": 0,
+          "nr_throttled": 0,
+          "throttled_usec": 0,
+          "nr_bursts": 0,
+          "burst_usec": 0
+        }
+      },
+      "memory.events": {
+        "status": "UNAVAILABLE",
+        "delta": null
+      }
+    },
+    "cpu_quota_raw": {
+      "status": "OK",
+      "text": "max 100000\n"
+    },
+    "calling_thread_context": {
+      "voluntary_ctxt_switches": 3,
+      "nonvoluntary_ctxt_switches": 0
+    },
+    "observer_overhead_included": true,
+    "unique_wait_cause_identified": false
+  },
+  "missing_optional": {
+    "status": "UNAVAILABLE",
+    "error": "FileNotFoundError"
+  },
+  "after_context": {
+    "governor": "ondemand\n",
+    "swaps": "Filename\t\t\t\tType\t\tSize\t\tUsed\t\tPriority\n/dev/zram0                              partition\t926716\t\t0\t\t100\n",
+    "affinity": [
+      0,
+      1,
+      2,
+      3
+    ]
+  },
+  "status": "PASS_METADATA_API_ONLY"
+}

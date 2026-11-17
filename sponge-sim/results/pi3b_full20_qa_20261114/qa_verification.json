@@ -1,0 +1,106 @@
+{
+  "status": "ALL_FIVE_FULL20_WORKSPACE_QA_CASES_PASS",
+  "qa_tag": "qa-pi3b-full20-20261114",
+  "qa_commit": "7a63da73e67a6bfdc10e9009b04681ce475afd01",
+  "cases": {
+    "qa_normal_01": {
+      "status": "PASS_NORMAL",
+      "sha256": {
+        "restore.json": "239043ebe390dd72b8d305e2cf2ec88258c67feb74b64277ffc27499d6541867",
+        "activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+        "lease_events.jsonl": "afbfa0620e43aa4ff85a9803119965790f9e418a92dc42c9140db10df8e3e256",
+        "supervisor.log": "a2727f76136093b2878d0dc35a9157a308e96abc0f90f438069d074845de1c29",
+        "qa_ready.json": "f2a097d44b3372d0367dbcd34b3ada663d6427a901bd510750b6c1d9d512ff53",
+        "registration.json": "a536d7d77d36234ec5b9215b5f2e92deff1f204686ce70fb77ce87cd21912742",
+        "lease_state.json": "ce6cf3b08892733220dd1fce8e7919747cd6b9dc5d4aa0ac02a261d3586b68c1"
+      },
+      "restore": {
+        "status": "RESTORED",
+        "errors": [],
+        "wall_utc": 1794641967.6519263
+      }
+    },
+    "qa_mainkill_01": {
+      "status": "PASS_MAIN",
+      "sha256": {
+        "restore.json": "09461a74f8d4d55447dadeb8fd0dc7e59be139e21c5c869ce0fbe2437308940c",
+        "qa_fault_intent.json": "1525acf3e4d3fa2e1ff3c9fa5a08c338d7c43fa8fe568d1bbefe82cfb3319e1d",
+        "activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+        "lease_events.jsonl": "e9eb257dda4703d570d78e5fe98c5346844facfb79f4401a2245fe4717c78b04",
+        "qa_fault_sent.json": "31c1a2df9f296157addc957f1930d4d4b903d46dea0cbfaaac9d44a4fce54d54",
+        "supervisor.log": "ec2c61633a8a8ba2578143406c38850dc3035eb60b177110dd355626ea4ce8c8",
+        "qa_ready.json": "454a406e0165299a39bbd51dcf219da20f2017b578e8414a20104c02242e3d95",
+        "registration.json": "a536d7d77d36234ec5b9215b5f2e92deff1f204686ce70fb77ce87cd21912742",
+        "lease_state.json": "3fef97dee4f859ea8ce5451b8ef006e74cffded8e01d81a7d57403cc1b8ff858"
+      },
+      "restore": {
+        "status": "RESTORED",
+        "errors": [],
+        "wall_utc": 1794642000.3763955
+      }
+    },
+    "qa_childkill_01": {
+      "status": "PASS_CHILD",
+      "sha256": {
+        "restore.json": "c8a8800a33362c59e06ec71a1d0f9d62f2e238b7262541f8beff2abc68460e3e",
+        "qa_fault_intent.json": "d270a2cd7d08c7cd0df8c76dc984e0d56d510b677aac75a0f0066a04579a80fb",
+        "activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+        "lease_events.jsonl": "d56e025441960aaa2661702771e054f54595091b00a3e08add8f53f2b25d368e",
+        "qa_fault_sent.json": "31c1a2df9f296157addc957f1930d4d4b903d46dea0cbfaaac9d44a4fce54d54",
+        "supervisor.log": "bb00f355de17ec5569aad0629d1ea59f611e078ad0479845ced40aea503e416d",
+        "qa_ready.json": "4629c98bd36c8749f0906c3362ea26bffbe99f782081312765443db010b37b59",
+        "registration.json": "a536d7d77d36234ec5b9215b5f2e92deff1f204686ce70fb77ce87cd21912742",
+        "lease_state.json": "5412b4200aebb79bd68161af3edf2d8ea80b17d79ebae4c09680807f415969ca"
+      },
+      "restore": {
+        "status": "RESTORED",
+        "errors": [],
+        "wall_utc": 1794642033.149258
+      }
+    },
+    "qa_timeout_01": {
+      "status": "PASS_TIMEOUT",
+      "sha256": {
+        "restore.json": "e8cbd79da56105809aff5ec6e59e6c701fbbab41279dcffa0f3ee30c6e0e2d2b",
+        "activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+        "lease_events.jsonl": "7ffb170d2999a873b50d8ff0608f240c79374d36b26e4240dca2ebd2e4e5a8ca",
+        "supervisor.log": "5a45ccaa31cd9e21319d5b56d502f63c9b8fb9f92b44b3dc55d68f9aad597dc4",
+        "qa_ready.json": "924ff08188fad37bb5224272db7a595aa6a1350f17dc03ccf3d1e1bb287eb020",
+        "registration.json": "a536d7d77d36234ec5b9215b5f2e92deff1f204686ce70fb77ce87cd21912742",
+        "lease_state.json": "b243179db586b7b22ccea0efa227e603060ad5ae5775a11bf7a6d745e6705c7a"
+      },
+      "restore": {
+        "status": "RESTORED",
+        "errors": [],
+        "wall_utc": 1794642095.4436405
+      }
+    },
+    "qa_disconnect_01": {
+      "status": "PASS_DISCONNECT",
+      "sha256": {
+        "restore.json": "ad51aa475146db1ad384a8eac9cdf7596570eb486bda8fcb2c5c032c67cd9d9e",
+        "activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+        "lease_events.jsonl": "01bd3fc39dce11a695838c9eb0bc765e135083ea5dbb1793dd38604e05234f51",
+        "supervisor.log": "9e7684c188aeee29bcfd0d82a1898ee97ffa3ce0e10f88a54bc69ec1f7f1e2f8",
+        "qa_ready.json": "47dccb8250d4b319121fa40d3eff5ca96bdab45432947b95dcfc2c58882817ee",
+        "registration.json": "a536d7d77d36234ec5b9215b5f2e92deff1f204686ce70fb77ce87cd21912742",
+        "lease_state.json": "cff5148982c7f9864820fce821a9e40dbb50c4ce29bbd776dc4f94af60a6267d"
+      },
+      "restore": {
+        "status": "RESTORED",
+        "errors": [],
+        "wall_utc": 1794642138.8152156
+      }
+    }
+  },
+  "files_remote_local_sha_match": 39,
+  "post_qa_full_schedule_only_change": true,
+  "lease_and_guard_functionality_unchanged": true,
+  "final_host_tests": {
+    "passed": 61,
+    "elapsed_seconds": 3.44,
+    "tool_chunk_id": "dd2f91"
+  },
+  "final_lock_sha256": "1cd1789d4f30c0a6b708fad907729999f6e6e53d4ba373ce487bc8037d10be0e",
+  "model_inference": false
+}

@@ -1,0 +1,10 @@
+{
+  "scope": "Operational campaign duration/storage, not renderer latency",
+  "parent_guard_span_seconds": null,
+  "fetched_original_bytes": 8588,
+  "raw_jobs": 0,
+  "proportional_full20_estimate_seconds": null,
+  "estimate_is_not_guarantee": true,
+  "full_campaign_limit_seconds": 21600,
+  "automatic_full_launch": false
+}

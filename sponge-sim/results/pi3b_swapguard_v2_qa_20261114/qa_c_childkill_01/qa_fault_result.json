@@ -1,0 +1,5 @@
+{
+  "action": "SIGKILL_child",
+  "pid": 4776,
+  "signal_sent": true
+}

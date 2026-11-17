@@ -1,0 +1,22 @@
+% SINH TỰ ĐỘNG bởi paper_vi/tables/make_tables.py — KHÔNG SỬA TAY.
+\begin{table}[t]
+\centering\small
+\caption{\textbf{Post hoc.} Ngưỡng $\Delta t^{*}$ để tỷ số toàn trình vượt MDE, và dự đoán cho baseline gradient (B4, 320 px, 100 ảnh $\times$ 5 seed). $t_{\mathrm{total}}$ là toàn trình ảnh sạch của chính phiên đo patch (tensor đã chuẩn bị, không có bước chèn); MDE từ A/A riêng vì phiên này không có hai nhánh sạch. $\Delta t_{\mathrm{NMS}}$ là số đo vi mô; $R_{\mathrm{pred}}$ là dự đoán, không phải số đo.}
+\label{tab:threshold}
+\begin{tabular}{@{}lcc@{}}
+\toprule
+ & torchvision \texttt{nms} & PyTorch thuần \\
+\midrule
+$t_{\mathrm{total}}$ ảnh sạch, 320 px (ms) & 50,8 & 52,1 \\
+MDE toàn trình A/A, 320 px (\%) & 0,55 & 0,55 \\
+Ngưỡng $\Delta t^{*}=\mathrm{MDE}\times t_{\mathrm{total}}$, 320 px (ms) & 0,28 & 0,29 \\
+$t_{\mathrm{total}}$ ảnh sạch, 640 px (ms) & 166 & 168 \\
+MDE toàn trình A/A, 640 px (\%) & 0,69 & 0,69 \\
+Ngưỡng $\Delta t^{*}=\mathrm{MDE}\times t_{\mathrm{total}}$, 640 px (ms) & 1,1 & 1,2 \\
+\midrule
+$\Delta t_{\mathrm{NMS}}$ của baseline gradient, đo (ms) & 0,017 (0,014--0,019) & 0,99 (0,86--1,1) \\
+Vượt $\Delta t^{*}$ (320 px) & không & có \\
+$R_{\mathrm{pred}} = 1+\Delta t_{\mathrm{NMS}}/t_{\mathrm{total}}$, dự đoán & 1,0003 (1,0003--1,0004) & 1,0199 (1,0174--1,0224) \\
+\bottomrule
+\end{tabular}
+\end{table}

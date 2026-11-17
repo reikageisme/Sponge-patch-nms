@@ -1,0 +1,8 @@
+{
+  "pid": 13589,
+  "child_pid": 13738,
+  "child_start_ticks": 5116759,
+  "invocation_id": "e7faeadfae52400e9f16ce87c019df91",
+  "torch_imported": false,
+  "scipy_imported": false
+}

@@ -1,0 +1,22 @@
+% SINH TỰ ĐỘNG bởi paper_vi/tables/make_tables.py — KHÔNG SỬA TAY.
+\begin{table}[t]
+\centering\small
+\caption{\textbf{Post hoc.} Mô hình Amdahl so với phép tiêm toàn pipeline (hộp rời nhau, không giới hạn): ngưỡng $N^{*}$ dự đoán và đo, tỷ số toàn trình dự đoán và đo ở $\Ntau$ lớn nhất. Mô hình được viết sau khi đã xem phép tiêm toàn pipeline. Trên cả 156 ô: sai số $|\ln(R_{\mathrm{meas}}/R_{\mathrm{pred}})|$ trung vị 0,012, phân vị 90 là 0,040; $N^{*}$ trùng ở 35/48 ô. Cột ``$N^{*}$ đo'' ở đây dùng trung bình log-tỷ số so với trung vị ba ô $\Ntau=0$ của mỗi ảnh (cùng cách tính với dự đoán), nên khác Bảng~\ref{tab:nstar} (trung bình tỷ số) ở 3/48 ô, ví dụ Ultralytics, rời nhau, 320 px: 300 so với 100.}
+\label{tab:amdahl_e9}
+\begin{tabular}{@{}lcccc@{}}
+\toprule
+Cách cài đặt & $N^{*}$ dự đoán & $N^{*}$ đo & $R_{\mathrm{pred}}$ & $R_{\mathrm{meas}}$ \\
+\midrule
+\multicolumn{5}{@{}l}{\textit{320 px ($\Ntau=2100$)}} \\
+PyTorch thuần & 100 & 100 & 6,44 & 6,57 \\
+torchvision \texttt{nms} & 1000 & 1000 & 1,10 & 1,11 \\
+torchvision theo lô & 1000 & 300 & 1,14 & 1,20 \\
+Ultralytics gốc & 100 & 300 & 1,12 & 1,14 \\
+\multicolumn{5}{@{}l}{\textit{640 px ($\Ntau=8400$)}} \\
+PyTorch thuần & 300 & 300 & 10,5 & 10,9 \\
+torchvision \texttt{nms} & 3000 & 3000 & 1,54 & 1,57 \\
+torchvision theo lô & 3000 & 1000 & 1,06 & 1,09 \\
+Ultralytics gốc & 3000 & 3000 & 1,56 & 1,58 \\
+\bottomrule
+\end{tabular}
+\end{table}

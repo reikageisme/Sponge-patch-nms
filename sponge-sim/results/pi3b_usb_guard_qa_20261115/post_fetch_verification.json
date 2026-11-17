@@ -1,0 +1,6 @@
+{
+  "command": "from pathlib import Path\nimport json,hashlib\nb=Path('/home/tanh/sponge-sim/pi3b_renderer_memory_usb_20261115')\nprint(json.dumps(dict(result_sha256=hashlib.sha256((b/'qa_metadata_01.json').read_bytes()).hexdigest(),source_sha256=hashlib.sha256((b/'usb_guard.py').read_bytes()).hexdigest())))",
+  "returncode": 0,
+  "stdout": "{\"result_sha256\": \"47eef786fd4902f2b0661a00153bfaae6f09abe9a2a12966589c388e597423fa\", \"source_sha256\": \"9a1c2ef0124e5a54ac1d5e0e252c759636443a3d4ea7f7d50edd1b5aff821cd4\"}\n",
+  "stderr": ""
+}

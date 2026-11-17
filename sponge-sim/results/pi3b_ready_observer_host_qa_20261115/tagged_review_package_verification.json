@@ -1,0 +1,13 @@
+{
+  "status": "FROZEN_REVIEW_PACKAGE_NO_NATIVE_PERMISSION",
+  "qualification_tag": "qa-pi3b-ready-observer-20261115",
+  "qualification_commit": "7c6b8a8a783c51a701c565015e95837c2288626a",
+  "tagged_sources_plan_config_verified": 10,
+  "qualification_lock_sha256": "7170b6446e5608b6693c0789bcc98a28c4333ce9296b857487c0547b6240b77a",
+  "original_failure_sha256": "de47cf3830c502f2b774302eba98847aae10b874f53014f43742ee8f7343eaec",
+  "host_tests": 146,
+  "explicit_review_requested": true,
+  "explicit_review_received": false,
+  "new_native_queries_or_cases": 0,
+  "original_failed_attempt_verdict_unchanged": true
+}

@@ -1,0 +1,8 @@
+{
+  "source": "actual user async question reply",
+  "question_item_id": "[\"request_user_input_async\",\"call_24723f994f5a456581db240342c486f9\",0]",
+  "question": "Bạn duyệt đúng một lượt kiểm chứng mới gồm 5 tình huống sleeping theo gói 7c6b8a8 không? Giữ hạn truy vấn 25 giây, tổng READY 40 giây và mọi điều kiện khôi phục; dừng ở lỗi đầu tiên, không retry, giữ nguyên lượt lỗi cũ. Đây là ngoại lệ mới đối với quy tắc no-retry đã khóa, chưa phải duyệt chạy model/full NMS.",
+  "answer": "Duyệt một lượt kiểm chứng mới",
+  "recorded_at_utc": "2026-11-15 07:21:00 UTC",
+  "not_inferred_from_goal_continuation": true
+}

@@ -1,0 +1,9 @@
+{
+  "tag": "prereg-pi3b-renderer-memory-usb-20261115",
+  "commit": "70c398ae52540e873dca0f5dd447e97bc7d00958",
+  "lock_sha256": "a19e9202b0ace3c2f796e633aae7381a6736b500626635cb7a3013396d5bb66b",
+  "cache_manifest_sha256": "61b5abaaf22ea985b98f582a34f52cc19c2272ac87f66782292d843b17bbe165",
+  "parent_torch_imported": false,
+  "phase": "smoke",
+  "usb_preflight_sha256": "9e43068edf6f29dd5933761531692afdaf6c9150d31620bfe8dadebb847a0080"
+}

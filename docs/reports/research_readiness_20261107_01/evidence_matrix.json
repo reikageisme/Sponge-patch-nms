@@ -1,0 +1,214 @@
+{
+  "status": "REQUIREMENT_AUDIT_INCOMPLETE_NO_GOAL_COMPLETION",
+  "scope": "Current evidence inspection; not a fresh model replay or Q1 acceptance forecast",
+  "requirements": [
+    {
+      "id": "nms_backend",
+      "status": "PARTIAL",
+      "requirement": "Explain backend identity and separate stable component timing from historical variable calls",
+      "finding": "Import-dependent dispatch identified; prepared-component NMS full rejected, no qualified new component attribution",
+      "evidence": [
+        {
+          "path": "docs/reports/VAL500_CODEX_20261106.md",
+          "selector": "backend/source discussion",
+          "sha256": "da5dda5250a0d9ec602f9bc0afb72c4e012ec6059aea3caefc15bb8c6b2392f3"
+        },
+        {
+          "path": "sponge-sim/results/laptop_components_20261107/nms_kernel/full_01/P1_cpu2/stage_summary.json",
+          "selector": "quality_pass,flags,references",
+          "sha256": "c30d7676a62a844ba0d6d175192fedd08a751ef550f8f7d6ccab5855bdda2452"
+        }
+      ]
+    },
+    {
+      "id": "cpu_total",
+      "status": "VERIFIED_WITHIN_SCOPE",
+      "requirement": "Qualified real segmentation attack timing on pinned laptop CPU",
+      "finding": "Two accepted same-image sessions; fixed whole-image PGD20, one model/device/day, not independent-image or tail/DoS replication",
+      "evidence": [
+        {
+          "path": "sponge-sim/results/laptop_carryover_20261107/full_01/P1_cpu2/attack_summary.json",
+          "selector": "quality_pass,aa,contrasts.total",
+          "sha256": "8a5f58c628a7e8293b8f45589bca3eb82838353b3a6938d79e034edd550b9787"
+        },
+        {
+          "path": "sponge-sim/results/laptop_session_confirm_20261107/full_01/P1_cpu2/attack_summary.json",
+          "selector": "quality_pass,aa,contrasts.total",
+          "sha256": "73fae35e722c304e2defc0b64f5e4066d4230411ff9ce2a11ceaf4357fe2d7b5"
+        }
+      ]
+    },
+    {
+      "id": "multithread_and_gpu",
+      "status": "PARTIAL",
+      "requirement": "CPU multiple-core axis and GPU with qualified real attack pipeline",
+      "finding": "Synthetic mask CPU4 and GPU controls accepted; real multi-core segmentation attack timing absent, recorded GPU confirmation not stable",
+      "evidence": [
+        {
+          "path": "sponge-sim/results/confirmation_20261106/m2_cpu4_full_20261106/summary_verified.json",
+          "selector": "quality_pass",
+          "sha256": "865ada324fb5a672217d3b768ccfefb8cb9ebdcca6457e4e2933355fb9795d7f"
+        },
+        {
+          "path": "sponge-sim/results/confirmation_20261106/m2_gpu_full_20261106/summary_verified.json",
+          "selector": "quality_pass",
+          "sha256": "cecf48b30aedd2694e57682cca22805125d6e28d86d321cc98810b4eb4b3760f"
+        },
+        {
+          "path": "sponge-sim/results/stability_20261106/stability_full_20261106/confirmation_summary.json",
+          "selector": "stable,all_sessions[*].quality_pass",
+          "sha256": "a7889e0440e00ebb4bc4d7ef2bbc3bcd306af06e4443a376562b876733bd99c5"
+        }
+      ]
+    },
+    {
+      "id": "clean_accuracy",
+      "status": "VERIFIED_WITHIN_SCOPE",
+      "requirement": "Full COCO validation of candidate/output caps",
+      "finding": "Eight configs seen5000 with replayed metric inputs; polygon-label Ultralytics metric, not matched attack latency protocol",
+      "evidence": [
+        {
+          "path": "sponge-sim/results/coco_defense_20261106/full_remote/results.jsonl",
+          "selector": "each row: seen,model,variant,results",
+          "sha256": "99e128bbc0aa86f088debd73bd3c7d1736567f9bd57c3bef5c483e12f1e4dfc0"
+        },
+        {
+          "path": "sponge-sim/results/coco_defense_20261106/full_remote/metric_replay_receipt.json",
+          "selector": "[*].max_abs_error",
+          "sha256": "026ccddf30afab4aaa81f63baefc78b6dd245dd8df46aaa3c31067bf10a5ebfe"
+        }
+      ]
+    },
+    {
+      "id": "paired_defense",
+      "status": "PARTIAL",
+      "requirement": "Evaluate pre-NMS candidate cap and mask-output cap",
+      "finding": "Pre300 real CPU full accepted; out50 smoke rejected/full cancelled. Adaptive attacker and matched accuracy-latency evaluation remain absent",
+      "evidence": [
+        {
+          "path": "sponge-sim/results/laptop_defense_20261107/pre300/full_01/P1_cpu2/defense_summary.json",
+          "selector": "quality_pass,aa,contrasts.total,counts",
+          "sha256": "78baf261f9f0c773ab75122b8b47ccf4f57a0d0516cca58f5f9475bfbdade2e7"
+        },
+        {
+          "path": "sponge-sim/results/laptop_defense_20261107/out50/smoke_01/P1_cpu2/defense_summary.json",
+          "selector": "feasibility_pass,flags",
+          "sha256": "c0ba7cbbe0d477e3af4e1703b425d06e46733d74a2d90d2fb1220e235c1131f5"
+        }
+      ]
+    },
+    {
+      "id": "native26_counts",
+      "status": "VERIFIED_WITHIN_SCOPE",
+      "requirement": "Count native NMS-free outputs and investigate zero transfer",
+      "finding": "Complete1500x5startsx4tasks count study; zero source transfer is not target immunity and counts are not timing",
+      "evidence": [
+        {
+          "path": "sponge-sim/results/large_seed_20261106/export/summary1500.json",
+          "selector": "complete,n_images,n_cases,seeds,tasks",
+          "sha256": "64fe58bb6f3995df1277fce03dffd3a0c47f75f482eeadf50f6ef43e209b78b8"
+        },
+        {
+          "path": "sponge-sim/results/large_seed_20261106/audit_replay/receipt.json",
+          "selector": "audit_cases,count_comparisons,count_mismatches",
+          "sha256": "f7eb33b5e170ff5a6f20964b9da2a19d727dd01de75a2a96d1123354cc3496fe"
+        }
+      ]
+    },
+    {
+      "id": "localized_patch",
+      "status": "PARTIAL",
+      "requirement": "At least100 optimization images and qualified timing of real localized patches",
+      "finding": "Legacy patch generation already binds100 training images; E11 corrected timing rejected. Qualified segmentation PGD timing does not establish localized/universal/physical-patch timing",
+      "evidence": [
+        {
+          "path": "sponge-sim/results/e7_gpu/final/runs/e7/manifest.json",
+          "selector": "len(train_images),seeds,conditions",
+          "sha256": "85398c70790f687975806904ec770b9cbca1bc6aed1abcf4fe36a3fb00f2564d"
+        },
+        {
+          "path": "sponge-sim/results/e11/E11_P1cpu2_20261103/summary.json",
+          "selector": "drift,arms",
+          "sha256": "ed921a167fb987dfa278b0e72bab9ff218c2dfdd1d0ec408db2fd00e80d78b3d"
+        },
+        {
+          "path": "docs/reports/LAPTOP_CARRYOVER_20261107.md",
+          "selector": "scope and output lifetime",
+          "sha256": "4a075505773b0c2326bb4252afdd28f58d93900dc1ac34192c516449d7b29c48"
+        }
+      ]
+    },
+    {
+      "id": "arm",
+      "status": "NOT_DEVICE_QUALIFIED",
+      "requirement": "Thread-pool/sampler and thermal/battery-gated ARM measurements",
+      "finding": "Offline guard/worker exists; SOC,charging,typed thermal registry,imported runtime and device supervision qualification absent. Old four FAILs unchanged. No Pi emulation-equivalence or load claim",
+      "evidence": [
+        {
+          "path": "sponge-sim/results/phone_a36/metadata_a0_20261107_01/binding_review.json",
+          "selector": "expected_torch_runtime_version,formal_sensor_registry,soc_verified,charging_verified,load_gate_passed",
+          "sha256": "7d601041f6a3e1116c5accfda957104c3bfe77aa2c428c953227e7a1f6f239fa"
+        },
+        {
+          "path": "docs/reports/A36_TAILSCALE_A0_20261107.md",
+          "selector": "metadata-only and SSH closure",
+          "sha256": "ee37be2bdd3e0d6faf801242907790d80c2d3b6bac7e49f0acd88d51a6cb01e9"
+        }
+      ]
+    },
+    {
+      "id": "availability",
+      "status": "NOT_ESTABLISHED",
+      "requirement": "DoS/service/deadline interpretation",
+      "finding": "Current segmentation evidence is tensor latency and counts; qualified scheduled segmentation service deadline/miss evidence is absent. Historical detection streams do not establish segmentation DoS",
+      "evidence": [
+        {
+          "path": "docs/reports/LAPTOP_DEFENSE_20261107.md",
+          "selector": "endpoint and tails",
+          "sha256": "d8cfa1e374949142fac6a6126d49d9a30794cb576396e5fcd417d2400f6aba46"
+        },
+        {
+          "path": "docs/reports/NESTED1500_CODEX_20261106.md",
+          "selector": "counts scope",
+          "sha256": "bcd682768e2ab34b8f2b73f0e38d84345bcbff93b5adc4fe5c7127106c9a5796"
+        }
+      ]
+    },
+    {
+      "id": "paper",
+      "status": "INCOMPLETE",
+      "requirement": "Source-bound English manuscript with verified build and accurate scope",
+      "finding": "Table and registry checks pass; structure/graphics/input checks pass on current worktree. Full PDF/narrative claim check absent; manuscript-scope patch prepared but not applied",
+      "evidence": [
+        {
+          "path": "docs/reports/research_readiness_20261107_01/paper_artifacts.json",
+          "selector": "checks,missing_inputs,untracked_dependencies,tex_engines_on_path",
+          "sha256": "f1b5a1cae704d3ac0489437de7ab775a7a20d4338646436819ff523bcbcb6038"
+        },
+        {
+          "path": "docs/reports/research_readiness_20261107_01/manuscript_scope_proposal.json",
+          "selector": "status,current_main_sha256,git_apply_check_exit_code",
+          "sha256": "2a6134c77eca7a51538762f62c64df24cc8adc902c035b3e0b736af4a028c259"
+        }
+      ]
+    },
+    {
+      "id": "registration",
+      "status": "LOCAL_TAGS_VERIFIED_EXTERNAL_FREEZE_UNVERIFIED",
+      "requirement": "Prospective preregistration and retained raw/negative outcomes",
+      "finding": "Local named prospective tags exist; no OSF/Zenodo public timestamp/DOI is established by this audit; no publication action taken",
+      "evidence": [
+        {
+          "path": "sponge-sim/results/laptop_reference_trace_20261107/registration_check.json",
+          "selector": "tag,commit,lock_sha256",
+          "sha256": "3a1084f96f2260b054570b3203349b4888f5fc76e43dae451f26def5f24397f7"
+        },
+        {
+          "path": "docs/reports/research_readiness_20261107_01/local_tags.json",
+          "selector": "refs,status,external_timestamp_doi_verified",
+          "sha256": "f25fc0bd8a0102d93eab13dd3b77dd6974934d8216feacb0cea48b3494b21950"
+        }
+      ]
+    }
+  ]
+}

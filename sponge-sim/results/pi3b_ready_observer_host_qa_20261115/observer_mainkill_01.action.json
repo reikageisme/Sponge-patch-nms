@@ -1,0 +1,6 @@
+{
+  "command": "from pathlib import Path\nimport sys,json,subprocess,time,os,signal,hashlib\nsys.dont_write_bytecode=True\nb=Path('/home/tanh/sponge-sim/pi3b_nms_predecessor_20261115');sys.path.insert(0,str(b));import control\nr=b/'runs'/'observer_mainkill_01'\nimport importlib.util\nsys.dont_write_bytecode=True\nprobe_path=Path('/home/tanh/sponge-sim/pi3b_ready_observer_20261115/probe.py')\nassert hashlib.sha256(probe_path.read_bytes()).hexdigest()=='ad9196e38a2d8336262397b36e05b376e10f75397057e1c284c4abce7e598bde'\nspec=importlib.util.spec_from_file_location('qualified_ready_candidate',probe_path)\nmodule=importlib.util.module_from_spec(spec);spec.loader.exec_module(module)\nobserved=module.observe(b,r.name,control)\nif observed is None:print('null')\nelse:\n ready=observed['ready'];fields=observed['unit']\n\n\nassert observed is not None, 'READY lost before fault'\n\ncontrol.record(r/'qa_fault_intent.json',dict(action='main',ready=ready,unit=fields),True)\nx=subprocess.run(['sudo','-n','systemctl','kill','--kill-whom=main','--signal=SIGKILL','sponge-pi3b-swapguard-v2.service'],capture_output=True,text=True,timeout=10)\nassert x.returncode==0\ncontrol.record(r/'qa_fault_sent.json',dict(sent=True),True)\nprint(json.dumps(dict(sent=True)))\n",
+  "result": {
+    "sent": true
+  }
+}

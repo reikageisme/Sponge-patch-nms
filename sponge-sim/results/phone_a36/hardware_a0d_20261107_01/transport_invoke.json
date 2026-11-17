@@ -1,0 +1,8 @@
+{
+  "exit_code": 0,
+  "output": [
+    "arm_hardware_metadata.sh: OK"
+  ],
+  "prereg_commit": "0234e589fd714a5687bb1f63914ab35887c34688",
+  "sshd_shutdown_requested": false
+}

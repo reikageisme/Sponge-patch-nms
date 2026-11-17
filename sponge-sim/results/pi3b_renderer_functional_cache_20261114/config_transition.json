@@ -1,0 +1,13 @@
+{
+  "old_lock_sha256": "da9818d91f923eb4e3c856b6b7f66940b3ab089ea483c06bc2b0a450ea4c2cd2",
+  "new_lock_sha256": "dfef4db12103a460c8bece7344ecbea063107b0a06f76f281692d8a8598b1038",
+  "cache_plan_sha256": "b85bfabb3ee40bbe88158423ab625cc13dbee486b44391fe422843b64d7072e4",
+  "changed_fields": [
+    "qa_tag",
+    "allow_cache_preparation",
+    "cache_plan_sha256"
+  ],
+  "all11_python_source_unchanged": true,
+  "empirical_endpoints_enabled": false,
+  "scientific_registration_exists": false
+}

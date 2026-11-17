@@ -1,0 +1,33 @@
+{
+  "status": "CLOSED_ENGINEERING_SERVICE_POOL_API_PASS_ONLY",
+  "tag": "qa-pi3b-nms-observer-service-20261115",
+  "commit": "03999b202eb802ef9073a476395c83943980121a",
+  "source_and_config_exact_tag": true,
+  "original_files_verified": {
+    "qa_result_01.json": {
+      "sha256": "46b61a1fea56413e7bdac6eca84632ca412aac29eedced63e6ad3644e4ec805b",
+      "bytes": 34978
+    },
+    "qa_manifest.json": {
+      "sha256": "233b48b83965c94661976ae49bbcd74389f29f825094b64097464fa6ad84c1bc",
+      "bytes": 673
+    }
+  },
+  "independent_saved_audit_sha256": "2da0a8f5bedb8ecd87bb7d3b2ef46c0eff6c31e4b2dc120cc6975f499f9aaca4",
+  "report_sha256": "36a8151fd9af4291ec915bb277a7acfea72752f975a18e54a7f599ba3eeab404",
+  "host_tests": 31,
+  "old_counter_source_unchanged": true,
+  "previous_usb_full_originals_rehashed": 1814,
+  "protected_bib_unchanged": true,
+  "no_scientific_workload": true,
+  "no_model_nms_rss_or_latency_endpoint": true,
+  "no_parallel_utilization_or_nms_cause_claim": true,
+  "pool_native_tids_before_import": 1,
+  "pool_native_tids_after_functional_mm": 10,
+  "configured_intraop": 4,
+  "configured_interop": 1,
+  "memory_cgroup_optional_counters": "UNAVAILABLE, not zero",
+  "service_leaf_cpu_max": "UNAVAILABLE",
+  "ssh_kept_open": true,
+  "no_qa02": true
+}

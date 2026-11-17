@@ -1,0 +1,9 @@
+{
+  "original_git_blobs_verified": 52,
+  "request_artifact_files_staged": 156,
+  "new_originals": 44,
+  "old_originals_preserved": 8,
+  "bytes_unchanged": true,
+  "qualification_method": "qa-pi3b-ready-observer-20261115",
+  "original_failed_verdict_replaced": false
+}

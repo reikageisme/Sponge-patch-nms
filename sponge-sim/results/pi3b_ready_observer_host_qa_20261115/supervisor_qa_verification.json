@@ -1,0 +1,90 @@
+{
+  "status": "ALL_FIVE_SLEEP_CASES_PASS",
+  "source_sha256": {
+    "baseline_ops.py": "829cb01fd566d67b473f363318297c064577696393a707949d1c9c325b303a34",
+    "bindings.py": "5b9cb5b1d8f509574e534a08888fb9484950ac69c0035d44e17945e23b232fe1",
+    "bracket.py": "157a353fdd33f6725db73f7dc6b6c597d03ae9ef339b5744782686de368c704f",
+    "build_controller_lock.py": "e82f2baca1c5288d9ad87c5770ae2eea2ee7be3f198f5329486632682f7b5ca5",
+    "cache.py": "5083fe95bb0f82289e5055ca9cae8855595d7a164e778a363490f98b5a81bf2b",
+    "campaign.py": "8413ae3d4a2679324a07ce476e86f79696154a510e24b0f56f4875723efd8e64",
+    "control.py": "2bf1de637d0cc317a81109773d2b915cec90bbf46337ae877db9f75c2c0251c6",
+    "counters.py": "10eb26e90489283616fae24cd6b190fe50a715c0fec7b47c8fe449025a8c5a60",
+    "exports.py": "0f35440aa15418ab2bc8d31b17ad1c22a0ebe25daf5daa11f140035e753c21e1",
+    "factories.py": "06495c66682a4e806fa5e5a76dde3f90e82a07471ea3dd727bfccdfaf49fd06d",
+    "guard.py": "a62f005a43cb562e93084bb04e2f5830d6cc743003e987883b095219e47bdb99",
+    "inventory.py": "1059453b0af8d990064b0a20c497dfd548be2e8321c8ffee04668e2f4c4eaf9e",
+    "kernel_input.py": "c5b785500a5c5a796383d53642d5823e2fce03547649bc4a1c15abada449ab0f",
+    "material.py": "ec309bbfaee21fcb785903ca99c7f9d65e5f9d4950e80fc3437952c576cce23a",
+    "pairs.py": "bd55f9e8f984b160e78da46f4eaa835c4a45d72a31ea24bb44dd8c0460f6b5fc",
+    "preallocate.py": "29d5b2adf7aa4d3659a542f59268cf59714bb053f66cf2abb828ebee3c8f9d8e",
+    "schedule.py": "acfe063a7f0f9bc8dbdaa650a2629003d09e0ee91c3f89a381640a4205245d25",
+    "usb_guard.py": "ec549b6b3ac3ff3e66580e7014ef68169594225484399790396da4ef86e85fe2",
+    "worker.py": "2f40deb5cfcd9047a95015eaf7ed71282b909a33675074519a0301707831462c"
+  },
+  "controller_lock_sha256": "63d427530aecee6670c604f4e65769ae8d2d2940694eb0f5ca8b06e325c96713",
+  "qualification_method_tag": "qa-pi3b-ready-observer-20261115",
+  "qualification_method_commit": "7c6b8a8a783c51a701c565015e95837c2288626a",
+  "payload_source_tag": "qa-pi3b-nms-predecessor-supervisor-20261115",
+  "payload_source_commit": "925c544f618491e5b21a3621d77804a10686d111",
+  "case_names": [
+    "observer_normal_01",
+    "observer_mainkill_01",
+    "observer_childkill_01",
+    "observer_timeout_01",
+    "observer_disconnect_01"
+  ],
+  "cases": {
+    "observer_normal_01": {
+      "status": "PASS_NORMAL",
+      "restore_verified": true,
+      "live_ready_verified": true,
+      "child_birth_gone": true
+    },
+    "observer_mainkill_01": {
+      "status": "PASS_MAIN",
+      "restore_verified": true,
+      "live_ready_verified": true,
+      "child_birth_gone": true
+    },
+    "observer_childkill_01": {
+      "status": "PASS_CHILD",
+      "restore_verified": true,
+      "live_ready_verified": true,
+      "child_birth_gone": true
+    },
+    "observer_timeout_01": {
+      "status": "PASS_TIMEOUT",
+      "restore_verified": true,
+      "live_ready_verified": true,
+      "child_birth_gone": true
+    },
+    "observer_disconnect_01": {
+      "status": "PASS_DISCONNECT",
+      "restore_verified": true,
+      "live_ready_verified": true,
+      "child_birth_gone": true
+    }
+  },
+  "original_failed_qualification_verdict": "CLOSED_INCOMPLETE_SUPERVISOR_QUALIFICATION_NO_RETRY",
+  "original_failed_verdict_replaced": false,
+  "original_failed_receipt_sha256": "de47cf3830c502f2b774302eba98847aae10b874f53014f43742ee8f7343eaec",
+  "new_method_user_approval_sha256": "6e7d1577fcb8359d4c02c4b7697182bd10b5bdae65023e8de1ebb549b33d806f",
+  "transfer_verification_sha256": "61d68db0aad4ab1010d15ee37f7a4db564eca6b494d91a84199b7d0e9b5d2583",
+  "new_remote_original_files": 44,
+  "preserved_old_remote_original_files": 8,
+  "request_receipts": 39,
+  "warnings": {
+    "observer_normal_01": [],
+    "observer_mainkill_01": [],
+    "observer_childkill_01": [],
+    "observer_timeout_01": [],
+    "observer_disconnect_01": [
+      "2026-11-15T07:26:00+00:00 pi systemd[1]: sponge-pi3b-swapguard-v2.service: Failed to open /run/systemd/transient/sponge-pi3b-swapguard-v2.service: No such file or directory"
+    ]
+  },
+  "source_and_original_sha_verified": true,
+  "independent_restore_readback_verified": true,
+  "ssh_kept_open": true,
+  "arbitrary_model_powerloss_or_kernel_stall_recovery_proven": false,
+  "functional_or_scientific_activation_authorized_by_this_review": false
+}

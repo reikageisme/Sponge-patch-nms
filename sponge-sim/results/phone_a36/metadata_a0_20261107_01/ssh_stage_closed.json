@@ -1,0 +1,12 @@
+{
+  "status": "PHONE_SSHD_STOP_REQUESTED_AND_PORT_REFUSED",
+  "reason": "End phone read-only stage per CLAUDE; load gate remains closed",
+  "target": "100.85.153.4:8022",
+  "stop_stdout": "PHONE_SSHD_STOP_REQUESTED",
+  "stop_exit_code": 1,
+  "stop_stderr": "Connection to 100.85.153.4 closed by remote host.",
+  "post_stop_probe_exit_code": 1,
+  "post_stop_probe_error": "Connection refused",
+  "other_services_or_android_settings_changed": false,
+  "device_matrix_or_model_load_started": false
+}

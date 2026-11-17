@@ -1,0 +1,18 @@
+{
+  "status": "STANDALONE_USB_GUARD_QA_VERIFIED_NO_SCIENTIFIC_ENDPOINT",
+  "source_sha256": "9a1c2ef0124e5a54ac1d5e0e252c759636443a3d4ea7f7d50edd1b5aff821cd4",
+  "result_sha256": "47eef786fd4902f2b0661a00153bfaae6f09abe9a2a12966589c388e597423fa",
+  "report_sha256": "e56195503753af37775e4be50f998b4e6b55e3030caabcb69677abb9a72d9fa0",
+  "verification_sha256": "84bdfbfc50da4fe331fa8014282779c0b2ad6ece1b42c402f4ffa6a29b3ccb27",
+  "host_summary": "41 passed in 6.93s",
+  "previous_original_files_unchanged": {
+    "pi3b_full20_20261114": 21,
+    "pi3b_renderer_functional_cache_20261114": 90,
+    "closed_rss_v1_smoke": 10
+  },
+  "runner_integration_qualified": false,
+  "new_scientific_registration": false,
+  "empirical_rss_or_latency": false,
+  "configuration_unchanged": true,
+  "ssh_kept_open": true
+}

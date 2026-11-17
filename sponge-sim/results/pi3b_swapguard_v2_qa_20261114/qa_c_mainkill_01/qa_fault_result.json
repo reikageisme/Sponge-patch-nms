@@ -1,0 +1,14 @@
+{
+  "argv": [
+    "sudo",
+    "-n",
+    "systemctl",
+    "kill",
+    "--kill-whom=main",
+    "--signal=SIGKILL",
+    "sponge-pi3b-swapguard-v2.service"
+  ],
+  "returncode": 0,
+  "out": "",
+  "err": ""
+}

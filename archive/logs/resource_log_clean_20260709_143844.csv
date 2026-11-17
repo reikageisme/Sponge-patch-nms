@@ -1,0 +1,1 @@
+Timestamp,CPU_Percent,RAM_Percent,RAM_Used_MB,Temperature_C,FPS_Actual,Preproc_ms,Forward_ms,ConfFilter_ms,NMS_ms,Render_ms,TotalFrame_ms,Num_Raw_Boxes,Num_Final_Boxes,Scenario

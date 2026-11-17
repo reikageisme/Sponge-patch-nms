@@ -1,0 +1,19 @@
+{
+  "exit_code": 0,
+  "output": [
+    "da99727468bd35f47afd1883780b9d843986d27889376c9f6de2931d43760d89  ./controller.stdout",
+    "2468a15d060a42b57aae87196848fc768e443299cb99c87de1c94f3436a976c6  ./controller.stderr",
+    "a25d28b632a73a54076bbec31cf12e1f4da0e1a89964cdaf10443d4a99629c0f  ./capture/executed_source/checks.py",
+    "8e8101d2713efc40a62e4282f43b1b1f6c18cd3830e88e4a7f325d30bb64eb8a  ./capture/executed_source/linux_observe.py",
+    "44b9ae76170db33fb28db6ace45e8d4d28ef1325263cb77537053e2711d73142  ./capture/executed_source/posix_runtime.py",
+    "ee400c071bfcbf9fb79b97bbd32be4d356d33ca630e9d30efa3868e37a0a326e  ./capture/executed_source/parent_death_local_check.py",
+    "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./capture/parent_exit/creator.stderr",
+    "09518998cadbf48484d0bf4e0ee1770d48bd24666394bd2b0579afe2f83d3ea8  ./capture/parent_exit/owned_child.json",
+    "5dda4cbf08256504d54c971ef5310a25c35c7cc306be89fcd9dd1865c7758598  ./capture/parent_exit/child_ready.json",
+    "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855  ./capture/parent_SIGKILL/creator.stderr",
+    "4b0c0231686e7ea36b23f1f22b2ef44e2c30b2c1f0080370f1f6cd35a1ef66fe  ./capture/parent_SIGKILL/owned_child.json",
+    "00618215aa09034b119872ce889524f69f41df334b963eb570bdce4640cb0dde  ./capture/parent_SIGKILL/child_ready.json",
+    "6b901e72301fcebc6ed175fa380e4ec746594fac2d9b17bbfb95f7b037f60ffc  ./capture/receipt.json",
+    "9a271f2a916b0b6ee6cecb2426f0b3206ef074578be55d9bc94f6f3fe3ab86aa  ./controller.exit"
+  ]
+}

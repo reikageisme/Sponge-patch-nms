@@ -1,0 +1,5 @@
+Running as unit: sponge-pi3b-swapguard-v2.service
+Finished with result: exit-code
+Main processes terminated with: code=exited, status=66/NOINPUT
+Service runtime: 1h 54min 2.421s
+CPU time consumed: 6h 52min 33.597s

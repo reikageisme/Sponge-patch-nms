@@ -1,0 +1,30 @@
+{
+  "status": "CLOSED_PRIMARY_PASS_STAGE_FAIL_COMPLETE_AUDIT",
+  "original_files_verified": 21,
+  "locked_study_equal_tag": {
+    "analyze.py": "c5a041026d407ee62c9e9358c4cf69a0a71de7a0d323f69e7dcaa95e92c6acf7",
+    "audit.py": "c9c5b4eabdc4dfe325bceb71501261ea6220afaf03e13d8cf451b51468355953",
+    "build_lock.py": "db7cbe2b6eff61fc2b70374efd94460e548f03fd5b1ff494262baabe93cfea0a",
+    "control.py": "53bb13694bb56a7e5a01a1267c666c397da95bb74aa5c43a77dce529cf518e72",
+    "guard.py": "0922c853451a9943a843cfc1c9d60f73e85f5941f66a3b4624900c8ae348d48c",
+    "lock.json": "1cd1789d4f30c0a6b708fad907729999f6e6e53d4ba373ce487bc8037d10be0e",
+    "run.py": "cadc78041d3f4e611c789c76c22b1a885131b9ca632a52a27300a440baa4425f",
+    "stats_frozen.py": "57545941474dc39845cad309718d0c220fc26189e5ca296592d77638bd22195d"
+  },
+  "summary_sha256": "34166aa9972cd0ffac8af3524a15565eb2ea94235c3f640de9312603e6799ca3",
+  "independent_audit_sha256": "067d88c7d7f95a6ba6ef5d51dd07a9edf7e4a800cb8c0b5b74f348a218425fae",
+  "raw_source_map_sha256": "54bf0c92a076781968079129cee7d0bcde0f6bd11a978b85b651a14a5a5c7cee",
+  "report_sha256": "36457a40a5dc9f249086b4b8e208670e1197a107389e6ce1b29e3cbe569f28bb",
+  "paper_checks_sha256": "188924fb692785938b146afe9ae56a7f46da94ccfb565828f5f77ff4cc01dda9",
+  "protected_paper_artifacts_unchanged": true,
+  "main_left_unstaged": true,
+  "both_pngs_visually_inspected": true,
+  "full_pdf_compiled": false,
+  "no_new_model_measurement_after_terminal": true,
+  "ssh_kept_open": true,
+  "postdata_tooling_notes": [
+    "Initial collector manifest required POSIX key normalization, no byte mismatch.",
+    "Initial ad-hoc final checker used platform cp1252 on Vietnamese report; explicit UTF-8 used here.",
+    "Generated text metadata uses explicit LF; no original raw or locked measurement code edited."
+  ]
+}

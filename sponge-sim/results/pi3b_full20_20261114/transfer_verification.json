@@ -1,0 +1,117 @@
+{
+  "status": "ALL_ORIGINAL_FILES_MATCH_REMOTE_BEFORE_LOCAL_REMOTE_AFTER",
+  "n_files": 21,
+  "files": {
+    "campaign_terminal.json": {
+      "sha256": "cf5cdd01c3e8bb741c4f20af25f9dd4c73c9f00ae4d93b33f9b774b86c583d3c",
+      "bytes": 252,
+      "lines": 15
+    },
+    "lease_events.jsonl": {
+      "sha256": "3eeaefad820dbe9f4617e57b11570bf7f5998394cf8adf7229a8139b093dd5a7",
+      "bytes": 757,
+      "lines": 10
+    },
+    "lease_state.json": {
+      "sha256": "7b572b6c76bb5e5cf6d0f8dbb3f325d427cbe36995382c4af91a68aa18a1feef",
+      "bytes": 1022,
+      "lines": 42
+    },
+    "pipeline_PI4.gate.log": {
+      "sha256": "86f4eaca682947a6918cfdfc9af046346fd24dd208b923ccb2bc3d9e5d624617",
+      "bytes": 787,
+      "lines": 1
+    },
+    "pipeline_PI4.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "lines": 0
+    },
+    "registration.json": {
+      "sha256": "a8f5cc04509302c412e1b94ee6c8f5355f40c55b2899594e5ec50a3dbaf2a0a4",
+      "bytes": 213,
+      "lines": 6
+    },
+    "restore.json": {
+      "sha256": "0798e7f6f6734ae306b6e1b61fba8998385f73278097e66ff68866a2d34e5062",
+      "bytes": 76,
+      "lines": 5
+    },
+    "stages_PI4.gate.log": {
+      "sha256": "e058079f815a0c9df585df21e3561e209abb5fb19769de965d0826c671875a34",
+      "bytes": 1054,
+      "lines": 1
+    },
+    "stages_PI4.log": {
+      "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855",
+      "bytes": 0,
+      "lines": 0
+    },
+    "status.json": {
+      "sha256": "e3b3c6cdc7f80e707191eac915134d6599e4cae05723b36bc1e720ec784f8f20",
+      "bytes": 173,
+      "lines": 12
+    },
+    "supervisor.log": {
+      "sha256": "8cf5020596c3becd6ea099024c3792cadaf34469d358dfaa2433be9a55877d0c",
+      "bytes": 69,
+      "lines": 1
+    },
+    "pipeline_PI4/gates.json": {
+      "sha256": "a900458a31c1292ab5ff272074619f53bcd360c4d0ce00c811bfd2ce2977cd5c",
+      "bytes": 946,
+      "lines": 40
+    },
+    "pipeline_PI4/manifest.json": {
+      "sha256": "67a99762f3eaec51fa5ce4fa71665d598613a22661d4220a93326f3868db58a7",
+      "bytes": 3272,
+      "lines": 116
+    },
+    "pipeline_PI4/preparation.json": {
+      "sha256": "967686e30c8ef98c7c57871318eed64169edd01691ba787b85fd0a00f3f98aef",
+      "bytes": 676,
+      "lines": 24
+    },
+    "pipeline_PI4/raw.jsonl": {
+      "sha256": "bd851c9e690e38b7e3dd7df6079efe30fc5304b2ba83accbf321f5414eb26a9c",
+      "bytes": 969311,
+      "lines": 2399
+    },
+    "pipeline_PI4/terminal.json": {
+      "sha256": "526302c37d3d49b91a3104d14f9845dadf87071f3b8421aa2fbb91f0d6888225",
+      "bytes": 60,
+      "lines": 4
+    },
+    "stages_PI4/gates.json": {
+      "sha256": "a1fc898ee7f2c361788cc1f3217becd75a506107251f31de79ac92c41ddd0a6d",
+      "bytes": 1289,
+      "lines": 54
+    },
+    "stages_PI4/manifest.json": {
+      "sha256": "2483f07d1aeb3526d0e554009764d68e824cf6643dc1fdf87074f981b29a5be1",
+      "bytes": 3266,
+      "lines": 116
+    },
+    "stages_PI4/preparation.json": {
+      "sha256": "9b4eb9456ad40a0846a84a11e371089e78b164380462eaf37b59f389ce34199c",
+      "bytes": 670,
+      "lines": 24
+    },
+    "stages_PI4/raw.jsonl": {
+      "sha256": "3bfc20f3f9a82794ea6d3c3493a4e4f70db3a906973ecbc02b45e23c7d5d697c",
+      "bytes": 946565,
+      "lines": 2354
+    },
+    "stages_PI4/terminal.json": {
+      "sha256": "d7ebdf490414bf7b89b7456baab730a123b5b8709c518821aa4fc7b406849ba4",
+      "bytes": 60,
+      "lines": 4
+    }
+  },
+  "source_verified_files": 28,
+  "service_terminal": true,
+  "restore_verified": true,
+  "no_registered_workers": true,
+  "full02_exists": false,
+  "collector_issue": "Initial dictionary equality failed because Windows relative paths used backslashes; bytes were unchanged. Normalized only local manifest keys to POSIX, no refetch or data edits."
+}

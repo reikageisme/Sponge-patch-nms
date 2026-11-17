@@ -1,0 +1,18 @@
+% SINH TỰ ĐỘNG bởi paper_vi/tables/make_tables.py — KHÔNG SỬA TAY.
+\begin{table*}[t]
+\centering\small
+\caption{\textbf{Post hoc}, YOLOv5s (640 px, một lõi CPU ghim): phân rã mức tăng thời gian của biến thể thích nghi theo hai tấn công toàn ảnh, theo cặp ảnh $\times$ seed so với trung bình hai nhánh sạch cùng ảnh (ms; KTC 95\% bootstrap hai tầng). $\Delta t_{\mathrm{NMS}}$ đo vi mô ở $\tau=0{,}25$. ``Phần còn lại'' $=\Delta t_{\mathrm{total}}-\Delta t_{\mathrm{NMS}}$ gồm lan truyền thuận, giải mã, lọc điểm và dựng đầu vào NMS; bản ghi thô không tách được các công đoạn này với nhau. Không đo mới.}
+\label{tab:decomp}
+\begin{tabular}{@{}llcccc@{}}
+\toprule
+Biến thể & Cách cài đặt & $\Delta t_{\mathrm{total}}$ & $\Delta t_{\mathrm{NMS}}$ & Phần còn lại & Phần còn lại / $\Delta t_{\mathrm{total}}$ (\%) \\
+\midrule
+Overload & torchvision \texttt{nms} & 10,5 (6,8--14) & 5,24 (4,1--6,4) & 5,26 (1,8--8,7) & 50 \\
+Overload & torchvision theo lô & 9,06 (5,3--13) & 4,91 (3,4--6,5) & 4,15 (0,82--7,6) & 46 \\
+Overload & Ultralytics gốc & 10,7 (6,6--15) & 7,04 (5,7--8,4) & 3,66 ($-$0,18--7,6) & 34 \\
+Phantom Sponges & torchvision \texttt{nms} & 10,0 (6,5--13) & 5,44 (4,3--6,6) & 4,58 (1,4--7,7) & 46 \\
+Phantom Sponges & torchvision theo lô & 9,77 (6,0--14) & 5,99 (4,8--7,2) & 3,77 (0,31--7,9) & 39 \\
+Phantom Sponges & Ultralytics gốc & 10,2 (6,0--14) & 6,86 (5,5--8,2) & 3,29 ($-$0,50--7,2) & 32 \\
+\bottomrule
+\end{tabular}
+\end{table*}

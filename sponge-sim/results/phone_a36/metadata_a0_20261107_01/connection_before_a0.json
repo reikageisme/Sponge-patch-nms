@@ -1,0 +1,16 @@
+{
+  "scope": "CONNECTIVITY_ONLY_BEFORE_A0_REGISTRATION",
+  "tailscale_peer": "Anh's A36",
+  "ip": "100.85.153.4",
+  "online": true,
+  "route": "DERP Singapore; direct route not established",
+  "ssh_port": 8022,
+  "ssh_user": "u0_a445",
+  "first_attempt": "Connection refused before user enabled Termux sshd",
+  "second_attempt": "SSH_A36_WORKSPACE_OK, user u0_a445, exit0",
+  "strict_host_key_checking": true,
+  "host_key_alias": "[192.168.1.139]:8022",
+  "host_key_algorithm": "ssh-ed25519",
+  "user_state": "User requested Tailscale SSH and reported sshd enabled. No assertion of idle/charging/SOC/mobile-off.",
+  "device_load_started": false
+}

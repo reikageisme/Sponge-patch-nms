@@ -1,0 +1,142 @@
+{
+  "schema": 1,
+  "identity": {
+    "paths": {
+      "workspace": {
+        "path": "/home/tanh/sponge-sim/pi3b_nms_predecessor_20261115",
+        "dev": "179:2"
+      },
+      "cache": {
+        "path": "/home/tanh/sponge-sim/pi3b_renderer_prealloc_20261114/caches/cache_01",
+        "dev": "179:2"
+      }
+    },
+    "mounts": [],
+    "usb_devices": {
+      "1-1": {
+        "path": "/sys/devices/platform/soc/3f980000.usb/usb1/1-1",
+        "idVendor": "0424",
+        "idProduct": "9514",
+        "busnum": 1,
+        "manufacturer": null,
+        "product": null
+      },
+      "1-1.1": {
+        "path": "/sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.1",
+        "idVendor": "0424",
+        "idProduct": "ec00",
+        "busnum": 1,
+        "manufacturer": null,
+        "product": null
+      },
+      "1-1.3": {
+        "path": "/sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.3",
+        "idVendor": "05e3",
+        "idProduct": "0610",
+        "busnum": 1,
+        "manufacturer": "GenesysLogic",
+        "product": "USB2.1 Hub"
+      },
+      "1-1.3.1": {
+        "path": "/sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.3/1-1.3.1",
+        "idVendor": "174c",
+        "idProduct": "0829",
+        "busnum": 1,
+        "manufacturer": "SupTronics",
+        "product": "X89"
+      },
+      "1-1.3.2": {
+        "path": "/sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.3/1-1.3.2",
+        "idVendor": "174c",
+        "idProduct": "0829",
+        "busnum": 1,
+        "manufacturer": "SupTronics",
+        "product": "X89"
+      },
+      "usb1": {
+        "path": "/sys/devices/platform/soc/3f980000.usb/usb1",
+        "idVendor": "1d6b",
+        "idProduct": "0002",
+        "busnum": 1,
+        "manufacturer": "Linux 6.18.50+rpt-rpi-v8 dwc_otg_hcd",
+        "product": "DWC OTG Controller"
+      }
+    },
+    "disks": {
+      "sda": {
+        "dev": "8:0",
+        "sectors": 250069680,
+        "holders": [],
+        "resolved_path": "/sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.3/1-1.3.1/1-1.3.1:1.0/host0/target0:0:0/0:0:0:0/block/sda",
+        "usb_chain": [
+          {
+            "path": "/sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.3/1-1.3.1",
+            "idVendor": "174c",
+            "idProduct": "0829"
+          },
+          {
+            "path": "/sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.3",
+            "idVendor": "05e3",
+            "idProduct": "0610"
+          },
+          {
+            "path": "/sys/devices/platform/soc/3f980000.usb/usb1/1-1",
+            "idVendor": "0424",
+            "idProduct": "9514"
+          },
+          {
+            "path": "/sys/devices/platform/soc/3f980000.usb/usb1",
+            "idVendor": "1d6b",
+            "idProduct": "0002"
+          }
+        ],
+        "removable": 0,
+        "vendor": "ADATA SP",
+        "model": "900",
+        "state": "running",
+        "partitions": {
+          "sda1": {
+            "dev": "8:1",
+            "sectors": 250067599,
+            "holders": [],
+            "index": 1,
+            "start": 2048
+          }
+        }
+      },
+      "sdb": {
+        "dev": "8:16",
+        "sectors": 0,
+        "holders": [],
+        "resolved_path": "/sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.3/1-1.3.2/1-1.3.2:1.0/host1/target1:0:0/1:0:0:0/block/sdb",
+        "usb_chain": [
+          {
+            "path": "/sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.3/1-1.3.2",
+            "idVendor": "174c",
+            "idProduct": "0829"
+          },
+          {
+            "path": "/sys/devices/platform/soc/3f980000.usb/usb1/1-1/1-1.3",
+            "idVendor": "05e3",
+            "idProduct": "0610"
+          },
+          {
+            "path": "/sys/devices/platform/soc/3f980000.usb/usb1/1-1",
+            "idVendor": "0424",
+            "idProduct": "9514"
+          },
+          {
+            "path": "/sys/devices/platform/soc/3f980000.usb/usb1",
+            "idVendor": "1d6b",
+            "idProduct": "0002"
+          }
+        ],
+        "removable": 1,
+        "vendor": "SupTroni",
+        "model": "X89",
+        "state": "running",
+        "partitions": {}
+      }
+    }
+  }
+}

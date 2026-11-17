@@ -1,0 +1,54 @@
+{
+  "quality_pass": false,
+  "audit": {
+    "structure_ok": true,
+    "errors": [],
+    "conditions_ok": true,
+    "condition_errors": [],
+    "n_timings": 705,
+    "n_guards": 1542,
+    "expected_timings": 705,
+    "raw_sha256": "3bfc20f3f9a82794ea6d3c3493a4e4f70db3a906973ecbc02b45e23c7d5d697c"
+  },
+  "stage_controls": {
+    "nms": {
+      "mean_log": -0.053783943395614195,
+      "geomean_ratio": 0.9476368275804894,
+      "mde_log_80pct": 0.16524377233299772,
+      "aa_ok": false,
+      "mde_ok": false
+    },
+    "mask": {
+      "mean_log": -0.005921711514816097,
+      "geomean_ratio": 0.9940957872608773,
+      "mde_log_80pct": 0.02709234224835699,
+      "aa_ok": true,
+      "mde_ok": true
+    }
+  },
+  "stage_aa_enforced": true,
+  "gates": {
+    "completed": true,
+    "images_complete": true,
+    "governor_ok": true,
+    "clock_ok": true,
+    "swap_off": true,
+    "reference_flags": 0,
+    "pin_ok": true,
+    "temp_max_c": 40.8,
+    "clock_min_hz": 600000000,
+    "clock_max_hz": 600000000,
+    "throttled_values": [
+      "throttled=0x50000",
+      "throttled=0x50005"
+    ],
+    "reference_ratio_range": [
+      0.9961067785104033,
+      1.0122761617091633
+    ],
+    "n_environment": 23,
+    "n_reference": 22,
+    "reference_ok": true,
+    "stage_aa_mde_ok": false
+  }
+}

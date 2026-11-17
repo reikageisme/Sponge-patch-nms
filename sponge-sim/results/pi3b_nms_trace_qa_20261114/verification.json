@@ -1,0 +1,9 @@
+{
+  "status": "HOST_SYNTHETIC_COUNTER_QA_ONLY",
+  "source_sha256": "4c18b03e448a241a2a4c551db09337f8a37da2d0ef306f315574cc9fb2f066f4",
+  "test_sha256": "b40226c03970f6ebd13fb7f72e0e42b4ae4d47a7dbc35090cc28f3ec94d56ca3",
+  "log_sha256": "f2bcef24e6f5901b6e00b5694fec4c21cab3fa6ecb26054236e5bb0b76447407",
+  "summary": "10 passed in 2.65s",
+  "actual_device_trace": false,
+  "causal_mechanism_identified": false
+}

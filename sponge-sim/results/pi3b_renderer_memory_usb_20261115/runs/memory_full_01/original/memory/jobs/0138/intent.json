@@ -1,0 +1,24 @@
+{
+  "argv": [
+    "/home/tanh/sponge-venv/bin/python",
+    "/home/tanh/sponge-sim/pi3b_renderer_memory_usb_20261115/memory_worker.py",
+    "--registration",
+    "/home/tanh/sponge-sim/pi3b_renderer_memory_usb_20261115/memory_registration.json",
+    "--cache",
+    "/home/tanh/sponge-sim/pi3b_renderer_prealloc_20261114/caches/cache_01",
+    "--tag",
+    "prereg-pi3b-renderer-memory-usb-20261115",
+    "--commit",
+    "70c398ae52540e873dca0f5dd447e97bc7d00958",
+    "--image",
+    "000000000061",
+    "--condition",
+    "clean",
+    "--arm",
+    "baseline_A",
+    "--out",
+    "/home/tanh/sponge-sim/pi3b_renderer_memory_usb_20261115/runs/memory_full_01/memory/jobs/0138/memory.json"
+  ],
+  "timeout_seconds": 180,
+  "direct_child_only": true
+}

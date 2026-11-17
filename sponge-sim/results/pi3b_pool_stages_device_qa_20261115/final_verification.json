@@ -1,0 +1,48 @@
+{
+  "status": "CLOSED_STAGED_POOL_AND_KERNEL_METADATA_QA_PASS_ONLY",
+  "tag": "qa-pi3b-pool-stages-20261115",
+  "commit": "7c019497a9f3a6d2c4245dfd20a14126270cc11f",
+  "source_and_config_exact_tag": true,
+  "original_files_verified": {
+    "qa_result_01.json": {
+      "sha256": "e3b1a9f186d8a31d7bb03d76064f54eab13d744d430cb53737dacbd493cb6d4a",
+      "bytes": 198372
+    },
+    "qa_manifest.json": {
+      "sha256": "86adeaa718cf4141cbc1d9d61c1394bcb1eb4e2252c1f5fac7d2db4768a27756",
+      "bytes": 750
+    }
+  },
+  "independent_audit_sha256": "07288f53128cc447ad0b2117f5fda374c152317b67c937079c2a89727bf2d03a",
+  "report_sha256": "76f9632bd5293e054802a80ee0cf89a81c19a79c86ab52f29c8bead6c58377a3",
+  "host_tests": 45,
+  "stage_count": 11,
+  "thread_observation_frames": 77,
+  "native_tids_by_stage": [
+    1,
+    4,
+    4,
+    4,
+    7,
+    7,
+    10,
+    10,
+    10,
+    10,
+    10
+  ],
+  "memory_boot_disable_flag_observed": true,
+  "cpu_parent_subtree_control": "pids",
+  "library_ownership_identified": false,
+  "nms_cause_identified": false,
+  "previous_observer_qa_originals_rehashed": 2,
+  "previous_usb_full_originals_rehashed": 1814,
+  "protected_bib_unchanged": true,
+  "no_scientific_performance_endpoint": true,
+  "no_qa02": true,
+  "ssh_kept_open": true,
+  "official_documentation_consulted_after_device_terminal": [
+    "https://docs.kernel.org/admin-guide/kernel-parameters.html",
+    "https://docs.kernel.org/admin-guide/cgroup-v2.html"
+  ]
+}

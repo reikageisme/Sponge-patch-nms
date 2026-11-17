@@ -1,0 +1,41 @@
+{
+  "date": "2026-11-08",
+  "scope": "primary manufacturer/project docs and inspected local source",
+  "sources": [
+    {
+      "url": "https://www.raspberrypi.com/products/raspberry-pi-3-model-b/",
+      "support": "Pi3B quad-core1.2GHz/1GB, distinguishB+"
+    },
+    {
+      "url": "https://www.raspberrypi.com/documentation/computers/os.html",
+      "support": "64-bit Pi3 support; Lite headless edition"
+    },
+    {
+      "url": "https://docs.ultralytics.com/guides/raspberry-pi/",
+      "support": "Guide testedPi4/5; Pi3 expected compatibility, not measured segmentation performance"
+    },
+    {
+      "url": "https://docs.ultralytics.com/integrations/ncnn/",
+      "support": "Segmentation supported; do not promise Ultralytics NCNN INT8 export"
+    },
+    {
+      "url": "https://docs.pytorch.org/tutorials/intermediate/realtime_rpi.html",
+      "support": "OfficialPyTorch Pi wheels require64-bit OS; tutorial speed notPi3seg"
+    },
+    {
+      "url": "https://github.com/Tencent/ncnn/blob/master/examples/yolov8_seg.cpp",
+      "support": "StandaloneC++segmentation implementation exists; own NMS/preprocess/dense mask resize need review"
+    },
+    {
+      "url": "https://github.com/Tencent/ncnn/blob/master/src/option.h",
+      "support": "lightmode recycles intermediates by default; explicit thread/precision options"
+    },
+    {
+      "url": "https://github.com/raspberrypi/documentation/blob/master/documentation/asciidoc/computers/os/graphics-utilities.adoc",
+      "support": "Read live/history throttling and undervoltage; distinguish memory pressure from compute"
+    }
+  ],
+  "hardware_measured": false,
+  "phone_actions_performed": false,
+  "market_price_verified": false
+}

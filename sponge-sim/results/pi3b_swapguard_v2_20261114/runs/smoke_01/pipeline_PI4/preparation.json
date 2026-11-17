@@ -1,0 +1,25 @@
+{
+  "wall_utc": 1794639357.9840412,
+  "argv": [
+    "/home/tanh/sponge-sim/pi3b_600mhz_swapguard_v2/run.py",
+    "--lock",
+    "/home/tanh/sponge-sim/pi3b_600mhz_swapguard_v2/lock.json",
+    "--base",
+    "/home/tanh/sponge-sim/pi3b_600mhz_swapguard_v2",
+    "--run-dir",
+    "/home/tanh/sponge-sim/pi3b_600mhz_swapguard_v2/runs/smoke_01/pipeline_PI4",
+    "--tag",
+    "prereg-pi3b-swapguard-v2-20261114",
+    "--commit",
+    "560b3aaf657fa574240e8ab463eefc20425538d8",
+    "--profile",
+    "PI4",
+    "--mode",
+    "pipeline",
+    "--smoke"
+  ],
+  "runner_sha256": "028a11f97f726941950be4dc406c8138cd3695a42b246a526d5c7519127c611b",
+  "status": "PREPARING",
+  "profile": "PI4",
+  "mode": "pipeline"
+}

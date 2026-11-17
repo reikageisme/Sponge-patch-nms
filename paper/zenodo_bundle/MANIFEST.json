@@ -1,0 +1,705 @@
+{
+ "git_head": "580764faa6eadfa10735c1416dead1168cd52bc1",
+ "prereg_tags": [
+  "prereg-e1-20261101 9130774",
+  "prereg-e10-20261102 db75e67",
+  "prereg-e11-20261103 ff4f59b",
+  "prereg-e2a-20261021 9f2e355",
+  "prereg-e5-20261021 8afd3d5",
+  "prereg-e5phone-20261101 9130774",
+  "prereg-e6-20261101 9130774",
+  "prereg-e6a1-20261102 1678cd8",
+  "prereg-e6a2-20261102 13a6acf",
+  "prereg-e7-20261101 9130774",
+  "prereg-e9-20261102 1aab181"
+ ],
+ "files": [
+  {
+   "path": "paper_vi/main_vi.tex",
+   "bytes": 97154,
+   "sha256": "d528a954cfe34a290b62af9a4e1c8ba856312bca13ecfef2cc569fe83397999a"
+  },
+  {
+   "path": "paper_vi/supplement_vi.tex",
+   "bytes": 3926,
+   "sha256": "cce47c8fd0a3f7acfc79c0b5d0f3f6428ee2d3fbad9e16a9ae34bafa60f85662"
+  },
+  {
+   "path": "paper_vi/tables/check_numbers.py",
+   "bytes": 4124,
+   "sha256": "68e5978aff3f1a4d3f71d99653a6c7e3be08806eabcb2640bef2260efed0acea"
+  },
+  {
+   "path": "paper_vi/tables/make_refs.py",
+   "bytes": 12427,
+   "sha256": "259db69f42933ad5abf21296118727d8dfe0cc5fed0d631c688681b06bd06160"
+  },
+  {
+   "path": "paper_vi/tables/make_tables.py",
+   "bytes": 50579,
+   "sha256": "0ef8093f8e1f41a170ffed5928f79d36ecfddc7af634ee383fd3656da4718ebe"
+  },
+  {
+   "path": "paper_vi/tables/numbers.json",
+   "bytes": 133228,
+   "sha256": "aa4c13196b91f6fe0034cdc2c06b48d97020f6a98960e9addc2d5746375df3a2"
+  },
+  {
+   "path": "paper_vi/tables/refs_apa.tex",
+   "bytes": 10059,
+   "sha256": "116624800bc4c95c25d6c6098bde04ec605cd36293eddf8c9f3f76239bdcd5c3"
+  },
+  {
+   "path": "paper_vi/tables/tab_aa.tex",
+   "bytes": 1380,
+   "sha256": "78b29fc3e57cc9162d900c85ce99c4919f12aaed2b04bda9a057a8239660abea"
+  },
+  {
+   "path": "paper_vi/tables/tab_amdahl.tex",
+   "bytes": 3167,
+   "sha256": "0ee16b98d87c599952258dea59523b7e32a8a7d4166cbd3f0cd556561d579a23"
+  },
+  {
+   "path": "paper_vi/tables/tab_amdahl_e9.tex",
+   "bytes": 1593,
+   "sha256": "0d4d51a9fe3f91560a85de6aec1d4a26729ebd2416851e599381174aa5e8ddb5"
+  },
+  {
+   "path": "paper_vi/tables/tab_attacks.tex",
+   "bytes": 1971,
+   "sha256": "bbba29dfac125352014339cbadeee3c1dcd2c41c0a6c41fa4112a80488b385fa"
+  },
+  {
+   "path": "paper_vi/tables/tab_cap.tex",
+   "bytes": 1331,
+   "sha256": "a5370484d718f5be07e2164abb99720fd892669e837dde6c88c2d8c710fd86f0"
+  },
+  {
+   "path": "paper_vi/tables/tab_decomp.tex",
+   "bytes": 1588,
+   "sha256": "2518f339f0dec7548f75d8bd34ff075c1e7e92d9e491f1bc8d0eee237705e8b2"
+  },
+  {
+   "path": "paper_vi/tables/tab_dose.tex",
+   "bytes": 1738,
+   "sha256": "25f501c27b7d963134e84a9f4928378f9c26bca723c9c4dcc379d4be1e8cb979"
+  },
+  {
+   "path": "paper_vi/tables/tab_impl.tex",
+   "bytes": 1508,
+   "sha256": "04fac291c5b92598306cde456e6d57390518ccae4e1f07a0cc7a706f8b39e510"
+  },
+  {
+   "path": "paper_vi/tables/tab_nk.tex",
+   "bytes": 1428,
+   "sha256": "b33e32ab31f6fa63d1b87fbe8a3fb148c5a450367236184285eaa730cb165b3a"
+  },
+  {
+   "path": "paper_vi/tables/tab_nstar.tex",
+   "bytes": 2450,
+   "sha256": "7149e95efb3cf06c1c6618d943ee3ccf9a28ecd489ee66d47aa43dd2e550ef19"
+  },
+  {
+   "path": "paper_vi/tables/tab_patches.tex",
+   "bytes": 2795,
+   "sha256": "b0de9cf1454d0e9b3583ad14bdbb693b05669ccaafc95898575604e6bd29eb96"
+  },
+  {
+   "path": "paper_vi/tables/tab_slopes.tex",
+   "bytes": 864,
+   "sha256": "610c82b3d935e1fdd69522b4abccba231d626dcfd2fb5ec4bbcfb220cec23788"
+  },
+  {
+   "path": "paper_vi/tables/tab_spec.tex",
+   "bytes": 1173,
+   "sha256": "72a71b39d088ae1fb9b304bf80b49308037b47941efae3188745f6d998d2d828"
+  },
+  {
+   "path": "paper_vi/tables/tab_supp_corrected.tex",
+   "bytes": 2168,
+   "sha256": "1cad2b59aac0d69be42e4fcde67ae879d3659e39f4198ff747753699fdc9e621"
+  },
+  {
+   "path": "paper_vi/tables/tab_threshold.tex",
+   "bytes": 1484,
+   "sha256": "3bb3a1da8bb146d0b45bc7d2065a8d21e841a7cb22296c80ac542d1a0241f5e1"
+  },
+  {
+   "path": "paper_vi/tables/tab_train.tex",
+   "bytes": 1253,
+   "sha256": "19bdaa3067ca896f053096ae55e0efa361fe96ac16850a4dbc711281252545dc"
+  },
+  {
+   "path": "paper_vi/tables/tab_x2.tex",
+   "bytes": 1291,
+   "sha256": "21c54c40fd063608bc4ea060f4dbafedb0d1e0f7947fc51c7118c1d54142613d"
+  },
+  {
+   "path": "README.md",
+   "bytes": 2061,
+   "sha256": "83dd19b3bbb1ee75eeb251e9a4979e61d8d79c4ce272cde0375a9a64afcd8791"
+  },
+  {
+   "path": "sponge-sim/DEVIATIONS.md",
+   "bytes": 18079,
+   "sha256": "9fff1658fa64b2ef7f624dd7d2675811e2b28d4601f4f0d90ad0e179aa0fcdbf"
+  },
+  {
+   "path": "sponge-sim/prereg/ANALYSIS_R1_twolevel.md",
+   "bytes": 2916,
+   "sha256": "7268f9c58e69bf8ab7f4294b3161c688282170aa7403a278ad3ab613e48d2ed3"
+  },
+  {
+   "path": "sponge-sim/prereg/ANALYSIS_R2_condition_slices.md",
+   "bytes": 2272,
+   "sha256": "c721ee9276952bd4d9d20ca8f6fabe81c24b93ee95c79ff7654b83d82b46d8eb"
+  },
+  {
+   "path": "sponge-sim/prereg/ANALYSIS_R3_reference_proxy.md",
+   "bytes": 1939,
+   "sha256": "7b16142723c2073eeac9b357b6efb552b65dd6089e992e941fb03d7f7af97c89"
+  },
+  {
+   "path": "sponge-sim/prereg/PREREG_E1.md",
+   "bytes": 10834,
+   "sha256": "52867cc3804d07e7511bc07a56944a751cb1641a19a7b65c7696c8d5c558b655"
+  },
+  {
+   "path": "sponge-sim/prereg/PREREG_E10.md",
+   "bytes": 4247,
+   "sha256": "050ce9fd0ecf9552c9c9ca8023501d6e7af92c80c3ec84d0705936f9698c2d85"
+  },
+  {
+   "path": "sponge-sim/prereg/PREREG_E11.md",
+   "bytes": 4967,
+   "sha256": "6c73d903a91732478748487cb24a5bbcb7c8f4f23b760df5346502a445af7ec2"
+  },
+  {
+   "path": "sponge-sim/prereg/PREREG_E11b.md",
+   "bytes": 3022,
+   "sha256": "3b1bed2c379f66fc18d2a1d9afd22c97e61730275539130cd11458b889bb516b"
+  },
+  {
+   "path": "sponge-sim/prereg/PREREG_E2a.md",
+   "bytes": 2866,
+   "sha256": "3edb04d9c2142ae5a7d5b5ea7d180fc546731ce0da530336e801cb0e27fa3de1"
+  },
+  {
+   "path": "sponge-sim/prereg/PREREG_E2b.md",
+   "bytes": 3584,
+   "sha256": "81d91d70cfe6ab60a8832af9e8cd773a791c7687a67b7ce0e74ea273cddf85c1"
+  },
+  {
+   "path": "sponge-sim/prereg/PREREG_E5.md",
+   "bytes": 4694,
+   "sha256": "e821ace8291ac98d7f29929a7af295d8ad17aff38503e0b0805cddd36e3d4272"
+  },
+  {
+   "path": "sponge-sim/prereg/PREREG_E5_phone.md",
+   "bytes": 13524,
+   "sha256": "a3673216913c16bb6101f7365ff1c998ad34cd3a28cb8e05fb6b7f7a7e8e55b6"
+  },
+  {
+   "path": "sponge-sim/prereg/PREREG_E6.md",
+   "bytes": 6384,
+   "sha256": "6073cb5e013bf9444d16be06a33a7ccb6a846f236fc4737f024839a8381421d5"
+  },
+  {
+   "path": "sponge-sim/prereg/PREREG_E6_A2.md",
+   "bytes": 1684,
+   "sha256": "1cb68d56006a41c6afe8183a69b1209ebe1d009474f3f36fd148c772fe3eb20c"
+  },
+  {
+   "path": "sponge-sim/prereg/PREREG_E6_addendum_clean640.md",
+   "bytes": 4250,
+   "sha256": "05de1c652b37c0d660c9d9797494c79f039539ab55ed8066992b859a9571849d"
+  },
+  {
+   "path": "sponge-sim/prereg/PREREG_E7.md",
+   "bytes": 6915,
+   "sha256": "4b6ff4b209ce99b33a98dbc71125b2a11494302b6ad2179f150dd2e2664a4ef7"
+  },
+  {
+   "path": "sponge-sim/prereg/PREREG_E9.md",
+   "bytes": 10847,
+   "sha256": "68a4dce5c4d60bc40a40b9d5e4a23fa5797a531852f24556d915e1ccb98d626a"
+  },
+  {
+   "path": "sponge-sim/results/amdahl/amdahl_vs_e9_posthoc.json",
+   "bytes": 49344,
+   "sha256": "ea99ac982ca138f7a476f67d351d43876b88792cd6084e4edc9b1d2f120a2d27"
+  },
+  {
+   "path": "sponge-sim/results/amdahl/threshold_check_posthoc.json",
+   "bytes": 9615,
+   "sha256": "67271c4f068003a2b1e067ea26d74ec6d7ec908998dfd23f4f20ebdefd0a3e05"
+  },
+  {
+   "path": "sponge-sim/results/diag_insert/insert_cost_20261103.json",
+   "bytes": 459,
+   "sha256": "6e96823a59b4f93e70571021748ca01fe061cc9eb244bd81e8b8d2a678c2c1a2"
+  },
+  {
+   "path": "sponge-sim/results/e1/E1_P1cpu2_20261101/manifest.json",
+   "bytes": 7905,
+   "sha256": "41949c2598e3a14af12370b6eb62b09e3c153e4140785004490a48a47ede2a13"
+  },
+  {
+   "path": "sponge-sim/results/e1/E1_P1cpu2_20261101/summary.json",
+   "bytes": 264304,
+   "sha256": "c9f2b60c1ce3365c31179ec41ba02e303e30e736e19665b1599f70635ec3177e"
+  },
+  {
+   "path": "sponge-sim/results/e10/E10_P1cpu2_20261102/manifest.json",
+   "bytes": 7918,
+   "sha256": "7520e78dcdc1e829e525277172845bb597d02fd96081fd8ea85760ae2330387e"
+  },
+  {
+   "path": "sponge-sim/results/e10/E10_P1cpu2_20261102/stage_decomp_posthoc.json",
+   "bytes": 3107,
+   "sha256": "cc1f8e61b660460d7d4e2637e61210070003cef619a475e60b19c05033a56b36"
+  },
+  {
+   "path": "sponge-sim/results/e10/E10_P1cpu2_20261102/stage_medians_posthoc.json",
+   "bytes": 1825,
+   "sha256": "0078bfc443ba0d4290918757b9db203296a1401e8e19f84e6c28efe911f85269"
+  },
+  {
+   "path": "sponge-sim/results/e10/E10_P1cpu2_20261102/structural_check_posthoc.json",
+   "bytes": 801,
+   "sha256": "b71e863f8152f17289c23a46492db6e64fc0f5d7170fbbfe5635e8fb264af5bb"
+  },
+  {
+   "path": "sponge-sim/results/e10/E10_P1cpu2_20261102/summary.json",
+   "bytes": 6906,
+   "sha256": "bef3c8092f58e3e1694232a58015ecf2ecdc7f5f9ace2601f5ea1a4dc8a99a27"
+  },
+  {
+   "path": "sponge-sim/results/e11/E11_P1cpu2_20261103/manifest.json",
+   "bytes": 16504,
+   "sha256": "f1d9a0e216df8c4b24d7c17dc14f3fc99d0f166f569c57ac03090df3ce974f4c"
+  },
+  {
+   "path": "sponge-sim/results/e11/E11_P1cpu2_20261103/summary.json",
+   "bytes": 25605,
+   "sha256": "ed921a167fb987dfa278b0e72bab9ff218c2dfdd1d0ec408db2fd00e80d78b3d"
+  },
+  {
+   "path": "sponge-sim/results/e11/E11_P1cpu2_20261103/summary_excl_flagged.json",
+   "bytes": 1189,
+   "sha256": "bb26731bf3002874f2e70355a426c94d2f3ec2466c1b97aa206bc210be997cc4"
+  },
+  {
+   "path": "sponge-sim/results/e5/AA640_P1cpu2_20261102/manifest.json",
+   "bytes": 7252,
+   "sha256": "434e89f0b7258a6c9bf48c99ac43de0fd0a666040071189e72b406360d923599"
+  },
+  {
+   "path": "sponge-sim/results/e5/AA640_P1cpu2_20261102/summary.json",
+   "bytes": 5391,
+   "sha256": "a7e3ac36dbdbd9b7cf8a04c2095f0eee8ff979c507590429051d16bdddb07f62"
+  },
+  {
+   "path": "sponge-sim/results/e5/AA640_P1cpu2_20261102b/manifest.json",
+   "bytes": 7566,
+   "sha256": "cf0f4dcd2f625325fbb5fd51ec9d72d9e91ed3625e0e2bf2eba8b8bbdbe18501"
+  },
+  {
+   "path": "sponge-sim/results/e5/AA640_P1cpu2_20261102b/summary.json",
+   "bytes": 5329,
+   "sha256": "afa1808bbef4d11e6bc451943379b9507f977d7e22ba14e0b272eaf59654eb43"
+  },
+  {
+   "path": "sponge-sim/results/e5/AA_P1cpu2_20261101/manifest.json",
+   "bytes": 7089,
+   "sha256": "94b6824660d30a68010a8331c1ef04e19fc782f6e779449fd61d8f250cd1f8cd"
+  },
+  {
+   "path": "sponge-sim/results/e5/AA_P1cpu2_20261101/summary.json",
+   "bytes": 5304,
+   "sha256": "4f5d9aefa4bb96d4722e9703e9a263be75b57ad4ade7551ad7caf99f82689c2e"
+  },
+  {
+   "path": "sponge-sim/results/e6/E6_P1cpu2_20261102/manifest.json",
+   "bytes": 17034,
+   "sha256": "a6944995f76117830e1a4da9031f268c51fc02f59c0a5c691a9b2a7ffe70f3f5"
+  },
+  {
+   "path": "sponge-sim/results/e6/E6_P1cpu2_20261102/summary.json",
+   "bytes": 40249,
+   "sha256": "8446a1ae26dac9488a69dbc51718491b0b2a95150577515009a4bb5e0d4fdd65"
+  },
+  {
+   "path": "sponge-sim/results/e6/E6_pooled_baselines_100img/summary.json",
+   "bytes": 17065,
+   "sha256": "2ab63e1ee8488f249c00909b4f21f3fa3de5d30635c20fa5531eb6b63670e034"
+  },
+  {
+   "path": "sponge-sim/results/e6/E6A1_P1cpu2_20261102b/manifest.json",
+   "bytes": 9343,
+   "sha256": "09057fa2603ffacfcfde6192a04cbaa6f5d4a6b25629fa406f4b516afe25350b"
+  },
+  {
+   "path": "sponge-sim/results/e6/E6A1_P1cpu2_20261102b/summary.json",
+   "bytes": 9376,
+   "sha256": "e67345a76451c401510513de50f323950af3b8993e35133698b68ba605fb77fd"
+  },
+  {
+   "path": "sponge-sim/results/e9/E9_P1cpu2_20261102/manifest.json",
+   "bytes": 7601,
+   "sha256": "6c4fe85128379eb3fa4c87551fbc8d633820b2127398d1b9e858027da9d34d4a"
+  },
+  {
+   "path": "sponge-sim/results/e9/E9_P1cpu2_20261102/summary_part_a.json",
+   "bytes": 43038,
+   "sha256": "2e74f146b52b1bbde188c2b7cc904c68b8f7f81a97b782ff3e0061dde6dd82c0"
+  },
+  {
+   "path": "sponge-sim/results/e9/E9_P1cpu2_20261102/summary_part_a_sens_aa640b.json",
+   "bytes": 43032,
+   "sha256": "34052f9d362051830aeceb73d952a1b11bc3206ba0af34baa3a023e97e657028"
+  },
+  {
+   "path": "sponge-sim/results/e9/E9_P1cpu2_20261102/summary_part_b.json",
+   "bytes": 5935,
+   "sha256": "fe4f1d35e24bf1bfba13afb040379b7e91323303398e992a7bb7cbb035be6017"
+  },
+  {
+   "path": "sponge-sim/results/e9/E9_P1cpu2_20261102/summary_part_b_sens_e6a1b.json",
+   "bytes": 3356,
+   "sha256": "6ebb9b096163adc9dd39172bb2f0115a3379198093aab5f269681078aeb77f01"
+  },
+  {
+   "path": "sponge-sim/src/sponge_sim/__init__.py",
+   "bytes": 0,
+   "sha256": "e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855"
+  },
+  {
+   "path": "sponge-sim/src/sponge_sim/attacks_provenance.py",
+   "bytes": 17640,
+   "sha256": "3c4f4e88ed9b13a5b44b07682195cfbb59b40116c20ab5093899ffbc64db32e0"
+  },
+  {
+   "path": "sponge-sim/src/sponge_sim/backends.py",
+   "bytes": 4897,
+   "sha256": "0b76a2542b9b3b4fa021ba8818da34b36cdd3b7cc38ffd719bddb07532b9f330"
+  },
+  {
+   "path": "sponge-sim/src/sponge_sim/cohorts.py",
+   "bytes": 1534,
+   "sha256": "7c5e4b9519dd088fc4b898dad93680d4ed9085712ce25150f5ae154ba3a54de4"
+  },
+  {
+   "path": "sponge-sim/src/sponge_sim/hw.py",
+   "bytes": 7029,
+   "sha256": "9b0eda7758b4c45f2cd9a64eaf44206aab2b5478afdc5458ed49e69791cb879d"
+  },
+  {
+   "path": "sponge-sim/src/sponge_sim/hw_linux.py",
+   "bytes": 9086,
+   "sha256": "1c07bb8f12a88e5847f6604f0e8d802a4f5e70903a0412983e4a7d544391d512"
+  },
+  {
+   "path": "sponge-sim/src/sponge_sim/inject.py",
+   "bytes": 3235,
+   "sha256": "3ff7bdf7a377ded44f7264156f9158760256f9a7674d15bdef2087d1571eacfa"
+  },
+  {
+   "path": "sponge-sim/src/sponge_sim/manifest.py",
+   "bytes": 2258,
+   "sha256": "488280fbe686d3a1b9a02b52cb0e3be92cc90897c4e8ad87297d6644560a8160"
+  },
+  {
+   "path": "sponge-sim/src/sponge_sim/provenance.py",
+   "bytes": 4716,
+   "sha256": "ba13561421faef44ccf659c43637cb3478ad555a4c84063c73207fd92cdebc6a"
+  },
+  {
+   "path": "sponge-sim/src/sponge_sim/stats.py",
+   "bytes": 4154,
+   "sha256": "65df04a44d2b99dd9fa79e8fa6835929d47a8d572711fe23a8aaa9e2fb2f1581"
+  },
+  {
+   "path": "sponge-sim/src/sponge_sim/timing.py",
+   "bytes": 2892,
+   "sha256": "bda82660c0070001336c98625b2a9467093609e351902b17691357a7dc696d6a"
+  },
+  {
+   "path": "sponge-sim/src/sponge_sim/yolov5_ref.py",
+   "bytes": 3202,
+   "sha256": "03b02066faab160ba030ab90fd9b945093950fd0262d0c374b761388fcd3e816"
+  },
+  {
+   "path": "sponge-sim/studies/amdahl/analyze.py",
+   "bytes": 6444,
+   "sha256": "2b9295fce24e8ce32d391cff2827e5796f40b872ed01bc6254ecbc447c92cfaa"
+  },
+  {
+   "path": "sponge-sim/studies/amdahl/threshold_check.py",
+   "bytes": 4731,
+   "sha256": "124f09a980cf2917782005d3f9fa6a121a429a2c8562d53812032ab5fdf5265e"
+  },
+  {
+   "path": "sponge-sim/studies/diag_insert/run.py",
+   "bytes": 1691,
+   "sha256": "a7787c4ed7861dbb53e9e273f3d0dfa8f8c1f61ae9eaca858ada3f98f814fa7f"
+  },
+  {
+   "path": "sponge-sim/studies/e10_reference/analyze.py",
+   "bytes": 6954,
+   "sha256": "65e8dfbfccf2ff545e4b6b14a4cff6b3aa101f4a787ca78b64a988ab8a9579c3"
+  },
+  {
+   "path": "sponge-sim/studies/e10_reference/run.py",
+   "bytes": 7527,
+   "sha256": "7d5265c806e53b28642c9f3912196ca10a40db4f70149d84e93140ccabb74bd4"
+  },
+  {
+   "path": "sponge-sim/studies/e10_reference/stage_decomp.py",
+   "bytes": 3230,
+   "sha256": "64c485bb18fe7f55388cfc57c1422793ffd97fd4c3012a4dd0a23ae83f1521c0"
+  },
+  {
+   "path": "sponge-sim/studies/e10_reference/stage_medians.py",
+   "bytes": 1809,
+   "sha256": "535acfe963ca2a6f325b206587b2cba0af5de0d82b1fefde7f8c52f71286eaf0"
+  },
+  {
+   "path": "sponge-sim/studies/e11_patch_remeasure/analyze.py",
+   "bytes": 6728,
+   "sha256": "c5dcca7a467e890b1d33a5605cf25c400f2f1bac008e7a5aea1ec07a30b5cc7e"
+  },
+  {
+   "path": "sponge-sim/studies/e11_patch_remeasure/run.py",
+   "bytes": 9670,
+   "sha256": "58c8207e0c8d74e81cca1ef7d769d6f8d26da9d3040ae1cc5c900ec35e5110ba"
+  },
+  {
+   "path": "sponge-sim/studies/e1_dose/analyze.py",
+   "bytes": 8107,
+   "sha256": "d1cc6b44eaa4bd621618ee42bf9b5f8ea2a2c1f2d0353742275585f369374956"
+  },
+  {
+   "path": "sponge-sim/studies/e1_dose/run.py",
+   "bytes": 9487,
+   "sha256": "a76aabc445839f0e45dcb6fb6a3ade2c76625fa1bd270ff448a57baa258b10e4"
+  },
+  {
+   "path": "sponge-sim/studies/e2_proxy/e2a_historical.py",
+   "bytes": 5410,
+   "sha256": "37e5cb96f142416915441fdbcfec1830e312441ed65a9efb8e9064e9695c41b2"
+  },
+  {
+   "path": "sponge-sim/studies/e2_proxy/e2a_posthoc_aa.py",
+   "bytes": 1798,
+   "sha256": "2c07f21764c49af3528bef230cf23ad327d055c61d0c782b4da5ffe1a8640d9a"
+  },
+  {
+   "path": "sponge-sim/studies/e2_proxy/e2b_analyze.py",
+   "bytes": 6247,
+   "sha256": "184825f739d6b92013a5c44921cb550ae8f296c2fc9c3e1c74bdafdb906f0384"
+  },
+  {
+   "path": "sponge-sim/studies/e2_proxy/e2b_run.py",
+   "bytes": 7169,
+   "sha256": "528af48c6da5192ce0d6252fe4a0cf0ca7a41ccef53298176fdb8166a3772cb7"
+  },
+  {
+   "path": "sponge-sim/studies/e5_phone/analyze.py",
+   "bytes": 4626,
+   "sha256": "b4b0e960814d087c6acc454533c6459b76924d620719dedaee89b95b2935e6d4"
+  },
+  {
+   "path": "sponge-sim/studies/e5_phone/pin_verify.py",
+   "bytes": 4417,
+   "sha256": "f20b336ace7bcf5d4e602581286bc50d82cafac3e26961f4c31e778ae7f24804"
+  },
+  {
+   "path": "sponge-sim/studies/e5_phone/run.py",
+   "bytes": 9268,
+   "sha256": "b5f2d14ad29a9f2e8308ce83ef0e3ac2d552b04ac0a8acadba9c4817c138d4c4"
+  },
+  {
+   "path": "sponge-sim/studies/e5_protocol/analyze.py",
+   "bytes": 5489,
+   "sha256": "d2e232b08e7665bb57571c2251514350e9610787116a165f56663ec73b2c6671"
+  },
+  {
+   "path": "sponge-sim/studies/e5_protocol/run.py",
+   "bytes": 7624,
+   "sha256": "9efdecff329af6fa94b40c5f924eed292769e5416278e35b12a6d1ed305ce6f2"
+  },
+  {
+   "path": "sponge-sim/studies/e6_remeasure/analyze.py",
+   "bytes": 8289,
+   "sha256": "aa111ceaaeb650c1f41bf4de9676ed57994f3a4f45d370724243ec5f790afa42"
+  },
+  {
+   "path": "sponge-sim/studies/e6_remeasure/run.py",
+   "bytes": 12197,
+   "sha256": "742644aec722ab253cc8fe058f1a78f6d0d7ca3619e62c9180d74a63e501ec86"
+  },
+  {
+   "path": "sponge-sim/studies/e7_sggar/make_bundle.py",
+   "bytes": 3881,
+   "sha256": "5f1220db3712df4bb26c7333d8d813cd93e553aa4c976e2869fd243d10e58e77"
+  },
+  {
+   "path": "sponge-sim/studies/e7_sggar/run.py",
+   "bytes": 10639,
+   "sha256": "bb8d0484a258f06c34b1fb68904140cb79c677cb90a78b917b99bb776bd42336"
+  },
+  {
+   "path": "sponge-sim/studies/e9_pipeline/analyze.py",
+   "bytes": 13264,
+   "sha256": "2af0dd86a9c20361933dbfbf9206226a75bf4ebf401b5b0a6d21ca31cb053eb7"
+  },
+  {
+   "path": "sponge-sim/studies/e9_pipeline/run.py",
+   "bytes": 8598,
+   "sha256": "8dc07b9fc2fb73a4db67660aa4bfa903c31d08e2e91743cae718eddc57f68e46"
+  },
+  {
+   "path": "sponge-sim/studies/figures/make_figs.py",
+   "bytes": 3537,
+   "sha256": "ada962a84fe288d1e6577430b220d56150e5f09fe93a23850e0a03a8ab7af6ec"
+  },
+  {
+   "path": "sponge-sim/studies/figures/make_figs_v3.py",
+   "bytes": 10240,
+   "sha256": "be141a5a12664003c15c1d585dbd36a4d02a83dcc47eaf3ebf5674c8dcb2a763"
+  },
+  {
+   "path": "sponge-sim/studies/linux_profile/README.md",
+   "bytes": 3501,
+   "sha256": "222ef35ccf1c8972727400c28dd152e64128db9b795c7b23c69c001b19f9f5b2"
+  },
+  {
+   "path": "sponge-sim/studies/linux_profile/topology_fedora.py",
+   "bytes": 1924,
+   "sha256": "b6147aae205f72ab6e5b7fa9bed8ea4d8722da90e71adb2508918515d736498d"
+  },
+  {
+   "path": "sponge-sim/studies/r1_twolevel/run.py",
+   "bytes": 3927,
+   "sha256": "efefdfdb959c6b025990332e8a8763eb3becb0eb422a9d2e15f75fe5908875ff"
+  },
+  {
+   "path": "sponge-sim/studies/r2_slices/run.py",
+   "bytes": 6332,
+   "sha256": "8c5aa26dd828932e14ac496482bc95ad52d35562641de3e310c53457442dccf5"
+  },
+  {
+   "path": "sponge-sim/studies/r3_reference/run.py",
+   "bytes": 3351,
+   "sha256": "b684e5dc781aeb0194a0d5f85ebb1c0307b09085ab45dc0cdfaa95beb133b786"
+  },
+  {
+   "path": "sponge-sim/studies/x2_counts/analyze.py",
+   "bytes": 2596,
+   "sha256": "934bcfa9fb57c2c0f2542b3dbccbe7d1d2a1ce68de22186a4c6b928a511cbde9"
+  },
+  {
+   "path": "sponge-sim/tests/conftest.py",
+   "bytes": 137,
+   "sha256": "adbce427644ee5b1ccdff253a844a95a4f222f841358ac0e2bdb74f7f9db971b"
+  },
+  {
+   "path": "sponge-sim/tests/test_attacks_generalization.py",
+   "bytes": 1967,
+   "sha256": "7d52589999d845749887e21d97a9c0caba9b1e0d088c38464c8a1c83acd834bc"
+  },
+  {
+   "path": "sponge-sim/tests/test_attacks_provenance.py",
+   "bytes": 2523,
+   "sha256": "ea002eb3fb8aa60737ae87c6ed66504918496d8c04ad2784f598ffede599d95e"
+  },
+  {
+   "path": "sponge-sim/tests/test_backends.py",
+   "bytes": 2603,
+   "sha256": "fa8533e154273010556cd6372b7b9d46ba686b56b1a39104c1978ff608613690"
+  },
+  {
+   "path": "sponge-sim/tests/test_e11_symmetry.py",
+   "bytes": 3329,
+   "sha256": "0d22fe5fd9276aa7d199acf8143d7a4af669bc13727a2378445e118870883ade"
+  },
+  {
+   "path": "sponge-sim/tests/test_provenance.py",
+   "bytes": 1496,
+   "sha256": "f4036b05ece0efd3407307dccc7b453279cd7196c022be9cb779157cbc0f7532"
+  },
+  {
+   "path": "sponge-sim/tests/test_regen_counts.py",
+   "bytes": 2162,
+   "sha256": "a629b17fee7290ea444a12bcaa9695b75fe06c86f6109d8c2267270d7a4f34b0"
+  },
+  {
+   "path": "sponge-sim/tests/test_regression_x1.py",
+   "bytes": 1238,
+   "sha256": "f0fcb4bb88d57820fa1409323ffb364e67514e864d4e6f19fc1857235ff8c237"
+  }
+ ],
+ "raw_not_copied": [
+  {
+   "path": "sponge-sim/results/e1/E1_P1cpu2_20261101/raw_P1_cpu2.jsonl",
+   "bytes": 5728688,
+   "sha256": "5f587137fbc2aa9d07b49a452292c932b3910ac6f471167e254709a40be38e41",
+   "copied": false
+  },
+  {
+   "path": "sponge-sim/results/e5/AA_P1cpu2_20261101/raw_P1_cpu2.jsonl",
+   "bytes": 603709,
+   "sha256": "6bc4ee54712262fadee4b033fa55eaa5a95b40b796133ef953d502c7323dd900",
+   "copied": false
+  },
+  {
+   "path": "sponge-sim/results/e5/AA640_P1cpu2_20261102/raw_P1_cpu2.jsonl",
+   "bytes": 613415,
+   "sha256": "c1f6569d1af0c212c97be5a3640b9077a53ca20d81b93eff06567e75260f7a53",
+   "copied": false
+  },
+  {
+   "path": "sponge-sim/results/e5/AA640_P1cpu2_20261102b/raw_P1_cpu2.jsonl",
+   "bytes": 613061,
+   "sha256": "e8a45affba2988d515988aec63fea6c302ab40f523ddbc306287a797806a9f7d",
+   "copied": false
+  },
+  {
+   "path": "sponge-sim/results/e9/E9_P1cpu2_20261102/raw_P1_cpu2.jsonl",
+   "bytes": 6337862,
+   "sha256": "1cbb834f26d9501c4b026dac9bbca7804a9b3746294392a67db0501db1d93fce",
+   "copied": false
+  },
+  {
+   "path": "sponge-sim/results/e10/E10_P1cpu2_20261102/raw_P1_cpu2.jsonl",
+   "bytes": 3088725,
+   "sha256": "183a6d06601e06021c2989858d461b219fdef6793f00249572efdbbe5656ab5b",
+   "copied": false
+  },
+  {
+   "path": "sponge-sim/results/e6/E6_P1cpu2_20261102/raw_P1_cpu2.jsonl",
+   "bytes": 93332264,
+   "sha256": "84b0d2d650771976c34c255a0bd62e531e1575b6ab3852ea1188c43f16b8fc57",
+   "copied": false
+  },
+  {
+   "path": "sponge-sim/results/e6/E6A1_P1cpu2_20261102b/raw_P1_cpu2.jsonl",
+   "bytes": 23732682,
+   "sha256": "fa7722a77e775417747107c78300b505aaf6b76baba98b692ef3f8302453782b",
+   "copied": false
+  },
+  {
+   "path": "sponge-sim/results/e6/E6_pooled_baselines_100img/raw_pooled.jsonl",
+   "bytes": 58462351,
+   "sha256": "f9074ba7b5692a71bd36e02437cc9cebea520a36a4f6a3e779abfe6f87e6557f",
+   "copied": false
+  },
+  {
+   "path": "sponge-sim/results/e11/E11_P1cpu2_20261103/raw_P1_cpu2.jsonl",
+   "bytes": 122693416,
+   "sha256": "a082d4f782f00b8409c1134b9fa1e48e7c142856d53f48a7f0c8c7499cd698d9",
+   "copied": false
+  }
+ ]
+}

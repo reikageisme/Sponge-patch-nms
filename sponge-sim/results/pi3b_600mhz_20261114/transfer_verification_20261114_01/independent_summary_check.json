@@ -1,0 +1,38 @@
+{
+  "status": "REGISTERED_SUMMARY_RECOMPUTED_FROM_ALL20_IMAGES",
+  "raw_sha256": "83e84900fa11c9d11a8061a69d280a064f7e741f996f1d42d5666004b4170971",
+  "summary_sha256": "8e1895b8be80fe97049b68046b6f5007510ad4cb0ecac33c6c01396766cca27f",
+  "verifier_sha256": "5d73c712668b3c3914b0d7c5cbe24f5afa2dcde12af860644752de075f177b7e",
+  "endpoint_checks": {
+    "h1_adv_over_clean": {
+      "values_match": true,
+      "exact_sign_flip_hits": 2,
+      "assignments": 1048576
+    },
+    "h2_advcap_over_adv": {
+      "values_match": true,
+      "exact_sign_flip_hits": 2,
+      "assignments": 1048576
+    },
+    "aa_cleanA_over_cleanB": {
+      "values_match": true,
+      "exact_sign_flip_hits": 346368,
+      "assignments": 1048576
+    },
+    "advcap_over_clean": {
+      "values_match": true,
+      "exact_sign_flip_hits": 2,
+      "assignments": 1048576
+    },
+    "forward_adv_over_clean": {
+      "values_match": true,
+      "exact_sign_flip_hits": 11800,
+      "assignments": 1048576
+    }
+  },
+  "mde_matches": true,
+  "medians_and_shares_match": true,
+  "registered_quality_pass": false,
+  "diagnostic_only": true,
+  "drop_image_or_filter_applied": false
+}

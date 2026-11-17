@@ -1,0 +1,17 @@
+{
+  "image": "000000000078",
+  "condition": "adv",
+  "filename": "000000000078_adv.pt",
+  "sha256": "9cc4ee2afb7c039677a1027ab57257c8cb15cb78a1d260abe7aec5327cd453bb",
+  "k": 294,
+  "shape": [
+    640,
+    640
+  ],
+  "mask_sha256": "d19e2664883364c15675efa71146d78d64250c19f127f6531f6addba5ac4e6db",
+  "counts": {
+    "k": 294,
+    "n_tau": 3022,
+    "kernel_n": 3022
+  }
+}

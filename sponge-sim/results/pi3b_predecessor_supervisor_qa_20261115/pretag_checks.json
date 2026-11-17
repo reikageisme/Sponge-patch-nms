@@ -1,0 +1,11 @@
+{
+  "status": "PRETAG_STATIC_CHECKS_PASS",
+  "package_files": 23,
+  "qa_plan_sha256": "2cebbd92d6b2070fdcec3867eac87f8d9568214f97f443e7354b716cb6df3ca9",
+  "drivers": {
+    "collect_device_qa.py": "42c787b090380e71123a7ca24474a7402ecb7701ed86a10aa435ab531e3f1f47",
+    "prepare_device.py": "8dc9eba8a362bdc57a851e5156ce4c909e5bf089ce23e747251cc9dbf5e1e97b",
+    "run_device_qa.py": "87198d9ace7e7e071e0ede70caa9b1342183f646d3c740ed1acd3e50a82ac0e6"
+  },
+  "native_run_started": false
+}

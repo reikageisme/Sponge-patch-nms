@@ -1,0 +1,12 @@
+{
+  "status": "FIVE_ENGINEERING_CASES_PASS",
+  "cases": {
+    "qa_normal_01": "PASS_NORMAL",
+    "qa_mainkill_01": "PASS_MAIN",
+    "qa_childkill_01": "PASS_CHILD",
+    "qa_timeout_01": "PASS_TIMEOUT",
+    "qa_disconnect_01": "PASS_DISCONNECT"
+  },
+  "commit": "c6a9747643b097595055cbdf7e7317ed48e8e10e",
+  "model_inference": false
+}

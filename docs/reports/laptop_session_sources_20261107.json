@@ -1,0 +1,118 @@
+{
+  "initial_clean": {
+    "summary": "sponge-sim/results/laptop_seg_20261107/aa20_01/P1_cpu2/controls_summary.json",
+    "summary_sha256": "44822a35d7a7d2aa4ddc6bd981ebef7d1cb87de703368b63919e3054e16a7a60",
+    "raw": "sponge-sim/results/laptop_seg_20261107/aa20_01/P1_cpu2/raw.jsonl",
+    "raw_sha256": "8a9db651f211057d2cd0ee36759064199684aa8ca118f8b9cbc1e705ec057632",
+    "tag": "prereg-laptop-aa20-20261107",
+    "commit": "66f675dc272312c926393569d18089ecbef59721",
+    "selectors": [
+      "quality_pass",
+      "feasibility_pass",
+      "flagged_references",
+      "stages"
+    ]
+  },
+  "highqos_smoke": {
+    "summary": "sponge-sim/results/laptop_highqos_20261107/smoke_01/P1_cpu2/smoke_summary.json",
+    "summary_sha256": "5664510df939ddf83ef867ed9d004dfb0893c06d436c778dd7397e6fb4788fba",
+    "raw": "sponge-sim/results/laptop_highqos_20261107/smoke_01/P1_cpu2/raw.jsonl",
+    "raw_sha256": "4a77d5e942c6afe35a705c07141c00d32954e8d0502db3e431b58f1f877303d8",
+    "tag": "prereg-laptop-highqos-20261107",
+    "commit": "1a2c156a2fef7401d8846576d00695ee4419cf07",
+    "selectors": [
+      "quality_pass",
+      "feasibility_pass",
+      "flagged_references",
+      "stages"
+    ]
+  },
+  "abovenormal_smoke": {
+    "summary": "sponge-sim/results/laptop_abovenormal_20261107/smoke_01/P1_cpu2/smoke_summary.json",
+    "summary_sha256": "5f022628c21787199ae96ad412bbde3075ed8514aeef7c6b0dd5b809e0a04a39",
+    "raw": "sponge-sim/results/laptop_abovenormal_20261107/smoke_01/P1_cpu2/raw.jsonl",
+    "raw_sha256": "71eb6ec58886b404f9be4cc2179b4715297d15dbc64e1204b75c26de06b25721",
+    "tag": "prereg-laptop-abovenormal-20261107",
+    "commit": "9ce44dde611975172e437f0bafd59110f63f2cb4",
+    "selectors": [
+      "quality_pass",
+      "feasibility_pass",
+      "flagged_references",
+      "stages"
+    ]
+  },
+  "separated_clean": {
+    "summary": "sponge-sim/results/laptop_app_affinity_20261107/full_01/P1_cpu2/controls_summary.json",
+    "summary_sha256": "e4ab0051a23801d888e3d9a1b2f994568a291d8b12868c3b0a6a20812787b2d7",
+    "raw": "sponge-sim/results/laptop_app_affinity_20261107/full_01/P1_cpu2/raw.jsonl",
+    "raw_sha256": "e01d08872c5fba1cfcf43db413ed678c60833da6797533e0f034c9aee08c0eff",
+    "tag": "prereg-laptop-app-affinity-20261107",
+    "commit": "5e8df4f5fed8130a6ce40b5d2a40b1552199ee78",
+    "selectors": [
+      "quality_pass",
+      "feasibility_pass",
+      "flagged_references",
+      "stages"
+    ]
+  },
+  "mixed_attack": {
+    "summary": "sponge-sim/results/laptop_attack_replay_20261107/full_01/P1_cpu2/attack_summary.json",
+    "summary_sha256": "f3a3e7e42728dc5a018face6bfa9d4e28fcff8b62cb432ebc17e95a946ad8b2b",
+    "raw": "sponge-sim/results/laptop_attack_replay_20261107/full_01/P1_cpu2/raw.jsonl",
+    "raw_sha256": "6ab89a383a51ffae2f022f4011ffb10530b2f76a21e7f9feec50d9623d867478",
+    "tag": "prereg-laptop-attack-replay-20261107",
+    "commit": "2dab448d60a4298bb2ed25d80015a2135cd7da60",
+    "selectors": [
+      "quality_pass",
+      "feasibility_pass",
+      "flags",
+      "aa",
+      "contrasts.total"
+    ]
+  },
+  "total48_attack": {
+    "summary": "sponge-sim/results/laptop_total_confirmation_20261107/full_01/P1_cpu2/attack_summary.json",
+    "summary_sha256": "03e38b93f165715d69fe94b3f93c9bfa682c07310041ae4136c931789c7ccf83",
+    "raw": "sponge-sim/results/laptop_total_confirmation_20261107/full_01/P1_cpu2/raw.jsonl",
+    "raw_sha256": "1e19b1e2f9862ae783c9c68dc7ae7d2643349c219b556625d3ec97fc88440b75",
+    "tag": "prereg-laptop-total-confirmation-20261107",
+    "commit": "6748a891fb91384164e5c3c9bf8bec6d7ef13732",
+    "selectors": [
+      "quality_pass",
+      "feasibility_pass",
+      "flags",
+      "aa",
+      "contrasts.total"
+    ]
+  },
+  "carryover_attack": {
+    "summary": "sponge-sim/results/laptop_carryover_20261107/full_01/P1_cpu2/attack_summary.json",
+    "summary_sha256": "8a5f58c628a7e8293b8f45589bca3eb82838353b3a6938d79e034edd550b9787",
+    "raw": "sponge-sim/results/laptop_carryover_20261107/full_01/P1_cpu2/raw.jsonl",
+    "raw_sha256": "f344e61f6f1200a1b47558d48ae51b93d7373774c9594c54070d6d3bcf567148",
+    "tag": "prereg-laptop-carryover-20261107",
+    "commit": "a57662d32d8a37f448776622bfa1941862c62634",
+    "selectors": [
+      "quality_pass",
+      "feasibility_pass",
+      "flags",
+      "aa",
+      "contrasts.total"
+    ]
+  },
+  "repeated_session": {
+    "summary": "sponge-sim/results/laptop_session_confirm_20261107/full_01/P1_cpu2/attack_summary.json",
+    "summary_sha256": "73fae35e722c304e2defc0b64f5e4066d4230411ff9ce2a11ceaf4357fe2d7b5",
+    "raw": "sponge-sim/results/laptop_session_confirm_20261107/full_01/P1_cpu2/raw.jsonl",
+    "raw_sha256": "51ee4e3468231324be1de72a5ed62929068429140fbb979ca313095b0c7f3b24",
+    "tag": "prereg-laptop-session-confirm-20261107",
+    "commit": "17f2cd6805cbfd4cc636d58aec086209bf59c4cc",
+    "selectors": [
+      "quality_pass",
+      "feasibility_pass",
+      "flags",
+      "aa",
+      "contrasts.total"
+    ]
+  }
+}

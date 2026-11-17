@@ -1,0 +1,10 @@
+{
+  "ssh_returncode": 1,
+  "service": {
+    "MainPID": "0",
+    "ActiveState": "inactive"
+  },
+  "command": "/home/tanh/sponge-venv/bin/python /home/tanh/sponge-sim/pi3b_renderer_memory_v1_20261114/control.py launch --mode memory --phase smoke --name memory_smoke_01 --tag prereg-pi3b-renderer-memory-v1-20261114 --commit 289c2e373c6f965337aaeea7edddc1d7ade29497",
+  "finished_at_utc": "2026-11-14T17:04:57.799112+00:00",
+  "authoritative_service_terminal": true
+}

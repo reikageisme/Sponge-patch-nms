@@ -1,0 +1,75 @@
+{
+  "sponge-sim/studies/pi3b_full20_20261114/run.py": {
+    "sha256": "cadc78041d3f4e611c789c76c22b1a885131b9ca632a52a27300a440baa4425f",
+    "selected": [
+      {
+        "name": "verify_pin",
+        "line": 203,
+        "end_line": 222
+      },
+      {
+        "name": "full",
+        "line": 248,
+        "end_line": 253
+      },
+      {
+        "name": "reference",
+        "line": 286,
+        "end_line": 294
+      }
+    ],
+    "relationship": "adapted orchestration/gates, unchanged frozen dependencies; schedule copied AST unchanged"
+  },
+  "sponge-sim/studies/pi3b_full20_20261114/lock.json": {
+    "sha256": "1cd1789d4f30c0a6b708fad907729999f6e6e53d4ba373ce487bc8037d10be0e",
+    "selected": [],
+    "relationship": "adapted orchestration/gates, unchanged frozen dependencies; schedule copied AST unchanged"
+  },
+  "sponge-sim/studies/pi3b_nms_predecessor_20261115/pairs.py": {
+    "sha256": "bd55f9e8f984b160e78da46f4eaa835c4a45d72a31ea24bb44dd8c0460f6b5fc",
+    "selected": [
+      {
+        "name": "execute",
+        "line": 11,
+        "end_line": 22
+      }
+    ],
+    "relationship": "adapted orchestration/gates, unchanged frozen dependencies; schedule copied AST unchanged"
+  },
+  "sponge-sim/studies/pi3b_nms_predecessor_20261115/inventory.py": {
+    "sha256": "1059453b0af8d990064b0a20c497dfd548be2e8321c8ffee04668e2f4c4eaf9e",
+    "selected": [
+      {
+        "name": "snapshot",
+        "line": 76,
+        "end_line": 114
+      },
+      {
+        "name": "increments",
+        "line": 117,
+        "end_line": 143
+      }
+    ],
+    "relationship": "adapted orchestration/gates, unchanged frozen dependencies; schedule copied AST unchanged"
+  },
+  "sponge-sim/studies/pi3b_nms_predecessor_20261115/schedule.py": {
+    "sha256": "acfe063a7f0f9bc8dbdaa650a2629003d09e0ee91c3f89a381640a4205245d25",
+    "selected": [
+      {
+        "name": "schedule",
+        "line": 13,
+        "end_line": 27
+      }
+    ],
+    "relationship": "adapted orchestration/gates, unchanged frozen dependencies; schedule copied AST unchanged"
+  },
+  "official_counter_semantics": {
+    "url": "https://psutil.io/api/#psutil.cpu_times",
+    "facts": [
+      "guest already included in user; guest_nice in nice",
+      "percpu frames ordered by CPU index",
+      "counters may move backwards on Linux/Windows"
+    ],
+    "not_evidence_of_installed_pi_version": true
+  }
+}

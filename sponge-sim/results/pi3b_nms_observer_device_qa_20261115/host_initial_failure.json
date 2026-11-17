@@ -1,0 +1,8 @@
+{
+  "stage": "Before engineering tag/device invocation",
+  "tests_passed": 29,
+  "tests_failed": 1,
+  "error": "Root ancestor rendered '/.' instead of '/' because relative_to(root) yields dot",
+  "correction": "Explicit root path label, same expected assertion retained; added late TID reuse check",
+  "raw_device_data_seen": false
+}

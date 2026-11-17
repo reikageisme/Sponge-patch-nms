@@ -1,0 +1,5 @@
+{
+  "returncode": 1,
+  "stdout": "",
+  "stderr": "Failed to start dev-zram0.swap: Unit dev-zram0.swap is masked.\n"
+}

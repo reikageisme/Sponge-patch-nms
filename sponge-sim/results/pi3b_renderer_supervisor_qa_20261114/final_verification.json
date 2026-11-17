@@ -1,0 +1,10 @@
+{
+  "status": "FIVE_DEVICE_SLEEP_CASES_AND_HOST_ANALYSIS_CONTRACTS_VERIFIED",
+  "device_original_files": 39,
+  "working_source_equals_tag_and_remote": true,
+  "old21full20originals_unchanged": true,
+  "model_cache_or_resource_endpoint_recorded": false,
+  "report_sha256": "9b13b27d2becac9b4f0b31d1fa753e08e2c7240933670491bd256e0602e7efaa",
+  "warning_preserved": true,
+  "ssh_kept_open": true
+}

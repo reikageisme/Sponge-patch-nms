@@ -1,0 +1,29 @@
+{
+  "protected_before": {
+    "paper_en/references.bib": "58bcb86a185ac4f338168adc894cd9b188d17fe1f1afad510ff05924f38f7d12",
+    "paper_en/segmentation_extension/laptop_components.pdf": "da3a66580f51165e8b72aa8a9967b747bcb7c041161f589ce4a356583431ca9d",
+    "paper_en/segmentation_extension/laptop_defense.pdf": "84a71e74572db3c23a3a9c0cbc76c76436a2183971571f8ef2a9a4dd9d758ae6",
+    "paper_en/segmentation_extension/laptop_pcores.pdf": "e4a21a74b36893d1eff914f667a6936c705c946850c8cd7c3327a6fb260525a5",
+    "paper_en/segmentation_extension/laptop_reference_trace.pdf": "ca891b145d830c91d92c59f830541ac2be4d490c0adef0c46548d3635001960b",
+    "paper_en/segmentation_extension/laptop_sessions.pdf": "d9b24eb200235bac70e61f07f621c88baf2c00206a666f94572d28d548136645",
+    "paper_en/segmentation_extension/mask_dose_response.pdf": "cf866211e41b703c13b0cab36b4326fee181439325640f8e8f41fd4ae1624b20",
+    "paper_en/segmentation_extension/nested1500_native.pdf": "34210578295d65aeb72d9678e8e5f939e645f9d4d8568fe5126c6d4a98199f4e",
+    "paper_en/segmentation_extension/val500_counts.pdf": "4e87f7974c9c8541da10c3cead27842ef170572cfac47cf4e9aa0065d64afc66"
+  },
+  "protected_after": {
+    "paper_en/references.bib": "58bcb86a185ac4f338168adc894cd9b188d17fe1f1afad510ff05924f38f7d12",
+    "paper_en/segmentation_extension/laptop_components.pdf": "da3a66580f51165e8b72aa8a9967b747bcb7c041161f589ce4a356583431ca9d",
+    "paper_en/segmentation_extension/laptop_defense.pdf": "84a71e74572db3c23a3a9c0cbc76c76436a2183971571f8ef2a9a4dd9d758ae6",
+    "paper_en/segmentation_extension/laptop_pcores.pdf": "e4a21a74b36893d1eff914f667a6936c705c946850c8cd7c3327a6fb260525a5",
+    "paper_en/segmentation_extension/laptop_reference_trace.pdf": "ca891b145d830c91d92c59f830541ac2be4d490c0adef0c46548d3635001960b",
+    "paper_en/segmentation_extension/laptop_sessions.pdf": "d9b24eb200235bac70e61f07f621c88baf2c00206a666f94572d28d548136645",
+    "paper_en/segmentation_extension/mask_dose_response.pdf": "cf866211e41b703c13b0cab36b4326fee181439325640f8e8f41fd4ae1624b20",
+    "paper_en/segmentation_extension/nested1500_native.pdf": "34210578295d65aeb72d9678e8e5f939e645f9d4d8568fe5126c6d4a98199f4e",
+    "paper_en/segmentation_extension/val500_counts.pdf": "4e87f7974c9c8541da10c3cead27842ef170572cfac47cf4e9aa0065d64afc66"
+  },
+  "copied_back_only": [
+    "extension.tex",
+    "sources.json"
+  ],
+  "full_tex_compiled": false
+}

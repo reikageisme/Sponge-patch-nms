@@ -1,0 +1,1 @@
+{"sequence": 5, "event": {"kind": "worker_started", "pgid": 444, "started_s": 8.294705072, "burst_id": "1_pool_before_pin_main"}}

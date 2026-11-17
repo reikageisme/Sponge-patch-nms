@@ -1,0 +1,14 @@
+{
+  "action": "child",
+  "ready": {
+    "pid": 7218,
+    "child_pid": 7400,
+    "child_start_ticks": 1795165,
+    "invocation_id": "ead27c8950b540998a17e4168e0536bb"
+  },
+  "unit": {
+    "MainPID": "7218",
+    "ActiveState": "active",
+    "InvocationID": "ead27c8950b540998a17e4168e0536bb"
+  }
+}

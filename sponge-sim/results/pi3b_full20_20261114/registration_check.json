@@ -1,0 +1,69 @@
+{
+  "tag": "prereg-pi3b-full20-after-pilot-20261114",
+  "commit": "aa6b666f13160bffe13286ec2ed7c1e75f51f0ba",
+  "command": "from pathlib import Path\nimport sys,json,hashlib,shutil,subprocess\nb=Path.home()/'sponge-sim/pi3b_full20_20261114';sys.path.insert(0,str(b));import control,analyze\nlock=control.locked_materials(b);s=control.System().snapshot();control.validate_snapshot(s)\nworkers=[]\nknown=[str(b/'control.py'),str(b/'run.py'),str(b.with_name('pi3b_600mhz_swapguard_v2')/'run.py'),str(b.with_name('pi3b_600mhz')/'run.py'),str(b.with_name('pi3b_600mhz')/'campaign.sh')]\nfor p in Path('/proc').iterdir():\n if p.name.isdigit():\n  try:\n   args=[a.decode(errors='replace') for a in (p/'cmdline').read_bytes().split(b'\\0') if a]\n   if len(args)>1 and args[1] in known:workers.append(dict(pid=int(p.name),argv=args))\n  except OSError:pass\nassert not workers and not (b/'runs/full_01').exists()\nassert shutil.disk_usage(b).free>100_000_000\nr=subprocess.run(['vcgencmd','get_throttled'],capture_output=True,text=True,timeout=10)\nprint(json.dumps(dict(status='FINAL_READY_ONE_FULL20_NO_SMOKE',lock_sha256=hashlib.sha256((b/'lock.json').read_bytes()).hexdigest(),verified_files=len(lock['files']),snapshot=s,session_order=lock['campaign']['session_order'],disk_free_bytes=shutil.disk_usage(b).free,thermal_mc=int(Path('/sys/class/thermal/thermal_zone0/temp').read_text()),throttled=r.stdout.strip(),registered_workers=workers,full_exists=False,torch_imported='torch' in sys.modules,scipy_imported='scipy' in sys.modules)))",
+  "readiness": {
+    "status": "FINAL_READY_ONE_FULL20_NO_SMOKE",
+    "lock_sha256": "1cd1789d4f30c0a6b708fad907729999f6e6e53d4ba373ce487bc8037d10be0e",
+    "verified_files": 28,
+    "snapshot": {
+      "governor": "ondemand",
+      "units": {
+        "dev-zram0.swap": {
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "FragmentPath": "/run/systemd/generator/dev-zram0.swap"
+        },
+        "rpi-zram-writeback.service": {
+          "LoadState": "loaded",
+          "ActiveState": "inactive",
+          "FragmentPath": "/usr/lib/systemd/system/rpi-zram-writeback.service"
+        },
+        "rpi-zram-writeback.timer": {
+          "LoadState": "loaded",
+          "ActiveState": "active",
+          "FragmentPath": "/run/systemd/generator/rpi-zram-writeback.timer"
+        }
+      },
+      "setup": {
+        "Result": "success",
+        "ActiveState": "active"
+      },
+      "swaps": [
+        {
+          "name": "/dev/zram0",
+          "kind": "partition",
+          "size_kb": 926716,
+          "used_kb": 0,
+          "priority": 100
+        }
+      ],
+      "mem_available_kb": 751064
+    },
+    "session_order": [
+      [
+        "PI4",
+        "pipeline"
+      ],
+      [
+        "PI4",
+        "stages"
+      ],
+      [
+        "PI1",
+        "pipeline"
+      ]
+    ],
+    "disk_free_bytes": 1669984256,
+    "thermal_mc": 37552,
+    "throttled": "throttled=0x50005",
+    "registered_workers": [],
+    "full_exists": false,
+    "torch_imported": false,
+    "scipy_imported": false
+  },
+  "exit_code": 0,
+  "model_timing_started": false,
+  "repeat_smoke_allowed": false,
+  "authorization": "Approved full20 after explicit failed-pilot design question; user requests all missing work, optimization and full difficulty log."
+}

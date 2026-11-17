@@ -1,0 +1,60 @@
+{
+  "case": "qa_normal_01",
+  "restore": {
+    "status": "RESTORED",
+    "errors": [],
+    "wall_utc": 1794724214.8376408
+  },
+  "activation": {
+    "returncode": 1,
+    "stdout": "",
+    "stderr": "Failed to start dev-zram0.swap: Unit dev-zram0.swap is masked.\n"
+  },
+  "child_identity_gone": true,
+  "current": {
+    "governor": "ondemand",
+    "units": {
+      "dev-zram0.swap": {
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "FragmentPath": "/run/systemd/generator/dev-zram0.swap"
+      },
+      "rpi-zram-writeback.service": {
+        "LoadState": "loaded",
+        "ActiveState": "inactive",
+        "FragmentPath": "/usr/lib/systemd/system/rpi-zram-writeback.service"
+      },
+      "rpi-zram-writeback.timer": {
+        "LoadState": "loaded",
+        "ActiveState": "active",
+        "FragmentPath": "/run/systemd/generator/rpi-zram-writeback.timer"
+      }
+    },
+    "setup": {
+      "Result": "success",
+      "ActiveState": "active"
+    },
+    "swaps": [
+      {
+        "name": "/dev/zram0",
+        "kind": "partition",
+        "size_kb": 926716,
+        "used_kb": 0,
+        "priority": 100
+      }
+    ],
+    "mem_available_kb": 760396
+  },
+  "journal": "2026-11-15T06:29:44+00:00 pi sudo[24985]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl stop rpi-zram-writeback.timer\n2026-11-15T06:29:44+00:00 pi sudo[24985]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-15T06:29:44+00:00 pi sudo[24985]: pam_unix(sudo:session): session closed for user root\n2026-11-15T06:29:44+00:00 pi sudo[24989]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl stop dev-zram0.swap\n2026-11-15T06:29:44+00:00 pi sudo[24989]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-15T06:29:44+00:00 pi sudo[24989]: pam_unix(sudo:session): session closed for user root\n2026-11-15T06:29:45+00:00 pi sudo[25001]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl mask --runtime dev-zram0.swap rpi-zram-writeback.service rpi-zram-writeback.timer\n2026-11-15T06:29:45+00:00 pi sudo[25001]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-15T06:29:51+00:00 pi sudo[25001]: pam_unix(sudo:session): session closed for user root\n2026-11-15T06:29:51+00:00 pi sudo[25097]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/tee /sys/devices/system/cpu/cpufreq/policy0/scaling_governor\n2026-11-15T06:29:51+00:00 pi sudo[25097]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-15T06:29:51+00:00 pi sudo[25097]: pam_unix(sudo:session): session closed for user root\n2026-11-15T06:29:51+00:00 pi sudo[25110]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl start dev-zram0.swap\n2026-11-15T06:29:51+00:00 pi sudo[25110]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-15T06:29:51+00:00 pi sudo[25110]: pam_unix(sudo:session): session closed for user root\n2026-11-15T06:30:08+00:00 pi sudo[25125]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl unmask --runtime dev-zram0.swap rpi-zram-writeback.service rpi-zram-writeback.timer\n2026-11-15T06:30:08+00:00 pi sudo[25125]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-15T06:30:13+00:00 pi sudo[25125]: pam_unix(sudo:session): session closed for user root\n2026-11-15T06:30:13+00:00 pi sudo[25220]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/tee /sys/devices/system/cpu/cpufreq/policy0/scaling_governor\n2026-11-15T06:30:13+00:00 pi sudo[25220]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-15T06:30:13+00:00 pi sudo[25220]: pam_unix(sudo:session): session closed for user root\n2026-11-15T06:30:13+00:00 pi sudo[25225]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl start dev-zram0.swap\n2026-11-15T06:30:13+00:00 pi sudo[25225]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-15T06:30:14+00:00 pi sudo[25225]: pam_unix(sudo:session): session closed for user root\n2026-11-15T06:30:14+00:00 pi sudo[25236]:     tanh : PWD=/ ; USER=root ; COMMAND=/usr/bin/systemctl start rpi-zram-writeback.timer\n2026-11-15T06:30:14+00:00 pi sudo[25236]: pam_unix(sudo:session): session opened for user root(uid=0) by (uid=1000)\n2026-11-15T06:30:14+00:00 pi sudo[25236]: pam_unix(sudo:session): session closed for user root\n2026-11-15T06:30:14+00:00 pi systemd[1]: sponge-pi3b-swapguard-v2.service: Deactivated successfully.\n2026-11-15T06:30:14+00:00 pi systemd[1]: sponge-pi3b-swapguard-v2.service: Consumed 4.090s CPU time.\n2026-11-15T06:30:34+00:00 pi systemd[1]: sponge-pi3b-swapguard-v2.service: Failed to open /run/systemd/transient/sponge-pi3b-swapguard-v2.service: No such file or directory\n2026-11-15T06:31:22+00:00 pi systemd[1]: sponge-pi3b-swapguard-v2.service: Failed to open /run/systemd/transient/sponge-pi3b-swapguard-v2.service: No such file or directory\n2026-11-15T06:31:26+00:00 pi systemd[1]: sponge-pi3b-swapguard-v2.service: Failed to open /run/systemd/transient/sponge-pi3b-swapguard-v2.service: No such file or directory\n",
+  "supervisor_log": "{\"status\": \"RESTORED\", \"errors\": [], \"wall_utc\": 1794724214.8376408}\n",
+  "sha256": {
+    "usb_preflight.json": "a70a6491ebb426c783b6e070df96aaa5dd62c4c5934ac7e688f224f36def0dc3",
+    "restore.json": "5bace11e8d4ebafd7c99850ee7f32948218e2a82145c2397a7190b0c6d73745c",
+    "activation_probe.json": "7ccb6d7fb4e3be2f8983dbd2ad4f54aa1359bc3639a32dc0cf902d6563240e4c",
+    "lease_events.jsonl": "9bc39b489f3c1310d25f53fe867fff65b3ed4a78e81f245f31ff173a6b02c44f",
+    "supervisor.log": "444513987d68e5f220c0ad9eeeaebae5883083194d0ce2c69c523065407a0b71",
+    "qa_ready.json": "cffa224b2689cfe4dd575447ce7e1cdc5d61d6744cb6c3e4e612ca9356ce3582",
+    "registration.json": "2c974a97bb231e0870d84ae86961af084541aa95467108e2b83c61d35156153c",
+    "lease_state.json": "2416e1faad160bb11c1fbc6c57bd7e2214f0440c003b24a648d826aef76109e2"
+  }
+}

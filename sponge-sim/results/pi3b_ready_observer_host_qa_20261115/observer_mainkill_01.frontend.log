@@ -1,0 +1,5 @@
+Running as unit: sponge-pi3b-swapguard-v2.service
+Finished with result: signal
+Main processes terminated with: code=killed, status=9/KILL
+Service runtime: 19.675s
+CPU time consumed: 3.794s

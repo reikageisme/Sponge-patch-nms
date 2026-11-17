@@ -1,0 +1,16 @@
+{
+  "scope": "Post-host-functional runtime provenance inspection; no NMS invocation/timing",
+  "versions": {
+    "torch": "2.13.0+cpu",
+    "torchvision": "0.28.0+cpu",
+    "numpy": "2.5.0",
+    "python": "3.14.6"
+  },
+  "torch_file": "C:\\Users\\Tanh\\AppData\\Roaming\\Python\\Python314\\site-packages\\torch\\__init__.py",
+  "torchvision_file": "C:\\Users\\Tanh\\AppData\\Roaming\\Python\\Python314\\site-packages\\torchvision\\__init__.py",
+  "nms_module": "torchvision.ops.boxes",
+  "nms_source_file": "C:\\Users\\Tanh\\AppData\\Roaming\\Python\\Python314\\site-packages\\torchvision\\ops\\boxes.py",
+  "nms_source_sha256": "9c0afd11f8291569442752f7aaab607ad0f7bf57dccd645048a0b7196372f269",
+  "nms_function_source": "def nms(boxes: Tensor, scores: Tensor, iou_threshold: float) -> Tensor:\n    \"\"\"\n    Performs non-maximum suppression (NMS) on the boxes according\n    to their intersection-over-union (IoU).\n\n    NMS iteratively removes lower scoring boxes which have an\n    IoU greater than ``iou_threshold`` with another (higher scoring)\n    box.\n\n    If multiple boxes have the exact same score and satisfy the IoU\n    criterion with respect to a reference box, the selected box is\n    not guaranteed to be the same between CPU and GPU. This is similar\n    to the behavior of argsort in PyTorch when repeated values are present.\n\n    Args:\n        boxes (Tensor[N, 4])): boxes to perform NMS on. They\n            are expected to be in ``(x1, y1, x2, y2)`` format with ``0 <= x1 < x2`` and\n            ``0 <= y1 < y2``.\n        scores (Tensor[N]): scores for each one of the boxes\n        iou_threshold (float): discards all overlapping boxes with IoU > iou_threshold\n\n    Returns:\n        Tensor: int64 tensor with the indices of the elements that have been kept\n        by NMS, sorted in decreasing order of scores\n    \"\"\"\n    if not torch.jit.is_scripting() and not torch.jit.is_tracing():\n        _log_api_usage_once(nms)\n    _assert_has_ops()\n    if not torch.jit.is_scripting() and boxes.is_quantized:\n        return torch.ops.torchvision.qnms(\n            boxes.int_repr(),\n            scores.int_repr(),\n            iou_threshold,\n        )\n    return torch.ops.torchvision.nms(boxes, scores, iou_threshold)\n",
+  "native_registered_operator_available": true
+}

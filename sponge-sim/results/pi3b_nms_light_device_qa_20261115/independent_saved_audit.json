@@ -1,0 +1,19 @@
+{
+  "status": "INDEPENDENT_LIGHT_RESOURCE_API_REPLAY_PASS",
+  "original_files": 2,
+  "original_bytes": 2969,
+  "raw_sha256": "8ac3e25561ef2e5c23b89bf8d986cc930bfcaf8ddefdcb09ec0018c892175388",
+  "native_pid": 24574,
+  "native_calling_tid": 24574,
+  "raw_selectors": [
+    "before.process",
+    "before.calling_thread",
+    "after.process",
+    "after.calling_thread",
+    "increments"
+  ],
+  "field_schema_replayed": true,
+  "all_native_deltas_recomputed": true,
+  "source_exact_tag": true,
+  "observer_overhead_or_operator_timing_inference": false
+}

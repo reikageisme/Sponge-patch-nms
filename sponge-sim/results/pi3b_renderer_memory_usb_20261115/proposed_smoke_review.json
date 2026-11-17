@@ -1,0 +1,10 @@
+{
+  "technical_smoke_pass": true,
+  "tag": "prereg-pi3b-renderer-memory-usb-20261115",
+  "commit": "70c398ae52540e873dca0f5dd447e97bc7d00958",
+  "registration_sha256": "a19e9202b0ace3c2f796e633aae7381a6736b500626635cb7a3013396d5bb66b",
+  "smoke_raw_sha256": "5e945cf1ec3b612dd282b19294755d3c3bd965ea73fbf296b08c29b6ddc64ca7",
+  "smoke_gate_sha256": "bdad26b8707ede60d65bb6a4d8041307e52e26f946ac3fc31e5b3d8a34a11f5d",
+  "smoke_restore_sha256": "e69ecc441be7d2e04eb49af64ed4bc99f1975c07137966c62c1253801102b153",
+  "smoke_usb_preflight_sha256": "9e43068edf6f29dd5933761531692afdaf6c9150d31620bfe8dadebb847a0080"
+}
