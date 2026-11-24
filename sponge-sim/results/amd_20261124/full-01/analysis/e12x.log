@@ -1,0 +1,7 @@
+Traceback (most recent call last):
+  File "/home/xubuntu/sponge-amd-20261124/sponge-sim/studies/e11_patch_remeasure/analyze.py", line 112, in <module>
+    main()
+  File "/home/xubuntu/sponge-amd-20261124/sponge-sim/studies/e11_patch_remeasure/analyze.py", line 57, in main
+    max_abs=max(abs(r['rel_change']) for r in refs)),
+            ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+ValueError: max() iterable argument is empty

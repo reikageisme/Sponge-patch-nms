@@ -119,3 +119,10 @@ sponge-sim/studies/arm_preflight_v2/session.py -text
 sponge-sim/tests/test_arm_session.py -text
 sponge-sim/prereg/DRAFT_ARM_EXTERNAL_FULL100_20261108.md -text
 sponge-sim/results/arm_full100_policy_20261108/** -text
+
+# AMD frequency-locked replication and Linux A/A (24/11/2026): keep bytes as measured
+sponge-sim/results/amd_20261124/** -text
+sponge-sim/results/aa_linux_20261124/** -text
+sponge-sim/prereg/PREREG_AA_LINUX_20261124.md -text
+sponge-sim/prereg/PREREG_AMD_REPLICATION_20261124.md -text
+sponge-sim/prereg/DEVIATIONS_AMD_20261124.md -text

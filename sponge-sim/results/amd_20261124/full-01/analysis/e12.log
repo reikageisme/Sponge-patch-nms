@@ -1,0 +1,35 @@
+{"pin": {"effective_cores": 1.002781816704985, "passed": true}, "drift": {"points": 10, "flagged": 0, "flagged_blocks": [], "max_abs": 0.0012809780389124725}, "in_session": {"320": {"torch_pure": {"n_images": 100, "aa_log_ratio_mean": 0.00017028872228572008, "mde_total_pct": 0.19875899419872733, "t_total_clean_median_ms": 40.33657275, "threshold_delta_nms_ms": 0.08017256629213794}, "tv_nms": {"n_images": 100, "aa_log_ratio_mean": 0.0001528326079001985, "mde_total_pct": 0.2041024673629265, "t_total_clean_median_ms": 39.430854249999996, "threshold_delta_nms_ms": 0.08047934642652936}}, "640": {"torch_pure": {"n_images": 100, "aa_log_ratio_mean": 0.0004919438890231209, "mde_total_pct": 1.1036858637414528, "t_total_clean_median_ms": 143.73742675, "threshold_delta_nms_ms": 1.5864096599454753}, "tv_nms": {"n_images": 100, "aa_log_ratio_mean": -0.00016484193061304451, "mde_total_pct": 1.1429896961902881, "t_total_clean_median_ms": 141.7258085, "threshold_delta_nms_ms": 1.6199113879973794}}}}
+C1 N 1.044 tot_tv 1.0010 [1.0001, 1.0019] pred 1.0000 exceeds False
+C3 N 1.037 tot_tv 1.0008 [0.9999, 1.0017] pred 1.0000 exceeds False
+B1 N 1.045 tot_tv 1.0007 [0.9998, 1.0017] pred 1.0000 exceeds False
+B2 N 1.064 tot_tv 1.0009 [1.0000, 1.0018] pred 1.0000 exceeds False
+B3 N 1.033 tot_tv 1.0008 [0.9998, 1.0017] pred 1.0000 exceeds False
+B4 N 2.395 tot_tv 1.0018 [1.0009, 1.0028] pred 1.0004 exceeds False
+C2 N 1.067 tot_tv 0.9979 [0.9915, 1.0041] pred 1.0000 exceeds False
+C4 N 1.048 tot_tv 1.0010 [0.9941, 1.0080] pred 1.0000 exceeds False
+{"pin": {"effective_cores": 1.002781816704985, "passed": true}, "drift": {"points": 10, "flagged": 0, "flagged_blocks": [], "max_abs": 0.0012809780389124725}, "in_session": {"320": {"torch_pure": {"n_images": 100, "aa_log_ratio_mean": 0.00017028872228572008, "mde_total_pct": 0.19875899419872733, "t_total_clean_median_ms": 40.33657275, "threshold_delta_nms_ms": 0.08017256629213794}, "tv_nms": {"n_images": 100, "aa_log_ratio_mean": 0.0001528326079001985, "mde_total_pct": 0.2041024673629265, "t_total_clean_median_ms": 39.430854249999996, "threshold_delta_nms_ms": 0.08047934642652936}}, "640": {"torch_pure": {"n_images": 100, "aa_log_ratio_mean": 0.0004919438890231209, "mde_total_pct": 1.1036858637414528, "t_total_clean_median_ms": 143.73742675, "threshold_delta_nms_ms": 1.5864096599454753}, "tv_nms": {"n_images": 100, "aa_log_ratio_mean": -0.00016484193061304451, "mde_total_pct": 1.1429896961902881, "t_total_clean_median_ms": 141.7258085, "threshold_delta_nms_ms": 1.6199113879973794}}}}
+C1 N 1.044 tot_tv 1.0010 [1.0001, 1.0019] pred 1.0000 exceeds False
+C3 N 1.037 tot_tv 1.0008 [0.9999, 1.0017] pred 1.0000 exceeds False
+B1 N 1.045 tot_tv 1.0007 [0.9998, 1.0017] pred 1.0000 exceeds False
+B2 N 1.064 tot_tv 1.0009 [1.0000, 1.0018] pred 1.0000 exceeds False
+B3 N 1.033 tot_tv 1.0008 [0.9998, 1.0017] pred 1.0000 exceeds False
+B4 N 2.395 tot_tv 1.0018 [1.0009, 1.0028] pred 1.0004 exceeds False
+C2 N 1.067 tot_tv 0.9979 [0.9915, 1.0041] pred 1.0000 exceeds False
+C4 N 1.048 tot_tv 1.0010 [0.9941, 1.0080] pred 1.0000 exceeds False
+{"kind": "gate_summary", "attempts": 10, "accepted": 10, "rejected": 0, "max_abs_accepted": 0.0012809780389124725, "blocks_done": 10, "wall_utc": 1795505020.277801} sens2% []
+TOST C1|torch_pure {'0.01': (1.0001, [0.9987, 1.0014], True), '0.05': (1.0001, [0.9987, 1.0014], True)}
+TOST C1|tv_nms {'0.01': (1.001, [1.0002, 1.0018], True), '0.05': (1.001, [1.0002, 1.0018], True)}
+TOST C3|torch_pure {'0.01': (0.9998, [0.9983, 1.0011], True), '0.05': (0.9998, [0.9983, 1.0011], True)}
+TOST C3|tv_nms {'0.01': (1.0008, [1.0, 1.0016], True), '0.05': (1.0008, [1.0, 1.0016], True)}
+TOST B1|torch_pure {'0.01': (1.0005, [0.9991, 1.0018], True), '0.05': (1.0005, [0.9991, 1.0018], True)}
+TOST B1|tv_nms {'0.01': (1.0007, [0.9999, 1.0015], True), '0.05': (1.0007, [0.9999, 1.0015], True)}
+TOST B2|torch_pure {'0.01': (1.0011, [0.9999, 1.0022], True), '0.05': (1.0011, [0.9999, 1.0022], True)}
+TOST B2|tv_nms {'0.01': (1.0009, [1.0001, 1.0017], True), '0.05': (1.0009, [1.0001, 1.0017], True)}
+TOST B3|torch_pure {'0.01': (0.9999, [0.9985, 1.0013], True), '0.05': (0.9999, [0.9985, 1.0013], True)}
+TOST B3|tv_nms {'0.01': (1.0007, [0.9999, 1.0015], True), '0.05': (1.0007, [0.9999, 1.0015], True)}
+TOST B4|torch_pure {'0.01': (1.0202, [1.018, 1.0224], False), '0.05': (1.0202, [1.018, 1.0224], True)}
+TOST B4|tv_nms {'0.01': (1.0018, [1.001, 1.0026], True), '0.05': (1.0018, [1.001, 1.0026], True)}
+TOST C2|torch_pure {'0.01': (0.9965, [0.9913, 1.0018], True), '0.05': (0.9965, [0.9913, 1.0018], True)}
+TOST C2|tv_nms {'0.01': (0.9972, [0.9919, 1.0024], True), '0.05': (0.9972, [0.9919, 1.0024], True)}
+TOST C4|torch_pure {'0.01': (0.9999, [0.9943, 1.0055], True), '0.05': (0.9999, [0.9943, 1.0055], True)}
+TOST C4|tv_nms {'0.01': (1.0002, [0.9945, 1.0059], True), '0.05': (1.0002, [0.9945, 1.0059], True)}

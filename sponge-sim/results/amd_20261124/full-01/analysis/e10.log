@@ -1,0 +1,1 @@
+{"pin": {"effective_cores": 1.0020374253861426, "passed": true}, "drift": {"points": 11, "flagged": 0, "max_abs": 0.018772226362987032}, "in_session_mde_pct": {"tv_batched": 2.82294217132701, "tv_nms": 2.8212970660912187, "ultra_native": 2.802195266793091}}

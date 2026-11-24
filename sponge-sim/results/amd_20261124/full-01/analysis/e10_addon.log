@@ -1,0 +1,32 @@
+{
+ "overload|tv_batched": {
+  "skill": -0.32001608120390923,
+  "model_passes": false,
+  "null_passes": false
+ },
+ "phantom_sponges|tv_batched": {
+  "skill": -0.138946049864223,
+  "model_passes": false,
+  "null_passes": false
+ },
+ "overload|tv_nms": {
+  "skill": -1.0772119011162329,
+  "model_passes": false,
+  "null_passes": false
+ },
+ "phantom_sponges|tv_nms": {
+  "skill": -0.5275177303698151,
+  "model_passes": false,
+  "null_passes": false
+ },
+ "overload|ultra_native": {
+  "skill": -1.1624522237876649,
+  "model_passes": false,
+  "null_passes": false
+ },
+ "phantom_sponges|ultra_native": {
+  "skill": -0.5927913110554626,
+  "model_passes": false,
+  "null_passes": false
+ }
+}

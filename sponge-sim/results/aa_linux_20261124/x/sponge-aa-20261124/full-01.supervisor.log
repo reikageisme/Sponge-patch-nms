@@ -1,0 +1,13 @@
+Input SHA-256 verified for weights and 100 COCO images
+{"cpu": 2, "target_khz": 3600000, "samples": 10, "min_busy_pct": 100.0, "min_bzy_mhz": 3575.0, "max_bzy_mhz": 3575.0, "tolerance_pct": 1}
+[2026-11-24T02:52:10Z] Bắt đầu A/A
+[E5] profile P1_cpu2 xong sau 221.2s
+[E5] DONE
+{"cpu": 2, "target_khz": 3600000, "samples": 10, "min_busy_pct": 100.0, "min_bzy_mhz": 3575.0, "max_bzy_mhz": 3575.0, "tolerance_pct": 1}
+P1_cpu2 {'forward': (1.0001, [1.0, 1.0002], 0.02), 'total': (0.9999, [0.9995, 1.0002], 0.05)}
+{"cpu": 2, "target_khz": 3600000, "samples": 10, "min_busy_pct": 100.0, "min_bzy_mhz": 3575.0, "max_bzy_mhz": 3575.0, "tolerance_pct": 1}
+[2026-11-24T02:56:15Z] Bắt đầu A/A
+[E5] profile P1_cpu2 xong sau 683.2s
+[E5] DONE
+{"cpu": 2, "target_khz": 3600000, "samples": 10, "min_busy_pct": 100.0, "min_bzy_mhz": 3575.0, "max_bzy_mhz": 3575.0, "tolerance_pct": 1}
+P1_cpu2 {'forward': (1.0, [0.9999, 1.0001], 0.01), 'total': (1.0, [0.9999, 1.0002], 0.02)}

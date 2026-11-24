@@ -1,0 +1,29 @@
+{
+ "experiment": "E9",
+ "part": "B",
+ "bootstrap_seed": 20261021,
+ "n_boot": 20000,
+ "train": "/home/xubuntu/sponge-amd-20261124/runs/amd-20261124/full-01/e1/run/raw_P1_cpu2.jsonl",
+ "models": {
+  "M_N": "ln t = a + b ln N",
+  "M_NK": "ln t = a + b ln N + c ln max(K,1)"
+ },
+ "cross_geometry_e1": {
+  "tv_nms": {
+   "median_abs_log_err_M_N": 0.30830431175976747,
+   "median_abs_log_err_M_NK": 0.8165996566554263
+  },
+  "tv_batched": {
+   "median_abs_log_err_M_N": 0.4702009823787301,
+   "median_abs_log_err_M_NK": 0.31671397094719
+  },
+  "ultra_native": {
+   "median_abs_log_err_M_N": 0.42317391044266967,
+   "median_abs_log_err_M_NK": 0.0717815885608008
+  },
+  "torch_pure": {
+   "median_abs_log_err_M_N": 1.321071120540962,
+   "median_abs_log_err_M_NK": 0.8706011613547922
+  }
+ }
+}

@@ -1,0 +1,18 @@
+Traceback (most recent call last):
+  File "/home/xubuntu/sponge-amd-20261124/sponge-sim/studies/e9_pipeline/run.py", line 162, in <module>
+    main()
+  File "/home/xubuntu/sponge-amd-20261124/sponge-sim/studies/e9_pipeline/run.py", line 148, in main
+    worker(run_dir, cfg)
+  File "/home/xubuntu/sponge-amd-20261124/sponge-sim/studies/e9_pipeline/run.py", line 71, in worker
+    from sponge_sim import attacks_provenance as ap_, inject, provenance as pv, timing
+  File "/home/xubuntu/sponge-amd-20261124/sponge-sim/src/sponge_sim/attacks_provenance.py", line 53, in <module>
+    import kornia.augmentation as K
+ModuleNotFoundError: No module named 'kornia'
+Traceback (most recent call last):
+  File "/home/xubuntu/sponge-amd-20261124/sponge-sim/studies/e9_pipeline/run.py", line 162, in <module>
+    main()
+  File "/home/xubuntu/sponge-amd-20261124/sponge-sim/studies/e9_pipeline/run.py", line 156, in main
+    subprocess.run(cmd, check=True)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/xubuntu/sponge-amd-20261124/.venv/bin/python', '-X', 'utf8', '/home/xubuntu/sponge-amd-20261124/sponge-sim/studies/e9_pipeline/run.py', '--run-dir', '/home/xubuntu/sponge-amd-20261124/runs/amd-20261124/smoke-02/e9/run', '--worker', '--smoke']' returned non-zero exit status 1.

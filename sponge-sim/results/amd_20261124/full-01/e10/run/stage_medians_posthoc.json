@@ -1,0 +1,92 @@
+{
+ "analysis": "E10 stage medians (post hoc, descriptive)",
+ "run_dir": "/home/xubuntu/sponge-amd-20261124/runs/amd-20261124/full-01/e10/run",
+ "nms_ms": {
+  "clean|torch_pure": {
+   "median": 0.431917,
+   "n_cells": 100
+  },
+  "clean|tv_batched": {
+   "median": 0.09254699999999999,
+   "n_cells": 100
+  },
+  "clean|tv_nms": {
+   "median": 0.046698500000000004,
+   "n_cells": 100
+  },
+  "clean|ultra_native": {
+   "median": 0.2945135,
+   "n_cells": 100
+  },
+  "overload|torch_pure": {
+   "median": 47.8789905,
+   "n_cells": 250
+  },
+  "overload|tv_batched": {
+   "median": 5.957065,
+   "n_cells": 250
+  },
+  "overload|tv_nms": {
+   "median": 8.5992185,
+   "n_cells": 250
+  },
+  "overload|ultra_native": {
+   "median": 8.731631,
+   "n_cells": 250
+  },
+  "phantom_sponges|torch_pure": {
+   "median": 69.5921905,
+   "n_cells": 250
+  },
+  "phantom_sponges|tv_batched": {
+   "median": 9.545644,
+   "n_cells": 250
+  },
+  "phantom_sponges|tv_nms": {
+   "median": 9.654873,
+   "n_cells": 250
+  },
+  "phantom_sponges|ultra_native": {
+   "median": 10.666239000000001,
+   "n_cells": 250
+  }
+ },
+ "total_ms": {
+  "clean|tv_batched": {
+   "median": 273.2692895,
+   "n_cells": 100
+  },
+  "clean|tv_nms": {
+   "median": 273.72178399999996,
+   "n_cells": 100
+  },
+  "clean|ultra_native": {
+   "median": 274.433599,
+   "n_cells": 100
+  },
+  "overload|tv_batched": {
+   "median": 280.8925375,
+   "n_cells": 250
+  },
+  "overload|tv_nms": {
+   "median": 282.635979,
+   "n_cells": 250
+  },
+  "overload|ultra_native": {
+   "median": 283.938789,
+   "n_cells": 250
+  },
+  "phantom_sponges|tv_batched": {
+   "median": 282.842336,
+   "n_cells": 250
+  },
+  "phantom_sponges|tv_nms": {
+   "median": 282.93190300000003,
+   "n_cells": 250
+  },
+  "phantom_sponges|ultra_native": {
+   "median": 284.803468,
+   "n_cells": 250
+  }
+ }
+}
