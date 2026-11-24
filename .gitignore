@@ -67,3 +67,9 @@ Thumbs.db
 /paper/*.synctex.gz
 /paper/*.abs
 /paper/*.spl
+
+# Linux runner output on the measurement machine (results are copied into sponge-sim/results after each run)
+/runs/
+/smoke-*/
+/full-*/
+/.ultralytics/

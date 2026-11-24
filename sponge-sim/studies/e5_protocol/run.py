@@ -7,6 +7,7 @@ thread pool, xác minh bằng tải, rồi đo theo khối; ghi raw JSONL từng
 from __future__ import annotations
 
 import argparse
+from functools import partial
 import json
 import random
 import subprocess
@@ -39,33 +40,43 @@ SMOKE = dict(n_images=4, repeats=2, block_size=2)
 def worker(profile: str, run_dir: Path, cfg: dict):
     from sponge_sim import hw
     cpus = hw.profiles(hw.cpu_topology())[profile]
+    require_lock = cfg.get('require_lock', False)
+    if require_lock:
+        from sponge_sim.hw_linux import lock_status
+        if len(cpus) != 1:
+            raise RuntimeError('locked A/A requires a single logical CPU')
+        before_lock = lock_status(cpus[0])
+        if not before_lock['ready']:
+            raise RuntimeError(f"CPU frequency policy did not pass: {before_lock['problems']}")
     readback = hw.pin(cpus)                      # ghim TRƯỚC khi torch tạo thread pool
     import torch
     torch.set_num_interop_threads(cfg['interop_threads'])
-    verify = hw.verify_pin(cpus, min_effective=0.5 if profile == 'P1_cpu2' else None)  # cận dưới thêm sau E5
+    min_effective = 0.5 if profile == 'P1_cpu2' or require_lock else None
+    verify = hw.verify_pin(cpus, min_effective=min_effective)
     torch.set_num_threads(len(cpus))
     from ultralytics import YOLO
     from sponge_sim import provenance as pv, timing
     from sponge_sim.backends import BACKENDS
     from sponge_sim.cohorts import REPO
+    writer = timing.JsonlWriter(run_dir / f'raw_{profile}.jsonl')
+    pin_row = dict(kind='pin', profile=profile, allowed=cpus, readback=readback, verify=verify,
+                   torch_threads=torch.get_num_threads(), interop=torch.get_num_interop_threads())
+    if require_lock:
+        pin_row['lock_status'] = before_lock
+    writer.write(pin_row)
+    if require_lock and not verify['passed']:
+        writer.close()
+        raise RuntimeError('initial CPU affinity verification failed')
     data = REPO / 'outputs/datasets/coco_val2017_extended'
     names = {im['id']: im['file_name'] for im in
              json.loads((data / 'instances_subset.json').read_text(encoding='utf-8'))['images']}
     model = YOLO(str(REPO / 'yolov8n.pt')).model.eval().float()
     ids = IMAGE_IDS[:cfg['n_images']]
-    writer = timing.JsonlWriter(run_dir / f'raw_{profile}.jsonl')
-    writer.write(dict(kind='pin', profile=profile, allowed=cpus, readback=readback, verify=verify,
-                      torch_threads=torch.get_num_threads(), interop=torch.get_num_interop_threads()))
     tp, tv = BACKENDS['torch_pure'], BACKENDS['tv_nms']
     rng = random.Random(cfg['label_order_seed'] + cpus[0])
 
     canvas = cfg.get('canvas', 320)
-    if canvas == 320:
-        load = pv.load_image
-    else:
-        from sponge_sim import attacks_provenance as ap_
-        def load(p):
-            return ap_.load_image_canvas(p, canvas)
+    load = pv.load_image if canvas == 320 else partial(pv.load_image, canvas=canvas)
 
     def total(p):
         im = load(p)
@@ -110,7 +121,14 @@ def worker(profile: str, run_dir: Path, cfg: dict):
                                   seq_index=k, n_tau=n_tau, stages_ns=stages, wall_utc=time.time()))
     writer.write(dict(kind='reference', profile=profile, block='end', **timing.drift(timing.reference_ms(), ref0),
                       wall_utc=time.time()))
+    if require_lock:
+        end_verify = hw.verify_pin(cpus, min_effective=min_effective)
+        after_lock = lock_status(cpus[0])
+        writer.write(dict(kind='pin_end', profile=profile, verify=end_verify, lock_status=after_lock,
+                          wall_utc=time.time()))
     writer.close()
+    if require_lock and (not end_verify['passed'] or not after_lock['ready']):
+        raise RuntimeError('final CPU affinity or frequency policy verification failed')
 
 
 def main():
@@ -120,12 +138,17 @@ def main():
     ap.add_argument('--worker')
     ap.add_argument('--canvas', type=int, default=320, help='E6-A1: A/A ở canvas khác (vd. 640)')
     ap.add_argument('--profiles', help='ghi đè danh sách profile, vd. P1_cpu2 (thêm sau E5, DEVIATIONS 2026-10-21)')
+    ap.add_argument('--require-lock', action='store_true', help='Linux: require a locked CPU, verify before and after')
     a = ap.parse_args()
+    if a.require_lock and not sys.platform.startswith('linux'):
+        ap.error('--require-lock is only supported on Linux')
     run_dir = Path(a.run_dir)
     cfg = {**CONFIG, **(SMOKE if a.smoke else {}), 'smoke': a.smoke}
     cfg['canvas'] = a.canvas
     if a.profiles:
         cfg['profiles'] = a.profiles.split(',')
+    if a.require_lock:
+        cfg['require_lock'] = True
     if a.worker:
         worker(a.worker, run_dir, cfg)
         return
@@ -143,6 +166,8 @@ def main():
             cmd += ['--canvas', str(a.canvas)]
         if a.smoke:
             cmd.append('--smoke')
+        if a.require_lock:
+            cmd.append('--require-lock')
         subprocess.run(cmd, check=True)
         print(f'[E5] profile {prof} xong sau {time.time() - t0:.1f}s', flush=True)
     print('[E5] DONE', flush=True)

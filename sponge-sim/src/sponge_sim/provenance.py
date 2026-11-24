@@ -88,9 +88,9 @@ def postprocess(decoded, threshold=.01, cap=None, nms_fn=None):
 
 
 # SOURCE: experiments/local_q1_validation.py:64-67 (load_image) sha256=9739eb66...
-def load_image(path) -> torch.Tensor:
-    """Resize trực tiếp 320×320, RGB [0,1]; KHÔNG letterbox kiểu Ultralytics."""
-    image = Image.open(path).convert("RGB").resize((320, 320), Image.Resampling.BILINEAR)
+def load_image(path, canvas: int = 320) -> torch.Tensor:
+    """Resize trực tiếp thành hình vuông, RGB [0,1]; không letterbox."""
+    image = Image.open(path).convert("RGB").resize((canvas, canvas), Image.Resampling.BILINEAR)
     return (torch.from_numpy(np.array(image).copy()).permute(2, 0, 1).float().unsqueeze(0) / 255).contiguous()
 
 

@@ -188,19 +188,19 @@ def read_thermal() -> dict:
 
 def _cpulist(text) -> list[int]:
     out = []
-    for part in (text or '').split(','):
-        part = part.strip()
-        if '-' in part:
-            a, b = part.split('-')
-            out += list(range(int(a), int(b) + 1))
-        elif part:
-            out.append(int(part))
-    return out
+    for part in (text or '').replace(',', ' ').split():
+        start, dash, end = part.partition('-')
+        if not start.isdecimal() or (dash and not end.isdecimal()):
+            raise ValueError(f'invalid CPU list: {text!r}')
+        lo, hi = int(start), int(end or start)
+        if lo > hi:
+            raise ValueError(f'invalid CPU list: {text!r}')
+        out.extend(range(lo, hi + 1))
+    return sorted(set(out))
 
 
 def lock_status(cpu: int, sys_root: str = '/sys') -> dict:
-    """Trạng thái khoá của CPU sẽ ghim: governor performance, min = max, turbo/boost tắt, anh em SMT offline, isolcpus.
-    `ready` chỉ True khi không còn vấn đề nào. Ghi kết quả vào manifest của phiên."""
+    """Kiểm cấu hình CPUFreq và SMT. Xung hiệu dụng phải được đo riêng dưới tải."""
     from pathlib import Path
     base = Path(sys_root) / 'devices/system/cpu'
 
@@ -209,24 +209,45 @@ def lock_status(cpu: int, sys_root: str = '/sys') -> dict:
             return Path(p).read_text().strip()
         except OSError:
             return None
-    f = base / f'cpu{cpu}' / 'cpufreq'
+    cpu_dir = base / f'cpu{cpu}'
+    f = cpu_dir / 'cpufreq'
     gov, fmin, fmax = rd(f / 'scaling_governor'), rd(f / 'scaling_min_freq'), rd(f / 'scaling_max_freq')
     no_turbo, boost = rd(base / 'intel_pstate/no_turbo'), rd(base / 'cpufreq/boost')
-    sib = [c for c in _cpulist(rd(base / f'cpu{cpu}/topology/thread_siblings_list')) if c != cpu]
-    sib_online = [c for c in sib if rd(base / f'cpu{c}/online') != '0']
-    iso = _cpulist(rd(base / 'isolated'))
+    policy_boost = rd(f / 'boost')
     problems = []
+
+    def read_cpus(path):
+        try:
+            return _cpulist(rd(path))
+        except ValueError:
+            problems.append(f'danh sách CPU không hợp lệ: {path}')
+            return []
+
+    topology = read_cpus(cpu_dir / 'topology/thread_siblings_list')
+    affected = read_cpus(f / 'affected_cpus')
+    iso = read_cpus(base / 'isolated')
+    sib = [c for c in topology if c != cpu]
+    sib_online = [c for c in sib if rd(base / f'cpu{c}/online') != '0']
     if gov != 'performance':
         problems.append(f'governor = {gov}, cần performance')
-    if fmin is None or fmin != fmax:
+    if not fmin or not fmin.isdecimal() or int(fmin) <= 0 or fmin != fmax:
         problems.append(f'tần số chưa khoá: min {fmin} kHz, max {fmax} kHz')
-    if no_turbo == '0' or boost == '1':
-        problems.append('turbo / boost đang bật')
-    if no_turbo is None and boost is None:
-        problems.append('không đọc được trạng thái turbo / boost')
+    if policy_boost is not None:
+        boost_disabled = policy_boost == '0'
+    elif no_turbo is not None:
+        boost_disabled = no_turbo == '1'
+    else:
+        boost_disabled = boost == '0'
+    if not boost_disabled:
+        problems.append('turbo / boost đang bật hoặc không xác nhận được trạng thái')
+    if cpu not in topology:
+        problems.append(f'không đọc được topology SMT hợp lệ của CPU {cpu}')
+    if affected != [cpu]:
+        problems.append(f'CPUFreq policy cần điều khiển riêng CPU {cpu}, đọc được {affected}')
     if sib_online:
         problems.append(f'CPU anh em SMT còn online: {sib_online}')
     if iso and cpu not in iso:
         problems.append(f'CPU {cpu} không nằm trong isolcpus {iso}')
     return dict(ready=not problems, cpu=cpu, governor=gov, min_khz=fmin, max_khz=fmax, no_turbo=no_turbo, boost=boost,
+                policy_boost=policy_boost, policy_cpus=affected, driver=rd(f / 'scaling_driver'),
                 smt_siblings=sib, smt_siblings_online=sib_online, isolated=iso, problems=problems)
