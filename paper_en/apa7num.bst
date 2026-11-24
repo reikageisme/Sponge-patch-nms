@@ -1,11 +1,11 @@
 %% apa7num.bst -- BibTeX style: numbered reference list [n], entries formatted in APA 7th edition.
-%% Reads standard fields (author, year, title, journal/booktitle, volume, number, pages, publisher, doi, url).
+%% Supports journal articles, conference papers, and software citations.
 %% List sorted by author surnames then year (APA order). Use with:
 %%   \usepackage[numbers,sort&compress]{natbib}  \bibliographystyle{apa7num}  \bibliography{references}
 %% Titles are converted to sentence case ("t"); protect proper nouns/acronyms with braces in the .bib.
 
 ENTRY
-  { author booktitle doi journal number pages publisher title url volume year }
+  { author booktitle doi howpublished journal number pages publisher title url volume year }
   {}
   { label }
 
@@ -95,8 +95,15 @@ FUNCTION {inproceedings}
   write$ newline$
 }
 
-FUNCTION {misc} { inproceedings }
-FUNCTION {default.type} { inproceedings }
+FUNCTION {misc}
+{ output.bibitem
+  head
+  howpublished empty$ 'skip$ { " " * howpublished add.period$ * } if$
+  format.link *
+  write$ newline$
+}
+
+FUNCTION {default.type} { misc }
 
 READ
 

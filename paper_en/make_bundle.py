@@ -2,7 +2,7 @@
 
     python -X utf8 paper_en/make_bundle.py
 
-Writes paper_en/sponge_paper/ and paper_en/sponge_paper.zip (upload the zip to Overleaf, compiler pdfLaTeX,
+Writes paper_en/sponge_paper/ and paper_en/sponge_paper.zip (upload the zip to Overleaf, compiler XeLaTeX,
 recompile twice). Source: the session script used on 16-17/11/2026, with repository-relative paths.
 """
 import os
@@ -15,7 +15,8 @@ R = Path(__file__).resolve().parent
 root = R / 'sponge_paper'
 (root / 'figures').mkdir(parents=True, exist_ok=True)
 (root / 'tables_q3').mkdir(parents=True, exist_ok=True)
-files = ['main.tex', 'mainvi.tex', 'references.bib', 'apa7num.bst', 'cas-dc.cls', 'cas-common.sty']
+files = ['main.tex', 'mainvi.tex', 'references.bib', 'apa7num.bst', 'cas-dc.cls',
+         'cas-common.sty', 'thumbnails/cas-email.jpeg']
 used = set()
 for doc in ('main.tex', 'mainvi.tex'):
     body = (R / doc).read_text(encoding='utf-8').split(chr(92) + 'begin{document}')[1]
@@ -27,7 +28,7 @@ for f in files + sorted(used):
     shutil.copyfile(R / f, root / f)
 (root / 'COMPILE.txt').write_text(
     'Overleaf: upload this folder as-is (New Project > Upload Project, choose sponge_paper.zip).\n'
-    'Compiler: pdfLaTeX (Menu > Compiler). Recompile twice.\n'
+    'Compiler: XeLaTeX (Menu > Compiler). Recompile twice.\n'
     '  main.tex   = English manuscript (official)\n'
     '  mainvi.tex = Vietnamese reading copy (set it as main document to build it)\n'
     'figures/ and tables_q3/ hold only the files the manuscripts use.\n', encoding='utf-8', newline='\n')
