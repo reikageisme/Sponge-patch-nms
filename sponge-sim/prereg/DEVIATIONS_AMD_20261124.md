@@ -30,3 +30,12 @@ Các sai lệch chỉ nằm ở bước phân tích, không đo lại gì:
   không tính được. Thay bằng (ghi là post hoc): tỷ số 10^3 → 10^4 của ô một lớp, và tỷ số một lớp / 80 lớp ở cùng N, cùng phiên.
 - **E9 phần B:** chỉ chạy phần kiểm chéo hình học trên E1 của đợt này (`cross_geometry_e1`); hai tập kiểm E6 320/640 không được
   đo lại trên máy AMD nên không có test1/test2.
+
+## 4. Phân tích post hoc cho bản thảo (24/11/2026, sau khi xem kết quả)
+Để mọi số thời gian trong `paper_en/main.tex` lấy từ máy AMD, chạy thêm trên raw của `full-01` (không đo mới), tất cả ghi là post hoc:
+`studies/e10_reference/stage_medians.py`, `stage_decomp.py`, `analyze_addon.py`; `studies/amdahl/analyze.py` trên E1 + E9 AMD;
+`studies/e9_pipeline/analyze.py --part b --test320 <E12>` (tập kiểm là mọi nhánh của E12, thay tập xác nhận E6 640 px của laptop);
+`studies/amd_replication/posthoc_amd.py` (dự đoán chỉ từ N trên E12, tương quan hạng, kiểm cấu trúc E10). `studies/e6_remeasure/analyze.py`
+được chép nguyên từ repo gốc để dùng lại hàm `curve`/`predict`. Kết quả ở `runs/amd-20261124/full-01/analysis/`.
+Phát hiện cần ghi: ở E10, mức tăng NMS đo vi mô (6,6-9,5 ms) lớn hơn mức tăng toàn trình (3,1-5,2 ms; KTC chứa 0 ở cả 6 ô), nên phần
+còn lại âm; kết luận của laptop "1/3 đến 1/2 mức tăng nằm ngoài NMS" không lặp lại. MDE trong phiên E10 là 2,8%.
