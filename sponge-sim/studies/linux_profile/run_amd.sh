@@ -6,11 +6,11 @@ mode="${1:?smoke|full}"; shift
 case "$mode" in smoke) extra=(--smoke) ;; full) extra=() ;; *) echo "smoke|full" >&2; exit 2 ;; esac
 exps=("$@"); [ ${#exps[@]} -eq 0 ] && exps=(e1 e1nc1l e9 e10 e12)
 repo="$(cd -- "$(dirname -- "$0")/../../.." && pwd)"; cd "$repo"
-tag=prereg-amd-replication-20261124
+tag="${PREREG_TAG:-prereg-amd-replication-20261124-r1}"
 test "$(git rev-parse HEAD)" = "$(git rev-parse "$tag^{commit}")"
 git diff --quiet HEAD -- sponge-sim
-root="$repo/runs/amd-20261124/$mode"; mkdir -p "$root"
-py="$repo/.venv/bin/python"; lock=sponge-sim/studies/linux_profile/lock_env.sh
+root="$repo/runs/amd-20261124/${RUN_ID:-$mode}"; mkdir -p "$root"
+py="$repo/.venv/bin/python"; lock="$repo/sponge-sim/studies/linux_profile/lock_env.sh"
 export SPONGE_PROFILES='{"P1_cpu2":[2]}' YOLO_CONFIG_DIR="$repo/.ultralytics"
 gate() {
   test "$(cat /sys/devices/system/cpu/cpu8/online)" = 0
