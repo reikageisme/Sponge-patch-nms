@@ -15,3 +15,18 @@ Smoke-02 (tag r1): E1 và E1-NC1L đạt (kiểm xung trước/sau đạt, Bzy_M
 (bản 84.2.1 của A/A đã bỏ `pkg_resources` mà mã YOLOv5 vendored cần). Các gói này không nằm trong vùng bấm giờ của E5,
 nên không ảnh hưởng A/A đã chạy. Mã đo không đổi. Smoke E9, E10, E12 chạy lại với `RUN_ID=smoke-03`, tag `-r2`;
 smoke E1 và E1-NC1L của smoke-02 được giữ. Mỗi thí nghiệm ghi `pip freeze` riêng.
+
+## 3. Phân tích sau phiên chính full-01 (24/11/2026, ghi sau khi đo xong, trước khi xem endpoint E12)
+Phiên chính `full-01` (tag r2) chạy đủ 5 thí nghiệm, mã thoát 0, mọi kiểm xung trước/sau đạt (Bzy_MHz 3575, Busy 100%).
+Các sai lệch chỉ nằm ở bước phân tích, không đo lại gì:
+- **E12, bộ phân tích:** bản nháp PREREG E12 ghi dùng `studies/e11_patch_remeasure/analyze.py`, nhưng runner E12 ghi điểm
+  tham chiếu dạng `block_attempt` (DriftGate) chứ không phải `reference`, nên analyzer E11 dừng (max() rỗng). Đã viết
+  `studies/e12_patch_remeasure_gated/analyze.py`: gọi nguyên logic E11 (không sửa file E11), chỉ chuyển mỗi lần thử được nhận
+  thành một điểm tham chiếu (rel_change = độ lệch lớn nhất trước/sau so với đầu phiên), và thêm E12-P4..P6 cùng phân tích
+  độ nhạy ngưỡng 2% theo bản nháp. Cổng trôi: 10/10 khối nhận ở lần đầu, độ lệch lớn nhất 0,13%, nên không khối nào bị bỏ ở 3% hay 2%.
+- **Bộ nhớ khi phân tích E12:** raw 122 MB làm Python bị OOM (RAM trống khoảng 900 MB). Đã bật zram 3 GB (zstd) SAU khi mọi phép đo
+  đã xong; không có zram trong lúc đo.
+- **E1-NC1L:** lưới `--nc1-large` không có N = 10^2 (chỉ 1000, 3000, 8400/10000), nên endpoint "tỷ số 10^2 → 10^4" trong PREREG
+  không tính được. Thay bằng (ghi là post hoc): tỷ số 10^3 → 10^4 của ô một lớp, và tỷ số một lớp / 80 lớp ở cùng N, cùng phiên.
+- **E9 phần B:** chỉ chạy phần kiểm chéo hình học trên E1 của đợt này (`cross_geometry_e1`); hai tập kiểm E6 320/640 không được
+  đo lại trên máy AMD nên không có test1/test2.
