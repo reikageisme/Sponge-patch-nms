@@ -41,6 +41,9 @@ Each experiment folder has `environment.txt` (package versions), `prereg_commit.
 `full-01/e12/run/raw_P1_cpu2.jsonl` is stored compressed as `raw_P1_cpu2.jsonl.gz`
 (`gzip -n -9`) because GitHub rejects files above 100 MB (the file is 122 MB).
 `gzip -dk full-01/e12/run/raw_P1_cpu2.jsonl.gz` restores the original byte for byte.
+Decompress it before running `sponge-sim/studies/figures/make_figs_amd.py`,
+`sponge-sim/studies/amd_replication/posthoc_amd.py` or the E12 analyzer, which read the
+`.jsonl` file. The decompressed file is listed in `.gitignore`.
 
 ## Checksums
 

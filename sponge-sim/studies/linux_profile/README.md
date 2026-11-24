@@ -1,35 +1,45 @@
-# Profile CPU thứ hai trên Fedora (CHỈ CHUẨN BỊ — chưa chạy, chưa đưa vào bài)
+# Chuẩn bị profile CPU trên Linux
 
-Mục đích: lặp lại A/A và phép tiêm toàn pipeline (E9) trên một máy Linux với governor `performance` và tần số khoá,
-cùng giao thức ghim/kiểm chứng (ghim một CPU logic, `verify_pin` dưới tải, A/A, điểm tham chiếu drift 3%).
-Chỉ đưa vào bài khi đã có dữ liệu và tệp đăng ký trước riêng.
+Dùng `lscpu -e=CPU,CORE,ONLINE` và `cpupower -c CPU frequency-info` để chọn CPU logic,
+luồng SMT anh em và tần số trong dải non-boost. Chạy các lệnh dưới đây từ thư mục `sponge-sim`.
+Script cần Python 3, `taskset`, `sha256sum` và `turbostat` có cột `Bzy_MHz`.
 
-## 0. Trước khi đo (người dùng tự làm; harness không đổi cấu hình)
-1. Đăng ký trước: soạn `prereg/PREREG_E12_fedora.md` (giả thuyết: N* ở Fedora cùng bậc với laptop; endpoint: MDE A/A toàn trình,
-   N* theo cài đặt × hình học), commit và `git tag prereg-e12-<ngày>` TRƯỚC khi đo.
-2. Cài môi trường giống laptop (python, torch, torchvision, ultralytics, psutil, numpy; ghi phiên bản vào manifest tự động).
-   Chép `yolov8n.pt` (kiểm SHA-256 với manifest của laptop) và thư mục ảnh `outputs/datasets/coco_val2017_extended`.
-3. Đọc cấu trúc CPU (chỉ đọc):
-   ```bash
-   python3 studies/linux_profile/topology_fedora.py > results/e12/fedora_topology.json
-   ```
-4. Tự đặt (cần quyền root, ngoài phạm vi harness), rồi ghi lại vào `PROGRESS.md`:
-   ```bash
-   sudo cpupower frequency-set -g performance
-   sudo cpupower frequency-set -d <F> -u <F>        # khoá min = max = F (chọn F ≤ tần số cơ sở, không turbo)
-   echo 1 | sudo tee /sys/devices/system/cpu/intel_pstate/no_turbo   # máy Intel; AMD: /sys/devices/system/cpu/cpufreq/boost = 0
-   ```
-   Chạy lại bước 3 và kiểm `governor=performance`, `min_khz == max_khz` ở CPU sẽ ghim.
-5. Máy rảnh: cắm sạc, đóng ứng dụng, không đăng nhập đồ hoạ nếu được, không chạy gì khác (quy tắc 9).
-
-## 1. Profile
-`hw_linux.profiles()` đọc profile từ biến môi trường. Dùng profile đề xuất ở bước 3 (CPU logic đầu tiên của lõi vật lý thứ hai):
 ```bash
-export SPONGE_PROFILES='{"P1_cpu2": [<cpu>]}'
+sudo bash studies/linux_profile/lock_env.sh lock CPU FREQUENCY_KHZ
+sudo bash studies/linux_profile/lock_env.sh verify CPU --seconds 30
+python3 studies/linux_profile/check_env.py CPU
+sudo bash studies/linux_profile/lock_env.sh unlock CPU
 ```
-Lưu ý: `hw_linux.cpu_topology()` không đọc SMT; sibling của CPU được ghim nằm trong `fedora_topology.json` và phải ghi vào bài
-(giống laptop: sibling không bị chặn trừ khi người dùng tự offline nó bằng `echo 0 | sudo tee /sys/devices/system/cpu/cpu<sib>/online`,
-việc này phải ghi vào tệp đăng ký trước).
+
+`lock` lưu cấu hình trong `/run/sponge-cpu-lock/original.json`, tắt boost, đưa luồng SMT anh em
+offline rồi đặt governor và hai giới hạn tần số. Để báo thành công, mọi mẫu `Bzy_MHz` phải nằm
+trong ±1% mục tiêu và CPU bận ít nhất 95% trong từng mẫu. Mặc định lấy 20 mẫu, mỗi mẫu một giây.
+Khi thiết lập hoặc phép kiểm lỗi, script thử hoàn tác ngay. Nếu hoàn tác gặp lỗi, file trạng thái
+được giữ để chạy lại `unlock`. `check_env.py` chỉ đọc cấu hình sysfs, còn `verify` đo xung dưới tải.
+
+Trên AMD, mặc định script ưu tiên tắt boost ở policy. Nếu phép kiểm dưới tải cho thấy cần tắt boost
+toàn máy, dùng `--global-boost`. Cấu hình cho Ryzen 5 5500 dùng `amd-pstate-epp` ở chế độ active:
+
+```bash
+sudo bash studies/linux_profile/lock_env.sh lock 2 3600000 --global-boost --seconds 35
+```
+
+Trên máy Ryzen này, CPU 8 là luồng SMT anh em của CPU 2. Với thiết lập trên, lượt kiểm đầu đo
+`Bzy_MHz` 3574 MHz trong 35/35 mẫu và CPU bận 100%.
+Ghi topology trước khi khóa vì Linux có thể
+bỏ CPU đã offline khỏi `thread_siblings_list`. Trước phiên đo, ghi CPU, kernel, driver, xung yêu cầu,
+dải `Bzy_MHz` quan sát được và trạng thái SMT vào hồ sơ. Hoàn thiện đăng ký trước riêng cho dữ liệu
+dùng trong bài. Chuẩn bị môi trường, trọng số đã kiểm SHA-256 và ảnh đầu vào theo giao thức.
+
+## Profile
+
+`hw_linux.profiles()` đọc danh sách CPU từ `SPONGE_PROFILES`. Ví dụ cho máy Ryzen ở trên:
+
+```bash
+export SPONGE_PROFILES='{"P1_cpu2": [2]}'
+```
+
+Kiểm ghim dưới tải bằng `verify_pin` trước phiên đo. Chạy A/A và kiểm drift theo giao thức đã đăng ký.
 
 ## 2. Lệnh đo (sau tag; mỗi lệnh chạy một mình, không chạy song song)
 ```bash
@@ -44,4 +54,6 @@ Dùng đúng script của laptop (`studies/e5_protocol/analyze.py`, `studies/e9_
 với MDE của A/A Fedora. Bảng của bài chỉ thêm cột Fedora sau khi có dữ liệu, qua `paper_vi/tables/make_tables.py`.
 
 ## Giới hạn
-`hw_linux.py` được viết cho điện thoại (proot); trên Fedora cần smoke để kiểm `verify_pin` và `pin` (đọc lại affinity) trước khi đo thật.
+
+Khóa xung và tắt luồng SMT anh em vẫn cho phép scheduler dùng CPU đo. Xung hiệu dụng đo với tải
+kiểm tra có thể thay đổi với tải khác hoặc khi nhiệt độ tăng. Kiểm ghim, A/A và drift trong phiên đo.

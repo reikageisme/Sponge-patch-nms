@@ -73,3 +73,5 @@ Thumbs.db
 /smoke-*/
 /full-*/
 /.ultralytics/
+# Decompressed E12 raw file (122 MB, above the GitHub limit); the repository keeps the .gz
+/sponge-sim/results/amd_20261124/full-01/e12/run/raw_P1_cpu2.jsonl

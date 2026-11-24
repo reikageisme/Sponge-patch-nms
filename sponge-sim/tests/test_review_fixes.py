@@ -128,6 +128,7 @@ def test_e12_reuses_e11_measurement_and_gate_config():
 def _fake_sys(root, gov='performance', fmin='2400000', fmax='2400000', no_turbo='1', sib='2,10', sib_online='0', iso='2'):
     c = root / 'devices/system/cpu'
     for p, v in ((c / 'cpu2/cpufreq/scaling_governor', gov), (c / 'cpu2/cpufreq/scaling_min_freq', fmin), (c / 'cpu2/cpufreq/scaling_max_freq', fmax),
+                 (c / 'cpu2/cpufreq/affected_cpus', '2'),
                  (c / 'intel_pstate/no_turbo', no_turbo), (c / 'cpu2/topology/thread_siblings_list', sib), (c / 'cpu10/online', sib_online), (c / 'isolated', iso)):
         p.parent.mkdir(parents=True, exist_ok=True)
         p.write_text(v)
@@ -143,6 +144,23 @@ def test_lock_status_ready_and_problems():
         _fake_sys(Path(d), gov='powersave', fmin='800000', no_turbo='0', sib_online='1', iso='3')
         bad = hw_linux.lock_status(2, d)
         assert not bad['ready'] and len(bad['problems']) == 5
+
+
+def test_lock_status_amd_policy_and_missing_smt_topology():
+    from sponge_sim import hw_linux
+    with tempfile.TemporaryDirectory() as d:
+        _fake_sys(Path(d), sib='2')
+        cpu = Path(d) / 'devices/system/cpu'
+        (cpu / 'intel_pstate/no_turbo').unlink()
+        (cpu / 'cpufreq').mkdir()
+        (cpu / 'cpufreq/boost').write_text('1')
+        (cpu / 'cpu2/cpufreq/boost').write_text('0')
+        assert hw_linux.lock_status(2, d)['ready']
+        (cpu / 'cpu2/cpufreq/affected_cpus').write_text('2 10')
+        assert not hw_linux.lock_status(2, d)['ready']
+        (cpu / 'cpu2/cpufreq/affected_cpus').write_text('2')
+        (cpu / 'cpu2/topology/thread_siblings_list').unlink()
+        assert not hw_linux.lock_status(2, d)['ready']
 
 
 # ---------------------------------------------------------------- stages, optimizers
