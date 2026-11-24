@@ -24,7 +24,7 @@ trọng số YOLOv8n `f59b3d83…`, 100 ảnh E5, patch E7 `patch_q62500` seed 0
 - Trước và sau: `lock_env.sh verify 2 --seconds 10` đạt (mọi mẫu `Bzy_MHz` trong ±1% mục tiêu, Busy ≥ 95%),
   CPU 8 offline, boost = 0. Không đạt: dừng, không chạy thí nghiệm tiếp theo.
 - HEAD đúng commit của tag, cây `sponge-sim` sạch.
-- Trong lúc đo không chạy gì khác trên máy (quy tắc 9); người dùng không dùng máy, đóng `btop`.
+- Trong lúc đo không chạy việc nào khác trên máy (quy tắc 9), người dùng không dùng máy. Ngoại lệ do người dùng chọn: `btop` để mở cho người dùng theo dõi; ghi trạng thái này vào hồ sơ, không coi là sai lệch.
 - Không swap, không zram trong lúc đo. Nếu thiếu bộ nhớ làm hỏng phiên: ghi DEVIATIONS trước khi chạy lại.
 
 ## Thí nghiệm (thứ tự cố định; mỗi cái smoke rồi phiên chính)
