@@ -6,3 +6,5 @@
 /smoke-*/
 /full-*/
 __pycache__/
+/sponge-sim/results/e7_gpu/
+/runs/
