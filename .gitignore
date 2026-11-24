@@ -1,0 +1,8 @@
+/.venv
+/.venv-initial-incomplete/
+/.ultralytics/
+/outputs/
+/yolov8n.pt
+/smoke-*/
+/full-*/
+__pycache__/
