@@ -66,7 +66,7 @@ Nếu sau tag phải sửa runner (ví dụ smoke lỗi): ghi DEVIATIONS, commit
 ## 6. Dựng môi trường đo trên live (NGƯỜI DÙNG gõ các lệnh cần mạng; phần còn lại Claude có thể chạy qua SSH)
 ```bash
 mkdir -p ~/ws && cd ~/ws
-git clone -b amd-replication-20261124 https://github.com/reikageisme/Physical-Visual-DoS-EdgeAI.git repo
+git clone -b amd-replication-20261124 https://github.com/reikageisme/Sponge-patch-nms.git repo
 cd repo && git checkout prereg-amd-revision-20261128          # đúng tag đã chốt
 # venv cùng phiên bản đợt 24/11 (cần mạng, người dùng tự chạy)
 python3 -m venv .venv
