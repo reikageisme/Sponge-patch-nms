@@ -11,17 +11,17 @@
 Implementation & Geometry & Measured & Predicted$^{\dagger}$ & Measured & Predicted$^{\dagger}$ \\
 \midrule
 pure PyTorch & disjoint & 100 & 100 & 300 & 300 \\
- & mixed & 100 & 100 & 300 & 300 \\
- & dense cluster & 100 & 100 & 300 & $>$8400 \\
+pure PyTorch & mixed & 100 & 100 & 300 & 300 \\
+pure PyTorch & dense cluster & 100 & 100 & 300 & $>$8400 \\
 torchvision \texttt{nms} & disjoint & 100 & 300 & 300 & 3000 \\
- & mixed & 100 & 1000 & 300 & 3000 \\
- & dense cluster & 100 & 2100 & 1000 & $>$8400 \\
+torchvision \texttt{nms} & mixed & 100 & 1000 & 300 & 3000 \\
+torchvision \texttt{nms} & dense cluster & 100 & 2100 & 1000 & $>$8400 \\
 torchvision batched & disjoint & 100 & 1000 & 300 & 3000 \\
- & mixed & 100 & 1000 & 300 & 3000 \\
- & dense cluster & 100 & 1000 & 300 & 3000 \\
+torchvision batched & mixed & 100 & 1000 & 300 & 3000 \\
+torchvision batched & dense cluster & 100 & 1000 & 300 & 3000 \\
 Ultralytics native & disjoint & 100 & 100 & 300 & 3000 \\
- & mixed & 100 & 100 & 300 & 3000 \\
- & dense cluster & 100 & 100 & 300 & 3000 \\
+Ultralytics native & mixed & 100 & 100 & 300 & 3000 \\
+Ultralytics native & dense cluster & 100 & 100 & 300 & 3000 \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}

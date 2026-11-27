@@ -32,7 +32,10 @@
 \usepackage{placeins}
 \graphicspath{{figures/}{./}}
 \usepackage{tikz}
-\usetikzlibrary{arrows.meta,positioning}
+\usetikzlibrary{arrows.meta,positioning,fit,backgrounds}
+% Pipeline figure colours: stages whose cost does not / does depend on N_tau.
+\definecolor{indepc}{RGB}{47,94,150}
+\definecolor{depc}{RGB}{196,98,16}
 
 % Float placement: keep tables/figures near their text instead of flushing to the end.
 \renewcommand{\topfraction}{0.9}
@@ -67,7 +70,7 @@
 city={Ho Chi Minh City},country={Vietnam}}
 
 \begin{abstract}
-Resource-exhaustion attacks on object detectors maximize the number of candidates that enter non-maximum suppression (NMS), $\Ntau$, as a proxy for latency. Recent evaluations find limited latency effects, leaving open when candidate growth produces measurable end-to-end latency. We study this on one frequency-locked desktop CPU core (FP32) with a positive control in which $\Ntau$ is set exactly, a noise floor calibrated by A/A runs (end-to-end MDE 0.046\% at 320 px), and an Amdahl-type budget estimate, $R \approx 1+\Delta t_{\mathrm{NMS}}/t_{\mathrm{total}}$, with $\mathrm{MDE}\times t_{\mathrm{total}}$ as the threshold on added end-to-end time. First, injecting $10^2$ to $10^4$ candidates raises NMS latency for every implementation and geometry, by 3.60- to 2136-fold, a top-300 cap removes most of the increase, and concentrating disjoint candidates in one class makes the class-batched kernel 17 times slower. Second, on YOLOv8n end-to-end time rises detectably from 100 injected candidates at 320 px for every implementation, and from 300 at 640 px. On YOLOv5s, adaptive variants of two whole-image attacks raise the median $\Ntau$ more than a hundredfold (ratio of medians 107 and 124) but end-to-end time by only 1.3 to 2.0\%, below the 2.8\% noise floor of that session. With the optimizer and budget studied, a gray-box genetic patch (Sponge Patch) does not raise $\Ntau$ and changes end-to-end time by less than 1\%; a white-box gradient baseline slows a loop-based pipeline by 2.0\%. Third, $\Ntau$ must be calibrated to the NMS implementation and box geometry before it predicts time; the budget estimate is accurate on synthetic candidates but fails its preregistered rule in all six real-attack cells.
+Resource-exhaustion attacks on object detectors maximize the number of candidates that enter non-maximum suppression (NMS), $\Ntau$, as a proxy for latency. We test when that proxy holds on one frequency-locked desktop CPU core (FP32), with a positive control in which $\Ntau$ is set exactly and a noise floor calibrated by A/A runs (end-to-end MDE 0.046\% at 320 px). The cost of a given $\Ntau$ is not fixed by the count. Between $10^2$ and $10^4$ injected candidates NMS latency rises 3.60- to 2136-fold depending on implementation and box geometry, and a top-300 cap reduces it 3.41- to 974-fold. The class distribution matters as much: when $10^4$ disjoint candidates share one class instead of 80, the class-batched kernel becomes 17 times slower, about as slow as a class-agnostic kernel, so the cap rather than the batched kernel is the robust defence. On YOLOv8n, end-to-end time rises detectably from the lowest injected level tested (100 candidates at 320 px, 300 at 640 px). With the optimizer and budget studied, a gray-box genetic patch (Sponge Patch) does not raise $\Ntau$ and changes end-to-end time by less than 1\%; a white-box gradient baseline slows a loop-based pipeline by 2.0\%. Predictions of NMS time from $\Ntau$ alone err by up to about four-fold, so $\Ntau$ must be calibrated to the implementation, geometry and class distribution before it is used as a latency proxy.
 \end{abstract}
 
 \begin{keywords}
@@ -79,9 +82,9 @@ resource-exhaustion attack \sep latency attack \sep non-maximum suppression (NMS
 \section{Introduction}
 Resource-exhaustion attacks, also called latency or energy-latency attacks, target availability rather than correctness: inputs are crafted to lengthen processing without necessarily changing labels \cite{shumailov2021sponge,nicgslowdown2022}. For a real-time perception system, every slow frame is a deadline that may be missed. In one-stage YOLO-style object detectors the natural attack surface is non-maximum suppression (NMS): the cost of greedy NMS grows with the number of candidate boxes above the score threshold, and that number depends on the image content.
 
-Published attacks such as Phantom Sponges, Overload and SlowTrack craft inputs that maximize the number of pre-NMS candidates, $\Ntau$, on the assumption that a high $\Ntau$ slows the detector down \cite{phantom2023,overload2024,slowtrack2024}. In these works $\Ntau$ is both the quantity being optimized and the explanation of the observed slowdown. NMS cost, however, also depends on the implementation, on how the boxes overlap, and on the top-$k$ cap, and NMS is only one stage of the pipeline. EVADE benchmarked existing NMS latency attacks across hardware, model formats and quantization and found that they do not reach their reported slowdowns in deployment configurations \cite{evade2025}. EVADE answers \emph{whether} published attacks work; it does not explain \emph{why} they fall short, nor \emph{when} an inflated $\Ntau$ should produce measurable latency. That explanation requires a positive control in which $\Ntau$ is set exactly, a noise floor that states the smallest slowdown a measurement can resolve, and a model that converts candidates into milliseconds for a given device and implementation. To our knowledge, no prior study provides them.
+Published attacks such as Phantom Sponges, Overload and SlowTrack craft inputs that maximize the number of pre-NMS candidates, $\Ntau$, on the assumption that a high $\Ntau$ slows the detector down \cite{phantom2023,overload2024,slowtrack2024}. In these works $\Ntau$ is both the quantity being optimized and the explanation of the observed slowdown. NMS cost, however, also depends on the implementation, on how the boxes overlap, and on the top-$k$ cap, and NMS is only one stage of the pipeline. EVADE benchmarked existing NMS latency attacks across hardware, model formats and quantization and found that they do not reach their reported slowdowns in deployment configurations \cite{evade2025}. EVADE answers \emph{whether} published attacks work; it does not explain \emph{why} they fall short, nor \emph{when} an inflated $\Ntau$ should produce measurable latency. That explanation requires a positive control in which $\Ntau$ is set exactly, a noise floor that states the smallest slowdown a measurement can resolve, and a calibration that converts candidates into milliseconds for a given device, implementation and candidate distribution.
 
-We began by building Sponge Patch, a local gray-box patch that reads only pre-NMS confidence scores and is optimized by a genetic algorithm to increase $\Ntau$. Under a protocol with verified core pinning and a calibrated noise floor, the patch did not increase $\Ntau$ on YOLOv8n. Rather than report one more attack, we study the proxy that the whole line of attacks relies on: under which conditions does an increase in $\Ntau$ become end-to-end latency, and how large must it be? The A/A calibration gives a benchmark-specific threshold on added end-to-end time, $\mathrm{MDE}\times t_{\mathrm{total}}$. We estimate the NMS contribution with a budget model and check it against end-to-end measurements. We measure the ingredients of this criterion, test it prospectively on adaptive variants of two published whole-image attacks, and use it to explain why both those variants and Sponge Patch change end-to-end time by a few percent at most on a single CPU core. We split the question into four sub-questions.
+We began by building Sponge Patch, a local gray-box patch that reads only pre-NMS confidence scores and is optimized by a genetic algorithm to increase $\Ntau$. Under a protocol with verified core pinning and a calibrated noise floor, the patch did not increase $\Ntau$ on YOLOv8n. Rather than report one more attack, we study the proxy that the whole line of attacks relies on: under which conditions does an increase in $\Ntau$ become end-to-end latency, and how large must it be? We map the NMS cost of a controlled $\Ntau$ across implementation, box geometry, class distribution and top-$k$ cap, measure the candidate count at which end-to-end time rises above an A/A-calibrated noise floor, and then measure real patches and adaptive variants of two published whole-image attacks against the same floor. An Amdahl-type budget estimate serves only as a check on these measurements, and we report where it fails. We split the question into four sub-questions.
 \begin{description}[leftmargin=2.5em,labelwidth=2.2em,itemsep=2pt]
 \item[RQ1] When the candidates are controlled, how does NMS latency depend on $\Ntau$ between $10^2$ and $10^4$ candidates?
 \item[RQ2] How much do the NMS implementation, the box geometry and the top-$k$ cap change that dependence?
@@ -90,7 +93,7 @@ We began by building Sponge Patch, a local gray-box patch that reads only pre-NM
 \end{description}
 
 \paragraph{Contributions.}
-(i) A noise-floor-calibrated detectability criterion for NMS resource-exhaustion attacks on a single CPU core: an attack is detectable end to end only when it adds more than $\mathrm{MDE}\times t_{\mathrm{total}}$ to end-to-end time; the Amdahl-type estimate $R \approx 1 + \Delta t_{\mathrm{NMS}}/t_{\mathrm{total}}$ gives the NMS component from the clean end-to-end time and the NMS curve of the implementation in use. (ii) A positive-control map from $\Ntau$ to NMS and end-to-end latency across implementation, box geometry and top-$k$ cap, with measured end-to-end thresholds $N^{*}$: the same $\Ntau$ can cost more than two orders of magnitude more or less depending on these factors. (iii) Evidence that $\Ntau$ must be calibrated to the implementation and geometry before it predicts time: uncalibrated predictions of NMS time err up to several-fold, and the preregistered budget estimate, accurate on synthetic candidates, fails on every real-attack cell and is worse than a constant no-change prediction there. (iv) A reusable measurement protocol: a frequency-locked core with its SMT sibling offline, pinning and clock verified under load, per-stage timing, A/A calibration, a per-block drift gate, preregistration and automatically generated tables.
+(i) A positive-control map of NMS cost under a controlled $\Ntau$ across implementation, box geometry, class distribution and top-$k$ cap. The same $\Ntau$ can cost more than two orders of magnitude more or less depending on these factors, and the class distribution decides whether the class-batched kernel protects the pipeline at all: with $10^4$ disjoint candidates in one class it is 17 times slower than with 80 classes and about as slow as a class-agnostic kernel, whereas a top-300 cap reduces the cost in every cell. (ii) Measured end-to-end thresholds $N^{*}$ on YOLOv8n against an A/A-calibrated noise floor, and end-to-end measurements of real patches with a preregistered equivalence test: the genetic patches stay at the clean candidate level and within 1\% of clean time, and only a white-box gradient baseline with a loop-based NMS slows the pipeline measurably. (iii) Evidence that $\Ntau$ must be calibrated before it predicts time: predictions from $\Ntau$ alone err up to about four-fold for NMS time, and candidates produced by real whole-image attacks overlap more strongly than the synthetic mixed geometry, so a curve calibrated on synthetic candidates overestimates their NMS cost. (iv) A reusable measurement protocol: a frequency-locked core with its SMT sibling offline, pinning and clock verified under load, per-stage timing, A/A calibration, a per-block drift gate, preregistration and automatically generated tables.
 
 \section{Related work}
 \label{sec:related}
@@ -110,17 +113,22 @@ Set-prediction detectors such as DETR remove NMS from the architecture \cite{car
 \centering\small
 \caption{Positioning against the closest related work. Cells describe each work qualitatively; numbers are not compared across threat models.}
 \label{tab:related}
-\begin{tabularx}{\textwidth}{@{}p{3.2cm}p{3.3cm}p{4.2cm}X@{}}
+% Review 27/11: short cells, one line each, so that the PDF text layer keeps the columns aligned.
+% TODO(review 27/11): add rows for Daedalus, Beyond PhantomSponges, Chen (ACCV 2024), TrackFlood, Gontara (2026)
+% and the 09/2026 survey once their sources are verified; do not add rows from memory.
+\begin{adjustbox}{max width=\textwidth}
+\begin{tabular}{@{}llll@{}}
 \toprule
-Work & Surface / access & Quantity optimized or studied & Main difference from this study \\
+Work & Surface, access & Optimized or studied & This study instead \\
 \midrule
-Phantom Sponges \cite{phantom2023} & Whole image; white box & Boxes above threshold via a universal perturbation & White-box whole image; this study is gradient-free with a local patch \\
-Overload \cite{overload2024} & Whole image; white box & Candidate flooding to overload NMS on edge devices & This study measures latency separately from the candidate count \\
-SlowTrack \cite{slowtrack2024} & Whole image; white box & Latency accumulated over a multi-frame perception chain & Targets the tracker/chain; this study is one frame, one detector \\
-EVADE \cite{evade2025} & NMS latency attacks in deployment & Practicality across hardware, formats and quantization & Asks whether given attacks work; this study models when an increase in $\Ntau$ can become latency \\
-\textbf{This study} & Local; gray box (pre-NMS scores, no gradient) & The $\Ntau \to$ latency assumption; positive control, A/A noise floor & Four quantities measured separately; negative results kept \\
+Phantom Sponges \cite{phantom2023} & Whole image, white box & Boxes above threshold & Local patch, no gradient \\
+Overload \cite{overload2024} & Whole image, white box & Candidates flooding NMS & Times latency apart from the count \\
+SlowTrack \cite{slowtrack2024} & Whole image, white box & Multi-frame chain latency & One frame, one detector \\
+EVADE \cite{evade2025} & Published NMS attacks & Practicality in deployment & Asks when $\Ntau$ costs time \\
+\textbf{This study} & Local patch, gray box & $\Ntau \to$ latency assumption & Positive control, A/A noise floor \\
 \bottomrule
-\end{tabularx}
+\end{tabular}
+\end{adjustbox}
 \end{table*}
 
 \section{Problem formulation, budget model and case study}
@@ -175,30 +183,53 @@ All timing results of the detection study come from one desktop machine with an 
 
 \begin{figure*}[pos=!t]
 \centering
-\begin{tikzpicture}[node distance=6mm, box/.style={draw, rounded corners=1pt, minimum height=9mm, minimum width=18mm, inner sep=3pt, align=center, font=\small}, lab/.style={font=\footnotesize, align=center}]
-\node[lab] (in) {prepared\\tensor};
-\node[box, right=of in] (a) {Resize};
-\node[box, right=of a] (b) {Forward\\pass};
-\node[box, right=of b] (c) {Decode};
-\node[box, right=of c] (d) {Score filter $\tau$,\\top-$k$ cap};
-\node[box, right=of d] (e) {NMS};
-\node[lab, right=of e] (out) {detections};
-\draw[-{Stealth[length=2mm]}] (in)--(a);
-\draw[-{Stealth[length=2mm]}] (a)--(b);
-\draw[-{Stealth[length=2mm]}] (b)--(c);
-\draw[-{Stealth[length=2mm]}] (c)--(d);
-\draw[-{Stealth[length=2mm]}] (d)--(e);
-\draw[-{Stealth[length=2mm]}] (e)--(out);
-\node[lab, below=1mm of a] {$t_{\mathrm{pre}}$};
-\node[lab, below=1mm of b] {$t_{\mathrm{fwd}}$};
-\node[lab, below=1mm of c] {$t_{\mathrm{dec}}$};
-\node[lab, below=1mm of d] {$t_{\tau}$};
-\node[lab, below=1mm of e] {$t_{\mathrm{NMS}}$};
-\node[box, dashed, above=6mm of c] (inj) {synthetic candidates (controlled $N_\tau$)};
-\draw[-{Stealth[length=2mm]}, dashed] (inj.east) -| (d.north);
-\draw[|-|] ([yshift=-8mm]a.south west) -- node[lab, below] {$t_{\mathrm{total}}$, measured in one call} ([yshift=-8mm]e.south east);
+% Redrawn 27/11/2026 (supervisor: "draw the pipeline more nicely"). Grey values: clean medians at 320 px
+% from the A/A session, tab_aa / numbers_en.json (pre 5.22, forward 42.9, score filter 0.0504,
+% NMS 0.0912 torchvision to 0.963 pure PyTorch, end-to-end 46.5 ms).
+\begin{adjustbox}{max width=\textwidth}
+\begin{tikzpicture}[
+  node distance=5mm,
+  stage/.style={draw=#1!80!black, fill=#1!10, rounded corners=2pt, line width=0.6pt,
+                minimum height=11mm, minimum width=21mm, inner sep=3pt, align=center, font=\small},
+  io/.style={font=\small, align=center, text=black!80},
+  timer/.style={font=\footnotesize, text=black!80},
+  cost/.style={font=\scriptsize, text=black!55},
+  flow/.style={-{Stealth[length=2.2mm]}, line width=0.7pt, draw=black!70},
+  grp/.style={font=\footnotesize\itshape, text=#1!85!black, inner sep=1.5pt},
+]
+\node[io] (in) {image\\tensor};
+\node[stage=indepc, right=of in] (pre) {Resize};
+\node[stage=indepc, right=of pre] (fwd) {Forward\\pass};
+\node[stage=indepc, right=of fwd] (dec) {Decode\\head};
+\node[stage=depc, right=7mm of dec] (flt) {Score filter $\tau$\\+ top-$k$ cap};
+\node[stage=depc, right=of flt] (nms) {NMS};
+\node[io, right=of nms] (out) {detections};
+\foreach \a/\b in {in/pre, pre/fwd, fwd/dec, dec/flt, flt/nms, nms/out} \draw[flow] (\a) -- (\b);
+% timers and clean medians (320 px, A/A session)
+\node[timer, below=1.2mm of pre] (tpre) {$t_{\mathrm{pre}}$};
+\node[timer, below=1.2mm of fwd] (tfwd) {$t_{\mathrm{fwd}}$};
+\node[timer, below=1.2mm of dec] (tdec) {$t_{\mathrm{dec}}$};
+\node[timer, below=1.2mm of flt] (tflt) {$t_{\tau}$};
+\node[timer, below=1.2mm of nms] (tnms) {$t_{\mathrm{NMS}}$};
+\node[cost, below=0.2mm of tpre] (cpre) {5.22 ms};
+\node[cost, below=0.2mm of tfwd] (cfwd) {42.9 ms};
+\node[cost, below=0.2mm of tflt] (cflt) {0.050 ms};
+\node[cost, below=0.2mm of tnms] (cnms) {0.091-0.96 ms};
+\begin{scope}[on background layer]
+  \node[fit=(pre)(fwd)(dec)(cpre)(cfwd), fill=indepc!4, draw=indepc!35, rounded corners=4pt, inner sep=2.5mm] (gA) {};
+  \node[fit=(flt)(nms)(cflt)(cnms), fill=depc!5, draw=depc!40, rounded corners=4pt, inner sep=2.5mm] (gB) {};
+\end{scope}
+\node[grp=indepc, anchor=south west] at (gA.north west) {cost independent of $\Ntau$};
+\node[grp=depc, anchor=south east] at (gB.north east) {cost depends on $\Ntau$};
+% positive control
+\node[draw=depc!80!black, dashed, fill=white, rounded corners=2pt, line width=0.6pt, font=\footnotesize,
+      align=center, inner sep=3pt, above=9mm of dec] (inj) {positive control: synthetic candidate set\\(controlled $\Ntau$, geometry, classes)};
+\draw[flow, dashed, draw=depc!80!black] (inj.east) -| node[pos=0.25, above, font=\scriptsize, text=depc!80!black] {replaces decoded output} (flt.north);
+% one end-to-end timer
+\draw[|-|, line width=0.6pt, draw=black!70] ([yshift=-3mm]gA.south west) -- node[timer, below] {$t_{\mathrm{total}}$: one timer around the whole call, never a sum of stage medians} ([yshift=-3mm]gB.south east);
 \end{tikzpicture}
-\caption{Pipeline stages and their timers. Each stage is timed separately and $t_{\mathrm{total}}$ in one call. The dashed path is the positive control: a synthetic candidate set replaces the decoded output, so the score filter and NMS run with a controlled $\Ntau$.}
+\end{adjustbox}
+\caption{Pipeline stages and their timers. Blue stages do not depend on $\Ntau$, orange ones do; grey values are clean medians at 320 px from the A/A session (Table~\ref{tab:aa}; NMS from torchvision to the pure-PyTorch loop). Dashed path: the positive control replaces the decoded output with a synthetic candidate set.}
 \label{fig:pipeline}
 \end{figure*}
 
@@ -208,7 +239,7 @@ Four implementations receive the same thresholded candidates. A pure-PyTorch loo
 \subsection{Core pinning, A/A calibration and statistics}
 The process is pinned to one logical CPU (CPU 2, avoiding CPU 0, which serves most system interrupts) and PyTorch uses one thread. Pinning is never assumed to work: at the start and end of every session we run a matrix-multiplication load with twice as many threads as allowed CPUs and require (a) process CPU time divided by wall time not to exceed the number of allowed CPUs and (b) a throughput of at least half a core; a session that fails verification is not measured. Before and after every experiment the clock of the pinned CPU is sampled for 10~s under load with \texttt{turbostat}, and the experiment counts only if every sample lies within 1\% of 3.6~GHz with the CPU at least 95\% busy, the SMT sibling (CPU 8) is still offline and boost is still disabled. All 14 checks of the seven measurement sessions passed (every sample at 3575~MHz and 100\% busy). During measurements no other process of the authors ran on the machine.
 
-Each A/A profile measures 100 held-out images, 20 times per image, with two arms labelled A and B in an alternating ABBA/BAAB order; the per-image log ratio of the two arms' medians gives $\hat\sigma_d$ and the MDE. A fixed reference benchmark runs at the start of the session, before each block and at the end, and a block is flagged if it deviates by more than 3\% from the session start. Confidence intervals are percentile intervals from 20\,000 bootstrap resamples with a fixed seed \cite{efron1979bootstrap}; for the patch analysis both images and seeds are resampled (a two-level percentile bootstrap; \cite{cameron2008cluster} is cited only for the clustering idea). Rank correlation is Spearman's. The analyses are estimates with confidence intervals, not a family of hypothesis tests, so Holm's correction \cite{holm1979} is not applied; analyses defined after the data were seen are labelled post hoc.
+Each A/A profile measures 100 held-out images, 20 times per image, with two arms labelled A and B in an alternating ABBA/BAAB order; the per-image log ratio of the two arms' medians gives $\hat\sigma_d$ and the MDE. A fixed reference benchmark runs at the start of the session, before each block and at the end, and a block is flagged if it deviates by more than 3\% from the session start. Confidence intervals are percentile intervals from 20\,000 bootstrap resamples with a fixed seed \cite{efron1979bootstrap}; for the patch analysis both images and seeds are resampled (a two-level percentile bootstrap). Rank correlation is Spearman's. The analyses are reported as estimates with confidence intervals rather than as a family of hypothesis tests, so no multiplicity correction is applied; analyses defined after the data were seen are labelled post hoc.
 
 \subsection{Positive-control design}
 The injection replaces the decoded detector output by a synthetic candidate set that enters the score filter and NMS (Fig.~\ref{fig:pipeline}). A candidate set is defined by the number of anchors $A$, the target $\Ntau$, the number of classes $n_c$ (80 or 1) and a geometry. The disjoint set places boxes on a grid, each occupying 80\% of its grid cell, so that no two boxes overlap and NMS keeps all of them; this is the worst case for the greedy loop. The dense-cluster set places boxes of about 48 px, offset by at most 2 px, around eight centres, so that most boxes are suppressed early. The mixed set uses half of each, in random order. The $\Ntau$ active candidates have scores drawn uniformly from just above $\tau=0.01$ to one and random classes; the remaining anchors have scores below $\tau/2$, so that exactly $\Ntau$ candidates pass the filter. Every draw comes from a seeded generator and every set is hashed. The grid has three parts: the 320-px detector head ($A=2100$; $\Ntau\in\{0,10,30,100,300,600,1000,1500,2100\}$, $n_c\in\{80,1\}$), the 640-px detector head ($A=8400$; $\Ntau\in\{0,100,300,1000,3000,8400\}$) and a synthetic head with $A=10\,000$, beyond any real head, used only to reach $\Ntau=10^4$ ($\Ntau\in\{100,300,1000,3000,10^4\}$). All three geometries, both cap settings (none and 300) and all four implementations are combined with these grids, giving 123 cells, each measured 30 times after 3 discarded warm-up runs; the order of implementations within a block follows a Latin-square design, and 12 cells form a block that starts with a reference measurement. A separate test injects $\Ntau\in\{0,100,300,1000,2100\}$ disjoint boxes into the full pipeline of one fixed image, for the pure-PyTorch and the Ultralytics implementations, 20 repetitions each, and counts the repetitions above a 100~ms reference (chosen by the authors, not a requirement of any application). Because the main grid has a single-class condition only on the 2100-anchor head, a second preregistered session repeats the design with one class and with 80 classes on the 8400-anchor head ($\Ntau\in\{1000,3000,8400\}$) and the 10\,000-anchor head ($\Ntau\in\{1000,3000,10^4\}$), no cap, to test whether a class-batched kernel stays cheap when an attacker concentrates the candidates in one class.
@@ -368,7 +399,7 @@ Effects are read against the MDE; a confidence interval containing one, or an ef
 
 \section{Conclusion and future work}
 \label{sec:conclusion}
-We assessed slowdown on one frequency-locked CPU core against the threshold $\mathrm{MDE}\times t_{\mathrm{total}}$, applied to the added end-to-end time. With library NMS kernels, adaptive variants after Overload and Phantom Sponges (YOLOv5s, 640 px) raise the median $\Ntau$ more than a hundredfold but end-to-end time by only 1.3 to 2.0\%, below the noise floor of that session and within 5\%, because NMS still accounts for only 2.1 to 3.7\% of end-to-end time after the attack. With the optimizer and budget studied, Sponge Patch does not raise $\Ntau$ on YOLOv8n, and its measured end-to-end effect is equivalent to no change within 1\%; a white-box gradient patch slows the pipeline by 2.0\% only with a loop-based NMS. Conversely, with a loop-based NMS and no top-$k$ cap, 2100 injected candidates make YOLOv8n more than six times slower at 320 px, and on a low-noise core even library kernels slow detectably from one hundred candidates. The cost of a given $\Ntau$ depends on implementation, geometry and class distribution by more than two orders of magnitude, so $\Ntau$ must be calibrated before it is used as a latency proxy. The next steps are separate timing of every stage under attack with more repetitions, and the same protocol on accelerators, where the NMS share is expected to be larger.
+On one frequency-locked CPU core, the cost of a given $\Ntau$ depends on the NMS implementation, the box geometry and the class distribution by more than two orders of magnitude. A top-300 cap reduced NMS time in all 12 implementation and geometry cells at $\Ntau=10^4$, whereas the class-batched kernel protected the pipeline only while candidates were spread over many classes: with $10^4$ disjoint candidates in one class it was 17 times slower than with 80 classes. With a loop-based NMS and no cap, 2100 injected candidates made YOLOv8n more than six times slower at 320 px, and on a low-noise core even library kernels slowed detectably from the lowest level tested (100 candidates at 320 px). With the optimizer and budget studied, Sponge Patch does not raise $\Ntau$ on YOLOv8n, and its measured end-to-end effect is equivalent to no change within 1\%; a white-box gradient patch slows the pipeline by 2.0\% only with a loop-based NMS. On YOLOv5s, adaptive variants after Overload and Phantom Sponges raise the median $\Ntau$ more than a hundredfold but end-to-end time by only 1.3 to 2.0\%, below the 2.8\% noise floor of that session, so that result is not conclusive. $\Ntau$ must therefore be calibrated to the implementation, geometry and class distribution before it is used as a latency proxy. The next steps are separate timing of every stage under attack with more repetitions, and the same protocol on accelerators, where the NMS share is expected to be larger.
 
 \section*{Responsible release}
 The tests process only data and models in an authorized research environment and do not disrupt any production service. The released artefacts are the measurement harness, the manifests, the synthetic-injection fixtures and the raw timing records; the optimized patches are not packaged as an attack tool, because they are not needed to support the argument about the limits of the proxy.

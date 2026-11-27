@@ -162,7 +162,8 @@ def t_nc1():
     lines = []
     for (be, g), v in nc1_cells().items():
         src = lambda k: f'{NC1}:curves.{v[k]}.median_ms'  # noqa: E731
-        lines.append(f'{BE_EN[be] if g == GEOM[0] else ""} & {GEOM_EN[g]} & ' + t.n(v['t1_3'], src('k1_3'), sig=3) + ' & ' + t.n(v['t1_4'], src('k1_4'), sig=3) + ' & '
+        # Label repeated on every row (review 27/11: blank cells shifted columns in the PDF text layer).
+        lines.append(f'{BE_EN[be]} & {GEOM_EN[g]} & ' + t.n(v['t1_3'], src('k1_3'), sig=3) + ' & ' + t.n(v['t1_4'], src('k1_4'), sig=3) + ' & '
                      + t.n(v['t1_4'] / v['t1_3'], f'{src("k1_4")} / {src("k1_3")}', sig=3) + ' & ' + t.n(v['t80_4'], src('k80_4'), sig=3) + ' & '
                      + t.n(v['t1_4'] / v['t80_4'], f'{src("k1_4")} / {src("k80_4")}', sig=3) + ' \\\\')
     body = r"""\begin{table*}[t]
@@ -189,17 +190,18 @@ def t_cap():
             kc = f'P1_cpu2|10000|{be}|{g}|80|10000'
             c = s['contrasts']['cap300_over_capNone'][kc]
             sel = f'{E1}:1/contrasts.cap300_over_capNone.{kc}'
-            lines.append((GEOM_EN[g].capitalize() if i == 0 else '') + f' & {BE_EN[be]} & '
+            # Label repeated on every row and CI in its own column, as in tab_dose (review 27/11).
+            lines.append(GEOM_EN[g].capitalize() + f' & {BE_EN[be]} & '
                          + t.n(s['curves'][k0]['median_ms'], f'{E1}:curves.{k0}.median_ms', sig=3) + ' & '
                          + t.n(s['curves'][k3]['median_ms'], f'{E1}:curves.{k3}.median_ms', sig=3) + ' & '
-                         + t.n(1 / c['ratio'], sel + '.ratio', sig=3) + ' (' + t.ci(1 / c['ci95'][1], 1 / c['ci95'][0], sel + '.ci95(inverted)', sig=3) + ') \\\\')
+                         + t.n(1 / c['ratio'], sel + '.ratio', sig=3) + ' & ' + t.ci(1 / c['ci95'][1], 1 / c['ci95'][0], sel + '.ci95(inverted)', sig=3) + ' \\\\')
     body = r"""\begin{table*}[t]
 \centering\small
 \caption{Median NMS latency (ms) at $\Ntau=10^4$ (10\,000-anchor head, 80 classes) without a cap and with a top-300 cap, and the reduction factor (uncapped divided by capped; 95\% CI, bootstrap over repetitions).}
 \label{tab:cap}
-\begin{tabular}{@{}llccc@{}}
+\begin{tabular}{@{}llcccc@{}}
 \toprule
-Geometry & Implementation & No cap & Cap 300 & Reduction \\
+Geometry & Implementation & No cap (ms) & Cap 300 (ms) & Reduction & 95\% CI \\
 \midrule
 """ + '\n'.join(lines) + END + '\\end{table*}\n'
     return write(t, body)
@@ -212,7 +214,7 @@ def t_nstar():
     for be in BE:
         for i, g in enumerate(GEOM):
             k3, k6 = f'320|{be}|{g}|capNone', f'640|{be}|{g}|capNone'
-            row = [BE_EN[be] if i == 0 else '', GEOM_EN[g],
+            row = [BE_EN[be], GEOM_EN[g],  # label repeated on every row (review 27/11)
                    t.n(a['n_star'][k3], f'{E9A}:n_star.{k3}'), t.n(m['n_star'][k3]['predicted'], f'{AMD}:n_star.{k3}.predicted'),
                    t.n(a['n_star'][k6], f'{E9A}:n_star.{k6}'), t.n(m['n_star'][k6]['predicted'], f'{AMD}:n_star.{k6}.predicted')]
             lines.append(' & '.join(row) + ' \\\\')

@@ -4,22 +4,22 @@
 \caption{Median NMS latency (ms) at $\Ntau=10^4$ (10\,000-anchor head, 80 classes) without a cap and with a top-300 cap, and the reduction factor (uncapped divided by capped; 95\% CI, bootstrap over repetitions).}
 \label{tab:cap}
 \begin{adjustbox}{max width=\textwidth}
-\begin{tabular}{@{}llccc@{}}
+\begin{tabular}{@{}llcccc@{}}
 \toprule
-Geometry & Implementation & No cap & Cap 300 & Reduction \\
+Geometry & Implementation & No cap (ms) & Cap 300 (ms) & Reduction & 95\% CI \\
 \midrule
-Disjoint & pure PyTorch & 1929 & 23.4 & 82.5 (82.2-82.7) \\
- & torchvision \texttt{nms} & 166 & 0.170 & 974 (971-976) \\
- & torchvision batched & 10.2 & 0.194 & 52.5 (52.4-52.6) \\
- & Ultralytics native & 157 & 0.457 & 342 (337-346) \\
-Mixed & pure PyTorch & 706 & 11.8 & 60.1 (59.9-60.2) \\
- & torchvision \texttt{nms} & 79.3 & 0.137 & 577 (576-580) \\
- & torchvision batched & 10.2 & 0.204 & 50.1 (49.9-50.2) \\
- & Ultralytics native & 77.7 & 0.471 & 165 (164-168) \\
-Dense cluster & pure PyTorch & 2.45 & 0.719 & 3.41 (3.40-3.43) \\
- & torchvision \texttt{nms} & 1.48 & 0.0752 & 19.7 (19.6-19.8) \\
- & torchvision batched & 8.45 & 0.193 & 43.7 (43.6-43.8) \\
- & Ultralytics native & 22.1 & 0.453 & 48.9 (47.7-49.1) \\
+Disjoint & pure PyTorch & 1929 & 23.4 & 82.5 & 82.2-82.7 \\
+Disjoint & torchvision \texttt{nms} & 166 & 0.170 & 974 & 971-976 \\
+Disjoint & torchvision batched & 10.2 & 0.194 & 52.5 & 52.4-52.6 \\
+Disjoint & Ultralytics native & 157 & 0.457 & 342 & 337-346 \\
+Mixed & pure PyTorch & 706 & 11.8 & 60.1 & 59.9-60.2 \\
+Mixed & torchvision \texttt{nms} & 79.3 & 0.137 & 577 & 576-580 \\
+Mixed & torchvision batched & 10.2 & 0.204 & 50.1 & 49.9-50.2 \\
+Mixed & Ultralytics native & 77.7 & 0.471 & 165 & 164-168 \\
+Dense cluster & pure PyTorch & 2.45 & 0.719 & 3.41 & 3.40-3.43 \\
+Dense cluster & torchvision \texttt{nms} & 1.48 & 0.0752 & 19.7 & 19.6-19.8 \\
+Dense cluster & torchvision batched & 8.45 & 0.193 & 43.7 & 43.6-43.8 \\
+Dense cluster & Ultralytics native & 22.1 & 0.453 & 48.9 & 47.7-49.1 \\
 \bottomrule
 \end{tabular}
 \end{adjustbox}
