@@ -1,7 +1,7 @@
-# BẢN NHÁP đăng ký trước: đo lại theo góp ý của thầy (27/11/2026)
+# Đăng ký trước: đo lại theo góp ý của thầy (soạn 27/11/2026, chốt 27/11/2026)
 
-**Trạng thái: NHÁP, CHƯA có hiệu lực.** Chỉ có hiệu lực khi tác giả đọc, chốt các mục "CHỜ CHỐT" dưới đây, đổi tên file
-thành `PREREG_AMD_REVISION_<ngày>.md`, commit và tạo tag `prereg-amd-revision-<ngày>` TRƯỚC smoke.
+**Trạng thái:** tác giả chốt ngưỡng gây hại ngày 27/11/2026 ("Chốt như đề xuất"). Có hiệu lực từ tag `prereg-amd-revision-20261128`,
+tạo TRƯỚC smoke. Bản nháp trước đó: `DRAFT_PREREG_AMD_REVISION_20261127.md` (commit 5521f96), đổi tên thành file này.
 
 ## Lý do
 Góp ý 27/11 (nguyên văn trong `docs/KE_HOACH_SUA_PHAN_BIEN_20261127.md` của nhánh harness): (1) phiên YOLOv5s (E10) có MDE trong phiên
@@ -15,7 +15,8 @@ nhảy giữa các đơn vị ngay trong cùng một ảnh, còn E9 có hai mứ
 ## Môi trường (giống đợt 24/11)
 Xubuntu Live 24.04.5, AMD Ryzen 5 5500, CPU logic 2, `amd-pstate-epp` governor `performance`, min = max = 3 600 000 kHz,
 boost tắt toàn máy, CPU 8 offline, torch 1 luồng, không swap/zram trong lúc đo. Venv cùng phiên bản gói với
-`results/amd_20261124/full-01/e10/environment.txt` (CHỜ CHỐT: ghi lại `pip freeze` thực tế vào hồ sơ trước tag).
+`results/amd_20261124/full-01/e10/environment.txt` (cài bằng `pip install -r` file đó). `pip freeze` thực tế được `run_revision.sh`
+ghi vào `environment.txt` của từng thí nghiệm; khác phiên bản torch/torchvision/ultralytics so với file trên thì dừng và ghi DEVIATIONS.
 Đầu vào: `transfer/inputs_revision_20261128.tar` (sha256 `af37f48d36ad24a65536c089f09f2aa13f2da89295aaa39d34bdf842f5b20d6d`,
 1403 file + `INPUTS_SHA256.txt`); runner tự kiểm SHA-256 trọng số và nhiễu loạn.
 
@@ -39,7 +40,8 @@ người dùng điều khiển qua SSH từ laptop, chỉ dùng lệnh đọc tr
   **Mới:** (a) phân rã Bảng 10 với NMS đo TRONG lần gọi toàn trình: Δt_NMS,in so với Δt_NMS,micro, và phần còn lại
   Δt_total − Δt_NMS,in; (b) Δt_total so với Δt_harm; (c) MDE trong phiên của nhánh sạch.
 - **E10-RM:** tỷ lệ đơn vị ở mức chậm và MDE trong phiên so với E10-R (mô tả).
-- **Ngưỡng gây hại Δt_harm — CHỜ CHỐT:** đề xuất 5% của khung 33,33 ms ở 30 FPS = 1,667 ms (chính) và 10% = 3,333 ms (độ nhạy).
+- **Ngưỡng gây hại Δt_harm (đã chốt 27/11):** 5% của khung 33,33 ms ở 30 FPS = 1,667 ms (chính) và 10% = 3,333 ms (độ nhạy).
+  Đây là ngưỡng tuyệt đối cộng thêm vào mỗi khung; trên một lõi thời gian sạch đã vượt 33 ms nên không đọc là "lỡ khung 30 FPS".
 
 ## Dự đoán (theo chẩn đoán post hoc, không mù)
 - E9-R: N* ở 320 px nằm dưới 100 với ít nhất một backend (thầy hỏi chính điểm này); N_harm của thư viện ở 320 px ≥ 1000.
@@ -48,8 +50,10 @@ người dùng điều khiển qua SSH từ laptop, chỉ dùng lệnh đọc tr
 - Nếu đơn vị chậm có số page fault lớn hơn rõ rệt, giả thuyết cấp phát bộ nhớ được ủng hộ; E10-RM khi đó có ít đơn vị chậm hơn.
 
 ## Phân tích
-Script phân tích viết và commit TRƯỚC khi chạy phiên chính (CHỜ: `studies/e10r_reference_rerun/analyze.py`, dùng lại logic
-`studies/e10_reference/analyze.py` và `stage_decomp.py`; E9-R dùng nguyên `studies/e9_pipeline/analyze.py`). KTC bootstrap
+Script phân tích đã commit trước tag: endpoint chính kiểu E10 dùng nguyên `studies/e10_reference/analyze.py` (bản ghi E10-R giữ
+các khóa của E10); endpoint mới dùng `studies/e10r_reference_rerun/analyze_new.py` (đã thử trên bản giả lập từ raw E10 cũ: tái lập
+Δt_total, Δt_NMS của Bảng 10 và MDE 2,82%); E9-R dùng nguyên `studies/e9_pipeline/analyze.py --part a`, và N_harm tính bằng
+`studies/review_20261127/diag_posthoc.py:b3_e9` áp lên raw E9-R. KTC bootstrap
 percentile 20 000 lần, hai tầng ảnh × seed cho E10-R. Phân tích theo trạng thái nhanh/chậm là phụ, gắn nhãn thăm dò.
 
 ## Báo cáo và quyết định

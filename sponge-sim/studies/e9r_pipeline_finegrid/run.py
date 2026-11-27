@@ -4,7 +4,7 @@ Dùng LẠI nguyên worker của `sponge-sim/studies/e9_pipeline/run.py` (sha256
 không chép, không sửa file đó: nạp module rồi gọi `worker(run_dir, cfg)` với cấu hình dưới đây. Khác biệt duy nhất so với E9:
   - lưới N: 320 px {0, 10, 30, 50, 100, 300, 1000, 2100}; 640 px {0, 10, 30, 50, 100, 300, 1000, 3000, 8400};
   - tên thí nghiệm E9R và seed thứ tự mới (9202/9203). Cùng 20 ảnh, cùng hình học, cap, số lần lặp, seed tập tiêm (theo N).
-Xem prereg/DRAFT_PREREG_AMD_REVISION_20261127.md.
+Xem prereg/PREREG_AMD_REVISION_20261128.md.
 """
 from __future__ import annotations
 

@@ -9,7 +9,7 @@ toàn file, dòng 1-139). File gốc KHÔNG sửa. Khác biệt so với bản g
      "hai mức thời gian do cấp phát bộ nhớ" (chẩn đoán post hoc 27/11, results/review_20261127).
   4. Tuỳ chọn --malloc-fixed (phiên thăm dò riêng): cố định ngưỡng mmap/trim của glibc qua biến môi trường của worker.
   5. Tuỳ chọn --n-images để chạy phiên thăm dò nhỏ hơn.
-Xem prereg/DRAFT_PREREG_AMD_REVISION_20261127.md.
+Xem prereg/PREREG_AMD_REVISION_20261128.md.
 """
 from __future__ import annotations
 

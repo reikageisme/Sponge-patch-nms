@@ -1,5 +1,5 @@
 #!/usr/bin/env bash
-# Đợt đo lại theo góp ý 27/11/2026 (DRAFT_PREREG_AMD_REVISION_20261127.md, khi đã thành PREREG và có tag).
+# Đợt đo lại theo góp ý 27/11/2026 (PREREG_AMD_REVISION_20261128.md, tag prereg-amd-revision-20261128).
 # Dựa trên run_amd.sh (cùng cổng kiểm xung). Dùng: run_revision.sh smoke|full [thí nghiệm ...]
 # Thí nghiệm: e9r e10r e10rm (mặc định cả ba, đúng thứ tự PREREG). e10rm = phiên thăm dò 10 ảnh với --malloc-fixed.
 set -euo pipefail

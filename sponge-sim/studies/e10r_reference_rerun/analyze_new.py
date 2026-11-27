@@ -1,4 +1,4 @@
-"""E10-R — các endpoint MỚI của DRAFT_PREREG_AMD_REVISION_20261127 (endpoint chính kiểu E10 vẫn dùng studies/e10_reference/analyze.py,
+"""E10-R — các endpoint MỚI của PREREG_AMD_REVISION_20261128 (endpoint chính kiểu E10 vẫn dùng studies/e10_reference/analyze.py,
 vì bản ghi E10-R giữ nguyên các khóa của E10 và chỉ thêm trường).
 
     python -X utf8 analyze_new.py RUN_DIR [--harm-ms 1.667 --harm-ms 3.333]  -> RUN_DIR/e10r_new_endpoints.json

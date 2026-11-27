@@ -15,7 +15,7 @@
 
 Một việc duy nhất ngày 28/11: chạy đợt đo lại theo góp ý của thầy (E9-R lưới N mịn, E10-R đo lại YOLOv5s, E10-RM thăm dò),
 rồi mang kết quả về. Kế hoạch tổng: `docs/KE_HOACH_SUA_PHAN_BIEN_20261127.md`. Lý do đo lại: `docs/reports/REVIEW_B_POSTHOC_20261127.md`.
-PREREG nháp: `sponge-sim/prereg/DRAFT_PREREG_AMD_REVISION_20261127.md`.
+PREREG (đã chốt ngưỡng 27/11, chờ tag): `sponge-sim/prereg/PREREG_AMD_REVISION_20261128.md`.
 
 ## 2. Quy tắc bắt buộc (tóm tắt CLAUDE.md của repo gốc; file đó không có trên nhánh này)
 1. Không xóa, di chuyển, ghi đè dữ liệu thô hay kết quả đã chạy (`outputs/**`, `sponge-sim/results/**`). Ổ `D:` chỉ mount **read-only**.
@@ -30,9 +30,11 @@ PREREG nháp: `sponge-sim/prereg/DRAFT_PREREG_AMD_REVISION_20261127.md`.
 
 ## 3. Đang ở bước nào (cập nhật mục này mỗi khi xong một bước)
 - [x] 27/11 Windows: kế hoạch, nhóm A (sửa bài, commit `b8968be`), nhóm B (phân tích lại), runner E9-R/E10-R, PREREG nháp, gói đầu vào.
-- [ ] Đẩy nhánh `amd-replication-20261124` lên GitHub (chờ người dùng đồng ý).
+- [x] 27/11: đẩy nhánh `amd-replication-20261124` lên GitHub (`reikageisme/Sponge-patch-nms`).
+- [x] 27/11: người dùng chốt ngưỡng gây hại 1,667 ms (chính) / 3,333 ms (độ nhạy); PREREG đổi tên, bỏ chữ nháp.
+- [ ] Tạo tag `prereg-amd-revision-20261128` và đẩy tag (cần người dùng đồng ý; CLAUDE.md: dừng trước mọi tag PREREG).
 - [ ] 28/11 sáng, tại nhà: khởi động live, mở đường SSH (mục 4).
-- [ ] Chốt PREREG (ngưỡng gây hại), commit, tag, push (mục 5).
+- [ ] Nếu chưa có tag trên GitHub: tạo tag theo mục 5.
 - [ ] Dựng môi trường đo trên live (mục 6).
 - [ ] Smoke → người dùng duyệt → phiên chính (mục 7).
 - [ ] Mang kết quả về, kiểm SHA-256 hai phía, rồi mới tắt máy live (mục 8).
@@ -57,10 +59,10 @@ Từ laptop (có thể làm ngay ở nhà để chắc chắn): `ssh xubuntu@100
 (`ssh-keygen -R 100.x.y.z`), kiểm vân tay mới in trên màn hình máy đo bằng `ssh-keygen -lf /etc/ssh/ssh_host_ed25519_key.pub`.
 
 ## 5. Chốt PREREG (làm trên laptop hoặc ngay trên máy đo, TRƯỚC smoke)
-1. Người dùng chốt ngưỡng gây hại (đề xuất 1,667 ms = 5% khung 30 FPS; độ nhạy 3,333 ms) và kiểm các mục "CHỜ CHỐT".
-2. Đổi tên `DRAFT_PREREG_AMD_REVISION_20261127.md` → `PREREG_AMD_REVISION_20261128.md`, sửa trạng thái thành có hiệu lực,
-   ghi `pip freeze` của venv (mục 6) vào file.
-3. `git add` đúng file đó, commit, `git tag prereg-amd-revision-20261128`, push nhánh và tag.
+1. Đã xong 27/11: ngưỡng chốt, file đã đổi tên thành `PREREG_AMD_REVISION_20261128.md`. `pip freeze` thực tế do
+   `run_revision.sh` ghi vào từng thí nghiệm, không cần sửa PREREG.
+2. Còn lại: `git tag -a prereg-amd-revision-20261128 -m "..."` trên commit chứa PREREG, rồi `git push reikage prereg-amd-revision-20261128`.
+   Kiểm trên máy live: `git rev-parse prereg-amd-revision-20261128^{commit}` trùng HEAD sau khi checkout.
 Nếu sau tag phải sửa runner (ví dụ smoke lỗi): ghi DEVIATIONS, commit, tag mới `-r1`, như đợt 24/11.
 
 ## 6. Dựng môi trường đo trên live (NGƯỜI DÙNG gõ các lệnh cần mạng; phần còn lại Claude có thể chạy qua SSH)
