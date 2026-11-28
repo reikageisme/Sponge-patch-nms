@@ -32,12 +32,17 @@ PREREG (đã chốt ngưỡng 27/11, chờ tag): `sponge-sim/prereg/PREREG_AMD_R
 - [x] 27/11 Windows: kế hoạch, nhóm A (sửa bài, commit `b8968be`), nhóm B (phân tích lại), runner E9-R/E10-R, PREREG nháp, gói đầu vào.
 - [x] 27/11: đẩy nhánh `amd-replication-20261124` lên GitHub (`reikageisme/Sponge-patch-nms`).
 - [x] 27/11: người dùng chốt ngưỡng gây hại 1,667 ms (chính) / 3,333 ms (độ nhạy); PREREG đổi tên, bỏ chữ nháp.
-- [ ] Tạo tag `prereg-amd-revision-20261128` và đẩy tag (cần người dùng đồng ý; CLAUDE.md: dừng trước mọi tag PREREG).
-- [ ] 28/11 sáng, tại nhà: khởi động live, mở đường SSH (mục 4).
-- [ ] Nếu chưa có tag trên GitHub: tạo tag theo mục 5.
-- [ ] Dựng môi trường đo trên live (mục 6).
-- [ ] Smoke → người dùng duyệt → phiên chính (mục 7).
-- [ ] Mang kết quả về, kiểm SHA-256 hai phía, rồi mới tắt máy live (mục 8).
+- [x] Tạo tag `prereg-amd-revision-20261128` và đẩy tag (cần người dùng đồng ý; CLAUDE.md: dừng trước mọi tag PREREG). Tag trỏ f7c9140.
+- [x] 28/11 sáng, tại nhà: khởi động live, mở đường SSH (mục 4). SSH qua LAN bằng khóa, không dùng Tailscale.
+- [x] Nếu chưa có tag trên GitHub: tạo tag theo mục 5. (Tag đã có sẵn.)
+- [x] Dựng môi trường đo trên live (mục 6). Đầu vào nằm trong `/dev/shm` vì lớp ghi USB thiếu chỗ (DEVIATIONS 1-5).
+- [x] Smoke → phiên chính (mục 7). Người dùng cho chạy tiếp không cần duyệt. Smoke 00:51-01:02Z; full-01 từ 01:07Z:
+      E9-R và E10-R xong, E10-RM hỏng lúc 06:08Z vì apt-daily-upgrade làm đầy lớp ghi USB (DEVIATIONS 6-7);
+      chạy lại E10-RM dưới tên full-02, 08:10-08:52Z (DEVIATIONS 8). Mọi cổng xung của các lần chạy trọn đều qua.
+- [x] Mang kết quả về, kiểm SHA-256 hai phía (mục 8): `sponge-sim/results/amd_revision_20261128`, đã mở khóa xung.
+- [x] Phân tích mục 9 (DEVIATIONS 9-12), đẩy lên nhánh `amd-replication-20261124` (a896581).
+- [ ] Quyết định đưa số E9-R/E10-R vào bài (thay số cũ hay đặt cạnh). Lưu ý: E10-R (chính) không vượt ngưỡng gây hại,
+      E10-RM (thăm dò, 10 ảnh, cố định malloc) vượt cả hai ngưỡng; xem `amd_revision_20261128/analysis`.
 
 ## 4. Sáng 28/11 tại nhà, NGƯỜI DÙNG tự làm trên máy đo (trước khi đi học)
 Trên Windows trước khi khởi động lại: tắt hẳn bằng Shift + Shut down (để ổ D: không ở trạng thái ngủ đông, mount được).
