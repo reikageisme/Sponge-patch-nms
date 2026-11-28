@@ -1,0 +1,9 @@
+overload|tv_batched {'d_total_ms': 7.991, 'd_nms_in_ms': 7.277, 'd_nms_micro_ms': 7.221, 'd_fwd_ms': 0.486, 'rest_in_ms': 0.714, 'micro_minus_in_ms': -0.056} harm {'1.6666666666666667': True, '3.3333333333333335': True}
+overload|tv_nms {'d_total_ms': 9.954, 'd_nms_in_ms': 9.133, 'd_nms_micro_ms': 9.122, 'd_fwd_ms': 0.593, 'rest_in_ms': 0.822, 'micro_minus_in_ms': -0.01} harm {'1.6666666666666667': True, '3.3333333333333335': True}
+overload|ultra_native {'d_total_ms': 10.393, 'd_nms_in_ms': 9.743, 'd_nms_micro_ms': 9.232, 'd_fwd_ms': 0.422, 'rest_in_ms': 0.65, 'micro_minus_in_ms': -0.511} harm {'1.6666666666666667': True, '3.3333333333333335': True}
+phantom_sponges|tv_batched {'d_total_ms': 10.539, 'd_nms_in_ms': 9.558, 'd_nms_micro_ms': 9.511, 'd_fwd_ms': 0.827, 'rest_in_ms': 0.981, 'micro_minus_in_ms': -0.047} harm {'1.6666666666666667': True, '3.3333333333333335': True}
+phantom_sponges|tv_nms {'d_total_ms': 10.443, 'd_nms_in_ms': 9.445, 'd_nms_micro_ms': 9.441, 'd_fwd_ms': 0.843, 'rest_in_ms': 0.998, 'micro_minus_in_ms': -0.003} harm {'1.6666666666666667': True, '3.3333333333333335': True}
+phantom_sponges|ultra_native {'d_total_ms': 11.563, 'd_nms_in_ms': 10.648, 'd_nms_micro_ms': 10.253, 'd_fwd_ms': 0.758, 'rest_in_ms': 0.915, 'micro_minus_in_ms': -0.395} harm {'1.6666666666666667': True, '3.3333333333333335': True}
+clean tv_batched MDE 0.462% bimodal False rho(minflt,total) None
+clean tv_nms MDE 0.429% bimodal False rho(minflt,total) None
+clean ultra_native MDE 0.454% bimodal False rho(minflt,total) None

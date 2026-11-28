@@ -1,0 +1,22 @@
+/home/xubuntu/ws/repo/outputs/vendor_underload/robust_pkgs/ultralytics-yolov5-robust-0.0.1/yolov5/utils/general.py:31: UserWarning: pkg_resources is deprecated as an API. See https://setuptools.pypa.io/en/latest/pkg_resources.html. The pkg_resources package is slated for removal as early as 2025-11-30. Refrain from using this package or pin to Setuptools<81.
+  import pkg_resources as pkg
+Fusing layers... 
+YOLOv5s summary: 270 layers, 7235389 parameters, 0 gradients, 16.6 GFLOPs
+Traceback (most recent call last):
+  File "/home/xubuntu/ws/repo/sponge-sim/studies/e10r_reference_rerun/run.py", line 176, in <module>
+    main()
+  File "/home/xubuntu/ws/repo/sponge-sim/studies/e10r_reference_rerun/run.py", line 160, in main
+    worker(run_dir, cfg)
+  File "/home/xubuntu/ws/repo/sponge-sim/studies/e10r_reference_rerun/run.py", line 138, in worker
+    w.write(dict(kind='pipeline', **base, rep=rep, backend=be, total_ns=tt['ns'],
+  File "/home/xubuntu/ws/repo/sponge-sim/src/sponge_sim/timing.py", line 92, in write
+    self.fh.flush()
+OSError: [Errno 28] No space left on device
+Traceback (most recent call last):
+  File "/home/xubuntu/ws/repo/sponge-sim/studies/e10r_reference_rerun/run.py", line 176, in <module>
+    main()
+  File "/home/xubuntu/ws/repo/sponge-sim/studies/e10r_reference_rerun/run.py", line 170, in main
+    subprocess.run([sys.executable, '-X', 'utf8', '-B', __file__] + args, check=True, env=env)
+  File "/usr/lib/python3.12/subprocess.py", line 571, in run
+    raise CalledProcessError(retcode, process.args,
+subprocess.CalledProcessError: Command '['/home/xubuntu/ws/repo/.venv/bin/python', '-X', 'utf8', '-B', '/home/xubuntu/ws/repo/sponge-sim/studies/e10r_reference_rerun/run.py', '--run-dir', '/home/xubuntu/ws/repo/runs/amd-revision/full-01/e10rm/run', '--worker', '--malloc-fixed', '--n-images', '10']' returned non-zero exit status 1.
